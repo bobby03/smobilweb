@@ -20,3 +20,11 @@ Stack trace:
 REQUEST_URI=/smobil/index.php/gii/model/index
 HTTP_REFERER=http://localhost/smobil/index.php/gii/default/index
 ---
+2016/06/10 23:39:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientes.php".' in /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('clientes.php')
+#1 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/smobil/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/smobil/index.php/clientes.php
+---
