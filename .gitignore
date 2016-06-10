@@ -46,3 +46,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /nbproject/private/
+assets/
+protected/runtime/
+.DS_Store
