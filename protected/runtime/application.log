@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+2016/06/10 20:04:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1130] Host '158.97.91.179' is not allowed to connect to this MariaDB server' in /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/base/CModule.php(394): CDbConnection->init()
+#3 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/base/CModule.php(103): CModule->getComponent('db')
+#4 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/gii/generators/model/ModelCode.php(60): CModule->__get('db')
+#5 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CFormModel.php(39): ModelCode->init()
+#6 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/gii/CCodeGenerator.php(153): CFormModel->__construct()
+#7 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CWebApplication.php(282): CController->run('index')
+#13 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/smobil/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/smobil/index.php/gii/model/index
+HTTP_REFERER=http://localhost/smobil/index.php/gii/default/index
+---
+2016/06/10 23:39:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientes.php".' in /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('clientes.php')
+#1 /Applications/XAMPP/xamppfiles/htdocs/Yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/smobil/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/smobil/index.php/clientes.php
+=======
 2016/06/10 19:29:36 [error] [php] include(GeoUsuarios.php): failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:432)
 Stack trace:
 #0 C:\xampp\htdocs\SmobilWeb\protected\modules\ycm\components\UserIdentity.php(24): spl_autoload_call()
@@ -2039,6 +2070,7 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/SMobilWeb/index.php/gii/model/index
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/gii/default/index
+>>>>>>> d295a39c9b8247cc55b47807475d6af5854eaf24
 ---
 2016/06/10 23:49:06 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens2.cepas' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `cepas`.
 in C:\xampp\htdocs\SmobilWeb\index.php (13)
