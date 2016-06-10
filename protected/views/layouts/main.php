@@ -36,6 +36,7 @@
 				array('label'=>'Estación', 'url'=>array('/estacion')),
 				array('label'=>'Personal', 'url'=>array('/personal')),
 				array('label'=>'Solicitudes', 'url'=>array('/solicitudes')),
+				array('label'=>'Usuarios', 'url'=>array('/usuarios')),
 				array('label'=>'Viajes', 'url'=>array('/viajes')),
 			),
 		)); ?>
