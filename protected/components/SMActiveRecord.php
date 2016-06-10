@@ -10,7 +10,7 @@
  *
  * @author Bob
  */
-class SMAßctiveRecord extends CActiveRecord {
+class SMActiveRecord extends CActiveRecord {
 	
 	public $textAlert = '';
 	/**

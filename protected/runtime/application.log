@@ -2040,3 +2040,45 @@ Stack trace:
 REQUEST_URI=/SMobilWeb/index.php/gii/model/index
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/gii/default/index
 ---
+2016/06/10 23:49:06 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens2.cepas' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `cepas`.
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/11 00:12:46 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "index.php/cepa". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/cepa')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/index
+---
+2016/06/11 00:12:56 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "index.php/cepa". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/cepa')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/index
+---
+2016/06/11 00:13:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "cepa". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('cepa')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('cepa')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/cepa')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/index.php/cepa
+---
+2016/06/11 00:15:28 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "cepa". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('cepa')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('cepa')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/cepa')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/
+---
