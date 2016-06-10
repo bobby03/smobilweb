@@ -31,9 +31,12 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/')),
 				array('label'=>'Cepa', 'url'=>array('/cepa')),
+				array('label'=>'Clientes', 'url'=>array('/clientes')),
 				array('label'=>'Especie', 'url'=>array('/especie')),
 				array('label'=>'Estación', 'url'=>array('/estacion')),
 				array('label'=>'Personal', 'url'=>array('/personal')),
+				array('label'=>'Solicitudes', 'url'=>array('/solicitudes')),
+				array('label'=>'Viajes', 'url'=>array('/viajes')),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
