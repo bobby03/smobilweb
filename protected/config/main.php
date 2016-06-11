@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SMOBIL 3.0',
+	'timeZone'=>'America/Bahia_Banderas',
 	// preloading 'log' component
 	'preload'=>array('log'),
 	// autoloading model and component classes
@@ -90,7 +91,7 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				//*
+				/*
 				array(
 					'class'=>'CWebLogRoute',
 				),
