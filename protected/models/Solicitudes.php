@@ -1,4 +1,4 @@
-                                                              <?php
+<?php
 
 /**
  * This is the model class for table "solicitudes".
@@ -20,7 +20,7 @@
  * @property Clientes $idClientes
  * @property SolicitudesViaje[] $solicitudesViajes
  */
-class Solicitudes extends SMActiveRecord
+class Solicitudes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -71,12 +71,12 @@ class Solicitudes extends SMActiveRecord
 			'id' => 'ID',
 			'id_clientes' => 'Id Clientes',
 			'codigo' => 'Codigo',
-			'fecha_alta' => 'Fecha de alta',
-			'hora_alta' => 'Hora de alta',
-			'fecha_estimada' => 'Fecha estimada',
-			'hora_estimada' => 'Hora estimada',
-			'fecha_entrega' => 'Fecha de entrega',
-			'hora_entrega' => 'Hora de entrega',
+			'fecha_alta' => 'Fecha Alta',
+			'hora_alta' => 'Hora Alta',
+			'fecha_estimada' => 'Fecha Estimada',
+			'hora_estimada' => 'Hora Estimada',
+			'fecha_entrega' => 'Fecha Entrega',
+			'hora_entrega' => 'Hora Entrega',
 			'notas' => 'Notas',
 		);
 	}

@@ -60,6 +60,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'cond_max',
 		'orp_min',
 		'orp_max',
+		'id_1',
 		*/
 		array(
 			'class'=>'CButtonColumn',

@@ -18,7 +18,7 @@
  * @property Clientes $idClientes
  * @property Personal $idResponsable
  */
-class Viajes extends SMActiveRecord
+class Viajes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -68,11 +68,11 @@ class Viajes extends SMActiveRecord
 			'id' => 'ID',
 			'id_clientes' => 'Id Clientes',
 			'id_responsable' => 'Id Responsable',
-			'status' => 'Estatus',
-			'fecha_salida' => 'Fecha des salida',
-			'hora_salida' => 'Hora de salida',
-			'fecha_entrega' => 'Fecha de entrega',
-			'hora_entrega' => 'Hora de entrega',
+			'status' => 'Status',
+			'fecha_salida' => 'Fecha Salida',
+			'hora_salida' => 'Hora Salida',
+			'fecha_entrega' => 'Fecha Entrega',
+			'hora_entrega' => 'Hora Entrega',
 		);
 	}
 

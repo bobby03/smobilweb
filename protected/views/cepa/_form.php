@@ -103,6 +103,12 @@
 		<?php echo $form->error($model,'orp_max'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_1'); ?>
+		<?php echo $form->textField($model,'id_1'); ?>
+		<?php echo $form->error($model,'id_1'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

@@ -62,6 +62,10 @@
 	<?php echo CHtml::encode($data->orp_max); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id_1')); ?>:</b>
+	<?php echo CHtml::encode($data->id_1); ?>
+	<br />
+
 	*/ ?>
 
 </div>

@@ -81,6 +81,11 @@
 		<?php echo $form->textField($model,'orp_max'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'id_1'); ?>
+		<?php echo $form->textField($model,'id_1'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

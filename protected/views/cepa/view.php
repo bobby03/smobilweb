@@ -35,5 +35,6 @@ $this->menu=array(
 		'cond_max',
 		'orp_min',
 		'orp_max',
+		'id_1',
 	),
 )); ?>

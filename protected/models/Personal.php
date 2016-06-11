@@ -1,7 +1,28 @@
 <?php
 
-class Personal extends SMActiveRecord
+/**
+ * This is the model class for table "personal".
+ *
+ * The followings are the available columns in table 'personal':
+ * @property integer $id
+ * @property string $nombre
+ * @property string $apellido
+ * @property string $tel
+ * @property string $rfc
+ * @property string $domicilio
+ * @property integer $id_rol
+ * @property string $correo
+ * @property string $puesto
+ *
+ * The followings are the available model relations:
+ * @property SolicitudesViaje[] $solicitudesViajes
+ * @property Viajes[] $viajes
+ */
+class Personal extends CActiveRecord
 {
+	/**
+	 * @return string the associated database table name
+	 */
 	public function tableName()
 	{
 		return 'personal';

@@ -10,7 +10,7 @@
  * @property integer $tipo_usr
  * @property integer $id_usr
  */
-class Usuarios extends SMActiveRecord
+class Usuarios extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name

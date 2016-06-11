@@ -17,7 +17,7 @@
  * @property Solicitudes[] $solicitudes
  * @property Viajes[] $viajes
  */
-class Clientes extends SMActiveRecord
+class Clientes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -69,12 +69,12 @@ class Clientes extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_empresa' => 'Nombre de la empresa',
-			'nombre_contacto' => 'Nombre del contacto',
-			'apellido_contacto' => 'Apellido del contacto',
-			'correo' => 'Correo eléctronico',
-			'rfc' => 'RFC',
-			'tel' => 'Teléfono',
+			'nombre_empresa' => 'Nombre Empresa',
+			'nombre_contacto' => 'Nombre Contacto',
+			'apellido_contacto' => 'Apellido Contacto',
+			'correo' => 'Correo',
+			'rfc' => 'Rfc',
+			'tel' => 'Tel',
 		);
 	}
 

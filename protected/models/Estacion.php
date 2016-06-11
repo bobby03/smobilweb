@@ -17,7 +17,7 @@
  * The followings are the available model relations:
  * @property Tanque[] $tanques
  */
-class Estacion extends SMActiveRecord
+class Estacion extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
