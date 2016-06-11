@@ -9,8 +9,8 @@ body
 
 #page
 {
-	margin-top: 5px;
-	margin-bottom: 5px;
+	
+	margin: 0;
 	background: white;
 	border: 1px solid #C9E0ED;
 }
@@ -19,12 +19,25 @@ body
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	border-bottom: 2px solid #49dbd0;
+	height:48px;
+    background-color: #e6e7e8;
+    position: fixed;
+    top:0;
+    right:0;
+    display:block;
+    width: calc(100% - 182px);
+    box-shadow: 2px 2px 15px 3px rgba(0, 0, 0, 0.5);
 }
 
 #content
 {
     padding: 20px;
+}
+#contentWrapper
+{
+	margin-left: 180px;
+	margin-top: 48px;
 }
 
 #sidebar
@@ -49,18 +62,42 @@ body
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background-color: #0077B0;
+	position: fixed;
+	top: 0;
+	left:0;
+	width:180px;
+	height: 100%;
+	box-sizing:border-box;
+	padding:0 10px;
 }
 
 #mainmenu ul
 {
-	padding:6px 20px 5px 20px;
 	margin:0px;
+	width:100%;
+	box-sizing: border-box;
+    padding: 0;
+}
+#mainmenu .menuTop
+{
+	height: 48px;
+	width: 100%;
+	border-bottom: 1px solid #49DBD0;
+
 }
 
 #mainmenu ul li
 {
-	display: inline;
+	list-style: none;
+	width:100%;
+	display: block;
+	padding:10px 0;
+	border-bottom: 1px solid #49DBD0;
+}
+#mainmenu ul li:last-child
+{ 
+	border: 0;
 }
 
 #mainmenu ul li a
@@ -70,7 +107,8 @@ body
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
-	padding:5px 8px;
+	display: block;
+	text-indent: 30px;
 }
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a

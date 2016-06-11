@@ -23,13 +23,14 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+		<!--<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>-->
 	</div><!-- header -->
 
 	<div id="mainmenu">
+		<div class= "menuTop"></div>
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/')),
+				array('label'=>'Inicio', 'url'=>array('/')),
 				array('label'=>'Cepa', 'url'=>array('/cepa')),
 				array('label'=>'Clientes', 'url'=>array('/clientes')),
 				array('label'=>'Especie', 'url'=>array('/especie')),
@@ -40,15 +41,15 @@
 				array('label'=>'Viajes', 'url'=>array('/viajes')),
 			),
 		)); ?>
-	</div><!-- mainmenu -->
+	</div><!-- mainmenu 
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-
+<div id="contentWrapper">
 	<?php echo $content; ?>
-
+</div>
 	<div class="clear"></div>
 
 	<div id="footer">
