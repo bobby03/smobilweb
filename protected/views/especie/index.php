@@ -14,7 +14,20 @@ $this->menu=array(
 
 <h1>Especies</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
+<?php $this->widget('zii.widgets.grid.CGridView', 
+    array(
+        'id'            => 'especieGrid',
+        'dataProvider'  => $dataProvider,
+        'summaryText'=>'',
+        'columns'       => 
+        array(
+            'nombre'
+        ),
+        'pager'=>array(
+            'header'         => '',
+            'firstPageLabel' => 'primera página',
+            'prevPageLabel'  => '&nbsp;',
+            'nextPageLabel'  => '&nbsp;',
+            'lastPageLabel'  => 'ultima página',
+        ),
 )); ?>
