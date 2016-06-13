@@ -5,6 +5,18 @@
 $this->breadcrumbs=array(
 	'Especies',
 );
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+    $('.search-form').toggle();
+    return false;
+});
+$('.search-form form').submit(function(){
+    $('#especie-grid').yiiGridView('update', {
+        data: $(this).serialize()
+    });
+    return false;
+});
+");
 
 $this->menu=array(
 	array('label'=>'Create Especie', 'url'=>array('create')),
@@ -14,20 +26,24 @@ $this->menu=array(
 
 <h1>Especies</h1>
 
-<?php $this->widget('zii.widgets.grid.CGridView', 
-    array(
-        'id'            => 'especieGrid',
-        'dataProvider'  => $dataProvider,
-        'summaryText'=>'',
-        'columns'       => 
-        array(
-            'nombre'
-        ),
-        'pager'=>array(
-            'header'         => '',
-            'firstPageLabel' => 'primera página',
-            'prevPageLabel'  => '&nbsp;',
-            'nextPageLabel'  => '&nbsp;',
-            'lastPageLabel'  => 'ultima página',
-        ),
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
+<?php $this->renderPartial('_search',array(
+    'model'=>$model,
 )); ?>
+</div><!-- search-form -->
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+    'id'=>'especie-grid',
+    'summaryText' => '',
+    'dataProvider'=>$model->search(),
+    'filter'=>$model,
+    'columns'=>array(
+        'id',
+        'nombre',
+        /*array(
+            'class'=>'CButtonColumn',
+        ),*/
+    ),
+)); ?>
+
