@@ -122,9 +122,12 @@ class SolicitudesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Solicitudes');
+		$model=new Solicitudes('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Solicitudes']))
+			$model->attributes=$_GET['Solicitudes'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

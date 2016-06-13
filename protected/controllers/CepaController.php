@@ -122,10 +122,9 @@ class CepaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Cepa('search');
-		$model->unsetAttributes();
+		$dataProvider=new CActiveDataProvider('Cepa');
 		$this->render('index',array(
-			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 

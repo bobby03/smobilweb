@@ -18,9 +18,9 @@
  * @property double $cond_max
  * @property double $orp_min
  * @property double $orp_max
- * @property integer $id_1
  *
  * The followings are the available model relations:
+ * @property Especie $idEspecie
  * @property SolicitudTanques[] $solicitudTanques
  */
 class Cepa extends CActiveRecord
@@ -41,13 +41,13 @@ class Cepa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
-			array('id, id_especie, cantidad, id_1', 'numerical', 'integerOnly'=>true),
+			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
+			array('id_especie, cantidad', 'numerical', 'integerOnly'=>true),
 			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
 			array('nombre_cepa', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max, id_1', 'safe', 'on'=>'search'),
+			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +59,7 @@ class Cepa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idEspecie' => array(self::BELONGS_TO, 'Especie', 'id_especie'),
 			'solicitudTanques' => array(self::HAS_MANY, 'SolicitudTanques', 'id_cepas'),
 		);
 	}
@@ -83,7 +84,6 @@ class Cepa extends CActiveRecord
 			'cond_max' => 'Cond Max',
 			'orp_min' => 'Orp Min',
 			'orp_max' => 'Orp Max',
-			'id_1' => 'Id 1',
 		);
 	}
 
@@ -119,7 +119,6 @@ class Cepa extends CActiveRecord
 		$criteria->compare('cond_max',$this->cond_max);
 		$criteria->compare('orp_min',$this->orp_min);
 		$criteria->compare('orp_max',$this->orp_max);
-		$criteria->compare('id_1',$this->id_1);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

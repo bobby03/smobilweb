@@ -122,9 +122,13 @@ class EstacionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Estacion');
+		$model=new Estacion('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Estacion']))
+			$model->attributes=$_GET['Estacion'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

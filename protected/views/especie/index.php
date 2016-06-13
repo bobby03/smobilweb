@@ -6,19 +6,6 @@
 $this->breadcrumbs=array(
 	'Especies',
 );
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-    $('.search-form').toggle();
-    return false;
-});
-$('.search-form form').submit(function(){
-    $('#especie-grid').yiiGridView('update', {
-        data: $(this).serialize()
-    });
-    return false;
-});
-");
-
 $this->menu=array(
 	array('label'=>'Create Especie', 'url'=>array('create')),
 	array('label'=>'Manage Especie', 'url'=>array('admin')),
@@ -36,12 +23,14 @@ $this->menu=array(
 	'id'=>'especie-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+        'summaryText'=>'',
 	'columns'=>array
         (
             'nombre',
             array
             (
                 'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
             ),
 	),
