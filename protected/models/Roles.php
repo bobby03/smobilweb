@@ -30,7 +30,7 @@ class Roles extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_rol, activo', 'required'),
+			array('nombre_rol', 'required'),
 			array('activo', 'numerical', 'integerOnly'=>true),
 			array('nombre_rol', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -101,11 +101,9 @@ class Roles extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
-<<<<<<< HEAD
-=======
         public function getAllRoles()
         {
-            $roles = Roles::model()->findAllBySql('SELECT * FROM roles WHERE activo != 0');
+            $roles = $this->findAllBySql('SELECT * FROM roles WHERE activo != 0');
             $return = array();
             foreach($roles as $data)
                 $return[$data->id] = $data->nombre_rol;
@@ -113,8 +111,7 @@ class Roles extends SMActiveRecord
         }
         public function getRol($id)
         {
-            $rol = Roles::model()->findByPk($id);
+            $rol = $this->findByPk($id);
             return $rol->nombre_rol;
         }
->>>>>>> 5ee369a842a3e612a28b2e282ecf7b7f1b6ee706
 }

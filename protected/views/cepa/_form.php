@@ -19,7 +19,12 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-
+        <div class="row">
+		<?php echo $form->labelEx($model,'id_especie'); ?>
+		<?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+		<?php echo $form->error($model,'id_especie'); ?>
+	</div> 
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'nombre_cepa'); ?>
 		<?php echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50)); ?>

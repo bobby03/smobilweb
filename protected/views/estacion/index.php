@@ -14,7 +14,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Estacions</h1>
+<h1>Estaciones</h1>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">

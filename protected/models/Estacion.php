@@ -117,4 +117,12 @@ class Estacion extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllTipo()
+        {
+            return array
+            (
+                '1' => 'Movil',
+                '2' => 'Fíja',
+            );
+        }
 }

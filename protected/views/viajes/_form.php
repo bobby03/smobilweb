@@ -34,13 +34,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_clientes'); ?>
-		<?php echo $form->textField($model,'id_clientes'); ?>
+		<?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'id_clientes'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
-		<?php echo $form->textField($model,'id_responsable'); ?>
+		<?php echo $form->dropDownList($model,'id_responsable', Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'id_responsable'); ?>
 	</div>
 

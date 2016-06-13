@@ -24,16 +24,13 @@
 		<?php echo $form->textField($model,'nombre_rol',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'nombre_rol'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'activo'); ?>
-		<?php echo $form->textField($model,'activo'); ?>
-		<?php echo $form->error($model,'activo'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+        <?php
+            if($model->isNewRecord)
+                $model2 = new RolesPermisos;
+            else
+                $model2 = RolesPermisos::model ()->findByPk($model->id);
+            $this->renderPartial('_formPermisos', array('model'=>$model2)); 
+        ?>
 
 <?php $this->endWidget(); ?>
 

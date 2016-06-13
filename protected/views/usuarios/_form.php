@@ -39,7 +39,12 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_usr'); ?>
-		<?php echo $form->textField($model,'id_usr'); ?>
+		<?php echo $form->dropDownList($model,'id_usr', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+		<?php echo $form->error($model,'id_usr'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_usr'); ?>
+		<?php echo $form->dropDownList($model,'id_usr', Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'id_usr'); ?>
 	</div>
 

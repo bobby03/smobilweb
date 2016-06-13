@@ -1,20 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "especie".
+ * This is the model class for table "roles_permisos".
  *
- * The followings are the available columns in table 'especie':
- * @property string $id
- * @property string $nombre
+ * The followings are the available columns in table 'roles_permisos':
+ * @property integer $id
+ * @property integer $id_rol
+ * @property integer $seccion
+ * @property integer $alta
+ * @property integer $baja
+ * @property integer $consulta
+ * @property integer $edicion
+ * @property integer $activo
+ *
+ * The followings are the available model relations:
+ * @property Roles $idRol
  */
-class Especie extends CActiveRecord
+class RolesPermisos extends SMActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'especie';
+		return 'roles_permisos';
 	}
 
 	/**
@@ -25,11 +34,11 @@ class Especie extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre', 'required'),
-			array('nombre', 'length', 'max'=>100),
+			array('id_rol, seccion, alta, baja, consulta, edicion, activo', 'required'),
+			array('id_rol, seccion, alta, baja, consulta, edicion, activo', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre', 'safe', 'on'=>'search'),
+			array('id, id_rol, seccion, alta, baja, consulta, edicion, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -41,6 +50,7 @@ class Especie extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idRol' => array(self::BELONGS_TO, 'Roles', 'id_rol'),
 		);
 	}
 
@@ -51,7 +61,13 @@ class Especie extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre' => 'Nombre',
+			'id_rol' => 'Id Rol',
+			'seccion' => 'Seccion',
+			'alta' => 'Alta',
+			'baja' => 'Baja',
+			'consulta' => 'Consulta',
+			'edicion' => 'Edicion',
+			'activo' => 'Activo',
 		);
 	}
 
@@ -73,8 +89,14 @@ class Especie extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('id_rol',$this->id_rol);
+		$criteria->compare('seccion',$this->seccion);
+		$criteria->compare('alta',$this->alta);
+		$criteria->compare('baja',$this->baja);
+		$criteria->compare('consulta',$this->consulta);
+		$criteria->compare('edicion',$this->edicion);
+		$criteria->compare('activo',$this->activo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -85,23 +107,10 @@ class Especie extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Especie the static model class
+	 * @return RolesPermisos the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-        public function getAllEspecies()
-        {
-            $especies = $this->findAll();
-            $return = array();
-            foreach($especies as $data)
-                $return[$data->id] = $data->nombre;
-            return $return;
-        }
-        public function getEspecie($id)
-        {
-            $rol = $this->findByPk($id);
-            return $rol->nombre;
-        }
 }

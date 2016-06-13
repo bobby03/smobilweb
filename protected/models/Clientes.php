@@ -121,7 +121,7 @@ class Clientes extends CActiveRecord
 	}
         public function getAllClientes()
         {
-            $clientes = Clientes::model()->findAll();
+            $clientes = $this->findAll();
             $return = array();
             foreach($clientes as $data)
                 $return[$data->id] = $data->nombre_empresa;
