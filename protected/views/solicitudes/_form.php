@@ -2,12 +2,24 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
+    $this->widget('zii.widgets.jui.CJuiDatePicker',array
+    (
+        'name' => 'SolicitudesForm',
+        // additional javascript options for the date picker plugin
+        'options'=>array(
+            'showAnim'=>'fold',
+        ),
+        'htmlOptions'=>array(
+            'style'=>'display:none;'
+        ),
+));
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'solicitudes-form',
+//        'htmlOptions'=>array('name'=>'SolicitudesForm'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -21,7 +33,7 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_clientes'); ?>
 		<span class='css-select-moz'>
-                    <?php echo $form->dropDownList($model,'id_clientes', $model->getAllSolicitudes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                    <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
                 </span>
 		<?php echo $form->error($model,'id_clientes'); ?>
 	</div>

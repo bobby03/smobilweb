@@ -125,22 +125,4 @@ class Solicitudes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-        public function getAllSolicitudes()
-        {
-            $solicitudes = Solicitudes::model()->findAll();
-            $return = array();
-            foreach($solicitudes as $data)
-            {
-                $return[] = array
-                (
-                    $data->id => $data->nombre_empresa
-                );
-            }
-            return $return;
-        }
-        public function getSolicitud($id)
-        {
-            $cliente = Clientes::model()->findByPk($id);
-            return $cliente->nombre_empresa;
-        }
 }

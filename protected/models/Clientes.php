@@ -119,4 +119,17 @@ class Clientes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllClientes()
+        {
+            $clientes = Clientes::model()->findAll();
+            $return = array();
+            foreach($clientes as $data)
+                $return[$data->id] = $data->nombre_empresa;
+            return $return;
+        }
+        public function getCliente($id)
+        {
+            $cliente = Clientes::model()->findByPk($id);
+            return $cliente->nombre_empresa;
+        }
 }

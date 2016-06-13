@@ -51,7 +51,7 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_rol'); ?>
 		<span class='css-select-moz'>
-                    <?php echo $form->dropDownList($model,'id_rol', $model->getAllRoles(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                    <?php echo $form->dropDownList($model,'id_rol', Roles::model()->getAllRoles(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
                 </span>
 		<?php echo $form->error($model,'id_rol'); ?>
 	</div>
