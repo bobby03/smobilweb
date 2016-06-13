@@ -28,8 +28,9 @@ $this->menu=array(
 	'id'=>'clientes-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'summaryText'=> '',
 	'columns'=>array(
-		'id',
+		
 		'nombre_empresa',
 		'nombre_contacto',
 		'apellido_contacto',

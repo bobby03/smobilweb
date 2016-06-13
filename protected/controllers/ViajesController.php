@@ -122,9 +122,12 @@ class ViajesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Viajes');
+		$model=new Viajes('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Viajes']))
+			$model->attributes=$_GET['Viajes'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
