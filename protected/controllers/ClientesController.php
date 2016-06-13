@@ -122,9 +122,12 @@ class ClientesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Clientes');
+		$model=new Clientes('search');
+		$model->unsetAttributes(); 
+		if(isset($_GET['Clientes']))
+			$model->attributes=$_GET['Clientes'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
