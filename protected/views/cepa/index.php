@@ -1,6 +1,10 @@
 <?php
 /* @var $this CepaController */
 /* @var $dataProvider CActiveDataProvider */
+ $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
+
 
 $this->breadcrumbs=array(
 	'Cepas',
@@ -49,6 +53,7 @@ $this->menu=array(
 		 array
             (
                 'class'=>'NCButtonColumn',
+                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
             ),
 	),

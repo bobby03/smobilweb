@@ -19,11 +19,6 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_especie'); ?>
-		<?php echo $form->textField($model,'id_especie'); ?>
-		<?php echo $form->error($model,'id_especie'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nombre_cepa'); ?>
