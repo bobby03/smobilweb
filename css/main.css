@@ -92,7 +92,6 @@ body
 	list-style: none;
 	width:100%;
 	display: block;
-	padding:10px 0;
 	border-bottom: 1px solid #49DBD0;
 }
 #mainmenu ul li:last-child
@@ -102,6 +101,7 @@ body
 
 #mainmenu ul li a
 {
+	padding:10px 0;
 	color:#ffffff;
 	background-color:transparent;
 	font-size:12px;

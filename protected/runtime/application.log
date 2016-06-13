@@ -2142,3 +2142,283 @@ Stack trace:
 REQUEST_URI=/SMobilWeb/index.php/especie
 HTTP_REFERER=http://localhost/SMobilWeb/
 ---
+2016/06/13 17:07:43 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1601): CActiveRecord->getCommandBuilder()
+#7 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#8 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#9 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#10 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#11 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#12 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#13 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#14 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#15 C:\xampp\htdocs\SmobilWeb\protected\views\especie\index.php(19): CBaseController->widget('zii.widgets.gri...', Array)
+#16 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#20 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(127): CController->render('index', Array)
+#21 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#22 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#31 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie')
+#32 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#33 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie
+HTTP_REFERER=http://localhost/SMobilWeb/
+---
+2016/06/13 17:41:25 [error] [exception.CException] CException: Property "CButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(203): CComponent->__get('customButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): CButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\especie\admin.php(44): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(142): CController->render('admin', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionAdmin()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/admin')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/admin
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie
+---
+2016/06/13 17:41:31 [error] [exception.CException] CException: Property "CButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(203): CComponent->__get('customButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): CButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\especie\admin.php(44): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(142): CController->render('admin', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionAdmin()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/admin')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/admin
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie
+---
+2016/06/13 17:56:24 [error] [exception.CException] CException: Alias "zii.widgets.CGridView" is invalid. Make sure it points to an existing PHP file and the file is readable. in C:\xampp\htdocs\yii\framework\YiiBase.php:323
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWidgetFactory.php(146): YiiBase::import('zii.widgets.CGr...', true)
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(EspecieController), 'zii.widgets.CGr...', Array)
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CGr...', Array)
+#3 C:\xampp\htdocs\SmobilWeb\protected\views\especie\index.php(20): CBaseController->widget('zii.widgets.CGr...', Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(127): CController->render('index', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/index')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/index
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie/admin
+---
+2016/06/13 17:57:51 [error] [exception.CException] CException: Property "CButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(203): CComponent->__get('customButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): CButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\especie\admin.php(44): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(142): CController->render('admin', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionAdmin()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/admin')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/admin
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie/index
+---
+2016/06/13 17:58:36 [error] [exception.CException] CException: Property "CButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(203): CComponent->__get('customButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): CButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\especie\admin.php(44): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(142): CController->render('admin', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionAdmin()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/admin')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/admin
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie/index
+---
+2016/06/13 18:02:48 [error] [exception.Error] Error: Call to a member function getAttributeLabel() on null in C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:1489
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(585): CHtml::activeLabel(NULL, 'id', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\especie\_search.php(15): CActiveForm->label(NULL, 'id')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\SmobilWeb\protected\views\especie\index.php(20): CController->renderPartial('_search', Array)
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#10 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(127): CController->render('index', Array)
+#11 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie')
+#22 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie/admin
+---
+2016/06/13 18:07:52 [error] [php] include(ScriptStyle.php): failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\components\NCButtonColumn.php(14): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\YiiBase.php(432): include()
+#2 unknown(0): autoload()
+#3 unknown(0): spl_autoload_call()
+#4 C:\xampp\htdocs\yii\framework\YiiBase.php(303): class_exists()
+#5 C:\xampp\htdocs\yii\framework\YiiBase.php(196): import()
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(388): createComponent()
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): EspecieController->createWidget()
+#10 C:\xampp\htdocs\SmobilWeb\protected\views\especie\index.php(25): EspecieController->widget()
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#12 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EspecieController->renderInternal()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(869): EspecieController->renderFile()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(782): EspecieController->renderPartial()
+#15 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(130): EspecieController->render()
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): EspecieController->runAction()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): EspecieController->filterAccessControl()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): EspecieController->runActionWithFilters()
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): EspecieController->run()
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/especie
+in C:\xampp\htdocs\SmobilWeb\protected\components\NCButtonColumn.php (14)
+in C:\xampp\htdocs\SmobilWeb\protected\views\especie\index.php (25)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php (130)
+2016/06/13 18:08:33 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/images/...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/images/iconos_alerta/aceptar_alerta.svg
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie/index
+---
+2016/06/13 18:08:33 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie/images/...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/SMobilWeb/index.php/especie/images/iconos_alerta/cancelar_alerta.svg
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie/index
+---

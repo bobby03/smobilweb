@@ -1,6 +1,7 @@
 <?php
-/* @var $this EspecieController */
-/* @var $dataProvider CActiveDataProvider */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
 
 $this->breadcrumbs=array(
 	'Especies',
@@ -13,21 +14,28 @@ $this->menu=array(
 ?>
 
 <h1>Especies</h1>
-
-<?php $this->widget('zii.widgets.grid.CGridView', 
-    array(
-        'id'            => 'especieGrid',
-        'dataProvider'  => $dataProvider,
-        'summaryText'=>'',
-        'columns'       => 
-        array(
-            'nombre'
-        ),
-        'pager'=>array(
-            'header'         => '',
-            'firstPageLabel' => 'primera página',
-            'prevPageLabel'  => '&nbsp;',
-            'nextPageLabel'  => '&nbsp;',
-            'lastPageLabel'  => 'ultima página',
-        ),
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
 )); ?>
+</div><!-- search-form -->
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'especie-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+	'columns'=>array
+        (
+            'nombre',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            ),
+	),
+)); ?>
+<?php // $this->widget('zii.widgets.CListView', array(
+//    'dataProvider'=>$dataProvider,
+//    'itemView'=>'_view',
+//)); ?>

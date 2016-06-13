@@ -122,10 +122,13 @@ class EspecieController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Especie');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+            $model=new Especie('search');
+            $model->unsetAttributes();  // clear any default values
+            if(isset($_GET['Especie']))
+                    $model->attributes=$_GET['Especie'];
+            $this->render('index',array(
+                    'model'=>$model,
+            ));
 	}
 
 	/**
