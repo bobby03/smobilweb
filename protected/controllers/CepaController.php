@@ -123,7 +123,9 @@ class CepaController extends Controller
 	public function actionIndex()
 	{
 		$model=new Cepa('search');
-		$model->unsetAttributes();
+		$model->unsetAttributes(); 
+		if(isset($_GET['Cepa']))
+			$model->attributes=$_GET['Cepa'];
 		$this->render('index',array(
 			'model'=>$model,
 		));

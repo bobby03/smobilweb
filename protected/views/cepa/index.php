@@ -5,18 +5,6 @@
 $this->breadcrumbs=array(
 	'Cepas',
 );
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#cepa-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 
 $this->menu=array(
 	array('label'=>'Create Cepa', 'url'=>array('create')),
@@ -26,12 +14,20 @@ $this->menu=array(
 
 <h1>Cepas</h1>
 
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
+)); ?>
+</div><!-- search-form -->
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'cepa-grid',
 	'dataProvider'=>$model->search(),
+	'summaryText'=> '',
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		
 		'id_especie',
 		'nombre_cepa',
 		'temp_min',
@@ -48,8 +44,11 @@ $this->menu=array(
 		'orp_max',
 		'id_1',
 		*/
-		/*array(
-			'class'=>'CButtonColumn',
-		),*/
+		
+		 array
+            (
+                'class'=>'NCButtonColumn',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            ),
 	),
 )); ?>

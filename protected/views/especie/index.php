@@ -6,18 +6,7 @@
 $this->breadcrumbs=array(
 	'Especies',
 );
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-    $('.search-form').toggle();
-    return false;
-});
-$('.search-form form').submit(function(){
-    $('#especie-grid').yiiGridView('update', {
-        data: $(this).serialize()
-    });
-    return false;
-});
-");
+
 
 $this->menu=array(
 	array('label'=>'Create Especie', 'url'=>array('create')),
