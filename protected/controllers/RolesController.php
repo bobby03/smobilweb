@@ -1,6 +1,6 @@
 <?php
 
-class SolicitudesController extends Controller
+class RolesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,19 +62,20 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Solicitudes;
+		$model=new Roles;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Solicitudes']))
+		if(isset($_POST['Roles']))
 		{
-			$model->attributes=$_POST['Solicitudes'];
+			$model->attributes=$_POST['Roles'];
 			if($model->save())
-				$this->redirect(array('index'));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
-                    'model'=>$model
+			'model'=>$model,
 		));
 	}
 
@@ -90,9 +91,9 @@ class SolicitudesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Solicitudes']))
+		if(isset($_POST['Roles']))
 		{
-			$model->attributes=$_POST['Solicitudes'];
+			$model->attributes=$_POST['Roles'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -121,10 +122,10 @@ class SolicitudesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Solicitudes('search');
+		$model=new Roles('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Solicitudes']))
-			$model->attributes=$_GET['Solicitudes'];
+		if(isset($_GET['Roles']))
+			$model->attributes=$_GET['Roles'];
 		$this->render('index',array(
 			'model'=>$model,
 		));
@@ -135,10 +136,10 @@ class SolicitudesController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Solicitudes('search');
+		$model=new Roles('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Solicitudes']))
-			$model->attributes=$_GET['Solicitudes'];
+		if(isset($_GET['Roles']))
+			$model->attributes=$_GET['Roles'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -149,12 +150,12 @@ class SolicitudesController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Solicitudes the loaded model
+	 * @return Roles the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Solicitudes::model()->findByPk($id);
+		$model=Roles::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -162,11 +163,11 @@ class SolicitudesController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Solicitudes $model the model to be validated
+	 * @param Roles $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='solicitudes-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='roles-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
