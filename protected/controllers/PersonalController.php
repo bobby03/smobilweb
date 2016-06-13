@@ -48,7 +48,7 @@
 
             $this->render('create',array
             (
-                'model'=>$model,
+                'model'=>$model
             ));
 	}
 	public function actionUpdate($id)

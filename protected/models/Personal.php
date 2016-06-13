@@ -74,7 +74,7 @@ class Personal extends CActiveRecord
 			'tel' => 'Tel',
 			'rfc' => 'Rfc',
 			'domicilio' => 'Domicilio',
-			'id_rol' => 'Id Rol',
+			'id_rol' => 'Rol',
 			'correo' => 'Correo',
 			'puesto' => 'Puesto',
 		);
@@ -123,4 +123,14 @@ class Personal extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllRoles()
+        {
+            $roles = Roles::model()->findAllBySql('SELECT * FROM roles WHERE activo != 0');
+            return $roles;
+        }
+        public function getRol($id)
+        {
+            $rol = Roles::model()->findByPk($id);
+            return $rol->nombre_rol;
+        }
 }

@@ -18,13 +18,6 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'nombre'); ?>
 		<?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50)); ?>
@@ -57,7 +50,9 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_rol'); ?>
-		<?php echo $form->textField($model,'id_rol'); ?>
+		<span class='css-select-moz'>
+                    <?php echo $form->dropDownList($model,'id_rol', $model->getAllRoles(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                </span>
 		<?php echo $form->error($model,'id_rol'); ?>
 	</div>
 

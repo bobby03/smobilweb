@@ -1,7 +1,7 @@
 <?php
-/* @var $this SolicitudesController */
-/* @var $model Solicitudes */
-/* @var $form CActiveForm */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/calendario.js');
 ?>
 
 <div class="form">
@@ -18,16 +18,11 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_clientes'); ?>
-		<?php echo $form->textField($model,'id_clientes'); ?>
+		<span class='css-select-moz'>
+                    <?php echo $form->dropDownList($model,'id_clientes', $model->getAllSolicitudes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                </span>
 		<?php echo $form->error($model,'id_clientes'); ?>
 	</div>
 
@@ -51,7 +46,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_estimada'); ?>
-		<?php echo $form->textField($model,'fecha_estimada'); ?>
+		<?php echo $form->textField($model,'fecha_estimada', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_estimada'); ?>
 	</div>
 
@@ -63,7 +58,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_entrega'); ?>
-		<?php echo $form->textField($model,'fecha_entrega'); ?>
+		<?php echo $form->textField($model,'fecha_entrega', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_entrega'); ?>
 	</div>
 

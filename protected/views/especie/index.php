@@ -3,14 +3,14 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
 
-$this->breadcrumbs=array(
+    $this->breadcrumbs=array(
 	'Especies',
-);
+    );
 
-$this->menu=array(
+    $this->menu=array(
 	array('label'=>'Create Especie', 'url'=>array('create')),
 	array('label'=>'Manage Especie', 'url'=>array('admin')),
-);
+    );
 ?>
 
 <h1>Especies</h1>

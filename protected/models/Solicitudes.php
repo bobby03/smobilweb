@@ -69,7 +69,7 @@ class Solicitudes extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_clientes' => 'Id Clientes',
+			'id_clientes' => 'Cliente',
 			'codigo' => 'Codigo',
 			'fecha_alta' => 'Fecha Alta',
 			'hora_alta' => 'Hora Alta',
@@ -125,4 +125,22 @@ class Solicitudes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllSolicitudes()
+        {
+            $solicitudes = Solicitudes::model()->findAll();
+            $return = array();
+            foreach($solicitudes as $data)
+            {
+                $return[] = array
+                (
+                    $data->id => $data->nombre_empresa
+                );
+            }
+            return $return;
+        }
+        public function getSolicitud($id)
+        {
+            $cliente = Clientes::model()->findByPk($id);
+            return $cliente->nombre_empresa;
+        }
 }
