@@ -35,7 +35,7 @@ class Estacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'required'),
+			array('tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'required'),
 			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
 			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().

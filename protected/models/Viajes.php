@@ -36,7 +36,7 @@ class Viajes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_clientes, id_responsable, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'required'),
+			array('id_clientes, id_responsable, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'required'),
 			array('id, id_clientes, id_responsable', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>50),
 			// The following rule is used by search().

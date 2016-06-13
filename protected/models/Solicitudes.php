@@ -38,7 +38,7 @@ class Solicitudes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
+			array(' id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
 			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
