@@ -129,6 +129,7 @@ class EspecieController extends Controller
             $this->render('index',array(
                     'model'=>$model,
             ));
+
 	}
 
 	/**
