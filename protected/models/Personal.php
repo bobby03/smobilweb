@@ -74,7 +74,7 @@ class Personal extends CActiveRecord
 			'tel' => 'Tel',
 			'rfc' => 'Rfc',
 			'domicilio' => 'Domicilio',
-			'id_rol' => 'Id Rol',
+			'id_rol' => 'Rol',
 			'correo' => 'Correo',
 			'puesto' => 'Puesto',
 		);
@@ -123,4 +123,5 @@ class Personal extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
 }

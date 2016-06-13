@@ -66,8 +66,8 @@ class Viajes extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_clientes' => 'Id Clientes',
-			'id_responsable' => 'Id Responsable',
+			'id_clientes' => 'Cliente',
+			'id_responsable' => 'Responsable',
 			'status' => 'Status',
 			'fecha_salida' => 'Fecha Salida',
 			'hora_salida' => 'Hora Salida',

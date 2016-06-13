@@ -69,7 +69,7 @@ class Solicitudes extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_clientes' => 'Id Clientes',
+			'id_clientes' => 'Cliente',
 			'codigo' => 'Codigo',
 			'fecha_alta' => 'Fecha Alta',
 			'hora_alta' => 'Hora Alta',

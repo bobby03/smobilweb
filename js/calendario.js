@@ -10,7 +10,11 @@ $(document).ready(function()
         dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
         dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
         weekHeader: 'Sm',
+<<<<<<< HEAD
         dateFormat: 'dd-mm-yyyy'
+=======
+        dateFormat: 'dd-mm-yy'
+>>>>>>> 5ee369a842a3e612a28b2e282ecf7b7f1b6ee706
     }); 
     $('.calendario').click(function()
     {

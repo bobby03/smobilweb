@@ -1,13 +1,25 @@
 <?php
-/* @var $this SolicitudesController */
-/* @var $model Solicitudes */
-/* @var $form CActiveForm */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/calendario.js');
+    $this->widget('zii.widgets.jui.CJuiDatePicker',array
+    (
+        'name' => 'SolicitudesForm',
+        // additional javascript options for the date picker plugin
+        'options'=>array(
+            'showAnim'=>'fold',
+        ),
+        'htmlOptions'=>array(
+            'style'=>'display:none;'
+        ),
+));
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'solicitudes-form',
+//        'htmlOptions'=>array('name'=>'SolicitudesForm'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -19,11 +31,11 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_clientes'); ?>
-		<?php echo $form->textField($model,'id_clientes'); ?>
+		<span class='css-select-moz'>
+                    <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                </span>
 		<?php echo $form->error($model,'id_clientes'); ?>
 	</div>
 
@@ -47,7 +59,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_estimada'); ?>
-		<?php echo $form->textField($model,'fecha_estimada'); ?>
+		<?php echo $form->textField($model,'fecha_estimada', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_estimada'); ?>
 	</div>
 
@@ -59,7 +71,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_entrega'); ?>
-		<?php echo $form->textField($model,'fecha_entrega'); ?>
+		<?php echo $form->textField($model,'fecha_entrega', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_entrega'); ?>
 	</div>
 

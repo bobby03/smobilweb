@@ -101,4 +101,20 @@ class Roles extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+<<<<<<< HEAD
+=======
+        public function getAllRoles()
+        {
+            $roles = Roles::model()->findAllBySql('SELECT * FROM roles WHERE activo != 0');
+            $return = array();
+            foreach($roles as $data)
+                $return[$data->id] = $data->nombre_rol;
+            return $roles;
+        }
+        public function getRol($id)
+        {
+            $rol = Roles::model()->findByPk($id);
+            return $rol->nombre_rol;
+        }
+>>>>>>> 5ee369a842a3e612a28b2e282ecf7b7f1b6ee706
 }

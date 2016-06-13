@@ -56,10 +56,10 @@ class Usuarios extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'usuario' => 'Usuario',
-			'pwd' => 'Pwd',
-			'tipo_usr' => 'Tipo Usr',
-			'id_usr' => 'Id Usr',
+			'usuario' => 'Nombre de usuario',
+			'pwd' => 'Clave',
+			'tipo_usr' => 'Tipo de usuario',
+			'id_usr' => 'Id de usuario',
 		);
 	}
 

@@ -1,13 +1,25 @@
 <?php
-/* @var $this ViajesController */
-/* @var $model Viajes */
-/* @var $form CActiveForm */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/calendario.js');
+    $this->widget('zii.widgets.jui.CJuiDatePicker',array
+    (
+        'name' => 'ViajesForm',
+        // additional javascript options for the date picker plugin
+        'options'=>array(
+            'showAnim'=>'fold',
+        ),
+        'htmlOptions'=>array(
+            'style'=>'display:none;'
+        )
+    ));
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'viajes-form',
+//        'htmlOptions'=>array('name'=>'ViajesForm'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -19,7 +31,6 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_clientes'); ?>
@@ -41,7 +52,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_salida'); ?>
-		<?php echo $form->textField($model,'fecha_salida'); ?>
+		<?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_salida'); ?>
 	</div>
 
@@ -53,7 +64,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_entrega'); ?>
-		<?php echo $form->textField($model,'fecha_entrega'); ?>
+		<?php echo $form->textField($model,'fecha_entrega', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_entrega'); ?>
 	</div>
 
