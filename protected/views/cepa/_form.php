@@ -20,12 +20,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'id_especie'); ?>
 		<?php echo $form->textField($model,'id_especie'); ?>
 		<?php echo $form->error($model,'id_especie'); ?>
@@ -101,12 +95,6 @@
 		<?php echo $form->labelEx($model,'orp_max'); ?>
 		<?php echo $form->textField($model,'orp_max'); ?>
 		<?php echo $form->error($model,'orp_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_1'); ?>
-		<?php echo $form->textField($model,'id_1'); ?>
-		<?php echo $form->error($model,'id_1'); ?>
 	</div>
 
 	<div class="row buttons">

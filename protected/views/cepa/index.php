@@ -14,6 +14,7 @@ $this->menu=array(
 
 <h1>Cepas</h1>
 
+
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
@@ -52,3 +53,4 @@ $this->menu=array(
             ),
 	),
 )); ?>
+

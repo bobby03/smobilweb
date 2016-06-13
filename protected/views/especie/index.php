@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 	'Especies',
 );
 
-
 $this->menu=array(
 	array('label'=>'Create Especie', 'url'=>array('create')),
 	array('label'=>'Manage Especie', 'url'=>array('admin')),
@@ -25,12 +24,14 @@ $this->menu=array(
 	'id'=>'especie-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+        'summaryText'=>'',
 	'columns'=>array
         (
             'nombre',
             array
             (
                 'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
             ),
 	),
