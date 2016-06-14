@@ -59,7 +59,7 @@ class Roles extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_rol' => 'Nombre Rol',
+			'nombre_rol' => 'Rol',
 			'activo' => 'Activo',
 		);
 	}

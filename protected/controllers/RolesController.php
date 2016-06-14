@@ -62,21 +62,38 @@ class RolesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Roles;
-
+		$model = new Roles;
+                $acciones = new RolesPermisos;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Roles']))
 		{
-			$model->attributes=$_POST['Roles'];
-                        $model->activo = 1;
-			if($model->save())
-				$this->redirect(array('index'));
+                    $model->attributes = $_POST['Roles'];
+                    $model->activo = 1;
+                    if($model->save())
+                    {
+                        $i = 1;
+                        foreach($_POST['RolesPermisos']['seccion'] as $data)
+                        {
+                            $acciones2 = new RolesPermisos;
+                            $acciones2->id_rol = $model->id;
+                            $acciones2->seccion = $i;
+                            $acciones2->alta = $data['alta'];
+                            $acciones2->baja = $data['baja'];
+                            $acciones2->consulta = $data['consulta'];
+                            $acciones2->edicion = $data['edicion'];
+                            $acciones2->activo = 1;
+                            $acciones2->save();
+                            $i++;
+                        }
+                        $this->redirect(array('index'));
+                    }
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+                    'model'     => $model,
+                    'acciones'  => $acciones
 		));
 	}
 
@@ -88,19 +105,32 @@ class RolesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                $query = RolesPermisos::model()->findAllBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id}");
+                $array = array();
+                $acciones = new RolesPermisos;
+                foreach($query as $data)
+                {
+//                    $array[$data->seccion]['seccion'] = $data->seccion;
+                    $array[$data->seccion]['alta'] = $data->alta;
+                    $array[$data->seccion]['baja'] = $data->baja;
+                    $array[$data->seccion]['consulta'] = $data->consulta;
+                    $array[$data->seccion]['edicion'] = $data->edicion;
+//                    $array[$data->seccion]['activo'] = $data->activo;
+                }
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                $acciones->seccion = $array;
+                print_r($array2['seccion'][1]['alta']);
 		if(isset($_POST['Roles']))
 		{
 			$model->attributes=$_POST['Roles'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
-		$this->render('update',array(
+//                print_r($acciones);
+		$this->render('create',array(
 			'model'=>$model,
+			'acciones'=>$acciones
 		));
 	}
 

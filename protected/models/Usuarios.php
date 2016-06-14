@@ -28,7 +28,7 @@ class Usuarios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('usuario, pwd, tipo_usr, id_usr', 'required'),
+			array('usuario, pwd, tipo_usr', 'required'),
 			array('id, tipo_usr, id_usr', 'numerical', 'integerOnly'=>true),
 			array('usuario', 'length', 'max'=>10),
 			array('pwd', 'length', 'max'=>35),
@@ -59,7 +59,7 @@ class Usuarios extends CActiveRecord
 			'usuario' => 'Nombre de usuario',
 			'pwd' => 'Clave',
 			'tipo_usr' => 'Tipo de usuario',
-			'id_usr' => 'Id de usuario',
+			'id_usr' => 'Usuario',
 		);
 	}
 
@@ -102,4 +102,20 @@ class Usuarios extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllTipoUsuario()
+        {
+            return array
+            (
+                '1' => 'Cliente',
+                '2' => 'Personal'
+            );
+        }
+        public function getTipoUsuario($id)
+        {
+            switch ($id)
+            {
+                case 1 : return 'Cliente'; break;
+                case 2 : return 'Personal'; break;
+            }
+        }
 }

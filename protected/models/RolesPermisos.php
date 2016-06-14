@@ -34,7 +34,7 @@ class RolesPermisos extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_rol, seccion, alta, baja, consulta, edicion, activo', 'required'),
+			array('seccion, alta, baja, consulta, edicion', 'required'),
 			array('id_rol, seccion, alta, baja, consulta, edicion, activo', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
