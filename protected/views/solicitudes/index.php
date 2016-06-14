@@ -1,6 +1,8 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
+    $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $this->breadcrumbs=array
     (
