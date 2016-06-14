@@ -120,7 +120,7 @@ class RolesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
                 $acciones->seccion = $array;
-                print_r($array2['seccion'][1]['alta']);
+               
 		if(isset($_POST['Roles']))
 		{
 			$model->attributes=$_POST['Roles'];

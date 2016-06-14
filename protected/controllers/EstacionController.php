@@ -71,7 +71,7 @@ class EstacionController extends Controller
 		{
 			$model->attributes=$_POST['Estacion'];
 			if($model->save())
-				$this->redirect(array('index'));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -95,7 +95,7 @@ class EstacionController extends Controller
 		{
 			$model->attributes=$_POST['Estacion'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
