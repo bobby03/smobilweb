@@ -2,6 +2,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/roles/roles.js');
     $this->breadcrumbs=array(
 	'Roles',
     );
@@ -29,6 +30,7 @@
     'columns'=>array
     (
         'nombre_rol',
+        'activo',
         array
         (
             'class'=>'NCButtonColumn',
