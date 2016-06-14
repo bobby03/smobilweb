@@ -125,11 +125,11 @@ class Personal extends CActiveRecord
 	}
         public function getAllPersonal()
         {
-            $roles = $this->findAllBySql('SELECT * FROM roles WHERE activo != 0');
+            $personal = Personal::model()->findAll();
             $return = array();
-            foreach($roles as $data)
+            foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;
-            return $roles;
+            return $return;
         }
         public function getPersonal($id)
         {

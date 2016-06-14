@@ -29,7 +29,6 @@
     'columns'=>array
     (
         'nombre_rol',
-        'activo',
         array
         (
             'class'=>'NCButtonColumn',

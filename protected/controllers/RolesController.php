@@ -110,12 +110,12 @@ class RolesController extends Controller
                 $acciones = new RolesPermisos;
                 foreach($query as $data)
                 {
-//                    $array[$data->seccion]['seccion'] = $data->seccion;
+                    $array[$data->seccion]['seccion'] = $data->seccion;
                     $array[$data->seccion]['alta'] = $data->alta;
                     $array[$data->seccion]['baja'] = $data->baja;
                     $array[$data->seccion]['consulta'] = $data->consulta;
                     $array[$data->seccion]['edicion'] = $data->edicion;
-//                    $array[$data->seccion]['activo'] = $data->activo;
+                    $array[$data->seccion]['activo'] = $data->activo;
                 }
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -125,9 +125,16 @@ class RolesController extends Controller
 		{
 			$model->attributes=$_POST['Roles'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+                        {
+                            foreach($_POST['RolesPermisos']['seccion'] as $data)
+                            {
+                                $update = RolesPermisos::model()->findBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND seccion = {$data['seccion']}");
+                                $update->attributes = $data;
+                                $update->save();
+                            }
+                        }
+                        $this->redirect(array('index'));
 		}
-//                print_r($acciones);
 		$this->render('create',array(
 			'model'=>$model,
 			'acciones'=>$acciones
@@ -153,7 +160,7 @@ class RolesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Roles('search');
+		$model = new Roles('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Roles']))
 			$model->attributes=$_GET['Roles'];

@@ -146,7 +146,8 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	padding-left: 110px;
 }
 div.formContainer1:after,
-div.row.titulos:after
+div.row.titulos:after,
+div.row:after
 {
     clear: both;
     content: '';

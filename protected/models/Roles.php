@@ -85,7 +85,7 @@ class Roles extends SMActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre_rol',$this->nombre_rol,true);
 		$criteria->compare('activo',$this->activo);
-
+                $criteria->addCondition("activo=1");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -103,11 +103,11 @@ class Roles extends SMActiveRecord
 	}
         public function getAllRoles()
         {
-            $roles = $this->findAllBySql('SELECT * FROM roles WHERE activo != 0');
+            $roles = Roles::model()->findAllBySql('SELECT * FROM roles WHERE activo = 1');
             $return = array();
             foreach($roles as $data)
                 $return[$data->id] = $data->nombre_rol;
-            return $roles;
+            return $return;
         }
         public function getRol($id)
         {
