@@ -24,18 +24,16 @@
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
-    'id'=>'roles-grid',
+    'id'=>'rol',
     'dataProvider'=>$model->search(),
-    'filter'=>$model,
     'columns'=>array
     (
         'nombre_rol',
-        'activo',
         array
         (
             'class'=>'NCButtonColumn',
             'header'=>'Acciones',
             'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-        ),
-    ),
+        )
+    )
 )); ?>

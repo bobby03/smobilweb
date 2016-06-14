@@ -171,12 +171,9 @@ class Cepa extends CActiveRecord
             array(
                 'name'=>'id_especie',
                 'value'=>'Especie::model()->getEspecie($data->id_especie)',
+                'filter'=>  Especie::model()->getAllEspecies()
             ),
-            array(
-                'name'=>'nombre_cepa',
-                'value'=>'$data->nombre_cepa',
-
-            ),
+            'nombre_cepa',
             array(
                 'name' => 'temp_min',
                 'value' => '$data->temp_min',
@@ -220,6 +217,12 @@ class Cepa extends CActiveRecord
             array(
                 'name' => 'orp_max',
                 'value' => '$data->orp_max',
+            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
             )
         );
     }

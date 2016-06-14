@@ -27,7 +27,7 @@
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
-    'id'=>'solicitudes-grid',
+    'id'=>'solicitud',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'columns'=>array

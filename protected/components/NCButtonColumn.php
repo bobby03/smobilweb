@@ -50,12 +50,7 @@ class NCButtonColumn extends CButtonColumn
             }
         else
             $csrf = '';
-        if(is_string($this->deleteConfirmation))
-        {
-            if($this->grid_message===null)
-                $this->grid_message = '¿Est&aacute; seguro que desea borrar este '.$this->grid_name.'?';
-            var_dump($this->grid_name);
-            ?>
+        if(is_string($this->deleteConfirmation)):?>
             <script>
                 $(document).ready(function()
                 {
@@ -63,13 +58,15 @@ class NCButtonColumn extends CButtonColumn
                     {
                         evt.preventDefault();
                         var miHtml = '';
-                        var mensaje = 'hola: <?php echo $this->grid_message;?> ftht';
-                        var firstTDValue = $(this).parents('tr').eq(0).find('td').html();
+                        var header = $('.grid-view').attr('id');
+                        console.log(header);
+                        var mensaje = '¿Está seguro que desea eliminar está '+header;
+                        var nombre = $(this).parents('tr').eq(0).find('td').html();
                         miHtml= '<div class="sub-content">\n\
-                                <div class="title-content">Eliminar <?php echo $this->grid_name;?></div>\n\
-                                <div class="value-content">'+firstTDValue+'</div>\n\
+                                <div class="title-content">Eliminar '+header+'</div>\n\
+                                <div class="value-content">'+nombre+'</div>\n\
                                 <div class="separator-content"></div>\n\
-                                <div class="mensaje-content"></div>\n\
+                                <div class="mensaje-content">'+mensaje+'</div>\n\
                                 <div class="botones-content">\n\
                                     <div class="aceptar-boton"></div>\n\
                                     <div class="cancelar-boton"></div>\n\
@@ -92,7 +89,7 @@ class NCButtonColumn extends CButtonColumn
             <?php 
                 if($this->afterDelete===null)
                     $this->afterDelete='function(){}';
-            }
+            endif;
 	}
     }
 }?>
