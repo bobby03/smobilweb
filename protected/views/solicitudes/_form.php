@@ -47,13 +47,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_alta'); ?>
-		<?php echo $form->textField($model,'fecha_alta', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
+		<?php echo $form->textField($model,'fecha_alta', array('class'=>'calendario', 'readonly'=>'readonly', 'placeholder'=>'dd-mm-YYYY')); ?>
 		<?php echo $form->error($model,'fecha_alta'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'hora_alta'); ?>
-		<?php echo $form->textField($model,'hora_alta'); ?>
+		<?php echo $form->textField($model,'hora_alta', array('placeholder'=>'hh:mm')); ?>
 		<?php echo $form->error($model,'hora_alta'); ?>
 	</div>
 
@@ -65,7 +65,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'hora_estimada'); ?>
-		<?php echo $form->textField($model,'hora_estimada'); ?>
+		<?php echo $form->textField($model,'hora_estimada', array('placeholder'=>'hh:mm')); ?>
 		<?php echo $form->error($model,'hora_estimada'); ?>
 	</div>
 
@@ -77,7 +77,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'hora_entrega'); ?>
-		<?php echo $form->textField($model,'hora_entrega'); ?>
+		<?php echo $form->textField($model,'hora_entrega', array('placeholder'=>'hh:mm')); ?>
 		<?php echo $form->error($model,'hora_entrega'); ?>
 	</div>
 

@@ -62,13 +62,16 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Solicitudes;
+		$model= new Solicitudes;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Solicitudes']))
 		{
 			$model->attributes=$_POST['Solicitudes'];
+                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
+                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -86,15 +89,20 @@ class SolicitudesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
+                $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
+                $model->fecha_estimada = date('d-m-Y', strtotime($model->fecha_estimada));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Solicitudes']))
 		{
 			$model->attributes=$_POST['Solicitudes'];
+                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
+                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -120,14 +128,14 @@ class SolicitudesController extends Controller
 	 * Lists all models.
 	 */
 	public function actionIndex()
-	{
-		$model=new Solicitudes('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Solicitudes']))
-			$model->attributes=$_GET['Solicitudes'];
-		$this->render('index',array(
-			'model'=>$model,
-		));
+        {
+            $model = new Solicitudes('search');
+            $model->unsetAttributes();  // clear any default values
+            if(isset($_GET['Solicitudes']))
+                $model->attributes=$_GET['Solicitudes'];
+            $this->render('index',array(
+                    'model'=>$model,
+            ));
 	}
 
 	/**

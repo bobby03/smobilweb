@@ -31,31 +31,32 @@ $this->menu=array(
 	'dataProvider'=>$model->search(),
 	'summaryText'=> '',
 	'filter'=>$model,
-	'columns'=>array(
-		
-		'id_especie',
-		'nombre_cepa',
-		'temp_min',
-		'temp_max',
-		'ph_min',
-		/*
-		'ph_max',
-		'ox_min',
-		'ox_max',
-		'cantidad',
-		'cond_min',
-		'cond_max',
-		'orp_min',
-		'orp_max',
-		'id_1',
-		*/
-		
-		 array
-            (
-                'class'=>'NCButtonColumn',
-                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-            ),
-	),
+	'columns'=>$model->adminSearch()
+//    array
+//        (
+//		'id_especie',
+//		'nombre_cepa',
+//		'temp_min',
+//		'temp_max',
+//		'ph_min',
+//		/*
+//		'ph_max',
+//		'ox_min',
+//		'ox_max',
+//		'cantidad',
+//		'cond_min',
+//		'cond_max',
+//		'orp_min',
+//		'orp_max',
+//		'id_1',
+//		*/
+//		
+//		 array
+//            (
+//                'class'=>'NCButtonColumn',
+//                 'header'=>'Acciones',
+//                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+//            ),
+//	),
 )); ?>
 
