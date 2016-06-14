@@ -38,7 +38,7 @@ class Solicitudes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array(' id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
+			array('id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
 			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
@@ -109,7 +109,7 @@ class Solicitudes extends CActiveRecord
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
 		$criteria->compare('notas',$this->notas,true);
-
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

@@ -30,11 +30,23 @@
     'filter'=>$model,
     'columns'=>array
     (
-        'id_clientes',
+        array(
+            'name'=>'id_clientes',
+            'value' => 'Clientes::model()->getCliente($data->id_clientes)'
+        ),
         'codigo',
-        'fecha_alta',
-        'hora_alta',
-        'fecha_estimada',
+        array(
+            'name'=>'fecha_alta',
+            'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+        ),
+        array(
+            'name'=>'hora_alta',
+            'value' => 'date("H:i", strtotime($data->hora_alta))'
+        ),
+        array(
+            'name'=>'fecha_estimada',
+            'value' => 'date("d-m-Y", strtotime($data->fecha_estimada))'
+        ),
         /*
         'hora_estimada',
         'fecha_entrega',

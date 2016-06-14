@@ -946,3 +946,377 @@ REQUEST_URI=/SMobilWeb/index.php/usuarios/create
 in C:\xampp\htdocs\SmobilWeb\protected\views\usuarios\_form.php (47)
 in C:\xampp\htdocs\SmobilWeb\protected\views\usuarios\create.php (18)
 in C:\xampp\htdocs\SmobilWeb\protected\controllers\UsuariosController.php (78)
+2016/06/14 20:31:37 [error] [exception.CException] CException: Property "Solicitudes. id_clientes" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get(' id_clientes')
+#1 C:\xampp\htdocs\yii\framework\validators\CRequiredValidator.php(58): CActiveRecord->__get(' id_clientes')
+#2 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CRequiredValidator->validateAttribute(Object(Solicitudes), ' id_clientes')
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(Solicitudes), Array)
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(72): CActiveRecord->save()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/14 20:32:54 [error] [exception.CException] CException: Property "Solicitudes. id_clientes" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get(' id_clientes')
+#1 C:\xampp\htdocs\yii\framework\validators\CRequiredValidator.php(58): CActiveRecord->__get(' id_clientes')
+#2 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CRequiredValidator->validateAttribute(Object(Solicitudes), ' id_clientes')
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(Solicitudes), Array)
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(73): CActiveRecord->save()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/14 20:41:56 [error] [exception.CException] CException: Property "Solicitudes. id_clientes" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get(' id_clientes')
+#1 C:\xampp\htdocs\yii\framework\validators\CRequiredValidator.php(58): CActiveRecord->__get(' id_clientes')
+#2 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CRequiredValidator->validateAttribute(Object(Solicitudes), ' id_clientes')
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(Solicitudes), Array)
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(73): CActiveRecord->save()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/14 20:43:06 [error] [exception.CException] CException: Property "Solicitudes. id_clientes" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get(' id_clientes')
+#1 C:\xampp\htdocs\yii\framework\validators\CRequiredValidator.php(58): CActiveRecord->__get(' id_clientes')
+#2 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CRequiredValidator->validateAttribute(Object(Solicitudes), ' id_clientes')
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(Solicitudes), Array)
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(73): CActiveRecord->save()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/14 20:44:04 [error] [exception.ParseError] ParseError: syntax error, unexpected '}' in C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php:75
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/14 20:44:11 [error] [exception.CException] CException: Property "Solicitudes. id_clientes" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get(' id_clientes')
+#1 C:\xampp\htdocs\yii\framework\validators\CRequiredValidator.php(58): CActiveRecord->__get(' id_clientes')
+#2 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CRequiredValidator->validateAttribute(Object(Solicitudes), ' id_clientes')
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(Solicitudes), Array)
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(73): CActiveRecord->save()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/14 22:02:40 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ';' in C:\xampp\htdocs\yii\framework\base\CComponent.php(612) : eval()'d code:1
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CDataColumn.php(142): CComponent->evaluateExpression('Clientes::model...', Array)
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(231): CDataColumn->getDataCellContent(0)
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(154): CGridColumn->renderDataCellContent(0, Object(Solicitudes))
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(638): CGridColumn->renderDataCell(0)
+#4 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(622): CGridView->renderDataCell(Object(CDataColumn), 0)
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(578): CGridView->renderTableRow(0)
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(488): CGridView->renderTableBody()
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#8 [internal function]: CBaseListView->renderSection(Array)
+#9 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#10 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(181): CBaseListView->run()
+#12 C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\index.php(28): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#14 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#17 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(137): CController->render('index', Array)
+#18 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionIndex()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#28 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/ind...')
+#29 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#30 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/index
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/update/2
+---
+2016/06/14 22:02:59 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ';' in C:\xampp\htdocs\yii\framework\base\CComponent.php(612) : eval()'d code:1
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CDataColumn.php(142): CComponent->evaluateExpression('Clientes::model...', Array)
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(231): CDataColumn->getDataCellContent(0)
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(154): CGridColumn->renderDataCellContent(0, Object(Solicitudes))
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(638): CGridColumn->renderDataCell(0)
+#4 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(622): CGridView->renderDataCell(Object(CDataColumn), 0)
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(578): CGridView->renderTableRow(0)
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(488): CGridView->renderTableBody()
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#8 [internal function]: CBaseListView->renderSection(Array)
+#9 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#10 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(181): CBaseListView->run()
+#12 C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\index.php(28): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#14 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#17 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(137): CController->render('index', Array)
+#18 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionIndex()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#28 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/ind...')
+#29 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#30 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/index
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/update/2
+---
+2016/06/14 22:27:06 [error] [exception.CException] CException: Property "CDataColumn.0" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\YiiBase.php(220): CComponent->__set('0', Array)
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 C:\xampp\htdocs\SmobilWeb\protected\views\cepa\index.php(34): CBaseController->widget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#10 C:\xampp\htdocs\SmobilWeb\protected\controllers\CepaController.php(131): CController->render('index', Array)
+#11 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CepaController->actionIndex()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa')
+#22 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/roles
+---
+2016/06/14 22:28:13 [error] [exception.CException] CException: Property "CGridView.0" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWidgetFactory.php(161): CComponent->__set('0', Array)
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(CepaController), 'CGridView', Array)
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 C:\xampp\htdocs\SmobilWeb\protected\views\cepa\index.php(34): CBaseController->widget('zii.widgets.gri...', Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\CepaController.php(131): CController->render('index', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CepaController->actionIndex()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/roles
+---
+2016/06/14 22:30:23 [error] [exception.CException] CException: Property "CGridView.clomuns" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWidgetFactory.php(161): CComponent->__set('clomuns', Array)
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(CepaController), 'CGridView', Array)
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 C:\xampp\htdocs\SmobilWeb\protected\views\cepa\index.php(34): CBaseController->widget('zii.widgets.gri...', Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\CepaController.php(131): CController->render('index', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CepaController->actionIndex()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/roles
+---
+2016/06/14 22:30:36 [error] [php] include(Especies.php): failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\base\CComponent.php(612) : eval()'d code(1): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\base\CComponent.php(612): eval()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CDataColumn.php(142): CDataColumn->evaluateExpression()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(231): CDataColumn->getDataCellContent()
+#4 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(154): CDataColumn->renderDataCellContent()
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(638): CDataColumn->renderDataCell()
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(622): CGridView->renderDataCell()
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(578): CGridView->renderTableRow()
+#8 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(488): CGridView->renderTableBody()
+#9 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#10 unknown(0): CGridView->renderSection()
+#11 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback()
+#12 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(149): CGridView->renderContent()
+#13 C:\xampp\htdocs\yii\framework\web\CBaseController.php(181): CGridView->run()
+#14 C:\xampp\htdocs\SmobilWeb\protected\views\cepa\index.php(34): CepaController->widget()
+#15 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#16 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CepaController->renderInternal()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(869): CepaController->renderFile()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(782): CepaController->renderPartial()
+#19 C:\xampp\htdocs\SmobilWeb\protected\controllers\CepaController.php(131): CepaController->render()
+#20 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CepaController->actionIndex()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CepaController->runAction()
+#23 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#25 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CepaController->filterAccessControl()
+#26 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#27 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#28 C:\xampp\htdocs\yii\framework\web\CController.php(265): CepaController->runActionWithFilters()
+#29 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CepaController->run()
+#30 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#31 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#32 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/cepa
+in C:\xampp\htdocs\SmobilWeb\protected\views\cepa\index.php (34)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\CepaController.php (131)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/14 22:30:52 [error] [exception.CException] CException: Property "Cepa.name" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\yii\framework\base\CComponent.php(612) : eval()'d code(1): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\yii\framework\base\CComponent.php(612): eval()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CDataColumn.php(142): CComponent->evaluateExpression('Especie::model(...', Array)
+#4 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(231): CDataColumn->getDataCellContent(0)
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(154): CGridColumn->renderDataCellContent(0, Object(Cepa))
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(638): CGridColumn->renderDataCell(0)
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(622): CGridView->renderDataCell(Object(CDataColumn), 0)
+#8 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(578): CGridView->renderTableRow(0)
+#9 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(488): CGridView->renderTableBody()
+#10 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#11 [internal function]: CBaseListView->renderSection(Array)
+#12 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#13 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#14 C:\xampp\htdocs\yii\framework\web\CBaseController.php(181): CBaseListView->run()
+#15 C:\xampp\htdocs\SmobilWeb\protected\views\cepa\index.php(34): CBaseController->widget('zii.widgets.gri...', Array)
+#16 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#20 C:\xampp\htdocs\SmobilWeb\protected\controllers\CepaController.php(131): CController->render('index', Array)
+#21 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CepaController->actionIndex()
+#22 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#31 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa')
+#32 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#33 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/roles
+---
