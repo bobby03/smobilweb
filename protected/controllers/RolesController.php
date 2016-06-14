@@ -127,11 +127,11 @@ class RolesController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-                print_r($acciones);
-//		$this->render('create',array(
-//			'model'=>$model,
-//			'acciones'=>$acciones
-//		));
+//                print_r($acciones);
+		$this->render('create',array(
+			'model'=>$model,
+			'acciones'=>$acciones
+		));
 	}
 
 	/**
