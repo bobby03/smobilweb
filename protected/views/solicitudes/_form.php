@@ -47,7 +47,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_alta'); ?>
-		<?php echo $form->textField($model,'fecha_alta'); ?>
+		<?php echo $form->textField($model,'fecha_alta', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_alta'); ?>
 	</div>
 
