@@ -118,4 +118,49 @@ class Viajes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+    public function adminSearch()
+    {
+        return array
+        (
+            'status',
+            array
+            (
+                'name' => 'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter' => Clientes::model()->getAllClientes()
+            ),
+            array
+            (
+                'name' => 'id_responsable',
+                'value' => 'Personal::model()->getPersonal($data->id_responsable)',
+                'filter' => Personal::model()->getAllPersonal()
+            ),
+            array
+            (
+                'name'=>'fecha_salida',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
+            ),
+            array
+            (
+                'name'=>'hora_salida',
+                'value' => 'date("H:i", strtotime($data->hora_salida))'
+            ),
+            array
+            (
+                'name'=>'fecha_entrega',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+            ),
+            array
+            (
+                'name'=>'hora_entrega',
+                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            ),
+        );
+    }
 }

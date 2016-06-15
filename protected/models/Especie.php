@@ -104,4 +104,17 @@ class Especie extends CActiveRecord
             $rol = $this->findByPk($id);
             return $rol->nombre;
         }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
 }

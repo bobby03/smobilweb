@@ -25,16 +25,7 @@
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
         'summaryText'=>'',
-	'columns'=>array
-        (
-            'nombre',
-            array
-            (
-                'class'=>'NCButtonColumn',
-                'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-            ),
-	),
+	'columns'=>$model->adminSearch()
 )); ?>
 <?php // $this->widget('zii.widgets.CListView', array(
 //    'dataProvider'=>$dataProvider,

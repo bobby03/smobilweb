@@ -27,7 +27,7 @@ $this->menu=array(
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'cepa',
+	'id'=>'cepa-grid',
 	'dataProvider'=>$model->search(),
 	'summaryText'=> '',
 	'filter'=>$model,

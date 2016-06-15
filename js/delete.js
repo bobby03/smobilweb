@@ -40,7 +40,6 @@ $(document).ready(function()
                         return letter.toUpperCase();
                     });
                     href = 'delete';
-                    console.log(href, id);
                     $.ajax(
                     {
                         type: 'GET',
@@ -52,7 +51,6 @@ $(document).ready(function()
                         },
                         success: function(data)
                         {
-                            console.log(data);
                             $.fn.yiiGridView.update(header);
                             $('#cboxClose').click();
                         }

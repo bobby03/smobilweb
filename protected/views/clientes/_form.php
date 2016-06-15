@@ -47,7 +47,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'rfc'); ?>
-		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->emailField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
 		<?php echo $form->error($model,'rfc'); ?>
 	</div>
 

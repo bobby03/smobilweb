@@ -26,17 +26,5 @@
     'id'=>'usuarios-grid',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
-    'columns'=>array
-    (
-        'usuario',
-//        'pwd',
-        'tipo_usr',
-        'id_usr',
-        array
-        (
-            'class'=>'NCButtonColumn',
-            'header'=>'Acciones',
-            'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-        ),
-    ),
+    'columns'=>$model->adminSearch()
 )); ?>

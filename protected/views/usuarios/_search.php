@@ -14,20 +14,9 @@
 		<?php echo $form->label($model,'usuario'); ?>
 		<?php echo $form->textField($model,'usuario',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'pwd'); ?>
-		<?php echo $form->textField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
-	</div>
-
 	<div class="row">
 		<?php echo $form->label($model,'tipo_usr'); ?>
-		<?php echo $form->textField($model,'tipo_usr'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_usr'); ?>
-		<?php echo $form->textField($model,'id_usr'); ?>
+		<?php echo $form->dropDownList($model,'tipo_usr',$model->getAllTipoUsuario(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
 
 	<div class="row buttons">

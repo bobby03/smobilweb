@@ -26,23 +26,6 @@
     'id'=>'viajes-grid',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
-    'columns'=>array
-    (
-        'id_clientes',
-        'id_responsable',
-        'status',
-        'fecha_salida',
-        'hora_salida',
-        /*
-        'fecha_entrega',
-        'hora_entrega',
-        */
-        array
-        (
-            'class'=>'NCButtonColumn',
-            'header'=>'Acciones',
-            'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-        ),
-    ),
+    'columns'=>$model->adminSearch()
 )); 
 ?>

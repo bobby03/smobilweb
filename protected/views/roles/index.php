@@ -26,14 +26,7 @@
 (
     'id'=>'rol',
     'dataProvider'=>$model->search(),
-    'columns'=>array
-    (
-        'nombre_rol',
-        array
-        (
-            'class'=>'NCButtonColumn',
-            'header'=>'Acciones',
-            'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-        )
-    )
+    'filter'=>$model,
+    'summaryText'=> '',
+    'columns'=>$model->adminSearch()
 )); ?>
