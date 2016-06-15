@@ -30,23 +30,34 @@ div.form .row
 }
 div.formContainer1 div.nombreSeccion
 {
-    width: 20%;
+    width: 16.66666666666667%;
     float: left
 }
 div.formContainer1 div.separador
 {
     float: left;
-    width: 80%;
+    width: 83.33333333333333%;
 }
-div.formContainer1 div.separador div
+div.formContainer1 div.separador > div
 {
     float: left;
-    width: 25%;
+    width: 20%;
+}
+div.formContainer1 div.separador div div.botonTodos
+{
+    height: 22px;
+    background-color: #C6D880;
+    line-height: 22px;
+    font-size: 14px;
+    width: 50%;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
 }
 div.row.titulos > div
 {
     float: left;
-    width: 20%;
+    width: 16.66666666666667%;
 }
 div.form .hint
 {
