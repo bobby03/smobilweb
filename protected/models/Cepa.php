@@ -23,7 +23,7 @@
  * @property Especie $idEspecie
  * @property SolicitudTanques[] $solicitudTanques
  */
-class Cepa extends SMActiveRecord
+class Cepa extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -41,8 +41,8 @@ class Cepa extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
-			array('id, id_especie, cantidad', 'numerical', 'integerOnly'=>true),
+			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
+			array('id_especie, cantidad', 'numerical', 'integerOnly'=>true),
 			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
 			array('nombre_cepa', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -71,7 +71,7 @@ class Cepa extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_especie' => 'Id Especie',
+			'id_especie' => 'Especie',
 			'nombre_cepa' => 'Nombre Cepa',
 			'temp_min' => 'Temp Min',
 			'temp_max' => 'Temp Max',
@@ -135,4 +135,95 @@ class Cepa extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+//    public function attributeWidgets()
+//    {
+//        return array(
+//            array('id_especie','image'),
+//            array('name','textField'),
+//            array('name_eng','textField'),
+//            array('hq','chosen'),
+//            array('addresse','chosenMultiple'),
+//            array('planedby','chosen'),
+//            array('goal','wysiwyg'),
+//            array('goal_eng','wysiwyg'),
+//            array('guest','wysiwyg'),
+//            array('description','wysiwyg'),
+//            array('description_eng','wysiwyg'),
+//            array('capacity','textField'),
+//            array('include','wysiwyg'),
+//            array('include_eng','wysiwyg'),
+//            array('date','date'),
+//            array('addressed','textFiled'),
+//            array('deadline','date'),
+//            array('fecha_limite','date'),
+//            array('stay','wysiwyg'),
+//            array('stay_eng','wysiwyg'),
+//            array('video','textField'),
+//            array('requirements','wysiwyg'),
+//            array('requirements_eng','wysiwyg'),
+//            array('link','file'),
+//        );
+//    }
+    public function adminSearch()
+    {
+        return array
+        (
+            array(
+                'name'=>'id_especie',
+                'value'=>'Especie::model()->getEspecie($data->id_especie)',
+                'filter'=>  Especie::model()->getAllEspecies()
+            ),
+            'nombre_cepa',
+            array(
+                'name' => 'temp_min',
+                'value' => '$data->temp_min',
+            ),
+            array(
+                'name' => 'temp_max',
+                'value' => '$data->temp_max',
+            ),
+            array(
+                'name' => 'ph_min',
+                'value' => '$data->ph_min',
+            ),
+            array(
+                'name' => 'ph_max',
+                'value' => '$data->ph_max',
+            ),
+            array(
+                'name' => 'ox_min',
+                'value' => '$data->ox_min',
+            ),
+            array(
+                'name' => 'ox_max',
+                'value' => '$data->ox_max',
+            ),
+            array(
+                'name' => 'cantidad',
+                'value' => '$data->cantidad',
+            ),
+            array(
+                'name' => 'cond_max',
+                'value' => '$data->cond_max',
+            ),
+            array(
+                'name' => 'cond_min',
+                'value' => '$data->cond_min',
+            ),
+            array(
+                'name' => 'orp_min',
+                'value' => '$data->orp_min',
+            ),
+            array(
+                'name' => 'orp_max',
+                'value' => '$data->orp_max',
+            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
 }

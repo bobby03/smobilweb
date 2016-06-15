@@ -1,4 +1,4 @@
-                                                              <?php
+<?php
 
 /**
  * This is the model class for table "solicitudes".
@@ -20,7 +20,7 @@
  * @property Clientes $idClientes
  * @property SolicitudesViaje[] $solicitudesViajes
  */
-class Solicitudes extends SMActiveRecord
+class Solicitudes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -38,7 +38,7 @@ class Solicitudes extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
+			array('id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
 			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
@@ -69,14 +69,14 @@ class Solicitudes extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_clientes' => 'Id Clientes',
+			'id_clientes' => 'Cliente',
 			'codigo' => 'Codigo',
-			'fecha_alta' => 'Fecha de alta',
-			'hora_alta' => 'Hora de alta',
-			'fecha_estimada' => 'Fecha estimada',
-			'hora_estimada' => 'Hora estimada',
-			'fecha_entrega' => 'Fecha de entrega',
-			'hora_entrega' => 'Hora de entrega',
+			'fecha_alta' => 'Fecha Alta',
+			'hora_alta' => 'Hora Alta',
+			'fecha_estimada' => 'Fecha Estimada',
+			'hora_estimada' => 'Hora Estimada',
+			'fecha_entrega' => 'Fecha Entrega',
+			'hora_entrega' => 'Hora Entrega',
 			'notas' => 'Notas',
 		);
 	}
@@ -109,7 +109,7 @@ class Solicitudes extends SMActiveRecord
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
 		$criteria->compare('notas',$this->notas,true);
-
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

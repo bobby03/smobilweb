@@ -95,7 +95,7 @@ class CepaController extends Controller
 		{
 			$model->attributes=$_POST['Cepa'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -122,9 +122,13 @@ class CepaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Cepa');
+
+		$model=new Cepa('search');
+		$model->unsetAttributes(); 
+		if(isset($_GET['Cepa']))
+			$model->attributes=$_GET['Cepa'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

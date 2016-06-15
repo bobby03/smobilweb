@@ -1,7 +1,28 @@
 <?php
 
-class Personal extends SMActiveRecord
+/**
+ * This is the model class for table "personal".
+ *
+ * The followings are the available columns in table 'personal':
+ * @property integer $id
+ * @property string $nombre
+ * @property string $apellido
+ * @property string $tel
+ * @property string $rfc
+ * @property string $domicilio
+ * @property integer $id_rol
+ * @property string $correo
+ * @property string $puesto
+ *
+ * The followings are the available model relations:
+ * @property SolicitudesViaje[] $solicitudesViajes
+ * @property Viajes[] $viajes
+ */
+class Personal extends CActiveRecord
 {
+	/**
+	 * @return string the associated database table name
+	 */
 	public function tableName()
 	{
 		return 'personal';
@@ -15,7 +36,7 @@ class Personal extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required'),
+			array(' nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('nombre, apellido', 'length', 'max'=>50),
 			array('tel', 'length', 'max'=>12),
@@ -53,7 +74,7 @@ class Personal extends SMActiveRecord
 			'tel' => 'Tel',
 			'rfc' => 'Rfc',
 			'domicilio' => 'Domicilio',
-			'id_rol' => 'Id Rol',
+			'id_rol' => 'Rol',
 			'correo' => 'Correo',
 			'puesto' => 'Puesto',
 		);
@@ -102,4 +123,17 @@ class Personal extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllPersonal()
+        {
+            $personal = Personal::model()->findAll();
+            $return = array();
+            foreach($personal as $data)
+                $return[$data->id] = $data->nombre.' '.$data->apellido;
+            return $return;
+        }
+        public function getPersonal($id)
+        {
+            $rol = $this->findByPk($id);
+            return $rol->nombre_rol;
+        }
 }

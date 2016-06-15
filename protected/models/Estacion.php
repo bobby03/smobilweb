@@ -17,7 +17,7 @@
  * The followings are the available model relations:
  * @property Tanque[] $tanques
  */
-class Estacion extends SMActiveRecord
+class Estacion extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -35,7 +35,7 @@ class Estacion extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'required'),
+			array('tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'required'),
 			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
 			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -117,4 +117,12 @@ class Estacion extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllTipo()
+        {
+            return array
+            (
+                '1' => 'Movil',
+                '2' => 'Fíja',
+            );
+        }
 }

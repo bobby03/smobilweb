@@ -95,7 +95,7 @@ class ClientesController extends Controller
 		{
 			$model->attributes=$_POST['Clientes'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -122,9 +122,12 @@ class ClientesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Clientes');
+		$model=new Clientes('search');
+		$model->unsetAttributes(); 
+		if(isset($_GET['Clientes']))
+			$model->attributes=$_GET['Clientes'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

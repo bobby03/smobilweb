@@ -14,7 +14,8 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -23,32 +24,34 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+		<!--<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>-->
 	</div><!-- header -->
 
 	<div id="mainmenu">
+		<div class= "menuTop"></div>
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/')),
+				array('label'=>'Inicio', 'url'=>array('/')),
 				array('label'=>'Cepa', 'url'=>array('/cepa')),
 				array('label'=>'Clientes', 'url'=>array('/clientes')),
 				array('label'=>'Especie', 'url'=>array('/especie')),
 				array('label'=>'Estación', 'url'=>array('/estacion')),
 				array('label'=>'Personal', 'url'=>array('/personal')),
+				array('label'=>'Roles', 'url'=>array('/roles')),
 				array('label'=>'Solicitudes', 'url'=>array('/solicitudes')),
 				array('label'=>'Usuarios', 'url'=>array('/usuarios')),
 				array('label'=>'Viajes', 'url'=>array('/viajes')),
 			),
 		)); ?>
-	</div><!-- mainmenu -->
+	</div><!-- mainmenu 
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-
+<div id="contentWrapper">
 	<?php echo $content; ?>
-
+</div>
 	<div class="clear"></div>
 
 	<div id="footer">
