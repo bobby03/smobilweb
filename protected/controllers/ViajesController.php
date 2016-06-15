@@ -75,6 +75,8 @@ class ViajesController extends Controller
 		if(isset($_POST['Viajes']))
 		{
 			$model->attributes=$_POST['Viajes'];
+                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -92,15 +94,20 @@ class ViajesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                $model->fecha_salida = date('d-m-Y', strtotime($model->fecha_salida));
+                $model->hora_salida = date('H:i', strtotime($model->hora_salida));
+                $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
+                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Viajes']))
 		{
 			$model->attributes=$_POST['Viajes'];
+                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(

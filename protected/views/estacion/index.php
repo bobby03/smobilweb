@@ -25,7 +25,7 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'estacion-grid',
+        'id'=>'estacion',
         'summaryText'=>'',
         'dataProvider'=>$model->search(),
         'filter'=>$model,

@@ -22,7 +22,11 @@
 <body>
 
 <div class="container" id="page">
-
+        <?php
+            $baseUrl = Yii::app()->baseUrl;
+            $cs = Yii::app()->getClientScript();
+            $cs->registerScriptFile($baseUrl.'/js/inputs.js');
+        ?>
 	<div id="header">
 		<!--<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>-->
 	</div><!-- header -->

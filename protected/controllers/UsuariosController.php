@@ -15,7 +15,7 @@ class UsuariosController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+//			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -75,6 +75,10 @@ class UsuariosController extends Controller
 		if(isset($_POST['Usuarios']))
 		{
 			$model->attributes=$_POST['Usuarios'];
+                        if($model->tipo_usr == 1)
+                            $model->id_usr = $_POST['clienteId'];
+                        elseif($model->tipo_usr == 2)
+                            $model->id_usr = $_POST['personalId'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -99,8 +103,12 @@ class UsuariosController extends Controller
 		if(isset($_POST['Usuarios']))
 		{
 			$model->attributes=$_POST['Usuarios'];
+                        if($model->tipo_usr == 1)
+                            $model->id_usr = $_POST['clienteId'];
+                        elseif($model->tipo_usr == 2)
+                            $model->id_usr = $_POST['personalId'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(

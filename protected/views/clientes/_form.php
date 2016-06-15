@@ -41,13 +41,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'correo'); ?>
-		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'correo'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'rfc'); ?>
-		<?php echo $form->emailField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
 		<?php echo $form->error($model,'rfc'); ?>
 	</div>
 

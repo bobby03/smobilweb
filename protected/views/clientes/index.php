@@ -25,7 +25,7 @@ $this->menu=array(
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'clientes-grid',
+	'id'=>'cliente',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'summaryText'=> '',

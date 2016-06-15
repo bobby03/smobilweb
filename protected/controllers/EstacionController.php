@@ -75,6 +75,7 @@ class EstacionController extends Controller
 		if(isset($_POST['Estacion']))
 		{
 			$model->attributes=$_POST['Estacion'];
+                        $model->activo = 1;
 			if($model->save())
 				$this->redirect(array('index'));
 		}

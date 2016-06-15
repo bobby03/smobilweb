@@ -95,8 +95,11 @@ class SolicitudesController extends Controller
 	{
 		$model=$this->loadModel($id);
                 $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
+                $model->hora_alta = date('H:i', strtotime($model->hora_alta));
                 $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
+                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
                 $model->fecha_estimada = date('d-m-Y', strtotime($model->fecha_estimada));
+                $model->hora_estimada = date('H:i', strtotime($model->hora_estimada));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 

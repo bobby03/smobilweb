@@ -21,7 +21,7 @@
 )); ?>
 </div><!-- search-form -->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'especie-grid',
+	'id'=>'especie',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
         'summaryText'=>'',

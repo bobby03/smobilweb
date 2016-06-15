@@ -4,7 +4,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
-    $cs->registerScriptFile($baseUrl.'/js/delete.js');;
+//    $cs->registerScriptFile($baseUrl.'/js/delete.js');
 
 class NCButtonColumn extends CButtonColumn
 {
@@ -51,11 +51,96 @@ class NCButtonColumn extends CButtonColumn
                 $csrfToken = Yii::app()->request->csrfToken;
                 $csrf = "\n\t\tdata:{ '$csrfTokenName':'$csrfToken' },";
             }
-        else
-            $csrf = '';
-        if(is_string($this->deleteConfirmation))
-            if($this->afterDelete===null)
-                $this->afterDelete='function(){}';
+            else
+                $csrf = '';
+            if(is_string($this->deleteConfirmation))
+                if($this->afterDelete===null)
+                    $this->afterDelete='function(){}';
+            $this->buttons['delete']['click']=<<<EOD
+            function(evt)
+            {
+                evt.preventDefault();
+                var href = $(this).attr('href');
+                var index1 = (href.lastIndexOf('/'))+1;
+                var index2 = href.length;
+                var id = href.substring(index1, index2);
+                var miHtml = '';
+                var header = $('.grid-view').attr('id');
+                var mensaje = '¿Está seguro que desea eliminar está '+header;
+                var nombre = $(this).parents('tr').eq(0).find('td').html();
+                miHtml= miHtml +='<div class="sub-content">';
+                miHtml= miHtml +='  <div class="title-content">Eliminar '+header+'</div>';
+                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                miHtml= miHtml +='      <div class="separator-content"></div>';
+                miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
+                miHtml= miHtml +='      <div class="botones-content">';
+                miHtml= miHtml +='          <div class="aceptar-boton">Aceptar</div>';
+                miHtml= miHtml +='          <div class="cancelar-boton">Cancelar</div>';
+                miHtml= miHtml +='      </div>';
+                miHtml= miHtml +='</div>';
+                $.colorbox(
+                {
+                    html: miHtml,
+                    onComplete: function()
+                    {
+                        $('.cancelar-boton').click(function()
+                        {
+                            $('#cboxClose').click();
+                        });
+                        $('.aceptar-boton').click(function()
+                        {
+                            index1 = (href.indexOf('index.php/'))+10;
+                            index2 = href.indexOf('/delete');
+                            var controller = href.substring(index1, index2);
+                            controller = controller.toLowerCase().replace(/\b[a-z]/g, function(letter) 
+                            {
+                                return letter.toUpperCase();
+                            });
+                            href = 'delete';
+                            $.ajax(
+                            {
+                                type: 'GET',
+                                url: href,
+                                dataType: 'JSON', 
+                                data:
+                                {
+                                    id: id
+                                },
+                                success: function(data)
+                                {
+                                    $.fn.yiiGridView.update(header);
+                                    $('#cboxClose').click();
+                                },
+                                error: function(a, b, c)
+                                {
+                                    console.log(a, b, c);
+                                    href = controller+'/delete';
+                                    $.ajax(
+                                    {
+                                        type: 'GET',
+                                        url: href,
+                                        dataType: 'JSON', 
+                                        data:
+                                        {
+                                            id: id
+                                        },
+                                        success: function(data)
+                                        {
+                                            $.fn.yiiGridView.update(header);
+                                            $('#cboxClose').click();
+                                        },
+                                        error: function(a, b, c)
+                                        {
+                                            console.log(a, b, c);
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+EOD;
 	}
     }
 }?>

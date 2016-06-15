@@ -23,7 +23,7 @@
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
-    'id'=>'viajes-grid',
+    'id'=>'viaje',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'columns'=>$model->adminSearch()

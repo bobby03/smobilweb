@@ -145,7 +145,12 @@ class Personal extends CActiveRecord
                 'tel',
                 'rfc',
                 'domicilio',
-                'id_rol',
+                array
+                (
+                    'name' => 'id_rol',
+                    'value' => 'Roles::model()->getRol($data->id_rol)',
+                    'filter' => Roles::model()->getAllRoles()
+                ),
                 'correo',
                 'puesto',
                 array
