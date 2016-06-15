@@ -134,7 +134,7 @@ class Personal extends CActiveRecord
         public function getPersonal($id)
         {
             $rol = $this->findByPk($id);
-            return $rol->nombre.' '.$data->apellido;
+            return $rol->nombre.' '.$rol->apellido;
         }
         public function adminSearch()
         {
