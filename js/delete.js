@@ -53,6 +53,30 @@ $(document).ready(function()
                         {
                             $.fn.yiiGridView.update(header);
                             $('#cboxClose').click();
+                        },
+                        error: function(a, b, c)
+                        {
+                            console.log(a, b, c);
+                            href = controller+'/delete';
+                            $.ajax(
+                            {
+                                type: 'GET',
+                                url: href,
+                                dataType: 'JSON', 
+                                data:
+                                {
+                                    id: id
+                                },
+                                success: function(data)
+                                {
+                                    $.fn.yiiGridView.update(header);
+                                    $('#cboxClose').click();
+                                },
+                                error: function(a, b, c)
+                                {
+                                    console.log(a, b, c);
+                                }
+                            });
                         }
                     });
                 });

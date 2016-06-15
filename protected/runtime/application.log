@@ -1,0 +1,27 @@
+2016/06/15 20:11:47 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "delete". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('delete')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/delete?id=17
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/15 20:13:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "delete". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('delete')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/delete?id=17
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/15 20:14:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "delete". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('delete')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/delete?id=17
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
