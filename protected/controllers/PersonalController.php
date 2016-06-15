@@ -6,7 +6,7 @@
 	{
             return array(
                 'accessControl', // perform access control for CRUD operations
-                'postOnly + delete', // we only allow deletion via POST request
+               // 'postOnly + delete', // we only allow deletion via POST request
             );
 	}
 	public function accessRules()
@@ -68,9 +68,11 @@
 	public function actionDelete($id)
 	{
             $this->loadModel($id)->delete();
-            if(!isset($_GET['ajax']))
+            /*if(!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+    */                echo json_encode('');
+
+            }
 	public function actionIndex()
 	{
             $model=new Personal('search');
