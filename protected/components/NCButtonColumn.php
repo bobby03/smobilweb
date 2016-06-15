@@ -1,7 +1,10 @@
 <?php
 
-//$jquery = new ScriptStyle();
-//$jquery->AddScriptTrans('test/test.js');
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
+    $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
+    $cs->registerScriptFile($baseUrl.'/js/delete.js');;
 
 class NCButtonColumn extends CButtonColumn
 {
@@ -12,11 +15,11 @@ class NCButtonColumn extends CButtonColumn
     protected function initDefaultButtons()
     {
         if($this->viewButtonLabel===null)
-            $this->viewButtonLabel=Yii::t('zii','View');
+            $this->viewButtonLabel=Yii::t('zii','Ver');
         if($this->updateButtonLabel===null)
-            $this->updateButtonLabel=Yii::t('zii','Update');
+            $this->updateButtonLabel=Yii::t('zii','Editar');
         if($this->deleteButtonLabel===null)
-            $this->deleteButtonLabel=Yii::t('zii','Delete');
+            $this->deleteButtonLabel=Yii::t('zii','Eliminar');
         if($this->viewButtonImageUrl===null)
             $this->viewButtonImageUrl=$this->grid->baseScriptUrl.'/view.png';
         if($this->updateButtonImageUrl===null)
@@ -50,46 +53,9 @@ class NCButtonColumn extends CButtonColumn
             }
         else
             $csrf = '';
-        if(is_string($this->deleteConfirmation)):?>
-            <script>
-                $(document).ready(function()
-                {
-                    $('a.delete img').click(function(evt)
-                    {
-                        evt.preventDefault();
-                        var miHtml = '';
-                        var header = $('.grid-view').attr('id');
-                        console.log(header);
-                        var mensaje = '¿Está seguro que desea eliminar está '+header;
-                        var nombre = $(this).parents('tr').eq(0).find('td').html();
-                        miHtml= '<div class="sub-content">\n\
-                                <div class="title-content">Eliminar '+header+'</div>\n\
-                                <div class="value-content">'+nombre+'</div>\n\
-                                <div class="separator-content"></div>\n\
-                                <div class="mensaje-content">'+mensaje+'</div>\n\
-                                <div class="botones-content">\n\
-                                    <div class="aceptar-boton"></div>\n\
-                                    <div class="cancelar-boton"></div>\n\
-                                </div>\n\
-                        </div>';
-                        $.colorbox(
-                        {
-                            html: miHtml,
-                            onComplete: function()
-                            {
-                                $('.cancelar-boton').click(function()
-                                {
-                                    $('#cboxClose').click();
-                                });
-                            }
-                        });
-                    });
-                });
-            </script>
-            <?php 
-                if($this->afterDelete===null)
-                    $this->afterDelete='function(){}';
-            endif;
+        if(is_string($this->deleteConfirmation))
+            if($this->afterDelete===null)
+                $this->afterDelete='function(){}';
 	}
     }
 }?>

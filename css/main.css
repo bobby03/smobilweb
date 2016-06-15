@@ -265,3 +265,10 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+div.botones-content div.aceptar-boton
+{
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+}

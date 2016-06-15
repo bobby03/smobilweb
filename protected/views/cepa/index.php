@@ -1,7 +1,7 @@
 <?php
 /* @var $this CepaController */
 /* @var $dataProvider CActiveDataProvider */
- $baseUrl = Yii::app()->baseUrl;
+    $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
 
@@ -27,36 +27,10 @@ $this->menu=array(
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'cepa-grid',
+	'id'=>'cepa',
 	'dataProvider'=>$model->search(),
 	'summaryText'=> '',
 	'filter'=>$model,
 	'columns'=>$model->adminSearch()
-//    array
-//        (
-//		'id_especie',
-//		'nombre_cepa',
-//		'temp_min',
-//		'temp_max',
-//		'ph_min',
-//		/*
-//		'ph_max',
-//		'ox_min',
-//		'ox_max',
-//		'cantidad',
-//		'cond_min',
-//		'cond_max',
-//		'orp_min',
-//		'orp_max',
-//		'id_1',
-//		*/
-//		
-//		 array
-//            (
-//                'class'=>'NCButtonColumn',
-//                 'header'=>'Acciones',
-//                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-//            ),
-//	),
 )); ?>
 
