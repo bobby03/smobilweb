@@ -33,7 +33,7 @@ class WebServiceController extends CController
     public function actionDriver(){
     	$driver = isset($_GET['driver'])?$_GET['driver']:"0";
     	//query
-    	if($driver > 10)
+    	if($driver === 'rodolfo')
     		$ax = array('Name'=>'Rodolfo','Status'=>'OK','SCode'=>'200');
     	else
     		$ax = array('Name'=>'NOVALID','Status'=>'X','SCode'=>'4BD');
@@ -44,8 +44,12 @@ class WebServiceController extends CController
     public function actionGetDataDriver(){
     	$ax = isset($_GET['ax'] )?$_GET['ax']:'0';
     	$apiKey = isset($_GET['apiKey'])?$_GET['apiKey']:"0";
+    	$driver = isset($_GET['driver'])?$_GET['driver']:"X";
     	//query
-    	$rx = array('Name'=>'TRIP','Status'=>'OK','SCode'=>$ax,'ak'=>$apiKey);
+    	if($driver === 'rodolfo')
+    		$rx = array('Name'=>'TRIP','Status'=>'OK','SCode'=>$ax,'ak'=>$apiKey);
+    	else
+    		$rx = array('Name'=>'NO TRIP','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
     	echo json_encode($rx);
 
     }
