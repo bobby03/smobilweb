@@ -15,7 +15,7 @@ class UsuariosController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			//'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -39,9 +39,14 @@ class UsuariosController extends Controller
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+			array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
 		);
 	}
 
@@ -71,7 +76,7 @@ class UsuariosController extends Controller
 		{
 			$model->attributes=$_POST['Usuarios'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(

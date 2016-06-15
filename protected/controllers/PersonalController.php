@@ -25,9 +25,14 @@
                     'actions'=>array('admin','delete'),
                     'users'=>array('admin'),
                 ),
-                array('deny',  // deny all users
-                    'users'=>array('*'),
+              array(
+                    'allow',
+                    'actions' => array('ajax'),
+                    'users'   => array('@'),
                 ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
             );
 	}
 	public function actionView($id)

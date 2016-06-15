@@ -15,7 +15,7 @@ class EspecieController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-//			'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -39,9 +39,14 @@ class EspecieController extends Controller
                         'actions'=>array('admin','delete'),
                         'users'=>array('admin'),
                 ),
-                array('deny',  // deny all users
-                        'users'=>array('*'),
-                ),
+                 array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
             );
 	}
 
@@ -71,7 +76,7 @@ class EspecieController extends Controller
 		{
 			$model->attributes=$_POST['Especie'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -108,8 +113,9 @@ class EspecieController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
+		$id = $_POST["id"];
 		$this->loadModel($id)->delete();
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 //		if(!isset($_GET['ajax']))
