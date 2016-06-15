@@ -42,7 +42,7 @@ $(document).ready(function()
                     href = 'delete';
                     $.ajax(
                     {
-                        type: 'GET',
+                        type: 'POST',
                         url: href,
                         dataType: 'JSON', 
                         data:
