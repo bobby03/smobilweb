@@ -39,7 +39,7 @@ $(document).ready(function()
                     {
                         return letter.toUpperCase();
                     });
-                    href = controller+'/delete';
+                    href = 'delete';
                     console.log(href, id);
                     $.ajax(
                     {
