@@ -1,13 +1,20 @@
 <?php
-/* @var $this SolicitudTanqueController */
+/* @var $this SolicitudTanquesController */
+/* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
 	'Solicitud Tanques',
 );
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+$this->menu=array(
+	array('label'=>'Create SolicitudTanques', 'url'=>array('create')),
+	array('label'=>'Manage SolicitudTanques', 'url'=>array('admin')),
+);
+?>
+
+<h1>Solicitud Tanques</h1>
+
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$dataProvider,
+	'itemView'=>'_view',
+)); ?>
