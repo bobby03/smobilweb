@@ -25,28 +25,10 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'estacion-grid',
+        'id'=>'estacion',
         'summaryText'=>'',
         'dataProvider'=>$model->search(),
         'filter'=>$model,
-        'columns'=>array
-        (
-            'tipo',
-            'identificador',
-            'no_personal',
-            'marca',
-            'color',
-            /*
-            'ubicacion',
-            'disponible',
-            'activo',
-            */
-            array
-            (
-                'class'=>'NCButtonColumn',
-                'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-            ),
-        ),
+        'columns'=>$model->adminSearch()
     )); 
 ?>

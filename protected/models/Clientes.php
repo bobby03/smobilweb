@@ -132,4 +132,22 @@ class Clientes extends CActiveRecord
             $cliente = Clientes::model()->findByPk($id);
             return $cliente->nombre_empresa;
         }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre_empresa',
+		'nombre_contacto',
+		'apellido_contacto',
+		'correo',
+		'rfc',
+                'tel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
 }

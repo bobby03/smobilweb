@@ -58,7 +58,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'hora_salida'); ?>
-		<?php echo $form->textField($model,'hora_salida'); ?>
+		<?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
 		<?php echo $form->error($model,'hora_salida'); ?>
 	</div>
 
@@ -70,7 +70,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'hora_entrega'); ?>
-		<?php echo $form->textField($model,'hora_entrega'); ?>
+		<?php echo $form->textField($model,'hora_entrega', array('placeholder'=>'hh:mm')); ?>
 		<?php echo $form->error($model,'hora_entrega'); ?>
 	</div>
 

@@ -15,7 +15,7 @@ class ViajesController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -39,9 +39,14 @@ class ViajesController extends Controller
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+			array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
 		);
 	}
 
@@ -70,8 +75,10 @@ class ViajesController extends Controller
 		if(isset($_POST['Viajes']))
 		{
 			$model->attributes=$_POST['Viajes'];
+                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -87,15 +94,20 @@ class ViajesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                $model->fecha_salida = date('d-m-Y', strtotime($model->fecha_salida));
+                $model->hora_salida = date('H:i', strtotime($model->hora_salida));
+                $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
+                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Viajes']))
 		{
 			$model->attributes=$_POST['Viajes'];
+                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -113,8 +125,10 @@ class ViajesController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	//	if(!isset($_GET['ajax']))
+	//		$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	                echo json_encode('');
+
 	}
 
 	/**

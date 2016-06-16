@@ -27,37 +27,7 @@
 (
     'id'=>'solicitud',
     'dataProvider'=>$model->search(),
+    'summaryText'=> '',
     'filter'=>$model,
-    'columns'=>array
-    (
-        array(
-            'name'=>'id_clientes',
-            'value' => 'Clientes::model()->getCliente($data->id_clientes)'
-        ),
-        'codigo',
-        array(
-            'name'=>'fecha_alta',
-            'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
-        ),
-        array(
-            'name'=>'hora_alta',
-            'value' => 'date("H:i", strtotime($data->hora_alta))'
-        ),
-        array(
-            'name'=>'fecha_estimada',
-            'value' => 'date("d-m-Y", strtotime($data->fecha_estimada))'
-        ),
-        /*
-        'hora_estimada',
-        'fecha_entrega',
-        'hora_entrega',
-        'notas',
-        */
-        array
-        (
-            'class'=>'NCButtonColumn',
-            'header'=>'Acciones',
-            'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-        ),
-    ),
+    'columns'=>$model->adminSearch()
 )); ?>

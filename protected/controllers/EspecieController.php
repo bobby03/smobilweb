@@ -39,9 +39,14 @@ class EspecieController extends Controller
                         'actions'=>array('admin','delete'),
                         'users'=>array('admin'),
                 ),
-                array('deny',  // deny all users
-                        'users'=>array('*'),
-                ),
+                 array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
             );
 	}
 
@@ -71,7 +76,7 @@ class EspecieController extends Controller
 		{
 			$model->attributes=$_POST['Especie'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(

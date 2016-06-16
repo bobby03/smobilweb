@@ -35,7 +35,7 @@ class Estacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'required'),
+			array('tipo, identificador, no_personal, marca, color, ubicacion, disponible', 'required'),
 			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
 			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -101,7 +101,7 @@ class Estacion extends CActiveRecord
 		$criteria->compare('ubicacion',$this->ubicacion,true);
 		$criteria->compare('disponible',$this->disponible);
 		$criteria->compare('activo',$this->activo);
-
+                $criteria->addCondition("activo=1");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -121,8 +121,40 @@ class Estacion extends CActiveRecord
         {
             return array
             (
-                '1' => 'Movil',
+                '1' => 'Móvil',
                 '2' => 'Fíja',
+            );
+        }
+        public function getTipo($id)
+        {
+            switch ($id)
+            {
+                case 1: return 'Móvil'; break;
+                case 2: return 'Fija'; break;
+            }
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                array
+                (
+                    'name' => 'tipo',
+                    'value' => 'Estacion::model()->getTipo($data->tipo)',
+                    'filter' => Estacion::model()->getAllTipo()
+                ),
+                'identificador',
+                'no_personal',
+                'marca',
+                'color',
+                'ubicacion',
+                'disponible',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
             );
         }
 }

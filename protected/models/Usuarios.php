@@ -118,4 +118,48 @@ class Usuarios extends CActiveRecord
                 case 2 : return 'Personal'; break;
             }
         }
+        public function getUsuario($flag, $id)
+        {
+            switch ($flag)
+            {
+                case 1: 
+                    $usuario = Clientes::model()->findByPk($id);
+                    return $usuario->nombre_empresa;
+                break;
+                case 2:
+                    $usuario = Personal::model()->findByPk($id);
+                    return $usuario->nombre.' '.$usuario->apellido;
+                break;
+            }
+        }
+    public function adminSearch()
+    {
+        return array
+        (
+            'usuario',
+//            array
+//            (
+//                'name' => 'pwd',
+//                'value' => '$data->pwd'
+//            ),
+            array
+            (
+                'name' => 'tipo_usr',
+                'value' => 'Usuarios::model()->getTipoUsuario($data->tipo_usr)',
+                'filter' => Usuarios::model()->getAllTipoUsuario()
+            ),
+            array
+            (
+                'name' => 'id_usr',
+                'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
+                'filter' => ''
+            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            ),
+        );
+    }
 }

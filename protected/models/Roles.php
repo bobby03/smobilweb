@@ -114,4 +114,17 @@ class Roles extends SMActiveRecord
             $rol = $this->findByPk($id);
             return $rol->nombre_rol;
         }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre_rol',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
 }

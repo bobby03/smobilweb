@@ -6,7 +6,7 @@
 	{
             return array(
                 'accessControl', // perform access control for CRUD operations
-                'postOnly + delete', // we only allow deletion via POST request
+               // 'postOnly + delete', // we only allow deletion via POST request
             );
 	}
 	public function accessRules()
@@ -25,9 +25,14 @@
                     'actions'=>array('admin','delete'),
                     'users'=>array('admin'),
                 ),
-                array('deny',  // deny all users
-                    'users'=>array('*'),
+              array(
+                    'allow',
+                    'actions' => array('ajax'),
+                    'users'   => array('@'),
                 ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
             );
 	}
 	public function actionView($id)
@@ -43,7 +48,7 @@
             {
                 $model->attributes=$_POST['Personal'];
                 if($model->save())
-                    $this->redirect(array('view','id'=>$model->id));
+                    $this->redirect(array('index'));
             }
 
             $this->render('create',array
@@ -68,9 +73,11 @@
 	public function actionDelete($id)
 	{
             $this->loadModel($id)->delete();
-            if(!isset($_GET['ajax']))
+            /*if(!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+    */                echo json_encode('');
+
+            }
 	public function actionIndex()
 	{
             $model=new Personal('search');

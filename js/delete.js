@@ -40,7 +40,6 @@ $(document).ready(function()
                         return letter.toUpperCase();
                     });
                     href = 'delete';
-                    console.log(href, id);
                     $.ajax(
                     {
                         type: 'GET',
@@ -52,9 +51,32 @@ $(document).ready(function()
                         },
                         success: function(data)
                         {
-                            console.log(data);
                             $.fn.yiiGridView.update(header);
                             $('#cboxClose').click();
+                        },
+                        error: function(a, b, c)
+                        {
+                            console.log(a, b, c);
+                            href = controller+'/delete';
+                            $.ajax(
+                            {
+                                type: 'GET',
+                                url: href,
+                                dataType: 'JSON', 
+                                data:
+                                {
+                                    id: id
+                                },
+                                success: function(data)
+                                {
+                                    $.fn.yiiGridView.update(header);
+                                    $('#cboxClose').click();
+                                },
+                                error: function(a, b, c)
+                                {
+                                    console.log(a, b, c);
+                                }
+                            });
                         }
                     });
                 });

@@ -36,7 +36,7 @@ class Personal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array(' nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required'),
+			array('nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('nombre, apellido', 'length', 'max'=>50),
 			array('tel', 'length', 'max'=>12),
@@ -134,6 +134,31 @@ class Personal extends CActiveRecord
         public function getPersonal($id)
         {
             $rol = $this->findByPk($id);
-            return $rol->nombre_rol;
+            return $rol->nombre.' '.$rol->apellido;
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre',
+                'apellido',
+                'tel',
+                'rfc',
+                'domicilio',
+                array
+                (
+                    'name' => 'id_rol',
+                    'value' => 'Roles::model()->getRol($data->id_rol)',
+                    'filter' => Roles::model()->getAllRoles()
+                ),
+                'correo',
+                'puesto',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
         }
 }

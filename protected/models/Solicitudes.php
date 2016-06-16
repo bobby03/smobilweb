@@ -125,4 +125,54 @@ class Solicitudes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+    public function adminSearch()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+            array
+            (
+                'name'=>'fecha_estimada',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_estimada))'
+            ),
+            array
+            (
+                'name'=>'hora_estimada',
+                'value' => 'date("H:i", strtotime($data->hora_estimada))'
+            ),
+            array
+            (
+                'name'=>'fecha_entrega',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+            ),
+            array
+            (
+                'name'=>'hora_entrega',
+                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+            ),
+            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
 }

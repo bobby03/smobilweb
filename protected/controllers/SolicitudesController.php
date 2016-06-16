@@ -15,7 +15,7 @@ class SolicitudesController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+		//	'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -39,9 +39,14 @@ class SolicitudesController extends Controller
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+			array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
 		);
 	}
 
@@ -90,8 +95,11 @@ class SolicitudesController extends Controller
 	{
 		$model=$this->loadModel($id);
                 $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
+                $model->hora_alta = date('H:i', strtotime($model->hora_alta));
                 $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
+                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
                 $model->fecha_estimada = date('d-m-Y', strtotime($model->fecha_estimada));
+                $model->hora_estimada = date('H:i', strtotime($model->hora_estimada));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -120,8 +128,9 @@ class SolicitudesController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	/*	if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
+		                echo json_encode('');	
 	}
 
 	/**

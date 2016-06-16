@@ -25,24 +25,9 @@ $this->menu=array(
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'clientes-grid',
+	'id'=>'cliente',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'summaryText'=> '',
-	'columns'=>array(
-		
-		'nombre_empresa',
-		'nombre_contacto',
-		'apellido_contacto',
-		'correo',
-		'rfc',
-		/*
-		'tel',
-		*/
-		array(
-				'class'=>'NCButtonColumn',
-              	'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-		),
-	),
+	'columns'=>$model->adminSearch()
 )); ?>

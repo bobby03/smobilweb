@@ -41,7 +41,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'correo'); ?>
-		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'correo'); ?>
 	</div>
 

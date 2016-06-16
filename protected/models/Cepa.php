@@ -135,35 +135,6 @@ class Cepa extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-//    public function attributeWidgets()
-//    {
-//        return array(
-//            array('id_especie','image'),
-//            array('name','textField'),
-//            array('name_eng','textField'),
-//            array('hq','chosen'),
-//            array('addresse','chosenMultiple'),
-//            array('planedby','chosen'),
-//            array('goal','wysiwyg'),
-//            array('goal_eng','wysiwyg'),
-//            array('guest','wysiwyg'),
-//            array('description','wysiwyg'),
-//            array('description_eng','wysiwyg'),
-//            array('capacity','textField'),
-//            array('include','wysiwyg'),
-//            array('include_eng','wysiwyg'),
-//            array('date','date'),
-//            array('addressed','textFiled'),
-//            array('deadline','date'),
-//            array('fecha_limite','date'),
-//            array('stay','wysiwyg'),
-//            array('stay_eng','wysiwyg'),
-//            array('video','textField'),
-//            array('requirements','wysiwyg'),
-//            array('requirements_eng','wysiwyg'),
-//            array('link','file'),
-//        );
-//    }
     public function adminSearch()
     {
         return array

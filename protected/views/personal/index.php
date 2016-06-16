@@ -23,27 +23,10 @@
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
-    'id'=>'personal-grid',
+    'id'=>'personal',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
-    'columns'=>array
-    (
-        'nombre',
-        'apellido',
-        'tel',
-        'rfc',
-        'domicilio',
-        /*
-        'id_rol',
-        'correo',
-        'puesto',
-        */
-        array
-        (
-            'class'=>'NCButtonColumn',
-            'header'=>'Acciones',
-            'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-        ),
-    ),
+    'summaryText'=> '',
+    'columns'=>$model->adminSearch()
 )); 
 ?>
