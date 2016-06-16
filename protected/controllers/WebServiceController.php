@@ -42,8 +42,21 @@ class WebServiceController extends CController
         if(!isset($ac)){
             $ax = array('Name'=>'NOVALID','Status'=>'X','SCode'=>'4BD','code'=>400);
         }else{
+            $fName = "Empresa";
+            if($ac['tipo_usr']==2){
+
+                $tmp = Yii::app()->db->createCommand()
+                    ->select('nombre, apellido')
+                    ->from('personal')
+                    ->where('id = :id',array(':id'=>$ac['id_usr']))
+                    ->queryRow();
+                    // var_dump($tmp);
+                    $fName = $tmp['nombre']." ".$tmp['apellido'];
+                }
+            
 
             $ax = array('Name'=>$ac['usuario'],
+                'fullName'=>$fName,
                 'tUser'=>$ac['tipo_usr'],
                 'iUser'=>$ac['id_usr'],
                 /* 'apiKey'=>sha1('md5',$ac['usuario'].$ac['tipo_usr'].$ac['id_usr']) */
@@ -60,12 +73,44 @@ class WebServiceController extends CController
 
     public function actionGetDataDriver(){
     	// $ax = isset($_GET['ax'] )?$_GET['ax']:'0';
+        $ac = null;
+        $ax = array();
+        $sl = array();
+        $name_usr = isset($_GET['driver'])?$_GET['driver']:"0";
     	$id_usr = isset($_GET['id'])?$_GET['id']:"0";
     	$type_usr = isset($_GET['type'])?$_GET['type']:"0";
     	//query
-    	
-        if($driver === 'rodolfo')
-    		$rx = array('Name'=>'TRIP','Status'=>'OK','SCode'=>$ax,'ak'=>$apiKey);
+    	$ac = Yii::app()->db->createCommand()
+            ->select('s.id, s.codigo, s.fecha_alta, s.hora_alta, s.fecha_estimada, s.hora_estimada, s.notas, v.fecha_salida, v.hora_salida, v.status, v.hora_entrega, v.fecha_entrega')
+            ->from('viajes v')
+            ->join('solicitudes s', 'v.id_clientes = s.id_clientes')
+            ->where('v.id_responsable = :id',array(':id'=>$id_usr)  )
+            ->queryAll();
+
+        if(isset($ac) ){
+            foreach ($ac as $key => $value) {
+                $ax[$key] = array('id'=>$value['id'],
+                    'codigo'=>$value['codigo'],
+                    'fAlta'=>$value['fecha_alta'],
+                    'hAlta'=>$value['hora_alta'],
+                    'fEstimada'=>$value['fecha_estimada'],
+                    'hEstimada'=>$value['hora_estimada'],
+                    'Estado'=>$value['status'],
+                    'FViajeSalida'=>$value['fecha_salida'],
+                    'HViajeSalida'=>$value['hora_salida'],
+                    'FViajeEntrega'=>$value['fecha_entrega'],
+                    'HViajeEntrega'=>$value['hora_entrega'],
+                );
+                
+            }
+    		$rx = array('Name'=>'TRIP',
+                'Status'=>'GRANTED',
+                'code'=>200,
+                'SCode'=>'OK',
+                'ak'=>$apiKey, 
+                'Viajes'=>$ax
+            );
+        }
     	else
     		$rx = array('Name'=>'NO TRIP','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
 
