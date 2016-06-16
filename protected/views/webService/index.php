@@ -1,4 +1,4 @@
 <?php
 /* @var $this WebServiceController */
+echo "WebService";
 ?>
-WebService Module
