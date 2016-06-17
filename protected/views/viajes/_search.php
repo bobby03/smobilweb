@@ -11,8 +11,8 @@
 	'method'=>'get',
 )); ?>
 	<div class="row">
-		<?php echo $form->label($model,'id_clientes'); ?>
-		<?php echo $form->textField($model,'id_clientes'); ?>
+		<?php echo $form->label($model,'id_solicitudes'); ?>
+		<?php echo $form->textField($model,'id_solicitudes'); ?>
 	</div>
 
 	<div class="row">
