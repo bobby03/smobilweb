@@ -45,7 +45,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[1][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[1][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[1][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[1][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -57,7 +56,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[2][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[2][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[2][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[2][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -69,7 +67,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[3][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[3][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[3][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[3][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -81,7 +78,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[4][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[4][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[4][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[4][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -93,7 +89,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[5][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[5][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[5][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[5][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -105,7 +100,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[6][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[6][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[6][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[6][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -117,7 +111,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[7][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[7][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[7][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[7][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -129,7 +122,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[8][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[8][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[8][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[8][activo]'); ?>
             </div>
 	</div>
 	<div class="row">
@@ -141,7 +133,6 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[9][baja]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[9][consulta]'); ?></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[9][edicion]'); ?></div>
-                <?php echo $form->hiddenField($acciones,'seccion[9][activo]'); ?>
             </div>
 	</div>
     </div>

@@ -1,29 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "roles_permisos".
+ * This is the model class for table "tanque".
  *
- * The followings are the available columns in table 'roles_permisos':
+ * The followings are the available columns in table 'tanque':
  * @property integer $id
- * @property integer $id_rol
- * @property integer $seccion
- * @property integer $alta
- * @property integer $baja
- * @property integer $consulta
- * @property integer $edicion
+ * @property integer $id_estacion
+ * @property integer $capacidad
+ * @property string $nombre
+ * @property integer $status
  * @property integer $activo
  *
  * The followings are the available model relations:
- * @property Roles $idRol
+ * @property EscalonViajeUbicacion[] $escalonViajeUbicacions
+ * @property Registro[] $registros
+ * @property SolicitudTanques[] $solicitudTanques
+ * @property Estacion $idEstacion
  */
-class RolesPermisos extends SMActiveRecord
+class Tanque extends SMActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'roles_permisos';
+		return 'tanque';
 	}
 
 	/**
@@ -34,11 +35,12 @@ class RolesPermisos extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('seccion, alta, baja, consulta, edicion', 'required'),
-			array('id_rol, seccion, alta, baja, consulta, edicion', 'numerical', 'integerOnly'=>true),
+			array('id_estacion, capacidad, nombre, status, activo', 'required'),
+			array('id_estacion, capacidad, status, activo', 'numerical', 'integerOnly'=>true),
+			array('nombre', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_rol, seccion, alta, baja, consulta, edicion', 'safe', 'on'=>'search'),
+			array('id, id_estacion, capacidad, nombre, status, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +52,10 @@ class RolesPermisos extends SMActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idRol' => array(self::BELONGS_TO, 'Roles', 'id_rol'),
+			'escalonViajeUbicacions' => array(self::HAS_MANY, 'EscalonViajeUbicacion', 'id_tanque'),
+			'registros' => array(self::HAS_MANY, 'Registro', 'id_tanque'),
+			'solicitudTanques' => array(self::HAS_MANY, 'SolicitudTanques', 'id_tanque'),
+			'idEstacion' => array(self::BELONGS_TO, 'Estacion', 'id_estacion'),
 		);
 	}
 
@@ -61,12 +66,11 @@ class RolesPermisos extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_rol' => 'Id Rol',
-			'seccion' => 'Seccion',
-			'alta' => 'Alta',
-			'baja' => 'Baja',
-			'consulta' => 'Consulta',
-			'edicion' => 'Edicion',
+			'id_estacion' => 'Id Estacion',
+			'capacidad' => 'Capacidad',
+			'nombre' => 'Nombre',
+			'status' => 'Status',
+			'activo' => 'Activo',
 		);
 	}
 
@@ -89,12 +93,11 @@ class RolesPermisos extends SMActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('id_rol',$this->id_rol);
-		$criteria->compare('seccion',$this->seccion);
-		$criteria->compare('alta',$this->alta);
-		$criteria->compare('baja',$this->baja);
-		$criteria->compare('consulta',$this->consulta);
-		$criteria->compare('edicion',$this->edicion);
+		$criteria->compare('id_estacion',$this->id_estacion);
+		$criteria->compare('capacidad',$this->capacidad);
+		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('activo',$this->activo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -105,7 +108,7 @@ class RolesPermisos extends SMActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return RolesPermisos the static model class
+	 * @return Tanque the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

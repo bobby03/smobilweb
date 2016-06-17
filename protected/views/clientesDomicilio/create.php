@@ -14,5 +14,11 @@ $this->menu=array(
 ?>
 
 <h1>Create ClientesDomicilio</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php 
+    $direccion = ClientesDomicilio::model();
+    $this->renderPartial('_form', array
+        (
+            'model' => $model,
+            'direccion' => $direccion
+        )); 
+?>

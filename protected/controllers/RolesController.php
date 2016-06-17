@@ -88,7 +88,6 @@ class RolesController extends Controller
                             $acciones2->baja = $data['baja'];
                             $acciones2->consulta = $data['consulta'];
                             $acciones2->edicion = $data['edicion'];
-                            $acciones2->activo = 1;
                             $acciones2->save();
                             $i++;
                         }
@@ -120,7 +119,6 @@ class RolesController extends Controller
                     $array[$data->seccion]['baja'] = $data->baja;
                     $array[$data->seccion]['consulta'] = $data->consulta;
                     $array[$data->seccion]['edicion'] = $data->edicion;
-                    $array[$data->seccion]['activo'] = $data->activo;
                 }
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

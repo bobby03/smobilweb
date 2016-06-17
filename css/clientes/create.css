@@ -1,0 +1,27 @@
+#map 
+{
+    width: 500px;
+    height: 400px;
+}
+div.addDireccion
+{
+    float: right;
+    margin-left: 25px;
+    background-color: #0088cc;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    width: 185px;
+    cursor: pointer;
+    color: #FFFFFF;
+    text-align: center;
+}
+div.row.des
+{
+    border-bottom: 1px solid #D6D6D6;
+}
+div.allMapa:last-child div.row.des
+{
+    border-bottom: 0;
+}

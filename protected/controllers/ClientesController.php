@@ -67,21 +67,33 @@ class ClientesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Clientes;
+            $model=new Clientes;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
 
-		if(isset($_POST['Clientes']))
-		{
-			$model->attributes=$_POST['Clientes'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
+            if(isset($_POST['Clientes']))
+            {
+                $model->attributes=$_POST['Clientes'];
+//                        print_r($_POST);
+                if($model->save())
+                {
+                    foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
+                    {
+                        $direccion = new ClientesDomicilio();
+                        $direccion->id_cliente = $model->id;
+                        $direccion->domicilio = $data['domicilio'];
+                        $direccion->ubicacion_mapa = $data['ubicacion_mapa'];
+                        $direccion->descripcion = $data['descripcion'];
+                        $direccion->save();
+                    }
+                    $this->redirect(array('index'));
+                }
+            }
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            $this->render('create',array(
+                    'model'=>$model,
+            ));
 	}
 
 	/**
@@ -91,21 +103,51 @@ class ClientesController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+            $model=$this->loadModel($id);
+            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id}");
+            $array = array();
+            $direccion = new ClientesDomicilio;
+            $i = 1;
+            foreach($query as $data)
+            {
+                $array[$i]['domicilio'] = $data->domicilio;
+                $array[$i]['ubicacion_mapa'] = $data->ubicacion_mapa;
+                $array[$i]['descripcion'] = $data->descripcion;
+                $array[$i]['id'] = $data->id;
+                $i++;
+            }
+            $direccion->domicilio = $array;
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            if(isset($_POST['Clientes']))
+            {
+                $model->attributes=$_POST['Clientes'];
+                if($model->save())
+                {
+                    foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
+                    {
+                        if(isset($data['id']))
+                        {
+                            $update = ClientesDomicilio::model()->findBySql("SELECT * FROM clientes_domicilio WHERE id = {$data['id']}");
+                            $update->attributes = $data;
+                        }
+                        else
+                        {
+                            $update = new ClientesDomicilio();    
+                            $update->attributes = $data;
+                            $update->id_cliente = $model->id;
+                        }
+                        $update->save();
+                    }
+                    $this->redirect(array('index'));
+                }
+            }
 
-		if(isset($_POST['Clientes']))
-		{
-			$model->attributes=$_POST['Clientes'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+            $this->render('update',array(
+                'model'     =>$model,
+                'direccion' =>$direccion
+            ));
 	}
 
 	/**
