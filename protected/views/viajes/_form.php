@@ -45,7 +45,7 @@
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_estacion'); ?>
-		<?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+		<?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacionMovil(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'id_estacion'); ?>
 	</div>
 

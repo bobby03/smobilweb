@@ -35,7 +35,7 @@ class Tanque extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_estacion, capacidad, nombre, status, activo', 'required'),
+			array('id_estacion, capacidad, nombre, status', 'required'),
 			array('id_estacion, capacidad, status, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -66,11 +66,11 @@ class Tanque extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_estacion' => 'Id Estacion',
-			'capacidad' => 'Capacidad',
+			'id_estacion' => 'Estacion',
+			'capacidad' => 'Capacidad(Litros)',
 			'nombre' => 'Nombre',
 			'status' => 'Status',
-			'activo' => 'Activo',
+			'activo' => 'Activo'
 		);
 	}
 
@@ -114,4 +114,39 @@ class Tanque extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllStatus()
+        {
+            $return = array
+            (
+                '1' => 'Disponible',
+                '2' => 'Ocupado'
+            );
+            return $return;
+        }
+        public function getStatus($id)
+        {
+            switch ($id)
+            {
+                case 1: return 'Disponible'; break;
+                case 2: return 'Ocupado'; break;
+            }
+        }
+        public function getAllActivo()
+        {
+            $return = array
+            (
+                '1' => 'Sí',
+                '2' => 'No',
+            );
+            return $return;
+        }
+        public function getActivo($id)
+        {
+            switch ($id)
+            {
+                case 1: return 'Sí'; break;
+                case 2: return 'No'; break;
+            }
+        }
+        
 }
