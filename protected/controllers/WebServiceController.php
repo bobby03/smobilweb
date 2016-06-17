@@ -83,7 +83,7 @@ class WebServiceController extends CController
     	$ac = Yii::app()->db->createCommand()
             ->select('s.id, s.codigo, s.fecha_alta, s.hora_alta, s.fecha_estimada, s.hora_estimada, s.notas, v.fecha_salida, v.hora_salida, v.status, v.hora_entrega, v.fecha_entrega')
             ->from('viajes v')
-            ->join('solicitudes s', 'v.id_clientes = s.id_clientes')
+            ->join('solicitudes s', 'v.id_solicitudes = s.id_clientes')
             ->where('v.id_responsable = :id',array(':id'=>$id_usr)  )
             ->queryAll();
 
