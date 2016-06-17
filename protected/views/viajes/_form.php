@@ -43,6 +43,11 @@
 		<?php echo $form->dropDownList($model,'id_responsable', Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'id_responsable'); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_estacion'); ?>
+		<?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+		<?php echo $form->error($model,'id_estacion'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>

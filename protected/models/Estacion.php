@@ -133,6 +133,35 @@ class Estacion extends CActiveRecord
                 case 2: return 'Fija'; break;
             }
         }
+        public function getAllDisponible()
+        {
+            return array
+            (
+                '0' => 'No',
+                '1' => 'Sí',
+            );
+        }
+        public function getDisponible($id)
+        {
+            switch ($id)
+            {
+                case 0: return 'No'; break;
+                case 1: return 'Sí'; break;
+            }
+        }
+        public function getAllEstacion()
+        {
+            $estacion = Estacion::model()->findAll();
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getEstacion($id)
+        {
+            $estacion = Estacion::model()->findByPk($id);
+            return $estacion->identificador;
+        }
         public function adminSearch()
         {
             return array
@@ -148,7 +177,12 @@ class Estacion extends CActiveRecord
                 'marca',
                 'color',
                 'ubicacion',
-                'disponible',
+                array
+                (
+                    'name' => 'disponible',
+                    'value' => 'Estacion::model()->getDisponible($data->disponible)',
+                    'filter' => Estacion::model()->getAllDisponible()
+                ),
                 array
                 (
                     'class'=>'NCButtonColumn',
