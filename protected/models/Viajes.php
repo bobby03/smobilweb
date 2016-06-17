@@ -36,12 +36,12 @@ class Viajes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_solicitudes, id_responsable, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'required'),
-			array('id, id_solicitudes, id_responsable', 'numerical', 'integerOnly'=>true),
+			array('id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'required'),
+			array('id, id_solicitudes, id_responsable, id_estacion', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_solicitudes, id_responsable, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'safe', 'on'=>'search'),
+			array('id, id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,6 +56,7 @@ class Viajes extends CActiveRecord
 			'solicitudesViajes' => array(self::HAS_MANY, 'SolicitudesViaje', 'id_viaje'),
 			'idSolicitudes' => array(self::BELONGS_TO, 'Solicitudes', 'id_solicitudes'),
 			'idResponsable' => array(self::BELONGS_TO, 'Personal', 'id_responsable'),
+			'idEstacion' => array(self::BELONGS_TO, 'Estacion', 'id_estacion'),
 		);
 	}
 
@@ -68,6 +69,7 @@ class Viajes extends CActiveRecord
 			'id' => 'ID',
 			'id_solicitudes' => 'Cliente',
 			'id_responsable' => 'Responsable',
+			'id_estacion' => 'Estación',
 			'status' => 'Status',
 			'fecha_salida' => 'Fecha Salida',
 			'hora_salida' => 'Hora Salida',
@@ -97,6 +99,7 @@ class Viajes extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('id_solicitudes',$this->id_solicitudes);
 		$criteria->compare('id_responsable',$this->id_responsable);
+		$criteria->compare('id_estacion',$this->id_estacion);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('fecha_salida',$this->fecha_salida,true);
 		$criteria->compare('hora_salida',$this->hora_salida,true);
@@ -135,6 +138,12 @@ class Viajes extends CActiveRecord
                 'name' => 'id_responsable',
                 'value' => 'Personal::model()->getPersonal($data->id_responsable)',
                 'filter' => Personal::model()->getAllPersonal()
+            ),
+            array
+            (
+                'name' => 'id_estacion',
+                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                'filter' => Estacion::model()->getAllEstacion()
             ),
             array
             (
