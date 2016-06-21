@@ -15,4 +15,9 @@ $this->menu=array(
 
 <h1>Create Solicitudes</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array
+    (
+        'model'=>$model,
+        'estaciones'=>$estaciones,
+        'tanques'=>$tanques
+    )); ?>

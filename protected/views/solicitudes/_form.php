@@ -2,6 +2,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
+    $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js');
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (
         'name' => 'SolicitudesForm',
@@ -47,7 +48,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha_alta'); ?>
-		<?php echo $form->textField($model,'fecha_alta', array('class'=>'calendario', 'readonly'=>'readonly', 'placeholder'=>'dd-mm-YYYY')); ?>
+		<?php echo $form->textField($model,'fecha_alta', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'fecha_alta'); ?>
 	</div>
 
@@ -86,7 +87,13 @@
 		<?php echo $form->textField($model,'notas',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'notas'); ?>
 	</div>
-
+        
+	<div class="row">
+            <label>Estación</label>
+            <?php echo $form->dropDownList($estaciones,'identificador', $estaciones->getEstacionSolicitud(), array('class'=>'css-select','empty'=>'Selecionar')); ?>
+            <?php echo $form->error($estaciones,'identifiacdor'); ?>
+	</div>
+        
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
