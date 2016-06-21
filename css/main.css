@@ -17,10 +17,10 @@ body
 
 #header
 {
-	margin: 0;
-	padding: 0;
-	border-bottom: 2px solid #49dbd0;
-	height:48px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px solid #49dbd0;
+    height:48px;
     background-color: #e6e7e8;
     position: fixed;
     top:0;
@@ -28,6 +28,7 @@ body
     display:block;
     width: calc(100% - 182px);
     box-shadow: 2px 2px 15px 3px rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 #content
@@ -70,6 +71,7 @@ body
 	height: 100%;
 	box-sizing:border-box;
 	padding:0 10px;
+        z-index: 10;
 }
 
 #mainmenu ul
@@ -271,4 +273,9 @@ div.botones-content div.aceptar-boton
     width: 100px;
     height: 30px;
     cursor: pointer;
+}
+.grid-view .button-column img
+{
+    width: 16px;
+    height: 16px;
 }

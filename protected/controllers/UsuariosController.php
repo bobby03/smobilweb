@@ -25,29 +25,65 @@ class UsuariosController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array(
-		            'allow',
-		            'actions' => array('ajax'),
-		            'users'   => array('@'),
-		        ),
-                 // array('deny',  // deny all users
-                 //         'users'=>array('*'),
-                 // ),
-		);
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createUsuarios') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readUsuarios') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editUsuarios') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteUsuarios') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -74,14 +110,14 @@ class UsuariosController extends Controller
 
 		if(isset($_POST['Usuarios']))
 		{
-			$model->attributes=$_POST['Usuarios'];
-                        if($model->tipo_usr == 1)
-                            $model->id_usr = $_POST['clienteId'];
-                        elseif($model->tipo_usr == 2)
-                            $model->id_usr = $_POST['personalId'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
+                    $model->attributes=$_POST['Usuarios'];
+                    if($model->tipo_usr == 1)
+                        $model->id_usr = $_POST['clienteId'];
+                    elseif($model->tipo_usr == 2)
+                        $model->id_usr = $_POST['personalId'];
+                    if($model->save())
+                        $this->redirect(array('index'));
+                    }
 
 		$this->render('create',array(
 			'model'=>$model,

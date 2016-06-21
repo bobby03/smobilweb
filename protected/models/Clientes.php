@@ -127,6 +127,25 @@ class Clientes extends CActiveRecord
                 $return[$data->id] = $data->nombre_empresa;
             return $return;
         }
+        public function getAllClientesViajes()
+        {
+            $clientes = Clientes::model()->findAll();
+            $solicitudes = Solicitudes::model()->findAllBySql('SELECT DISTINCT id, id_clientes, codigo FROM solicitudes');
+            $return = array();
+            foreach($solicitudes as $info)
+                foreach($clientes as $data)
+                {
+                    if($info->id_clientes == $data->id)
+                        $return[$info->id] = $data->nombre_empresa.' ('.$info->codigo.')';
+                }
+            return $return;
+        }
+        public function getClienteViajes($id)
+        {
+            $solicitudes = Solicitudes::model()->findByPk($id);
+            $cliente = Clientes::model()->findByPk($solicitudes->id_clientes);
+            return '<b>'.$cliente->nombre_empresa.'</b> ('.$solicitudes->codigo.')';
+        }
         public function getCliente($id)
         {
             $cliente = Clientes::model()->findByPk($id);

@@ -1,25 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "roles".
+ * This is the model class for table "tanque".
  *
- * The followings are the available columns in table 'roles':
+ * The followings are the available columns in table 'tanque':
  * @property integer $id
- * @property string $nombre_rol
+ * @property integer $id_estacion
+ * @property integer $capacidad
+ * @property string $nombre
+ * @property integer $status
  * @property integer $activo
  *
  * The followings are the available model relations:
- * @property Personal[] $personals
- * @property RolesPermisos[] $rolesPermisoses
+ * @property EscalonViajeUbicacion[] $escalonViajeUbicacions
+ * @property Registro[] $registros
+ * @property SolicitudTanques[] $solicitudTanques
+ * @property Estacion $idEstacion
  */
-class Roles extends SMActiveRecord
+class Tanque extends SMActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'roles';
+		return 'tanque';
 	}
 
 	/**
@@ -30,12 +35,12 @@ class Roles extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_rol', 'required'),
-			array('activo', 'numerical', 'integerOnly'=>true),
-			array('nombre_rol', 'length', 'max'=>50),
+			array('id_estacion, capacidad, nombre, status', 'required'),
+			array('id_estacion, capacidad, status, activo', 'numerical', 'integerOnly'=>true),
+			array('nombre', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre_rol, activo', 'safe', 'on'=>'search'),
+			array('id, id_estacion, capacidad, nombre, status, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,8 +52,10 @@ class Roles extends SMActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'personals' => array(self::HAS_MANY, 'Personal', 'id_rol'),
-			'rolesPermisoses' => array(self::HAS_MANY, 'RolesPermisos', 'id_rol'),
+			'escalonViajeUbicacions' => array(self::HAS_MANY, 'EscalonViajeUbicacion', 'id_tanque'),
+			'registros' => array(self::HAS_MANY, 'Registro', 'id_tanque'),
+			'solicitudTanques' => array(self::HAS_MANY, 'SolicitudTanques', 'id_tanque'),
+			'idEstacion' => array(self::BELONGS_TO, 'Estacion', 'id_estacion'),
 		);
 	}
 
@@ -59,8 +66,11 @@ class Roles extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_rol' => 'Rol',
-			'activo' => 'Activo',
+			'id_estacion' => 'Estacion',
+			'capacidad' => 'Capacidad(Litros)',
+			'nombre' => 'Nombre',
+			'status' => 'Status',
+			'activo' => 'Activo'
 		);
 	}
 
@@ -83,9 +93,12 @@ class Roles extends SMActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('nombre_rol',$this->nombre_rol,true);
+		$criteria->compare('id_estacion',$this->id_estacion);
+		$criteria->compare('capacidad',$this->capacidad);
+		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('activo',$this->activo);
-                $criteria->addCondition("activo=1");
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -95,51 +108,45 @@ class Roles extends SMActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Roles the static model class
+	 * @return Tanque the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-        public function getAllRoles()
+        public function getAllStatus()
         {
-            $roles = Roles::model()->findAllBySql('SELECT * FROM roles WHERE activo = 1');
-            $return = array();
-            foreach($roles as $data)
-                $return[$data->id] = $data->nombre_rol;
+            $return = array
+            (
+                '1' => 'Disponible',
+                '2' => 'Ocupado'
+            );
             return $return;
         }
-        public function getRol($id)
+        public function getStatus($id)
         {
-            $rol = $this->findByPk($id);
-            return $rol->nombre_rol;
-        }
-        public function getSeccion($id)
-        {
-            switch($id)
+            switch ($id)
             {
-                case 1: return 'Cepa'; break;
-                case 2: return 'Clientes'; break;
-                case 3: return 'Especie'; break;
-                case 4: return 'Estacion'; break;
-                case 5: return 'Personal'; break;
-                case 6: return 'Roles'; break;
-                case 7: return 'Solicitudes'; break;
-                case 8: return 'Usuarios'; break;
-                case 9: return 'Viajes'; break;
+                case 1: return 'Disponible'; break;
+                case 2: return 'Ocupado'; break;
             }
         }
-        public function adminSearch()
+        public function getAllActivo()
         {
-            return array
+            $return = array
             (
-                'nombre_rol',
-                array
-                (
-                    'class'=>'NCButtonColumn',
-                    'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-		)
+                '1' => 'Sí',
+                '2' => 'No',
             );
+            return $return;
         }
+        public function getActivo($id)
+        {
+            switch ($id)
+            {
+                case 1: return 'Sí'; break;
+                case 2: return 'No'; break;
+            }
+        }
+        
 }

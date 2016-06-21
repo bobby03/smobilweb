@@ -33,15 +33,20 @@
 
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_clientes'); ?>
-		<?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
-		<?php echo $form->error($model,'id_clientes'); ?>
+		<?php echo $form->labelEx($model,'id_solicitudes'); ?>
+		<?php echo $form->dropDownList($model,'id_solicitudes', Clientes::model()->getAllClientesViajes(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+		<?php echo $form->error($model,'id_solicitudes'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
 		<?php echo $form->dropDownList($model,'id_responsable', Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'id_responsable'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_estacion'); ?>
+		<?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacionMovil(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+		<?php echo $form->error($model,'id_estacion'); ?>
 	</div>
 
 	<div class="row">

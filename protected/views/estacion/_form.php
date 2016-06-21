@@ -2,6 +2,9 @@
 /* @var $this EstacionController */
 /* @var $model Estacion */
 /* @var $form CActiveForm */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
 ?>
 
 <div class="form">
@@ -55,13 +58,14 @@
 		<?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'ubicacion'); ?>
 	</div>
-
+        <?php if ($model->isNewRecord):?>
+        <?php else:?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'disponible'); ?>
-		<?php echo $form->textField($model,'disponible'); ?>
+		<?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 		<?php echo $form->error($model,'disponible'); ?>
 	</div>
-
+        <?php endif;?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

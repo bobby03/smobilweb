@@ -35,10 +35,10 @@ class RolesPermisos extends SMActiveRecord
 		// will receive user inputs.
 		return array(
 			array('seccion, alta, baja, consulta, edicion', 'required'),
-			array('id_rol, seccion, alta, baja, consulta, edicion, activo', 'numerical', 'integerOnly'=>true),
+			array('id_rol, seccion, alta, baja, consulta, edicion', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_rol, seccion, alta, baja, consulta, edicion, activo', 'safe', 'on'=>'search'),
+			array('id, id_rol, seccion, alta, baja, consulta, edicion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +67,6 @@ class RolesPermisos extends SMActiveRecord
 			'baja' => 'Baja',
 			'consulta' => 'Consulta',
 			'edicion' => 'Edicion',
-			'activo' => 'Activo',
 		);
 	}
 
@@ -96,7 +95,6 @@ class RolesPermisos extends SMActiveRecord
 		$criteria->compare('baja',$this->baja);
 		$criteria->compare('consulta',$this->consulta);
 		$criteria->compare('edicion',$this->edicion);
-		$criteria->compare('activo',$this->activo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

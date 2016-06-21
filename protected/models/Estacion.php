@@ -35,7 +35,7 @@ class Estacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo, identificador, no_personal, marca, color, ubicacion, disponible', 'required'),
+			array('tipo, identificador, no_personal, marca, color, ubicacion', 'required'),
 			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
 			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -133,6 +133,51 @@ class Estacion extends CActiveRecord
                 case 2: return 'Fija'; break;
             }
         }
+        public function getAllDisponible()
+        {
+            return array
+            (
+                '0' => 'No',
+                '1' => 'Sí',
+            );
+        }
+        public function getDisponible($id)
+        {
+            switch ($id)
+            {
+                case 0: return 'No'; break;
+                case 1: return 'Sí'; break;
+            }
+        }
+        public function getAllEstacionMovil()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 1');
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getAllEstacionFija()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 2');
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getAllEstacion()
+        {
+            $estacion = Estacion::model()->findAll();
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getEstacion($id)
+        {
+            $estacion = Estacion::model()->findByPk($id);
+            return $estacion->identificador;
+        }
         public function adminSearch()
         {
             return array
@@ -148,12 +193,26 @@ class Estacion extends CActiveRecord
                 'marca',
                 'color',
                 'ubicacion',
-                'disponible',
+                array
+                (
+                    'name' => 'disponible',
+                    'value' => 'Estacion::model()->getDisponible($data->disponible)',
+                    'filter' => Estacion::model()->getAllDisponible()
+                ),
                 array
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'buttons' => array
+                    (
+                        'tanque' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.png',
+                            'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
+                            'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
+                        )
+                    )
 		)
             );
         }

@@ -1,0 +1,34 @@
+div.addTanque 
+{
+    float: right;
+    margin-left: 25px;
+    background-color: #0088cc;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    width: 185px;
+    cursor: pointer;
+    color: #FFFFFF;
+    text-align: center;
+}
+div.editarTanque
+{
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 10px;
+    background-color: #C6D880;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+div.tanque
+{
+    border-bottom: 1px solid #D6D6D6;
+}
+div.tanque:last-child 
+{
+    border-bottom: 0;
+}

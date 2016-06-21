@@ -25,29 +25,65 @@ class ClientesController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array(
-		            'allow',
-		            'actions' => array('ajax'),
-		            'users'   => array('@'),
-		        ),
-                 // array('deny',  // deny all users
-                 //         'users'=>array('*'),
-                 // ),
-		);
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createClientes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readClientes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editClientes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteClientes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -67,21 +103,33 @@ class ClientesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Clientes;
+            $model=new Clientes;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
 
-		if(isset($_POST['Clientes']))
-		{
-			$model->attributes=$_POST['Clientes'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
+            if(isset($_POST['Clientes']))
+            {
+                $model->attributes=$_POST['Clientes'];
+//                        print_r($_POST);
+                if($model->save())
+                {
+                    foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
+                    {
+                        $direccion = new ClientesDomicilio();
+                        $direccion->id_cliente = $model->id;
+                        $direccion->domicilio = $data['domicilio'];
+                        $direccion->ubicacion_mapa = $data['ubicacion_mapa'];
+                        $direccion->descripcion = $data['descripcion'];
+                        $direccion->save();
+                    }
+                    $this->redirect(array('index'));
+                }
+            }
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            $this->render('create',array(
+                    'model'=>$model,
+            ));
 	}
 
 	/**
@@ -91,21 +139,51 @@ class ClientesController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+            $model=$this->loadModel($id);
+            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id}");
+            $array = array();
+            $direccion = new ClientesDomicilio;
+            $i = 1;
+            foreach($query as $data)
+            {
+                $array[$i]['domicilio'] = $data->domicilio;
+                $array[$i]['ubicacion_mapa'] = $data->ubicacion_mapa;
+                $array[$i]['descripcion'] = $data->descripcion;
+                $array[$i]['id'] = $data->id;
+                $i++;
+            }
+            $direccion->domicilio = $array;
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            if(isset($_POST['Clientes']))
+            {
+                $model->attributes=$_POST['Clientes'];
+                if($model->save())
+                {
+                    foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
+                    {
+                        if(isset($data['id']))
+                        {
+                            $update = ClientesDomicilio::model()->findBySql("SELECT * FROM clientes_domicilio WHERE id = {$data['id']}");
+                            $update->attributes = $data;
+                        }
+                        else
+                        {
+                            $update = new ClientesDomicilio();    
+                            $update->attributes = $data;
+                            $update->id_cliente = $model->id;
+                        }
+                        $update->save();
+                    }
+                    $this->redirect(array('index'));
+                }
+            }
 
-		if(isset($_POST['Clientes']))
-		{
-			$model->attributes=$_POST['Clientes'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+            $this->render('update',array(
+                'model'     =>$model,
+                'direccion' =>$direccion
+            ));
 	}
 
 	/**
