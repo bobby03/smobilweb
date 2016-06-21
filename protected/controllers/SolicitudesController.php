@@ -104,6 +104,8 @@ class SolicitudesController extends Controller
 	public function actionCreate()
 	{
 		$model= new Solicitudes;
+                $estaciones = new Estacion();
+                $tanques = new Tanque();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -118,7 +120,9 @@ class SolicitudesController extends Controller
 		}
 
 		$this->render('create',array(
-                    'model'=>$model
+                    'model'=>$model,
+                    'estaciones'=>$estaciones,
+                    'tanques'=>$tanques
 		));
 	}
 
