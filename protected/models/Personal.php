@@ -144,7 +144,7 @@ class Personal extends CActiveRecord
                 'apellido',
                 'tel',
                 'rfc',
-                'domicilio',
+               // 'domicilio',
                 array
                 (
                     'name' => 'id_rol',
