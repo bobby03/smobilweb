@@ -51,10 +51,10 @@ return array(
 			),
 		),
 		
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-                'clientScript'=>array(
+		// 'db'=>array(
+		// 	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+		// ),
+        'clientScript'=>array(
 			'packages'=>array(
 				'jquery'=>array(
 					'baseUrl'=>'http://code.jquery.com/',
