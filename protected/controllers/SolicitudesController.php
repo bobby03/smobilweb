@@ -27,61 +27,61 @@ class SolicitudesController extends Controller
 	public function accessRules()
         {
             $return = array();
-            if(Yii::app()->user->checkAccess('createSolicitudes'))
+            if(Yii::app()->user->checkAccess('createSolicitudes') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('readSolicitudes'))
+            if(Yii::app()->user->checkAccess('readSolicitudes') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editSolicitudes'))
+            if(Yii::app()->user->checkAccess('editSolicitudes') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('deleteSolicitudes'))
+            if(Yii::app()->user->checkAccess('deleteSolicitudes') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             return $return;
 	}

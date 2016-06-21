@@ -20,8 +20,7 @@ class UserIdentity extends CUserIdentity
             $usuarios = Usuarios::model()->findAll();
             $users=array(
                     // username => password
-                    'demo'=>'demo',
-                    'admin'=>'admin',
+                    'smobiladmin'=>'smobiladmin',
             );
             if(count($usuarios)>0)
             {

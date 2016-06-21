@@ -27,61 +27,61 @@ class UsuariosController extends Controller
 	public function accessRules()
         {
             $return = array();
-            if(Yii::app()->user->checkAccess('createUsuarios'))
+            if(Yii::app()->user->checkAccess('createUsuarios') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('readUsuarios'))
+            if(Yii::app()->user->checkAccess('readUsuarios') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editUsuarios'))
+            if(Yii::app()->user->checkAccess('editUsuarios') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('deleteUsuarios'))
+            if(Yii::app()->user->checkAccess('deleteUsuarios') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
                     'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             else
                 $return[] = array
                 (
                     'deny',
                     'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
+                    'users'     => array('*')
                 );
             return $return;
 	}
@@ -116,48 +116,8 @@ class UsuariosController extends Controller
                     elseif($model->tipo_usr == 2)
                         $model->id_usr = $_POST['personalId'];
                     if($model->save())
-                    {
-                        if($model->tipo_usr == 2)
-                        {
-                            $auth = Yii::app()->authManager;
-                            $Personal = Personal::model()->findByPk($model->id_usr);
-                            $roles = new Roles();
-                            $permisos = RolesPermisos::model()->findAllBySql
-                            (
-                                "SELECT per.id, rolP.seccion, rolP.alta, rolP.baja, rolP.consulta, rolP.edicion 
-                                 FROM personal as per
-                                 JOIN roles_permisos as rolP ON rolP.id_rol = per.id_rol
-                                 WHERE per.id = '{$Personal->id}'"
-                            );
-                            foreach($permisos as $data)
-                            {
-                                $nombreSeccion = $roles->getSeccion($data['seccion']);
-                                $seccion = '';
-                                if($data['alta'] == 1)
-                                {
-                                    $seccion = 'create'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                                if($data['baja'] == 1)
-                                {
-                                    $seccion = 'delete'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                                if($data['consulta'] == 1)
-                                {
-                                    $seccion = 'read'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                                if($data['edicion'] == 1)
-                                {
-                                    $seccion = 'update'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                            }
-                        }
                         $this->redirect(array('index'));
                     }
-		}
 
 		$this->render('create',array(
 			'model'=>$model,
