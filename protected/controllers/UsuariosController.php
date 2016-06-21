@@ -25,65 +25,29 @@ class UsuariosController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-        {
-            $return = array();
-            if(Yii::app()->user->checkAccess('createUsuarios'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            if(Yii::app()->user->checkAccess('readUsuarios'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            if(Yii::app()->user->checkAccess('editUsuarios'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            if(Yii::app()->user->checkAccess('deleteUsuarios'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            return $return;
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
+		);
 	}
 
 	/**
@@ -110,53 +74,13 @@ class UsuariosController extends Controller
 
 		if(isset($_POST['Usuarios']))
 		{
-                    $model->attributes=$_POST['Usuarios'];
-                    if($model->tipo_usr == 1)
-                        $model->id_usr = $_POST['clienteId'];
-                    elseif($model->tipo_usr == 2)
-                        $model->id_usr = $_POST['personalId'];
-                    if($model->save())
-                    {
-                        if($model->tipo_usr == 2)
-                        {
-                            $auth = Yii::app()->authManager;
-                            $Personal = Personal::model()->findByPk($model->id_usr);
-                            $roles = new Roles();
-                            $permisos = RolesPermisos::model()->findAllBySql
-                            (
-                                "SELECT per.id, rolP.seccion, rolP.alta, rolP.baja, rolP.consulta, rolP.edicion 
-                                 FROM personal as per
-                                 JOIN roles_permisos as rolP ON rolP.id_rol = per.id_rol
-                                 WHERE per.id = '{$Personal->id}'"
-                            );
-                            foreach($permisos as $data)
-                            {
-                                $nombreSeccion = $roles->getSeccion($data['seccion']);
-                                $seccion = '';
-                                if($data['alta'] == 1)
-                                {
-                                    $seccion = 'create'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                                if($data['baja'] == 1)
-                                {
-                                    $seccion = 'delete'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                                if($data['consulta'] == 1)
-                                {
-                                    $seccion = 'read'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                                if($data['edicion'] == 1)
-                                {
-                                    $seccion = 'update'.$nombreSeccion;
-                                    $auth->assign($seccion,$model->usuario);
-                                }
-                            }
-                        }
-                        $this->redirect(array('index'));
-                    }
+			$model->attributes=$_POST['Usuarios'];
+                        if($model->tipo_usr == 1)
+                            $model->id_usr = $_POST['clienteId'];
+                        elseif($model->tipo_usr == 2)
+                            $model->id_usr = $_POST['personalId'];
+			if($model->save())
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(

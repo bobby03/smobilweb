@@ -25,65 +25,29 @@ class RolesController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-        {
-            $return = array();
-            if(Yii::app()->user->checkAccess('createRoles'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('create'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            if(Yii::app()->user->checkAccess('readRoles'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('index','view'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            if(Yii::app()->user->checkAccess('editRoles'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('update'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            if(Yii::app()->user->checkAccess('deleteRoles'))
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('delete'),
-                    'users'     => array(Yii::app()->user->id)
-                );
-            return $return;
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+		array(
+		            'allow',
+		            'actions' => array('ajax'),
+		            'users'   => array('@'),
+		        ),
+                 // array('deny',  // deny all users
+                 //         'users'=>array('*'),
+                 // ),
+		);
 	}
 
 	/**

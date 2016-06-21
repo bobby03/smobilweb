@@ -114,21 +114,6 @@ class Roles extends SMActiveRecord
             $rol = $this->findByPk($id);
             return $rol->nombre_rol;
         }
-        public function getSeccion($id)
-        {
-            switch($id)
-            {
-                case 1: return 'Cepa'; break;
-                case 2: return 'Clientes'; break;
-                case 3: return 'Especie'; break;
-                case 4: return 'Estacion'; break;
-                case 5: return 'Personal'; break;
-                case 6: return 'Roles'; break;
-                case 7: return 'Solicitudes'; break;
-                case 8: return 'Usuarios'; break;
-                case 9: return 'Viajes'; break;
-            }
-        }
         public function adminSearch()
         {
             return array
