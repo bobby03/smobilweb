@@ -60,23 +60,51 @@ class TanqueController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
-		$model=new Tanque;
-
+            $model = new Tanque;
+            $query = Tanque::model()->findAllBySql("SELECT * FROM tanque WHERE id_estacion = ".(int)$id);
+            $array = array();
+            $i = 1;
+            foreach($query as $data)
+            {
+                $array[$i]['id'] = $data->id;
+                $array[$i]['id_estacion'] = $data->id_estacion;
+                $array[$i]['capacidad'] = $data->capacidad;
+                $array[$i]['nombre'] = $data->nombre;
+                $array[$i]['status'] = $data->status;
+                $array[$i]['activo'] = $data->activo;
+                $i++;
+            }
+            $model->status = $array;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Tanque']))
-		{
-			$model->attributes=$_POST['Tanque'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            if(isset($_POST['Tanque']))
+            {
+                foreach($_POST['Tanque']['status'] as $data)
+                {
+                    $update = new Tanque();
+                    $update->attributes = $data;
+                    if(isset($data['id']))
+                    {
+                        $update->id_estacion = $id;
+                        $update->id = $data['id'];
+                        $jquery = Yii::app()->db->createCommand()->update('tanque',$update->attributes,"id = $update->id");
+                    }
+                    else
+                    {
+                        $update->id_estacion = $id;
+                        $update->status = 1;
+                        $update->activo = 1;
+                        $update->save();
+                    }
+                }
+                $this->redirect(array('/estacion'));
+            }
+            $this->render('create',array(
+                    'model'=>$model,
+            ));
 	}
 
 	/**

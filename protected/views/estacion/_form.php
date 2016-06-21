@@ -2,6 +2,9 @@
 /* @var $this EstacionController */
 /* @var $model Estacion */
 /* @var $form CActiveForm */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
 ?>
 
 <div class="form">

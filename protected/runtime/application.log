@@ -865,3 +865,1606 @@ Stack trace:
 REQUEST_URI=/SMobilWeb/index.php/viajes
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/usuarios
 ---
+2016/06/17 20:32:54 [error] [exception.CException] CException: Estacion and its behaviors do not have a method or closure named "getAllEstacion". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('getAllEstacion', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(48): CActiveRecord->__call('getAllEstacion', Array)
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(18): CController->renderPartial('_form', Array)
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#10 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(85): CController->render('create', Array)
+#11 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
+#22 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
+---
+2016/06/17 20:38:39 [error] [exception.CException] CException: Estacion and its behaviors do not have a method or closure named "getAllEstacion". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('getAllEstacion', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\models\Viajes.php(146): CActiveRecord->__call('getAllEstacion', Array)
+#2 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\index.php(30): Viajes->adminSearch()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(144): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/estacion/index
+---
+2016/06/17 20:38:55 [error] [exception.CException] CException: Estacion and its behaviors do not have a method or closure named "getAllEstacion". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('getAllEstacion', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\models\Viajes.php(146): CActiveRecord->__call('getAllEstacion', Array)
+#2 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\index.php(30): Viajes->adminSearch()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(144): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/estacion/index
+---
+2016/06/17 20:39:17 [error] [exception.CException] CException: Estacion and its behaviors do not have a method or closure named "getAllEstacion". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('getAllEstacion', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\models\Viajes.php(146): CActiveRecord->__call('getAllEstacion', Array)
+#2 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\index.php(30): Viajes->adminSearch()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(144): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/estacion/index
+---
+2016/06/17 20:51:42 [error] [exception.CException] CException: Property "NCButtonColumn.tanqueButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\components\NCButtonColumn.php(23): CComponent->__get('tanqueButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): NCButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\index.php(32): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(140): CController->render('index', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/estacion
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/create
+---
+2016/06/17 20:52:41 [error] [exception.CException] CException: Property "NCButtonColumn.tanqueButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\components\NCButtonColumn.php(23): CComponent->__get('tanqueButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): NCButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\index.php(32): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(140): CController->render('index', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/estacion
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/create
+---
+2016/06/17 20:55:02 [error] [exception.CException] CException: Property "NCButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\components\NCButtonColumn.php(23): CComponent->__get('customButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): NCButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\index.php(32): CBaseController->widget('zii.widgets.gri...', Array)
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(140): CController->render('index', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/SMobilWeb/index.php/estacion
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/create
+---
+2016/06/17 21:20:51 [error] [php] Illegal string offset 'name' (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:2657)
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(24): CActiveForm->textField()
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php(18): TanqueController->renderPartial()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(78): TanqueController->render()
+#10 unknown(0): TanqueController->actionCreate()
+#11 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (24)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php (18)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (78)
+2016/06/17 21:21:51 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:2524)
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(24): CActiveForm->dropDownList()
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php(18): TanqueController->renderPartial()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(78): TanqueController->render()
+#10 unknown(0): TanqueController->actionCreate()
+#11 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (24)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php (18)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (78)
+2016/06/17 21:31:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "index.php/estacion". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/estac...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/index.php/estacion
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/tanque/create/1
+---
+2016/06/17 22:05:58 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT * FROM tanques WHERE id_estacion = 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (66)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 22:05:58 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT * FROM tanques WHERE id_estacion = 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1586): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(66): CActiveRecord->findAllBySql('SELECT * FROM t...')
+#3 [internal function]: TanqueController->actionCreate('1')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TanqueController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TanqueController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tanque/create')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/estacion
+---
+2016/06/17 22:06:12 [error] [exception.CException] CException: Property "Tanque.domicilio" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('domicilio')
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(71): CActiveRecord->__get('domicilio')
+#2 [internal function]: TanqueController->actionCreate('1')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TanqueController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TanqueController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tanque/create')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/estacion
+---
+2016/06/17 22:16:06 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2454): tag()
+#2 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): activeInputField()
+#3 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): activeTextField()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(44): CActiveForm->textField()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#13 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(93): TanqueController->render()
+#14 unknown(0): TanqueController->actionCreate()
+#15 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (44)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (93)
+2016/06/17 22:16:29 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2454): tag()
+#2 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): activeInputField()
+#3 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): activeTextField()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(44): CActiveForm->textField()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#13 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(93): TanqueController->render()
+#14 unknown(0): TanqueController->actionCreate()
+#15 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (44)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (93)
+2016/06/17 22:17:10 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2454): tag()
+#2 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): activeInputField()
+#3 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): activeTextField()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(46): CActiveForm->textField()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#13 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(93): TanqueController->render()
+#14 unknown(0): TanqueController->actionCreate()
+#15 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (46)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (93)
+2016/06/17 22:17:22 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2454): tag()
+#2 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): activeInputField()
+#3 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): activeTextField()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(46): CActiveForm->textField()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#13 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(93): TanqueController->render()
+#14 unknown(0): TanqueController->actionCreate()
+#15 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (46)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (93)
+2016/06/17 22:17:29 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2454): tag()
+#2 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): activeInputField()
+#3 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): activeTextField()
+#4 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php(46): CActiveForm->textField()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#8 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#13 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(93): TanqueController->render()
+#14 unknown(0): TanqueController->actionCreate()
+#15 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (46)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (93)
+2016/06/17 22:22:16 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php:24)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(94): TanqueController->render()
+#7 unknown(0): TanqueController->actionCreate()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (24)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (94)
+2016/06/17 22:22:46 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php:24)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php(21): TanqueController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(94): TanqueController->render()
+#7 unknown(0): TanqueController->actionCreate()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (24)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\update.php (21)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (94)
+2016/06/17 22:22:56 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php:24)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php(18): TanqueController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(92): TanqueController->render()
+#7 unknown(0): TanqueController->actionCreate()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (24)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php (18)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (92)
+2016/06/17 22:22:59 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php:24)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php(18): TanqueController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): TanqueController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): TanqueController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): TanqueController->renderPartial()
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(92): TanqueController->render()
+#7 unknown(0): TanqueController->actionCreate()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): TanqueController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): TanqueController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): TanqueController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): TanqueController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\_form.php (24)
+in C:\xampp\htdocs\SmobilWeb\protected\views\tanque\create.php (18)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (92)
+2016/06/17 23:39:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:39:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:39:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:39:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:41:59 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:41:59 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:41:59 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:41:59 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:55 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:55 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:55 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:43:55 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:09 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:09 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:09 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:09 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:49 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tanque` (`capacidad`, `nombre`, `status`, `activo`, `id_estacion`, `id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (100)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:44:49 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tanque` (`capacidad`, `nombre`, `status`, `activo`, `id_estacion`, `id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(100): CActiveRecord->save()
+#3 [internal function]: TanqueController->actionCreate('1')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TanqueController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TanqueController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tanque/create')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/tanque/create/1
+---
+2016/06/17 23:47:23 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:47:23 [error] [exception.CException] CException: CDbConnection and its behaviors do not have a method or closure named "update". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(93): CComponent->__call('update', Array)
+#1 [internal function]: TanqueController->actionCreate('1')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TanqueController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TanqueController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tanque/create')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/SMobilWeb/index.php/tanque/create/1
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/tanque/create/1
+---
+2016/06/17 23:48:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/17 23:48:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/20 18:27:11 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "logout". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('logout')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/logout
+---
+2016/06/20 18:31:05 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Dragon' in 'where clause'. The SQL statement executed was: SELECT id FROM usuarios WHERE usuario = Dragon.
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (38)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 18:31:05 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Dragon' in 'where clause'. The SQL statement executed was: SELECT id FROM usuarios WHERE usuario = Dragon in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1563): CDbCommand->queryRow()
+#2 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(38): CActiveRecord->findBySql('SELECT id FROM ...')
+#3 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#4 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#5 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#6 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 18:37:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "login". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('login')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/SMobilWeb/index.php/login
+---
+2016/06/20 20:20:42 [error] [exception.CException] CException: Property "CWebUser._id" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(160): CComponent->__set('_id', '3')
+#1 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(39): CWebUser->__set('_id', '3')
+#2 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 20:26:46 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid.
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (53)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 20:26:46 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(337): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(74): CDbAuthManager->getAuthAssignments('3')
+#3 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CDbAuthManager->checkAccess('delete', '3', Array)
+#4 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(53): CWebUser->checkAccess('delete')
+#5 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#6 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#7 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#8 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 20:41:02 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid.
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (53)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 20:41:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(337): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(74): CDbAuthManager->getAuthAssignments('3')
+#3 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CDbAuthManager->checkAccess('delete', '3', Array)
+#4 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(53): CWebUser->checkAccess('delete')
+#5 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#6 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#7 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#8 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 20:41:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid.
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (53)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 20:41:10 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(337): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(74): CDbAuthManager->getAuthAssignments('3')
+#3 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CDbAuthManager->checkAccess('', '3', Array)
+#4 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(53): CWebUser->checkAccess('')
+#5 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#6 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#7 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#8 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 20:44:39 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authitem' doesn't exist. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (53)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 20:44:39 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authitem' doesn't exist. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(100): CDbAuthManager->createAuthItem('alta', 0, 'Dar de alta un ...', NULL, NULL)
+#3 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(53): CAuthManager->createOperation('alta', 'Dar de alta un ...')
+#4 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#5 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 20:54:14 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authitem' doesn't exist. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (53)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 20:54:14 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.authitem' doesn't exist. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(100): CDbAuthManager->createAuthItem('alta', 0, 'Dar de alta un ...', NULL, NULL)
+#3 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(53): CAuthManager->createOperation('alta', 'Dar de alta un ...')
+#4 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#5 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 21:02:10 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (53)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 21:02:10 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(100): CDbAuthManager->createAuthItem('alta', 0, 'Dar de alta un ...', NULL, NULL)
+#3 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(53): CAuthManager->createOperation('alta', 'Dar de alta un ...')
+#4 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#5 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 22:10:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Cepa' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\RolesController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/20 22:10:43 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Cepa' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(72): CDbAuthManager->createAuthItem('Cepa', 2, '', NULL, NULL)
+#3 C:\xampp\htdocs\SmobilWeb\protected\controllers\RolesController.php(88): CAuthManager->createRole('Cepa')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): RolesController->actionCreate()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('roles/create')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/roles/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/roles/create
+---
+2016/06/20 22:31:54 [error] [exception.CException] CException: CWebUser and its behaviors do not have a method or closure named "getRoles". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(40): CComponent->__call('getRoles', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#2 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#3 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#5 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#12 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 22:32:44 [error] [php] Object of class CWebUser could not be converted to string (C:\xampp\htdocs\yii\framework\db\CDbCommand.php:510)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(411): CDbCommand->queryAll()
+#1 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(112): CDbAuthManager->getAuthItems()
+#2 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(40): CDbAuthManager->getRoles()
+#3 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#4 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate()
+#5 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute()
+#6 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CInlineValidator->validate()
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): LoginForm->validate()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/site/login
+in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php (40)
+in C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (94)
+2016/06/20 22:33:04 [error] [exception.CException] CException: Property "CWebUser.username" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(146): CComponent->__get('username')
+#1 C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php(40): CWebUser->__get('username')
+#2 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 23:00:39 [error] [exception.Error] Error: Class name must be a valid object or a string in C:\xampp\htdocs\SmobilWeb\protected\components\UserIdentity.php:53
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#1 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#2 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#4 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(94): CModel->validate()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/SMobilWeb/index.php/site/login
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/site/login
+---
+2016/06/20 23:35:56 [error] [php] array_map(): Argument #2 should be an array (C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:115)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CepaController->filterAccessControl()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(265): CepaController->runActionWithFilters()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CepaController->run()
+#5 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/cepa
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/20 23:36:01 [error] [php] array_map(): Argument #2 should be an array (C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:115)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CepaController->filterAccessControl()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(265): CepaController->runActionWithFilters()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CepaController->run()
+#5 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/cepa
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/20 23:37:37 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:38:17 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:40:02 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:42:52 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:42:58 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:43:24 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:43:37 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:44:16 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:46:07 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/update')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/update/4
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:46:20 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/create')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/20 23:46:43 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:43 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "Cepa". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('Cepa')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Cepa')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/Cepa/delet...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/Cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:44 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:45 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:45 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:46 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:46 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:46 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:47 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:46:47 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa/delete')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa/delete?id=8
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa/index
+---
+2016/06/20 23:57:26 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/clientes
+---
+2016/06/20 23:57:28 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cepa')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/cepa
+HTTP_REFERER=http://localhost/SMobilWeb/index.php
+---
+2016/06/21 01:07:15 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\controllers\UsuariosController.php:96)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): UsuariosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): UsuariosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): UsuariosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): UsuariosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/usuarios/create
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\UsuariosController.php (96)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/21 01:07:50 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\UsuariosController.php:96)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): UsuariosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): UsuariosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): UsuariosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): UsuariosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/usuarios/create
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\UsuariosController.php (96)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/21 01:18:08 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('clientes')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/clientes
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/cepa
+---
+2016/06/21 01:18:10 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/estacion
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/especie
+---
+2016/06/21 01:18:11 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('roles')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/roles
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/personal
+---
+2016/06/21 01:18:12 [error] [exception.CHttpException.403] CHttpException: Usted no está autorizado para realizar esta acción. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no est\xE1 a...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/SMobilWeb/index.php/usuarios
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes
+---

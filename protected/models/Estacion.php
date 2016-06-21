@@ -35,7 +35,7 @@ class Estacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo, identificador, no_personal, marca, color, ubicacion, disponible', 'required'),
+			array('tipo, identificador, no_personal, marca, color, ubicacion', 'required'),
 			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
 			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -149,6 +149,22 @@ class Estacion extends CActiveRecord
                 case 1: return 'Sí'; break;
             }
         }
+        public function getAllEstacionMovil()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 1');
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getAllEstacionFija()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 2');
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
         public function getAllEstacion()
         {
             $estacion = Estacion::model()->findAll();
@@ -187,7 +203,16 @@ class Estacion extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'buttons' => array
+                    (
+                        'tanque' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.png',
+                            'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
+                            'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
+                        )
+                    )
 		)
             );
         }
