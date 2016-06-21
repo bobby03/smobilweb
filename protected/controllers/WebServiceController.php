@@ -73,8 +73,9 @@ class WebServiceController extends CController
     public function actionGetViaje(){
         $idResp = isset($_GET['idResp'])?$_GET['idResp']:0;
         $idViaje = isset($_GET['Viaje'])?$_GET['Viaje']:0;
-        $ac = array();
+        $ac = array(); $result = null;
         $temp = null;
+        $sol = null;
         //----------- Query for Solicitudes.
         $sol = Yii::app()->db->createCommand()
             ->select('sv.id_personal,sv.id_solicitud,s.id, s.id_clientes, s.codigo, s.fecha_alta, s.fecha_estimada, s.fecha_entrega, s.notas')
@@ -91,14 +92,21 @@ class WebServiceController extends CController
         $idEstanque = null;
         $marca = null;
         $lenght =  count($sol);
-        // echo $lenght;
+        if($sol != null){
+            // echo $lenght;
         foreach($sol as $key => $value){
             $idSol = $value['id_solicitud'];
             // $Codigo =$value['codigo'];
             // echo $Codigo."<br>";
+            $resp = Yii::app()->db->createCommand()
+                ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo, v.id_responsable")
+                ->from ("personal p")
+                ->join('viajes v','v.id = '.$idViaje )
+                ->where("p.id = v.id_responsable")
+                ->queryRow();
 
             $per = Yii::app()->db->createCommand()
-                ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo")
+                ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo, p.puesto")
                 ->from ("personal p")
                 ->where("p.id = :id",array(":id"=>$value['id_personal']) )
                 ->queryRow();
@@ -113,7 +121,10 @@ class WebServiceController extends CController
 
             if( $idSol > $tIDSol){  
                 if($tIDSol>0){
-                    $ac[] = array('codigo'=>$Codigo,
+                    $ac[] = array(
+                        'idViaje'=>$idViaje,
+                        'codigo'=>$Codigo,
+                        'Resp'=>$resp['nombre']." ".$resp['apellido'],
                         'fecha_alta'=>$fAlta,
                         'fecha_entrega'=>$fEntrega,
                         'notas'=>$notas,
@@ -136,11 +147,15 @@ class WebServiceController extends CController
                         'apellido'=>$per['apellido'],
                         'rfc'=>$per['rfc'],
                         'correo'=>$per['correo'],
+                        'puesto'=>$per['puesto'],
                     );
 
             }//first time
             if($key == $lenght-1){
-                $ac[] = array('codigo'=>$Codigo,
+                $ac[] = array(
+                    'idViaje'=>$idViaje,
+                    'codigo'=>$Codigo,
+                    'Resp'=>$resp['nombre']." ".$resp['apellido'],
                     'fecha_alta'=>$value['fecha_alta'],
                     'fecha_alta'=>$fAlta,
                     'fecha_entrega'=>$fEntrega,
@@ -152,50 +167,11 @@ class WebServiceController extends CController
             
             
         }//end foreach
-
-echo json_encode($ac);
-        //----------- Query for Personal
-        $per = Yii::app()->db->createCommand()
-            ->select ('sv.id_solicitud, p.nombre, p.apellido, p.rfc, p.correo')
-            ->from ('personal p')
-            ->join ('solicitudes_viaje sv','sv.id_personal = p.id')
-            ->where ('sv.id_viaje = :id',array(':id'=>$idViaje))
-            ->queryAll();
-        // echo json_encode($per);
-        $rx = Yii::app()->db->createCommand()
-            ->select('p.nombre, p.apellido, p.rfc, p.correo, p.puesto, s.codigo, s.fecha_estimada,v.status')
-            ->from('solicitudes_viaje sv')
-            ->join('personal p','sv.id_personal = p.id')
-            ->join('solicitudes s','sv.id_solicitud = s.id')
-            ->join('viajes v','v.id = sv.id_viaje')
-            ->where('sv.id_viaje = :id',array(':id'=>$idViaje))
-            ->order('s.codigo desc')
-            ->queryAll();
-        if($rx != null){
-            foreach ($rx as $key =>$value) {
-                # code...
-                $aPasajeros = array();
-                $aSolicitudes = array();
-                $aViajes = array();
-                $aPasajeros = array('nombre'=>$value['nombre'],
-                    'apellido'=>$value['apellido'],
-                    'rfc'=>$value['rfc'],
-                    'correo'=>$value['correo'],
-                    'puesto'=>$value['puesto'],
-                );
-                $aSolicitudes = array('codigo'=>$value['codigo'],
-                    'fecha_estimada'=>$value['fecha_estimada'],
-                    'status'=>$value['status']);
-
-               $ac[] = array('Solicitudes'=>$aSolicitudes,'Personal'=>$aPasajeros);
-            }
-            $ac = array('Pasajeros'=>$ac);
-        }else{
-            $ac=array('Solicitud'=>'No válida','estado'=>'No Válida','code'=>400);
-        }
-
-
-        // echo json_encode($ac);
+        $result=array('solicitud'=>$ac);
+    }else{
+        $result=array('Solicitud'=>'No válida','estado'=>'No Válida','code'=>400);
+    }
+        echo json_encode($result);
     }
 
     public function actionGetDataDriver(){
@@ -209,12 +185,13 @@ echo json_encode($ac);
     	//query
     	$ac = Yii::app()->db->createCommand()
             ->select('s.id as id, s.codigo, s.fecha_alta, s.hora_alta, s.fecha_estimada, s.hora_estimada, s.notas, v.fecha_salida, v.hora_salida, v.status, v.hora_entrega, v.fecha_entrega, v.id as idViaje')
+
             ->from('viajes v')
             ->join('solicitudes s', 'v.id_solicitudes = s.id')
             ->where('v.id_responsable = :id',array(':id'=>$id_usr)  )
             ->queryAll();
 
-        if(isset($ac) ){
+        if($ac != null ){
             foreach ($ac as $key => $value) {
                 $ax[$key] = array('id'=>$value['id'],
                     'idViaje'=>$value['idViaje'],
