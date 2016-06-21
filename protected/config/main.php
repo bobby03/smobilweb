@@ -50,9 +50,9 @@ return array(
 			),
 		),
 		
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+//		'db'=>array(
+//			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+//		),
                 'clientScript'=>array(
 			'packages'=>array(
 				'jquery'=>array(
@@ -66,7 +66,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
-		
+		'authManager'=>array(
+                    'class'=>'CDbAuthManager',
+                    'connectionID'=>'db',
+                ),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',

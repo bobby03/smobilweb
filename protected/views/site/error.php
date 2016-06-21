@@ -9,7 +9,12 @@ $this->breadcrumbs=array(
 ?>
 
 <h2>Error <?php echo $code; ?></h2>
-
-<div class="error">
-<?php echo CHtml::encode($message); ?>
+<?php if($code == 'Error 403'):?>
+<div class="error2">
+    usted no está autorizado para realizar esta acción.
 </div>
+<?php else:?>
+<div class="error3">
+<?php echo $message; ?>
+</div>
+<?php endif;?>
