@@ -3,6 +3,8 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js');
+    $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets/js/chosen.jquery.min.js');
+    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets/css/chosen.min.css');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/create.css');
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (
@@ -19,7 +21,7 @@
 
 <div class="form">
 
-    <div class="formContainer">
+    <div class="formContainer1">
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'solicitudes-form',
     //        'htmlOptions'=>array('name'=>'SolicitudesForm'),
@@ -29,7 +31,7 @@
             // See class documentation of CActiveForm for details on this.
             'enableAjaxValidation'=>false,
     )); ?>
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
 
 	<?php echo $form->errorSummary($model); ?>
         <h2>Clientes</h2>
@@ -99,18 +101,21 @@
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
     </div>
-    <div class="formContainer">
-        <div class="fechaYora">
-            <div class="dateHoy"><?php echo date('d/m/Y');?></div>
-            <div class="timeHoy">
-                <?php 
-                    date_default_timezone_set("Pacific/Easter");
-                    echo date('h:i');
-                ?>
+    <div class="formContainer2">
+        <h2>Detalles</h2>
+        <div class="wraper">
+            <div class="fechaYora">
+                <div class="dateHoy"><?php echo date('d/m/Y');?></div>
+                <div class="timeHoy">
+                    <?php 
+                        date_default_timezone_set("Pacific/Easter");
+                        echo date('h:i');
+                    ?>
+                </div>
             </div>
-        </div>
-        <div class="datosCliente">
-            
+            <div class="datosCliente">
+
+            </div>
         </div>
     </div>
 

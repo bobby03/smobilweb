@@ -141,7 +141,7 @@ class Cepa extends CActiveRecord
             $return = '';
             foreach($cepas as $data)
                 $return = $return.<<<eof
-                    <option value="$data->id">$data->nombre_cepa</option>
+                    <option value="$data->id" data-cnt="$data->cantidad">$data->nombre_cepa</option>
 eof;
             
             return $return;

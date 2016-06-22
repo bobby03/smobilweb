@@ -166,7 +166,6 @@ class CepaController extends Controller
 	 */
 	public function actionIndex()
 	{
-            print_r(Yii::app()->user->id);
             $model=new Cepa('search');
             $model->unsetAttributes(); 
             if(isset($_GET['Cepa']))

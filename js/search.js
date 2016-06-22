@@ -5,7 +5,7 @@ $(document).ready(function()
 	return false;
     });
     $('.search-form form').submit(function(){
-            $('#especie-grid').yiiGridView('update', {
+            $('.grid-view').yiiGridView('update', {
                     data: $(this).serialize()
             });
             return false;

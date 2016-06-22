@@ -1,9 +1,25 @@
-div.formContainer
+div.formContainer1
 {
-    width: 50%;
+    width: 35%;
     float: left;
 }
-
+div.formContainer2
+{
+    width: 60%;
+    float: right;
+}
+div.form h2
+{
+    background-color: #E6E7E8;
+    color: #0077B0;
+    line-height: 30px;
+    text-align: center;
+}
+div.form input, .css-select
+{
+    width: 100%;
+    box-sizing: border-box;
+}
 div.form:after
 {
     display: block;

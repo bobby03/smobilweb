@@ -1,5 +1,8 @@
 div.form
 {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 div.form input,
@@ -156,6 +159,12 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	clear: left;
 	padding-left: 110px;
 }
+div.chosen-container
+{
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
 div.formContainer1:after,
 div.row.titulos:after,
 div.row:after

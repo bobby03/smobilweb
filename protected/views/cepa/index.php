@@ -30,7 +30,6 @@ $this->menu=array(
 	'id'=>'cepa',
 	'dataProvider'=>$model->search(),
 	'summaryText'=> '',
-	
 	'columns'=>$model->adminSearch()
 )); ?>
 
