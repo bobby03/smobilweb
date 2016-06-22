@@ -71,12 +71,12 @@ class Personal extends CActiveRecord
 			'id' => 'ID',
 			'nombre' => 'Nombre',
 			'apellido' => 'Apellido',
-			'tel' => 'Tel',
-			'rfc' => 'Rfc',
 			'domicilio' => 'Domicilio',
 			'id_rol' => 'Rol',
-			'correo' => 'Correo',
 			'puesto' => 'Puesto',
+			'correo' => 'Correo electrónico',
+			'rfc' => 'RFC',
+			'tel' => 'Teléfono',
 		);
 	}
 
@@ -142,21 +142,23 @@ class Personal extends CActiveRecord
             (
                 'nombre',
                 'apellido',
-                'tel',
-                'rfc',
-                'domicilio',
+                
+                
+               // 'domicilio',
                 array
                 (
                     'name' => 'id_rol',
                     'value' => 'Roles::model()->getRol($data->id_rol)',
                     'filter' => Roles::model()->getAllRoles()
                 ),
+                'puesto', 
                 'correo',
-                'puesto',
+                'rfc',
+                'tel',
                 array
                 (
                     'class'=>'NCButtonColumn',
-                    'header'=>'Acciones',
+                    'header'=>'Operaciones',
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
 		)
             );

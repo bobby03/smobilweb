@@ -137,16 +137,16 @@ class Estacion extends CActiveRecord
         {
             return array
             (
-                '0' => 'No',
                 '1' => 'Sí',
+                '2' => 'No',
             );
         }
         public function getDisponible($id)
         {
             switch ($id)
             {
-                case 0: return 'No'; break;
                 case 1: return 'Sí'; break;
+                case 2: return 'No'; break;
             }
         }
         public function getAllEstacionMovil()
@@ -177,6 +177,16 @@ class Estacion extends CActiveRecord
         {
             $estacion = Estacion::model()->findByPk($id);
             return $estacion->identificador;
+        }
+        public function getEstacionSolicitud()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 1 and disponible = 1');
+            $return = array();
+            foreach($estacion as $data)
+            {
+                $return[$data->id] = $data->identificador;
+            }
+            return $return;
         }
         public function adminSearch()
         {

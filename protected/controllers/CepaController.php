@@ -25,29 +25,66 @@ class CepaController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array(
-		            'allow',
-		            'actions' => array('ajax'),
-		            'users'   => array('@'),
-		        ),
-                 // array('deny',  // deny all users
-                 //         'users'=>array('*'),
-                 // ),
-		);
+
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createCepa') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readCepa') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editCepa') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteCepa') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -130,6 +167,7 @@ class CepaController extends Controller
 	 */
 	public function actionIndex()
 	{
+<<<<<<< HEAD
 
 		$model=new Cepa('search');
 		$model->unsetAttributes(); 
@@ -138,6 +176,16 @@ class CepaController extends Controller
 		$this->render('index',array(
 			'model'=>$model,
 		));
+=======
+            print_r(Yii::app()->user->id);
+            $model=new Cepa('search');
+            $model->unsetAttributes(); 
+            if(isset($_GET['Cepa']))
+                    $model->attributes=$_GET['Cepa'];
+            $this->render('index',array(
+                    'model'=>$model,
+            ));
+>>>>>>> 060c1099802ad6c1d013b7c274cff09677ff852d
 	}
 
 	/**

@@ -19,26 +19,28 @@ body
 {
     margin: 0;
     padding: 0;
-    border-bottom: 2px solid #49dbd0;
+    border-bottom: 1px solid #49dbd0;
     height:48px;
     background-color: #e6e7e8;
     position: fixed;
     top:0;
     right:0;
     display:block;
-    width: calc(100% - 182px);
-    box-shadow: 2px 2px 15px 3px rgba(0, 0, 0, 0.5);
+    width: calc(100% - 180px);
     z-index: 10;
+
 }
+
 
 #content
 {
-    padding: 20px;
-}
+    padding: 0;
+ }
 #contentWrapper
 {
-	margin-left: 180px;
-	margin-top: 48px;
+	margin-left: 179px;
+	margin-top: 47px;
+
 }
 
 #sidebar
@@ -71,7 +73,8 @@ body
 	height: 100%;
 	box-sizing:border-box;
 	padding:0 10px;
-        z-index: 10;
+    z-index: 10;
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.5 );
 }
 
 #mainmenu ul
@@ -83,7 +86,7 @@ body
 }
 #mainmenu .menuTop
 {
-	height: 48px;
+	height: 85px;
 	width: 100%;
 	border-bottom: 1px solid #49DBD0;
 
@@ -274,8 +277,54 @@ div.botones-content div.aceptar-boton
     height: 30px;
     cursor: pointer;
 }
+.grid-view {
+    padding: 15px 107px;
+    width: 900px;
+}
+
 .grid-view .button-column img
 {
     width: 16px;
     height: 16px;
+}
+
+.grid-view table.items{
+	border:none;
+   
+}
+
+.grid-view table.items td{
+	border: none;
+}
+
+.grid-view table.items th{
+	background:#ffffff;
+	text-align: left;
+	color: #0077b0;
+}
+.grid-view table.items th a {
+     color: #0077b0 ;
+   }
+.grid-view table.items tr.odd {
+    background: #E8E8E8 ;
+}
+.grid-view table.items tr.even {
+    background: #ffffff;
+}
+.grid-view table.items tr:hover.selected {
+    background: #a9efe9;
+}
+
+.grid-view table.items tbody tr:hover {
+    background: #d4f7f4;
+}
+
+h1 {
+	line-height: 36px;
+	text-indent:50px;
+	background: #0077B0;
+    border-bottom: 2px solid #49dbd0;
+    height: 36px;
+    font-size: 21px;
+    color: white;
 }

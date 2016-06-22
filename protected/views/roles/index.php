@@ -26,7 +26,7 @@
 (
     'id'=>'rol',
     'dataProvider'=>$model->search(),
-    'filter'=>$model,
+   
     'summaryText'=> '',
     'columns'=>$model->adminSearch()
 )); ?>

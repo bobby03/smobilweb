@@ -25,29 +25,66 @@ class RolesController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-		array(
-		            'allow',
-		            'actions' => array('ajax'),
-		            'users'   => array('@'),
-		        ),
-                 // array('deny',  // deny all users
-                 //         'users'=>array('*'),
-                 // ),
-		);
+
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createRoles') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readRoles') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editRoles') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteRoles') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -79,6 +116,7 @@ class RolesController extends Controller
                     if($model->save())
                     {
                         $i = 1;
+                        $auth = Yii::app()->authManager;
                         foreach($_POST['RolesPermisos']['seccion'] as $data)
                         {
                             $acciones2 = new RolesPermisos;
@@ -89,6 +127,29 @@ class RolesController extends Controller
                             $acciones2->consulta = $data['consulta'];
                             $acciones2->edicion = $data['edicion'];
                             $acciones2->save();
+                            $roles = new Roles();
+                            $nombreSeccion = $roles->getSeccion($data['seccion']);
+                            $seccion = '';
+                            if($data['alta'] == 1)
+                            {
+                                $seccion = 'create'.$nombreSeccion;
+                                $auth->assign($seccion,$model->nombre_rol);
+                            }
+                            if($data['baja'] == 1)
+                            {
+                                $seccion = 'delete'.$nombreSeccion;
+                                $auth->assign($seccion,$model->nombre_rol);
+                            }
+                            if($data['consulta'] == 1)
+                            {
+                                $seccion = 'read'.$nombreSeccion;
+                                $auth->assign($seccion,$model->nombre_rol);
+                            }
+                            if($data['edicion'] == 1)
+                            {
+                                $seccion = 'update'.$nombreSeccion;
+                                $auth->assign($seccion,$model->nombre_rol);
+                            }
                             $i++;
                         }
                         $this->redirect(array('index'));
@@ -125,17 +186,49 @@ class RolesController extends Controller
                 $acciones->seccion = $array;
 		if(isset($_POST['Roles']))
 		{
-			$model->attributes=$_POST['Roles'];
-			if($model->save())
+                    $oldRol = Roles::model()->findByPk($model->id);
+                    $model->attributes=$_POST['Roles'];
+                    
+                    if($model->save())
+                    {
+                        $delete = Yii::app()->db->createCommand("DELETE FROM AuthAssignment WHERE userid = '{$oldRol->nombre_rol}'")->execute();
+                        $auth = Yii::app()->authManager;
+                        $i = 1;
+                        foreach($_POST['RolesPermisos']['seccion'] as $data)
                         {
-                            foreach($_POST['RolesPermisos']['seccion'] as $data)
+                            $update = RolesPermisos::model()->findBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND seccion = {$i}");
+                            if($update != '' && $update != null)
                             {
-                                $update = RolesPermisos::model()->findBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND seccion = {$data['seccion']}");
                                 $update->attributes = $data;
                                 $update->save();
+                                $roles = new Roles();
+                                $nombreSeccion = $roles->getSeccion($data['seccion']);
+                                $seccion = '';
+                                if($data['alta'] == 1)
+                                {
+                                    $seccion = 'create'.$nombreSeccion;
+                                    $auth->assign($seccion,$model->nombre_rol);
+                                }
+                                if($data['baja'] == 1)
+                                {
+                                    $seccion = 'delete'.$nombreSeccion;
+                                    $auth->assign($seccion,$model->nombre_rol);
+                                }
+                                if($data['consulta'] == 1)
+                                {
+                                    $seccion = 'read'.$nombreSeccion;
+                                    $auth->assign($seccion,$model->nombre_rol);
+                                }
+                                if($data['edicion'] == 1)
+                                {
+                                    $seccion = 'update'.$nombreSeccion;
+                                    $auth->assign($seccion,$model->nombre_rol);
+                                }
                             }
+                            $i++;
                         }
-                        $this->redirect(array('index'));
+                    }
+                    $this->redirect(array('index'));
 		}
 		$this->render('create',array(
 			'model'=>$model,

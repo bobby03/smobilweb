@@ -28,6 +28,6 @@
     'id'=>'solicitud',
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
-    'filter'=>$model,
+    
     'columns'=>$model->adminSearch()
 )); ?>

@@ -35,7 +35,7 @@ class SolicitudTanques extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_solicitud, id_tanque, id_domicilio, id_cepas, cantidad_cepas', 'required'),
+			array('id_tanque', 'required'),
 			array('id_solicitud, id_tanque, id_domicilio, id_cepas, cantidad_cepas', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

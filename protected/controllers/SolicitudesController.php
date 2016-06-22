@@ -25,29 +25,66 @@ class SolicitudesController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array(
-		            'allow',
-		            'actions' => array('ajax'),
-		            'users'   => array('@'),
-		        ),
-                 // array('deny',  // deny all users
-                 //         'users'=>array('*'),
-                 // ),
-		);
+
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createSolicitudes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readSolicitudes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editSolicitudes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteSolicitudes') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -68,6 +105,9 @@ class SolicitudesController extends Controller
 	public function actionCreate()
 	{
 		$model= new Solicitudes;
+                $estaciones = new Estacion();
+                $especies = new Especie();
+                $cepa = new Cepa();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -82,7 +122,10 @@ class SolicitudesController extends Controller
 		}
 
 		$this->render('create',array(
-                    'model'=>$model
+                    'model'=>$model,
+                    'estaciones'=>$estaciones,
+                    'especies'=>$especies,
+                    'cepa'=>$cepa
 		));
 	}
 
@@ -181,6 +224,23 @@ class SolicitudesController extends Controller
 	 * Performs the AJAX validation.
 	 * @param Solicitudes $model the model to be validated
 	 */
+        public function actionGetCliente($id)
+        {
+            $cliente = Clientes::model()->findByPk($id);
+            $return = <<<eof
+                    <div class="datosContacto">$cliente->nombre_contacto</div>
+                    <div class="datosContacto">$cliente->apellido_contacto</div>
+                    <div class="datosContacto">$cliente->correo</div>
+                    <div class="datosContacto">$cliente->rfc</div>
+                    <div class="datosContacto">$cliente->tel</div>
+eof;
+            echo json_encode($return);
+        }
+        public function actionGetCepas($id)
+        {
+            $return = Cepa::model()->getCepasEspecie($id);
+            echo json_encode($return);
+        }
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='solicitudes-form')
