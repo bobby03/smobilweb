@@ -19,5 +19,6 @@ $this->menu=array(
     (
         'model'=>$model,
         'estaciones'=>$estaciones,
-        'tanques'=>$tanques
+        'especies'=>$especies,
+        'cepa'=>$cepa
     )); ?>

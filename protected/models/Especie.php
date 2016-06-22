@@ -91,6 +91,24 @@ class Especie extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllEspeciesSolicitud()
+        {
+            $especies = $this->findAll();
+            $cepa = Cepa::model()->findAll();
+            $return = array();
+            foreach($especies as $data)
+            {
+                $i = 0;
+                foreach($cepa as $info)
+                {
+                    if($info->id_especie == $data->id)
+                        $i++;
+                }
+                if($i > 0)
+                    $return[$data->id] = $data->nombre;
+            }
+            return $return;
+        }
         public function getAllEspecies()
         {
             $especies = $this->findAll();
@@ -101,8 +119,8 @@ class Especie extends CActiveRecord
         }
         public function getEspecie($id)
         {
-            $rol = $this->findByPk($id);
-            return $rol->nombre;
+            $especie = $this->findByPk($id);
+            return $especie->nombre;
         }
         public function adminSearch()
         {
