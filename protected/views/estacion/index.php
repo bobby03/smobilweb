@@ -28,7 +28,6 @@ $this->menu=array(
         'id'=>'estacion',
         'summaryText'=>'',
         'dataProvider'=>$model->search(),
-        'filter'=>$model,
         'columns'=>$model->adminSearch()
     )); 
 ?>
