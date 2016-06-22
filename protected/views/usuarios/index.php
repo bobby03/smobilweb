@@ -26,6 +26,6 @@
     'id'=>'usuario',
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
-    'filter'=>$model,
+   
     'columns'=>$model->adminSearch()
 )); ?>

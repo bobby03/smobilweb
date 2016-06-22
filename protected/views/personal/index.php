@@ -1,6 +1,7 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/personal/index.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $this->breadcrumbs=array(
         'Personals',
@@ -12,7 +13,9 @@
     );
 ?>
 
+
 <h1>Personal</h1>
+
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
