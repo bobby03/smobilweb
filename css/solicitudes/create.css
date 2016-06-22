@@ -1,0 +1,12 @@
+div.formContainer
+{
+    width: 50%;
+    float: left;
+}
+
+div.form:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}

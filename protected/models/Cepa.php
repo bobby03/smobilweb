@@ -135,6 +135,17 @@ class Cepa extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getCepasEspecie($id)
+        {
+            $cepas = Cepa::model()->findAll("id_especie = $id");
+            $return = '';
+            foreach($cepas as $data)
+                $return = $return.<<<eof
+                    <option value="$data->id">$data->nombre_cepa</option>
+eof;
+            
+            return $return;
+        }
     public function adminSearch()
     {
         return array

@@ -105,7 +105,8 @@ class SolicitudesController extends Controller
 	{
 		$model= new Solicitudes;
                 $estaciones = new Estacion();
-                $tanques = new Tanque();
+                $especies = new Especie();
+                $cepa = new Cepa();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -122,7 +123,8 @@ class SolicitudesController extends Controller
 		$this->render('create',array(
                     'model'=>$model,
                     'estaciones'=>$estaciones,
-                    'tanques'=>$tanques
+                    'especies'=>$especies,
+                    'cepa'=>$cepa
 		));
 	}
 
@@ -221,6 +223,23 @@ class SolicitudesController extends Controller
 	 * Performs the AJAX validation.
 	 * @param Solicitudes $model the model to be validated
 	 */
+        public function actionGetCliente($id)
+        {
+            $cliente = Clientes::model()->findByPk($id);
+            $return = <<<eof
+                    <div class="datosContacto">$cliente->nombre_contacto</div>
+                    <div class="datosContacto">$cliente->apellido_contacto</div>
+                    <div class="datosContacto">$cliente->correo</div>
+                    <div class="datosContacto">$cliente->rfc</div>
+                    <div class="datosContacto">$cliente->tel</div>
+eof;
+            echo json_encode($return);
+        }
+        public function actionGetCepas($id)
+        {
+            $return = Cepa::model()->getCepasEspecie($id);
+            echo json_encode($return);
+        }
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='solicitudes-form')
