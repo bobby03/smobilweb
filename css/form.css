@@ -10,6 +10,10 @@ div.form textarea,
 div.form select
 {
 	margin: 0.2em 0 0.5em 0;
+	border-radius:10px 10px 10px 10px;
+	width: 160px;
+	border:1px solid #B0B0B0 ;
+
 }
 
 div.form fieldset
@@ -146,7 +150,9 @@ div.wide.form label
 	margin-right: 10px;
 	position: relative;
 	text-align: right;
-	width: 100px;
+	width: 60px;
+    color: #0077b0;
+
 }
 
 div.wide.form .row

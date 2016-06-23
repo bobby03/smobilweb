@@ -1,6 +1,7 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/roles/roles.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/roles/roles.js');
     $this->breadcrumbs=array(
@@ -14,9 +15,7 @@
 ?>
 
 <h1>Roles</h1>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
+<div class="search-form">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
