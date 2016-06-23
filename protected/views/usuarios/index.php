@@ -1,6 +1,7 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/usuarios/usuarios.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $this->breadcrumbs=array(
 	'Usuarioses',
