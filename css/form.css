@@ -11,7 +11,16 @@ div.form select
 {
 	margin: 0.2em 0 0.5em 0;
 }
-
+/*div.form input[type="submit"]
+{
+    width: 150px;
+    float: right;
+    height: 35px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 5px;
+}*/
 div.form fieldset
 {
 	border: 1px solid #DDD;

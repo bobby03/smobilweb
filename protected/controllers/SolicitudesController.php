@@ -107,6 +107,7 @@ class SolicitudesController extends Controller
                 $estaciones = new Estacion();
                 $especies = new Especie();
                 $cepa = new Cepa();
+                $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -124,7 +125,8 @@ class SolicitudesController extends Controller
                     'model'=>$model,
                     'estaciones'=>$estaciones,
                     'especies'=>$especies,
-                    'cepa'=>$cepa
+                    'cepa'=>$cepa,
+                    'direccion'=>$direccion,
 		));
 	}
 
@@ -226,19 +228,38 @@ class SolicitudesController extends Controller
         public function actionGetCliente($id)
         {
             $cliente = Clientes::model()->findByPk($id);
-            $return = <<<eof
-                    <div class="datosContacto">$cliente->nombre_contacto</div>
-                    <div class="datosContacto">$cliente->apellido_contacto</div>
-                    <div class="datosContacto">$cliente->correo</div>
-                    <div class="datosContacto">$cliente->rfc</div>
-                    <div class="datosContacto">$cliente->tel</div>
+            $domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($id);
+            $return = array();
+            $cliente = <<<eof
+                    <div class="datosContacto">$cliente->nombre_empresa</div>
+                    <div class="datosContacto"><span>RFC: </span>$cliente->rfc</div>
+                    <div class="datosContacto"><span>Contacto: </span>$cliente->nombre_contacto $cliente->apellido_contacto</div>
+                    <div class="datosContacto"><span>E-mail: </span>$cliente->correo</div>
+                    <div class="datosContacto"><span>Teléfono: </span>$cliente->tel</div>
 eof;
+            $return['cliente'] = $cliente;
+            $return['domicilio'] = $domicilios;
             echo json_encode($return);
         }
         public function actionGetCepas($id)
         {
             $return = Cepa::model()->getCepasEspecie($id);
             echo json_encode($return);
+        }
+        public function actionAddDireccion($id, $dom, $coord, $desc)
+        {
+            $model = new ClientesDomicilio();
+            $model->id_cliente = $id;
+            $model->domicilio = $dom;
+            $model->ubicacion_mapa = $coord;
+            $model->descripcion = $desc;
+            if($model->save())
+            {
+                $return = array('boolean' => true, 'id'=>$model->id);
+            }
+            else
+                $return = array('boolean' => false);
+            echo json_encode ($return);
         }
 	protected function performAjaxValidation($model)
 	{

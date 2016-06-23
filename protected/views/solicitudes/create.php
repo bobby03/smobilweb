@@ -13,12 +13,13 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Solicitudes</h1>
+<h1>Nueva solicitud</h1>
 
 <?php $this->renderPartial('_form', array
     (
         'model'=>$model,
         'estaciones'=>$estaciones,
         'especies'=>$especies,
-        'cepa'=>$cepa
+        'cepa'=>$cepa,
+        'direccion'=>$direccion
     )); ?>

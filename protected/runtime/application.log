@@ -2119,3 +2119,131 @@ Stack trace:
 REQUEST_URI=/SMobilWeb/index.php/clientesDomicilio/admin
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/clientesDomicilio
 ---
+2016/06/23 11:02:35 [error] [php] Missing argument 2 for CActiveForm::dropDownList(), called in C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\_form.php on line 70 and defined (C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php:912)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): SolicitudesController->renderInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): SolicitudesController->renderFile()
+#2 C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\create.php(23): SolicitudesController->renderPartial()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): SolicitudesController->renderInternal()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): SolicitudesController->renderFile()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): SolicitudesController->renderPartial()
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(127): SolicitudesController->render()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): SolicitudesController->runAction()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): SolicitudesController->filterAccessControl()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): SolicitudesController->runActionWithFilters()
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SolicitudesController->run()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+in C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\_form.php (70)
+in C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\create.php (23)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php (127)
+2016/06/23 12:00:01 [error] [exception.Error] Error: Call to a member function labelEx() on unknown in C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\_form.php:30
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\create.php(23): CController->renderPartial('_form', Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(127): CController->render('create', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes
+---
+2016/06/23 12:02:11 [error] [exception.Error] Error: Call to a member function labelEx() on unknown in C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\_form.php:29
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\SmobilWeb\protected\views\solicitudes\create.php(24): CController->renderPartial('_form', Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(129): CController->render('create', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SolicitudesController->actionCreate()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes
+---
+2016/06/23 21:31:00 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('AddDireccion')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/Add...')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/AddDireccion?id=1&dom=Bah%C3%ADa+de+las+Agu%C3%ADlas+%23654&coord=(31.87981706875531%2C+-116.53841972351074)&desc=Lorem+Ipsum
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/23 22:53:32 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('AddDireccion')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/Add...')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/SMobilWeb/index.php/solicitudes/AddDireccion?id=1&dom=Bah%C3%ADa+de+las+Agu%C3%ADlas+%23654&coord=(31.87096126181592%2C+-116.67265892028809)&desc=Lorem+Ipsum
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+---
+2016/06/23 23:04:12 [warning] [application] Failed to set unsafe attribute "id" of "ClientesDomicilio".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php (169)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/23 23:04:12 [warning] [application] Failed to set unsafe attribute "id" of "ClientesDomicilio".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php (169)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/06/23 23:04:12 [warning] [application] Failed to set unsafe attribute "id" of "ClientesDomicilio".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php (169)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)

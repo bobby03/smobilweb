@@ -25,7 +25,6 @@ $(document).ready(function()
     {
         var markers = [];
         var myDir = {lat: 31.870803236698222, lng: -116.66807770729065};
-        console.log(myDir);
         var mapDiv = $('[data-map="'+noMap+'"]')[0];
         var map = new google.maps.Map(mapDiv, 
         {
@@ -60,7 +59,6 @@ $(document).ready(function()
         {
             noMap = $(this).attr('data-id');
             var ubi = $(this).find('input#ClientesDomicilio_domicilio_'+noMap+'_ubicacion_mapa').val();
-            console.log(ubi);
             if(ubi == '' || ubi == null)
                 ubi = {lat: 31.870803236698222, lng: -116.66807770729065};
             else
@@ -70,7 +68,6 @@ $(document).ready(function()
                 var index2 = ubi.length;
                 var lng = parseFloat(ubi.substring(index+2,index2-1));
                 ubi = {lat:lat, lng:lng};
-                console.log(ubi);
             }
             var markers = [];
             var myDir = ubi;
@@ -89,7 +86,6 @@ $(document).ready(function()
             markers.push(marker);
             google.maps.event.addListener(map, 'click', function( event )
             {
-                console.log(map.id); 
                 var marker = new google.maps.Marker(
                 {        
                     position: event.latLng,

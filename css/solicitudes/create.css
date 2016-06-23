@@ -5,7 +5,7 @@ div.formContainer1
 }
 div.formContainer2
 {
-    width: 60%;
+    width: 50%;
     float: right;
 }
 div.form h2
@@ -20,7 +20,162 @@ div.form input, .css-select
     width: 100%;
     box-sizing: border-box;
 }
-div.form:after
+div.formContainer2 div.wraper
+{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #0077B0;
+    padding: 10px;
+    position: relative;
+    min-height: 50px;
+}
+div.fechaYora
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+div.fechaYora div
+{
+    text-align: right;
+}
+div.datosContacto
+{
+    margin-bottom: 5px;
+}
+div.titulo, div.titulo2
+{
+    color: #0077B0;
+    font-size: 14px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+div.titulo2
+{
+    padding-top: 25px;
+}
+div.datosCliente span
+{
+    font-weight: bold;
+}
+div.form .agregar
+{
+    width: 150px;
+    float: right;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 5px;
+}
+div.row.cantidad div
+{
+    width: 45%;
+    float: left;
+}
+div.row.cantidad div:nth-child(2)
+{
+    float: right;
+}
+div.row.direcciones div.chosen-container
+{
+    width: 75% !important;
+    float: left;
+}
+div.botonOtra
+{
+    float: right;
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+div.form div.formContainer1 .row
+{
+    margin-bottom: 20px;
+}
+div.form .row.buttons
+{
+    margin-top: 25px;
+}
+div.form label
+{
+    color: #0077B0;
+    padding-bottom: 10px;
+}
+#map
+{
+    width: 350px;
+    height: 150px;
+    margin: 0 auto;
+}
+#colorbox div.row.buttons
+{
+    margin-top: 15px;
+}
+div.aceptarDireccion, div.cancelarDireccion
+{
+    width: 20%;
+    line-height: 25px;
+    text-align: center;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+}
+div.cancelarDireccion
+{
+    float: right;
+}
+div.pedido
+{
+    padding-bottom: 15px;
+}
+div.pedido:last-child
+{
+    padding-bottom: 35px;
+}
+div.datosPedido
+{
+    float: left;
+    width: 70%;
+}
+div.botonesPedido
+{
+    float: left;
+    width: 30%;
+    margin-top: 15px;
+}
+.pedidoInfo:nth-child(7)
+{
+    text-align: center;
+}
+.pedidoInfo:nth-child(6), .pedidoInfo:nth-child(7)
+{
+    width: 50%;
+    float: left;
+}
+.editarPedido, .borrarPedido
+{
+    float: left;
+    width: 50%;
+    height: 15px;
+    background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+div.form:after,
+div.input.boton:after,
+div.pedido:after
 {
     display: block;
     clear: both;
