@@ -15,7 +15,7 @@
 		<?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		<?php echo $form->label($model,'apellido'); ?>
 		<?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
@@ -52,7 +52,7 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
+	</div> -->
 
 <?php $this->endWidget(); ?>
 
