@@ -39,6 +39,7 @@ class Viajes extends CActiveRecord
 			array('id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'required'),
 			array('id, id_solicitudes, id_responsable, id_estacion', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>50),
+                        array('id_estacion','unique','message'=>'Esa estación ya está registrada en un viaje'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'safe', 'on'=>'search'),

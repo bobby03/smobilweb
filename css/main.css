@@ -283,7 +283,7 @@ div.botones-content div.aceptar-boton
 }
 .grid-view {
     padding: 15px 107px;
-    width: 900px;
+    /*width: 900px;*/
 }
 
 .grid-view .button-column img

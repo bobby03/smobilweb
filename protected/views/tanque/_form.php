@@ -23,8 +23,8 @@
 
 	<?php echo $form->errorSummary($model); ?>
         <div class="allTanques">
-            <?php if(count($model->status)>0):?>
             <?php $i = 1;?>
+            <?php if(count($model->status)>0):?>
             <?php foreach($model->status as $data):?>
                 <div class="tanque" data-id="<?php echo $i;?>">
                     <?php echo $form->hiddenField($model,"status[$i][id]");?>
@@ -53,15 +53,15 @@
                 </div>
             <?php endforeach;?>
             <?php else:?>
-                <div class="tanque" data-id="1">
-                    <div class="row">
+                <div class="tanque" data-id="<?php echo $i;?>">
+                    <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,'capacidad'); ?>
+                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
-                    <div class="row">
+                    <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
-                            <?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,"status[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
                             <?php echo $form->error($model,'nombre'); ?>
                     </div>
                 </div>

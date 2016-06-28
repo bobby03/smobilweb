@@ -13,6 +13,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Viajes</h1>
+<h1>Crear Viajes</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array(
+    'model'=>$model,
+    'pedidos'=>$pedidos
+)); ?>

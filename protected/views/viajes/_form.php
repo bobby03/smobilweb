@@ -31,7 +31,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-
+        <?php print_r($pedidos);?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_solicitudes'); ?>
 		<?php echo $form->dropDownList($model,'id_solicitudes', Clientes::model()->getAllClientesViajes(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>

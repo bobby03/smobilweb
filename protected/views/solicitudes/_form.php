@@ -33,6 +33,7 @@
     <div class="formContainer1">
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'solicitudes-form',
+            'action'=>$baseUrl.'/index.php/viajes/create',
     //        'htmlOptions'=>array('name'=>'SolicitudesForm'),
             // Please note: When you enable ajax validation, make sure the corresponding
             // controller action is handling ajax validation correctly.
@@ -95,6 +96,10 @@
                     <?php echo $form->numberField($cepa,'cantidad',array('min'=>1, 'max'=>50)); ?>
                     <?php echo $form->error($cepa,'cantidad'); ?>
                 </div>
+                <div class="noTanques">
+                    <label>Tanques requeridos</label>
+                    <input id="tanquesNO" type="number" name="noTanques" min="1">
+                </div>
             </div>
             <div class="row direcciones hide">
                 <label>Dirección</label>
@@ -149,6 +154,9 @@
                     <?php echo $form->error($model,'notas'); ?>
             </div>
             -->
+            <div class="row crearViaje hide">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+            </div>
         </div>
     </div>
     <div class="formContainer2">
@@ -164,7 +172,7 @@
             </div>
             <div class="pedidos hide">
                 <div class="titulo2">Pedido</div>
-                <div class="pedidosWraper"></div>
+                <div class="pedidosWraper" id="scroll"></div>
             </div>
         </div>
     </div>

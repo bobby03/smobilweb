@@ -71,10 +71,29 @@ div.form .agregar
     border: 0;
     border-radius: 5px;
 }
+.pedidosWraper
+{
+    max-height: 290px;
+    overflow-y: auto;
+}
+div.form div.formContainer1 .row.cantidad
+{
+    margin-bottom: 10px;
+}
 div.row.cantidad div
 {
     width: 45%;
     float: left;
+}
+div.row.cantidad div.noTanques
+{
+    float: right;
+    margin-top: 13px;
+}
+div.row.cantidad div.noTanques input
+{
+    float: right;
+    width: 50%;
 }
 div.row.cantidad div:nth-child(2)
 {
@@ -135,14 +154,31 @@ div.cancelarDireccion
 {
     float: right;
 }
-div.pedido
+#scroll::-webkit-scrollbar 
+{
+    width: 5px;
+}
+#scroll::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+#scroll::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #565656;
+}
+div.pedido:nth-child(1),
+div.pedido:nth-child(2),
+div.pedido:nth-child(3)
 {
     padding-bottom: 15px;
 }
-div.pedido:last-child
+/*div.pedido:last-child
 {
     padding-bottom: 35px;
-}
+}*/
 div.datosPedido
 {
     float: left;
@@ -154,11 +190,11 @@ div.botonesPedido
     width: 30%;
     margin-top: 15px;
 }
-.pedidoInfo:nth-child(7)
+.pedidoInfo:nth-child(8)
 {
     text-align: center;
 }
-.pedidoInfo:nth-child(6), .pedidoInfo:nth-child(7)
+.pedidoInfo:nth-child(8), .pedidoInfo:nth-child(7)
 {
     width: 50%;
     float: left;

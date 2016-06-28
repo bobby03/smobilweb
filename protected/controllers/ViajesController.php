@@ -103,23 +103,24 @@ class ViajesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Viajes;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Viajes']))
-		{
-			$model->attributes=$_POST['Viajes'];
-                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            $model=new Viajes;
+//
+//		// Uncomment the following line if AJAX validation is needed
+//		// $this->performAjaxValidation($model);
+//
+//		if(isset($_POST['Viajes']))
+//		{
+//			$model->attributes=$_POST['Viajes'];
+//                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+//                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+//			if($model->save())
+//				$this->redirect(array('index'));
+//		}
+            $pedidos = $_POST;
+            $this->render('create',array(
+                'model' =>$model,
+                'pedidos'=>$pedidos,
+            ));
 	}
 
 	/**

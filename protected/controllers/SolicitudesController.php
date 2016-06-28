@@ -111,15 +111,16 @@ class SolicitudesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Solicitudes']))
-		{
-			$model->attributes=$_POST['Solicitudes'];
-                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
-                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
-			if($model->save())
-				$this->redirect(array('index'));
-		}
+//		if(isset($_POST) && $_POST != '' && $_POST != null)
+//		{
+                    
+//			$model->attributes=$_POST['Solicitudes'];
+//                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
+//                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+//                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
+//			if($model->save())
+//				$this->redirect(array('index'));
+//		}
 
 		$this->render('create',array(
                     'model'=>$model,
@@ -135,7 +136,11 @@ class SolicitudesController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+        public function actionViajesCreate()
+        {
+            $this->render('viajesCreate',array('pedidos'=>$_POST));
+        }
+        public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
                 $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));

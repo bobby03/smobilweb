@@ -6,8 +6,8 @@ $(document).ready(function()
         $('.tanque').each(function()
         {
             total = total + 1;
-            $(this).find('input').attr('disabled','disabled');
-            $(this).find('select').attr('disabled','disabled');
+//            $(this).find('input').attr('disabled','disabled');
+//            $(this).find('select').attr('disabled','disabled');
         });
     }
     contar();
