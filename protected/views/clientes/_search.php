@@ -12,7 +12,7 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'nombre_empresa'); ?>
+	<label>Buscar:</label>
 		<?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
 	</div>
 
@@ -43,7 +43,7 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
+	</div>-->
 
 <?php $this->endWidget(); ?>
 
