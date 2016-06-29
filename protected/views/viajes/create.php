@@ -13,9 +13,11 @@ $this->menu=array(
 );
 ?>
 
-<h1>Crear Viajes</h1>
+<h1>Datos del viajes</h1>
 
 <?php $this->renderPartial('_form', array(
     'model'=>$model,
-    'pedidos'=>$pedidos
+    'pedidos'=>$pedidos,
+    'solicitudes'=>$solicitudes,
+    'personal'=>$personal
 )); ?>

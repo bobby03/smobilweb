@@ -104,22 +104,73 @@ class ViajesController extends Controller
 	public function actionCreate()
 	{
             $model=new Viajes;
-//
+            $solicitudes = new Solicitudes();
+            $personal = new SolicitudesViaje();
 //		// Uncomment the following line if AJAX validation is needed
 //		// $this->performAjaxValidation($model);
 //
-//		if(isset($_POST['Viajes']))
-//		{
-//			$model->attributes=$_POST['Viajes'];
-//                        $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-//                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-//			if($model->save())
-//				$this->redirect(array('index'));
-//		}
+            if(isset($_POST['Viajes']))
+            {
+                $model->attributes = $_POST['Viajes'];
+                $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                $solicitudes->id_clientes = $_POST['Solicitudes']['id_clientes'];
+                $solicitudes->fecha_alta = date('Y-m-d');
+                $solicitudes->hora_alta = date('h:i');
+                $codigo = substr(Clientes::model()->getCliente($solicitudes->id_clientes),0,2);
+                $codigo = $codigo.date('Ymdhi');
+                $solicitudes->codigo = $codigo;
+                if($solicitudes->save())
+                {
+                    $model->id_solicitudes = $solicitudes->id;
+                    if($model->save())
+                    {
+                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                        {
+                            $nuevo = new SolicitudesViaje();
+                            $nuevo->id_personal = $data;
+                            $nuevo->id_viaje = $model->id;
+                            $nuevo->id_solicitud = $solicitudes->id;
+                            $nuevo->save();
+                        }
+                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                        {
+                            $nuevo = new SolicitudesViaje();
+                            $nuevo->id_personal = $data;
+                            $nuevo->id_viaje = $model->id;
+                            $nuevo->id_solicitud = $solicitudes->id;
+                            $nuevo->save();
+                        }
+                        foreach($_POST['Solicitudes']['codigo'] as $data)
+                        {
+                            $nuevo = new SolicitudTanques();
+                            $nuevo->id_solicitud = $solicitudes->id;
+                            $nuevo->id_tanque = $data['tanque'];
+                            $nuevo->id_domicilio = $data['destino'];
+                            $nuevo->id_cepas = $data['cepa'];
+                            $nuevo->cantidad_cepas = $data['cantidad'];
+                            if($nuevo->save())
+                            {
+                                $cepa = Cepa::model()->findByPk($nuevo->id_cepas);
+                                $cepa->cantidad = $cepa->cantidad - $nuevo->cantidad_cepas;
+                                $cepa->save();
+                                $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
+                                $tanque->status = 2;
+                                $tanque->save();
+                            }
+                        }
+                        $estacion = Estacion::model()->findByPk($model->id_estacion);
+                        $estacion->disponible = 2;
+                        $estacion->save();
+                        $this->redirect(array('index'));
+                    }
+                }
+            }
             $pedidos = $_POST;
             $this->render('create',array(
                 'model' =>$model,
                 'pedidos'=>$pedidos,
+                'solicitudes'=>$solicitudes,
+                'personal'=>$personal,
             ));
 	}
 
@@ -216,6 +267,17 @@ class ViajesController extends Controller
 	 * Performs the AJAX validation.
 	 * @param Viajes $model the model to be validated
 	 */
+        
+        public function actionGetTanques($id)
+        {
+            $tanques = Tanque::model()->findAll("id_estacion = $id AND status = 1 AND activo = 1");
+            $return = '';
+            foreach($tanques as $data)
+                $return = $return.<<<eof
+                    <option value="$data->id">$data->nombre - $data->capacidad L</option>
+eof;
+            echo json_encode($return);
+        }
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='viajes-form')

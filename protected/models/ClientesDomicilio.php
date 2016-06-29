@@ -117,4 +117,9 @@ class ClientesDomicilio extends SMActiveRecord
 eof;
             return $return;
         }
+        public function getDomicilio($id)
+        {
+            $domicilio = ClientesDomicilio::model()->findByPk($id);
+            return $domicilio->domicilio;
+        }
 }

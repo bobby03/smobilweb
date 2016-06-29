@@ -36,9 +36,8 @@ class Viajes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'required'),
-			array('id, id_solicitudes, id_responsable, id_estacion', 'numerical', 'integerOnly'=>true),
-			array('status', 'length', 'max'=>50),
+			array('id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida', 'required'),
+			array('id, id_solicitudes, id_responsable, id_estacion, status', 'numerical', 'integerOnly'=>true),
                         array('id_estacion','unique','message'=>'Esa estación ya está registrada en un viaje'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -72,8 +71,8 @@ class Viajes extends CActiveRecord
 			'id_responsable' => 'Responsable',
 			'id_estacion' => 'Estación',
 			'status' => 'Status',
-			'fecha_salida' => 'Fecha Salida',
-			'hora_salida' => 'Hora Salida',
+			'fecha_salida' => 'Fecha estimada de salída',
+			'hora_salida' => 'Hora estimada de salída',
 			'fecha_entrega' => 'Fecha Entrega',
 			'hora_entrega' => 'Hora Entrega',
 		);
@@ -122,11 +121,48 @@ class Viajes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+    public function getFecha($date)
+    {
+        if($data != null && $data != '')
+            return date("d-m-Y", strtotime($date));
+        else
+            return 'N/A'; 
+    }
+    public function getHora($date)
+    {
+        if($data != null && $data != '')
+            return date("H:i", strtotime($date));
+        else
+            return 'N/A'; 
+    }
+    public function getAllStatus()
+    {
+        return array
+        (
+            '1' => 'En espera',
+            '2' => 'En ruta',
+            '3' => 'Terminado',
+        );
+    }
+    public function getStatus($id)
+    {
+        switch ($id)
+        {
+            case 1: return 'En espera'; break;
+            case 2: return 'En ruta'; break;
+            case 3: return 'Terminado'; break;
+        }
+    }
     public function adminSearch()
     {
         return array
         (
-            'status',
+            array
+            (
+                'name' => 'status',
+                'value' => 'Viajes::model()->getStatus($data->status)',
+                'filter' => Viajes::model()->getAllStatus()
+            ),
             array
             (
                 'name' => 'id_solicitudes',
@@ -159,7 +195,7 @@ class Viajes extends CActiveRecord
             array
             (
                 'name'=>'fecha_entrega',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+                'value' => 'Viajes::model()->getFecha($data->fecha_entrega)'
             ),
             array
             (

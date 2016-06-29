@@ -32,7 +32,6 @@ class SolicitudesViaje extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_personal, id_viaje, id_solicitud', 'required'),
 			array('id_personal, id_viaje, id_solicitud', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -105,4 +104,12 @@ class SolicitudesViaje extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getpersonal($rol)
+        {
+            $personal = Personal::model()->findAll("id_rol = $rol");
+            $return = array();
+            foreach($personal as $data)
+                $return[$data->id] = $data->nombre.' '.$data->apellido;
+            return $return; 
+        }
 }

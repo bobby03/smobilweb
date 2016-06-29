@@ -149,6 +149,14 @@ class Estacion extends CActiveRecord
                 case 2: return 'No'; break;
             }
         }
+        public function getEstacionesDisponibles()
+        {
+            $estacion = Estacion::model()->findAll("tipo = 1 AND disponible = 1 AND activo = 1");
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
         public function getAllEstacionMovil()
         {
             $estacion = Estacion::model()->findAll('tipo = 1');

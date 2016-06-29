@@ -123,4 +123,9 @@ $(document).ready(function()
             else
                 $('.row.direcciones').addClass('hide');
     }
+    $('[name="yt0"]').click(function()
+    {
+        $('#Solicitudes_id_clientes').removeAttr('disabled');
+        $('#Solicitudes_id_clientes').trigger('chosen:update');
+    });
 });

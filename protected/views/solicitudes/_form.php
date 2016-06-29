@@ -113,47 +113,11 @@
                         <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
                 </div>
             </div>
-    <!--	<div class="row">
-                <label>Estación</label>
-                <?php echo $form->dropDownList($estaciones,'identificador', $estaciones->getEstacionSolicitud(), array('class'=>'css-select','empty'=>'Selecionar')); ?>
-                <?php echo $form->error($estaciones,'identifiacdor'); ?>
-            </div>-->
-    <!--        <div class="row">
-                    <?php echo $form->labelEx($model,'codigo'); ?>
-                    <?php echo $form->textField($model,'codigo',array('maxlength'=>50)); ?>
-                    <?php echo $form->error($model,'codigo'); ?>
-            </div>
-
-            <div class="row">
-                    <?php echo $form->labelEx($model,'fecha_estimada'); ?>
-                    <?php echo $form->textField($model,'fecha_estimada', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
-                    <?php echo $form->error($model,'fecha_estimada'); ?>
-            </div>
-
-            <div class="row">
-                    <?php echo $form->labelEx($model,'hora_estimada'); ?>
-                    <?php echo $form->textField($model,'hora_estimada', array('placeholder'=>'hh:mm')); ?>
-                    <?php echo $form->error($model,'hora_estimada'); ?>
-            </div>
-
-            <div class="row">
-                    <?php echo $form->labelEx($model,'fecha_entrega'); ?>
-                    <?php echo $form->textField($model,'fecha_entrega', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
-                    <?php echo $form->error($model,'fecha_entrega'); ?>
-            </div>
-
-            <div class="row">
-                    <?php echo $form->labelEx($model,'hora_entrega'); ?>
-                    <?php echo $form->textField($model,'hora_entrega', array('placeholder'=>'hh:mm')); ?>
-                    <?php echo $form->error($model,'hora_entrega'); ?>
-            </div>
-
             <div class="row">
                     <?php echo $form->labelEx($model,'notas'); ?>
                     <?php echo $form->textField($model,'notas',array('maxlength'=>100)); ?>
                     <?php echo $form->error($model,'notas'); ?>
             </div>
-            -->
             <div class="row crearViaje hide">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
             </div>

@@ -1,0 +1,53 @@
+div.pedido
+{
+    float: left;
+    width: 20%;
+    margin: 10px;
+    border: 1px solid #0077B0;
+    border-radius: 5px;
+}
+div.tituloEspecie
+{
+    background-color: #0077B0;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+div.pedidoWraper
+{
+    margin: 10px;
+}
+div.pedidoWraper > div
+{
+    padding-bottom: 10px; 
+    color: #0077B0;
+    font-family: 'Roboto-Bold';
+}
+div.pedidoWraper div span
+{
+    color: #000000;
+    font-family: 'Roboto-Regular';
+}
+div.tab[data-tab="1"] div.formContainer1
+{
+    width: 50%;
+    float: left;
+}
+div.form div.tab div.row input,
+div.form div.tab div.row .css-select
+{
+    width: 100%;
+}
+div.form div.tab div.row
+{
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+div.pedidosWraper:after,
+div.tab:after
+{
+    content: '';
+    clear: both;
+    display: block;
+}
