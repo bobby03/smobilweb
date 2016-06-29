@@ -12,11 +12,11 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'tipo'); ?>
-		<?php echo $form->textField($model,'tipo'); ?>
+		<label>Buscar:</label>
+		<?php echo $form->textField($model,'tipo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		<?php echo $form->label($model,'identificador'); ?>
 		<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
@@ -53,7 +53,7 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
+	</div>-->
 
 <?php $this->endWidget(); ?>
 

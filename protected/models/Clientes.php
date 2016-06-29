@@ -73,8 +73,8 @@ class Clientes extends CActiveRecord
 			'nombre_contacto' => 'Nombre Contacto',
 			'apellido_contacto' => 'Apellido Contacto',
 			'correo' => 'Correo',
-			'rfc' => 'Rfc',
-			'tel' => 'Tel',
+			'rfc' => 'RFC',
+			'tel' => 'Teléfono',
 		);
 	}
 
@@ -97,12 +97,17 @@ class Clientes extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		/*
 		$criteria->compare('nombre_empresa',$this->nombre_empresa,true);
 		$criteria->compare('nombre_contacto',$this->nombre_contacto,true);
 		$criteria->compare('apellido_contacto',$this->apellido_contacto,true);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
+		*/
+		$criteria->addcondition("(nombre_empresa LIKE '%".$this->nombre_contacto."%' OR nombre_contacto LIKE '%".$this->nombre_contacto.
+								"%' OR apellido_contacto LIKE '%".$this->nombre_contacto."%' OR correo LIKE '%".$this->nombre_contacto.
+								"%' OR rfc LIKE '%".$this->nombre_contacto."%' OR tel LIKE '%".$this->nombre_contacto."%')");
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
