@@ -69,7 +69,7 @@
         <h2>Clientes</h2>
 	<div class="row">
 		<span class='css-select-moz'>
-                    <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                   <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
                 </span>
 		<?php echo $form->error($model,'id_clientes'); ?>
 	</div>
@@ -77,13 +77,13 @@
             <h2>Pedido</h2>
             <div class="row">
                 <label>Especie</label>
-                <?php echo $form->dropDownList($especies,'id', $especies->getAllEspeciesSolicitud(), array('class'=>'css-select','empty'=>'Seleccionar')); ?>
+                <span class="css-select-moz"><?php echo $form->dropDownList($especies,'id', $especies->getAllEspeciesSolicitud(), array('class'=>'css-select','empty'=>'Seleccionar')); ?></span>
                 <?php echo $form->error($especies,'id'); ?>
             </div>
 
             <div class="row cepa hide">
                 <label>Cepa</label>
-                <?php echo $form->dropDownList($cepa,'id', array('1'=>'1'),array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+               <span class="css-select-moz"><?php echo $form->dropDownList($cepa,'id', array('1'=>'1'),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
                 <?php echo $form->error($cepa,'id'); ?>
             </div>
             <div class="row cantidad hide">
@@ -104,7 +104,7 @@
             <div class="row direcciones hide">
                 <label>Dirección</label>
                 <div class="input boton">
-                    <?php echo $form->dropDownList($direcciones,'domicilio',array(''),array('empty'=>'Seleccionar','class'=>'css-select'));?>
+                   <span class="css-select-moz"> <?php echo $form->dropDownList($direcciones,'domicilio',array(''),array('empty'=>'Seleccionar','class'=>'css-select'));?></span>
                     <?php echo $form->error($direcciones,'domicilio'); ?>
                     <div class="botonOtra">Otra</div>
                 </div>
