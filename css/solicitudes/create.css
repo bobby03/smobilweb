@@ -209,10 +209,36 @@ div.botonesPedido
     background-repeat: no-repeat;
     cursor: pointer;
 }
+div.botones
+{
+    margin-top: 15px;
+}
+div.botones .guardar
+{
+    background-color: #09b7c9;
+}
+div.botones .continuar
+{
+    background-color: #0077B0;
+}
+div.botones .guardar,
+div.botones .continuar
+{
+    float: right;
+    width: 25%;
+    border-radius: 5px;
+    color: #FFFFFF;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 15px;
+    cursor: pointer;
+}
 div.form:after,
 div.input.boton:after,
 div.pedido:after,
-div.pedidoViaje:after
+div.pedidoViaje:after,
+div.botones:after
 {
     display: block;
     clear: both;

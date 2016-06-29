@@ -139,6 +139,10 @@
                 <div class="pedidosWraper" id="scroll"></div>
             </div>
         </div>
+        <div class="botones">
+            <div class="continuar">Continuar</div>
+            <div class="guardar">Guardar</div>
+        </div>
     </div>
 
 <?php $this->endWidget(); ?>

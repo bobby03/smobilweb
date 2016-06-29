@@ -15,6 +15,10 @@ div.form
     height: auto;
     min-height: 24px;
 }
+.chosen-container-single .chosen-single div b
+{
+    display: none !important;
+}
 div.form input,
 div.form textarea,
 div.form select,

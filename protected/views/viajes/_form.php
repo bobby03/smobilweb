@@ -95,16 +95,15 @@
             <?php endfor;?>
         <?php endforeach; ?>
     </div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+    <div class="row">
+            <?php echo $form->labelEx($model,'status'); ?>
+            <?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
     </div>
+    <div class="row buttons">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+    </div>
+
+</div>
 
 <?php $this->endWidget(); ?>
 
