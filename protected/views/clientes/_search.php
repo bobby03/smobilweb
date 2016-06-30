@@ -11,40 +11,42 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-	<label>Buscar:</label>
-		<?php echo $form->textField($model,'nombre_contacto',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?> <!--modificar ma;ana -->
+     <? echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchClientes(),array('empty' =>'Selecciona Búsqueda')); ?>
+
+
+	<div class="row hide" data-id='1'>
+		<label>Buscar:</label>
+		<?php echo $form->textField($model,'nombre_empresa',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'nombre_contacto'); ?>
+	<div class="row hide" data-id='2'>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'apellido_contacto'); ?>
+	
+	<div class="row hide" data-id='3'>			
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'correo'); ?>
+	<div class="row hide" data-id='4'>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'rfc'); ?>
+	<div class="row hide" data-id='5'>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'tel'); ?>
+	<div class="row hide" data-id='6'>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
 	</div>
 
-	<div class="row buttons">
+	<!--<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
+	</div>-->
 
 <?php $this->endWidget(); ?>
 

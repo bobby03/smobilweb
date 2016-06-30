@@ -73,6 +73,15 @@ class Estacion extends CActiveRecord
 			'activo' => 'Activo',
 		);
 	}
+    public function getSearchClientes(){
+            return array('1'=>'nombre empresa',
+                         '2'=>'nombre contacto',
+                         '3'=>'apellido contacto',
+                         '4'=>'correo',
+                         '5'=>'rfc',
+                         '6'=>'tel');
+        }
+
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
