@@ -73,8 +73,8 @@ class Clientes extends CActiveRecord
 			'nombre_contacto' => 'Nombre Contacto',
 			'apellido_contacto' => 'Apellido Contacto',
 			'correo' => 'Correo',
-			'rfc' => 'Rfc',
-			'tel' => 'Tel',
+			'rfc' => 'RFC',
+			'tel' => 'Teléfono',
 		);
 	}
 
@@ -103,7 +103,6 @@ class Clientes extends CActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
-
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -140,6 +139,15 @@ class Clientes extends CActiveRecord
                 }
             return $return;
         }
+		public function getSearchClientes(){
+			return array('1'=>'Nombre Empresa',
+				         '2'=>'Nombre Contacto',
+				         '3'=>'Apellido Contacto',
+				         '4'=>'Correo',
+				         '5'=>'RFC',
+				         '6'=>'Teléfono');
+		}
+
         public function getClienteViajes($id)
         {
             $solicitudes = Solicitudes::model()->findByPk($id);

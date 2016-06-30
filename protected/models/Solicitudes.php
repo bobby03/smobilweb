@@ -38,7 +38,7 @@ class Solicitudes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_clientes, codigo, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
+			array('id_clientes', 'required'),
 			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
                         array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
 			array('codigo', 'length', 'max'=>50),
@@ -101,7 +101,7 @@ class Solicitudes extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('id_clientes',$this->id_clientes);
+		/*$criteria->compare('id_clientes',$this->id_clientes);
 		$criteria->compare('codigo',$this->codigo,true);
 		$criteria->compare('fecha_alta',$this->fecha_alta,true);
 		$criteria->compare('hora_alta',$this->hora_alta,true);
@@ -109,7 +109,17 @@ class Solicitudes extends CActiveRecord
 		$criteria->compare('hora_estimada',$this->hora_estimada,true);
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
-		$criteria->compare('notas',$this->notas,true);
+		$criteria->compare('notas',$this->notas,true);*/
+		$criteria->addcondition("(id_clientes LIKE '%".$this->codigo.
+								"%' OR codigo LIKE '%".$this->codigo.
+                                "%' OR fecha_alta LIKE '%".$this->codigo.
+                                "%' OR hora_alta LIKE '%".$this->codigo.
+                                "%' OR fecha_estimada LIKE '%".$this->codigo.
+                                "%' OR hora_estimada LIKE '%".$this->codigo.
+                                "%' OR fecha_entrega LIKE '%".$this->codigo.
+                                "%' OR hora_entrega LIKE '%".$this->codigo.
+                                "%' OR notas LIKE '%".$this->codigo."%')");
+
                 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

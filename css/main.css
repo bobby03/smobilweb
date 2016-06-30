@@ -1,3 +1,44 @@
+@font-face{
+	font-family:'Roboto-Medium';
+	src:url(../fonts/Roboto-Medium.ttf);
+}
+@font-face{
+	font-family:'Roboto-Regular';
+	src:url(../fonts/Roboto-Regular.ttf);
+}
+@font-face{
+	font-family:'Roboto-Light';
+	src:url(../fonts/Roboto-Light.ttf);
+}
+@font-face{
+	font-family:'Roboto-Black';
+	src:url(../fonts/Roboto-Black.ttf);
+}
+@font-face{
+	font-family:'Roboto-ThinItalic';
+	src:url(../fonts/Roboto-ThinItalic.ttf);
+}
+@font-face{
+	font-family:'Roboto-LightItalic';
+	src:url(../fonts/Roboto-LightItalic.ttf);
+}
+@font-face{
+	font-family:'Roboto-Bold';
+	src:url(../fonts/Roboto-Bold.ttf);
+}
+@font-face{
+	font-family:'Roboto-Italic';
+	src:url(../fonts/Roboto-Italic.ttf);
+}
+div
+{
+    font-family: 'Roboto-Regular';
+}
+select option:hover
+{
+    background-color: #49DBD0 !important;
+    color: #FFFFFF;
+}
 body
 {
 	margin: 0;
@@ -192,8 +233,12 @@ div.breadcrumbs span
 div.search-form
 {
 	padding: 10px;
-	margin: 10px 0;
-	background: #eee;
+    margin: -11px 74px 0 75px;
+    background: #ffffff;
+    line-height: 45px;
+    border-bottom: 2px solid #d8d8d8;
+    padding-right: 18px;
+    margin-right: 145px;
 }
 
 .portlet
@@ -279,7 +324,7 @@ div.botones-content div.aceptar-boton
 }
 .grid-view {
     padding: 15px 107px;
-    width: 900px;
+    /*width: 900px;*/
 }
 
 .grid-view .button-column img
@@ -287,6 +332,10 @@ div.botones-content div.aceptar-boton
     width: 16px;
     height: 16px;
 }
+
+
+
+/*****/
 
 .grid-view table.items{
 	border:none;
@@ -323,8 +372,13 @@ h1 {
 	line-height: 36px;
 	text-indent:50px;
 	background: #0077B0;
-    border-bottom: 2px solid #49dbd0;
+    border-bottom: 3px solid #49dbd0;
     height: 36px;
     font-size: 21px;
     color: white;
 }
+.grid-view table.items th a:hover 
+{
+    color: #09b7c9;
+}
+

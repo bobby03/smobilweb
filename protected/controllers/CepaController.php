@@ -58,7 +58,7 @@ class CepaController extends Controller
                 );
             if(Yii::app()->user->checkAccess('editCepa') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
-                (
+                (                                                                                                                                                                                                                                                                                                                                           
                     'allow',
                     'actions'   => array('update'),
                     'users'     => array('*')
@@ -167,7 +167,6 @@ class CepaController extends Controller
 	 */
 	public function actionIndex()
 	{
-
             // print_r(Yii::app()->user->id);
             $model=new Cepa('search');
             $model->unsetAttributes(); 

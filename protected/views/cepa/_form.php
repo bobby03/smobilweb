@@ -21,7 +21,7 @@
 
         <div class="row">
 		<?php echo $form->labelEx($model,'id_especie'); ?>
-		<?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+		<span class="css-select-moz"><?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
 		<?php echo $form->error($model,'id_especie'); ?>
 	</div> 
         

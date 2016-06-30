@@ -105,27 +105,30 @@ class SolicitudesController extends Controller
 	public function actionCreate()
 	{
 		$model= new Solicitudes;
-                $estaciones = new Estacion();
+                $estacion = new Estacion();
                 $especies = new Especie();
                 $cepa = new Cepa();
+                $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Solicitudes']))
-		{
-			$model->attributes=$_POST['Solicitudes'];
-                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
-                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
-			if($model->save())
-				$this->redirect(array('index'));
-		}
+//		if(isset($_POST) && $_POST != '' && $_POST != null)
+//		{
+                    
+//			$model->attributes=$_POST['Solicitudes'];
+//                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
+//                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+//                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
+//			if($model->save())
+//				$this->redirect(array('index'));
+//		}
 
 		$this->render('create',array(
                     'model'=>$model,
-                    'estaciones'=>$estaciones,
+                    'estaciones'=>$estacion,
                     'especies'=>$especies,
-                    'cepa'=>$cepa
+                    'cepa'=>$cepa,
+                    'direccion'=>$direccion,
 		));
 	}
 
@@ -134,7 +137,57 @@ class SolicitudesController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+        public function getViajes()
+        {
+            $estaciones = Estacion::model()->findAll('tipo = 1');
+            $viajes = Viajes::model()->findAll('status = 1');
+            $todosViajes = array();
+            foreach($estaciones as $data)
+            {
+                $tanques = Tanque::model()->findAll("id_estacion = $data->id and status = 1");
+                $i = 0;
+                $i = count($tanques);
+                if($i > 0)
+                {
+
+                    $todosViajes[$data->id] = array
+                    (
+                        'cantidad' => $i,
+                        'camion' => $data->identificador
+                    );
+                }
+            }
+            $imprimir  = '  <div class="subtitulos">
+                                <div>Camión</div>
+                                <div>Tanques disponibles</div>
+                            </div>
+                            <div class="tablaViajes">';
+            foreach($viajes as $data)
+            {
+                if($todosViajes[$data->id_estacion])
+                {
+                    $imprimir = $imprimir.<<<eof
+                        <div class="renglon">
+                            <div>
+                                {$todosViajes[$data->id_estacion]['camion']}
+                            </div>
+                            <div>
+                                {$todosViajes[$data->id_estacion]['cantidad']}
+                            </div>
+                            <div class="viajeLoc" data-viaje="{$data->id}"></div>
+                            <div class="viajeSel" data-viaje="{$data->id}"></div>
+                        </div>
+eof;
+                }
+            }
+            $imprimir = $imprimir.'</div>';
+            echo $imprimir;
+        }
+        public function actionViajesCreate()
+        {
+            $this->render('viajesCreate',array('pedidos'=>$_POST));
+        }
+        public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
                 $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
@@ -227,19 +280,38 @@ class SolicitudesController extends Controller
         public function actionGetCliente($id)
         {
             $cliente = Clientes::model()->findByPk($id);
-            $return = <<<eof
-                    <div class="datosContacto">$cliente->nombre_contacto</div>
-                    <div class="datosContacto">$cliente->apellido_contacto</div>
-                    <div class="datosContacto">$cliente->correo</div>
-                    <div class="datosContacto">$cliente->rfc</div>
-                    <div class="datosContacto">$cliente->tel</div>
+            $domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($id);
+            $return = array();
+            $cliente = <<<eof
+                    <div class="datosContacto">$cliente->nombre_empresa</div>
+                    <div class="datosContacto"><span>RFC: </span>$cliente->rfc</div>
+                    <div class="datosContacto"><span>Contacto: </span>$cliente->nombre_contacto $cliente->apellido_contacto</div>
+                    <div class="datosContacto"><span>E-mail: </span>$cliente->correo</div>
+                    <div class="datosContacto"><span>Teléfono: </span>$cliente->tel</div>
 eof;
+            $return['cliente'] = $cliente;
+            $return['domicilio'] = $domicilios;
             echo json_encode($return);
         }
         public function actionGetCepas($id)
         {
             $return = Cepa::model()->getCepasEspecie($id);
             echo json_encode($return);
+        }
+        public function actionAddDireccion($id, $dom, $coord, $desc)
+        {
+            $model = new ClientesDomicilio();
+            $model->id_cliente = $id;
+            $model->domicilio = $dom;
+            $model->ubicacion_mapa = $coord;
+            $model->descripcion = $desc;
+            if($model->save())
+            {
+                $return = array('boolean' => true, 'id'=>$model->id);
+            }
+            else
+                $return = array('boolean' => false);
+            echo json_encode ($return);
         }
 	protected function performAjaxValidation($model)
 	{

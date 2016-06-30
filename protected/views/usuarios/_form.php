@@ -33,19 +33,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tipo_usr'); ?>
-		<?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Seleecionar', 'class'=>'css-select')); ?>
+		 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Seleecionar', 'class'=>'css-select')); ?></span>
 		<?php echo $form->error($model,'tipo_usr'); ?>
                 <?php echo $form->hiddenField($model,'id_usr');?>
 	</div>
 
 	<div class="row hide" data-tipo="1">
 		<?php echo $form->labelEx($model,'id_usr'); ?>
-		<?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?>
+		 <span class="css-select-moz"><?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?></span>
 		<?php echo $form->error($model,'id_usr'); ?>
 	</div>
 	<div class="row hide" data-tipo="2">
 		<?php echo $form->labelEx($model,'id_usr'); ?>
-		<?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?>
+	 <span class="css-select-moz"><?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?></span>
 		<?php echo $form->error($model,'id_usr'); ?>
 	</div>
 

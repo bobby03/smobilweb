@@ -148,5 +148,10 @@ class Tanque extends SMActiveRecord
                 case 2: return 'No'; break;
             }
         }
+        public function getTanque($id)
+        {
+            $tanque = Tanque::model()->findByPk($id);
+            return $tanque->nombre;
+        }
         
 }

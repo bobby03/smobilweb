@@ -108,17 +108,19 @@ class Cepa extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('id_especie',$this->id_especie);
 		$criteria->compare('nombre_cepa',$this->nombre_cepa,true);
-		$criteria->compare('temp_min',$this->temp_min);
+		/*$criteria->compare('temp_min',$this->temp_min);
 		$criteria->compare('temp_max',$this->temp_max);
 		$criteria->compare('ph_min',$this->ph_min);
 		$criteria->compare('ph_max',$this->ph_max);
 		$criteria->compare('ox_min',$this->ox_min);
-		$criteria->compare('ox_max',$this->ox_max);
+		$criteria->compare('ox_max',$this->ox_max);*/
 		$criteria->compare('cantidad',$this->cantidad);
-		$criteria->compare('cond_min',$this->cond_min);
+		/*$criteria->compare('cond_min',$this->cond_min);
 		$criteria->compare('cond_max',$this->cond_max);
 		$criteria->compare('orp_min',$this->orp_min);
-		$criteria->compare('orp_max',$this->orp_max);
+		$criteria->compare('orp_max',$this->orp_max);*/
+			$criteria->addcondition("(nombre_cepa LIKE '%".$this->nombre_cepa."%' OR id_especie LIKE '%".$this->nombre_cepa.
+								"%' OR cantidad LIKE '%".$this->nombre_cepa."%')");
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -141,10 +143,15 @@ class Cepa extends CActiveRecord
             $return = '';
             foreach($cepas as $data)
                 $return = $return.<<<eof
-                    <option value="$data->id">$data->nombre_cepa</option>
+                    <option value="$data->id" data-cnt="$data->cantidad">$data->nombre_cepa</option>
 eof;
             
             return $return;
+        }
+        public function getCepa($id)
+        {
+            $cepa = Cepa::model()->findByPk($id);
+            return $cepa->nombre_cepa;
         }
     public function adminSearch()
     {
@@ -156,11 +163,11 @@ eof;
                 'filter'=>  Especie::model()->getAllEspecies()
             ),
             'nombre_cepa',
-            array(
+         /*    array(
                 'name' => 'temp_min',
                 'value' => '$data->temp_min',
             ),
-            array(
+           array(
                 'name' => 'temp_max',
                 'value' => '$data->temp_max',
             ),
@@ -179,11 +186,11 @@ eof;
             array(
                 'name' => 'ox_max',
                 'value' => '$data->ox_max',
-            ),
+            ),*/
             array(
                 'name' => 'cantidad',
                 'value' => '$data->cantidad',
-            ),
+            ),/*
             array(
                 'name' => 'cond_max',
                 'value' => '$data->cond_max',
@@ -199,7 +206,7 @@ eof;
             array(
                 'name' => 'orp_max',
                 'value' => '$data->orp_max',
-            ),
+            ),*/
             array
             (
                 'class'=>'NCButtonColumn',

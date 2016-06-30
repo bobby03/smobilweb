@@ -53,7 +53,7 @@ class Usuarios extends CActiveRecord
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
-	{
+	{ 
 		return array(
 			'id' => 'ID',
 			'usuario' => 'Nombre de usuario',
@@ -82,10 +82,15 @@ class Usuarios extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('usuario',$this->usuario,true);
 		$criteria->compare('pwd',$this->pwd,true);
+		/*$criteria->compare('usuario',$this->usuario,true);
 		$criteria->compare('tipo_usr',$this->tipo_usr);
-		$criteria->compare('id_usr',$this->id_usr);
+		$criteria->compare('id_usr',$this->id_usr);*/
+
+		$criteria->addcondition("(usuario LIKE '%".$this->usuario.
+								"%' OR tipo_usr LIKE '%".$this->usuario.
+                                "%' OR id_usr LIKE '%".$this->usuario.
+                                "%')");
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -105,7 +110,7 @@ class Usuarios extends CActiveRecord
         public function getAllTipoUsuario()
         {
             return array
-            (
+            (+
                 '1' => 'Cliente',
                 '2' => 'Personal'
             );

@@ -1,14 +1,121 @@
 div.form
 {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
 }
-
+.chosen-container-multi .chosen-choices
+{
+    border: 0;
+    box-sizing: border-box;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type=text]
+{
+    margin: 0;
+    height: auto;
+    min-height: 24px;
+}
+.chosen-container-single .chosen-single div b
+{
+    display: none !important;
+}
+div.form div.row.cantidad input
+{
+    border-left: 2px solid #0077b0;
+}
 div.form input,
 div.form textarea,
-div.form select
+div.form select,
+div.form .chosen-container
 {
-	margin: 0.2em 0 0.5em 0;
+    /*margin: 0.2em 0 0.5em 0;*/
+    min-height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    width: 100%;
 }
-
+div.form input[type="submit"]
+{
+    background-color: #0077b0;
+    text-indent: 0;
+    border: 0;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+.css-select-moz 
+{
+    position: relative;
+    display: inline-block;
+    /*overflow: hidden;*/
+    width: 100%;
+    background: #FFFFFF;
+}
+.css-select-moz select, 
+.css-select select
+{
+    background: transparent;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    margin: 0;
+    font-family: 'Roboto-Regular';
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    height: 20px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+}
+.css-select-moz:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 100%;
+    top: 0;
+    right: 9px;
+    font-size: 60%;
+    line-height: 30px;
+    padding: 0 7px;
+    background: transparent url(../images/flechaDropdown.png) no-repeat center right;
+    background-size: 11px 7px;
+    color: white;
+    pointer-events: none;
+}
+div.search-form input
+{
+    border-radius:10px;
+    width: 160px;
+    text-indent: 10px;
+    border:1px solid #B0B0B0 ;   
+}
+.chosen-container-active .chosen-single
+{
+    border: 0;
+    box-shadow: none;
+}
+.chosen-container-single .chosen-single
+{
+    border: 0;
+    background: none;
+}
+.chosen-container-active.chosen-with-drop .chosen-single
+{
+    background-image: none;
+    border: none;
+}
+/*div.form input[type="submit"]
+{
+    width: 150px;
+    float: right;
+    height: 35px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 5px;
+}*/
 div.form fieldset
 {
 	border: 1px solid #DDD;
@@ -19,14 +126,14 @@ div.form fieldset
 
 div.form label
 {
-	font-weight: bold;
-	font-size: 0.9em;
-	display: block;
+    font-weight: bold;
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 10px;
 }
-
 div.form .row
 {
-    margin: 5px 0;
+    margin: 10px 0;
 }
 div.formContainer1 div.nombreSeccion
 {
@@ -143,7 +250,9 @@ div.wide.form label
 	margin-right: 10px;
 	position: relative;
 	text-align: right;
-	width: 100px;
+	width: 60px;
+    color: #0077b0;
+
 }
 
 div.wide.form .row
@@ -156,6 +265,12 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	clear: left;
 	padding-left: 110px;
 }
+div.chosen-container
+{
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
 div.formContainer1:after,
 div.row.titulos:after,
 div.row:after

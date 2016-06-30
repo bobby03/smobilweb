@@ -11,13 +11,10 @@
 	'method'=>'get',
 )); ?>
 	<div class="row">
-		<?php echo $form->label($model,'nombre_rol'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'nombre_rol',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
 
 <?php $this->endWidget(); ?>
 

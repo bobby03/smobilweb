@@ -1,10 +1,288 @@
-div.formContainer
+div.formContainer1
+{
+    width: 35%;
+    float: left;
+}
+div.formContainer2
+{
+    width: 50%;
+    float: right;
+}
+div.form h2
+{
+    background-color: #E6E7E8;
+    color: #0077B0;
+    line-height: 30px;
+    text-align: center;
+    height: 30px;
+}
+div.form input, .css-select
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+div.formContainer2 div.wraper
+{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #0077B0;
+    padding: 10px;
+    position: relative;
+    min-height: 50px;
+}
+div.fechaYora
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+div.fechaYora div
+{
+    text-align: right;
+}
+div.datosContacto
+{
+    margin-bottom: 5px;
+}
+div.titulo, div.titulo2
+{
+    color: #0077B0;
+    font-size: 14px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+div.titulo2
+{
+    padding-top: 25px;
+}
+div.datosCliente span
+{
+    font-weight: bold;
+}
+div.form .agregar
+{
+    width: 150px;
+    float: right;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 5px;
+}
+.pedidosWraper
+{
+    max-height: 290px;
+    overflow-y: auto;
+}
+div.form div.formContainer1 .row.cantidad
+{
+    margin-bottom: 10px;
+}
+div.row.cantidad div
+{
+    width: 45%;
+    float: left;
+}
+div.row.cantidad div.noTanques
+{
+    float: right;
+    margin-top: 13px;
+}
+div.row.cantidad div.noTanques input
+{
+    float: right;
+    width: 50%;
+}
+div.row.cantidad div:nth-child(2)
+{
+    float: right;
+}
+div.row.direcciones span.css-select-moz
+{
+    width: 75% !important;
+    float: left;
+}
+div.botonOtra
+{
+    float: right;
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+div.form div.formContainer1 .row
+{
+    margin-bottom: 20px;
+}
+div.form .row.buttons
+{
+    margin-top: 25px;
+}
+div.form label
+{
+    color: #0077B0;
+    padding-bottom: 10px;
+}
+#map
+{
+    width: 350px;
+    height: 150px;
+    margin: 0 auto;
+}
+#colorbox div.row.buttons
+{
+    margin-top: 15px;
+}
+div.aceptarDireccion, div.cancelarDireccion
+{
+    width: 20%;
+    line-height: 25px;
+    text-align: center;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+}
+div.cancelarDireccion
+{
+    float: right;
+}
+#scroll::-webkit-scrollbar 
+{
+    width: 5px;
+}
+#scroll::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+#scroll::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #565656;
+}
+div.pedidoViaje:nth-child(1),
+div.pedidoViaje:nth-child(2),
+div.pedidoViaje:nth-child(3)
+{
+    padding-bottom: 15px;
+}
+/*div.pedido:last-child
+{
+    padding-bottom: 35px;
+}*/
+div.datosPedido
+{
+    float: left;
+    width: 70%;
+}
+div.botonesPedido
+{
+    float: left;
+    width: 30%;
+    margin-top: 15px;
+}
+.pedidoInfo:nth-child(8)
+{
+    text-align: center;
+}
+.pedidoInfo:nth-child(8), .pedidoInfo:nth-child(7)
 {
     width: 50%;
     float: left;
 }
+.editarPedido, .borrarPedido
+{
+    float: left;
+    width: 50%;
+    height: 15px;
+    background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+div.botones
+{
+    margin-top: 15px;
+}
+div.botones .guardar
+{
+    background-color: #09b7c9;
+}
+div.botones .continuar
+{
+    background-color: #0077B0;
+}
+div.botones .guardar,
+div.botones .continuar
+{
+    float: right;
+    width: 25%;
+    border-radius: 5px;
+    color: #FFFFFF;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 15px;
+    cursor: pointer;
+}
+div.subtitulos div
+{
+    float: left;
+    width: 33%;
+    color: #0077B0;
+}
+div.renglon div:nth-child(1),
+div.renglon div:nth-child(2)
+{
+    width: 30%;
+    margin-right: 3%;
+    float: left;
+}
+div.renglon div:nth-child(2)
+{
+    text-align: center;
+}
+div.renglon
+{
+    margin-bottom: 10px;
+}
+div.tablaViajes
+{
+    margin-top: 10px;
+}
+div.viajeLoc, div.viajeSel
+{
+    float: left;
+    width: 12%;
+    margin-left: 15px;
+    height: 30px;
+    background-color: #0077B0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+div.crearViaje input[type="submit"]
+{
+    width: 128px;
+    float: right;
+}
 
-div.form:after
+div.form:after,
+div.input.boton:after,
+div.pedido:after,
+div.pedidoViaje:after,
+div.botones:after,
+div.subtitulos:after,
+div.renglon:after
 {
     display: block;
     clear: both;

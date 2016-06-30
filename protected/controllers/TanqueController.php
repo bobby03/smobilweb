@@ -101,6 +101,7 @@ class TanqueController extends Controller
                     }
                 }
                 $this->redirect(array('/estacion'));
+//                print_r($_POST);
             }
             $this->render('create',array(
                     'model'=>$model,

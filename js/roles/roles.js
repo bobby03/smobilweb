@@ -64,4 +64,10 @@ $(document).ready(function()
             });
         });
     }
+    $('div#rol tr:first-child td.button-column a.update').remove();
+    $('div#rol tr:first-child td.button-column a.delete').remove();
+    $('div#rol tr:nth-child(2) td.button-column a.update').remove();
+    $('div#rol tr:nth-child(2) td.button-column a.delete').remove();
+    $('div#rol tr:nth-child(3) td.button-column a.update').remove();
+    $('div#rol tr:nth-child(3) td.button-column a.delete').remove();
 });
