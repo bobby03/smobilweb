@@ -91,6 +91,21 @@ div.search-form input
     text-indent: 10px;
     border:1px solid #B0B0B0 ;   
 }
+.chosen-container-active .chosen-single
+{
+    border: 0;
+    box-shadow: none;
+}
+.chosen-container-single .chosen-single
+{
+    border: 0;
+    background: none;
+}
+.chosen-container-active.chosen-with-drop .chosen-single
+{
+    background-image: none;
+    border: none;
+}
 /*div.form input[type="submit"]
 {
     width: 150px;

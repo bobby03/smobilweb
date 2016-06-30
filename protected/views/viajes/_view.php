@@ -9,8 +9,8 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id_clientes')); ?>:</b>
-	<?php echo CHtml::encode($data->id_clientes); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id_solicitudes')); ?>:</b>
+	<?php echo CHtml::encode($data->id_solicitudes); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('id_responsable')); ?>:</b>
@@ -36,6 +36,10 @@
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hora_entrega')); ?>:</b>
 	<?php echo CHtml::encode($data->hora_entrega); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id_estacion')); ?>:</b>
+	<?php echo CHtml::encode($data->id_estacion); ?>
 	<br />
 
 	*/ ?>

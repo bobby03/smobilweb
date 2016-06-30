@@ -123,14 +123,14 @@ class Viajes extends CActiveRecord
 	}
     public function getFecha($date)
     {
-        if($data != null && $data != '')
+        if($date != null && $date != '')
             return date("d-m-Y", strtotime($date));
         else
             return 'N/A'; 
     }
     public function getHora($date)
     {
-        if($data != null && $data != '')
+        if($date != null && $date != '')
             return date("H:i", strtotime($date));
         else
             return 'N/A'; 

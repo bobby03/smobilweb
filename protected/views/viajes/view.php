@@ -22,12 +22,13 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'id_clientes',
+		'id_solicitudes',
 		'id_responsable',
 		'status',
 		'fecha_salida',
 		'hora_salida',
 		'fecha_entrega',
 		'hora_entrega',
+		'id_estacion',
 	),
 )); ?>
