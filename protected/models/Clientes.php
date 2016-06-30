@@ -97,18 +97,12 @@ class Clientes extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		/*
 		$criteria->compare('nombre_empresa',$this->nombre_empresa,true);
 		$criteria->compare('nombre_contacto',$this->nombre_contacto,true);
 		$criteria->compare('apellido_contacto',$this->apellido_contacto,true);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
-		*/
-		$criteria->addcondition("(nombre_empresa LIKE '%".$this->nombre_contacto."%' OR nombre_contacto LIKE '%".$this->nombre_contacto.
-								"%' OR apellido_contacto LIKE '%".$this->nombre_contacto."%' OR correo LIKE '%".$this->nombre_contacto.
-								"%' OR rfc LIKE '%".$this->nombre_contacto."%' OR tel LIKE '%".$this->nombre_contacto."%')");
-
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -145,6 +139,15 @@ class Clientes extends CActiveRecord
                 }
             return $return;
         }
+		public function getSearchClientes(){
+			return array('1'=>'Nombre Empresa',
+				         '2'=>'Nombre Contacto',
+				         '3'=>'Apellido Contacto',
+				         '4'=>'Correo',
+				         '5'=>'RFC',
+				         '6'=>'Teléfono');
+		}
+
         public function getClienteViajes($id)
         {
             $solicitudes = Solicitudes::model()->findByPk($id);

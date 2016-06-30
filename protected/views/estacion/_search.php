@@ -11,47 +11,49 @@
 	'method'=>'get',
 )); ?>
 
+ 	<? echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchClientes(),array('empty' =>'Selecciona campo a buscar')); ?>
+	
 	<div class="row">
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'tipo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<!--<div class="row">
-		<?php echo $form->label($model,'identificador'); ?>
+	<div class="row">
+	    <label>Buscar:</label>
 		<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'no_personal'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'no_personal'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'marca'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'color'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'ubicacion'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'disponible'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'disponible'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'activo'); ?>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'activo'); ?>
 	</div>
 
-	<div class="row buttons">
+	<!--<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>-->
 
