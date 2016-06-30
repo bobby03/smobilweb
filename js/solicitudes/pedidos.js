@@ -41,7 +41,17 @@ $(document).ready(function()
         borrarPedido();
         editarPedido();
         tot++;
-        $('.crearViaje').removeClass('hide');
+        $('.botones').removeClass('hide');
+    });
+    $('div.continuar').click(function()
+    {
+        $('div.crearViaje').removeClass('hide');
+        $('.viajeSel').click(function()
+        {
+            var id = $(this).attr('data-viaje');
+            $('#ClientesDomicilio_id_cliente').val(id);
+            $('#solicitudes-form').submit();
+        });
     });
     function borrarPedido()
     {

@@ -35,7 +35,12 @@
             <div class="row">
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
                 <span class="css-select-moz">
-                    <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+                    <?php
+                        if($model->isNewRecord)
+                            echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select')); 
+                        else
+                            echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('disabled'=>'disabled','empty'=>'Seleccionar','class'=>'css-select')); 
+                    ?>
                 </span>
             </div>
             <div class="row">
@@ -55,7 +60,18 @@
             <div class="row">
                 <?php echo $form->labelEx($model,'id_estacion'); ?>
                 <span class="css-select-moz">
-                    <?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesDisponibles(), array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+                    <?php 
+                        if($model->isNewRecord)
+                            echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesDisponibles(), array('empty'=>'Seleccionar','class'=>'css-select'));
+                        else
+                            echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion (), 
+                                    array
+                                    (
+                                        'disabled'=>'disabled',
+                                        'class'=>'css-select',
+                                        'value'=>$model->id_estacion
+                                    ));
+                    ?>
                 </span>
             </div>
             <div class="row">
@@ -96,8 +112,13 @@
         <?php endforeach; ?>
     </div>
     <div class="row">
-            <?php echo $form->labelEx($model,'status'); ?>
-            <?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
+        <?php 
+            echo $form->labelEx($model,'status');
+            if($model->isNewRecord)
+                echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50));
+            else
+                echo $form->textField($model,'status',array('readonly'=>'readonly','size'=>50,'maxlength'=>50, 'value'=>  Viajes::model()->getStatus($model->status)));
+        ?>
     </div>
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

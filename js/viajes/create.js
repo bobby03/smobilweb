@@ -56,4 +56,13 @@ $(document).ready(function()
             $('.selectTanque').addClass('hide');
         }
     });
+    function checkInicio()
+    {
+        var id = $('#Viajes_id_estacion');
+        if(id != '' && id != null)
+        {
+            $('#Viajes_id_estacion').trigger('change');
+        }
+    }
+    checkInicio();
 });
