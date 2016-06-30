@@ -167,17 +167,8 @@ class CepaController extends Controller
 	 */
 	public function actionIndex()
 	{
-<<<<<<< HEAD
 
-		$model=new Cepa('search');
-		$model->unsetAttributes(); 
-		if(isset($_GET['Cepa']))
-			$model->attributes=$_GET['Cepa'];
-		$this->render('index',array(
-			'model'=>$model,
-		));
-=======
-            print_r(Yii::app()->user->id);
+            // print_r(Yii::app()->user->id);
             $model=new Cepa('search');
             $model->unsetAttributes(); 
             if(isset($_GET['Cepa']))
@@ -185,7 +176,6 @@ class CepaController extends Controller
             $this->render('index',array(
                     'model'=>$model,
             ));
->>>>>>> 060c1099802ad6c1d013b7c274cff09677ff852d
 	}
 
 	/**
