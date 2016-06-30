@@ -68,10 +68,10 @@
         </div>
         <h2>Clientes</h2>
 	<div class="row">
-		<span class='css-select-moz'>
-                   <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
-                </span>
-		<?php echo $form->error($model,'id_clientes'); ?>
+            <span class='css-select-moz'>
+                <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
+            </span>
+            <?php echo $form->error($model,'id_clientes'); ?>
 	</div>
         <div class="row pedido hide">
             <h2>Pedido</h2>
@@ -109,17 +109,13 @@
                     <div class="botonOtra">Otra</div>
                 </div>
                 <div class="row buttons hide">
+                    <div class="row">
+                        <?php echo $form->hiddenField($direccion,'id_cliente',array('value'=>0));?>
+                        <?php echo $form->labelEx($model,'notas'); ?>
+                        <?php echo $form->textField($model,'notas',array('maxlength'=>100)); ?>
+                    </div>
                     <div class="agregar">Agregar pedido</div>
-                        <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
                 </div>
-            </div>
-            <div class="row">
-                    <?php echo $form->labelEx($model,'notas'); ?>
-                    <?php echo $form->textField($model,'notas',array('maxlength'=>100)); ?>
-                    <?php echo $form->error($model,'notas'); ?>
-            </div>
-            <div class="row crearViaje hide">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
             </div>
         </div>
     </div>
@@ -139,9 +135,17 @@
                 <div class="pedidosWraper" id="scroll"></div>
             </div>
         </div>
-        <div class="botones">
+        <div class="botones hide">
             <div class="continuar">Continuar</div>
             <div class="guardar">Guardar</div>
+        </div>
+        <div class="row crearViaje hide">
+            <div class="viajes">
+                <h2>Viajes disponibles</h2>
+                <?php $this->getViajes();?>
+                <h2></h2>
+            </div>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Crear nuevo viaje' : 'Save'); ?>
         </div>
     </div>
 

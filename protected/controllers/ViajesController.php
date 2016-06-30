@@ -166,6 +166,10 @@ class ViajesController extends Controller
                 }
             }
             $pedidos = $_POST;
+            if($pedidos['ClientesDomicilio']['id_cliente'] > 0)
+            {
+                $model = $this->loadModel($pedidos['ClientesDomicilio']['id_cliente']);
+            }
             $this->render('create',array(
                 'model' =>$model,
                 'pedidos'=>$pedidos,

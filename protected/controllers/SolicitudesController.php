@@ -104,7 +104,7 @@ class SolicitudesController extends Controller
 	public function actionCreate()
 	{
 		$model= new Solicitudes;
-                $estaciones = new Estacion();
+                $estacion = new Estacion();
                 $especies = new Especie();
                 $cepa = new Cepa();
                 $direccion = new ClientesDomicilio();
@@ -124,7 +124,7 @@ class SolicitudesController extends Controller
 
 		$this->render('create',array(
                     'model'=>$model,
-                    'estaciones'=>$estaciones,
+                    'estaciones'=>$estacion,
                     'especies'=>$especies,
                     'cepa'=>$cepa,
                     'direccion'=>$direccion,
@@ -136,6 +136,52 @@ class SolicitudesController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+        public function getViajes()
+        {
+            $estaciones = Estacion::model()->findAll('tipo = 1');
+            $viajes = Viajes::model()->findAll('status = 1');
+            $todosViajes = array();
+            foreach($estaciones as $data)
+            {
+                $tanques = Tanque::model()->findAll("id_estacion = $data->id and status = 1");
+                $i = 0;
+                $i = count($tanques);
+                if($i > 0)
+                {
+
+                    $todosViajes[$data->id] = array
+                    (
+                        'cantidad' => $i,
+                        'camion' => $data->identificador
+                    );
+                }
+            }
+            $imprimir  = '  <div class="subtitulos">
+                                <div>Camión</div>
+                                <div>Tanques disponibles</div>
+                            </div>
+                            <div class="tablaViajes">';
+            foreach($viajes as $data)
+            {
+                if($todosViajes[$data->id_estacion])
+                {
+                    $imprimir = $imprimir.<<<eof
+                        <div class="renglon">
+                            <div>
+                                {$todosViajes[$data->id_estacion]['camion']}
+                            </div>
+                            <div>
+                                {$todosViajes[$data->id_estacion]['cantidad']}
+                            </div>
+                            <div class="viajeLoc" data-viaje="{$data->id}"></div>
+                            <div class="viajeSel" data-viaje="{$data->id}"></div>
+                        </div>
+eof;
+                }
+            }
+            $imprimir = $imprimir.'</div>';
+            echo $imprimir;
+        }
         public function actionViajesCreate()
         {
             $this->render('viajesCreate',array('pedidos'=>$_POST));
