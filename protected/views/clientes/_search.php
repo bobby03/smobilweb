@@ -14,8 +14,9 @@
 	<div class="row">
 	<label>Buscar:</label>
 		<?php echo $form->textField($model,'nombre_contacto',array('size'=>60,'maxlength'=>150)); ?>
+		<?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?> <!--modificar ma;ana -->
 	</div>
-<!--
+
 	<div class="row">
 		<?php echo $form->label($model,'nombre_contacto'); ?>
 		<?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50)); ?>
@@ -40,7 +41,7 @@
 		<?php echo $form->label($model,'tel'); ?>
 		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
 	</div>
--->
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
