@@ -111,7 +111,7 @@ class Especie extends CActiveRecord
         }
         public function getAllEspecies()
         {
-            $especies = $this->findAll();
+            $especies = Especie::model()->findAll();
             $return = array();
             foreach($especies as $data)
                 $return[$data->id] = $data->nombre;
@@ -119,7 +119,7 @@ class Especie extends CActiveRecord
         }
         public function getEspecie($id)
         {
-            $especie = $this->findByPk($id);
+            $especie = Especie::model()->findByPk($id);
             return $especie->nombre;
         }
         public function adminSearch()

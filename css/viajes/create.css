@@ -5,6 +5,7 @@ div.pedido
     margin: 10px;
     border: 1px solid #0077B0;
     border-radius: 5px;
+    overflow: hidden;
 }
 div.tituloEspecie
 {
@@ -15,7 +16,11 @@ div.tituloEspecie
 }
 div.pedidoWraper
 {
-    margin: 10px;
+    padding: 10px;
+}
+div.pedidoWraper.gris
+{
+    background-color: #E6E7E8;
 }
 div.pedidoWraper > div
 {

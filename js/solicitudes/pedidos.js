@@ -50,6 +50,8 @@ $(document).ready(function()
         {
             var id = $(this).attr('data-viaje');
             $('#ClientesDomicilio_id_cliente').val(id);
+            $('#Solicitudes_id_clientes').removeAttr('disabled');
+            $('#Solicitudes_id_clientes').trigger('chosen:update');
             $('#solicitudes-form').submit();
         });
     });

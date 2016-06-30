@@ -111,9 +111,11 @@ class ViajesController extends Controller
 //
             if(isset($_POST['Viajes']))
             {
+//                print_r($_POST);
                 $model->attributes = $_POST['Viajes'];
                 $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
                 $solicitudes->id_clientes = $_POST['Solicitudes']['id_clientes'];
+                $solicitudes->notas = $_POST['Solicitudes']['notas'];
                 $solicitudes->fecha_alta = date('Y-m-d');
                 $solicitudes->hora_alta = date('h:i');
                 $codigo = substr(Clientes::model()->getCliente($solicitudes->id_clientes),0,2);
@@ -121,25 +123,57 @@ class ViajesController extends Controller
                 $solicitudes->codigo = $codigo;
                 if($solicitudes->save())
                 {
-                    $model->id_solicitudes = $solicitudes->id;
-                    if($model->save())
+                    if($_POST['NuevoRecord'] == 0)
                     {
-                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                        $model->id_solicitudes = $solicitudes->id;
+                        if($model->save())
                         {
-                            $nuevo = new SolicitudesViaje();
-                            $nuevo->id_personal = $data;
-                            $nuevo->id_viaje = $model->id;
-                            $nuevo->id_solicitud = $solicitudes->id;
-                            $nuevo->save();
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_viaje = $model->id;
+                                $nuevo->id_solicitud = $solicitudes->id;
+                                $nuevo->save();
+                            }
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_viaje = $model->id;
+                                $nuevo->id_solicitud = $solicitudes->id;
+                                $nuevo->save();
+                            }
+                            foreach($_POST['Solicitudes']['codigo'] as $data)
+                            {
+                                $nuevo = new SolicitudTanques();
+                                $nuevo->id_solicitud = $solicitudes->id;
+                                $nuevo->id_tanque = $data['tanque'];
+                                $nuevo->id_domicilio = $data['destino'];
+                                $nuevo->id_cepas = $data['cepa'];
+                                $nuevo->cantidad_cepas = $data['cantidad'];
+                                if($nuevo->save())
+                                {
+                                    $cepa = Cepa::model()->findByPk($nuevo->id_cepas);
+                                    $cepa->cantidad = $cepa->cantidad - $nuevo->cantidad_cepas;
+                                    $cepa->save();
+                                    $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
+                                    $tanque->status = 2;
+                                    $tanque->save();
+                                }
+                            }
+                            $estacion = Estacion::model()->findByPk($model->id_estacion);
+                            $estacion->disponible = 2;
+                            $estacion->save();
                         }
-                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
-                        {
-                            $nuevo = new SolicitudesViaje();
-                            $nuevo->id_personal = $data;
-                            $nuevo->id_viaje = $model->id;
-                            $nuevo->id_solicitud = $solicitudes->id;
-                            $nuevo->save();
-                        }
+                    }
+                    else
+                    {
+                        $solicitudViaje = new SolicitudesViaje();
+                        $solicitudViaje->id_personal = $model->id_responsable;
+                        $solicitudViaje->id_solicitud = $solicitudes->id;
+                        $solicitudViaje->id_viaje = $_POST['viajeId'];
+                        $solicitudViaje->save();
                         foreach($_POST['Solicitudes']['codigo'] as $data)
                         {
                             $nuevo = new SolicitudTanques();
@@ -158,18 +192,41 @@ class ViajesController extends Controller
                                 $tanque->save();
                             }
                         }
-                        $estacion = Estacion::model()->findByPk($model->id_estacion);
-                        $estacion->disponible = 2;
-                        $estacion->save();
-                        $this->redirect(array('index'));
                     }
+                    $this->redirect(array('index'));
                 }
             }
             $pedidos = $_POST;
             if($pedidos['ClientesDomicilio']['id_cliente'] > 0)
             {
                 $model = $this->loadModel($pedidos['ClientesDomicilio']['id_cliente']);
+                $guardar = array();
+                foreach ($pedidos['pedido'] as $data)
+                    $guardar[] = $data;
+                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+                $i = 0;
+                foreach($solicitudTanque as $data)
+                {
+                    $cepa = Cepa::model()->findByPk($data->id_cepas);
+                    $pedido = array
+                    (
+                        'especie'=> $cepa->id_especie,
+                        'cepa'=>$data->id_cepas,
+                        'cantidad'=>$data->cantidad_cepas,
+                        'destino'=>$data->id_domicilio,
+                        'tanques'=>1,
+                        'id_tanque'=>$data->id_tanque
+                    );
+                    $pedidos['pedido'][$i] = $pedido;
+                    $i++;
+                }
+                foreach($guardar as $data)
+                {
+                    $pedidos['pedido'][$i] = $data;
+                    $i++;
+                }
             }
+            print_r($pedidos);
             $this->render('create',array(
                 'model' =>$model,
                 'pedidos'=>$pedidos,
