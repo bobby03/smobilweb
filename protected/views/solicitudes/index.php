@@ -15,19 +15,20 @@
 ?>
 
 <h1>Solicitudes</h1>
+<div class="principal">
+    <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+    <div class="search-form" style="display:none">
+    <?php $this->renderPartial('_search',array(
+            'model'=>$model,
+    )); ?>
+    </div><!-- search-form -->
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'solicitud',
+        'dataProvider'=>$model->search(),
+        'summaryText'=> '',
 
-<?php $this->widget('zii.widgets.grid.CGridView', array
-(
-    'id'=>'solicitud',
-    'dataProvider'=>$model->search(),
-    'summaryText'=> '',
-    
-    'columns'=>$model->adminSearch()
-)); ?>
+        'columns'=>$model->adminSearch()
+    )); ?>
+</div>

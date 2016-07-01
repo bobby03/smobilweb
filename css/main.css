@@ -323,7 +323,7 @@ div.botones-content div.aceptar-boton
     cursor: pointer;
 }
 .grid-view {
-    padding: 15px 107px;
+    padding: 0;
     /*width: 900px;*/
 }
 
@@ -381,4 +381,15 @@ h1 {
 {
     color: #09b7c9;
 }
+div.principal
+{
+    width: 1200px;
+    margin: 0 auto;
+}
 
+div.principal:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}

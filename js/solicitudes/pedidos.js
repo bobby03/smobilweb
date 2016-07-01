@@ -17,7 +17,7 @@ $(document).ready(function()
         var direccionID = $('#ClientesDomicilio_domicilio').val();
         var direccion = $('#ClientesDomicilio_domicilio option:selected').text();
         var html ='\n\
-                    <div class="pedidoViaje">\n\
+                    <div class="pedidoViaje" data-id="'+tot+'">\n\
                         <div class="datosPedido">\n\
                             <input form="solicitudes-form" type="hidden" name="pedido['+tot+'][especie]" readonly value="'+especieID+'">\n\
                             <input form="solicitudes-form" type="hidden" name="pedido['+tot+'][cepa]" readonly value="'+cepaID+'">\n\
@@ -42,10 +42,15 @@ $(document).ready(function()
         editarPedido();
         tot++;
         $('.botones').removeClass('hide');
+        if(!$('.crearViaje').hasClass('hide'))
+        {
+            contarTanques();
+        }
     });
     $('div.continuar').click(function()
     {
         $('div.crearViaje').removeClass('hide');
+        contarTanques();
         $('.viajeSel').click(function()
         {
             var id = $(this).attr('data-viaje');
@@ -96,6 +101,29 @@ $(document).ready(function()
             i++;
         });
         if(i == 0)
+        {
             $('.crearViaje').addClass('hide');
+            $('.pedidos').addClass('hide');
+            $('#Solicitudes_id_clientes').removeAttr('disabled').trigger("chosen:updated");
+        }
+        else
+            contarTanques();
+    }
+    function contarTanques()
+    {
+        var tanques = 0;
+        $('.pedidoViaje').each(function()
+        {
+            var id = $(this).attr('data-id');
+            tanques = tanques + parseInt($(this).find('input[name="pedido['+id+'][tanques]"]').val());
+        });
+        $('.renglon').each(function()
+        {
+            var total = $(this).find('[data-tanque]').attr('data-tanque');
+            if(total < tanques)
+                $(this).addClass('hide');
+            else
+                $(this).removeClass('hide');
+        });
     }
 });
