@@ -81,7 +81,17 @@ class Solicitudes extends CActiveRecord
 			'notas' => 'Notas',
 		);
 	}
-
+public function getSearchSolicitud(){
+            return array('1'=>'Cliente',
+                         '2'=>'Código',
+                         '3'=>'Fecha Alta',
+                         '4'=>'Hora Alta',
+                         '5'=>'Fecha Estimada',
+                         '6'=>'Hora fecha_estimada',
+                         '7'=>'Fecha Entrega',
+                         '8'=>'Hora Entrega',
+                         '9'=>'Notas');
+        }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

@@ -73,13 +73,14 @@ class Estacion extends CActiveRecord
 			'activo' => 'Activo',
 		);
 	}
-    public function getSearchClientes(){
-            return array('1'=>'nombre empresa',
-                         '2'=>'nombre contacto',
-                         '3'=>'apellido contacto',
-                         '4'=>'correo',
-                         '5'=>'rfc',
-                         '6'=>'tel');
+    public function getSearchEstaciones(){
+            return array('1'=>'Tipo',
+                         '2'=>'Identificador',
+                         '3'=>'No. Personal',
+                         '4'=>'Marca',
+                         '5'=>'Color',
+                         '6'=>'Ubicación',
+                         '7'=>'Disponible');
         }
 
 
@@ -102,7 +103,7 @@ class Estacion extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		/*$criteria->compare('tipo',$this->tipo);
+		$criteria->compare('tipo',$this->tipo);
 		$criteria->compare('identificador',$this->identificador,true);
 		$criteria->compare('no_personal',$this->no_personal);
 		$criteria->compare('marca',$this->marca,true);
@@ -110,11 +111,11 @@ class Estacion extends CActiveRecord
 		$criteria->compare('ubicacion',$this->ubicacion,true);
 		$criteria->compare('disponible',$this->disponible);
 		$criteria->compare('activo',$this->activo);
-                $criteria->addCondition("activo=1");*/
-                $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
+                $criteria->addCondition("activo=1");
+               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
                                 "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
                                 "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
-                                "%')");
+                                "%')");*/
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

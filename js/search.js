@@ -19,4 +19,8 @@ $(document).ready(function()
         $('.search-form div.row[data-id]').addClass('hide');
         $('.search-form div.row[data-id="'+id+'"]').removeClass('hide');
     });
+    $('.search-form select').on('change',function(){
+         $('.search-form form').submit();
+    });
+
 });

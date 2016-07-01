@@ -130,6 +130,7 @@ class Roles extends SMActiveRecord
                 case 9: return 'Viajes'; break;
             }
         }
+        
         public function adminSearch()
         {
             return array

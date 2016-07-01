@@ -16,10 +16,9 @@
 
 <h1>Solicitudes</h1>
 <div class="principal">
-    <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-    <div class="search-form" style="display:none">
+   <div class="search-form" >
     <?php $this->renderPartial('_search',array(
-            'model'=>$model,
+	'model'=>$model,
     )); ?>
     </div><!-- search-form -->
 
@@ -28,7 +27,6 @@
         'id'=>'solicitud',
         'dataProvider'=>$model->search(),
         'summaryText'=> '',
-
         'columns'=>$model->adminSearch()
     )); ?>
 </div>

@@ -99,6 +99,8 @@ class Usuarios extends CActiveRecord
 		));
 	}
 
+
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -112,11 +114,15 @@ class Usuarios extends CActiveRecord
         public function getAllTipoUsuario()
         {
             return array
-            (+
+            (
                 '1' => 'Cliente',
                 '2' => 'Personal'
             );
         }
+        public function getSearchUsuarios(){
+			return array('1'=>'Nombre Usuario',
+				         '2'=>'Tipo de Usuario');
+		}
         public function getTipoUsuario($id)
         {
             switch ($id)
