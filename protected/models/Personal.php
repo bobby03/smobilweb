@@ -123,12 +123,12 @@ class Personal extends CActiveRecord
 	 public function getSearchPersonal(){
             return array('1'=>'Nombre',
                          '2'=>'Apellido',
-                         '3'=>'Teléfono',
-                         '4'=>'RFC',
-                         '5'=>'Domicilio',
+                        /* '3'=>'Teléfono',*/
+                         '4'=>'RFC'
+                        /* '5'=>'Domicilio',
                          '6'=>'Rol',
                          '7'=>'Correo',
-                         '8'=>'Puesto');
+                         '8'=>'Puesto'*/);
         }
 
 	/**

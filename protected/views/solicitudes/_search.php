@@ -16,7 +16,7 @@
 
 	<div class="row hide" data-id='1'>
 		<label>Buscar:</label>
-		<?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 	</div>
 
 	<div class="row hide" data-id='2'>
@@ -24,7 +24,7 @@
 		<?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row hide" data-id='3'>
+  <!--	<div class="row hide" data-id='3'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'fecha_alta'); ?>
 	</div>
@@ -57,7 +57,7 @@
 	<div class="row hide" data-id='9'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'notas',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+	</div>-->
 
 	<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>

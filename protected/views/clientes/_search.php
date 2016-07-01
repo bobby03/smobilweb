@@ -29,20 +29,20 @@
 		<?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row hide" data-id='4'>
+<!--	<div class="row hide" data-id='4'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+	</div>-->
 
-	<div class="row hide" data-id='5'>
+	<div class="row hide" data-id='4'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
 	</div>
 
-	<div class="row hide" data-id='6'>
+<!--	<div class="row hide" data-id='6'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
-	</div>
+	</div>-->
 
      <div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>

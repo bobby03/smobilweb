@@ -143,9 +143,10 @@ class Clientes extends CActiveRecord
 			return array('1'=>'Nombre Empresa',
 				         '2'=>'Nombre Contacto',
 				         '3'=>'Apellido Contacto',
-				         '4'=>'Correo',
-				         '5'=>'RFC',
-				         '6'=>'Teléfono');
+				     //   '4'=>'Correo',
+				         '4'=>'RFC'
+				     //  '6'=>'Teléfono'
+				         );
 		}
 
         public function getClienteViajes($id)

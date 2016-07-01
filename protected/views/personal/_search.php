@@ -22,17 +22,17 @@
 		<?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row hide" data-id='3'>
+<!--	<div class="row hide" data-id='3'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
-	</div>
+	</div>-->
 
 	<div class="row hide" data-id='4'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
 	</div>
 
-	<div class="row hide" data-id='5'>
+	<!--<div class="row hide" data-id='5'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'domicilio',array('size'=>60,'maxlength'=>150)); ?>
 	</div>
@@ -50,7 +50,7 @@
 	<div class="row hide" data-id='8'>
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+	</div>-->
 
 	<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>
