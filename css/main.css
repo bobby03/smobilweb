@@ -377,5 +377,8 @@ h1 {
     font-size: 21px;
     color: white;
 }
-
+.grid-view table.items th a:hover 
+{
+    color: #09b7c9;
+}
 

@@ -26,7 +26,7 @@
     'id'=>'viaje',
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
-    'filter'=>$model,
+//    'filter'=>$model,
     'columns'=>$model->adminSearch()
 )); 
 ?>

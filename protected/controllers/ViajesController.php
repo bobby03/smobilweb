@@ -170,7 +170,7 @@ class ViajesController extends Controller
                     else
                     {
                         $solicitudViaje = new SolicitudesViaje();
-                        $solicitudViaje->id_personal = $model->id_responsable;
+                        $solicitudViaje->id_personal = 0;
                         $solicitudViaje->id_solicitud = $solicitudes->id;
                         $solicitudViaje->id_viaje = $_POST['viajeId'];
                         $solicitudViaje->save();
@@ -226,7 +226,7 @@ class ViajesController extends Controller
                     $i++;
                 }
             }
-            print_r($pedidos);
+//            print_r($pedidos);
             $this->render('create',array(
                 'model' =>$model,
                 'pedidos'=>$pedidos,
