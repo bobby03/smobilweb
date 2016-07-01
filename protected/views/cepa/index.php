@@ -18,18 +18,18 @@ $this->menu=array(
 
 <h1>Cepas</h1>
 
+<div class="principal">
+    <div class="search-form" >
+    <?php $this->renderPartial('_search',array(
+            'model'=>$model,
+    )); ?>
+    </div><!-- search-form -->
 
-<div class="search-form" >
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'cepa',
-//	'filter'=>$model,
-	'dataProvider'=>$model->search(),
-	'summaryText'=> '',
-	'columns'=>$model->adminSearch()
-)); ?>
-
+    <?php $this->widget('zii.widgets.grid.CGridView', array(
+            'id'=>'cepa',
+    //	'filter'=>$model,
+            'dataProvider'=>$model->search(),
+            'summaryText'=> '',
+            'columns'=>$model->adminSearch()
+    )); ?>
+</div>
