@@ -15,18 +15,18 @@
 ?>
 
 <h1>Solicitudes</h1>
-
-<div class="search-form" >
-<?php $this->renderPartial('_search',array(
+<div class="principal">
+   <div class="search-form" >
+    <?php $this->renderPartial('_search',array(
 	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+    )); ?>
+    </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array
-(
-    'id'=>'solicitud',
-    'dataProvider'=>$model->search(),
-    'summaryText'=> '',
-    
-    'columns'=>$model->adminSearch()
-)); ?>
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'solicitud',
+        'dataProvider'=>$model->search(),
+        'summaryText'=> '',
+        'columns'=>$model->adminSearch()
+    )); ?>
+</div>

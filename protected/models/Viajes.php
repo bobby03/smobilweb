@@ -110,7 +110,26 @@ class Viajes extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        public function searchStatus1($flag)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('id_solicitudes',$this->id_solicitudes);
+		$criteria->compare('id_responsable',$this->id_responsable);
+		$criteria->compare('id_estacion',$this->id_estacion);
+		$criteria->compare('status',$this->status,true);
+		$criteria->compare('fecha_salida',$this->fecha_salida,true);
+		$criteria->compare('hora_salida',$this->hora_salida,true);
+		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
+		$criteria->compare('hora_entrega',$this->hora_entrega,true);
+                $criteria->addCondition("status = $flag");
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

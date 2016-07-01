@@ -170,7 +170,7 @@ class SolicitudesController extends Controller
                             <div>
                                 {$todosViajes[$data->id_estacion]['camion']}
                             </div>
-                            <div>
+                            <div data-tanque="{$todosViajes[$data->id_estacion]['cantidad']}">
                                 {$todosViajes[$data->id_estacion]['cantidad']}
                             </div>
                             <div class="viajeLoc" data-viaje="{$data->id}"></div>
