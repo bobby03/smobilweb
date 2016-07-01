@@ -99,27 +99,37 @@ class Personal extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		/*$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('nombre',$this->nombre,true);
 		$criteria->compare('apellido',$this->apellido,true);
 		$criteria->compare('tel',$this->tel,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('domicilio',$this->domicilio,true);
 		$criteria->compare('id_rol',$this->id_rol);
 		$criteria->compare('correo',$this->correo,true);
-		$criteria->compare('puesto',$this->puesto,true);*/
-		$criteria->addcondition("(nombre LIKE '%".$this->nombre."%' OR apellido LIKE '%".$this->nombre.
+		$criteria->compare('puesto',$this->puesto,true);
+		/*$criteria->addcondition("(nombre LIKE '%".$this->nombre."%' OR apellido LIKE '%".$this->nombre.
                                 "%' OR tel LIKE '%".$this->nombre.
                                 "%' OR rfc LIKE '%".$this->nombre.
                                 "%' OR domicilio LIKE '%".$this->nombre.
                                 "%' OR id_rol LIKE '%".$this->nombre.
                                 "%' OR correo LIKE '%".$this->nombre.
-                                "%' OR puesto LIKE '%".$this->nombre."%')");
+                                "%' OR puesto LIKE '%".$this->nombre."%')");*/
 
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	 public function getSearchPersonal(){
+            return array('1'=>'Nombre',
+                         '2'=>'Apellido',
+                         '3'=>'Teléfono',
+                         '4'=>'RFC',
+                         '5'=>'Domicilio',
+                         '6'=>'Rol',
+                         '7'=>'Correo',
+                         '8'=>'Puesto');
+        }
 
 	/**
 	 * Returns the static model of the specified AR class.

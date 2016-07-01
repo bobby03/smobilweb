@@ -108,25 +108,30 @@ class Cepa extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('id_especie',$this->id_especie);
 		$criteria->compare('nombre_cepa',$this->nombre_cepa,true);
-		/*$criteria->compare('temp_min',$this->temp_min);
+		$criteria->compare('temp_min',$this->temp_min);
 		$criteria->compare('temp_max',$this->temp_max);
 		$criteria->compare('ph_min',$this->ph_min);
 		$criteria->compare('ph_max',$this->ph_max);
 		$criteria->compare('ox_min',$this->ox_min);
-		$criteria->compare('ox_max',$this->ox_max);*/
+		$criteria->compare('ox_max',$this->ox_max);
 		$criteria->compare('cantidad',$this->cantidad);
-		/*$criteria->compare('cond_min',$this->cond_min);
+		$criteria->compare('cond_min',$this->cond_min);
 		$criteria->compare('cond_max',$this->cond_max);
 		$criteria->compare('orp_min',$this->orp_min);
-		$criteria->compare('orp_max',$this->orp_max);*/
-			$criteria->addcondition("(nombre_cepa LIKE '%".$this->nombre_cepa."%' OR id_especie LIKE '%".$this->nombre_cepa.
-								"%' OR cantidad LIKE '%".$this->nombre_cepa."%')");
+		$criteria->compare('orp_max',$this->orp_max);
+			/*$criteria->addcondition("(nombre_cepa LIKE '%".$this->nombre_cepa."%' OR id_especie LIKE '%".$this->nombre_cepa.
+								"%' OR cantidad LIKE '%".$this->nombre_cepa."%')");*/
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
+	public function getSearchCepa(){
+			return array('1'=>'Especie',
+				         '2'=>'Nombre Cepa',
+				         '3'=>'Cantidad');
+		}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
