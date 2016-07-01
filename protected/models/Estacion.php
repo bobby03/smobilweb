@@ -74,13 +74,13 @@ class Estacion extends CActiveRecord
 		);
 	}
     public function getSearchEstaciones(){
-            return array('1'=>'Tipo',
-                         '2'=>'Identificador',
-                         '3'=>'No. Personal',
-                         '4'=>'Marca',
-                         '5'=>'Color',
+            return array(//'1'=>'Tipo',
+                         '1'=>'Identificador',
+                         '2'=>'No. Personal',
+                         '3'=>'Marca'
+                         /*'5'=>'Color',
                          '6'=>'Ubicación',
-                         '7'=>'Disponible');
+                         '7'=>'Disponible'*/);
         }
 
 

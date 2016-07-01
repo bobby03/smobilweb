@@ -17,7 +17,6 @@ $this->menu=array(
 ?>
 
 <h1>Cepas</h1>
-
 <div class="principal">
     <div class="search-form" >
     <?php $this->renderPartial('_search',array(
