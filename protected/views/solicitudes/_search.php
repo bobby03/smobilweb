@@ -11,7 +11,7 @@
 	'method'=>'get',
 )); ?>
 
- 	<? echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchSolicitud(),array('empty' =>'Selecciona campo a buscar')); ?>
+ 	<?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchSolicitud(),array('empty' =>'Selecciona campo a buscar')); ?>
 
 
 	<div class="row hide" data-id='1'>
