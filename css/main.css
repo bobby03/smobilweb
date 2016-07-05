@@ -232,13 +232,8 @@ div.breadcrumbs span
 
 div.search-form
 {
-	padding: 10px;
-    margin: -11px 74px 0 75px;
-    background: #ffffff;
-    line-height: 45px;
     border-bottom: 2px solid #d8d8d8;
-    padding-right: 18px;
-    margin-right: 145px;
+    padding-bottom: 25px;
 }
 
 .portlet
