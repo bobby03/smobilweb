@@ -5,9 +5,10 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
-?>
+   ?>
 
 <div class="form">
+	<?php $cs->registerCssFile($baseUrl.'/css/clientes/create.css') ?>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'estacion-form',
@@ -18,11 +19,10 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-
+<div class="form-containerWraper">
+<div class="form-container1">
 	<div class="row">
 		<?php echo $form->labelEx($model,'tipo'); ?>
 		<span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo', $model->getAllTipo(), array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
@@ -46,7 +46,8 @@
 		<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'marca'); ?>
 	</div>
-
+</div>
+<div class="form-container2">
 	<div class="row">
 		<?php echo $form->labelEx($model,'color'); ?>
 		<?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?>
@@ -64,11 +65,12 @@
 		<?php echo $form->labelEx($model,'disponible'); ?>
 		<span class="css-select-moz"><?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
 		<?php echo $form->error($model,'disponible'); ?>
-	</div>
+	</div></div>
         <?php endif;?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
+</div>
 
 <?php $this->endWidget(); ?>
 

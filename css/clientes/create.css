@@ -25,3 +25,29 @@ div.allMapa:last-child div.row.des
 {
     border-bottom: 0;
 }
+    div.form input, div.form textarea, div.form select, div.form .chosen-container {
+    /* margin: 0.2em 0 0.5em 0; */
+    min-height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    width: 100% !important;
+}
+.form-container1{
+float:left;
+width: 300px;
+margin-right: 100px;
+}
+.form-container2{
+float:left;
+width: 300px;
+}
+
+div.form-containerWraper:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}

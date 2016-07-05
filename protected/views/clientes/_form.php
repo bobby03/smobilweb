@@ -25,48 +25,44 @@
     $noDireccion = 1;
 ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
 
 
-
+<div class="form-containerWraper">
+<div class="form-container1">
 	<div class="row">
 		<?php echo $form->labelEx($model,'nombre_empresa'); ?>
 		<?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'nombre_empresa'); ?>
+		
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nombre_contacto'); ?>
 		<?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'nombre_contacto'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'apellido_contacto'); ?>
 		<?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'apellido_contacto'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'correo'); ?>
 		<?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'correo'); ?>
 	</div>
-
+</div>
+<div class="form-container2">
 	<div class="row">
 		<?php echo $form->labelEx($model,'rfc'); ?>
 		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
-		<?php echo $form->error($model,'rfc'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tel'); ?>
 		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
-		<?php echo $form->error($model,'tel'); ?>
 	</div>
-        <div class="row">
+    </div>
+</div>
+    <div class="row">
             <h3>Direcciones <div class="addDireccion">Agregar dirección</div> </h3>
         </div>
         <div class="row mapa">

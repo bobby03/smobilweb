@@ -3,7 +3,9 @@
 /* @var $dataProvider CActiveDataProvider */
  $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/clientes/cliente.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+
 
 $this->breadcrumbs=array(
 	'Clientes',

@@ -2,10 +2,14 @@
 /* @var $this CepaController */
 /* @var $model Cepa */
 /* @var $form CActiveForm */
+ $baseUrl = Yii::app()->baseUrl;
 ?>
 
 <div class="form">
-
+<?php 
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/cepa/create.css');
+?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cepa-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -18,7 +22,8 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
+<div class="form-containerWraper">
+<div class="form-container1">
         <div class="row">
 		<?php echo $form->labelEx($model,'id_especie'); ?>
 		<span class="css-select-moz"><?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
@@ -60,7 +65,8 @@
 		<?php echo $form->textField($model,'ox_min'); ?>
 		<?php echo $form->error($model,'ox_min'); ?>
 	</div>
-
+</div>
+<div class="form-container2">
 	<div class="row">
 		<?php echo $form->labelEx($model,'ox_max'); ?>
 		<?php echo $form->textField($model,'ox_max'); ?>
@@ -96,7 +102,8 @@
 		<?php echo $form->textField($model,'orp_max'); ?>
 		<?php echo $form->error($model,'orp_max'); ?>
 	</div>
-
+   </div>
+                </div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
