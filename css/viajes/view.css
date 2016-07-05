@@ -21,7 +21,7 @@
     box-sizing: border-box;
     border: 3px solid #09B7C9;
 }
-.titulo
+.detallesViaje .titulo
 {
     line-height: 44px;
     color: #FFFFFF;
@@ -85,6 +85,19 @@
     height: 242px;
     width: 411px;
 }
+.tanque
+{
+    float: left;
+    width: 316px;
+    height: 316px;
+    box-sizing: border-box;
+    margin-right: 50px;
+}
+.tanque:nth-child(3n)
+{
+    margin-right: 0;
+}
+
 .datosWraper:after,
 .detallesViaje:after,
 .allTanques:after

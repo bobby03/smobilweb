@@ -98,7 +98,7 @@
                 </div>
                 <div class="noTanques">
                     <label>Tanques requeridos</label>
-                    <input id="tanquesNO" type="number" name="noTanques" min="1">
+                    <input id="tanquesNO" type="number" name="noTanques" min="1" max="8">
                 </div>
             </div>
             <div class="row direcciones hide">

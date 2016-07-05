@@ -31,46 +31,46 @@ $this->menu=array(
 <?php endif;?>
 <div class="principal">
     <?php if($model->status == 1):?>
-    <?php $this->widget('zii.widgets.CDetailView', array(
-            'data'=>$model,
-            'attributes'=>array(
-                array(
-                    'name'=>'id_solicitudes',
-                    'value'=> Viajes::model()->getAllClientesViajes($model->id, $model->id_solicitudes),
-                    'type'=>'raw'
-                ),
-                array(
-                    'name'=>'status',
-                    'value'=> Viajes::model()->getStatus($model->status)
-                ),
-                array(
-                    'name'=>'id_responsable',
-                    'value'=> Personal::model()->getPersonal($model->id_responsable)
-                ),
-                array(
-                    'name'=>'fecha_salida',
-                    'value'=> Viajes::model()->getFecha($model->fecha_salida)
-                ),
-                array(
-                    'name'=>'hora_salida',
-                    'value'=> Viajes::model()->getHora($model->hora_salida)
-                ),
-                array(
-                    'name'=>'fecha_entrega',
-                    'value'=> Viajes::model()->getFecha($model->fecha_entrega)
-                ),
-                array(
-                    'name'=>'hora_entrega',
-                    'value'=> Viajes::model()->getHora($model->hora_entrega)
-                ),
-                array(
-                    'name'=>'id_estacion',
-                    'value'=>Estacion::model()->getEstacion($model->id_estacion)
-                )
-            ),
-    )); ?>
+    <?php // $this->widget('zii.widgets.CDetailView', array(
+//            'data'=>$model,
+//            'attributes'=>array(
+//                array(
+//                    'name'=>'id_solicitudes',
+//                    'value'=> Viajes::model()->getAllClientesViajes($model->id, $model->id_solicitudes),
+//                    'type'=>'raw'
+//                ),
+//                array(
+//                    'name'=>'status',
+//                    'value'=> Viajes::model()->getStatus($model->status)
+//                ),
+//                array(
+//                    'name'=>'id_responsable',
+//                    'value'=> Personal::model()->getPersonal($model->id_responsable)
+//                ),
+//                array(
+//                    'name'=>'fecha_salida',
+//                    'value'=> Viajes::model()->getFecha($model->fecha_salida)
+//                ),
+//                array(
+//                    'name'=>'hora_salida',
+//                    'value'=> Viajes::model()->getHora($model->hora_salida)
+//                ),
+//                array(
+//                    'name'=>'fecha_entrega',
+//                    'value'=> Viajes::model()->getFecha($model->fecha_entrega)
+//                ),
+//                array(
+//                    'name'=>'hora_entrega',
+//                    'value'=> Viajes::model()->getHora($model->hora_entrega)
+//                ),
+//                array(
+//                    'name'=>'id_estacion',
+//                    'value'=>Estacion::model()->getEstacion($model->id_estacion)
+//                )
+//            ),
+//    )); ?>
     <?php endif;?>
-    <?php if($model->status == 2):?>
+    <?php if($model->status == 2 || $model->status == 1):?>
     <div class="detallesViaje">
         <div class="datosViaje">
             <div class="titulo">Datos del viaje<span>Ultima actualización:</span></div>
@@ -100,10 +100,18 @@ $this->menu=array(
     <div class="tanquesViajes">
         <h2>Detalles de tanque</h2>
         <div class="allTanques">
-            <?php print_r($tanques);?>
+            <?php // print_r($tanques);?>
             <?php foreach($tanques as $data):?>
                 <div class="tanque">
-                    
+                    <div class="titulosWraper">
+                        <div><?php echo $data['nombre'];?></div>
+                        <div><?php echo $data['nombre_empresa'];?></div>
+                        <div><?php echo $data['codigo'];?></div>
+                    </div>
+                    <div class="grafica">
+                        
+                    </div>
+                    <div> </div>
                 </div>
             <?php endforeach;?>
         </div>

@@ -93,8 +93,8 @@ class ViajesController extends Controller
 	public function actionView($id)
 	{
             $model = Viajes::model()->findByPk((int)$id);
-            if($model->status != 1)
-            {
+//            if($model->status != 1)
+//            {
                 $tanques = Yii::app()->db->createCommand()
                         ->selectDistinct('solTa.id_domicilio, solTa.id_tanque, solTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
                         ->from('solicitudes_viaje as solVi')
@@ -104,7 +104,7 @@ class ViajesController extends Controller
                         ->join('tanque as tan','tan.id = solTa.id_tanque')
                         ->where("solVi.id_viaje = :id",array(':id'=>(int)$id))
                         ->queryAll();
-            }
+//            }
             $this->render('view',array(
                 'model'=>$model,
                 'tanques'=>$tanques
@@ -132,6 +132,8 @@ class ViajesController extends Controller
                 $solicitudes->notas = $_POST['Solicitudes']['notas'];
                 $solicitudes->fecha_alta = date('Y-m-d');
                 $solicitudes->hora_alta = date('h:i');
+                $solicitudes->fecha_estimada = $model->fecha_salida;
+                $solicitudes->hora_estimada = $model->hora_salida;
                 $codigo = substr(Clientes::model()->getCliente($solicitudes->id_clientes),0,2);
                 $codigo = $codigo.date('Ymdhi');
                 $solicitudes->codigo = $codigo;
