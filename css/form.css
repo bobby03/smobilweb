@@ -273,7 +273,14 @@ div.chosen-container
     width: 100% !important;
     box-sizing: border-box;
 }
-
+h2
+{
+    background-color: #0077B0;
+    color: #FFFFFF;
+    line-height: 30px;
+    text-indent: 40px;
+    height: 30px;
+}
 div.formContainer1:after,
 div.row.titulos:after,
 div.row:after

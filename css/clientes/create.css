@@ -33,5 +33,21 @@ div.allMapa:last-child div.row.des
     border-radius: 5px;
     border-left: 30px solid #0077b0;
     text-indent: 5px;
-    width: 20% !important;
+    width: 100% !important;
+}
+.form-container1{
+float:left;
+width: 300px;
+margin-right: 100px;
+}
+.form-container2{
+float:left;
+width: 300px;
+}
+
+div.form-containerWraper:after
+{
+    content: '';
+    display: block;
+    clear: both;
 }

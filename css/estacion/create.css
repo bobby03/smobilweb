@@ -32,3 +32,19 @@ div.tanque:last-child
 {
     border-bottom: 0;
 }
+.form-container1{
+float:left;
+width: 300px;
+margin-right: 100px;
+}
+.form-container2{
+float:left;
+width: 300px;
+}
+
+div.form-containerWraper:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}

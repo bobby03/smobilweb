@@ -92,9 +92,23 @@ class ViajesController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+            $model = Viajes::model()->findByPk((int)$id);
+            if($model->status != 1)
+            {
+                $tanques = Yii::app()->db->createCommand()
+                        ->selectDistinct('solTa.id_domicilio, solTa.id_tanque, solTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
+                        ->from('solicitudes_viaje as solVi')
+                        ->join('solicitud_tanques as solTa','solTa.id_solicitud = solVi.id_solicitud')
+                        ->join('solicitudes as sol','sol.id = solTa.id_solicitud')
+                        ->join('clientes as cli','cli.id = sol.id_clientes')
+                        ->join('tanque as tan','tan.id = solTa.id_tanque')
+                        ->where("solVi.id_viaje = :id",array(':id'=>(int)$id))
+                        ->queryAll();
+            }
+            $this->render('view',array(
+                'model'=>$model,
+                'tanques'=>$tanques
+            ));
 	}
 
 	/**
@@ -338,6 +352,10 @@ class ViajesController extends Controller
                     <option value="$data->id">$data->nombre - $data->capacidad L</option>
 eof;
             echo json_encode($return);
+        }
+        public function actionGetAllTanques()
+        {
+            
         }
 	protected function performAjaxValidation($model)
 	{

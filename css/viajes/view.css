@@ -1,0 +1,95 @@
+.detallesViaje
+{
+    margin-top: 25px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+.datosViaje
+{
+    width: 740px;
+    box-sizing: border-box;
+    border: 3px solid #09B7C9;
+    float: left;
+    margin-right: 23px;
+}
+.mapaWraper
+{
+    float: left;
+    width: 437px;
+    box-sizing: border-box;
+    border: 3px solid #09B7C9;
+}
+.titulo
+{
+    line-height: 44px;
+    color: #FFFFFF;
+    background-color: #0077B0;
+    text-indent: 20px;
+    font-size: 19px;
+}
+.titulo span
+{
+    float: right;
+    font-size: 14px;
+}
+.datosWraper > div
+{
+    width: 243px;
+    border-right: 3px solid #09B7C9;
+    float: left;
+    margin: 25px 0;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 25px;
+    height: 212px;
+}
+.datosWraper > div:nth-child(3)
+{
+    border: 0;
+}
+.subtitulo
+{
+    position: absolute;
+    top: -10px;
+    font-size: 18px;
+    color: #0077B0;
+    font-family: 'Roboto-Bold';
+}
+.txtA
+{
+    padding-top: 25px;
+    color: #0077B0;
+    font-size: 14px;
+    font-family: 'Roboto-Bold';
+}
+.txtA:nth-child(2)
+{
+    padding-top: 40px;
+}
+.txtA span
+{
+    color: #000000;
+    padding-left: 5px;
+}
+.datosWraper > div > span
+{
+    color: #000000;
+    font-size: 14px;
+    font-family: 'Roboto-Bold';
+}
+#map
+{
+    margin: 10px;
+    height: 242px;
+    width: 411px;
+}
+.datosWraper:after,
+.detallesViaje:after,
+.allTanques:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}

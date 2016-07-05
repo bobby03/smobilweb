@@ -3,6 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    
     $cs->registerScriptFile($baseUrl.'/js/search.js');
 
 
