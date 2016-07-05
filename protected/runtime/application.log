@@ -1,273 +1,171 @@
-2016/06/30 07:58:29 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+2016/07/04 13:13:06 [error] [exception.Error] Error: Call to undefined function loadModel() in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:95
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(30): CWebUser->checkAccess('createSolicitud...')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): SolicitudesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes/cre...')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/solicitudes/create
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes
+#0 [internal function]: ViajesController->actionView('29')
+#1 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 09:32:54 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:2524)
+2016/07/04 13:13:17 [error] [php] Object of class Viajes could not be converted to string (C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:99)
 Stack trace:
-#0 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(62): CActiveForm->dropDownList()
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#4 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(177): ViajesController->render()
-#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (62)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (177)
-2016/06/30 09:33:08 [error] [php] Illegal string offset 'name' (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:2657)
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (99)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/04 13:13:25 [error] [php] Object of class Viajes could not be converted to string (C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:99)
 Stack trace:
-#0 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(62): CActiveForm->textField()
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#4 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(177): ViajesController->render()
-#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (62)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (177)
-2016/06/30 09:33:39 [error] [php] Illegal string offset 'name' (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:2657)
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (99)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/04 13:13:31 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php:61)
 Stack trace:
-#0 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(62): CActiveForm->textField()
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#4 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(177): ViajesController->render()
-#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (62)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (177)
-2016/06/30 09:34:53 [error] [php] Illegal string offset 'name' (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:2657)
-Stack trace:
-#0 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(62): CActiveForm->textField()
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#4 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#9 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(177): ViajesController->render()
-#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (62)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (177)
-2016/06/30 09:53:11 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(99): ViajesController->render()
+#3 unknown(0): ViajesController->actionView()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
 #12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
 #16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
----
-2016/06/30 10:00:46 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php (61)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (99)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/04 13:13:52 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php:61)
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(99): ViajesController->render()
+#3 unknown(0): ViajesController->actionView()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
 #12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
 #16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
----
-2016/06/30 10:01:14 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php (61)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (99)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/04 13:16:29 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php:61)
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
-#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2001): tag()
-#2 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(914): activeDropDownList()
-#3 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(42): CActiveForm->dropDownList()
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#7 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#12 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(177): ViajesController->render()
-#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#18 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#20 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#21 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#25 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (42)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (177)
-2016/06/30 10:02:20 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:108)
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(99): ViajesController->render()
+#3 unknown(0): ViajesController->actionView()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php (61)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (99)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/04 13:16:46 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php:61)
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
-#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2001): tag()
-#2 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(914): activeDropDownList()
-#3 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(49): CActiveForm->dropDownList()
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#7 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#12 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(177): ViajesController->render()
-#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#18 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#20 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#21 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#25 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (49)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (177)
-2016/06/30 10:27:32 [error] [exception.CException] CException: Property "Tanque.identificador" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(96): ViajesController->render()
+#3 unknown(0): ViajesController->actionView()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\view.php (61)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (96)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 09:25:49 [error] [exception.CException] CException: Property "CButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('identificador')
-#1 C:\xampp\htdocs\SmobilWeb\protected\models\Tanque.php(154): CActiveRecord->__get('identificador')
-#2 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php(103): Tanque->getTanque('17')
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#6 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): CController->renderPartial('_form', Array)
+#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(203): CComponent->__get('customButtonLab...')
+#1 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(174): CButtonColumn->initDefaultButtons()
+#2 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(401): CButtonColumn->init()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\admin.php(44): CBaseController->widget('zii.widgets.gri...', Array)
 #7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
 #8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
 #9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(203): CController->render('create', Array)
-#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#11 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(314): CController->render('admin', Array)
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionAdmin()
 #13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
 #14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
 #15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
@@ -276,127 +174,20 @@ Stack trace:
 #18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
 #20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/admin')
 #23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
 #24 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
 #25 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/solicitudes/create
+REQUEST_URI=/SMobilWeb/index.php/viajes/admin
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/29
 ---
-2016/06/30 10:43:26 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:96)
+2016/07/05 10:16:16 [error] [exception.CException] CException: CDbCommand and its behaviors do not have a method or closure named "distinct". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(204): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (96)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (204)
-2016/06/30 11:04:15 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:97)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(207): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (97)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (207)
-2016/06/30 11:13:18 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:97)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(207): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (97)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (207)
-2016/06/30 11:19:42 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:97)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(229): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (97)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (229)
-2016/06/30 11:24:49 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`solicitudes_viaje`, CONSTRAINT `solicitudes_viaje_ibfk_1` FOREIGN KEY (`id_personal`) REFERENCES `personal` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `solicitudes_viaje` (`id_solicitud`) VALUES (:yp0).
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (176)
-in C:\xampp\htdocs\SmobilWeb\index.php (13)
-2016/06/30 11:24:49 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`solicitudes_viaje`, CONSTRAINT `solicitudes_viaje_ibfk_1` FOREIGN KEY (`id_personal`) REFERENCES `personal` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `solicitudes_viaje` (`id_solicitud`) VALUES (:yp0) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
-#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(176): CActiveRecord->save()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
+#0 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(100): CComponent->__call('distinct', Array)
+#1 [internal function]: ViajesController->actionView('29')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
 #4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
 #5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
 #6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
@@ -405,537 +196,298 @@ Stack trace:
 #9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
 #11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
 #14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
 #15 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
 #16 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/create
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 11:26:57 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:244
+2016/07/05 10:16:49 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.solicitudes_tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solVi`.`id_solicitud`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitudes_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+WHERE solVi.id_viaje = :id.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (106)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 10:16:49 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.solicitudes_tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solVi`.`id_solicitud`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitudes_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+WHERE solVi.id_viaje = :id in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
-#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
-#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#3 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#4 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/create
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(106): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionView('29')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 11:27:22 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:97)
+2016/07/05 10:17:10 [error] [exception.Error] Error: Call to a member function from() on null in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:101
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(235): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (97)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (235)
-2016/06/30 11:27:41 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:97)
+#0 [internal function]: ViajesController->actionView('29')
+#1 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
+---
+2016/07/05 10:17:33 [error] [exception.Error] Error: Call to a member function from() on null in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:101
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(235): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (97)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (235)
-2016/06/30 11:32:47 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:93)
+#0 [internal function]: ViajesController->actionView('29')
+#1 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
+---
+2016/07/05 10:34:58 [error] [exception.Error] Error: Call to a member function from() on null in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:101
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(235): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (93)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (235)
-2016/06/30 11:52:43 [error] [exception.CException] CException: Property "Clientes.id_especie" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('id_especie')
-#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2728): CActiveRecord->__get('id_especie')
-#2 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1981): CHtml::resolveValue(Object(Clientes), 'id_especie')
-#3 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(914): CHtml::activeDropDownList(Object(Clientes), 'id_especie', Array, Array)
-#4 C:\xampp\htdocs\SmobilWeb\protected\views\clientes\_search.php(17): CActiveForm->dropDownList(Object(Clientes), 'id_especie', Array, Array)
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#8 C:\xampp\htdocs\SmobilWeb\protected\views\clientes\index.php(23): CController->renderPartial('_search', Array)
-#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
-#13 C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php(214): CController->render('index', Array)
-#14 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ClientesController->actionIndex()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#17 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#19 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#20 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#21 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#22 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#24 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('clientes')
-#25 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#26 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#27 {main}
-REQUEST_URI=/SMobilWeb/index.php/clientes
+#0 [internal function]: ViajesController->actionView('29')
+#1 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/index
 ---
-2016/06/30 13:38:05 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php:96)
+2016/07/05 10:52:50 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.solicitudes_tanques' doesn't exist. The SQL statement executed was: SELECT `solTa`.`id_domicilio`, `solTa`.`id_cepas`, `SolTa`.`cantidadcepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitudes_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+WHERE solVi.id_viaje = :id.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (106)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 10:52:50 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.solicitudes_tanques' doesn't exist. The SQL statement executed was: SELECT `solTa`.`id_domicilio`, `solTa`.`id_cepas`, `SolTa`.`cantidadcepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitudes_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+WHERE solVi.id_viaje = :id in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php(22): ViajesController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ViajesController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ViajesController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ViajesController->renderPartial()
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(234): ViajesController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CWebApplication->run()
-REQUEST_URI=/SMobilWeb/index.php/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (96)
-in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (22)
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (234)
-2016/06/30 17:06:37 [error] [exception.Error] Error: Call to a member function getData() on array in C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php:125
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CGridView->init()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
-#3 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\index.php(36): CBaseController->widget('zii.widgets.gri...', Array)
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(293): CController->render('index', Array)
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#21 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#22 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
----
-2016/06/30 17:08:19 [error] [exception.CException] CException: CDbCriteria and its behaviors do not have a method or closure named "addCondiction". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
-Stack trace:
-#0 C:\xampp\htdocs\SmobilWeb\protected\models\Viajes.php(128): CComponent->__call('addCondiction', Array)
-#1 C:\xampp\htdocs\SmobilWeb\protected\views\viajes\index.php(33): Viajes->searchStatus1('status = 1')
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
-#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(293): CController->render('index', Array)
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionIndex()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#20 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
----
-2016/06/30 17:35:39 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(106): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionView('29')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
 REQUEST_URI=/SMobilWeb/index.php/viajes/29
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 17:45:24 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+2016/07/05 10:54:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT `solTa`.`id_domicilio`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id
+WHERE solVi.id_viaje = :id.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (107)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 10:54:48 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT `solTa`.`id_domicilio`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id
+WHERE solVi.id_viaje = :id in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(107): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionView('29')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
 REQUEST_URI=/SMobilWeb/index.php/viajes/29
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 17:45:39 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+2016/07/05 10:55:52 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solTa`.`id_domicilio`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id
+WHERE solVi.id_viaje = :id.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (107)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 10:55:52 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solTa`.`id_domicilio`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id
+WHERE solVi.id_viaje = :id in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\UsuariosController.php(30): CWebUser->checkAccess('createUsuarios')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): UsuariosController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/usuarios
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(107): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionView('29')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 17:46:22 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+2016/07/05 11:02:13 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solTa`.`id_domicilio`, `solTa`.`id_tanques`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id_tanques
+WHERE solVi.id_viaje = :id.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (107)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 11:02:13 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solTa`.`id_domicilio`, `solTa`.`id_tanques`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id_tanques
+WHERE solVi.id_viaje = :id in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(107): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionView('29')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---
-2016/06/30 17:46:24 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+2016/07/05 11:04:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solTa`.`id_domicilio`, `solTa`.`id_tanque`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id_tanque
+WHERE solVi.id_viaje = :id.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (107)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/05 11:04:35 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.tanques' doesn't exist. The SQL statement executed was: SELECT DISTINCT `solTa`.`id_domicilio`, `solTa`.`id_tanque`, `solTa`.`id_cepas`, `SolTa`.`cantidad_cepas`, `cli`.`nombre_empresa`, `sol`.`codigo`, `tan`.`nombre`
+FROM `solicitudes_viaje` `solVi`
+JOIN `solicitud_tanques` `solTa` ON solTa.id_solicitud = solVi.id_solicitud
+JOIN `solicitudes` `sol` ON sol.id = solTa.id_solicitud
+JOIN `clientes` `cli` ON cli.id = sol.id_clientes
+JOIN `tanques` `tan` ON tan.id = solTa.id_tanque
+WHERE solVi.id_viaje = :id in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:27 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:31 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:34 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:38 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:40 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:42 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:45 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
----
-2016/06/30 17:46:55 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
-#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
-#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
-#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
-#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(30): CWebUser->checkAccess('createViajes')
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
-#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
-#18 {main}
-REQUEST_URI=/SMobilWeb/index.php/viajes
-HTTP_REFERER=http://localhost/SMobilWeb/index.php
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(107): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionView('29')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/29
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes
 ---

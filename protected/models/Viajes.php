@@ -172,6 +172,22 @@ class Viajes extends CActiveRecord
             case 3: return 'Terminado'; break;
         }
     }
+    public function getAllClientesViajes($idViaje,$id)
+    {
+        $cliente = Clientes::model()->getClienteViajes($id);
+        $clientes = Yii::app()->db->createCommand()
+                ->select('cli.nombre_empresa, sol.codigo, sol.id_clientes')
+                ->from('solicitudes_viaje as solVia')
+                ->join('solicitudes as sol','sol.id = solVia.id_solicitud')
+                ->join('clientes as cli','cli.id = sol.id_clientes')
+                ->where("solVia.id_viaje = $idViaje")
+                ->andWhere('solVia.id_personal = 0')
+                ->queryAll();
+        if(count($clientes)>0)
+            foreach($clientes as $data)
+                $cliente = $cliente."<br><b>{$data['nombre_empresa']}</b>({$data['codigo']})";
+        return $cliente;
+    }
     public function adminSearch()
     {
         return array
@@ -211,16 +227,16 @@ class Viajes extends CActiveRecord
                 'name'=>'hora_salida',
                 'value' => 'date("H:i", strtotime($data->hora_salida))'
             ),
-            array
-            (
-                'name'=>'fecha_entrega',
-                'value' => 'Viajes::model()->getFecha($data->fecha_entrega)'
-            ),
-            array
-            (
-                'name'=>'hora_entrega',
-                'value' => 'date("H:i", strtotime($data->hora_entrega))'
-            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'Viajes::model()->getFecha($data->fecha_entrega)'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
             array
             (
                 'class'=>'NCButtonColumn',

@@ -21,8 +21,7 @@
         <div class="tab" data-id="2"><span>En ruta</span></div>
         <div class="tab" data-id="3"><span>Finalizado</span></div>
     </div>
-    <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-    <div class="search-form" style="display:none">
+    <div class="search-form" style="display:none;">
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
