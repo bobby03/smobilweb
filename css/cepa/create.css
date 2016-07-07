@@ -1,16 +1,87 @@
-.form-container1{
-float:left;
-width: 300px;
-margin-right: 100px;
-}
-.form-container2{
-float:left;
-width: 300px;
-}
 
+div.form {
+    width: 90% !important;
+    margin: 0 auto;
+}
 div.form-containerWraper:after
 {
     content: '';
-    display: block;
+    display:block;
     clear: both;
+}
+div.containerbutton{
+   margin-top: 50px;
+   margin-left:120px;
+   width:110px;
+}
+
+label.letreros{
+	font-size: 14px !important;
+	color: #0077B0;
+}
+
+/*      ************          */
+
+.form-cSmall{
+	width:100px;
+}
+.form-cLarge{
+	width:250px;
+}
+
+.form-cRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+
+}
+.form-cLeft{
+float:left;
+width: 300px;
+ margin-left: 35px;
+}
+.form-container1{
+width:135px;
+height:66px;
+float:left;
+
+
+}
+.form-container2{
+ width:135px;
+ padding-top:26px;
+ padding-left: 135px;
+ height: 50px;
+
+ }
+.containerBoxRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+}
+.containertBoxLeft{
+  float:left;
+  width: 300px;  
+  margin-left: 35px;
+}
+
+.containerBox{
+float:left;
+width: 100%;
+margin-top:10px;
+margin-bottom:10px;
+
+}
+
+/*     *       */
+.cLetreros{
+  margin-left: 29px;
+  font-size: 14px !important;
+  color: #0077B0;
+}
+
+.letrero-container{
+ background-color:  #E4E7EB;
+ height: 4px;
+ width:68%;
 }
