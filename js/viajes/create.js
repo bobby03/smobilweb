@@ -78,4 +78,15 @@ $(document).ready(function()
         $('.menuTabs div:nth-child(7)').addClass('selected');
     });
     checkInicio();
+    var h = 0;
+    $('.pedidoWraper').each(function()
+    {
+        var h2 = $(this).height();
+        console.log(h2,h);
+        if(h2 > h)
+        {
+            h = h2;
+        }
+    });
+    $('.pedidoWraper').css('height',h+14);
 });

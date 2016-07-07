@@ -49,6 +49,7 @@ div.pedidoWraper
 div.pedidoWraper.gris
 {
     background-color: #E6E7E8;
+    height: auto;
 }
 div.pedidoWraper > div
 {

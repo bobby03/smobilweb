@@ -103,7 +103,7 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model= new Solicitudes();
+		$model = new Solicitudes();
                 $estacion = new Estacion();
                 $especies = new Especie();
                 $cepa = new Cepa();
@@ -113,29 +113,29 @@ class SolicitudesController extends Controller
 
 		if(isset($_POST) && $_POST != '' && $_POST != null)
 		{
-                    
-			$model->attributes=$_POST['Solicitudes'];
-                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
-                        $model->fecha_entrega = null;
-                        $model->fecha_estimada = null;
-                        $model->codigo = 'En proceso';
-			if($model->save())
+                    $model->attributes=$_POST['Solicitudes'];
+                    $model->fecha_alta = date('Y-m-d');
+                    $model->hora_alta = date('H:i');
+                    $model->fecha_entrega = null;
+                    $model->fecha_estimada = null;
+                    $model->codigo = 'En proceso';
+                    if($model->save())
+                    {
+                        $model->id = Yii::app()->db->getLastInsertId();
+                        foreach($_POST['pedido'] as $data)
                         {
-                            foreach($_POST['pedido'] as $data)
-                            {
-                                $pedido = new Pedidos();
-                                $pedido->id_cepa = $data['cepa'];
-                                $pedido->id_especie = $data['especie'];
-                                $pedido->id_solicitud = $model->id;
-                                $pedido->id_direccion = $data['destino'];
-                                $pedido->tanques = $data['tanques'];
-                                $pedido->cantidad = $data['cantidad'];
-                                $pedido->save();
-                            }
-                            $this->redirect(array('index'));
+                            $pedido = new Pedidos();
+                            $pedido->id_cepa = $data['cepa'];
+                            $pedido->id_especie = $data['especie'];
+                            $pedido->id_solicitud = $model->id;
+                            $pedido->id_direccion = $data['destino'];
+                            $pedido->tanques = $data['tanques'];
+                            $pedido->cantidad = $data['cantidad'];
+                            $pedido->save();
                         }
+                        $this->redirect(array('index'));
+                    }
 		}
-
 		$this->render('create',array(
                     'model'=>$model,
                     'estaciones'=>$estacion,
@@ -244,6 +244,7 @@ eof;
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $id")->execute();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	/*	if(!isset($_GET['ajax']))
