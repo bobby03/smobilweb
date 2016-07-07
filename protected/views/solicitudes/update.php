@@ -16,6 +16,14 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Solicitudes <?php echo $model->id; ?></h1>
+<h1>Continuar solicitud #<?php echo $model->id; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array
+    (
+        'model'=>$model,
+        'pedidos'=>$pedidos,
+        'direccion'=>$direccion,
+        'especies'=>$especies,
+        'cepa'=>$cepa,
+        'estacion'=>$estacion,
+    )); ?>

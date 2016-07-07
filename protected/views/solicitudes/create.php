@@ -9,7 +9,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Solicitudes', 'url'=>array('index')),
-	array('label'=>'Manage Solicitudes', 'url'=>array('admin')),
 );
 ?>
 
@@ -21,5 +20,6 @@ $this->menu=array(
         'estaciones'=>$estaciones,
         'especies'=>$especies,
         'cepa'=>$cepa,
-        'direccion'=>$direccion
+        'direccion'=>$direccion,
+        'pedidos'=>''
     )); ?>

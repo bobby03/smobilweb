@@ -8,14 +8,13 @@
     );
 
     $this->menu=array(
-	array('label'=>'Create Usuarios', 'url'=>array('create')),
-	array('label'=>'Manage Usuarios', 'url'=>array('admin')),
+	array('label'=>'Create Usuarios', 'url'=>array('create'))
     );
 ?>
 
 <h1>Usuarios</h1>
 
-
+<div class="principal">
 <div class="search-form" >
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -30,3 +29,4 @@
    
     'columns'=>$model->adminSearch()
 )); ?>
+</div>

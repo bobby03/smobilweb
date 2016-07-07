@@ -9,8 +9,7 @@
     );
 
     $this->menu=array(
-	array('label'=>'Create Viajes', 'url'=>array('create')),
-	array('label'=>'Manage Viajes', 'url'=>array('admin')),
+	array('label'=>'Create Viajes', 'url'=>array('create'))
     );
 ?>
 <h1>Viajes</h1>

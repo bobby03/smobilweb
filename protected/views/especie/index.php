@@ -10,8 +10,7 @@
     );
 
     $this->menu=array(
-	array('label'=>'Create Especie', 'url'=>array('create')),
-	array('label'=>'Manage Especie', 'url'=>array('admin')),
+	array('label'=>'Create Especie', 'url'=>array('create'))
     );
 ?>
 

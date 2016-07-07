@@ -41,7 +41,6 @@ $(document).ready(function()
                             var nuevo = valores[ide];
                             $('[data-tan] option[value="'+nuevo+'"]').removeAttr('disabled');
                             valores[ide] = '';
-                            console.log(valores[ide]);
                         }
                     });
                 },
@@ -64,5 +63,19 @@ $(document).ready(function()
             $('#Viajes_id_estacion').trigger('change');
         }
     }
+    $('.siguiente.uno').click(function()
+    {
+        $('[data-tab="1"]').addClass('hide');
+        $('[data-tab="2"]').removeClass('hide');
+        $('.menuTabs div:nth-child(4)').addClass('selected');
+        $('.menuTabs div:nth-child(5)').addClass('selected');
+    });
+    $('.siguiente.dos').click(function()
+    {
+        $('[data-tab="2"]').addClass('hide');
+        $('[data-tab="3"]').removeClass('hide');
+        $('.menuTabs div:nth-child(6)').addClass('selected');
+        $('.menuTabs div:nth-child(7)').addClass('selected');
+    });
     checkInicio();
 });

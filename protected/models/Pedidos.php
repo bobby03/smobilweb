@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'pedidos':
  * @property integer $id
  * @property integer $id_solicitud
- * @property integer $id_cliente
  * @property integer $id_especie
  * @property integer $id_cepa
  * @property integer $id_direccion
@@ -30,11 +29,11 @@ class Pedidos extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_solicitud, id_cliente, id_especie, id_cepa, id_direccion, tanques', 'required'),
-			array('id_solicitud, id_cliente, id_especie, id_cepa, id_direccion, tanques', 'numerical', 'integerOnly'=>true),
+			array('id_solicitud, id_especie, id_cepa, id_direccion, tanques', 'required'),
+			array('id_solicitud, id_especie, id_cepa, id_direccion, tanques', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_solicitud, id_cliente, id_especie, id_cepa, id_direccion, tanques', 'safe', 'on'=>'search'),
+			array('id, id_solicitud, id_especie, id_cepa, id_direccion, tanques', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +56,6 @@ class Pedidos extends SMActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_solicitud' => 'Id Solicitud',
-			'id_cliente' => 'Id Cliente',
 			'id_especie' => 'Id Especie',
 			'id_cepa' => 'Id Cepa',
 			'id_direccion' => 'Id Direccion',
@@ -85,7 +83,6 @@ class Pedidos extends SMActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('id_solicitud',$this->id_solicitud);
-		$criteria->compare('id_cliente',$this->id_cliente);
 		$criteria->compare('id_especie',$this->id_especie);
 		$criteria->compare('id_cepa',$this->id_cepa);
 		$criteria->compare('id_direccion',$this->id_direccion);
