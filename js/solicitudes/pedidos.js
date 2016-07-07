@@ -1,6 +1,13 @@
 $(document).ready(function()
 {
     var tot = 1;
+    if(!$('.pedidos').hasClass('hide'))
+    {
+        $('.pedidoViaje').each(function()
+        {
+            tot++;
+        });
+    }
     $('.agregar').click(function()
     {
         var especieID = $('#Especie_id').val();
@@ -59,6 +66,18 @@ $(document).ready(function()
             $('#Solicitudes_id_clientes').trigger('chosen:update');
             $('#solicitudes-form').submit();
         });
+    });
+    $('div.guardar').click(function()
+    {
+//        var loc = window.location.href;// variable para encontrar el url de la pagina actual
+//        var index = loc.indexOf('index.php');
+//        var index2 = loc.indexOf('http://');
+//        var baseUrl = loc.substring(index2,index);//variable con la direcion base de la pagina
+//        console.log(baseUrl);
+        $('form#solicitudes-form').attr('action','/SMobilWeb/index.php/solicitudes/create');
+        $('#Solicitudes_id_clientes').removeAttr('disabled');
+        $('#Solicitudes_id_clientes').trigger('chosen:update');
+        $('#solicitudes-form').submit();
     });
     function borrarPedido()
     {

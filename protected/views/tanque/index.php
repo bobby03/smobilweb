@@ -7,8 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Tanque', 'url'=>array('create')),
-	array('label'=>'Manage Tanque', 'url'=>array('admin')),
+	array('label'=>'Create Tanque', 'url'=>array('create'))
 );
 ?>
 

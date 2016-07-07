@@ -5,6 +5,9 @@ $(document).ready(function()
     $('#Especie_id').chosen();
     $('#ClientesDomicilio_domicilio').chosen();
     var flag = true;
+    var loc = window.location.href;
+    var index2 = loc.indexOf('update');
+    var direccion = loc.substring(0,index2);
     $('#Solicitudes_id_clientes').val('');
     $('#Solicitudes_id_clientes').on('change', function()
     {
@@ -18,7 +21,8 @@ $(document).ready(function()
                 dataType: 'JSON', 
                 data:
                 {
-                    id: id
+                    id: id,
+                    flag: 1
                 },
                 success: function(data)
                 {
@@ -32,7 +36,33 @@ $(document).ready(function()
                 },
                 error: function(a, b, c)
                 {
-                    console.log(a, b, c);
+//                    console.log(a, b, c);
+                    var url = direccion+'GetCliente';
+                    $.ajax(
+                    {
+                        type: 'GET',
+                        url: url,
+                        dataType: 'JSON', 
+                        data:
+                        {
+                            id: id,
+                            flag: 1
+                        },
+                        success: function(data)
+                        {
+                            $('.datosCliente').empty();
+                            $('.datosCliente').append(data.cliente);
+                            $('#ClientesDomicilio_domicilio option:gt(0)').remove();
+                            $('#ClientesDomicilio_domicilio').append(data.domicilio);
+                            $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+                            $('.row.pedido').removeClass('hide');
+                            $('.titulo').removeClass('hide');
+                        },
+                        error: function(a, b, c)
+                        {
+                            console.log(a, b, c);
+                        }
+                    });
                 }
             });
         }
@@ -67,11 +97,34 @@ $(document).ready(function()
                     $('#Cepa_id').trigger("chosen:updated");
                     $('.row.cepa').removeClass('hide');
                     $('.disponible input').val('');
-            $('.requerida input').val('');
+                    $('.requerida input').val('');
                 },
                 error: function(a, b, c)
                 {
-                    console.log(a, b, c);
+                    var url = direccion+'GetCepas';
+                    $.ajax(
+                    {
+                        type: 'GET',
+                        url: url,
+                        dataType: 'JSON', 
+                        data:
+                        {
+                            id: id
+                        },
+                        success: function(data)
+                        {
+                            $('#Cepa_id option:gt(0)').remove();
+                            $('#Cepa_id').append(data);
+                            $('#Cepa_id').trigger("chosen:updated");
+                            $('.row.cepa').removeClass('hide');
+                            $('.disponible input').val('');
+                            $('.requerida input').val('');
+                        },
+                        error: function(a, b, c)
+                        {
+                            console.log(a, b, c);
+                        }
+                    });
                 }
             });
         }

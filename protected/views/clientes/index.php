@@ -12,8 +12,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Clientes', 'url'=>array('create')),
-	array('label'=>'Manage Clientes', 'url'=>array('admin')),
+	array('label'=>'Create Clientes', 'url'=>array('create'))
 );
 ?>
 

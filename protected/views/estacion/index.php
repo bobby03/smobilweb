@@ -10,8 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Estacion', 'url'=>array('create')),
-	array('label'=>'Manage Estacion', 'url'=>array('admin')),
+	array('label'=>'Create Estacion', 'url'=>array('create'))
 );
 ?>
 
