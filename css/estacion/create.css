@@ -70,9 +70,9 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-   margin-top: 50px;
-   margin-left:120px;
-   width:110px;
+    width: 142px;
+    margin-left: 99px;
+    margin-top: 101px;
 }
 
 label.letreros{
@@ -82,12 +82,10 @@ label.letreros{
 
 /*      ************          */
 
-.form-cSmall{
-    width:100px;
+.form-cSmall {
+    width: 160px;
 }
-.form-cMed{
-    width:150px;
-}
+
 .form-cLarge{
     width:250px;
 }

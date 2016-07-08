@@ -62,7 +62,7 @@
 
 
 		<!--Temperatura-->
-		
+		<span class="containerBox">
 			<div class="containertBoxLeft">
 				<div class="form-container1">
 					<div class="row">
@@ -155,7 +155,7 @@
 					</div>
 				</div>
 			</div>
-  		
+  		</span>
 </div>
 <?php $this->endWidget(); ?>
 

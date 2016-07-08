@@ -11,15 +11,15 @@
     margin-top: 3px 3px 3px 3px #3456ff;
 }
 
-div.addDireccion
-{
+div.addDireccion {
     float: right;
-    margin-left: 25px;
+    margin-right: 80px;
+    margin-top: 258px;
     background-color: #0088cc;
     border-radius: 5px;
     height: 30px;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 15px;
     width: 185px;
     cursor: pointer;
     color: #FFFFFF;
@@ -65,9 +65,8 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-   margin-top: 50px;
-   margin-left:120px;
-   width:110px;
+    width: 142px;
+    margin-left: 37px;
 }
 
 label.letreros{
@@ -79,6 +78,9 @@ label.letreros{
 
 .form-cSmall{
     width:100px;
+}
+.form-cXMedium{
+  width:295px;
 }
 .form-cLarge{
     width:250px;
@@ -96,8 +98,21 @@ label.letreros{
 .form-cLeft{
 float:left;
 width: 300px;
- margin-left: 35px;
+ margin-left: 60px;
 }
+
+ .form-cLeft1 {
+    float: left;
+    width:436px;
+    margin-left: 60px;
+}
+.form-cRight1{
+    width: 248px;
+    float: left;
+    padding-top: 1px;
+}
+
+
 .form-container1{
 width:135px;
 height:66px;
@@ -141,5 +156,11 @@ margin-bottom:10px;
 .letrero-container{
  background-color:  #E4E7EB;
  height: 4px;
- width:68%;
+ width:80%;
 }
+.letrero-containerx{
+  background-color:  #E4E7EB;
+  height: 4px;
+  width:100%;
+  margin-top: 10px;
+ }
