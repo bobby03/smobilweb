@@ -140,7 +140,10 @@ class ViajesController extends Controller
                 $codigo = $codigo.date('Ymdhi');
                 $solicitudes->codigo = $codigo;
                 if($solicitudes->id != '' && $solicitudes->id != null)
+                {
+                    $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $solicitudes->id")->execute();
                     $update = Yii::app()->db->createCommand()->update('solicitudes',$solicitudes->attributes,"id = $solicitudes->id");
+                }
                 else
                     $solicitudes->save();
                 if($_POST['NuevoRecord'] == 0)
@@ -222,7 +225,7 @@ class ViajesController extends Controller
             {
                 $model = $this->loadModel($pedidos['ClientesDomicilio']['id_cliente']);
                 $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
-                print_r($prueba);
+//                print_r($prueba);
                 $guardar = array();
                 foreach ($pedidos['pedido'] as $data)
                     $guardar[] = $data;
@@ -248,9 +251,35 @@ class ViajesController extends Controller
                     $pedidos['pedido'][$i] = $data;
                     $i++;
                 }
+                foreach($prueba as $data2)
+                {
+                    $guardar = array();
+                    $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
+                    foreach($solicitudTanque as $data)
+                    {
+                        $cepa = Cepa::model()->findByPk($data->id_cepas);
+                        $pedido = array
+                        (
+                            'especie'=> $cepa->id_especie,
+                            'cepa'=>$data->id_cepas,
+                            'cantidad'=>$data->cantidad_cepas,
+                            'destino'=>$data->id_domicilio,
+                            'tanques'=>1,
+                            'id_tanque'=>$data->id_tanque
+                        );
+                        $pedidos['pedido'][$i] = $pedido;
+                        $i++;
+                    }
+                    foreach($guardar as $data)
+                    {
+                        $pedidos['pedido'][$i] = $data;
+                        $i++;
+                    }
+                }
             }
 //            print_r($pedidos);
-            $this->render('create',array(
+            $this->render('create',array
+            (
                 'model' =>$model,
                 'pedidos'=>$pedidos,
                 'solicitudes'=>$solicitudes,
