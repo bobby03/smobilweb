@@ -35,13 +35,69 @@ class Clientes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_empresa, nombre_contacto, apellido_contacto, correo, rfc, tel', 'required'),
+
+			array('nombre_empresa','required','message'=>'Este campo es obligatorio'),
+			array(
+				'nombre_empresa',
+				'length',
+				'min'=>5,
+				'tooShort'=>'Minimo 5 caracteres',
+				'max'=>150,
+				'tooLong'=>'Maximo 150 caracteres'),
+
+			array('nombre_contacto','required','message'=>'Este campo es obligatorio'),
+			array(
+				'nombre_contacto',
+				'length',
+				'min'=>3,
+				'tooShort'=>'Minimo 3 caracteres',
+				'max'=>50,
+				'tooLong'=>'maximo 50'),
+
+
+			array('apellido_contacto','required','message'=>'Este campo es obligatorio'),
+			array(
+				'apellido_contacto',
+				'length',
+				'min'=>3,
+				'tooShort'=>'Minimo 3 caracteres',
+				'max'=>50,
+				'tooLong'=>'maximo 50'),
+
+
+			array('correo','required','message'=>'Este campo es obligatorio'),
+			array(
+				'correo',
+			  	'match',
+			    'pattern'=>"/^[A-z0-9_\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
+				'message'=>'El correo no es valido'),
+			
+
+			array('rfc','required','message'=>'Este campo es obligatorio'),
+			array(
+				'rfc',
+				'length',
+				'is'=>13,
+				'message'=>'RFC No valido'),
+
+
+			array('tel','required','message'=>'Este campo es obligatorio'),
+			array(
+				'tel',
+				'length',
+				'max'=>12,
+				'message'=>'Maximo 12 Caracteres'),
+
+
+		/*	array('domicilio','required','message'=>'Este campo es obligatorio'),
+			array(
+				'domicilio',
+				'length',
+				'max'=>250,
+				'message'=>'Maximo 250 Caracteres'),*/
+
 			array('id', 'numerical', 'integerOnly'=>true),
-			array('nombre_empresa', 'length', 'max'=>150),
-			array('nombre_contacto, apellido_contacto', 'length', 'max'=>50),
-			array('correo', 'length', 'max'=>100),
-			array('rfc', 'length', 'max'=>15),
-			array('tel', 'length', 'max'=>12),
+		
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre_empresa, nombre_contacto, apellido_contacto, correo, rfc, tel', 'safe', 'on'=>'search'),
