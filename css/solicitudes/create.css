@@ -15,6 +15,7 @@ div.form h2
     line-height: 30px;
     text-align: center;
     height: 30px;
+    text-indent: 0;
 }
 div.form input, .css-select
 {
@@ -241,6 +242,10 @@ div.subtitulos div
     width: 33%;
     color: #0077B0;
 }
+div.subtitulos div:nth-child(2)
+{
+    text-align: center;
+}
 div.renglon div:nth-child(1),
 div.renglon div:nth-child(2)
 {
@@ -251,6 +256,7 @@ div.renglon div:nth-child(2)
 div.renglon div:nth-child(2)
 {
     text-align: center;
+    margin-right: 0;
 }
 div.renglon
 {

@@ -177,17 +177,17 @@ public function getSearchSolicitud(){
                 'name'=>'hora_estimada',
                 'value' => 'date("H:i", strtotime($data->hora_estimada))'
             ),
-            array
-            (
-                'name'=>'fecha_entrega',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
-            ),
-            array
-            (
-                'name'=>'hora_entrega',
-                'value' => 'date("H:i", strtotime($data->hora_entrega))'
-            ),
-            'notas',
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+//            'notas',
             array
             (
                 'class'=>'NCButtonColumn',

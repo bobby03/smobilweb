@@ -2,9 +2,15 @@
 /* @var $this EspecieController */
 /* @var $model Especie */
 /* @var $form CActiveForm */
+ $baseUrl = Yii::app()->baseUrl;
+
 ?>
 
 <div class="form">
+<?php 
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/especie/create.css');
+?>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'especie-form',
@@ -15,20 +21,25 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
-		<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'nombre'); ?>
+<div class="form-containerWraper">
+	<div class="form-cRight">
+			<div class="row">
+				<label class="letreros">Nueva Especie</label>
+					<div class="form-cLarge">
+						<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?>
+					</div>
+				</div>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+    <div class="form-cRight">
+			<div class="containerbutton">
+				<div class="row buttons">
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+				</div>
+			</div>
 	</div>
-
+</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

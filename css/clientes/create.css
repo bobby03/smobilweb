@@ -1,17 +1,25 @@
-#map 
+/*#map 
 {
     width: 500px;
     height: 400px;
+}*/
+
+
+#map {
+    width: 416px;
+    height: 218px;
+    margin-top: 3px 3px 3px 3px #3456ff;
 }
-div.addDireccion
-{
+
+div.addDireccion {
     float: right;
-    margin-left: 25px;
+    margin-right: 80px;
+    margin-top: 258px;
     background-color: #0088cc;
     border-radius: 5px;
     height: 30px;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 15px;
     width: 185px;
     cursor: pointer;
     color: #FFFFFF;
@@ -25,3 +33,134 @@ div.allMapa:last-child div.row.des
 {
     border-bottom: 0;
 }
+    div.form input, div.form textarea, div.form select, div.form .chosen-container {
+    /* margin: 0.2em 0 0.5em 0; */
+    min-height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    width: 100% !important;
+}
+
+
+div.form-containerWraper:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*   *    */
+
+div.form {
+    width: 90% !important;
+    margin: 0 auto;
+}
+div.form-containerWraper:after
+{
+    content: '';
+    display:block;
+    clear: both;
+}
+div.containerbutton{
+    width: 142px;
+    margin-left: 37px;
+}
+
+label.letreros{
+    font-size: 14px !important;
+    color: #0077B0;
+}
+
+/*      ************          */
+
+.form-cSmall{
+    width:100px;
+}
+.form-cXMedium{
+  width:295px;
+}
+.form-cLarge{
+    width:250px;
+}
+.form-cXLarge{
+    width:400px;
+}
+
+.form-cRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+
+}
+.form-cLeft{
+float:left;
+width: 300px;
+ margin-left: 60px;
+}
+
+ .form-cLeft1 {
+    float: left;
+    width:436px;
+    margin-left: 60px;
+}
+.form-cRight1{
+    width: 248px;
+    float: left;
+    padding-top: 1px;
+}
+
+
+.form-container1{
+width:135px;
+height:66px;
+float:left;
+
+
+}
+.form-container2{
+ width:135px;
+ padding-top:26px;
+ padding-left: 135px;
+ height: 50px;
+
+ }
+.containerBoxRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+}
+.containertBoxLeft{
+  float:left;
+  width: 300px;  
+  margin-left: 35px;
+}
+
+.containerBox{
+float:left;
+width: 100%;
+margin-top:10px;
+margin-bottom:10px;
+
+}
+
+/*     *       */
+.cLetreros{
+  margin-left: 29px;
+  font-size: 14px !important;
+  color: #0077B0;
+}
+
+.letrero-container{
+ background-color:  #E4E7EB;
+ height: 4px;
+ width:80%;
+}
+.letrero-containerx{
+  background-color:  #E4E7EB;
+  height: 4px;
+  width:100%;
+  margin-top: 10px;
+ }

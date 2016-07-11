@@ -30,6 +30,17 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
+    <div class="menuTabs">
+        <div class="bolaChica selected"></div>
+        <div class="lineaChica selected"></div>
+        <div class="bolaGrande selected">1</div>
+        <div class="lineaGandre <?php if(!$model->isNewRecord) echo 'selected';?>"></div>
+        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2</div>
+        <div class="lineaGandre"></div>
+        <div class="bolaGrande">3</div>
+        <div class="lineaChica"></div>
+        <div class="bolaChica"></div>
+    </div>
     <div class="tab <?php if(!$model->isNewRecord) echo 'hide';?>" data-tab="1">
         <div class="formContainer1">
             <?php if($model->isNewRecord):?>
@@ -67,7 +78,7 @@
                         if($model->isNewRecord)
                             echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesDisponibles(), array('empty'=>'Seleccionar','class'=>'css-select'));
                         else
-                            echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion (), 
+                            echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), 
                                     array
                                     (
                                         'disabled'=>'disabled',
@@ -85,53 +96,54 @@
                 <?php echo $form->labelEx($model,'hora_salida'); ?>
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
             </div>
+            <div class="siguiente uno">Siguiente</div>
 	</div>
-        <div class="continuar" data-id="1"></div>
     </div>
     <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="2">
     <div class="pedidosWraper">
         <?php echo $form->hiddenField($solicitudes,'id_clientes',array('value'=>$pedidos['Solicitudes']['id_clientes']));?>
         <?php echo $form->hiddenField($solicitudes,'notas',array('value'=>$pedidos['Solicitudes']['notas']));?>
+        <?php echo $form->hiddenField($solicitudes,'id',array('value'=>$pedidos['Solicitudes']['id']));?>
         <?php $tot = 1;?>
         <?php foreach($pedidos['pedido'] as $data):?>
-            <?php for($i = 1; $i <=$data['tanques']; $i++):?>
+            <?php for($i = 1; $i <= $data['tanques']; $i++):?>
                 <div class="pedido">
                     <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
-                        <?php if($data['id_tanque']):?>
-                        <div class="pedidoWraper gris">
-                            <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
-                            <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                            <div>Cantidad: <span><?php echo $data['cantidad'];?></span></div>
-                            <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                            <div class="selectTanque">
-                                <label>Tanque</label>
-                                <div style="color: #000000">
-                                    <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
-                                </div>
+                    <?php if($data['id_tanque']):?>
+                    <div class="pedidoWraper gris">
+                        <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                        <div>Cantidad: <span><?php echo $data['cantidad'];?></span></div>
+                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                        <div class="selectTanque">
+                            <label>Tanque</label>
+                            <div style="color: #000000">
+                                <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
                             </div>
                         </div>
-                        <?php else:?>
-                        <div class="pedidoWraper">
-                            <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
-                            <?php echo $form->hiddenField($solicitudes,"codigo[$tot][especie]",array('value'=>$data['especie']))?>
-                            <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                            <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cepa]",array('value'=>$data['cepa']))?>
-                            <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
-                            <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cantidad]",array('value'=>($data['cantidad']/$data['tanques'])))?>
-                            <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                            <?php echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>
-                            <div class="selectTanque hide">
-                                <label>Seleccionar Tanque</label>
-                                <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
-                            </div>
+                    </div>
+                    <?php else:?>
+                    <div class="pedidoWraper">
+                        <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][especie]",array('value'=>$data['especie']))?>
+                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cepa]",array('value'=>$data['cepa']))?>
+                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cantidad]",array('value'=>($data['cantidad']/$data['tanques'])))?>
+                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>
+                        <div class="selectTanque hide">
+                            <label>Seleccionar Tanque</label>
+                            <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
                         </div>
-                        <?php endif;?>
+                    </div>
+                    <?php endif;?>
                 </div>
                 <?php $tot++; ?>
             <?php endfor;?>
         <?php endforeach; ?>
     </div>
-    <div class="row">
+<!--    <div class="row">
         <?php 
             echo $form->labelEx($model,'status');
             if($model->isNewRecord)
@@ -139,12 +151,16 @@
             else
                 echo $form->textField($model,'status',array('readonly'=>'readonly','size'=>50,'maxlength'=>50, 'value'=>  Viajes::model()->getStatus($model->status)));
         ?>
-    </div>
-    <div class="continuar" data-id="1"></div>
+    </div>-->
+    <div class="siguiente dos">Siguiente</div>
 </div>
-    <div class="tab" data-tab="3">
+    <div class="tab hide" data-tab="3">
+<!--        <div class="contenedorClientes">
+            <?php // print_r($pedidos);?>
+            <?php // $this->getClientes($pedidos);?>
+        </div>-->
         <div class="row buttons">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+            <?php echo CHtml::submitButton('Finalizar'); ?>
         </div>
     </div>
 <?php $this->endWidget(); ?>

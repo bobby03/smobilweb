@@ -9,8 +9,7 @@
     );
 
     $this->menu=array(
-	array('label'=>'Create Roles', 'url'=>array('create')),
-	array('label'=>'Manage Roles', 'url'=>array('admin')),
+	array('label'=>'Create Roles', 'url'=>array('create'))
     );
 ?>
 

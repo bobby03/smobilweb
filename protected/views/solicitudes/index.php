@@ -2,6 +2,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
     $this->breadcrumbs=array
     (
 	'Solicitudes',
@@ -9,8 +10,7 @@
 
     $this->menu=array
     (
-	array('label'=>'Create Solicitudes', 'url'=>array('create')),
-	array('label'=>'Manage Solicitudes', 'url'=>array('admin')),
+	array('label'=>'Create Solicitudes', 'url'=>array('create'))
     );
 ?>
 

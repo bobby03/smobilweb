@@ -103,7 +103,7 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model= new Solicitudes;
+		$model = new Solicitudes();
                 $estacion = new Estacion();
                 $especies = new Especie();
                 $cepa = new Cepa();
@@ -111,17 +111,31 @@ class SolicitudesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-//		if(isset($_POST) && $_POST != '' && $_POST != null)
-//		{
-                    
-//			$model->attributes=$_POST['Solicitudes'];
-//                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
-//                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-//                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
-//			if($model->save())
-//				$this->redirect(array('index'));
-//		}
-
+		if(isset($_POST) && $_POST != '' && $_POST != null)
+		{
+                    $model->attributes=$_POST['Solicitudes'];
+                    $model->fecha_alta = date('Y-m-d');
+                    $model->hora_alta = date('H:i');
+                    $model->fecha_entrega = null;
+                    $model->fecha_estimada = null;
+                    $model->codigo = 'En proceso';
+                    if($model->save())
+                    {
+                        $model->id = Yii::app()->db->getLastInsertId();
+                        foreach($_POST['pedido'] as $data)
+                        {
+                            $pedido = new Pedidos();
+                            $pedido->id_cepa = $data['cepa'];
+                            $pedido->id_especie = $data['especie'];
+                            $pedido->id_solicitud = $model->id;
+                            $pedido->id_direccion = $data['destino'];
+                            $pedido->tanques = $data['tanques'];
+                            $pedido->cantidad = $data['cantidad'];
+                            $pedido->save();
+                        }
+                        $this->redirect(array('index'));
+                    }
+		}
 		$this->render('create',array(
                     'model'=>$model,
                     'estaciones'=>$estacion,
@@ -182,35 +196,44 @@ eof;
             $imprimir = $imprimir.'</div>';
             echo $imprimir;
         }
-        public function actionViajesCreate()
-        {
-            $this->render('viajesCreate',array('pedidos'=>$_POST));
-        }
+//        public function actionViajesCreate()
+//        {
+//            $this->render('viajesCreate',array('pedidos'=>$_POST));
+//        }
         public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-                $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
-                $model->hora_alta = date('H:i', strtotime($model->hora_alta));
-                $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
-                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
-                $model->fecha_estimada = date('d-m-Y', strtotime($model->fecha_estimada));
-                $model->hora_estimada = date('H:i', strtotime($model->hora_estimada));
+            $model=$this->loadModel($id);
+            $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
+            $model->hora_alta = date('H:i', strtotime($model->hora_alta));
+            $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
+            $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
+            $model->fecha_estimada = date('d-m-Y', strtotime($model->fecha_estimada));
+            $model->hora_estimada = date('H:i', strtotime($model->hora_estimada));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+            $pedidos = Pedidos::model()->findAll("id_solicitud =".(int)$id); 
+            $direccion = new ClientesDomicilio();
+            $especies = new Especie();
+            $cepa = new Cepa();
+            $estacion = new Estacion();
+            if(isset($_POST['Solicitudes']))
+            {
+                    $model->attributes=$_POST['Solicitudes'];
+                    $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
+                    $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+                    $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
+                    if($model->save())
+                            $this->redirect(array('index'));
+            }
 
-		if(isset($_POST['Solicitudes']))
-		{
-			$model->attributes=$_POST['Solicitudes'];
-                        $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
-                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-                        $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+            $this->render('update',array(
+                    'model'=>$model,
+                    'pedidos'=>$pedidos,
+                    'estacion'=>$estacion,
+                    'direccion'=>$direccion,
+                    'especies'=>$especies,
+                    'cepa'=>$cepa,
+            ));
 	}
 
 	/**
@@ -221,6 +244,7 @@ eof;
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $id")->execute();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	/*	if(!isset($_GET['ajax']))
@@ -276,10 +300,19 @@ eof;
 	 * Performs the AJAX validation.
 	 * @param Solicitudes $model the model to be validated
 	 */
-        public function actionGetCliente($id)
+        public function actionGetCliente($id, $flag)
         {
-            $cliente = Clientes::model()->findByPk($id);
-            $domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($id);
+            if($flag == 1)
+            {
+                $cliente = Clientes::model()->findByPk($id);
+                $domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($id);
+            }
+            if($flag == 2)
+            {
+                $solicitud = Solicitudes::model()->findByPk($id);
+                $cliente = Clientes::model()->findByPk($solicitud->id_clientes);
+                $domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($solicitud->id_clientes);
+            }
             $return = array();
             $cliente = <<<eof
                     <div class="datosContacto">$cliente->nombre_empresa</div>

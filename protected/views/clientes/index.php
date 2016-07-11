@@ -3,15 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
  $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/clientes/cliente.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+
 
 $this->breadcrumbs=array(
 	'Clientes',
 );
 
 $this->menu=array(
-	array('label'=>'Create Clientes', 'url'=>array('create')),
-	array('label'=>'Manage Clientes', 'url'=>array('admin')),
+	array('label'=>'Create Clientes', 'url'=>array('create'))
 );
 ?>
 

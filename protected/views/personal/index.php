@@ -8,15 +8,14 @@
     );
 
     $this->menu=array(
-        array('label'=>'Create Personal', 'url'=>array('create')),
-        array('label'=>'Manage Personal', 'url'=>array('admin')),
+        array('label'=>'Create Personal', 'url'=>array('create'))
     );
 ?>
 
 
 <h1>Personal</h1>
 
-
+<div class="principal">
 <div class="search-form" >
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -31,3 +30,4 @@
     'columns'=>$model->adminSearch()
 )); 
 ?>
+</div>
