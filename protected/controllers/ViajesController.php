@@ -890,6 +890,17 @@ eof;
         public function actionGetAlertas($id)
         {
             $uploads = UploadTemp::model()->findAll("id_tanque = $id AND alertas = 1");
+            if(count($uploads) > 0)
+            {
+                foreach($uploads as $data)
+                {
+                    
+                }
+            }
+            else
+            {
+                
+            }
         }
 	protected function performAjaxValidation($model)
 	{
