@@ -887,9 +887,13 @@ eof;
             }
             echo json_encode($return);
         }
-        public function actionGetAlertas($id)
+        public function actionGetAlertas($viaje, $id)
         {
-            $uploads = UploadTemp::model()->findAll("id_tanque = $id AND alertas = 1");
+            $uploads = Yii::app()->db->createCommand()
+                    ->select('cep.*')
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitudes_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->queryAll();
             if(count($uploads) > 0)
             {
                 foreach($uploads as $data)
