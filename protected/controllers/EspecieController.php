@@ -15,7 +15,7 @@ class EspecieController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+//			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -25,24 +25,65 @@ class EspecieController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createEspacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readEspacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editEspacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteEspacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -71,7 +112,7 @@ class EspecieController extends Controller
 		{
 			$model->attributes=$_POST['Especie'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -95,7 +136,7 @@ class EspecieController extends Controller
 		{
 			$model->attributes=$_POST['Especie'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -111,10 +152,10 @@ class EspecieController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+//		if(!isset($_GET['ajax']))
+//                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+                echo json_encode('');
 	}
 
 	/**
@@ -122,10 +163,14 @@ class EspecieController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Especie');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+            $model=new Especie('search');
+            $model->unsetAttributes();  // clear any default values
+            if(isset($_GET['Especie']))
+                    $model->attributes=$_GET['Especie'];
+            $this->render('index',array(
+                    'model'=>$model,
+            ));
+
 	}
 
 	/**

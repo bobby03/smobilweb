@@ -10,7 +10,7 @@
  * @property integer $tipo_usr
  * @property integer $id_usr
  */
-class Usuarios extends SMActiveRecord
+class Usuarios extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -28,10 +28,13 @@ class Usuarios extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, usuario, pwd, tipo_usr, id_usr', 'required'),
+			array('usuario, pwd, tipo_usr', 'required','message'=>'Campo obligatorio'),
+                        array('usuario','unique','message'=>'Ya existe un usuario registrado con este nombre'),
+                        array('id_usr','unique','message'=>'Este usuario ya tiene una cuenta creada'),
 			array('id, tipo_usr, id_usr', 'numerical', 'integerOnly'=>true),
 			array('usuario', 'length', 'max'=>10),
 			array('pwd', 'length', 'max'=>35),
+			//array('id_usr','message'=>'Campo obligatorio'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, usuario, pwd, tipo_usr, id_usr', 'safe', 'on'=>'search'),
@@ -53,13 +56,13 @@ class Usuarios extends SMActiveRecord
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
-	{
+	{ 
 		return array(
 			'id' => 'ID',
-			'usuario' => 'Usuario',
-			'pwd' => 'Pwd',
-			'tipo_usr' => 'Tipo Usr',
-			'id_usr' => 'Id Usr',
+			'usuario' => 'Nombre de usuario',
+			'pwd' => 'Clave',
+			'tipo_usr' => 'Tipo de usuario',
+			'id_usr' => 'Usuario',
 		);
 	}
 
@@ -82,15 +85,22 @@ class Usuarios extends SMActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('usuario',$this->usuario,true);
 		$criteria->compare('pwd',$this->pwd,true);
+		/*$criteria->compare('usuario',$this->usuario,true);
 		$criteria->compare('tipo_usr',$this->tipo_usr);
-		$criteria->compare('id_usr',$this->id_usr);
+		$criteria->compare('id_usr',$this->id_usr);*/
+
+		$criteria->addcondition("(usuario LIKE '%".$this->usuario.
+								"%' OR tipo_usr LIKE '%".$this->usuario.
+                                "%' OR id_usr LIKE '%".$this->usuario.
+                                "%')");
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+
+
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -102,4 +112,68 @@ class Usuarios extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllTipoUsuario()
+        {
+            return array
+            (
+                '1' => 'Cliente',
+                '2' => 'Personal'
+            );
+        }
+        public function getSearchUsuarios(){
+			return array('1'=>'Nombre Usuario',
+				         '2'=>'Tipo de Usuario');
+		}
+        public function getTipoUsuario($id)
+        {
+            switch ($id)
+            {
+                case 1 : return 'Cliente'; break;
+                case 2 : return 'Personal'; break;
+            }
+        }
+        public function getUsuario($flag, $id)
+        {
+            switch ($flag)
+            {
+                case 1: 
+                    $usuario = Clientes::model()->findByPk($id);
+                    return $usuario->nombre_empresa;
+                break;
+                case 2:
+                    $usuario = Personal::model()->findByPk($id);
+                    return $usuario->nombre.' '.$usuario->apellido;
+                break;
+            }
+        }
+    public function adminSearch()
+    {
+        return array
+        (
+            'usuario',
+//            array
+//            (
+//                'name' => 'pwd',
+//                'value' => '$data->pwd'
+//            ),
+            array
+            (
+                'name' => 'tipo_usr',
+                'value' => 'Usuarios::model()->getTipoUsuario($data->tipo_usr)',
+                'filter' => Usuarios::model()->getAllTipoUsuario()
+            ),
+            array
+            (
+                'name' => 'id_usr',
+                'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
+                'filter' => ''
+            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            ),
+        );
+    }
 }

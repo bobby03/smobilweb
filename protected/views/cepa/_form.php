@@ -2,10 +2,14 @@
 /* @var $this CepaController */
 /* @var $model Cepa */
 /* @var $form CActiveForm */
+ $baseUrl = Yii::app()->baseUrl;
 ?>
 
 <div class="form">
-
+<?php 
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/cepa/create.css');
+?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cepa-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -15,98 +19,163 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<?php //echo $form->errorSummary($model); ?>
+<div class="form-containerWraper">
+		<span class="containerBox">
+		 		<div class="form-cLeft">
+		 	<!--NCEPA --> 
+			        <div class="row">
+						<label class= "letreros">Nombre de Cepa</label>
+							<div class="form-cLarge">
+							<?php 
+							echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50));
+							echo $form->error($model,'nombre_cepa');
+							 ?>
+						</div>
+					</div>
+			 <!--Cantidad-->
+					<div class="row">
+						<label class= "letreros">Cantidad</label>
+							<div class="form-cSmall">
+							<?php 
+							echo $form->numberField($model,'cantidad');
+							echo $form->error($model,'cantidad');
+							 ?>
+						</div>
+					</div>
+				</div>
 
-	<?php echo $form->errorSummary($model); ?>
+		<!--Especie-->  
+				<div class="form-cRight">
+					<div class="row">
+						<label class= "letreros">Especie</label>
+							<div class="form-cLarge">
+								<span class="css-select-moz"><?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
+								<?php echo $form->error($model,'id_especie'); ?>
+							</div>
+					</div>
+				</div>
+		</span>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_especie'); ?>
-		<?php echo $form->textField($model,'id_especie'); ?>
-		<?php echo $form->error($model,'id_especie'); ?>
-	</div>
+<!--separador-->		
+		<span class="containerBox">
+			
+				<label class="cLetreros">rangos máximos y mínimos</label>
+				<hr class="letrero-container"></hr>
+			
+		</span>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nombre_cepa'); ?>
-		<?php echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'nombre_cepa'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'temp_min'); ?>
-		<?php echo $form->textField($model,'temp_min'); ?>
-		<?php echo $form->error($model,'temp_min'); ?>
-	</div>
+		<!--Temperatura-->
+		<span class="containerBox">
+			<div class="containertBoxLeft">
+				<div class="form-container1">
+					<div class="row">
+						<label class= "letreros">Temperatura</label>
+							<div class="form-cSmall">
+								<?php 
+								echo $form->numberField($model,'temp_min');
+								echo $form->error($model,'temp_min');
+								 ?>
+							</div>
+					</div>
+				</div>
+				<div class="form-container2">
+					<div class="row">
+						<div class="form-cSmall">
+					    	<?php 
+					    	echo $form->numberField($model,'temp_max');
+					    	echo $form->error($model,'temp_max');
+					    	 ?>
+						</div>
+					</div>
+				</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'temp_max'); ?>
-		<?php echo $form->textField($model,'temp_max'); ?>
-		<?php echo $form->error($model,'temp_max'); ?>
-	</div>
+		<!--Ph-->
+				<div class="form-container1">
+					<div class="row">
+						<label class= "letreros">Ph</label>
+							<div class="form-cSmall">
+								<?php echo $form->numberField($model,'ph_min');
+								echo $form->error($model,'ph_min'); ?>
+							</div>
+					</div>
+				</div>
+				<div class="form-container2">
+					<div class="row">
+						<div class="form-cSmall">
+							<?php echo $form->numberField($model,'ph_max');
+							echo $form->error($model,'ph_max'); ?>
+						</div>
+					</div>
+				</div>
+			<!--Oxigeno-->
+				<div class="form-container1">
+					<div class="row">
+						<label class= "letreros">Oxigeno</label>
+							<div class="form-cSmall">
+								<?php echo $form->numberField($model,'ox_min');
+								echo $form->error($model,'ox_min'); ?>
+							</div>
+					</div>
+				</div>
+				<div class="form-container2">
+					<div class="row">
+						<div class="form-cSmall">
+							<?php echo $form->numberField($model,'ox_max');
+							echo $form->error($model,'ox_max'); ?>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ph_min'); ?>
-		<?php echo $form->textField($model,'ph_min'); ?>
-		<?php echo $form->error($model,'ph_min'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ph_max'); ?>
-		<?php echo $form->textField($model,'ph_max'); ?>
-		<?php echo $form->error($model,'ph_max'); ?>
-	</div>
+			<!--Conductividad-->   
+			<div class="containerBoxRight">
+					<div class="form-container1">
+						<div class="row">
+							<label class= "letreros">Conductividad</label>
+								<div class="form-cSmall">	
+									<?php echo $form->numberField($model,'cond_min');
+									echo $form->error($model,'cond_min'); ?>
+								</div>
+						</div>
+					</div>
+					<div class="form-container2">
+						<div class="row">
+							<div class="form-cSmall">
+								<?php echo $form->numberField($model,'cond_max');
+								echo $form->error($model,'cond_max'); ?>
+							</div>
+						</div>
+					</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ox_min'); ?>
-		<?php echo $form->textField($model,'ox_min'); ?>
-		<?php echo $form->error($model,'ox_min'); ?>
-	</div>
+			<!-- ORP-->
+				<div class="form-container1">
+					<div class="row">
+						<label class= "letreros">ORP</label>
+							<div class="form-cSmall">
+								<?php echo $form->numberField($model,'orp_min');
+								echo $form->error($model,'orp_min'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ox_max'); ?>
-		<?php echo $form->textField($model,'ox_max'); ?>
-		<?php echo $form->error($model,'ox_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'cantidad'); ?>
-		<?php echo $form->textField($model,'cantidad'); ?>
-		<?php echo $form->error($model,'cantidad'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'cond_min'); ?>
-		<?php echo $form->textField($model,'cond_min'); ?>
-		<?php echo $form->error($model,'cond_min'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'cond_max'); ?>
-		<?php echo $form->textField($model,'cond_max'); ?>
-		<?php echo $form->error($model,'cond_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'orp_min'); ?>
-		<?php echo $form->textField($model,'orp_min'); ?>
-		<?php echo $form->error($model,'orp_min'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'orp_max'); ?>
-		<?php echo $form->textField($model,'orp_max'); ?>
-		<?php echo $form->error($model,'orp_max'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
+							</div>	
+					</div>
+				</div>
+				<div class="form-container2">
+					<div class="row">
+						<div class="form-cSmall"0>
+								<?php echo $form->numberField($model,'orp_max');
+								echo $form->error($model,'orp_max'); ?>
+						</div>
+					</div>
+				</div>
+					<div class="row buttons">
+						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+					</div>
+			</div>
+  		</span>
+</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

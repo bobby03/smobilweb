@@ -9,10 +9,17 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Solicitudes', 'url'=>array('index')),
-	array('label'=>'Manage Solicitudes', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Solicitudes</h1>
+<h1>Nueva solicitud</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array
+    (
+        'model'=>$model,
+        'estaciones'=>$estaciones,
+        'especies'=>$especies,
+        'cepa'=>$cepa,
+        'direccion'=>$direccion,
+        'pedidos'=>''
+    )); ?>

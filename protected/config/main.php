@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SMOBIL 3.0',
+        'timeZone' => 'America/Tijuana',
 	// preloading 'log' component
 	'preload'=>array('log'),
 	// autoloading model and component classes
@@ -50,9 +51,9 @@ return array(
 			),
 		),
 		
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+//		'db'=>array(
+//			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+//		),
                 'clientScript'=>array(
 			'packages'=>array(
 				'jquery'=>array(
@@ -66,7 +67,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
-		
+		'authManager'=>array(
+                    'class'=>'CDbAuthManager',
+                    'connectionID'=>'db',
+                ),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
@@ -90,11 +94,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
+				
+//				array(
+//					'class'=>'CWebLogRoute',
+//				),
+				
 			),
 		),
 	),

@@ -4,13 +4,10 @@
  * This is the model class for table "especie".
  *
  * The followings are the available columns in table 'especie':
- * @property integer $id
+ * @property string $id
  * @property string $nombre
- *
- * The followings are the available model relations:
- * @property Cepa[] $cepas
  */
-class Especie extends SMActiveRecord
+class Especie extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -28,8 +25,7 @@ class Especie extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, nombre', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
+			array('nombre', 'required','message'=>'Campo obligatorio'),
 			array('nombre', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -45,7 +41,6 @@ class Especie extends SMActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cepas' => array(self::HAS_MANY, 'Cepa', 'id_especie'),
 		);
 	}
 
@@ -78,7 +73,7 @@ class Especie extends SMActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('nombre',$this->nombre,true);
 
 		return new CActiveDataProvider($this, array(
@@ -96,4 +91,48 @@ class Especie extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllEspeciesSolicitud()
+        {
+            $especies = $this->findAll();
+            $cepa = Cepa::model()->findAll();
+            $return = array();
+            foreach($especies as $data)
+            {
+                $i = 0;
+                foreach($cepa as $info)
+                {
+                    if($info->id_especie == $data->id)
+                        $i++;
+                }
+                if($i > 0)
+                    $return[$data->id] = $data->nombre;
+            }
+            return $return;
+        }
+        public function getAllEspecies()
+        {
+            $especies = Especie::model()->findAll();
+            $return = array();
+            foreach($especies as $data)
+                $return[$data->id] = $data->nombre;
+            return $return;
+        }
+        public function getEspecie($id)
+        {
+            $especie = Especie::model()->findByPk($id);
+            return $especie->nombre;
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
 }

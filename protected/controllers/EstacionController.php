@@ -15,7 +15,7 @@ class EstacionController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -25,24 +25,65 @@ class EstacionController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
 	}
 
 	/**
@@ -70,8 +111,10 @@ class EstacionController extends Controller
 		if(isset($_POST['Estacion']))
 		{
 			$model->attributes=$_POST['Estacion'];
+                        $model->activo = 1;
+                        $model->disponible = 1;
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -95,7 +138,7 @@ class EstacionController extends Controller
 		{
 			$model->attributes=$_POST['Estacion'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -113,18 +156,24 @@ class EstacionController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
+		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+	*/
+			                echo json_encode('');
+		}
 
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Estacion');
+		$model=new Estacion('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Estacion']))
+			$model->attributes=$_GET['Estacion'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

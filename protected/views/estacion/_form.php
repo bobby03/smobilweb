@@ -2,9 +2,13 @@
 /* @var $this EstacionController */
 /* @var $model Estacion */
 /* @var $form CActiveForm */
-?>
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
+   ?>
 
 <div class="form">
+	<?php $cs->registerCssFile($baseUrl.'/css/estacion/create.css') ?>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'estacion-form',
@@ -15,67 +19,66 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+<div class="form-containerWraper">
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
+		<div class="form-cLeft">
+			<div class="row">
+				<label class= "letreros">Especie</label>
+					<div class="form-cLarge">
+						<span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo', $model->getAllTipo(), array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
+				
+					</div>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipo'); ?>
-		<?php echo $form->textField($model,'tipo'); ?>
-		<?php echo $form->error($model,'tipo'); ?>
-	</div>
+			<div class="row">
+				<label class= "letreros">Identificador</label>
+					<div class="form-cLarge">
+					<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
+				</div>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'identificador'); ?>
-		<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'identificador'); ?>
-	</div>
+			<div class="row">
+				<label class= "letreros">No. Personal</label>
+				<div class="form-cLarge">
+					<?php echo $form->textField($model,'no_personal'); ?>
+				</div>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'no_personal'); ?>
-		<?php echo $form->textField($model,'no_personal'); ?>
-		<?php echo $form->error($model,'no_personal'); ?>
-	</div>
+			<div class="row">
+				<label class= "letreros">Marca</label>
+					<div class="form-cLarge">	
+					<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
+					</div>
+			</div>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'marca'); ?>
-		<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'marca'); ?>
-	</div>
+		<div class="form-cRight">
+			<div class="row">
+				<label class= "letreros">Color</label>
+				<div class="form-cLarge"><?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?></div>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'color'); ?>
-		<?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'color'); ?>
-	</div>
+			<div class="row">
+				<label class= "letreros">Ubicación</label>
+				<div class="form-cXLarge"><?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?></div>
+				
+			</div>
+		        <?php if ($model->isNewRecord):?>
+		        <?php else:?>
+			<div class="row">
+				<?php echo $form->labelEx($model,'disponible'); ?>
+				<span class="css-select-moz"><?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
+				</div>
+			</div>
+		<?php endif;?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ubicacion'); ?>
-		<?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'ubicacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'disponible'); ?>
-		<?php echo $form->textField($model,'disponible'); ?>
-		<?php echo $form->error($model,'disponible'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'activo'); ?>
-		<?php echo $form->textField($model,'activo'); ?>
-		<?php echo $form->error($model,'activo'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+		    <div class="containerbutton">
+				<div class="row buttons">
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+				</div>
+		</div>
+</div>
 
 <?php $this->endWidget(); ?>
 

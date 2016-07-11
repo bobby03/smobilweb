@@ -17,7 +17,7 @@
  * The followings are the available model relations:
  * @property Tanque[] $tanques
  */
-class Estacion extends SMActiveRecord
+class Estacion extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -35,7 +35,7 @@ class Estacion extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'required'),
+			array('tipo, identificador, no_personal, marca, color, ubicacion', 'required'),
 			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
 			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -73,6 +73,16 @@ class Estacion extends SMActiveRecord
 			'activo' => 'Activo',
 		);
 	}
+    public function getSearchEstaciones(){
+            return array(//'1'=>'Tipo',
+                         '1'=>'Identificador',
+                         '2'=>'No. Personal',
+                         '3'=>'Marca'
+                         /*'5'=>'Color',
+                         '6'=>'Ubicación',
+                         '7'=>'Disponible'*/);
+        }
+
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -101,7 +111,11 @@ class Estacion extends SMActiveRecord
 		$criteria->compare('ubicacion',$this->ubicacion,true);
 		$criteria->compare('disponible',$this->disponible);
 		$criteria->compare('activo',$this->activo);
-
+                $criteria->addCondition("activo=1");
+               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
+                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
+                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
+                                "%')");*/
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -117,4 +131,121 @@ class Estacion extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllTipo()
+        {
+            return array
+            (
+                '1' => 'Móvil',
+                '2' => 'Fíja',
+            );
+        }
+        public function getTipo($id)
+        {
+            switch ($id)
+            {
+                case 1: return 'Móvil'; break;
+                case 2: return 'Fija'; break;
+            }
+        }
+        public function getAllDisponible()
+        {
+            return array
+            (
+                '1' => 'Sí',
+                '2' => 'No',
+            );
+        }
+        public function getDisponible($id)
+        {
+            switch ($id)
+            {
+                case 1: return 'Sí'; break;
+                case 2: return 'No'; break;
+            }
+        }
+        public function getEstacionesDisponibles()
+        {
+            $estacion = Estacion::model()->findAll("tipo = 1 AND disponible = 1 AND activo = 1");
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getAllEstacionMovil()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 1');
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getAllEstacionFija()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 2');
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getAllEstacion()
+        {
+            $estacion = Estacion::model()->findAll();
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
+        public function getEstacion($id)
+        {
+            $estacion = Estacion::model()->findByPk($id);
+            return $estacion->identificador;
+        }
+        public function getEstacionSolicitud()
+        {
+            $estacion = Estacion::model()->findAll('tipo = 1 and disponible = 1');
+            $return = array();
+            foreach($estacion as $data)
+            {
+                $return[$data->id] = $data->identificador;
+            }
+            return $return;
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                array
+                (
+                    'name' => 'tipo',
+                    'value' => 'Estacion::model()->getTipo($data->tipo)',
+                    'filter' => Estacion::model()->getAllTipo()
+                ),
+                'identificador',
+                'no_personal',
+                'marca',
+                'color',
+                'ubicacion',
+                array
+                (
+                    'name' => 'disponible',
+                    'value' => 'Estacion::model()->getDisponible($data->disponible)',
+                    'filter' => Estacion::model()->getAllDisponible()
+                ),
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'buttons' => array
+                    (
+                        'tanque' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.png',
+                            'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
+                            'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
+                        )
+                    )
+		)
+            );
+        }
 }

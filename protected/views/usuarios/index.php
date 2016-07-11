@@ -1,20 +1,32 @@
 <?php
-/* @var $this UsuariosController */
-/* @var $dataProvider CActiveDataProvider */
-
-$this->breadcrumbs=array(
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/usuarios/usuarios.css');
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $this->breadcrumbs=array(
 	'Usuarioses',
-);
+    );
 
-$this->menu=array(
-	array('label'=>'Create Usuarios', 'url'=>array('create')),
-	array('label'=>'Manage Usuarios', 'url'=>array('admin')),
-);
+    $this->menu=array(
+	array('label'=>'Create Usuarios', 'url'=>array('create'))
+    );
 ?>
 
-<h1>Usuarioses</h1>
+<h1>Usuarios</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
+<div class="principal">
+<div class="search-form" >
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
 )); ?>
+</div><!-- search-form -->
+
+<?php $this->widget('zii.widgets.grid.CGridView', array
+(
+    'id'=>'usuario',
+    'dataProvider'=>$model->search(),
+    'summaryText'=> '',
+   
+    'columns'=>$model->adminSearch()
+)); ?>
+</div>

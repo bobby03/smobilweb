@@ -10,48 +10,35 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+	<div class="row" data-id="1">
+		<?php echo $form->textField($model,'id_solicitudes'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'id_clientes'); ?>
-		<?php echo $form->textField($model,'id_clientes'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_responsable'); ?>
+	<div class="row" data-id="2">
 		<?php echo $form->textField($model,'id_responsable'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'status'); ?>
+	<div class="row" data-id="3">
 		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'fecha_salida'); ?>
+	<div class="row" data-id="4">
 		<?php echo $form->textField($model,'fecha_salida'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'hora_salida'); ?>
+	<div class="row" data-id="5">
 		<?php echo $form->textField($model,'hora_salida'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'fecha_entrega'); ?>
+	<div class="row" data-id="6">
 		<?php echo $form->textField($model,'fecha_entrega'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'hora_entrega'); ?>
+	<div class="row" data-id="7">
 		<?php echo $form->textField($model,'hora_entrega'); ?>
 	</div>
 
-	<div class="row buttons">
+	<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 

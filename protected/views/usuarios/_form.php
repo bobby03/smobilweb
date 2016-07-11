@@ -1,7 +1,8 @@
 <?php
-/* @var $this UsuariosController */
-/* @var $model Usuarios */
-/* @var $form CActiveForm */
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/usuarios/create.css');
+    $cs->registerScriptFile($baseUrl.'/js/usuarios/form.js');
 ?>
 
 <div class="form">
@@ -15,15 +16,11 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
+<div class="form-container1">
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'usuario'); ?>
@@ -33,25 +30,32 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pwd'); ?>
-		<?php echo $form->textField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
+		<?php echo $form->passwordField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
 		<?php echo $form->error($model,'pwd'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tipo_usr'); ?>
-		<?php echo $form->textField($model,'tipo_usr'); ?>
+		 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Seleecionar', 'class'=>'css-select')); ?></span>
 		<?php echo $form->error($model,'tipo_usr'); ?>
+                <?php echo $form->hiddenField($model,'id_usr');?>
 	</div>
-
-	<div class="row">
+</div>
+	<div class="row hide" data-tipo="1">
 		<?php echo $form->labelEx($model,'id_usr'); ?>
-		<?php echo $form->textField($model,'id_usr'); ?>
+		 <span class="css-select-moz"><?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?></span>
 		<?php echo $form->error($model,'id_usr'); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="row hide" data-tipo="2">
+		<?php echo $form->labelEx($model,'id_usr'); ?>
+	 <span class="css-select-moz"><?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?></span>
+		<?php echo $form->error($model,'id_usr'); ?>
 	</div>
+<div class="containerbutton">
+	<div class="row buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Siguiente' : 'Save'); ?>
+	</div>
+</div>
 
 <?php $this->endWidget(); ?>
 

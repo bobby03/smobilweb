@@ -23,7 +23,7 @@
  * @property Especie $idEspecie
  * @property SolicitudTanques[] $solicitudTanques
  */
-class Cepa extends SMActiveRecord
+class Cepa extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -41,8 +41,8 @@ class Cepa extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
-			array('id, id_especie, cantidad', 'numerical', 'integerOnly'=>true),
+			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required','message'=>'Campo obligatorio'),
+			array('id_especie, cantidad', 'numerical', 'integerOnly'=>true),
 			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
 			array('nombre_cepa', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -71,7 +71,7 @@ class Cepa extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_especie' => 'Id Especie',
+			'id_especie' => 'Especie',
 			'nombre_cepa' => 'Nombre Cepa',
 			'temp_min' => 'Temp Min',
 			'temp_max' => 'Temp Max',
@@ -119,12 +119,19 @@ class Cepa extends SMActiveRecord
 		$criteria->compare('cond_max',$this->cond_max);
 		$criteria->compare('orp_min',$this->orp_min);
 		$criteria->compare('orp_max',$this->orp_max);
+			/*$criteria->addcondition("(nombre_cepa LIKE '%".$this->nombre_cepa."%' OR id_especie LIKE '%".$this->nombre_cepa.
+								"%' OR cantidad LIKE '%".$this->nombre_cepa."%')");*/
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
+	public function getSearchCepa(){
+			return array('1'=>'Especie',
+				         '2'=>'Nombre Cepa',
+				         '3'=>'Cantidad');
+		}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -135,4 +142,82 @@ class Cepa extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getCepasEspecie($id)
+        {
+            $cepas = Cepa::model()->findAll("id_especie = $id");
+            $return = '';
+            foreach($cepas as $data)
+                $return = $return.<<<eof
+                    <option value="$data->id" data-cnt="$data->cantidad">$data->nombre_cepa</option>
+eof;
+            
+            return $return;
+        }
+        public function getCepa($id)
+        {
+            $cepa = Cepa::model()->findByPk($id);
+            return $cepa->nombre_cepa;
+        }
+    public function adminSearch()
+    {
+        return array
+        (
+            array(
+                'name'=>'id_especie',
+                'value'=>'Especie::model()->getEspecie($data->id_especie)',
+                'filter'=>  Especie::model()->getAllEspecies()
+            ),
+            'nombre_cepa',
+         /*    array(
+                'name' => 'temp_min',
+                'value' => '$data->temp_min',
+            ),
+           array(
+                'name' => 'temp_max',
+                'value' => '$data->temp_max',
+            ),
+            array(
+                'name' => 'ph_min',
+                'value' => '$data->ph_min',
+            ),
+            array(
+                'name' => 'ph_max',
+                'value' => '$data->ph_max',
+            ),
+            array(
+                'name' => 'ox_min',
+                'value' => '$data->ox_min',
+            ),
+            array(
+                'name' => 'ox_max',
+                'value' => '$data->ox_max',
+            ),*/
+            array(
+                'name' => 'cantidad',
+                'value' => '$data->cantidad',
+            ),/*
+            array(
+                'name' => 'cond_max',
+                'value' => '$data->cond_max',
+            ),
+            array(
+                'name' => 'cond_min',
+                'value' => '$data->cond_min',
+            ),
+            array(
+                'name' => 'orp_min',
+                'value' => '$data->orp_min',
+            ),
+            array(
+                'name' => 'orp_max',
+                'value' => '$data->orp_max',
+            ),*/
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
 }

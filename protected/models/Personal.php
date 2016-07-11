@@ -1,7 +1,28 @@
 <?php
 
-class Personal extends SMActiveRecord
+/**
+ * This is the model class for table "personal".
+ *
+ * The followings are the available columns in table 'personal':
+ * @property integer $id
+ * @property string $nombre
+ * @property string $apellido
+ * @property string $tel
+ * @property string $rfc
+ * @property string $domicilio
+ * @property integer $id_rol
+ * @property string $correo
+ * @property string $puesto
+ *
+ * The followings are the available model relations:
+ * @property SolicitudesViaje[] $solicitudesViajes
+ * @property Viajes[] $viajes
+ */
+class Personal extends CActiveRecord
 {
+	/**
+	 * @return string the associated database table name
+	 */
 	public function tableName()
 	{
 		return 'personal';
@@ -15,8 +36,9 @@ class Personal extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required'),
+			array('nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
+			array('correo','email','message'=>'No tiene formato de email'),
 			array('nombre, apellido', 'length', 'max'=>50),
 			array('tel', 'length', 'max'=>12),
 			array('rfc', 'length', 'max'=>15),
@@ -50,12 +72,12 @@ class Personal extends SMActiveRecord
 			'id' => 'ID',
 			'nombre' => 'Nombre',
 			'apellido' => 'Apellido',
-			'tel' => 'Tel',
-			'rfc' => 'Rfc',
 			'domicilio' => 'Domicilio',
-			'id_rol' => 'Id Rol',
-			'correo' => 'Correo',
+			'id_rol' => 'Rol',
 			'puesto' => 'Puesto',
+			'correo' => 'Correo electrónico',
+			'rfc' => 'RFC',
+			'tel' => 'Teléfono',
 		);
 	}
 
@@ -86,11 +108,29 @@ class Personal extends SMActiveRecord
 		$criteria->compare('id_rol',$this->id_rol);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('puesto',$this->puesto,true);
+		/*$criteria->addcondition("(nombre LIKE '%".$this->nombre."%' OR apellido LIKE '%".$this->nombre.
+                                "%' OR tel LIKE '%".$this->nombre.
+                                "%' OR rfc LIKE '%".$this->nombre.
+                                "%' OR domicilio LIKE '%".$this->nombre.
+                                "%' OR id_rol LIKE '%".$this->nombre.
+                                "%' OR correo LIKE '%".$this->nombre.
+                                "%' OR puesto LIKE '%".$this->nombre."%')");*/
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	 public function getSearchPersonal(){
+            return array('1'=>'Nombre',
+                         '2'=>'Apellido',
+                        /* '3'=>'Teléfono',*/
+                         '4'=>'RFC'
+                        /* '5'=>'Domicilio',
+                         '6'=>'Rol',
+                         '7'=>'Correo',
+                         '8'=>'Puesto'*/);
+        }
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -102,4 +142,44 @@ class Personal extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllPersonal()
+        {
+            $personal = Personal::model()->findAll();
+            $return = array();
+            foreach($personal as $data)
+                $return[$data->id] = $data->nombre.' '.$data->apellido;
+            return $return;
+        }
+        public function getPersonal($id)
+        {
+            $personal = $this->findByPk($id);
+            return $personal->nombre.' '.$personal->apellido;
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre',
+                'apellido',
+                
+                
+               // 'domicilio',
+                array
+                (
+                    'name' => 'id_rol',
+                    'value' => 'Roles::model()->getRol($data->id_rol)',
+                    'filter' => Roles::model()->getAllRoles()
+                ),
+                'puesto', 
+                'correo',
+                'rfc',
+                'tel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Operaciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
 }

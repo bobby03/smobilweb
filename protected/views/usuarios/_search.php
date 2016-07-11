@@ -10,33 +10,17 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'usuario'); ?>
+<!--<? echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchUsuarios(),array('empty' =>'Selecciona campo a buscar')); ?>-->
+	<div class="row hi " data-id='1' >
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'usuario',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'pwd'); ?>
-		<?php echo $form->textField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
+	<!---<div class="row " data-id='2'>
+		<label>Buscar:</label>
+		<?php echo $form->dropDownList($model,'tipo_usr',Usuarios::model()->getAllTipoUsuario(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'tipo_usr'); ?>
-		<?php echo $form->textField($model,'tipo_usr'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_usr'); ?>
-		<?php echo $form->textField($model,'id_usr'); ?>
-	</div>
-
-	<div class="row buttons">
+-->
+	<div class="row buttons hide" >
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 

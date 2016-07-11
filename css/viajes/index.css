@@ -1,0 +1,25 @@
+div.tabs
+{
+    background-color: #0077B0;
+}
+div.tabs div.tab
+{
+    width: 100px;
+    float: left;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    line-height: 25px;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+div.tab.select
+{
+    background-color: #09B7C9;
+}
+div.tabs:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}

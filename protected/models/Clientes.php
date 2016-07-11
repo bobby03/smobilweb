@@ -17,7 +17,7 @@
  * @property Solicitudes[] $solicitudes
  * @property Viajes[] $viajes
  */
-class Clientes extends SMActiveRecord
+class Clientes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -35,7 +35,7 @@ class Clientes extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, nombre_empresa, nombre_contacto, apellido_contacto, correo, rfc, tel', 'required'),
+			array('nombre_empresa, nombre_contacto, apellido_contacto, correo, rfc, tel', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('nombre_empresa', 'length', 'max'=>150),
 			array('nombre_contacto, apellido_contacto', 'length', 'max'=>50),
@@ -69,10 +69,10 @@ class Clientes extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_empresa' => 'Nombre de la empresa',
-			'nombre_contacto' => 'Nombre del contacto',
-			'apellido_contacto' => 'Apellido del contacto',
-			'correo' => 'Correo eléctronico',
+			'nombre_empresa' => 'Nombre Empresa',
+			'nombre_contacto' => 'Nombre Contacto',
+			'apellido_contacto' => 'Apellido Contacto',
+			'correo' => 'Correo',
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',
 		);
@@ -103,7 +103,6 @@ class Clientes extends SMActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
-
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -119,4 +118,64 @@ class Clientes extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getAllClientes()
+        {
+            $clientes = Clientes::model()->findAll();
+            $return = array();
+            foreach($clientes as $data)
+                $return[$data->id] = $data->nombre_empresa;
+            return $return;
+        }
+        public function getAllClientesViajes()
+        {
+            $clientes = Clientes::model()->findAll();
+            $solicitudes = Solicitudes::model()->findAllBySql('SELECT DISTINCT id, id_clientes, codigo FROM solicitudes');
+            $return = array();
+            foreach($solicitudes as $info)
+                foreach($clientes as $data)
+                {
+                    if($info->id_clientes == $data->id)
+                        $return[$info->id] = $data->nombre_empresa.' ('.$info->codigo.')';
+                }
+            return $return;
+        }
+		public function getSearchClientes(){
+			return array('1'=>'Nombre Empresa',
+				         '2'=>'Nombre Contacto',
+				         '3'=>'Apellido Contacto',
+				     //   '4'=>'Correo',
+				         '4'=>'RFC'
+				     //  '6'=>'Teléfono'
+				         );
+		}
+
+        public function getClienteViajes($id)
+        {
+            $solicitudes = Solicitudes::model()->findByPk($id);
+            $cliente = Clientes::model()->findByPk($solicitudes->id_clientes);
+            return '<b>'.$cliente->nombre_empresa.'</b> ('.$solicitudes->codigo.')';
+        }
+        public function getCliente($id)
+        {
+            $cliente = Clientes::model()->findByPk($id);
+            return $cliente->nombre_empresa;
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                'nombre_empresa',
+		'nombre_contacto',
+		'apellido_contacto',
+		'correo',
+		'rfc',
+                'tel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
 }

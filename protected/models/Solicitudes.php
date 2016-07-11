@@ -1,4 +1,4 @@
-                                                              <?php
+<?php
 
 /**
  * This is the model class for table "solicitudes".
@@ -20,7 +20,7 @@
  * @property Clientes $idClientes
  * @property SolicitudesViaje[] $solicitudesViajes
  */
-class Solicitudes extends SMActiveRecord
+class Solicitudes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -38,8 +38,9 @@ class Solicitudes extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'required'),
+			array('id_clientes', 'required'),
 			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
+                        array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -69,18 +70,28 @@ class Solicitudes extends SMActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_clientes' => 'Id Clientes',
+			'id_clientes' => 'Cliente',
 			'codigo' => 'Codigo',
-			'fecha_alta' => 'Fecha de alta',
-			'hora_alta' => 'Hora de alta',
-			'fecha_estimada' => 'Fecha estimada',
-			'hora_estimada' => 'Hora estimada',
-			'fecha_entrega' => 'Fecha de entrega',
-			'hora_entrega' => 'Hora de entrega',
+			'fecha_alta' => 'Fecha Alta',
+			'hora_alta' => 'Hora Alta',
+			'fecha_estimada' => 'Fecha Estimada',
+			'hora_estimada' => 'Hora Estimada',
+			'fecha_entrega' => 'Fecha Entrega',
+			'hora_entrega' => 'Hora Entrega',
 			'notas' => 'Notas',
 		);
 	}
-
+public function getSearchSolicitud(){
+            return array('1'=>'Cliente',
+                         '2'=>'Código'/*,
+                         '3'=>'Fecha Alta',
+                         '4'=>'Hora Alta',
+                         '5'=>'Fecha Estimada',
+                         '6'=>'Hora fecha_estimada',
+                         '7'=>'Fecha Entrega',
+                         '8'=>'Hora Entrega',
+                         '9'=>'Notas'*/);
+        }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -100,7 +111,7 @@ class Solicitudes extends SMActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('id_clientes',$this->id_clientes);
+		/*$criteria->compare('id_clientes',$this->id_clientes);
 		$criteria->compare('codigo',$this->codigo,true);
 		$criteria->compare('fecha_alta',$this->fecha_alta,true);
 		$criteria->compare('hora_alta',$this->hora_alta,true);
@@ -108,8 +119,18 @@ class Solicitudes extends SMActiveRecord
 		$criteria->compare('hora_estimada',$this->hora_estimada,true);
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
-		$criteria->compare('notas',$this->notas,true);
+		$criteria->compare('notas',$this->notas,true);*/
+		$criteria->addcondition("(id_clientes LIKE '%".$this->codigo.
+								"%' OR codigo LIKE '%".$this->codigo.
+                                "%' OR fecha_alta LIKE '%".$this->codigo.
+                                "%' OR hora_alta LIKE '%".$this->codigo.
+                                "%' OR fecha_estimada LIKE '%".$this->codigo.
+                                "%' OR hora_estimada LIKE '%".$this->codigo.
+                                "%' OR fecha_entrega LIKE '%".$this->codigo.
+                                "%' OR hora_entrega LIKE '%".$this->codigo.
+                                "%' OR notas LIKE '%".$this->codigo."%')");
 
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -125,4 +146,54 @@ class Solicitudes extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+    public function adminSearch()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+            array
+            (
+                'name'=>'fecha_estimada',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_estimada))'
+            ),
+            array
+            (
+                'name'=>'hora_estimada',
+                'value' => 'date("H:i", strtotime($data->hora_estimada))'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
 }

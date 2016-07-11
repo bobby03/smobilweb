@@ -11,80 +11,25 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
+	
+     <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchCepa(),array('empty' =>'Selecciona Búsqueda')); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'id_especie'); ?>
-		<?php echo $form->textField($model,'id_especie'); ?>
+	<div class="row hide" data-id='1'>
+		<label>Buscar:</label>
+		<?php echo $form->dropDownList($model,'id_especie',Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar','class'=>'css-select')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'nombre_cepa'); ?>
+	<div class="row hide" data-id='2'>
+		<label>Buscar:</label>
 		<?php echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'temp_min'); ?>
-		<?php echo $form->textField($model,'temp_min'); ?>
+	<div class="row hide" data-id='3'>
+		<label>Buscar:</label>
+		<?php echo $form->textField($model,'cantidad',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'temp_max'); ?>
-		<?php echo $form->textField($model,'temp_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'ph_min'); ?>
-		<?php echo $form->textField($model,'ph_min'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'ph_max'); ?>
-		<?php echo $form->textField($model,'ph_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'ox_min'); ?>
-		<?php echo $form->textField($model,'ox_min'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'ox_max'); ?>
-		<?php echo $form->textField($model,'ox_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'cantidad'); ?>
-		<?php echo $form->textField($model,'cantidad'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'cond_min'); ?>
-		<?php echo $form->textField($model,'cond_min'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'cond_max'); ?>
-		<?php echo $form->textField($model,'cond_max'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'orp_min'); ?>
-		<?php echo $form->textField($model,'orp_min'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'orp_max'); ?>
-		<?php echo $form->textField($model,'orp_max'); ?>
-	</div>
-
-	<div class="row buttons">
+	<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
-
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->
