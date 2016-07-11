@@ -41,7 +41,7 @@ class Cepa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
+			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required','message'=>'Campo obligatorio'),
 			array('id_especie, cantidad', 'numerical', 'integerOnly'=>true),
 			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
 			array('nombre_cepa', 'length', 'max'=>50),
