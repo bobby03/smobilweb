@@ -28,14 +28,72 @@ class WebServiceController extends Controller
 		$this->render('index', array('data'=>$data) );
 	}
     public function actionUpload(){
-        $x = isset($_GET['x'])?$_GET['x']:"0";
-        $y = isset($_GET['y'])?$_GET['y']:"0";
-        $z = isset($_GET['z'])?$_GET['z']:"0";
-        $n = date('H:m:s');
-        $sql = Yii::app()->db->createCommand()
-            ->insert('uploadTemp',array('x'=>$x,'y'=>$y,'z'=>$z,'time'=>$n));
-        $r = array('SCODE'=>"OK",'CODE'=>200,'TTL'=>$sql);
-        echo json_encode($r);
+        //upload?lat=31.8710559&lng=-116.6669508&id_viaje=30&idTank=28&CT=1&OX=n%2Fa&PH=4.215&T2=22.50&EC=n%2Fa&OD=115.01
+        $Campaing = array();
+        $campaingTemp = array();
+        //Sense campaing data
+        $lat        = isset($_GET['lat'])?$_GET['lat']:"0";
+        $lng        = isset($_GET['lng'])?$_GET['lng']:"0";
+        //Campaing data---------------------------------------------------------
+        $LatLng = "(".$lat.",".$lng.")";  // ( Lat,-Lng )
+        $codeViaje  = isset($_GET['id_viaje'])?$_GET['id_viaje']:"0"; // id Viaje
+        //Sense tank data---------------------------------------------------------
+        $codeIdTank  = isset($_GET['idTank'])?$_GET['idTank']:"0"; // id Tanque
+        $ct = isset($_GET['CT'])?$_GET['CT']:"0";
+        $codeCT = isset($_GET['CodeCT'])?$_GET['CodeCT']:"0";
+        $ox = isset($_GET['OX'])?$_GET['OX']:"0";
+        $ph = isset($_GET['PH'])?$_GET['PH']:"0";
+        $t2 = isset($_GET['T2'])?$_GET['T2']:"0";
+        $ec = isset($_GET['EC'])?$_GET['EC']:"0";
+        $od = isset($_GET['OD'])?$_GET['OD']:"0";
+        $od = isset($_GET['ORP'])?$_GET['ORP']:"0";
+        $time = date('H:m:s');
+        $date = date('Y-m-d');
+       
+        $table = "escalon_viaje_ubicacion";
+        $columns = array('ubicacion'=>$LatLng, 'id_viaje'=>$codeViaje, 'fecha'=>$date, 'hora'=>$time);
+        $conditions = "id_viaje = :idViaje";
+        $params = array(":idViaje"=>$codeViaje);
+        // var_dump($table);
+        // var_dump($columns);
+        $sqlViaje = Yii::app()->db->createCommand()->insert($table,$columns);
+        if($sqlViaje){
+            $lastInsert = Yii::app()->db->getLastInsertID();
+            $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
+            $sql = Yii::app()->db->createCommand()
+                ->insert('uploadTemp',array(
+                    'ct'=>$ct,
+                    'id_tanque'=>$codeIdTank,
+                    'id_escalon_viaje_ubicacion'=>$lastInsert,
+                    'ox'=>$ox,
+                    'ph'=>$ph,
+                    't2'=>$t2,
+                    'ec'=>$ec,
+                    'od'=>$od)
+                );
+            if($sql){
+                $Campaing[] = array("Ubicacion"=>$campaingTemp,"Code"=>200,'SCode'=>"OK","Validation"=>$sql);
+            }else{
+                $Campaing[] = $campaingTemp;
+            }
+
+        }else{
+            $campaingTemp[] = array('Viaje'=> "4BD", 'code'=>400, 'TTL'=>$sqlViaje);
+        }
+
+      
+        
+
+        
+        // if(sql){
+        //     $r = array('SCODE'=>"OK",'CODE'=>200,'TTL'=>$sql);
+        //     echo json_encode($r);
+        // }else{
+        //     $r = array('SCODE'=>"XX",'CODE'=>400,'TTL'=>$sql);
+        //     echo json_encode($r);
+        // }
+        // $r = array('SCODE'=>"OK",'CODE'=>200,'TTL'=>$sql);
+        echo json_encode($Campaing);
     }
     public function actionDriver(){
     	$driver = isset($_GET['driver'])?$_GET['driver']:"0";
@@ -98,79 +156,79 @@ class WebServiceController extends Controller
         $lenght =  count($sol);
         if($sol != null){
             // echo $lenght;
-        foreach($sol as $key => $value){
-            $idSol = $value['id_solicitud'];
-            // $Codigo =$value['codigo'];
-            // echo $Codigo."<br>";
-            $resp = Yii::app()->db->createCommand()
-                ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo, v.id_responsable")
-                ->from ("personal p")
-                ->join('viajes v','v.id = '.$idViaje )
-                ->where("p.id = v.id_responsable")
-                ->queryRow();
-            $per = Yii::app()->db->createCommand()
-                ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo, p.puesto")
-                ->from ("personal p")
-                ->where("p.id = :id",array(":id"=>$value['id_personal']) )
-                ->queryRow();
-            $travel = Yii::app()->db->createCommand()
-                ->select('v.status, v.fecha_salida, v.id_estacion, e.identificador, e.marca')
-                ->from('viajes v')
-                ->join('estacion e','v.id_estacion = e.id')
-                ->where('v.id = :id',array(':id'=>$idViaje))
-                ->queryRow();
-                
-            if( $idSol > $tIDSol){  
-                if($tIDSol>0){
+            foreach($sol as $key => $value){
+                $idSol = $value['id_solicitud'];
+                // $Codigo =$value['codigo'];
+                // echo $Codigo."<br>";
+                $resp = Yii::app()->db->createCommand()
+                    ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo, v.id_responsable")
+                    ->from ("personal p")
+                    ->join('viajes v','v.id = '.$idViaje )
+                    ->where("p.id = v.id_responsable")
+                    ->queryRow();
+                $per = Yii::app()->db->createCommand()
+                    ->select ("p.id, p.nombre, p.apellido, p.rfc, p.correo, p.puesto")
+                    ->from ("personal p")
+                    ->where("p.id = :id",array(":id"=>$value['id_personal']) )
+                    ->queryRow();
+                $travel = Yii::app()->db->createCommand()
+                    ->select('v.status, v.fecha_salida, v.id_estacion, e.identificador, e.marca')
+                    ->from('viajes v')
+                    ->join('estacion e','v.id_estacion = e.id')
+                    ->where('v.id = :id',array(':id'=>$idViaje))
+                    ->queryRow();
+                    
+                if( $idSol > $tIDSol){  
+                    if($tIDSol>0){
+                        $ac[] = array(
+                            'idViaje'=>$idViaje,
+                            'codigo'=>$Codigo,
+                            'Resp'=>$resp['nombre']." ".$resp['apellido'],
+                            'fecha_alta'=>$fAlta,
+                            'fecha_entrega'=>$fEntrega,
+                            'notas'=>$notas,
+                            'Estanque'=>$idEstanque,
+                            'Marca'=>$marca,
+                            'personal'=>$temp,
+                        );
+                    }
+                    $tIDSol = $idSol; 
+                     $temp = null;
+                }
+                if($tIDSol == $idSol){ //registro
+                    $Codigo =$value['codigo'];
+                    $fAlta =$value['fecha_alta'];
+                    $fEntrega =$value['fecha_entrega'];
+                    $notas =$value['notas'];
+                    $idEstanque = $travel['identificador'];
+                    $marca = $travel['marca'];
+                    $temp[] = array('name'=>$per['nombre'],
+                            'apellido'=>$per['apellido'],
+                            'rfc'=>$per['rfc'],
+                            'correo'=>$per['correo'],
+                            'puesto'=>$per['puesto'],
+                        );
+                }//first time
+                if($key == $lenght-1){
                     $ac[] = array(
                         'idViaje'=>$idViaje,
                         'codigo'=>$Codigo,
                         'Resp'=>$resp['nombre']." ".$resp['apellido'],
+                        'fecha_alta'=>$value['fecha_alta'],
                         'fecha_alta'=>$fAlta,
                         'fecha_entrega'=>$fEntrega,
                         'notas'=>$notas,
                         'Estanque'=>$idEstanque,
                         'Marca'=>$marca,
-                        'personal'=>$temp,
-                    );
+                        'personal'=>$temp);
                 }
-                $tIDSol = $idSol; 
-                 $temp = null;
-            }
-            if($tIDSol == $idSol){ //registro
-                $Codigo =$value['codigo'];
-                $fAlta =$value['fecha_alta'];
-                $fEntrega =$value['fecha_entrega'];
-                $notas =$value['notas'];
-                $idEstanque = $travel['identificador'];
-                $marca = $travel['marca'];
-                $temp[] = array('name'=>$per['nombre'],
-                        'apellido'=>$per['apellido'],
-                        'rfc'=>$per['rfc'],
-                        'correo'=>$per['correo'],
-                        'puesto'=>$per['puesto'],
-                    );
-            }//first time
-            if($key == $lenght-1){
-                $ac[] = array(
-                    'idViaje'=>$idViaje,
-                    'codigo'=>$Codigo,
-                    'Resp'=>$resp['nombre']." ".$resp['apellido'],
-                    'fecha_alta'=>$value['fecha_alta'],
-                    'fecha_alta'=>$fAlta,
-                    'fecha_entrega'=>$fEntrega,
-                    'notas'=>$notas,
-                    'Estanque'=>$idEstanque,
-                    'Marca'=>$marca,
-                    'personal'=>$temp);
-            }
-            
-            
-        }//end foreach
+                
+                
+            }//end foreach
         $result=array('solicitud'=>$ac);
-    }else{
-        $result=array('Solicitud'=>'No válida','estado'=>'No Válida','code'=>400);
-    }
+        }else{
+            $result=array('Solicitud'=>'No válida','estado'=>'No Válida','code'=>400);
+        }
         echo json_encode($result);
     }
     public function actionSolicitudes(){
@@ -201,18 +259,27 @@ class WebServiceController extends Controller
             //----------------------- /USER DATA  RESP-----------------------
                 //----------------------- Plataforma Viaje ----------------------------
             $PlataformasViaje = Yii::app()->db->createCommand()
+                ->selectDistinct("v.id, v.id_responsable, v.status, v.fecha_salida, v.hora_salida, sv.id_solicitud")
+                ->from("viajes v")
+                ->join("solicitudes_viaje sv","sv.id_viaje = v.id")
+                ->where("v.id_responsable = :id",array(":id"=>$VDvalue['id']))
+                ->order('id desc')
+                ->queryAll();
+
+// *
+            $PlataformasViaje = Yii::app()->db->createCommand()
                 ->select('v.id, id_solicitudes , id_clientes, status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible')
                 ->from('viajes  v')
                 ->join('estacion e','id_estacion = e.id')
                 ->join('solicitudes s','s.id = v.id_solicitudes')
                 ->where('id_responsable = :id',array(':id'=>$idResp))
                 ->order('id desc')
-                ->queryAll();
+                ->queryAll(); //  */
             $vdTemp = array();
             foreach ($PlataformasViaje as $VDkey => $VDvalue) {
                 //------------ SOLICITUDES--------------------------------------------
                 $sols = Yii::app()->db->createCommand()
-                    ->select('s.id, id_clientes, codigo, fecha_alta, fecha_estimada, notas')
+                    ->selectDistinct('s.id, id_clientes, codigo, fecha_alta, fecha_estimada, notas')
                     ->from('solicitudes s')
                     ->join('solicitudes_viaje sv','sv.id_solicitud = s.id')
                     ->where('sv.id_viaje = :id',array(':id'=>$VDvalue['id']))
@@ -220,14 +287,16 @@ class WebServiceController extends Controller
                 $solTemp = null;
                 foreach ($sols as $solsKey => $solsValue) {
                     // Solicitud_tanques
+                    // echo $VDvalue['id_solicitudes'];
                     $tanks = Yii::app()->db->createCommand()
                     // tanque, Domicilio, cepa
-                        ->select('t.nombre, t.capacidad, t.id_estacion, d.domicilio, d.ubicacion_mapa, d.descripcion, c.nombre_cepa, c.temp_min, c.temp_max, c.ph_min, c.ph_max, c.ox_min, c.ox_max, c.cond_min, c.cond_max, c.orp_min, c.orp_max, cantidad_cepas')
+                        ->selectDistinct('v.id_viaje, t.id,t.nombre, t.capacidad, t.id_estacion, d.domicilio, d.ubicacion_mapa, d.descripcion, c.nombre_cepa, c.temp_min, c.temp_max, c.ph_min, c.ph_max, c.ox_min, c.ox_max, c.cond_min, c.cond_max, c.orp_min, c.orp_max, cantidad_cepas')
                         ->from('solicitud_tanques st')
                         ->join('tanque t','st.id_tanque = t.id')
                         ->join('clientes_domicilio d', 'st.id_domicilio = d.id')
                         ->join('cepa c', 'st.id_cepas = c.id')
-                        ->where('id_solicitud =:idS',array(':idS'=>$VDvalue['id_solicitudes']))
+                        ->join('solicitudes_viaje v','v.id_solicitud = '.$solsValue['id'])
+                        ->where('st.id_solicitud =:idS',array(':idS'=>$solsValue['id']))
                         ->queryAll();
                     ;
                     //-----End Solicitud_tanques
