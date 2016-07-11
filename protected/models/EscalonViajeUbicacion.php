@@ -7,7 +7,6 @@
  * @property integer $id
  * @property integer $id_estacion
  * @property integer $id_viaje
- * @property integer $id_tanque
  * @property string $ubicacion
  * @property string $fecha
  * @property string $hora
@@ -15,7 +14,6 @@
  * The followings are the available model relations:
  * @property Estacion $idEstacion
  * @property Viajes $idViaje
- * @property Tanque $idTanque
  */
 class EscalonViajeUbicacion extends SMActiveRecord
 {
@@ -35,12 +33,12 @@ class EscalonViajeUbicacion extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_estacion, id_viaje, id_tanque, ubicacion, fecha, hora', 'required'),
-			array('id_estacion, id_viaje, id_tanque', 'numerical', 'integerOnly'=>true),
+			array('id_estacion, id_viaje, ubicacion, fecha, hora', 'required'),
+			array('id_estacion, id_viaje', 'numerical', 'integerOnly'=>true),
 			array('ubicacion', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_estacion, id_viaje, id_tanque, ubicacion, fecha, hora', 'safe', 'on'=>'search'),
+			array('id, id_estacion, id_viaje, ubicacion, fecha, hora', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,7 +52,6 @@ class EscalonViajeUbicacion extends SMActiveRecord
 		return array(
 			'idEstacion' => array(self::BELONGS_TO, 'Estacion', 'id_estacion'),
 			'idViaje' => array(self::BELONGS_TO, 'Viajes', 'id_viaje'),
-			'idTanque' => array(self::BELONGS_TO, 'Tanque', 'id_tanque'),
 		);
 	}
 
@@ -67,7 +64,6 @@ class EscalonViajeUbicacion extends SMActiveRecord
 			'id' => 'ID',
 			'id_estacion' => 'Id Estacion',
 			'id_viaje' => 'Id Viaje',
-			'id_tanque' => 'Id Tanque',
 			'ubicacion' => 'Ubicacion',
 			'fecha' => 'Fecha',
 			'hora' => 'Hora',
@@ -95,7 +91,6 @@ class EscalonViajeUbicacion extends SMActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('id_estacion',$this->id_estacion);
 		$criteria->compare('id_viaje',$this->id_viaje);
-		$criteria->compare('id_tanque',$this->id_tanque);
 		$criteria->compare('ubicacion',$this->ubicacion,true);
 		$criteria->compare('fecha',$this->fecha,true);
 		$criteria->compare('hora',$this->hora,true);
