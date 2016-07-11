@@ -35,9 +35,52 @@ class Estacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo, identificador, no_personal, marca, color, ubicacion', 'required'),
-			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
-			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
+
+
+            array('tipo','required','message'=>'Este campo es obligatorio'),
+            array(
+                'tipo',
+                'numerical',
+                'integerOnly'=>true),
+
+
+            array('identificador','required','message'=>'Este campo es obligatorio'),
+            array(
+                'identificador',
+                'length',
+                'max'=>50),
+
+           array('no_personal','required','message'=>'Este campo es obligatorio'),
+           array(
+                'no_personal',
+                'numerical',
+                'integerOnly'=>true,
+                'message'=>'Solo se aceptan numeros'),
+
+
+            array('marca','required','message'=>'Este campo es obligatorio'),
+            array(
+                'marca',
+                'length',
+                'max'=>50),
+
+            array('color','required','message'=>'Este campo es obligatorio'),
+            array(
+                'color',
+                'length',
+                'max'=>50),
+
+            array('ubicacion','required','message'=>'Este campo es obligatorio'),
+            array(
+                'ubicacion',
+                'length',
+                'max'=>50),
+
+
+
+		
+			array('id, disponible, activo', 'numerical', 'integerOnly'=>true),
+	
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),
