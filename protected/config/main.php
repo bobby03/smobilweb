@@ -54,16 +54,6 @@ return array(
 //		'db'=>array(
 //			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 //		),
-                'clientScript'=>array(
-			'packages'=>array(
-				'jquery'=>array(
-					'baseUrl'=>'http://code.jquery.com/',
-					'js'=>array(
-						'jquery-1.11.2.min.js'
-					),
-				),
-			),
-		),
 		// uncomment the following to use a MySQL database
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
@@ -112,6 +102,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+		'locationLat'=>'31.870803236698222',
+		'locationLon'=>'-116.66807770729065',
 	),
 	
 );
