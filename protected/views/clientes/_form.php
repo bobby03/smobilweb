@@ -161,9 +161,11 @@
                                     <?php endif;?>
                                     </div>
 
-                                 <div class="row buttons">
-                                       <div class="containerbutton"> <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?></div>
-                                </div>
+                                    <div class="containerbutton">
+                                         <div class="row buttons">
+                                              <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+                                        </div>
+                                    </div>
                 </div>
                 <div class="form-cRight">
                             <div class="addDireccion">Agregar Otra Dirección</div> 

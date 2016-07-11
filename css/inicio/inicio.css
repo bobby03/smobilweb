@@ -1,0 +1,33 @@
+.barraViajeGranja{
+    background-color: #0077B0;
+    height: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 0;
+	
+}
+.tabs {
+    height: 100%;
+}
+.tabs > div {
+    float: left;
+    width: 120px;
+    text-align: center;
+    margin: 0;
+    text-indent: initial;
+    cursor: pointer;
+    height: 100%;
+}
+.tabs > div:hover ,
+.tabs > div.selected {
+	background-color: #21B7C7;
+}
+.tabs:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.none{
+	display: none !important;
+}

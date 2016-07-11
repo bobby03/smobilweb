@@ -5,7 +5,7 @@
  $baseUrl = Yii::app()->baseUrl;
 ?>
 
-<div class="form">
+<div class="form cepa">
 <?php 
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/cepa/create.css');
@@ -22,7 +22,7 @@
 	<?php echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 		<span class="containerBox">
-		 		<div class="form-cLeft">
+		 		<div class="form-container1">
 		 	<!--NCEPA --> 
 			        <div class="row">
 						<label class= "letreros">Nombre de Cepa</label>
@@ -40,7 +40,7 @@
 				</div>
 
 		<!--Especie-->  
-				<div class="form-cRight">
+				<div class="form-container1 last">
 					<div class="row">
 						<label class= "letreros">Especie</label>
 							<div class="form-cLarge">
@@ -64,7 +64,7 @@
 		<!--Temperatura-->
 		<span class="containerBox">
 			<div class="containertBoxLeft">
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">Temperatura</label>
 							<div class="form-cSmall">
@@ -72,7 +72,7 @@
 							</div>
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
 					    	<?php echo $form->textField($model,'temp_max'); ?>
@@ -81,15 +81,15 @@
 				</div>
 
 		<!--Ph-->
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
-						<label class= "letreros">Ph</label>
+						<label class= "letreros">pH</label>
 							<div class="form-cSmall">
 								<?php echo $form->textField($model,'ph_min'); ?>
 							</div>
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
 							<?php echo $form->textField($model,'ph_max'); ?>
@@ -97,7 +97,7 @@
 					</div>
 				</div>
 			<!--Oxigeno-->
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">Oxigeno</label>
 							<div class="form-cSmall">
@@ -105,7 +105,7 @@
 							</div>
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
 							<?php echo $form->textField($model,'ox_max'); ?>
@@ -117,7 +117,7 @@
 
 			<!--Conductividad-->   
 			<div class="containerBoxRight">
-					<div class="form-container1">
+					<div class="form-container11">
 						<div class="row">
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
@@ -125,7 +125,7 @@
 								</div>
 						</div>
 					</div>
-					<div class="form-container2">
+					<div class="form-container12">
 						<div class="row">
 							<div class="form-cSmall">
 								<?php echo $form->textField($model,'cond_max'); ?>
@@ -134,7 +134,7 @@
 					</div>
 
 			<!-- ORP-->
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
@@ -142,7 +142,7 @@
 							</div>	
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
 								<?php echo $form->textField($model,'orp_max'); ?>
