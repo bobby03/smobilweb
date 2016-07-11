@@ -28,12 +28,13 @@ class Usuarios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('usuario, pwd, tipo_usr', 'required'),
+			array('usuario, pwd, tipo_usr', 'required','message'=>'Campo obligatorio'),
                         array('usuario','unique','message'=>'Ya existe un usuario registrado con este nombre'),
                         array('id_usr','unique','message'=>'Este usuario ya tiene una cuenta creada'),
 			array('id, tipo_usr, id_usr', 'numerical', 'integerOnly'=>true),
 			array('usuario', 'length', 'max'=>10),
 			array('pwd', 'length', 'max'=>35),
+			//array('id_usr','message'=>'Campo obligatorio'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, usuario, pwd, tipo_usr, id_usr', 'safe', 'on'=>'search'),

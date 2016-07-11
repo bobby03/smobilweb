@@ -18,7 +18,7 @@
 
 	
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 
 <div class="form-container1">
 
@@ -30,7 +30,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pwd'); ?>
-		<?php echo $form->textField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
+		<?php echo $form->passwordField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
 		<?php echo $form->error($model,'pwd'); ?>
 	</div>
 
