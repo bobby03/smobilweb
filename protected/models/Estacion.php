@@ -76,11 +76,9 @@ class Estacion extends CActiveRecord
                 'length',
                 'max'=>50),
 
+             array('disponible','required','message'=>'Este campo es obligatorio'),
 
-
-		
 			array('id, disponible, activo', 'numerical', 'integerOnly'=>true),
-	
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),

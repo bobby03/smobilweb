@@ -84,6 +84,7 @@
 				<?php echo $form->labelEx($model,'disponible'); ?>
 				<span class="css-select-moz"><?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
 				<?php echo $form->error($model,'disponile'); ?>
+				
 				</div>
 			</div>
 		<?php endif;?>
