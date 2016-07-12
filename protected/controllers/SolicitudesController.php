@@ -162,7 +162,6 @@ class SolicitudesController extends Controller
                 $i = count($tanques);
                 if($i > 0)
                 {
-
                     $todosViajes[$data->id] = array
                     (
                         'cantidad' => $i,
@@ -170,6 +169,7 @@ class SolicitudesController extends Controller
                     );
                 }
             }
+            print_r($todosViajes);
             $imprimir  = '  <div class="subtitulos">
                                 <div>Camión</div>
                                 <div>Tanques disponibles</div>
@@ -177,7 +177,7 @@ class SolicitudesController extends Controller
                             <div class="tablaViajes">';
             foreach($viajes as $data)
             {
-                if($todosViajes[$data->id_estacion])
+                if(isset($todosViajes[$data->id_estacion]))
                 {
                     $imprimir = $imprimir.<<<eof
                         <div class="renglon">

@@ -15,12 +15,18 @@
 
 <?php 
     $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'clientes-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+    'id'=>'clientes-form',
+
+    // Please note: When you enable ajax validation, make sure the corresponding
+    // controller action is handling ajax validation correctly.
+    // There is a call to performAjaxValidation() commented in generated controller code.
+    // See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation'=>true,
+    'clientOptions' => array(
+        'validateOnSubmit' => true,
+        'validateOnChange' => true,
+        'validateOnType' => true,
+        ),
     )); 
     $noDireccion = 1;
 ?>
@@ -30,47 +36,53 @@
 <div class="form-containerWraper">
          <span class="containerBox">
             <div class="form-cLeft">
-                	<div class="row">
-                		<label class="letreros">Nombre de Empresa</label>
+                    <div class="row">
+                        <label class="letreros">Nombre de Empresa</label>
                             <div class="form-cLarge">
-                    		<?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
-                	       </div>
+                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
+                            <?php echo $form->error($model,'nombre_empresa'); ?>
+                           </div>
                     </div>
 
-                	<div class="row">
-                		<label class="letreros">Nombre de Contacto</label>
-                    		<div class="form-cLarge">
+                    <div class="row">
+                        <label class="letreros">Nombre de Contacto</label>
+                            <div class="form-cLarge">
                             <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50)); ?>
-                	       </div>
+                            <?php echo $form->error($model,'nombre_contacto'); ?>
+                           </div>
                     </div>
 
-                	<div class="row">
-                		<label class="letreros"> Apellido de Contacto </label>
-                	        <div class="form-cLarge">
-                           	<?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
-                	        </div>
+                    <div class="row">
+                        <label class="letreros"> Apellido de Contacto </label>
+                            <div class="form-cLarge">
+                            <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->error($model,'apellido_contacto'); ?>
+                            </div>
                     </div>
 
             </div>
             <div class="form-cRight">
-                	<div class="row">
-                		<label class="letreros">E-mail</label>
+                    <div class="row">
+                        <label class="letreros">E-mail</label>
                             <div class="form-cLarge">
-                    		<?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
-                    	   </div>
+                            <?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
+                            <?php echo $form->error($model,'correo'); ?>
+                           </div>
                     </div>
-                	<div class="row">
-                		<label class="letreros">RFC</label>
+                    <div class="row">
+                        <label class="letreros">RFC</label>
                             <div class="form-cLarge">
-                    		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
-                    	   </div>
+                            <?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+                            <?php echo $form->error($model,'rfc'); ?>
+                           </div>
                     </div>
 
-                	<div class="row">
-                		<label class="letreros">Teléfono</label>
-                    		<div class="form-cLarge">
-                            <?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
-                    	   </div>
+                    <div class="row">
+                        <label class="letreros">Teléfono</label>
+                            <div class="form-cLarge">
+                            <?php echo $form->numberField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
+                            <?php echo $form->error($model,'tel'); ?>
+                           </div>
                     </div>
                 </div>
         </span>   

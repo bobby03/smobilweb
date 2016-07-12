@@ -21,7 +21,6 @@ $baseUrl = Yii::app()->baseUrl;
 )); ?>
 
 
-	<?php echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 <div class="form-cLeft">
 	<div class="row">
@@ -42,6 +41,7 @@ $baseUrl = Yii::app()->baseUrl;
 		<!--<?php echo $form->error($model,'tel'); ?>-->
 	</div>
 
+	
 	<div class="row">
 		<label class="letreros">RFC</label>
 		<div class="form-cMedium"><?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?></div>
@@ -64,9 +64,15 @@ $baseUrl = Yii::app()->baseUrl;
 	</div>
 
 	<div class="row">
+<<<<<<< HEAD
 		<label class="letreros">E-mail</label>
 		<div class="form-cXLarge"><?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?></div>
 	<!--	<?php echo $form->error($model,'correo'); ?>-->
+=======
+		<?php echo $form->labelEx($model,'correo'); ?>
+		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'correo'); ?>
+>>>>>>> 3b2bee3526ec78a0050746bb3cdd7a602c0ed4d0
 	</div>
 
 	<div class="row">
@@ -77,9 +83,14 @@ $baseUrl = Yii::app()->baseUrl;
 </div>
 <div class="containerbutton">
 	<div class="row buttons">
+<<<<<<< HEAD
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
 	</div>
 </div>	
+=======
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	</div></div>
+>>>>>>> 3b2bee3526ec78a0050746bb3cdd7a602c0ed4d0
 </div>
 <?php $this->endWidget(); ?>
 

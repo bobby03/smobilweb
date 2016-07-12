@@ -411,6 +411,486 @@ eof;
 //                </div>
 //eof;
 //        }
+        public function rad($x)
+        {
+            return $x * pi() / 180;
+        }
+        public function actionGetTanqueGrafica($viaje, $id, $flag, $flag2)
+        {
+            $datos = Yii::app()->db->createCommand()
+                ->select('esc.id, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.t2, upT.ec, upT.orp, upT.id')
+                ->order('upT.id DESC')
+                ->from('escalon_viaje_ubicacion as esc')
+                ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+                ->where("esc.id_viaje = $viaje")
+                ->andWhere("upT.id_tanque = $id")
+                ->limit(1)
+                ->queryRow();
+            $return = array();
+            if($flag2)
+            {
+                $d = 0;
+                $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
+                $p1 = $p2 = array();
+                foreach($recorrido as $data)
+                {
+                    if($d == 0)
+                    {
+                        $p1[0] = Yii::app()->params['locationLat'];
+                        $p1[1] = Yii::app()->params['locationLon'];
+                    }
+                    $hay = strlen($data->ubicacion);
+                    $coord = substr($data->ubicacion, 1, $hay-1);
+                    $p2 = explode(",", $coord);
+//                    $p2[0] = ();
+                    $R = 6378137; // Earth’s mean radius in meter
+                    $dLat = $this->rad($p2[0] - $p1[0]);
+                    $dLong = $this->rad($p2[1] - $p1[1]);
+                    $a = sin($dLat / 2) * sin($dLat / 2) +
+                      cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
+                      sin($dLong / 2) * sin($dLong / 2);
+                    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                    $d = $d + ($R * $c);
+                    $p1[0] = $p2[0];
+                    $p1[1] = $p2[1];
+                }
+                $d = $d/1000;
+                $return['distancia'] = round($d, 2).' Km';
+                $viaje = Viajes::model()->findByPk($viaje);
+                $empieza = new DateTime($viaje->fecha_salida.' '.$viaje->hora_salida);
+                $termina = new DateTime($datos['fecha'].' '.$datos['hora']);
+                $diferencia = $termina->diff($empieza);
+                $return['tiempo'] = $diferencia->format('%d dias %h horas, %I minutos y %S segundos');
+            }
+            $return['viaje'] = $datos;
+            switch ($flag)
+            {
+                case 1: 
+                    $return['grafica'] =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => ['T'],
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => [$datos['t2']],
+                                    'backgroundColor'   => ['#9EE7DD'],
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 2: 
+                    $return['grafica'] =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => ['Oz'],
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => [$datos['ox']],
+                                    'backgroundColor'   => ['#FE713D']
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array
+                            (
+                                'display' => false
+                                
+                            ),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 3: 
+                    $return['grafica'] =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => ['PH'],
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => [$datos['ph']],
+                                    'backgroundColor'   => ['#0079AB']
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 4: 
+                    $return['grafica'] =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => ['Cd'],
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => [$datos['ec']],
+                                    'backgroundColor'   => ['#5F7D8A'],
+                                    'borderWidth'       => 1
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 5: 
+                    $return['grafica'] =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => ['OP'],
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => [$datos['orp']],
+                                    'backgroundColor'   => ['#9EE7DD']
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+            }
+            echo json_encode($return);
+        }
+        public function actionGetParametroGrafica($viaje, $flag)
+        {
+            $tanques = Yii::app()->db->createCommand()
+                ->selectDistinct('solTa.id_domicilio, solTa.id_tanque, solTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
+                ->from('solicitudes_viaje as solVi')
+                ->join('solicitud_tanques as solTa','solTa.id_solicitud = solVi.id_solicitud')
+                ->join('solicitudes as sol','sol.id = solTa.id_solicitud')
+                ->join('clientes as cli','cli.id = sol.id_clientes')
+                ->join('tanque as tan','tan.id = solTa.id_tanque')
+                ->where("solVi.id_viaje = :id",array(':id'=>(int)$viaje))
+                ->queryAll();
+            foreach($tanques as $data)
+                $nombre[] = $data['nombre'];
+            $escalon = Yii::app()->db->createCommand()
+                ->select('id')
+                ->from('escalon_viaje_ubicacion')
+                ->where("id_viaje = $viaje")
+                ->order("id DESC")
+                ->limit(1)
+                ->queryRow();
+            $datos = Yii::app()->db->createCommand()
+                ->selectDistinct('esc.id, upT.ox, upT.id_tanque, upT.ph, upT.t2, upT.ec, upT.orp, upT.id')
+                ->from('escalon_viaje_ubicacion as esc')
+                ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+                ->where("esc.id_viaje = $viaje")
+                ->andWhere("upT.id_escalon_viaje_ubicacion = {$escalon['id']}")
+                ->queryAll();
+            $colors = ['#9EE7DD', '#FE713D', '#0079AB', '#5F7D8A', '#9EE7DD', '#FE713D', '#0079AB', '#5F7D8A'];
+            switch ($flag)
+            {
+                case 1: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['ox'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2,
+                                    'borderWidth'       => 1
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 2: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['t2'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array
+                            (
+                                'display' => false
+                                
+                            ),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 3: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['ph'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 4: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['ec'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 5:
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['orp'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+            }
+            echo json_encode($return);
+        }
+        public function actionGetAlertas($id)
+        {
+            $uploads = UploadTemp::model()->findAll("id_tanque = $id AND alertas = 1");
+        }
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='viajes-form')

@@ -19,7 +19,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 		<span class="containerBox">
 		 		<div class="form-container1">
@@ -27,14 +27,20 @@
 			        <div class="row">
 						<label class= "letreros">Nombre de Cepa</label>
 							<div class="form-cLarge">
-							<?php echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50)); ?>
+							<?php 
+							echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50));
+							echo $form->error($model,'nombre_cepa');
+							 ?>
 						</div>
 					</div>
 			 <!--Cantidad-->
 					<div class="row">
 						<label class= "letreros">Cantidad</label>
 							<div class="form-cSmall">
-							<?php echo $form->textField($model,'cantidad'); ?>
+							<?php 
+							echo $form->numberField($model,'cantidad');
+							echo $form->error($model,'cantidad');
+							 ?>
 						</div>
 					</div>
 				</div>
@@ -68,14 +74,20 @@
 					<div class="row">
 						<label class= "letreros">Temperatura</label>
 							<div class="form-cSmall">
-								<?php echo $form->textField($model,'temp_min'); ?>
+								<?php 
+								echo $form->numberField($model,'temp_min');
+								echo $form->error($model,'temp_min');
+								 ?>
 							</div>
 					</div>
 				</div>
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-					    	<?php echo $form->textField($model,'temp_max'); ?>
+					    	<?php 
+					    	echo $form->numberField($model,'temp_max');
+					    	echo $form->error($model,'temp_max');
+					    	 ?>
 						</div>
 					</div>
 				</div>
@@ -85,14 +97,16 @@
 					<div class="row">
 						<label class= "letreros">pH</label>
 							<div class="form-cSmall">
-								<?php echo $form->textField($model,'ph_min'); ?>
+								<?php echo $form->numberField($model,'ph_min');
+								echo $form->error($model,'ph_min'); ?>
 							</div>
 					</div>
 				</div>
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-							<?php echo $form->textField($model,'ph_max'); ?>
+							<?php echo $form->numberField($model,'ph_max');
+							echo $form->error($model,'ph_max'); ?>
 						</div>
 					</div>
 				</div>
@@ -101,14 +115,16 @@
 					<div class="row">
 						<label class= "letreros">Oxigeno</label>
 							<div class="form-cSmall">
-								<?php echo $form->textField($model,'ox_min'); ?>
+								<?php echo $form->numberField($model,'ox_min');
+								echo $form->error($model,'ox_min'); ?>
 							</div>
 					</div>
 				</div>
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-							<?php echo $form->textField($model,'ox_max'); ?>
+							<?php echo $form->numberField($model,'ox_max');
+							echo $form->error($model,'ox_max'); ?>
 						</div>
 					</div>
 				</div>
@@ -121,14 +137,16 @@
 						<div class="row">
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
-									<?php echo $form->textField($model,'cond_min'); ?>
+									<?php echo $form->numberField($model,'cond_min');
+									echo $form->error($model,'cond_min'); ?>
 								</div>
 						</div>
 					</div>
 					<div class="form-container12">
 						<div class="row">
 							<div class="form-cSmall">
-								<?php echo $form->textField($model,'cond_max'); ?>
+								<?php echo $form->numberField($model,'cond_max');
+								echo $form->error($model,'cond_max'); ?>
 							</div>
 						</div>
 					</div>
@@ -138,22 +156,23 @@
 					<div class="row">
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
-								<?php echo $form->textField($model,'orp_min'); ?>
+								<?php echo $form->numberField($model,'orp_min');
+								echo $form->error($model,'orp_min'); ?>
+
 							</div>	
 					</div>
 				</div>
 				<div class="form-container12">
 					<div class="row">
-						<div class="form-cSmall">
-								<?php echo $form->textField($model,'orp_max'); ?>
+						<div class="form-cSmall"0>
+								<?php echo $form->numberField($model,'orp_max');
+								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
 				</div>
-			 	<div class="containerbutton">
 					<div class="row buttons">
 						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
 					</div>
-				</div>
 			</div>
   		</span>
 </div>
