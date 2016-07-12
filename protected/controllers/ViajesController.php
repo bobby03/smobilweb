@@ -121,7 +121,7 @@ class ViajesController extends Controller
             $solicitudes = new Solicitudes();
             $personal = new SolicitudesViaje();
 //		// Uncomment the following line if AJAX validation is needed
-//		// $this->performAjaxValidation($model);
+            $this->performAjaxValidation($model);
 //
             if(isset($_POST['Viajes']))
             {
@@ -300,7 +300,7 @@ class ViajesController extends Controller
                 $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
                 $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Viajes']))
 		{
