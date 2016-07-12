@@ -178,9 +178,6 @@ class ViajesController extends Controller
                             $nuevo->cantidad_cepas = $data['cantidad'];
                             if($nuevo->save())
                             {
-                                $cepa = Cepa::model()->findByPk($nuevo->id_cepas);
-                                $cepa->cantidad = $cepa->cantidad - $nuevo->cantidad_cepas;
-                                $cepa->save();
                                 $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
                                 $tanque->status = 2;
                                 $tanque->save();
@@ -208,9 +205,6 @@ class ViajesController extends Controller
                         $nuevo->cantidad_cepas = $data['cantidad'];
                         if($nuevo->save())
                         {
-                            $cepa = Cepa::model()->findByPk($nuevo->id_cepas);
-                            $cepa->cantidad = $cepa->cantidad - $nuevo->cantidad_cepas;
-                            $cepa->save();
                             $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
                             $tanque->status = 2;
                             $tanque->save();
@@ -890,16 +884,18 @@ eof;
         public function actionGetAlertas($viaje, $id)
         {
             $uploads = Yii::app()->db->createCommand()
-                    ->selectDistinct('cep.*, tan.id as idTanque, upt.t2, upt.ox, upt.ph, upt.od, upt.orp')
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.t2, upt.ox, upt.ph, upt.od, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
                     ->from('solicitudes_viaje as solV')
                     ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                     ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
                     ->rightJoin('cepas as cep', 'cep.id = solT.id_cepas')
                     ->join('uploadTemp as upt','upt.id_tanque = tan.id')
                     ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
                     ->where("solV.id_viaje = $viaje")
                     ->andWhere("tan.id = $id")
                     ->andWhere("upt.alerta = 1")
+                    ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
                     ->queryAll();
             if(count($uploads) > 0)
             {

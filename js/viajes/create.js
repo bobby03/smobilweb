@@ -69,6 +69,7 @@ $(document).ready(function()
         $('[data-tab="2"]').removeClass('hide');
         $('.menuTabs div:nth-child(4)').addClass('selected');
         $('.menuTabs div:nth-child(5)').addClass('selected');
+        $('.pedidoWraper').css('height', 'auto');
     });
     $('.siguiente.dos').click(function()
     {
@@ -82,7 +83,6 @@ $(document).ready(function()
     $('.pedidoWraper').each(function()
     {
         var h2 = $(this).height();
-        console.log(h2,h);
         if(h2 > h)
         {
             h = h2;
