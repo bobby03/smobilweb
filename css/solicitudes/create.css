@@ -87,11 +87,6 @@ div.row.cantidad div
     width: 45%;
     float: left;
 }
-div.row.cantidad div.noTanques
-{
-    float: right;
-    margin-top: 13px;
-}
 div.row.cantidad div.noTanques input
 {
     float: right;

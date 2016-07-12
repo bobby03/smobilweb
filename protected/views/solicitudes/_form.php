@@ -103,13 +103,9 @@ eof;
                 <?php echo $form->error($cepa,'id'); ?>
             </div>
             <div class="row cantidad hide">
-                <div class="disponible">
-                    <label>Cantidad disponible</label>
-                    <input type="text" readonly value="500">
-                </div>
                 <div class="requerida">
                     <label>Cantidad requerida</label>
-                    <?php echo $form->numberField($cepa,'cantidad',array('min'=>1, 'max'=>50)); ?>
+                    <?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1)); ?>
                 </div>
                 <div class="noTanques">
                     <label>Tanques requeridos</label>

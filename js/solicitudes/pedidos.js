@@ -14,7 +14,7 @@ $(document).ready(function()
         var especie = $('#Especie_id option:selected').text();
         var cepaID = $('#Cepa_id').val();
         var cepa = $('#Cepa_id option:selected').text();
-        var cantidad = $('#Cepa_cantidad').val();
+        var cantidad = $('#Cepa_nombre_cepa_1_cantidad').val();
         var tanques = parseInt($('#tanquesNO').val());
         var tanque = '';
         if(tanques == 1)

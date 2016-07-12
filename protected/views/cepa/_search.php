@@ -22,10 +22,6 @@
 		<label>Buscar:</label>
 		<?php echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
-	<div class="row hide" data-id='3'>
-		<label>Buscar:</label>
-		<?php echo $form->textField($model,'cantidad',array('size'=>50,'maxlength'=>50)); ?>
-	</div>
 
 	<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>
