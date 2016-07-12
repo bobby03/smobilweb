@@ -23,13 +23,10 @@ $(document).ready(function()
     {
         var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
         var id = $(this).data('ale');
-        var html = '<div class="alertas">\n\
-                        <div class="tituloAlerta">Alertas: '+nombre+'</div>\n\
-                    </div>';
         $.ajax(
         {
             type: 'GET',
-            url: 'GetTanqueGrafica',
+            url: 'GetAlertas',
             dataType: 'JSON', 
             data:
             {
