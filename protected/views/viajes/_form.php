@@ -109,7 +109,7 @@
             <?php for($i = 1; $i <= $data['tanques']; $i++):?>
                 <div class="pedido">
                     <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
-                    <?php if($data['id_tanque']):?>
+                    <?php if(isset($data['id_tanque'])):?>
                     <div class="pedidoWraper gris">
                         <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
                         <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
