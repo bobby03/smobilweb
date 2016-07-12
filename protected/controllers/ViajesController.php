@@ -121,7 +121,7 @@ class ViajesController extends Controller
             $solicitudes = new Solicitudes();
             $personal = new SolicitudesViaje();
 //		// Uncomment the following line if AJAX validation is needed
-//		// $this->performAjaxValidation($model);
+            $this->performAjaxValidation($model);
 //
             if(isset($_POST['Viajes']))
             {
@@ -178,9 +178,6 @@ class ViajesController extends Controller
                             $nuevo->cantidad_cepas = $data['cantidad'];
                             if($nuevo->save())
                             {
-                                $cepa = Cepa::model()->findByPk($nuevo->id_cepas);
-                                $cepa->cantidad = $cepa->cantidad - $nuevo->cantidad_cepas;
-                                $cepa->save();
                                 $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
                                 $tanque->status = 2;
                                 $tanque->save();
@@ -208,9 +205,6 @@ class ViajesController extends Controller
                         $nuevo->cantidad_cepas = $data['cantidad'];
                         if($nuevo->save())
                         {
-                            $cepa = Cepa::model()->findByPk($nuevo->id_cepas);
-                            $cepa->cantidad = $cepa->cantidad - $nuevo->cantidad_cepas;
-                            $cepa->save();
                             $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
                             $tanque->status = 2;
                             $tanque->save();
@@ -300,7 +294,7 @@ class ViajesController extends Controller
                 $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
                 $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Viajes']))
 		{
@@ -887,9 +881,50 @@ eof;
             }
             echo json_encode($return);
         }
-        public function actionGetAlertas($id)
+        public function actionGetAlertas($viaje, $id)
         {
-            $uploads = UploadTemp::model()->findAll("id_tanque = $id AND alertas = 1");
+            $uploads = Yii::app()->db->createCommand()
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.t2, upt.ox, upt.ph, upt.od, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
+                    ->rightJoin('cepas as cep', 'cep.id = solT.id_cepas')
+                    ->join('uploadTemp as upt','upt.id_tanque = tan.id')
+                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                    ->where("solV.id_viaje = $viaje")
+                    ->andWhere("tan.id = $id")
+                    ->andWhere("upt.alerta = 1")
+                    ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
+                    ->queryAll();
+            if(count($uploads) > 0)
+            {
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta">Alertas: </div>
+                        <div class="tablaAlertas">
+                            <div class="tablaTitulos">
+                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
+                            </div>
+                        </div>
+                    </div>';
+                foreach($uploads as $data)
+                {
+                    if($data['t2'] > $data['temp_max'] || $data['t2'] < $data['temp_min'])
+                    {
+                        if($data['t2'] > $data['temp_max'])
+                            $imagen = '<div class="flechaUp"></div>';
+                        else
+                            $imagen = '<div class="flechaDown"></div>';
+                        $return = $return.'';
+                    }
+                }
+            }
+            else
+            {
+                
+            }
+            echo json_encode($return);
         }
 	protected function performAjaxValidation($model)
 	{

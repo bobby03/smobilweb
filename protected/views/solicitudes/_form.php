@@ -10,8 +10,8 @@
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/colorboxCreate.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/googleMap.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/pedidos.js');
-    $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets/js/chosen.jquery.min.js');
-    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets/css/chosen.min.css');
+    $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
+    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/create.css');
@@ -103,13 +103,9 @@ eof;
                 <?php echo $form->error($cepa,'id'); ?>
             </div>
             <div class="row cantidad hide">
-                <div class="disponible">
-                    <label>Cantidad disponible</label>
-                    <input type="text" readonly value="500">
-                </div>
                 <div class="requerida">
                     <label>Cantidad requerida</label>
-                    <?php echo $form->numberField($cepa,'cantidad',array('min'=>1, 'max'=>50)); ?>
+                    <?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1)); ?>
                 </div>
                 <div class="noTanques">
                     <label>Tanques requeridos</label>

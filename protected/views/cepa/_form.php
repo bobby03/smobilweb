@@ -33,16 +33,6 @@
 							 ?>
 						</div>
 					</div>
-			 <!--Cantidad-->
-					<div class="row">
-						<label class= "letreros">Cantidad</label>
-							<div class="form-cSmall">
-							<?php 
-							echo $form->numberField($model,'cantidad');
-							echo $form->error($model,'cantidad');
-							 ?>
-						</div>
-					</div>
 				</div>
 
 		<!--Especie-->  

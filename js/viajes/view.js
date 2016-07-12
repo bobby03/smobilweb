@@ -22,15 +22,31 @@ $(document).ready(function()
     $('[data-id="1"] .boton.adve').click(function()
     {
         var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
-        var html = '<div class="alertas">\n\
-                        <div class="tituloAlerta">Alertas: '+nombre+'</div>\n\
-                    </div>';
-        $.colorbox(
+        var id = $(this).data('ale');
+        $.ajax(
         {
-            html: html,
-            onComplete: function()
+            type: 'GET',
+            url: 'GetAlertas',
+            dataType: 'JSON', 
+            data:
             {
-                
+                viaje: viaje,
+                id: id
+            },
+            success: function(data2)
+            {
+                $.colorbox(
+                {
+                    html: html,
+                    onComplete: function()
+                    {
+
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c)
             }
         });
     });

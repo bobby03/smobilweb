@@ -169,7 +169,6 @@ class SolicitudesController extends Controller
                     );
                 }
             }
-            print_r($todosViajes);
             $imprimir  = '  <div class="subtitulos">
                                 <div>Camión</div>
                                 <div>Tanques disponibles</div>

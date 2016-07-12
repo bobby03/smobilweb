@@ -96,7 +96,6 @@ $(document).ready(function()
                     $('#Cepa_id').append(data);
                     $('#Cepa_id').trigger("chosen:updated");
                     $('.row.cepa').removeClass('hide');
-                    $('.disponible input').val('');
                     $('.requerida input').val('');
                 },
                 error: function(a, b, c)
@@ -117,7 +116,6 @@ $(document).ready(function()
                             $('#Cepa_id').append(data);
                             $('#Cepa_id').trigger("chosen:updated");
                             $('.row.cepa').removeClass('hide');
-                            $('.disponible input').val('');
                             $('.requerida input').val('');
                         },
                         error: function(a, b, c)
@@ -132,16 +130,12 @@ $(document).ready(function()
         {
             $('.row.cepa').addClass('hide');
             $('.row.cantidad').addClass('hide');
-            $('.disponible input').val('');
             $('.requerida input').val('');
             $('.row.direcciones').addClass('hide');
         }
     });
     $('#Cepa_id').on('change', function()
     {
-        var cant = $('#Cepa_id option:selected').attr('data-cnt');
-        $('.disponible input').val(cant);
-        $('.requerida input').attr('max',cant);
         $('.requerida input').val('');
         $('.row.cantidad').removeClass('hide');
         $('.requerida input').change(function()
@@ -163,18 +157,15 @@ $(document).ready(function()
     });
     function validacionCantidad()
     {
-         var cantidad = $('#Cepa_cantidad').val();
-            if(cantidad != '' && cantidad != null)
-            {
-                var total = parseInt($('.disponible input').val());
-                if(cantidad > total)
-                    $('#Cepa_cantidad').val(total);
-                if(cantidad < 0)
-                    $('#Cepa_cantidad').val(1);
-                $('.row.direcciones').removeClass('hide');
-            }
-            else
-                $('.row.direcciones').addClass('hide');
+        var cantidad = $('#Cepa_nombre_cepa_1_cantidad').val();
+        if(cantidad != '' && cantidad != null)
+        {
+            if(cantidad < 0)
+                $('#Cepa_nombre_cepa_1_cantidad').val(1);
+            $('.row.direcciones').removeClass('hide');
+        }
+        else
+            $('.row.direcciones').addClass('hide');
     }
     $('[name="yt0"]').click(function()
     {
