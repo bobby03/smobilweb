@@ -890,21 +890,45 @@ eof;
         public function actionGetAlertas($viaje, $id)
         {
             $uploads = Yii::app()->db->createCommand()
-                    ->select('cep.*')
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.t2, upt.ox, upt.ph, upt.od, upt.orp')
                     ->from('solicitudes_viaje as solV')
-                    ->join('solicitudes_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
+                    ->rightJoin('cepas as cep', 'cep.id = solT.id_cepas')
+                    ->join('uploadTemp as upt','upt.id_tanque = tan.id')
+                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                    ->where("solV.id_viaje = $viaje")
+                    ->andWhere("tan.id = $id")
+                    ->andWhere("upt.alerta = 1")
                     ->queryAll();
             if(count($uploads) > 0)
             {
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta">Alertas: </div>
+                        <div class="tablaAlertas">
+                            <div class="tablaTitulos">
+                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
+                            </div>
+                        </div>
+                    </div>';
                 foreach($uploads as $data)
                 {
-                    
+                    if($data['t2'] > $data['temp_max'] || $data['t2'] < $data['temp_min'])
+                    {
+                        if($data['t2'] > $data['temp_max'])
+                            $imagen = '<div class="flechaUp"></div>';
+                        else
+                            $imagen = '<div class="flechaDown"></div>';
+                        $return = $return.'';
+                    }
                 }
             }
             else
             {
                 
             }
+            echo json_encode($return);
         }
 	protected function performAjaxValidation($model)
 	{
