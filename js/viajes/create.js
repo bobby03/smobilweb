@@ -82,7 +82,6 @@ $(document).ready(function()
     $('.pedidoWraper').each(function()
     {
         var h2 = $(this).height();
-        console.log(h2,h);
         if(h2 > h)
         {
             h = h2;
