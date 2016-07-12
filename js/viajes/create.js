@@ -69,6 +69,7 @@ $(document).ready(function()
         $('[data-tab="2"]').removeClass('hide');
         $('.menuTabs div:nth-child(4)').addClass('selected');
         $('.menuTabs div:nth-child(5)').addClass('selected');
+        $('.pedidoWraper').css('height', 'auto');
     });
     $('.siguiente.dos').click(function()
     {
