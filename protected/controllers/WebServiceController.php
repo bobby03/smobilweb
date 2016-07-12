@@ -258,13 +258,15 @@ class WebServiceController extends Controller
                     );
             //----------------------- /USER DATA  RESP-----------------------
                 //----------------------- Plataforma Viaje ----------------------------
+            
+            /*
             $PlataformasViaje = Yii::app()->db->createCommand()
                 ->selectDistinct("v.id, v.id_responsable, v.status, v.fecha_salida, v.hora_salida, sv.id_solicitud")
                 ->from("viajes v")
                 ->join("solicitudes_viaje sv","sv.id_viaje = v.id")
                 ->where("v.id_responsable = :id",array(":id"=>$VDvalue['id']))
                 ->order('id desc')
-                ->queryAll();
+                ->queryAll(); */
 
 // *
             $PlataformasViaje = Yii::app()->db->createCommand()
@@ -290,7 +292,7 @@ class WebServiceController extends Controller
                     // echo $VDvalue['id_solicitudes'];
                     $tanks = Yii::app()->db->createCommand()
                     // tanque, Domicilio, cepa
-                        ->selectDistinct('v.id_viaje, t.id,t.nombre, t.capacidad, t.id_estacion, d.domicilio, d.ubicacion_mapa, d.descripcion, c.nombre_cepa, c.temp_min, c.temp_max, c.ph_min, c.ph_max, c.ox_min, c.ox_max, c.cond_min, c.cond_max, c.orp_min, c.orp_max, cantidad_cepas')
+                        ->selectDistinct('v.id_viaje, t.id,t.nombre, t.capacidad, t.id_estacion, d.domicilio, d.ubicacion_mapa, d.descripcion, c.nombre_cepa, c.temp_min, c.temp_max, c.ph_min, c.ph_max, c.ox_min, c.ox_max, c.cond_min, c.cond_max, c.orp_min, c.orp_max, c.od_max, c.od_min,cantidad_cepas')
                         ->from('solicitud_tanques st')
                         ->join('tanque t','st.id_tanque = t.id')
                         ->join('clientes_domicilio d', 'st.id_domicilio = d.id')
