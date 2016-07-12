@@ -121,7 +121,7 @@ class ViajesController extends Controller
             $solicitudes = new Solicitudes();
             $personal = new SolicitudesViaje();
 //		// Uncomment the following line if AJAX validation is needed
-//		// $this->performAjaxValidation($model);
+            $this->performAjaxValidation($model);
 //
             if(isset($_POST['Viajes']))
             {
@@ -300,7 +300,7 @@ class ViajesController extends Controller
                 $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
                 $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Viajes']))
 		{
@@ -887,9 +887,13 @@ eof;
             }
             echo json_encode($return);
         }
-        public function actionGetAlertas($id)
+        public function actionGetAlertas($viaje, $id)
         {
-            $uploads = UploadTemp::model()->findAll("id_tanque = $id AND alertas = 1");
+            $uploads = Yii::app()->db->createCommand()
+                    ->select('cep.*')
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitudes_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->queryAll();
             if(count($uploads) > 0)
             {
                 foreach($uploads as $data)
