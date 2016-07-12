@@ -40,13 +40,14 @@ $(document).ready(function()
         markers.push(marker);
         google.maps.event.addListener(map, 'click', function( event )
         {
-            console.log(map.id); 
+//            console.log(map.id); 
             var marker = new google.maps.Marker(
             {        
                 position: event.latLng,
                 map: map,
                 title: 'Hello World!'
             });
+//            console.log(event.latLng);
             markers[0].setMap(null);
             markers = [];
             markers.push(marker);

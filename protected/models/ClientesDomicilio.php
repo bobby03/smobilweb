@@ -110,7 +110,7 @@ class ClientesDomicilio extends SMActiveRecord
         public function getDireccionClienteSolicitudes($id)
         {
             $domicilios = ClientesDomicilio::model()->findAll("id_cliente = $id");
-            $return = array();
+            $return = '';
             foreach($domicilios as $data)
                 $return = $return.<<<eof
                     <option value="$data->id">$data->domicilio</option>

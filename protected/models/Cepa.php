@@ -13,7 +13,6 @@
  * @property double $ph_max
  * @property double $ox_min
  * @property double $ox_max
- * @property integer $cantidad
  * @property double $cond_min
  * @property double $cond_max
  * @property double $orp_min
@@ -41,13 +40,13 @@ class Cepa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'required'),
-			array('id_especie, cantidad', 'numerical', 'integerOnly'=>true),
+			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'required','message'=>'Campo obligatorio'),
+			array('id_especie', 'numerical', 'integerOnly'=>true),
 			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
 			array('nombre_cepa', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cantidad, cond_min, cond_max, orp_min, orp_max', 'safe', 'on'=>'search'),
+			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,7 +78,6 @@ class Cepa extends CActiveRecord
 			'ph_max' => 'Ph Max',
 			'ox_min' => 'Ox Min',
 			'ox_max' => 'Ox Max',
-			'cantidad' => 'Cantidad',
 			'cond_min' => 'Cond Min',
 			'cond_max' => 'Cond Max',
 			'orp_min' => 'Orp Min',
@@ -114,14 +112,10 @@ class Cepa extends CActiveRecord
 		$criteria->compare('ph_max',$this->ph_max);
 		$criteria->compare('ox_min',$this->ox_min);
 		$criteria->compare('ox_max',$this->ox_max);
-		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('cond_min',$this->cond_min);
 		$criteria->compare('cond_max',$this->cond_max);
 		$criteria->compare('orp_min',$this->orp_min);
 		$criteria->compare('orp_max',$this->orp_max);
-			/*$criteria->addcondition("(nombre_cepa LIKE '%".$this->nombre_cepa."%' OR id_especie LIKE '%".$this->nombre_cepa.
-								"%' OR cantidad LIKE '%".$this->nombre_cepa."%')");*/
-
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -129,8 +123,7 @@ class Cepa extends CActiveRecord
 
 	public function getSearchCepa(){
 			return array('1'=>'Especie',
-				         '2'=>'Nombre Cepa',
-				         '3'=>'Cantidad');
+				         '2'=>'Nombre Cepa');
 		}
 	/**
 	 * Returns the static model of the specified AR class.
@@ -148,7 +141,7 @@ class Cepa extends CActiveRecord
             $return = '';
             foreach($cepas as $data)
                 $return = $return.<<<eof
-                    <option value="$data->id" data-cnt="$data->cantidad">$data->nombre_cepa</option>
+                    <option value="$data->id">$data->nombre_cepa</option>
 eof;
             
             return $return;
@@ -191,10 +184,6 @@ eof;
             array(
                 'name' => 'ox_max',
                 'value' => '$data->ox_max',
-            ),*/
-            array(
-                'name' => 'cantidad',
-                'value' => '$data->cantidad',
             ),/*
             array(
                 'name' => 'cond_max',

@@ -1,7 +1,9 @@
 <?php
 /* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/dashboard.css');
+    $this->pageTitle=Yii::app()->name;
 ?>
 <div class="principal">
     <div class="tabs">

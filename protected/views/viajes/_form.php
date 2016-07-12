@@ -2,8 +2,8 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
-    $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets/js/chosen.jquery.min.js');
-    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets/css/chosen.min.css');
+    $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
+    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/viajes/create.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
@@ -109,7 +109,7 @@
             <?php for($i = 1; $i <= $data['tanques']; $i++):?>
                 <div class="pedido">
                     <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
-                    <?php if($data['id_tanque']):?>
+                    <?php if(isset($data['id_tanque'])):?>
                     <div class="pedidoWraper gris">
                         <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
                         <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>

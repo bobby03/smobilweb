@@ -106,7 +106,7 @@ class RolesController extends Controller
 		$model = new Roles;
                 $acciones = new RolesPermisos;
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Roles']))
 		{
@@ -181,8 +181,9 @@ class RolesController extends Controller
                     $array[$data->seccion]['edicion'] = $data->edicion;
                 }
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-                $acciones->seccion = $array;
+		$this->performAjaxValidation($model);
+        
+        $acciones->seccion = $array;
 		if(isset($_POST['Roles']))
 		{
                     $oldRol = Roles::model()->findByPk($model->id);

@@ -22,13 +22,16 @@
 )); ?>
 
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 	<div class="form-cRight">
 			<div class="row">
 				<label class="letreros">Nueva Especie</label>
 					<div class="form-cLarge">
-						<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?>
+						<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100));
+						echo $form->error($model,'nombre');
+
+						 ?>
 					</div>
 				</div>
 	</div>

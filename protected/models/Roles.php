@@ -30,10 +30,26 @@ class Roles extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_rol', 'required'),
+
+
+
+         array('nombre_rol','required','message'=>'Debe especificar un nombre de Rol'),
+
+         array(
+                'nombre_rol',
+                'unique',
+                'message'=>'Ya existe un Rol con ese nombre'),
+
+         array(
+                'nombre_rol',
+                'length',
+                'max'=>50),
+
+
+			
 			array('activo', 'numerical', 'integerOnly'=>true),
-			array('nombre_rol', 'length', 'max'=>50),
-                        array('nombre_rol','unique','message'=>'Ya existe un rol con ese nombre'),
+			
+        
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre_rol, activo', 'safe', 'on'=>'search'),
