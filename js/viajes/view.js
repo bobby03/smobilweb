@@ -7,6 +7,7 @@ $(document).ready(function()
     var viaje = loc.substring(index2+1);
     var myDir = {lat: 31.870803236698222, lng: -116.66807770729065};
     var mapDiv = $('#map')[0];
+    var total = 1;
     var map = new google.maps.Map(mapDiv, 
     {
         center: myDir,
@@ -26,27 +27,93 @@ $(document).ready(function()
         $.ajax(
         {
             type: 'GET',
-            url: 'GetAlertas',
+            url: 'GetAlertasTanque',
             dataType: 'JSON', 
             data:
             {
                 viaje: viaje,
                 id: id
             },
-            success: function(data2)
+            success: function(data)
             {
                 $.colorbox(
                 {
-                    html: html,
+                    html: data,
                     onComplete: function()
                     {
-
+                        $.colorbox.resize();
+                        $('.tituloAlerta').text('Alertas: '+nombre);
+                        $('.tableRow > div:nth-child(5n)').each(function()
+                        {
+                            var texto = $(this).text();
+                            var div = $(this);
+                            reverseGeocoding(texto, 2, div);
+                        });
+                        $('.tableRow > div').each(function()
+                        {
+                            var h = $(this).height();
+                            var height = (50-h)/2;
+                            $(this).css('padding',height+'px 0');
+                        });
+                        
                     }
                 });
             },
             error: function(a,b,c)
             {
-                console.log(a, b, c)
+                console.log(a, b, c);
+            }
+        });
+    });
+    $('[data-id="2"] .boton.adve').click(function()
+    {
+        total = 1;
+        var id = $(this).data('ale');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetAlertasParametro',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                $.colorbox(
+                {
+                    html: data,
+                    onComplete: function()
+                    {
+                        $.colorbox.resize();
+                        $('.tableRow > div:nth-child(5n)').each(function()
+                        {
+                            if(total <= 5)
+                            {
+                                var texto = $(this).text();
+                                var div = $(this);
+                                reverseGeocoding(texto, 2, div);
+                            }
+                            else
+                            {
+                                $(this).parent().addClass('hide');
+                            }
+                            total ++;
+                        });
+                        $('.tableRow > div').each(function()
+                        {
+                            var h = $(this).height();
+                            var height = (50-h)/2;
+                            $(this).css('padding',height+'px 0');
+                        });
+                        
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
             }
         });
     });
@@ -96,7 +163,7 @@ $(document).ready(function()
                             map.setCenter(ubi);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
-                            reverseGeocoding(datos.ubicacion);
+                            reverseGeocoding(datos.ubicacion, 1, false);
                             $('.datosWraper span.distancia').text(data2.distancia);
                             flag2 = false;
                         }
@@ -148,7 +215,7 @@ $(document).ready(function()
             }); 
         });
     }
-    function reverseGeocoding(direccion)
+    function reverseGeocoding(direccion, flag, div)
     {
         var geocoder = new google.maps.Geocoder;
         var infowindow = new google.maps.InfoWindow;
@@ -163,7 +230,10 @@ $(document).ready(function()
                 if (results[1]) 
                 {
                     infowindow.setContent(results[1].formatted_address);
-                    $('.datosWraper > div:last-child span').text(infowindow.content);
+                    if(flag == 1)
+                        $('.datosWraper > div:last-child span').text(infowindow.content);
+                    if(flag == 2)
+                        div.text(infowindow.content);
                 } 
                 else 
                     window.alert('No results found');

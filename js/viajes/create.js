@@ -113,6 +113,8 @@ $('.siguiente.dos').click(function() {
         $('[data-tab="3"]').removeClass('hide');
         $('.menuTabs div:nth-child(6)').addClass('selected');
         $('.menuTabs div:nth-child(7)').addClass('selected');
+        $('.menuTabs div:nth-child(8)').addClass('selected');
+        $('.menuTabs div:nth-child(9)').addClass('selected');
 
     } else {}
 
