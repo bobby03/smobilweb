@@ -97,6 +97,8 @@ $('.siguiente.uno').click(function() {
 
 $('.siguiente.dos').click(function() {
 
+
+
     if (formSendViajesTanque()) {
         $('[data-tab="2"]').addClass('hide');
         $('[data-tab="3"]').removeClass('hide');
@@ -130,6 +132,19 @@ function formSendViajes(e) {
 function formSendViajesTanque(e) {
 
 
+$('.selectTanque select').each(function () {
+      if($("option:selected", this).text() === "Seleccionar"){
+        $(this).parent().addClass("error");
+        $(this).parent().removeClass("success");
+    } else {
+        $(this).parent().addClass("success");
+        $(this).parent().removeClass("error");
+    }
+});
+
+
+
+
     var re = /Seleccionar/gi;
     var str = $('.pedidosWraper').find('select option:selected').text();
 
@@ -140,3 +155,25 @@ function formSendViajesTanque(e) {
 
 
 }
+
+
+
+function validaTanques(){
+    $(".selectTanque select").change(function() {
+
+    if($("option:selected", this).text() === "Seleccionar"){
+        $(this).parent().addClass("error");
+        $(this).parent().removeClass("success");
+    } else {
+        $(this).parent().addClass("success");
+        $(this).parent().removeClass("error");
+    }
+    
+});
+}
+
+function launcher(){
+    validaTanques();
+}
+
+window.onload = launcher;
