@@ -1,0 +1,101 @@
+.barraViajeGranja{
+    background-color: #0077B0;
+    height: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 0;
+	
+}
+.tabs {
+    height: 100%;
+}
+.tabs > div {
+    float: left;
+    width: 120px;
+    text-align: center;
+    margin: 0;
+    text-indent: initial;
+    cursor: pointer;
+    height: 100%;
+}
+.tabs > div:hover ,
+.tabs > div.selected {
+	background-color: #21B7C7;
+}
+.tabs:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.none{
+	display: none !important;
+}
+
+/** Tipo de letra**/
+.titulo2{
+    font-size: 1.0em;
+    color:#ffffff; 
+}
+
+.titulo1{
+font-size: 1.5em;
+color:#2C87B7; 
+}
+
+
+/**             **/
+
+/**         Contenedores de viajes / estaciones        **/
+
+
+.container-box{
+    width: 100%;
+    max-width: 1200px;
+    float: left;
+}
+.container-b1box{
+     width: 50%;
+     max-width: 600px;
+     float: left;
+}
+table, th, td,tr {
+    border: 1px ;
+}
+table{
+    width:90.46%;
+    border-style: solid;
+    border-color: #1178AF;
+}
+thead th{
+    background-color: #1178AF;
+    border-bottom: 11px solid #21B7C7;
+}
+tr{
+    width: 90.46%;
+     border-bottom-style:  dashed;
+    border-color: #EAEAEA;
+    border-width: 2px;
+    
+}
+
+td{
+   
+}
+
+table.dashboardInicio tr:last-child td{
+    border-bottom: 0;
+}
+.dashboardInicio  tr:hover, 
+.dashboardInicio tr.selected{
+    background-color: #21B7C7;
+    color:#ffffff; 
+} 
+
+.container-line{
+
+}
+
+
+
+

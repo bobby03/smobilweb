@@ -29,7 +29,25 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
+		$criteria = new CDbCriteria();
+		/*$criteria->select = "t.*, est.identificador, p.nombre, p.apellido";
+		$criteria->from = 'viajes as t';
+		$criteria->join = "JOIN estacion est ON est.id = t.id_estacion";
+		$criteria->join .= " JOIN personal as p ON p.id = t.id_responsable";
+		$criteria->join .= " JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id";
+		$criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
+		
+		$model = Yii::app()->db->createCommand()
+			->selectDistinct("t.*, est.identificador, p.nombre, p.apellido")
+			->from('viajes as t')
+			->join("estacion est","est.id = t.id_estacion")
+			->join("personal as p","p.id = t.id_responsable")
+			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
+			->where("t.status = '1'")
+				->queryAll();
+
+		$this->render('index', array('enruta'=>$model));
 	}
 
 	/**

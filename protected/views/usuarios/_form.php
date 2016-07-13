@@ -20,42 +20,72 @@
 
 	<?php //echo $form->errorSummary($model); ?>
 
-<div class="form-container1">
+	<div class="form-containerWraper">
+	<span class="containerBox">
+		<div class= "form-cLeft">
+			<div class="row">
+			<label class= "letreros">Usuario</label>
+				<div class="form-cLarge">
+					<?php echo $form->textField($model,'usuario',array('size'=>10,'maxlength'=>10)); ?>
+				</div>
+				<?php echo $form->error($model,'usuario'); ?>
+			</div>
+			<div class="row">
+					<label class= "letreros">Tipo de Usuario</label>
+					<div class="form-cMedium">
+			 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Seleecionar', 'class'=>'css-select')); ?></span></div>
+					<?php echo $form->error($model,'tipo_usr'); ?>
+			                <?php echo $form->hiddenField($model,'id_usr');?>
+				</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'usuario'); ?>
-		<?php echo $form->textField($model,'usuario',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'usuario'); ?>
-	</div>
 
+<<<<<<< HEAD
+						<div class="row hide" data-tipo="1">
+											<label class= "letreros">Cliente</label>
+											<div class="form-cMedium">
+									 <span class="css-select-moz"><?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?></span></div>
+											<?php echo $form->error($model,'id_usr'); ?>
+										</div>
+										<div class="row hide" data-tipo="2">
+											<label class= "letreros">Personal</label>
+									<div class="form-cLarge">
+										 <span class="css-select-moz"><?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?></span></div>
+											<?php echo $form->error($model,'id_usr'); ?>
+										</div>
+		</div>
+=======
 	<div class="row">
 		<?php echo $form->labelEx($model,'pwd'); ?>
 		<?php echo $form->passwordField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
 		<?php echo $form->error($model,'pwd'); ?>
 	</div>
+>>>>>>> 3b2bee3526ec78a0050746bb3cdd7a602c0ed4d0
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipo_usr'); ?>
-		 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Seleecionar', 'class'=>'css-select')); ?></span>
-		<?php echo $form->error($model,'tipo_usr'); ?>
-                <?php echo $form->hiddenField($model,'id_usr');?>
+
+		 <div class="form-cRight">
+
+			<div class="row">
+				<label class= "letreros">Contraseña</label>
+				<div class="form-cLarge">
+				<?php echo $form->textField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
+				</div>
+				<?php echo $form->error($model,'pwd'); ?>
+			</div>
+
+	
+			
+
+
+
+				
+			<div class="containerbutton">
+				<div class="row buttons">
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+				</div>
+			</div>
+		</div>
+		</span>
 	</div>
-</div>
-	<div class="row hide" data-tipo="1">
-		<?php echo $form->labelEx($model,'id_usr'); ?>
-		 <span class="css-select-moz"><?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?></span>
-		<?php echo $form->error($model,'id_usr'); ?>
-	</div>
-	<div class="row hide" data-tipo="2">
-		<?php echo $form->labelEx($model,'id_usr'); ?>
-	 <span class="css-select-moz"><?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?></span>
-		<?php echo $form->error($model,'id_usr'); ?>
-	</div>
-<div class="containerbutton">
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Siguiente' : 'Save'); ?>
-	</div>
-</div>
 
 <?php $this->endWidget(); ?>
 

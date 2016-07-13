@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		<div class="form-cRight">
+		<div class="form-cLeft">
 			<div class="row">
 				<label class= "letreros">Color</label>
 				<div class="form-cLarge"><?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?></div>
@@ -91,7 +91,7 @@
 
 		    <div class="containerbutton">
 				<div class="row buttons">
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
 				</div>
 		</div>
 </div>
