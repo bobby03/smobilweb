@@ -112,20 +112,15 @@ $('.siguiente.uno').click(function() {
     $('.pedidoWraper').css('height',h+14);
 });
 
+function formSendViajes(e) {
+    if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") 
+        return 0;
+    } else {
+        return 1;
 
-function formSendViajes(e)
-{
-         
-  
-
-
-
-if($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar" ){
-   return 0;
-}else{
-   return 1;
-
-}
+    }
 }
 
-    
+function formSendViajesContenedor(e) {
+}
+
