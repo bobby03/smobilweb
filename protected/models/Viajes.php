@@ -36,7 +36,15 @@ class Viajes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida', 'required'),
+
+
+	array('id_responsable','required','message'=>'Debe seleccionar un responsable'),
+	array('id_estacion','required','message'=>'Debe seleccionar una estacion'),
+	array('fecha_salida','required','message'=>'Debe especificar una fecha'),
+	array('hora_salida','required','message'=>'Debe especificar una hora'),
+	
+
+			array('id_solicitudes, status', 'required'),
 			array('id, id_solicitudes, id_responsable, id_estacion, status', 'numerical', 'integerOnly'=>true),
                         array('id_estacion','unique','message'=>'Esa estación ya está registrada en un viaje'),
 			// The following rule is used by search().
