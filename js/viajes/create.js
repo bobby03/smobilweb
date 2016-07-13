@@ -64,6 +64,7 @@ $(document).ready(function()
             $('#Viajes_id_estacion').trigger('change');
         }
     }
+
 $('.siguiente.uno').click(function() {
 
     $('#Viajes_fecha_salida').blur();
@@ -92,35 +93,50 @@ $('.siguiente.uno').click(function() {
 
 
 });
-    $('.siguiente.dos').click(function()
-    {
+
+
+$('.siguiente.dos').click(function() {
+
+    if (formSendViajesTanque()) {
         $('[data-tab="2"]').addClass('hide');
         $('[data-tab="3"]').removeClass('hide');
         $('.menuTabs div:nth-child(6)').addClass('selected');
         $('.menuTabs div:nth-child(7)').addClass('selected');
-    });
-    checkInicio();
-    var h = 0;
-    $('.pedidoWraper').each(function()
-    {
-        var h2 = $(this).height();
-        if(h2 > h)
-        {
-            h = h2;
-        }
-    });
-    $('.pedidoWraper').css('height',h+14);
+
+    } else {}
+
+});
+
+
+checkInicio();
+var h = 0;
+$('.pedidoWraper').each(function() {
+    var h2 = $(this).height();
+    if (h2 > h) {
+        h = h2;
+    }
+});
+$('.pedidoWraper').css('height', h + 14);
 });
 
 function formSendViajes(e) {
-    if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") 
+    if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") {
         return 0;
     } else {
         return 1;
-
     }
 }
 
-function formSendViajesContenedor(e) {
-}
+function formSendViajesTanque(e) {
 
+
+    var re = /Seleccionar/gi;
+    var str = $('.pedidosWraper').find('select option:selected').text();
+
+    if (str.search(re) == -1) {
+        return 1;
+    } else {
+        return 0; }
+
+
+}
