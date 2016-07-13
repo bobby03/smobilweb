@@ -44,11 +44,8 @@ class SiteController extends Controller
 			->join("estacion est","est.id = t.id_estacion")
 			->join("personal as p","p.id = t.id_responsable")
 			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
-			->where("t.status = '2'")
+			->where("t.status = '1'")
 				->queryAll();
-
-
-
 
 		$this->render('index', array('enruta'=>$model));
 	}

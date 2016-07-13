@@ -155,6 +155,17 @@ class Personal extends CActiveRecord
             $personal = $this->findByPk($id);
             return $personal->nombre.' '.$personal->apellido;
         }
+        public function getChofer($id)
+        {
+        	$chofer = Yii::app()->db->createCommand()
+        		->select('per.nombre, per.apellido')
+        		->from('solicitudes_viaje as solv')
+        		->join('personal as per','per.id = solv.id_personal')
+        		->where("solv.id_viaje = ".$id)
+        		->andWhere("per.id_rol = 1")
+        		->queryRow();
+    		return $chofer['nombre'].' '.$chofer['apellido'];
+        }
         public function adminSearch()
         {
             return array

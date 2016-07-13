@@ -22,8 +22,19 @@ $(document).ready(function(){
 			
 		}
 
-
 	});
 
+	$('.dashboardInicio > tbody > tr').on('click', function () {
+		//alert($(this).data('id'));
+	   
+		$('.dashboardInicio > tbody > tr').removeClass('selected');
+
+	   $(this).addClass('selected');
+
+	   /* if(!$(this).hasClass('selected')){
+
+	   		$('.dashboardInicio > tbody > tr').toggleClass("none");
+	    }*/
+	});
 
 });  
