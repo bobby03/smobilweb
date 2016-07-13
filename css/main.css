@@ -381,7 +381,19 @@ div.principal
     width: 1200px;
     margin: 0 auto;
 }
-
+#cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxBottomCenter, #cboxBottomLeft,
+#cboxBottomRight, #cboxMiddleLeft, #cboxMiddleRight, #cboxClose
+{
+    display: none;
+}
+#cboxLoadedContent
+{
+    margin-bottom: 0 !important;
+}
+#cboxLoadedContent, #cboxContent, #colorbox
+{
+    background-color: transparent !important;
+}
 div.principal:after
 {
     display: block;

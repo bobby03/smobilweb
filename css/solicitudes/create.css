@@ -3,10 +3,15 @@ div.formContainer1
     width: 35%;
     float: left;
 }
+div.form
+{
+    margin-top: 53px !important;
+}
 div.formContainer2
 {
     width: 50%;
     float: right;
+    margin-right: 20px;
 }
 div.form h2
 {
@@ -105,8 +110,8 @@ div.botonOtra
 {
     float: right;
     width: 20%;
-    height: 25px;
-    line-height: 25px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     cursor: pointer;
     background-color: #0077B0;
