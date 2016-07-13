@@ -28,8 +28,15 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+    'enableAjaxValidation'=>true,
+    'clientOptions' => array(
+        'validateOnSubmit' => true,
+        'validateOnChange' => true,
+        'validateOnType' => true,
+        //'afterValidate'=>'js:formSendViajes',
+        ),
+    )); 
+ ?>
     <div class="menuTabs">
         <div class="bolaChica selected"></div>
         <div class="lineaChica selected"></div>
@@ -55,18 +62,22 @@
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
                 <span class="css-select-moz">
                     <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select'));?>
+                    <?php echo $form->error($model,'id_responsable'); ?>
                 </span>
             </div>
             <div class="row">
                 <label>Técnico(s)</label>
                 <span class="css-select-moz">
                     <?php echo $form->dropDownList($personal,'id_personal[1][tecnico]', $personal->getpersonal(2), array('class'=>'css-select','multiple'=>'true')); ?>
+                    <?php echo $form->error($model,'id_personal[1][tecnico]'); ?>
                 </span>
             </div>
             <div class="row">
                 <label>Chofer(es)</label>
                 <span class="css-select-moz">
                     <?php echo $form->dropDownList($personal,'id_personal[1][chofer]', $personal->getpersonal(1), array('class'=>'css-select','multiple'=>'true')); ?>
+                    <?php echo $form->error($model,'id_personal[1][chofer]'); ?>
+                </span>
                 </span>
             </div>
         </div>
@@ -75,26 +86,31 @@
                 <?php echo $form->labelEx($model,'id_estacion'); ?>
                 <span class="css-select-moz">
                     <?php 
-                        if($model->isNewRecord)
+                        if($model->isNewRecord){
                             echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesDisponibles(), array('empty'=>'Seleccionar','class'=>'css-select'));
-                        else
-                            echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), 
+                        }else{
+                               echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), 
                                     array
                                     (
                                         'disabled'=>'disabled',
                                         'class'=>'css-select',
                                         'value'=>$model->id_estacion
                                     ));
+                        }
+                         
+                          echo $form->error($model,'id_estacion');
                     ?>
                 </span>
             </div>
             <div class="row">
                 <?php echo $form->labelEx($model,'fecha_salida'); ?>
                 <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
+                 <?php echo $form->error($model,'fecha_salida'); ?>
             </div>
             <div class="row">
                 <?php echo $form->labelEx($model,'hora_salida'); ?>
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
+                 <?php echo $form->error($model,'hora_salida'); ?>
             </div>
             <div class="siguiente uno">Siguiente</div>
 	</div>
@@ -135,6 +151,10 @@
                         <div class="selectTanque hide">
                             <label>Seleccionar Tanque</label>
                             <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
+                            <?php 
+                            $t = "codigo[".$tot."][tanque]";
+
+                            echo $form->error($model,$t); ?>
                         </div>
                     </div>
                     <?php endif;?>

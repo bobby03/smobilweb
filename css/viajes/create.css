@@ -176,3 +176,16 @@ div.tab:after
     clear: both;
     display: block;
 }
+
+div.chosen-container.error{
+        border: 2px solid #c00 !important;
+        border-left: 30px solid #c00 !important;
+
+}
+
+div.chosen-container.success{
+    background: #E6EFC2 !important;
+    border-color: #C6D880 !important;
+
+}
+
