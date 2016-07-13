@@ -113,11 +113,10 @@ $('.siguiente.uno').click(function() {
 });
 
 function formSendViajes(e) {
-    if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") 
+    if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") {
         return 0;
-    } else {
+    }else{
         return 1;
-
     }
 }
 
