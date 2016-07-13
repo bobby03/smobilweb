@@ -64,13 +64,24 @@ $(document).ready(function()
             $('#Viajes_id_estacion').trigger('change');
         }
     }
-
 $('.siguiente.uno').click(function() {
 
     $('#Viajes_fecha_salida').blur();
     $('#Viajes_hora_salida').blur();
     $('#Viajes_id_responsable').blur();
     $('#Viajes_id_estacion').blur();
+
+    $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+        if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+            $(this).next('div.chosen-container').addClass("error");
+            $(this).closest('div').find('.errorMessage').show().html('Debe Seleccionar una persona');
+            $(this).next('div.chosen-container').removeClass("success");
+        } else {
+            $(this).closest('div').find('.errorMessage').hide().html('');
+            $(this).next('div.chosen-container').addClass("success");
+            $(this).next('div.chosen-container').removeClass("error");
+        }
+    });
 
     var err = $('div').find('.error');
 
@@ -97,8 +108,6 @@ $('.siguiente.uno').click(function() {
 
 $('.siguiente.dos').click(function() {
 
-
-
     if (formSendViajesTanque()) {
         $('[data-tab="2"]').addClass('hide');
         $('[data-tab="3"]').removeClass('hide');
@@ -122,6 +131,8 @@ $('.pedidoWraper').css('height', h + 14);
 });
 
 function formSendViajes(e) {
+
+
     if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") {
         return 0;
     } else {
@@ -129,18 +140,22 @@ function formSendViajes(e) {
     }
 }
 
+
+
+
+
 function formSendViajesTanque(e) {
 
 
-$('.selectTanque select').each(function () {
-      if($("option:selected", this).text() === "Seleccionar"){
-        $(this).parent().addClass("error");
-        $(this).parent().removeClass("success");
-    } else {
-        $(this).parent().addClass("success");
-        $(this).parent().removeClass("error");
-    }
-});
+    $('[data-tab="2"] select').each(function() {
+        if ($("option:selected", this).text() === "Seleccionar") {
+            $(this).parent().addClass("error");
+            $(this).parent().removeClass("success");
+        } else {
+            $(this).parent().addClass("success");
+            $(this).parent().removeClass("error");
+        }
+    });
 
 
 
@@ -151,29 +166,49 @@ $('.selectTanque select').each(function () {
     if (str.search(re) == -1) {
         return 1;
     } else {
-        return 0; }
+        return 0;
+    }
 
 
 }
 
 
 
-function validaTanques(){
+function validaTanques() {
     $(".selectTanque select").change(function() {
 
-    if($("option:selected", this).text() === "Seleccionar"){
-        $(this).parent().addClass("error");
-        $(this).parent().removeClass("success");
-    } else {
-        $(this).parent().addClass("success");
-        $(this).parent().removeClass("error");
-    }
-    
-});
+        if ($("option:selected", this).text() === "Seleccionar") {
+            $(this).parent().addClass("error");
+            $(this).parent().removeClass("success");
+        } else {
+            $(this).parent().addClass("success");
+            $(this).parent().removeClass("error");
+        }
+
+    });
 }
 
-function launcher(){
+
+function validaTabUno() {
+
+    $('div.chosen-container').bind('DOMSubtreeModified', function(event) {
+        $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+            if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+                $(this).next('div.chosen-container').addClass("error");
+                $(this).closest('div').find('.errorMessage').show().html('Debe Seleccionar una persona');
+                $(this).next('div.chosen-container').removeClass("success");
+            } else {
+                $(this).closest('div').find('.errorMessage').hide().html('');
+                $(this).next('div.chosen-container').addClass("success");
+                $(this).next('div.chosen-container').removeClass("error");
+            }
+        });
+    });
+}
+
+function launcher() {
     validaTanques();
+    validaTabUno();
 }
 
 window.onload = launcher;
