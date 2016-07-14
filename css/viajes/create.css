@@ -185,7 +185,11 @@ div.tab:after
 div.chosen-container.error{
         border: 2px solid #c00 !important;
         border-left: 30px solid #c00 !important;
+        background: #FEE !important;
+}
 
+div.chosen-container.error > ul{
+        background: #FEE !important;
 }
 
 div.chosen-container.success{
@@ -194,3 +198,6 @@ div.chosen-container.success{
 
 }
 
+div.chosen-container.success  > ul{
+    background: #E6EFC2 !important;
+}

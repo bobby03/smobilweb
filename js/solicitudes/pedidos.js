@@ -17,7 +17,39 @@ $(document).ready(function()
         var cantidad = $('#Cepa_nombre_cepa_1_cantidad').val();
         var tanques = parseInt($('#tanquesNO').val());
         var tanque = '';
-        if(tanques == 1)
+
+        //Validaciones campos
+        var error=0;
+        if (isNaN(cantidad)||cantidad==0){
+            console.error('cantidad');        
+            $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#C00');
+            error=1;}
+        else{
+            $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#0077B0');
+            }
+        if (isNaN(tanques)||tanques==0){
+            console.error('tanques');
+            $('#tanquesNO').css('border-color', '#C00');
+            error=1;}
+        else{
+            $('#tanquesNO').css('border-color', '#0077B0');
+            }
+        //validaciones dropdown
+        if(cepaID==""){
+            console.error('Cepa');
+            error=1;
+        }
+        if(especieID==""){
+            console.error('Cepa');
+            error=1;
+        }
+        if(error==1){
+            console.error('error');
+            return 0;
+        }
+
+        //Tanque
+        if(tanques === 1)
             tanque = 'Tanque:';
         if(tanques > 1)
             tanque = 'Tanques:';
@@ -119,7 +151,7 @@ $(document).ready(function()
         {
             i++;
         });
-        if(i == 0)
+        if(i === 0)
         {
             $('.crearViaje').addClass('hide');
             $('.pedidos').addClass('hide');
@@ -145,4 +177,50 @@ $(document).ready(function()
                 $(this).removeClass('hide');
         });
     }
+    $('#Solicitudes_id_clientes').change(
+        function(){
+           var sc = $('#Solicitudes_id_clientes').val();
+            if (sc== "") {
+                //If the "Please Select" option is selected display error.
+                $('#Solicitudes_id_clientes_chosen').css('border-color', '#C00');
+            }else{
+                $('#Solicitudes_id_clientes_chosen').css('border-color', '#0077B0');
+            }
+        }
+        );
+ $('#Especie_id').change(
+        function(){
+           var eid = $('#Especie_id').val();
+            if (eid== "") {
+                //If the "Please Select" option is selected display error.
+                $('#Especie_id_chosen').css('border-color', '#C00');
+            }else{
+                $('#Especie_id_chosen').css('border-color', '#0077B0');
+            }
+        }
+        );
+ $('#Cepa_id').change(
+        function(){
+           var cepaID = $('#Cepa_id').val();
+            if (cepaID== "") {
+                //If the "Please Select" option is selected display error.
+                $('#Cepa_id_chosen').css('border-color', '#C00');
+            }else{
+                $('#Cepa_id_chosen').css('border-color', '#0077B0');
+            }
+        }
+        );
+
+ $('#ClientesDomicilio_domicilio').change(
+        function(){
+           var direccionID = $('#ClientesDomicilio_domicilio').val();
+           console.log(direccionID);
+            if (direccionID== "") {
+                //If the "Please Select" option is selected display error.
+                $('#ClientesDomicilio_domicilio_chosen').css('border-color', '#C00');
+            }else{
+                $('#ClientesDomicilio_domicilio_chosen').css('border-color', '#0077B0');
+            }
+        }
+        );
 });
