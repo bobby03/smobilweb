@@ -1,6 +1,7 @@
 
-div.form {
-    width: 90% !important;
+div.form.cepa {
+    width: 100%;
+    max-width: 670px;
     margin: 0 auto;
 }
 div.form-containerWraper:after
@@ -10,10 +11,9 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-       margin-top: 20px;
-    margin-left: 137px;
+    margin-top: 20px;
     width: 110px;
-    float: left;
+    float: right;
 }
 
 div.form label {
@@ -41,34 +41,40 @@ label.letreros{
   padding-top: 1px;
 
 }
-.form-cLeft{
-float:left;
-width: 300px;
- margin-left: 35px;
-}
 .form-container1{
-width:135px;
-height:6px;
-float:left;
-
-
+    float: left;
+    width: 250px;
+    margin: 0 20px 0 60px; 
 }
-.form-container2{
- width:135px;
- padding-top:20px;
- height: 50px;
-float:left;
+.form-container1.last {
+    margin-left: 20px;
+}
 
- }
+.form-container11{
+    float: left;
+    width: 100px;
+   
+}
+
+.form-container12{
+    float: left;
+    width: 100px;
+    margin: 0px 0 2px 50px;
+    padding-top: 21px;
+}
+/*****/
+
 .containerBoxRight{
-  width: 300px;
-  float:left;
-  padding-top: 1px;
+    width: 250px;
+    float: right;
+    margin-left: 9px;
+    margin-right: 70px;
+
 }
 .containertBoxLeft{
-  float:left;
-  width: 300px;  
-  margin-left: 35px;
+    float: left;
+    width: 275px;
+    margin-left: 60px;
 }
 
 .containerBox{
@@ -85,7 +91,8 @@ float:left;
 }
 
 .letrero-container{
- background-color:  #E4E7EB;
- height: 4px;
- width:68%;
+   background-color:  #E4E7EB;
+   height: 4px;
+   margin: 0 auto;
+   width: 90%;
 }

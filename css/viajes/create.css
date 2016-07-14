@@ -8,6 +8,10 @@ div.pedido
     border-radius: 5px;
     overflow: hidden;
 }
+div.form
+{
+    margin-top: 60px !important;
+}
 div.tituloEspecie
 {
     background-color: #0077B0;
@@ -17,7 +21,7 @@ div.tituloEspecie
 }
 div.menuTabs
 {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     position: relative;
 }
 div.nombreTabs
@@ -64,12 +68,13 @@ div.pedidoWraper div span
 }
 div.tab[data-tab="1"] div.formContainer1
 {
-    width: 50%;
+    width: 47%;
     float: left;
 }
 .siguiente.uno
 {
     margin-right: 108px;
+    margin-top: 20px;
 }
 .siguiente.dos
 {
@@ -175,4 +180,24 @@ div.tab:after
     content: '';
     clear: both;
     display: block;
+}
+
+div.chosen-container.error{
+        border: 2px solid #c00 !important;
+        border-left: 30px solid #c00 !important;
+        background: #FEE !important;
+}
+
+div.chosen-container.error > ul{
+        background: #FEE !important;
+}
+
+div.chosen-container.success{
+    background: #E6EFC2 !important;
+    border-color: #C6D880 !important;
+
+}
+
+div.chosen-container.success  > ul{
+    background: #E6EFC2 !important;
 }

@@ -137,7 +137,7 @@
                     </div>
                     <div class="derecha">
                         <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton adve" data-ale="ox"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -151,7 +151,7 @@
                     </div>
                     <div class="derecha">
                         <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton adve" data-ale="temp"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -165,7 +165,7 @@
                     </div>
                     <div class="derecha">
                         <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton adve" data-ale="ph"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -179,7 +179,7 @@
                     </div>
                     <div class="derecha">
                         <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton adve" data-ale="cond"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -193,7 +193,7 @@
                     </div>
                     <div class="derecha">
                         <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton adve" data-ale="orp"></div>
                     </div>
                 </div>
                 <div class="grafica">

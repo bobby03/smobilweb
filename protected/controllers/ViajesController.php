@@ -412,7 +412,7 @@ eof;
         public function actionGetTanqueGrafica($viaje, $id, $flag, $flag2)
         {
             $datos = Yii::app()->db->createCommand()
-                ->select('esc.id, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.t2, upT.ec, upT.orp, upT.id')
+                ->select('esc.id, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
                 ->order('upT.id DESC')
                 ->from('escalon_viaje_ubicacion as esc')
                 ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
@@ -471,7 +471,7 @@ eof;
                             [
                                 (object)
                                 [
-                                    'data'              => [$datos['t2']],
+                                    'data'              => [$datos['temp']],
                                     'backgroundColor'   => ['#9EE7DD'],
                                     'fontSize'          => 2
                                 ]
@@ -479,6 +479,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -514,6 +515,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array
                             (
                                 'display' => false
@@ -553,6 +555,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -581,7 +584,7 @@ eof;
                             [
                                 (object)
                                 [
-                                    'data'              => [$datos['ec']],
+                                    'data'              => [$datos['cond']],
                                     'backgroundColor'   => ['#5F7D8A'],
                                     'borderWidth'       => 1
                                 ]
@@ -589,6 +592,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -624,6 +628,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -664,7 +669,7 @@ eof;
                 ->limit(1)
                 ->queryRow();
             $datos = Yii::app()->db->createCommand()
-                ->selectDistinct('esc.id, upT.ox, upT.id_tanque, upT.ph, upT.t2, upT.ec, upT.orp, upT.id')
+                ->selectDistinct('esc.id, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
                 ->from('escalon_viaje_ubicacion as esc')
                 ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
                 ->where("esc.id_viaje = $viaje")
@@ -698,6 +703,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -717,7 +723,7 @@ eof;
                 case 2: 
                     foreach($datos as $data)
                     {
-                        $valores[] = $data['t2'];
+                        $valores[] = $data['temp'];
                     }
                     $return =
                     array
@@ -738,6 +744,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array
                             (
                                 'display' => false
@@ -782,6 +789,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -801,7 +809,7 @@ eof;
                 case 4: 
                     foreach($datos as $data)
                     {
-                        $valores[] = $data['ec'];
+                        $valores[] = $data['cond'];
                     }
                     $return =
                     array
@@ -822,6 +830,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -862,6 +871,7 @@ eof;
                         ),
                         'options' => array
                         (
+                            'animation' => false,
                             'legend'    => array('display' => false),
                             'scales'    => array
                             (
@@ -881,20 +891,19 @@ eof;
             }
             echo json_encode($return);
         }
-        public function actionGetAlertas($viaje, $id)
+        public function actionGetAlertasTanque($viaje, $id)
         {
             $uploads = Yii::app()->db->createCommand()
-                    ->selectDistinct('cep.*, tan.id as idTanque, upt.t2, upt.ox, upt.ph, upt.od, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.od, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
                     ->from('solicitudes_viaje as solV')
                     ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                     ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
-                    ->rightJoin('cepas as cep', 'cep.id = solT.id_cepas')
+                    ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
                     ->join('uploadTemp as upt','upt.id_tanque = tan.id')
-                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
                     ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
                     ->where("solV.id_viaje = $viaje")
                     ->andWhere("tan.id = $id")
-                    ->andWhere("upt.alerta = 1")
+                    ->andWhere("upt.alerta > 1")
                     ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
                     ->queryAll();
             if(count($uploads) > 0)
@@ -904,25 +913,144 @@ eof;
                         <div class="tituloAlerta">Alertas: </div>
                         <div class="tablaAlertas">
                             <div class="tablaTitulos">
-                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
+                                <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
                             </div>
-                        </div>
-                    </div>';
+                            <div class="tablaWraper">';
+                            
                 foreach($uploads as $data)
                 {
-                    if($data['t2'] > $data['temp_max'] || $data['t2'] < $data['temp_min'])
+                    if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
                     {
-                        if($data['t2'] > $data['temp_max'])
-                            $imagen = '<div class="flechaUp"></div>';
+                        $return = $return.'<div class="tableRow">';
+                        if($data['temp'] > $data['temp_max'])
+                            $imagen = 'flechaUp';
                         else
-                            $imagen = '<div class="flechaDown"></div>';
-                        $return = $return.'';
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Temperatura</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+eof;
+                    }
+                    if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ox'] > $data['ox_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Oxígeno</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+eof;
+                    }
+                    if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ph'] > $data['ph_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>PH</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+eof;
+                    }
+                    if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['cond'] > $data['cond_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Conductividad</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+eof;
+                    }
+                    if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['orp'] > $data['orp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Potencial óxido reducción</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+eof;
                     }
                 }
+                $return = $return.'</div>
+                        </div>
+                        </div>';
             }
             else
             {
-                
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta2">Sin alertas en </div>
+                        <div class="tablaAlertas">
+                        </div>
+                    </div>';
+            }
+            echo json_encode($return);
+        }
+        public function actionGetAlertasParametro($viaje, $id)
+        {
+            $uploads = Yii::app()->db->createCommand()
+                    ->selectDistinct("cep.*, tan.id as idTanque, tan.nombre, upt.$id, evu.hora, evu.fecha, evu.ubicacion")
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
+                    ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
+                    ->join('uploadTemp as upt','upt.id_tanque = tan.id')
+                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                    ->where("solV.id_viaje = $viaje")
+                    ->andWhere("upt.alerta > 1")
+                    ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
+                    ->queryAll();
+            if(count($uploads) > 0)
+            {
+                if($id == 'ox')
+                    $nombre = 'Oxígeno';
+                elseif($id == 'temp')
+                    $nombre = 'Temperatura';
+                elseif($id == 'cond')
+                    $nombre = 'Conductividad';
+                elseif($id == 'orp')
+                    $nombre = 'Potencial óxido reducción';
+                elseif($id == 'ph')
+                    $nombre = 'PH';
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta">Alertas: '.$nombre.'</div>
+                        <div class="tablaAlertas">
+                            <div class="tablaTitulos">
+                                <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
+                            </div>
+                            <div class="tablaWraper">';
+                            
+                foreach($uploads as $data)
+                {
+                    if($data[$id] > $data[$id.'_max'] || $data[$id] < $data[$id.'_max'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data[$id] > $data[$id.'_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>{$data['nombre']}</div><div>{$data[$id]}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+eof;
+                    }
+                }
+                $return = $return.'</div>
+                        </div>
+                        </div>';
+            }
+            else
+            {
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta2">Sin alertas en </div>
+                        <div class="tablaAlertas">
+                        </div>
+                    </div>';
             }
             echo json_encode($return);
         }

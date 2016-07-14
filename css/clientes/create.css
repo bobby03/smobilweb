@@ -66,7 +66,7 @@ div.form-containerWraper:after
 }
 div.containerbutton{
     width: 142px;
-    margin-left: 37px;
+  float: right;
 }
 
 label.letreros{
