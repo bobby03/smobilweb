@@ -279,6 +279,76 @@ div.grafica > div
     color: transparent;
     margin-left: 5px;
 }
+.historial
+{
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    width: 1152px;
+    height: 620px;
+}
+.historial .titulo
+{
+    height: 71px;
+    text-indent: 34px;
+    color: #FFFFFF;
+    font-size: 34px;
+    line-height: 71px;
+    border-bottom: 3px solid #09B7C9;
+    background-color: #0077B0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.historialGraficasWraper
+{
+    margin: 65px 60px 0;
+}
+.menuHistorial
+{
+    margin-bottom: 35px;
+    background-color: #0077B0;
+}
+.menuHistorial div
+{
+    float: left;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    font-size: 31px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 42px;
+    height: 42px;
+}
+.menuHistorial div.selected
+{
+    background-color: #09B7C9;
+}
+.menuHistorial div:nth-child(1)
+{
+    width: 245px;
+}
+.menuHistorial div:nth-child(2)
+{
+    padding: 0 18px;
+}
+.menuHistorial div:nth-child(3)
+{
+    padding: 0 27px;
+}
+.menuHistorial div:nth-child(4)
+{
+    padding: 0 20px;
+}
+.menuHistorial div:nth-child(5)
+{
+    padding: 0 20px;
+}
+.graficasWraper
+{
+    width: 1032px;
+    height: 405px;
+}
+
+
 .datosWraper:after,
 .detallesViaje:after,
 .allTanques:after,
@@ -286,7 +356,8 @@ div.grafica > div
 .derecha:after,
 .tablaTitulos:after,
 .tablaWraper:after,
-.tableRow:after
+.tableRow:after,
+.menuHistorial:after
 {
     display: block;
     clear: both;

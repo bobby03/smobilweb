@@ -894,7 +894,7 @@ eof;
         public function actionGetAlertasTanque($viaje, $id)
         {
             $uploads = Yii::app()->db->createCommand()
-                    ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.od, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.od, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
                     ->from('solicitudes_viaje as solV')
                     ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                     ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
@@ -1054,6 +1054,87 @@ eof;
             }
             echo json_encode($return);
         }
+        public function actionGetHistorialTanque($viaje, $id)
+        {
+            $datos = Yii::app()->db->createCommand()
+                ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
+                ->order('upT.id DESC')
+                ->from('escalon_viaje_ubicacion as esc')
+                ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+//                ->where("esc.id_viaje = $viaje")
+                ->where("upT.id_tanque = 28")
+                ->queryAll();
+            $return['codigo'] = <<<eof
+                <div class="historial">
+                    <div class="titulo"></div>
+                    <div class="historialGraficasWraper">
+                        <div class="menuHistorial">
+                            <div class="selected" data-para="1">Oxígeno disuelto</div>
+                            <div data-para="2">Temperatura</div>
+                            <div data-para="3">PH</div>
+                            <div data-para="4">Conductividad</div>
+                            <div data-para="5">ORP</div>
+                        </div>
+                        <div class="graficasWraper">
+eof;
+            $cont = 0;
+            foreach($datos as $data)
+            {
+                $labels[] = $data['hora'];
+                $datasets[] = $data['ph'];
+                $cont++;
+            }
+            $width = ($cont * 98)+40;
+            $return['codigo'] =$return['codigo'].<<<eof
+                            <div class="grafScroll" data-rece="1">
+                                <canvas id="historialTanque1" width="$width" height="384"></canvas>
+                            </div>
+eof;
+                $return['ox'] =
+                array
+                (
+                    'type' => 'line',
+                    'data'=>array
+                    (
+                        'labels'    => $labels,
+                        'datasets'  => 
+                        [
+                            (object)
+                            [
+                                'data'                  => $datasets,
+                                'backgroundColor'       => 'rgba(255,255,255,1)',
+                                'fontSize'              => 2,
+                                'pointBorderColor'      => "rgba(62,102,170,1)",
+                                'pointBackgroundColor'  => "#3E66AA",
+                                'pointBorderWidth'      => 1,
+                            ]
+                        ]
+                    ),
+                    'options' => array
+                    (
+                        'animation' => false,
+                        'legend'    => array('display' => false),
+                        'scales'    => array
+                        (
+                            'yAxes' => 
+                            [array(
+                                'ticks' => array
+                                (
+                                    'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                )
+                            )]
+                        )
+                    )
+                );
+            $return['codigo'] =$return['codigo'].
+                    '   </div>
+                    </div>
+                </div>';
+            echo json_encode($return);
+        }
+        
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='viajes-form')
