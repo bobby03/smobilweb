@@ -113,7 +113,7 @@
                             <div><?php echo $data['codigo'];?></div>
                         </div>
                         <div class="derecha">
-                            <div class="boton graf"></div>
+                            <div class="boton graf" data-graf="<?php echo $data['id'];?>"></div>
                             <div class="boton adve" data-ale="<?php echo $data['id'];?>"></div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <div>Oxígeno disuelto</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
+                        <div class="boton graf" data-ale="ox"></div>
                         <div class="boton adve" data-ale="ox"></div>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                         <div>Temperatura</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
+                        <div class="boton graf" data-ale="temp"></div>
                         <div class="boton adve" data-ale="temp"></div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                         <div>PH</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
+                        <div class="boton graf" data-ale="ph"></div>
                         <div class="boton adve" data-ale="ph"></div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                         <div>Conductividad</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
+                        <div class="boton graf" data-ale="cond"></div>
                         <div class="boton adve" data-ale="cond"></div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                         <div>Potencial óxido reducción</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
+                        <div class="boton graf" data-ale="orp"></div>
                         <div class="boton adve" data-ale="orp"></div>
                     </div>
                 </div>

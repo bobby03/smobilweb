@@ -8,6 +8,7 @@ $(document).ready(function()
     var myDir = {lat: 31.870803236698222, lng: -116.66807770729065};
     var mapDiv = $('#map')[0];
     var total = 1;
+    var delay = 250;
     var map = new google.maps.Map(mapDiv, 
     {
         center: myDir,
@@ -68,6 +69,7 @@ $(document).ready(function()
     $('[data-id="2"] .boton.adve').click(function()
     {
         total = 1;
+        delay = 250;
         var id = $(this).data('ale');
         $.ajax(
         {
@@ -93,7 +95,9 @@ $(document).ready(function()
                             {
                                 var texto = $(this).text();
                                 var div = $(this);
+//                                setTimeout(reverseGeocoding, delay, texto, 2, div);
                                 reverseGeocoding(texto, 2, div);
+                                delay = delay + 250;
                             }
                             else
                             {
@@ -108,6 +112,42 @@ $(document).ready(function()
                             $(this).css('padding',height+'px 0');
                         });
                         
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
+    $('[data-id="1"] .boton.graf').click(function()
+    {
+        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
+        var id = $(this).data('graf');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetHistorialTanque',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                console.log(data);
+                $.colorbox(
+                {
+                    html: data.codigo,
+                    onComplete: function()
+                    {
+                        $('.historial .titulo').text('Historial '+nombre);
+                        var ctx = $('#historialTanque1');
+                        if(data.ox != '' && data.ox != null)
+                            var myChart = new Chart(ctx, data.ox);
+                        $.colorbox.resize();
                     }
                 });
             },
@@ -239,8 +279,11 @@ $(document).ready(function()
                     window.alert('No results found');
               
             } 
-            else 
-                window.alert('Geocoder failed due to: ' + status);
+            else
+            {
+                reverseGeocoding(direccion, flag, div);
+//                window.alert('Geocoder failed due to: ' + status);
+            }
         });
     }
 });

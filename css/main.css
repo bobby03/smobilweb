@@ -150,7 +150,7 @@ body
 	padding:10px 0;
 	color:#ffffff;
 	background-color:transparent;
-	font-size:12px;
+	font-size:14px;
 	font-weight:bold;
 	text-decoration:none;
 	display: block;
@@ -159,8 +159,8 @@ body
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
+	/*color: #6399cd;*/
+	background-color:#09B7C9;
 	text-decoration:none;
 }
 
@@ -232,10 +232,9 @@ div.breadcrumbs span
 
 div.search-form
 {
-    border-bottom: 2px solid #d8d8d8;
-    padding-bottom: 25px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
-
 .portlet
 {
 
@@ -319,7 +318,8 @@ div.botones-content div.aceptar-boton
 }
 .grid-view {
     padding: 0;
-    /*width: 900px;*/
+    border-top: 2px solid #d8d8d8;
+    padding-top: 20px;
 }
 
 .grid-view .button-column img
@@ -334,17 +334,20 @@ div.botones-content div.aceptar-boton
 
 .grid-view table.items{
 	border:none;
-   
+        
 }
 
 .grid-view table.items td{
-	border: none;
+    border: none;
+    font-size: 14px;
 }
 
-.grid-view table.items th{
-	background:#ffffff;
-	text-align: left;
-	color: #0077b0;
+.grid-view table.items th
+{
+    background:#ffffff;
+    text-align: left;
+    color: #0077b0;
+    font-size: 15px;
 }
 .grid-view table.items th a {
      color: #0077b0 ;
