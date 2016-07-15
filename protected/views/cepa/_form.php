@@ -51,7 +51,7 @@
 <!--separador-->		
 		<span class="containerBox">
 			
-				<label class="cLetreros">rangos máximos y mínimos</label>
+				<label class="cLetreros">Rangos minimos y maximos</label>
 				<hr class="letrero-container"></hr>
 			
 		</span>
@@ -64,6 +64,7 @@
 					<div class="row">
 						<label class= "letreros">Temperatura</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php 
 								echo $form->numberField($model,'temp_min');
 								echo $form->error($model,'temp_min');
@@ -74,6 +75,7 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
+                                                <span>max</span>
 					    	<?php 
 					    	echo $form->numberField($model,'temp_max');
 					    	echo $form->error($model,'temp_max');
@@ -87,6 +89,7 @@
 					<div class="row">
 						<label class= "letreros">pH</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php echo $form->numberField($model,'ph_min');
 								echo $form->error($model,'ph_min'); ?>
 							</div>
@@ -95,6 +98,7 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
+                                                    <span>max</span>
 							<?php echo $form->numberField($model,'ph_max');
 							echo $form->error($model,'ph_max'); ?>
 						</div>
@@ -105,6 +109,7 @@
 					<div class="row">
 						<label class= "letreros">Oxigeno</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php echo $form->numberField($model,'ox_min');
 								echo $form->error($model,'ox_min'); ?>
 							</div>
@@ -113,6 +118,7 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
+                                                    <span>max</span>
 							<?php echo $form->numberField($model,'ox_max');
 							echo $form->error($model,'ox_max'); ?>
 						</div>
@@ -127,6 +133,7 @@
 						<div class="row">
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
+                                                                    <span>min</span>
 									<?php echo $form->numberField($model,'cond_min');
 									echo $form->error($model,'cond_min'); ?>
 								</div>
@@ -135,6 +142,7 @@
 					<div class="form-container12">
 						<div class="row">
 							<div class="form-cSmall">
+                                                            <span>max</span>
 								<?php echo $form->numberField($model,'cond_max');
 								echo $form->error($model,'cond_max'); ?>
 							</div>
@@ -146,6 +154,7 @@
 					<div class="row">
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php echo $form->numberField($model,'orp_min');
 								echo $form->error($model,'orp_min'); ?>
 
@@ -154,14 +163,15 @@
 				</div>
 				<div class="form-container12">
 					<div class="row">
-						<div class="form-cSmall"0>
+						<div class="form-cSmall">
+                                                    <span>max</span>
 								<?php echo $form->numberField($model,'orp_max');
 								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
 				</div>
 					<div class="row buttons">
-						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 					</div>
 			</div>
   		</span>

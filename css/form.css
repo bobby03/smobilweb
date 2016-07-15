@@ -283,6 +283,13 @@ h2
     text-indent: 40px;
     height: 30px;
 }
+.grid-view .empty
+{
+    font-style: normal;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
 div.formContainer1:after,
 div.row.titulos:after,
 div.row:after,

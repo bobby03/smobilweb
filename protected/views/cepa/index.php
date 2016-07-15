@@ -10,10 +10,6 @@
 $this->breadcrumbs=array(
 	'Cepas',
 );
-
-$this->menu=array(
-	array('label'=>'Create Cepa', 'url'=>array('create'))
-);
 ?>
 
 <h1>Cepas</h1>
@@ -22,13 +18,18 @@ $this->menu=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
+        <a href="cepa/create">
+            <div class="agregar cepa"></div>
+        </a>
     </div><!-- search-form -->
 
-    <?php $this->widget('zii.widgets.grid.CGridView', array(
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+        (
             'id'=>'cepa',
-    //	'filter'=>$model,
             'dataProvider'=>$model->search(),
             'summaryText'=> '',
             'columns'=>$model->adminSearch()
-    )); ?>
+        ));
+    ?>
+    
 </div>

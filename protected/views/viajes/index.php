@@ -7,10 +7,6 @@
     $this->breadcrumbs=array(
 	'Viajes',
     );
-
-    $this->menu=array(
-	array('label'=>'Create Viajes', 'url'=>array('create'))
-    );
 ?>
 <h1>Viajes</h1>
 
@@ -32,7 +28,7 @@
         'dataProvider'=>$model->searchStatus1(1),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch()
+        'columns'=>$model->adminSearch1()
     )); 
     ?>
     </div>
@@ -43,7 +39,7 @@
         'dataProvider'=>$model->searchStatus1(2),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch()
+        'columns'=>$model->adminSearch2()
     )); 
     ?>
     </div>
@@ -54,7 +50,7 @@
         'dataProvider'=>$model->searchStatus1(3),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch()
+        'columns'=>$model->adminSearch3()
     )); 
     ?>
     </div>

@@ -16,6 +16,7 @@ $(document).ready(function()
         var cepa = $('#Cepa_id option:selected').text();
         var cantidad = $('#Cepa_nombre_cepa_1_cantidad').val();
         var tanques = parseInt($('#tanquesNO').val());
+        console.log(tanques);
         var tanque = '';
 
         //Validaciones campos
@@ -49,7 +50,7 @@ $(document).ready(function()
         }
 
         //Tanque
-        if(tanques === 1)
+        if(tanques == 1)
             tanque = 'Tanque:';
         if(tanques > 1)
             tanque = 'Tanques:';

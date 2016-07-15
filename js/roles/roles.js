@@ -64,10 +64,18 @@ $(document).ready(function()
             });
         });
     }
-    $('div#rol tr:first-child td.button-column a.update').remove();
-    $('div#rol tr:first-child td.button-column a.delete').remove();
-    $('div#rol tr:nth-child(2) td.button-column a.update').remove();
-    $('div#rol tr:nth-child(2) td.button-column a.delete').remove();
-    $('div#rol tr:nth-child(3) td.button-column a.update').remove();
-    $('div#rol tr:nth-child(3) td.button-column a.delete').remove();
+    borrarBotones();
+    function borrarBotones()
+    {
+        $('.items tbody tr').each(function()
+        {
+            var check = $(this).find('a.view').attr('href');
+            var index = check.lastIndexOf('/');
+            var id = parseInt(check.substring(index+1));
+            if(id == 1 || id == 2 || id == 3)
+            {
+                $(this).find('a').remove();
+            }
+        });
+    }
 });

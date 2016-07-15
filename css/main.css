@@ -571,3 +571,35 @@ div.mensaje-content{
     background-position: center;
     cursor: pointer;
 }
+.agregar.especie
+{
+    background-image: url('./../images/crear/boton_nueva_especie.svg');
+}
+.agregar.cepa
+{
+    background-image: url('./../images/crear/boton_nueva_sepa.svg');
+}
+.agregar.estacion
+{
+    background-image: url('./../images/crear/iconoNuevaEstacion.svg');
+}
+.agregar.solicitudes
+{
+    background-image: url('./../images/crear/iconoNuevaSolicitud.svg');
+}
+.agregar.clientes
+{
+    background-image: url('./../images/crear/iconoNuevoCliente.svg');
+}
+.agregar.personal
+{
+    background-image: url('./../images/crear/iconoNuevoPersonal.svg');
+}
+.agregar.roles
+{
+    background-image: url('./../images/crear/iconoNuevoRol.svg');
+}
+.agregar.usuarios
+{
+    background-image: url('./../images/crear/iconoNuevoUsuario.svg');
+}
