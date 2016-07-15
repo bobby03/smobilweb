@@ -5,6 +5,7 @@ $(document).ready(function()
     var loc = window.location.href;
     var index2 = loc.lastIndexOf('/');
     var viaje = loc.substring(index2+1);
+    var ubi;
     var myDir = {lat: 31.870803236698222, lng: -116.66807770729065};
     var mapDiv = $('#map')[0];
     var total = 1;
@@ -17,7 +18,7 @@ $(document).ready(function()
         draggable: false,
         zoomControl: false,
         scrollwheel: false,
-        disableDoubleClickZoom: false
+        disableDoubleClickZoom: true
     });
     graficarPorTanque();
     graficarPorParametro();
@@ -237,7 +238,7 @@ $(document).ready(function()
                         {
                             var tiempo = data2.tiempo;
                             var datos = data2.viaje;
-                            var ubi = datos.ubicacion;
+                            ubi = datos.ubicacion;
                             var index = ubi.indexOf(',');
                             var lat = parseFloat(ubi.substring(1,index));
                             var index2 = ubi.length;
@@ -335,4 +336,48 @@ $(document).ready(function()
             }
         });
     }
+    $('#map').click(function()
+    {
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetMapa',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje
+            },
+            success: function(data)
+            {
+                $.colorbox(
+                {
+                    html:data,
+                    onComplete: function()
+                    {
+                        var mapDiv2 = $('#mapa2')[0];
+                        var map2 = new google.maps.Map(mapDiv2, 
+                        {
+                            center: ubi,
+                            zoom: 15,
+                            disableDefaultUI: true,
+                            draggable: false,
+                            zoomControl: false,
+                            scrollwheel: false,
+                            disableDoubleClickZoom: true
+                        });
+                        var marker = new google.maps.Marker(
+                        {        
+                            position: ubi,
+                            map: map2
+                        });
+                    }
+                });
+                
+            },
+            error: function(a, b, c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
 });

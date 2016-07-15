@@ -24,7 +24,6 @@
         ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php //echo $form->errorSummary($model); ?>
         <div class="allTanques">
@@ -53,7 +52,6 @@
                             <?php echo $form->dropDownList($model,"status[$i][activo]", Tanque::model()->getAllActivo(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
                             <?php echo $form->error($model,'activo'); ?>
                     </div>
-                    <div class="editarTanque">Editar</div>
                     <?php $i++;?>
                 </div>
             <?php endforeach;?>

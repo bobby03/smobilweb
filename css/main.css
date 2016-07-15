@@ -560,3 +560,14 @@ div.mensaje-content{
 	text-align: center;
 	display: inline-block;
 }
+
+.agregar
+{
+    float: right;
+    width: 51px;
+    height: 29px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}

@@ -85,6 +85,7 @@
     margin: 10px;
     height: 242px;
     width: 411px;
+    cursor: pointer;
 }
 div.allTanques
 {
@@ -361,7 +362,7 @@ div.grafica > div
 .grafScroll::-webkit-scrollbar-track 
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    background-color: #CFDCE6;
+    background-color: #CEDCE4;
     border-radius: 10px;
 }
 .grafScroll::-webkit-scrollbar-thumb 
@@ -490,6 +491,79 @@ div.menuTodos
 {
     border-top-color: #FF7236;
 }
+div.mapaPopup
+{
+    width: 1184px;
+    height: 998px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+div.mapaPopup .titulo
+{
+    height: 71px;
+    text-indent: 34px;
+    color: #FFFFFF;
+    font-size: 34px;
+    line-height: 71px;
+    border-bottom: 3px solid #09B7C9;
+    background-color: #0077B0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#mapa2
+{
+    width: 1118px;
+    height: 586px;
+    margin: 40px 33px 44px;
+}
+.abajoPopup
+{
+    margin: 0 33px;
+}
+.subtituloPopup
+{
+    color: #0077B0;
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+.entregasWraper
+{
+    overflow-x: auto;
+    width: 1118px;
+    border: 1px solid #CEDCE4;
+}
+.entregasWraper::-webkit-scrollbar 
+{
+    width: 5px;
+}
+.entregasWraper::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    background-color: #CEDCE4;
+    border-radius: 10px;
+}
+.entregasWraper::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #939598;
+}
+.entregaPopup
+{
+    float: left;
+    margin-right: 52px;
+    width: 221px;
+    padding: 23px 0;
+}
+.entregaPopup:first-child
+{
+    margin-left: 39px;
+}
+.entregaPopup:last-child
+{
+    margin-right: 39px;
+}
+
 
 .datosWraper:after,
 .detallesViaje:after,
@@ -503,7 +577,8 @@ div.menuTodos
 .menuParametros:after,
 .menuTanques:after,
 .menuArriba:after,
-.menuSeccion:after
+.menuSeccion:after,
+.entregasPopup:after
 {
     display: block;
     clear: both;
