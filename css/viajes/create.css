@@ -370,6 +370,7 @@ div.chosen-container.success  > ul{
     overflow: hidden;
     width: 100%;
     margin-left:20%;
+    margin-bottom: 30px;
 }
 
 .content {
