@@ -41,16 +41,24 @@
 		<div class= "menuTop"></div>
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Inicio', 'url'=>array('/')),
+				array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
+				array('label'=>'Personal', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal')),
+				array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles')),
+				array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes')),
+				array('label'=>'Estación', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion')),
+				array('label'=>'Especie', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie')),
+				array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes')),
+				array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
+				array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
 				array('label'=>'Cepa', 'url'=>array('/cepa')),
-				array('label'=>'Clientes', 'url'=>array('/clientes')),
-				array('label'=>'Especie', 'url'=>array('/especie')),
-				array('label'=>'Estación', 'url'=>array('/estacion')),
-				array('label'=>'Personal', 'url'=>array('/personal')),
-				array('label'=>'Roles', 'url'=>array('/roles')),
-				array('label'=>'Solicitudes', 'url'=>array('/solicitudes')),
-				array('label'=>'Usuarios', 'url'=>array('/usuarios')),
-				array('label'=>'Viajes', 'url'=>array('/viajes')),
+				
+				
+				
+				
+				
+				
+				
+				
 			),
 		)); ?>
 	</div><!-- mainmenu 

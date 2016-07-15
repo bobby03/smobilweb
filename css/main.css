@@ -157,6 +157,68 @@ body
 	text-indent: 30px;
 }
 
+#mainmenu ul li#inicio a{
+	background-image: url('./../images/menu/inicio.svg');
+    background-size: 17px;
+    background-repeat: no-repeat;
+    background-position: 5px 10px;
+ }
+
+
+#mainmenu ul li#personal a{
+	background-image: url('./../images/menu/personal.svg');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 5px 8px;
+ }
+
+
+#mainmenu ul li#roles a{
+	background-image: url('./../images/menu/roles.svg');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 5px 6px;
+ }
+
+ #mainmenu ul li#clientes a{
+	background-image: url('./../images/menu/clientes.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 4px 6px;
+ }
+
+
+ #mainmenu ul li#estacion a{
+	background-image: url('./../images/menu/estaciones.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 4px 11px;
+ }
+
+
+ #mainmenu ul li#especie a{
+	background-image: url('./../images/menu/especies.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 4px 11px;
+ }
+
+  #mainmenu ul li#solicitudes a{
+	background-image: url('./../images/menu/solicitudes.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 4px 11px;
+ }
+
+  #mainmenu ul li#usuarios a{
+	background-image: url('./../images/menu/usuarios.svg');
+    background-size: 19px;
+    background-repeat: no-repeat;
+    background-position: 4px 9px;
+ }
+
+
+
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
 	/*color: #6399cd;*/
