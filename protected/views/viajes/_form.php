@@ -187,7 +187,9 @@
                 </div>
                 <div id="vc1" class="vbox">
                     <div class="left">
-                        <p id="vtitulo">Granja Arrecife Azul S de RL</p>
+                        <p id="vtitulo">
+                            <?php //echo Clientes::model()->getClienteViajes($data['cliente']);?>
+                        </p>
                         <p><span class="vresalta">RFC:</span> ARZ87654323151</p>
                         <p><span class="vresalta">Contacto:</span> Ricardo Juarez Rodriguez</p>
                         <p><span class="vresalta">Domicilio de entrega:</span></br>

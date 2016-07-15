@@ -216,6 +216,9 @@ div.chosen-container.success  > ul{
 .izq{
     float: right;
     width: 10%;
+    position: relative;
+    left:50px;
+    top:-45px;
 }
 #vt1,#vt2{
     font-family: 'Roboto-Regular';
