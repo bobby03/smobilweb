@@ -146,28 +146,57 @@ class ViajesController extends Controller
                 }
                 else
                     $solicitudes->save();
-                if($_POST['NuevoRecord'] == 0)
+                if(isset($_POST['NuevoRecord']))
                 {
-                    $model->id_solicitudes = $solicitudes->id;
-                    $model->status = 1;
-                    if($model->save())
+                    if($_POST['NuevoRecord'] == 0)
                     {
-                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                        $model->id_solicitudes = $solicitudes->id;
+                        $model->status = 1;
+                        if($model->save())
                         {
-                            $nuevo = new SolicitudesViaje();
-                            $nuevo->id_personal = $data;
-                            $nuevo->id_viaje = $model->id;
-                            $nuevo->id_solicitud = $solicitudes->id;
-                            $nuevo->save();
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_viaje = $model->id;
+                                $nuevo->id_solicitud = $solicitudes->id;
+                                $nuevo->save();
+                            }
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_viaje = $model->id;
+                                $nuevo->id_solicitud = $solicitudes->id;
+                                $nuevo->save();
+                            }
+                            foreach($_POST['Solicitudes']['codigo'] as $data)
+                            {
+                                $nuevo = new SolicitudTanques();
+                                $nuevo->id_solicitud = $solicitudes->id;
+                                $nuevo->id_tanque = $data['tanque'];
+                                $nuevo->id_domicilio = $data['destino'];
+                                $nuevo->id_cepas = $data['cepa'];
+                                $nuevo->cantidad_cepas = $data['cantidad'];
+                                if($nuevo->save())
+                                {
+                                    $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
+                                    $tanque->status = 2;
+                                    $tanque->save();
+                                }
+                            }
+                            $estacion = Estacion::model()->findByPk($model->id_estacion);
+                            $estacion->disponible = 2;
+                            $estacion->save();
                         }
-                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
-                        {
-                            $nuevo = new SolicitudesViaje();
-                            $nuevo->id_personal = $data;
-                            $nuevo->id_viaje = $model->id;
-                            $nuevo->id_solicitud = $solicitudes->id;
-                            $nuevo->save();
-                        }
+                    }
+                    else
+                    {
+                        $solicitudViaje = new SolicitudesViaje();
+                        $solicitudViaje->id_personal = 0;
+                        $solicitudViaje->id_solicitud = $solicitudes->id;
+                        $solicitudViaje->id_viaje = $_POST['viajeId'];
+                        $solicitudViaje->save();
                         foreach($_POST['Solicitudes']['codigo'] as $data)
                         {
                             $nuevo = new SolicitudTanques();
@@ -183,38 +212,13 @@ class ViajesController extends Controller
                                 $tanque->save();
                             }
                         }
-                        $estacion = Estacion::model()->findByPk($model->id_estacion);
-                        $estacion->disponible = 2;
-                        $estacion->save();
                     }
+                    $this->redirect(array('index'));
                 }
-                else
-                {
-                    $solicitudViaje = new SolicitudesViaje();
-                    $solicitudViaje->id_personal = 0;
-                    $solicitudViaje->id_solicitud = $solicitudes->id;
-                    $solicitudViaje->id_viaje = $_POST['viajeId'];
-                    $solicitudViaje->save();
-                    foreach($_POST['Solicitudes']['codigo'] as $data)
-                    {
-                        $nuevo = new SolicitudTanques();
-                        $nuevo->id_solicitud = $solicitudes->id;
-                        $nuevo->id_tanque = $data['tanque'];
-                        $nuevo->id_domicilio = $data['destino'];
-                        $nuevo->id_cepas = $data['cepa'];
-                        $nuevo->cantidad_cepas = $data['cantidad'];
-                        if($nuevo->save())
-                        {
-                            $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
-                            $tanque->status = 2;
-                            $tanque->save();
-                        }
-                    }
-                }
-                $this->redirect(array('index'));
                 
             }
             $pedidos = $_POST;
+//            print_r($_POST);
             if($pedidos['ClientesDomicilio']['id_cliente'] > 0)
             {
                 $model = $this->loadModel($pedidos['ClientesDomicilio']['id_cliente']);
@@ -271,7 +275,7 @@ class ViajesController extends Controller
                     }
                 }
             }
-//            print_r($pedidos);
+            print_r($model);
             $this->render('create',array
             (
                 'model' =>$model,
@@ -317,7 +321,45 @@ class ViajesController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $todoDatos = Yii::app()->db->createCommand()
+                ->selectDistinct('solT.*')
+                ->from('solicitud_tanques as solT')
+                ->join('solicitudes_viaje as solV','solV.id_solicitud = solT.id_solicitud')
+                ->where("solV.id_viaje = $id")
+                ->queryAll();
+            foreach($todoDatos as $data)
+            {
+                $solicitud = Solicitudes::model()->findByPk($data['id_solicitud']);
+                $solicitud->codigo = 'En proceso';
+                $solicitud->fecha_estimada = null;
+                $solicitud->hora_estimada = null;
+                $solicitud->save();
+                $pedido = new Pedidos();
+                $pedido->id_cepa = $data['id_cepas'];
+                $cepa = Cepa::model()->findByPk($data['id_cepas']);
+                $pedido->id_direccion = $data['id_domicilio'];
+                $pedido->id_especie = $cepa->id_especie;
+                $pedido->id_solicitud = $solicitud->id;
+                $pedido->tanques = 1;
+                $pedido->cantidad = $data['cantidad_cepas'];
+                $pedido->save();
+                $solT = SolicitudTanques::model()->findByPk($data['id']);
+                $solT->delete();
+                $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = {$solicitud->id}")->execute();
+            }
+            $viaje = Viajes::model()->findByPk($id);
+            $estacion = Estacion::model()->findByPk($viaje->id_estacion);
+            $estacion->disponible = 1;
+            $tanques = Tanque::model()->findAll("id_estacion = $estacion->id");
+            foreach($tanques as $data)
+            {
+                $save = Tanque::model()->findByPk($data['id']);
+                $save->status = 1;
+                $save->save();
+            }
+            $estacion->save();
+            
+            
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	//	if(!isset($_GET['ajax']))
@@ -929,7 +971,7 @@ EOF;
         public function actionGetAlertasTanque($viaje, $id)
         {
             $uploads = Yii::app()->db->createCommand()
-                    ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.od, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
                     ->from('solicitudes_viaje as solV')
                     ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                     ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
@@ -1092,7 +1134,7 @@ eof;
         public function actionGetHistorialTanque($viaje, $id)
         {
             $total = Yii::app()->db->createCommand()
-                ->select('esc.hora, upT.od, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
+                ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
                 ->order('upT.id DESC')
                 ->from('escalon_viaje_ubicacion as esc')
                 ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
@@ -1106,7 +1148,7 @@ eof;
             else
                 $limit = 0;
             $datos = Yii::app()->db->createCommand()
-                ->select('esc.hora, upT.od, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
+                ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
                 ->from('escalon_viaje_ubicacion as esc')
                 ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
                 ->where("esc.id_viaje = $viaje")
@@ -1132,7 +1174,7 @@ eof;
             foreach($datos as $data)
             {
                 $labels[] = $data['hora'];
-                $datasets[] = $data['od'];
+                $datasets[] = $data['ox'];
                 $cont++;
             }
             $width = ($cont * 98)+40;
@@ -1143,7 +1185,7 @@ eof;
                                 <canvas id="historialTanque1" width="$width" height="405"></canvas>
                             </div>
 eof;
-                $return['od'] =
+                $return['ox'] =
                 array
                 (
                     'type' => 'line',

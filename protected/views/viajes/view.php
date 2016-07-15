@@ -16,14 +16,6 @@
             'Viajes'=>array('index'),
             $model->id,
     );
-
-//    $this->menu=array(
-//	array('label'=>'List Viajes', 'url'=>array('index')),
-//	array('label'=>'Create Viajes', 'url'=>array('create')),
-//	array('label'=>'Update Viajes', 'url'=>array('update', 'id'=>$model->id)),
-//	array('label'=>'Delete Viajes', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-//	array('label'=>'Manage Viajes', 'url'=>array('admin')),
-//);
 ?>
 <?php if($model->status == 1):?>
 <h1>Detalles de viaje #<?php echo $model->id; ?></h1>

@@ -1,8 +1,3 @@
-.grid-view table.items {
+.grid-view {
     width: 30% !important;
-}
-
-.agregar.especie
-{
-    background-image: url('../../images/crear/boton_nueva_especie.svg');
 }

@@ -28,9 +28,21 @@ label.letreros{
 /*      ************          */
 
 
-.form-cSmall{
-	width:100px;
+.form-cSmall
+{
+    width:100px;
+    position: relative;
 }
+.form-cSmall span
+{
+    display: block;
+    color: #FFFFFF;
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    font-size: 11px;
+}
+
 .form-cLarge{
 	width:250px;
 }
@@ -83,11 +95,13 @@ label.letreros{
 }
 
 /*     *       */
-.cLetreros{
-  margin-left: 29px;
-  font-size: 14px !important;
-  color: #0077B0;
-      margin-top: 26px;
+.cLetreros
+{
+    margin-left: 29px;
+    font-size: 14px !important;
+    color: #0077B0;
+    margin-top: 26px;
+    text-indent: 30px;
 }
 
 .letrero-container{

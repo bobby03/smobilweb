@@ -195,7 +195,7 @@ class Viajes extends CActiveRecord
                 $cliente = $cliente."<br><b>{$data['nombre_empresa']}</b>({$data['codigo']})";
         return $cliente;
     }
-    public function adminSearch()
+    public function adminSearch1()
     {
         return array
         (
@@ -249,6 +249,120 @@ class Viajes extends CActiveRecord
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            ),
+        );
+    }
+    public function adminSearch2()
+    {
+        return array
+        (
+            array
+            (
+                'name' => 'status',
+                'value' => 'Viajes::model()->getStatus($data->status)',
+                'filter' => Viajes::model()->getAllStatus()
+            ),
+            array
+            (
+                'name' => 'id_solicitudes',
+                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+                'filter' => Clientes::model()->getAllClientesViajes(),
+                'type' => 'raw'
+            ),
+            array
+            (
+                'name' => 'id_responsable',
+                'value' => 'Personal::model()->getPersonal($data->id_responsable)',
+                'filter' => Personal::model()->getAllPersonal()
+            ),
+            array
+            (
+                'name' => 'id_estacion',
+                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                'filter' => Estacion::model()->getAllEstacionMovil()
+            ),
+            array
+            (
+                'name'=>'fecha_salida',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
+            ),
+            array
+            (
+                'name'=>'hora_salida',
+                'value' => 'date("H:i", strtotime($data->hora_salida))'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'Viajes::model()->getFecha($data->fecha_entrega)'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view}</div>'
+            ),
+        );
+    }
+    public function adminSearch3()
+    {
+        return array
+        (
+            array
+            (
+                'name' => 'status',
+                'value' => 'Viajes::model()->getStatus($data->status)',
+                'filter' => Viajes::model()->getAllStatus()
+            ),
+            array
+            (
+                'name' => 'id_solicitudes',
+                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+                'filter' => Clientes::model()->getAllClientesViajes(),
+                'type' => 'raw'
+            ),
+            array
+            (
+                'name' => 'id_responsable',
+                'value' => 'Personal::model()->getPersonal($data->id_responsable)',
+                'filter' => Personal::model()->getAllPersonal()
+            ),
+            array
+            (
+                'name' => 'id_estacion',
+                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                'filter' => Estacion::model()->getAllEstacionMovil()
+            ),
+            array
+            (
+                'name'=>'fecha_salida',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
+            ),
+            array
+            (
+                'name'=>'hora_salida',
+                'value' => 'date("H:i", strtotime($data->hora_salida))'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'Viajes::model()->getFecha($data->fecha_entrega)'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view}</div>'
             ),
         );
     }
