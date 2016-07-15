@@ -1391,60 +1391,94 @@ eof;
                 $limit = $count - 333;
             else
                 $limit = 0;
+            $tanques = Yii::app()->db->createCommand()
+                ->selectDistinct('solT.id_tanque, tan.nombre')
+                ->from('solicitudes_viaje as solV')
+                ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                ->join('tanque as tan','tan.id = solT.id_tanque')
+                ->where("solV.id_viaje = $viaje")
+                ->queryAll();
             $datos = Yii::app()->db->createCommand()
                 ->select("esc.hora, upT.$id, upT.id_tanque, upT.id")
                 ->from('escalon_viaje_ubicacion as esc')
                 ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
                 ->where("esc.id_viaje = $viaje")
                 ->limit(333,$limit)
-                ->order("esc.id ASC")
+                ->order("upT.id ASC")
                 ->queryAll();
+            switch($id)
+            {
+                case 'ox':      $nombre='Oxígeno disuelto'; break;
+                case 'temp':    $nombre='Temperatura'; break;
+                case 'ph':      $nombre='PH'; break;
+                case 'cond':    $nombre='Conductividad'; break;
+                case 'orp':     $nombre='Potencial óxido reducción'; break;
+            }
             $return['codigo'] = <<<eof
-                <div class="historial">
-                    <div class="titulo"></div>
+                <div class="historial parametro">
+                    <div class="titulo">Historial de parámetro</div>
+                    <div class="subtitulo">$nombre</div>
                     <div class="historialGraficasWraper">
-                        <div class="menuHistorial">
-                            <div class="selected" data-para="1">Oxígeno disuelto</div>
-                            <div data-para="2">Temperatura</div>
-                            <div data-para="3">PH</div>
-                            <div data-para="4">Conductividad</div>
-                            <div data-para="5">ORP</div>
-                        </div>
                         <div class="graficasWraper">
 eof;
-            foreach($datos as $data)
+            $cont = 0;
+            $colors = ['#4363AE','#8DC63F','#7F3F98','#FF5BB2','#27AAE1','#ED1C24','#8B5E3C','#FF7236'];
+            $datasets = [];
+            $flag = true;
+            $menu = '';
+            $i = 0;
+            foreach($tanques as $info)
             {
-                $labels5[] = $data['hora'];
-                $datasets5[] = $data['orp'];
-                $cont++;
+                $datas = [];
+                $labels = [];
+                foreach($datos as $data)
+                {
+                    if($data['id_tanque'] == $info['id_tanque'])
+                    {
+                        if($flag)
+                        {
+                            $cont++;
+                        }
+                        $labels[] = $data['hora'];
+                        $datas[] = $data[$id];
+                    }
+                }
+                $datasets[] = 
+                [
+                    'label'                 => $id,
+                    'fill'                  => false,
+                    'lineTension '          => 0,
+                    'borderColor'           => $colors[$i],
+                    'pointBorderColor'      => $colors[$i],
+                    'pointBackgroundColor'  => $colors[$i],
+                    'pointBorderWidth'      => 5,
+                    'pointHoverRadius'      => 10,
+                    'data'                  => $datas,
+                ];
+                $flag = false;
+                $menu = $menu.<<<eof
+                    <div class="menuSeccion">
+                        <div></div><div class="menuOpcion" data-tanque="{$info['id_tanque']}" style="color:{$colors[$i]}">{$info['nombre']}</div>
+                    </div>
+eof;
+                $i++;
             }
+            $width = ($cont * 98)+40;
+            if($width < 1032)
+                $width = 1032;
             $return['codigo'] =$return['codigo'].<<<eof
-                            <div class="grafScroll hide" data-rece="5">
-                                <canvas id="historialTanque5" width="$width" height="405"></canvas>
+                            <div class="grafScroll">
+                                <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
                             </div>
 eof;
-            $return['orp'] =
+            $return['grafica'] =
             array
             (
                 'type' => 'line',
                 'data'=>array
                 (
-                    'labels'    => $labels5,
-                    'datasets'  => 
-                    [
-                        (object)
-                        [
-                            'label'                 => $id,
-                            'fill'                  => false,
-                            'lineTension '          => 0,
-                            'borderColor'           => '#3E66AA',
-                            'pointBorderColor'      => "#3E66AA",
-                            'pointBackgroundColor'  => "#3E66AA",
-                            'pointBorderWidth'      => 5,
-                            'pointHoverRadius'      => 10,
-                            'data'                  => $datasets5,
-                        ]
-                    ]
+                    'labels'    => $labels,
+                    'datasets'  => $datasets
                 ),
                 'options' => array
                 (
@@ -1464,9 +1498,15 @@ eof;
                     )
                 )
             );
-            
             $return['codigo'] = $return['codigo'].
                     '   </div>
+                        <div class="menuTanques">
+                            <div class="menuArriba">
+                                <div class="menuTitulo">Seleccionar tanques:</div>
+                                <div class="menuTodos"><div></div>Ver todos</div>
+                            </div>
+                            <div class="menuParametros">'.$menu.'</div>
+                        </div>
                     </div>
                 </div>';
             echo json_encode($return);
