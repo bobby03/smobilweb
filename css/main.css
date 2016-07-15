@@ -418,9 +418,10 @@ div.principal:after
 	font-size: 14pt;
 	padding-left:26px;
 	vertical-align: middle;
-
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
 }
-#cboxWrapper{
+/*#cboxWrapper{
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
@@ -431,7 +432,7 @@ div.principal:after
 	border: 0px solid white;
 	height: 160px;
 
-}
+}*/
 div.value-content{
 
 	font-family: 'Roboto-Regular';
@@ -450,12 +451,12 @@ div.mensaje-content{
 	
 	color:#000;
 }
-#colorbox, #cboxLoadedContent{
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
+#colorbox .sub-content
+{
+	border-radius: 5px;
 	width: 327px;
-	height:215px !important;
+        background-color: #FFFFFF;
+	height:215px;
 }
 .botones-content{
 	height:auto !important;

@@ -172,6 +172,40 @@ $(document).ready(function()
             }
         });
     });
+    $('[data-id="2"] .boton.graf').click(function()
+    {
+        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
+        var id = $(this).data('ale');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetHistorialParametro',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                console.log(data);
+                $.colorbox(
+                {
+                    html: data.codigo,
+                    onComplete: function()
+                    {
+                        var ctx1 = $('#parametrosGrafica');
+                        var myChart1 = new Chart(ctx1, data.grafica);
+                        
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
     function graficarPorTanque()
     {
         $('.allTanques[data-id="1"] .tanque').each(function()
