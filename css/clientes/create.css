@@ -164,3 +164,88 @@ margin-bottom:10px;
   width:100%;
   margin-top: 10px;
  }
+
+
+
+
+#Clientes_rfc{
+  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg.png');
+  background-position: 10px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_rfc.error{
+  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
+}
+#Clientes_rfc.success{
+  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+#Clientes_correo{
+  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_correo.error{
+  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_error.png');
+}
+#Clientes_correo.success{
+  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+#Clientes_tel{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_tel.error{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
+#Clientes_tel.success{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+#Clientes_nombre_contacto{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_nombre_contacto.error{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+}
+#Clientes_nombre_contacto.success{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+#Clientes_apellido_contacto{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_apellido_contacto.error{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+}
+#Clientes_apellido_contacto.success{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_success.png');
+}
