@@ -24,13 +24,22 @@ div.editarTanque
     text-align: center;
     cursor: pointer;
 }
+div.form input[type="submit"]
+{
+    float: left;
+    width: 250px; 
+    margin-right: 50px;
+}
 div.tanque
 {
-    border-bottom: 1px solid #D6D6D6;
-}
-div.tanque:last-child 
-{
-    border-bottom: 0;
+    float: left;
+    width: 250px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid #0077B0;
+    border-radius: 5px;
+    /*overflow: hidden;*/
+    padding: 20px;
 }
 .form-container1{
 float:left;
@@ -149,4 +158,11 @@ margin-bottom:10px;
  background-color:  #E4E7EB;
  height: 4px;
  width:68%;
+}
+
+.allTanques:after
+{
+    clear: both;
+    display: block;
+    content: '';
 }

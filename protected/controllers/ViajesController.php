@@ -405,6 +405,41 @@ eof;
 //                </div>
 //eof;
 //        }
+        public function actionGetMapa($viaje)
+        {
+            $direcciones = Yii::app()->db->createCommand()
+                ->selectDistinct('cliD.domicilio, cli.nombre_empresa')
+                ->from('solicitudes_viaje as solV')
+                ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                ->join('clientes_domicilio as cliD','cliD.id = solT.id_domicilio')
+                ->join('clientes as cli', 'cli.id = cliD.id_cliente')
+                ->where("solV.id_viaje = $viaje")
+                ->queryAll();
+            $return =<<<EOF
+                <div class="mapaPopup">
+                    <div class="titulo">Mapa</div>
+                    <div id="mapa2"></div>
+                    <div class="abajoPopup">
+                        <div class="subtituloPopup">Entregas:</div>
+                        <div class="entregasWraper">
+EOF;
+            foreach($direcciones as $data)
+            {
+                $return =$return.<<<EOF
+                            <div class="entregaPopup">
+                                {$data['nombre_empresa']}
+                                    <br>
+                                {$data['domicilio']}
+                            </div>
+EOF;
+            }
+            $return =$return.<<<EOF
+                        </div>
+                    </div>
+               </div>
+EOF;
+            echo json_encode($return);
+        }
         public function rad($x)
         {
             return $x * pi() / 180;
