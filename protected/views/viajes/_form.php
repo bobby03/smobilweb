@@ -176,7 +176,7 @@
     </div>-->
     <div class="siguiente dos">Siguiente</div>
 </div>
-    <div class="tab hide" data-tab="3">
+    <div class="tab hide" data-tab="3"> 
 <!--        <div class="contenedorClientes">
             <?php // print_r($pedidos);?>
             <?php // $this->getClientes($pedidos);?>
@@ -190,24 +190,50 @@
                 <div id="vc1" class="vbox">
                     <div class="left">
                         <p id="vtitulo">
-                            <?php //echo Clientes::model()->getClienteViajes($data['cliente']);?>
+                            <?php 
+                            $flag = true;
+                            $cliente = Clientes::model()->findByPk($pedidos['Solicitudes']['id_clientes']);
+                            //$domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($pedidos['Solicitudes']['id_clientes']);
+
+
+
+
+/*<div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][especie]",array('value'=>$data['especie']))?>
+                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cepa]",array('value'=>$data['cepa']))?>
+                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cantidad]",array('value'=>($data['cantidad']/$data['tanques'])))?>
+                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>*/
+
+                            echo $cliente->nombre_empresa;?>
                         </p>
-                        <p><span class="vresalta">RFC:</span> ARZ87654323151</p>
-                        <p><span class="vresalta">Contacto:</span> Ricardo Juarez Rodriguez</p>
+                        <p><span class="vresalta">RFC:</span> <?php echo $cliente->rfc;?></p>
+                        <p><span class="vresalta">Contacto:</span> <?php echo $cliente->nombre_contacto.' '.$cliente->apellido_contacto;?></p>
+
                         <p><span class="vresalta">Domicilio de entrega:</span></br>
-                        Michoacan #55 Municipio de Benito Juarez, DF</p>
+                        <?php echo ClientesDomicilio::model()->getDomicilio($data['destino']); ?></p>
                     </div>
+
+                    
                     <div class="right">
-                        <p><span class="vresalta">Fecha:</span> 2015-12-30</p>
+                        <p><span class="vresalta">Fecha de salida:</span> <span id="fsalida"> </span></p>
                         <p><span class="vresalta">No. Remision:</span> 7</p>
                         <p><span class="vresalta">No. Tanque:</span> 3</p>
                     </div>
+                    <script type="text/javascript">
+//                    document.write(document.getElementById('Viajes_fecha_salida'));
+
+                    
+                    </script>
+
                  </div>
                 <div id="vt2">
                      <div class="headerT">Datos de la especie</div>
                 </div>
                 <div id="vc2">
-                    <p><span class="vresalta">Especie:</span> Pomatomus saltatrix </p>
+                    <p><span class="vresalta">Especie:</span> <?php echo Especie::model()->getEspecie($data['especie']);?> </p>
                     <p><span class="vresalta">No. Organismos:</span> 11</p>
                     <table id="vcont">
                         <tr class="pf">

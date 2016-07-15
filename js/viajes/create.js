@@ -107,7 +107,8 @@ $('.siguiente.uno').click(function() {
 
 
 $('.siguiente.dos').click(function() {
-
+    $('#fsalida').html($('#Viajes_fecha_salida').val());
+    
     if (formSendViajesTanque()) {
         $('[data-tab="2"]').addClass('hide');
         $('[data-tab="3"]').removeClass('hide');
