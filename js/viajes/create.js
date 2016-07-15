@@ -64,12 +64,13 @@ $(document).ready(function()
             $('#Viajes_id_estacion').trigger('change');
         }
     }
+
 $('.siguiente.uno').click(function() {
 
     $('#Viajes_fecha_salida').blur();
     $('#Viajes_hora_salida').blur();
     $('#Viajes_id_responsable').blur();
-    $('#Viajes_id_estacion').blur();
+ //   $('#Viajes_id_estacion').blur();
 
     $('[data-tab="1"] select[multiple="multiple"]').each(function() {
         if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
