@@ -144,10 +144,59 @@ $(document).ready(function()
                     onComplete: function()
                     {
                         $('.historial .titulo').text('Historial '+nombre);
-                        var ctx = $('#historialTanque1');
-                        if(data.ox != '' && data.ox != null)
-                            var myChart = new Chart(ctx, data.ox);
+                        var ctx1 = $('#historialTanque1');
+                        var myChart1 = new Chart(ctx1, data.od);
+                        var ctx2 = $('#historialTanque2');
+                        var myChart2 = new Chart(ctx2, data.temp);
+                        var ctx3 = $('#historialTanque3');
+                        var myChart3 = new Chart(ctx3, data.ph);
+                        var ctx4 = $('#historialTanque4');
+                        var myChart4 = new Chart(ctx4, data.cond);
+                        var ctx5 = $('#historialTanque5');
+                        var myChart5 = new Chart(ctx5, data.orp);
                         $.colorbox.resize();
+                        $('[data-para]').click(function()
+                        {
+                            var id = $(this).data('para');
+                            $('[data-para]').removeClass('selected');
+                            $(this).addClass('selected');
+                            $('.grafScroll').addClass('hide');
+                            $('.grafScroll[data-rece="'+id+'"]').removeClass('hide');
+                        });
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
+    $('[data-id="2"] .boton.graf').click(function()
+    {
+        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
+        var id = $(this).data('ale');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetHistorialParametro',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                console.log(data);
+                $.colorbox(
+                {
+                    html: data.codigo,
+                    onComplete: function()
+                    {
+                        var ctx1 = $('#parametrosGrafica');
+                        var myChart1 = new Chart(ctx1, data.grafica);
+                        
                     }
                 });
             },

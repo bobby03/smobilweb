@@ -1,3 +1,106 @@
+/*
+ * FORM ICONS
+ */
+#Viajes_id_responsable{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+.row.success #Viajes_id_responsable{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_success.png');
+}
+.row.error #Viajes_id_responsable{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
+}
+
+
+
+
+#SolicitudesViaje_id_personal_1_tecnico{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+.row.success #Viajes_fecha_salida,
+.row.success #Viajes_hora_salida
+{
+  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+.row.error #Viajes_fecha_salida,
+.row.error #Viajes_hora_salida
+{
+  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
+}
+
+
+.row.error #Viajes_id_estacion{
+  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_error.png');
+}
+
+.row.success #Viajes_id_estacion{
+  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_success.png');
+}
+
+#Viajes_id_estacion{
+  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+#Viajes_fecha_salida, #Viajes_hora_salida{
+  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen
+{
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/usuarios/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left:0;
+}
+
+
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen.success,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.success
+{
+
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/form/bg_success.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+
+}
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen.error,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error
+{
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/form/bg_error.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
 div.pedido
 {
     float: left;
@@ -184,22 +287,22 @@ div.tab:after
 
 div.chosen-container.error{
         border: 2px solid #c00 !important;
-        border-left: 30px solid #c00 !important;
-        background: #FEE !important;
+      /*border-left: 30px solid #c00 !important;*/
+        background-color: #FEE !important;
 }
 
 div.chosen-container.error > ul{
-        background: #FEE !important;
+        background-color: #FEE !important;
 }
 
 div.chosen-container.success{
-    background: #E6EFC2 !important;
+    background-color: #E6EFC2 !important;
     border-color: #C6D880 !important;
 
 }
 
 div.chosen-container.success  > ul{
-    background: #E6EFC2 !important;
+    background-color: #E6EFC2 !important;
 }
 #contV3{
     border-radius: 10px 10px 10px 10px;

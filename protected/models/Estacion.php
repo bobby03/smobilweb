@@ -281,7 +281,7 @@ class Estacion extends CActiveRecord
                     (
                         'tanque' => array
                         (
-                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.png',
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
                             'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
                             'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
                         )
