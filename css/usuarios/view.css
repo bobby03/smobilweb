@@ -100,3 +100,50 @@ float:left;
   border-left: 2px;
 
 }
+
+
+/*
+ *   FORM ICONS
+ */
+
+
+#Usuarios_usuario{
+  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+#Usuarios_tipo_usr{
+  background-image: url('../../images/usuarios/iconoTipoUsuario.png'), url('../../images/usuarios/bg.png');
+  background-position: 6px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Usuarios_pwd{
+  background-image: url('../../images/usuarios/iconoContrasena.png'), url('../../images/usuarios/bg.png');
+  background-position: 10px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#clienteList{
+  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
+#personalList{
+  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
