@@ -1,13 +1,12 @@
 div.addTanque 
 {
     float: right;
-    margin-left: 25px;
-    background-color: #0088cc;
+    background-color: #0077b0;
     border-radius: 5px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 20px;
-    width: 185px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    width: 171px;
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
@@ -24,11 +23,21 @@ div.editarTanque
     text-align: center;
     cursor: pointer;
 }
+div.form div.row.buttons
+{
+    width: 71%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
 div.form input[type="submit"]
 {
-    float: left;
-    width: 250px; 
+    float: right;
+    width: 171px; 
     margin-right: 50px;
+    font-size: 18px;
+    height: 35px;
+    line-height: 35px;
 }
 div.tanque
 {
