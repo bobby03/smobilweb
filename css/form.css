@@ -8,6 +8,7 @@ div.search-form div.wide.form
     width: 250px;
     margin: 0;
     /*margin-left: 35px;*/
+    float: left;
 }
 .chosen-container-multi .chosen-choices
 {
@@ -284,7 +285,8 @@ h2
 }
 div.formContainer1:after,
 div.row.titulos:after,
-div.row:after
+div.row:after,
+div.search-form:after
 {
     clear: both;
     content: '';

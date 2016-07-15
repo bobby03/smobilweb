@@ -7,19 +7,18 @@
 
     $this->breadcrumbs=array(
 	'Especies',
-    );
-
-    $this->menu=array(
-	array('label'=>'Create Especie', 'url'=>array('create'))
-    );
+    )
 ?>
 
 <h1>Especies</h1>
 <div class="principal">
     <div class="search-form" >
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
+        <?php $this->renderPartial('_search',array(
+                'model'=>$model,
+        )); ?>
+        <a href="especie/create">
+            <div class="agregar especie"></div>
+        </a>
     </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array(
             'id'=>'especie',
