@@ -181,81 +181,18 @@
             <?php // print_r($pedidos);?>
             <?php // $this->getClientes($pedidos);?>
         </div>-->
-        <div class="boxCont">
-            <div id="contV3">
-                
-                <div id="vt1">
-                    <div class="headerT">Cliente</div>
-                </div>
-                <div id="vc1" class="vbox">
-                    <div class="left">
-                        <p id="vtitulo">
-                            <?php 
-                            $flag = true;
-                            $cliente = Clientes::model()->findByPk($pedidos['Solicitudes']['id_clientes']);
-                            //$domicilios = ClientesDomicilio::model()->getDireccionClienteSolicitudes($pedidos['Solicitudes']['id_clientes']);
+        <?php 
+        $o=1;
+        foreach($pedidos['pedido'] as $data){
+        for($i=1;$i<=$data['tanques'];$i++){
+            
+            include 'xviaje.php';
+            $o++;
+        }
+    }
 
+        ?>
 
-
-
-/*<div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
-                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][especie]",array('value'=>$data['especie']))?>
-                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cepa]",array('value'=>$data['cepa']))?>
-                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
-                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][cantidad]",array('value'=>($data['cantidad']/$data['tanques'])))?>
-                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                        <?php echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>*/
-
-                            echo $cliente->nombre_empresa;?>
-                        </p>
-                        <p><span class="vresalta">RFC:</span> <?php echo $cliente->rfc;?></p>
-                        <p><span class="vresalta">Contacto:</span> <?php echo $cliente->nombre_contacto.' '.$cliente->apellido_contacto;?></p>
-
-                        <p><span class="vresalta">Domicilio de entrega:</span></br>
-                        <?php echo ClientesDomicilio::model()->getDomicilio($data['destino']); ?></p>
-                    </div>
-
-                    
-                    <div class="right">
-                        <p><span class="vresalta">Fecha de salida:</span> <span id="fsalida"> </span></p>
-                        <p><span class="vresalta">No. Remision:</span> 7</p>
-                        <p><span class="vresalta">No. Tanque:</span> 3</p>
-                    </div>
-                    <script type="text/javascript">
-//                    document.write(document.getElementById('Viajes_fecha_salida'));
-
-                    
-                    </script>
-
-                 </div>
-                <div id="vt2">
-                     <div class="headerT">Datos de la especie</div>
-                </div>
-                <div id="vc2">
-                    <p><span class="vresalta">Especie:</span> <?php echo Especie::model()->getEspecie($data['especie']);?> </p>
-                    <p><span class="vresalta">No. Organismos:</span> 11</p>
-                    <table id="vcont">
-                        <tr class="pf">
-                            <th class="pc"></th><th>Mínima</th><th>Máxima</th>
-                        </tr>
-                        <tr>
-                            <th class="pc">Temperatura (Temp)</th><th>11</th><th>11</th>
-                        </tr>
-                        <tr>
-                            <th class="pc">PH (ph)</th><th>11</th><th>11</th>
-                        </tr>
-                        <tr>
-                            <th class="pc">Oxígeno (O)</th><th>11</th><th>11</th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-                
-            <div class="row buttons izq">
-                <?php echo CHtml::submitButton('Finalizar'); ?>
-            </div>
-        </div>
     </div>
 <?php $this->endWidget(); ?>
 

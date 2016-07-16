@@ -152,6 +152,11 @@ eof;
             $cepa = Cepa::model()->findByPk($id);
             return $cepa->nombre_cepa;
         }
+        public function getCepa1($id)
+        {
+            $cepa = Cepa::model()->findByPk($id);
+            return $cepa;
+        }
     public function adminSearch()
     {
         return array

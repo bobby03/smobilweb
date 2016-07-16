@@ -2,6 +2,10 @@
 /* @var $this ClientesController */
 /* @var $model Clientes */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Clientes'=>array('index'),
 	$model->id,
