@@ -26,15 +26,45 @@ $(document).ready(function(){
 
 	$('.dashboardInicio > tbody > tr').on('click', function () {
 		//alert($(this).data('id'));
-	   
-		$('.dashboardInicio > tbody > tr').removeClass('selected');
-
-	   $(this).addClass('selected');
-
-	   /* if(!$(this).hasClass('selected')){
-
-	   		$('.dashboardInicio > tbody > tr').toggleClass("none");
-	    }*/
+	   if(!$(this).hasClass('selected')){
+			$('.dashboardInicio > tbody > tr').removeClass('selected');
+			var id = $(this).data('id');
+			cargaTanques(id);
+		   $(this).addClass('selected');
+		}
 	});
 
+	function cargaTanques(id) {
+		var url = window.location.href;
+		var pos = url.lastIndexOf('php');
+		if (pos > 0) {
+			url += '/site/DashboardTanques';
+		}
+		else {
+			url += 'index.php/site/DashboardTanques';
+		}
+	 	$.ajax({
+	        type: 'GET',
+	        url: url,
+	        dataType: 'JSON', 
+	        data: {
+	            id: id,
+	        },
+	        success: function(data) {
+	        	if(data.result == 1) {
+	        		$('.contenedor-tanques').empty();
+	        		$('.contenedor-tanques').append(data.html);
+	        		
+	        	}
+	        	else {
+	        		
+	        	}
+	        },
+	        error: function( a, b, c)  {
+	        	console.log(a, b, c);
+	        }
+	    });
+	 }
+ 	var content = $('.dashboardInicio > tbody > tr:first-child');
+	content.trigger('click');
 });  

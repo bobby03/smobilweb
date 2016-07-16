@@ -42,15 +42,15 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Inicio', 'url'=>array('/')),
-				array('label'=>'Cepa', 'url'=>array('/cepa')),
-				array('label'=>'Clientes', 'url'=>array('/clientes')),
-				array('label'=>'Especie', 'url'=>array('/especie')),
-				array('label'=>'Estación', 'url'=>array('/estacion')),
 				array('label'=>'Personal', 'url'=>array('/personal')),
-				array('label'=>'Roles', 'url'=>array('/roles')),
-				array('label'=>'Solicitudes', 'url'=>array('/solicitudes')),
 				array('label'=>'Usuarios', 'url'=>array('/usuarios')),
+				array('label'=>'Roles', 'url'=>array('/roles')),
+				array('label'=>'Clientes', 'url'=>array('/clientes')),
+				array('label'=>'Estación', 'url'=>array('/estacion')),
+				array('label'=>'Especie', 'url'=>array('/especie')),
+				array('label'=>'Solicitudes', 'url'=>array('/solicitudes')),
 				array('label'=>'Viajes', 'url'=>array('/viajes')),
+				//array('label'=>'Cepa', 'url'=>array('/cepa')),
 			),
 		)); ?>
 	</div><!-- mainmenu 

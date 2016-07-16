@@ -1,23 +1,28 @@
+div.principal.index{
+    width: 1190px;
+    margin-left: 71px;
+}
 .barraViajeGranja{
     background-color: #0077B0;
-    height: 40px;
+    height: 51px;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1190px;
     border: 0;
-	
+	margin-bottom: 0;
 }
 .tabs {
-    height: 100%;
+    height: 51px;
+    margin-top: 90px;
 }
 .tabs > div {
     float: left;
-    width: 120px;
+    width: 210px;
     text-align: center;
     margin: 0;
     text-indent: initial;
     cursor: pointer;
     height: 100%;
+    line-height: 53px;
 }
 .tabs > div:hover ,
 .tabs > div.selected {
@@ -42,47 +47,63 @@
 font-size: 1.5em;
 color:#2C87B7; 
 }
-
-
-/**             **/
-
+.titulo3{
+font-size:16px;
+color:#2C87B7; 
+}
 /**         Contenedores de viajes / estaciones        **/
-
 
 .container-box{
     width: 100%;
-    max-width: 1200px;
+    max-width: 1190px;
     float: left;
 }
-.container-b1box{
-     width: 50%;
-     max-width: 600px;
+.container-b1box1{
+     width: 55.13%;
+     max-width: 656px;
+     float: left;
+     margin-top: 30px;
+}
+.container-b1box2{
+     width: 44.87%;
+     max-width: 534px;
+     float: left;
+     margin-top: 30px;
+}
+.container-line{
+     width: 7.54%;
      float: left;
 }
-table, th, td,tr {
+table, th, td,tr{
     border: 1px ;
 }
-table{
-    width:90.46%;
+table.dashboardviajes-disponibles,
+table.dashbpardInicio{
+    width:96.46%;
     border-style: solid;
     border-color: #1178AF;
+    margin-top: 8px;
 }
 thead th{
+    height: 30px;
     background-color: #1178AF;
-    border-bottom: 11px solid #21B7C7;
+    border-bottom: 14px solid #21B7C7;
 }
 tr{
     width: 90.46%;
-     border-bottom-style:  dashed;
+}
+td{
+    border-bottom-style:  dashed;
     border-color: #EAEAEA;
     border-width: 2px;
-    
+    padding:0;
+    height: 37px;   
 }
+td.botonIrViaje{
+   width: 57px;
+   padding-right: 41px;
 
-td{
-   
 }
-
 table.dashboardInicio tr:last-child td{
     border-bottom: 0;
 }
@@ -91,11 +112,219 @@ table.dashboardInicio tr:last-child td{
     background-color: #21B7C7;
     color:#ffffff; 
 } 
-
-.container-line{
+.container-table{
+    width: 92.46%;
+     max-width: 595px;
+     float: left;
+     height: 100%
+ }
+ .container-table.viaje{
+    width: 100%;
+    max-width: 735px;
+    float: left;
+}
+.container-line1{
+    width:15px;
+    float: right;
+    background-color: #21B7C7;
+    height: 4px;   
+    margin-top: 157px;
+ }
+.container-line2{
+    width: 4px;
+    height: 250px;
+    float: right;
+    background-color: #21B7C7;
+    margin-top: 36px;
+    margin-right: 12px;
+}
+.container-lineBox{
+    width: 2.0%;
+    float: left;
+    margin-top: -24px;
+    display: block;
+    margin-left: 11px;
+}
+/**    Tanque *     **/
+.contenedor-tanques{
+    width:94.53%;
+    float:left;
+}
+.contenedor-tanques .tanque {
+    width: 32%;
+    margin: 1% 1% 1% 0;
+    float: left;
+    border-radius: 9px;
+    text-align: center;
+    border: 0.1em solid #1178AF;
+    background-color: #1178AF;
 
 }
+.contenedor-tanques .tanque:nth-child(3n) {
+    margin-right: 0;
+}
+.titulotanque{
+    color:#FFFFFF;
+    margin: 0;
+    background-color:  #1178AF;
 
+}
+.tanque > div{
+    background-color: #ffffff;
+    text-align: right;
+    border-radius: 0 0 9px 9px; 
+    float: left;
+    width: 100%;
+}
+.tanque > div > .var-oz{
+    background-color: #ffffff;
+    border-radius: 0 0 0 9px;
+    height: 52px;
+    width: 32%;
+    float: left;
+    margin-right: 1%;
 
+}
+.tanque > div > .var-ph{
+    background-color: #ffffff;
+    height: 52px;
+    width: 32%;
+    float: left;
+    margin-right: 1%;
+}
+.tanque > div > .var-tm{
+    background-color: #ffffff;
+    border-radius: 0 0 9px 0;
+    height: 52px;
+    width: 32%;
+    float: left;
+    margin-right: 1%;
+}
+.txt{
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+    height: 100%;
+    line-height: 52px;
+}
 
+/* Contenedores de ubicación*/
 
+.container-boxSeparador1{
+    background-color:#F2F2F2;
+    width: 100%;
+    max-width:1200px;
+    height:50px;
+    text-align: center;
+}
+.container-boxUbicacion{
+    width:100%;
+    height: 50%;
+}
+.container-boxSeparador2{
+    background-color:#F2F2F2;
+    width: 100%;
+    max-width:1200px;
+    height:25px;
+    text-align: center;
+}
+
+div.iconCamion{
+  background-image: url('../../images/dashboard/iconoCamion.png');
+  background-repeat:no-repeat;
+  float:left;
+  width:24px;height:18px;
+  margin-left: 13px;
+}
+div.iconChofer{
+  background-image: url("../../images/dashboard/iconoChofer.png");
+  background-repeat:no-repeat;
+  float:left;  width:24px;height:18px;
+  margin-right:13px;
+}
+div.iconPersonal{
+   background-image: url("../../images/dashboard/iconoPersonal.png");
+   background-repeat:no-repeat;      width: 12px;
+   height: 18px;
+   float: left;
+   margin-right: 13px;
+
+}
+.dashboardInicio tbody tr:hover td div.iconChofer,
+.dashboardInicio tbody tr.selected td div.iconChofer  {
+    background-image: url("../../images/dashboard/iconoChoferBlanco.png");
+}
+.dashboardInicio tbody tr:hover td div.iconCamion,
+.dashboardInicio tbody tr.selected td div.iconCamion  {
+    background-image: url("../../images/dashboard/iconoCamionBlanco.png");
+}
+.dashboardInicio tbody tr:hover td div.iconPersonal,
+.dashboardInicio tbody tr.selected td div.iconPersonal  {
+    background-image: url("../../images/dashboard/iconoPersonalBlanco.png");
+}
+.icon-oz{
+    background-image: url("../../images/dashboard/iconoOxigeno.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 100%;
+    float: left;
+    margin-left: 7px;
+
+}
+.icon-ph{
+    background-image: url("../../images/dashboard/iconoPH.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 100%;
+    background-size: 100%;
+    float: left;
+}
+.icon-tm{
+    background-image: url("../../images/dashboard/iconoTemp.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 11px;
+    height: 100%;
+    float: left;
+}
+.contenedor-tanques:after,
+.contenedor-tanques *:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+.divIcon{
+    width: 20px;
+    height: 14px;
+    float: left;
+    margin-left: 9px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+.divIcon:nth-child(2n){
+     margin-left: 0;
+}
+.divText{
+    width: 80%;
+    height: 100%;
+    float: right;
+    margin-left: 9px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+.botonIr{
+    width: 57px;
+    height: 31px;
+    background: #0077b0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+ }    
+ .boxTitulos{
+    width:100%;
+
+ }
