@@ -2,6 +2,10 @@
 /* @var $this CepaController */
 /* @var $model Cepa */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Cepas'=>array('index'),
 	$model->id,

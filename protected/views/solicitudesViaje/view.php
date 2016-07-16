@@ -2,6 +2,10 @@
 /* @var $this SolicitudesViajeController */
 /* @var $model SolicitudesViaje */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Solicitudes Viajes'=>array('index'),
 	$model->id,

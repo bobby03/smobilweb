@@ -2,6 +2,10 @@
 /* @var $this PersonalController */
 /* @var $model Personal */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Personals'=>array('index'),
 	$model->id,

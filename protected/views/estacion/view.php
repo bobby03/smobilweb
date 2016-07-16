@@ -6,6 +6,11 @@ $this->breadcrumbs=array(
 	'Estacions'=>array('index'),
 	$model->id,
 );
+
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+ 
 ?>
 
 <h1>View Estacion #<?php echo $model->id; ?></h1>
@@ -24,3 +29,4 @@ $this->breadcrumbs=array(
 		'activo',
 	),
 )); ?>
+

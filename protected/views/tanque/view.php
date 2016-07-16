@@ -2,6 +2,10 @@
 /* @var $this TanqueController */
 /* @var $model Tanque */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Tanques'=>array('index'),
 	$model->id,

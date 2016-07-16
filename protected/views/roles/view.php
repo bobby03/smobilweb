@@ -2,6 +2,10 @@
 /* @var $this RolesController */
 /* @var $model Roles */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Roles'=>array('index'),
 	$model->id,
