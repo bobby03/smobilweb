@@ -12,7 +12,7 @@
 )); ?>
 
 	
-     <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchCepa(),array('empty' =>'Selecciona Búsqueda')); ?>
+     <?php echo CHtml::dropDownList('searchDropDown', 'id', Cepa::model()->getSearchCepa(),array('empty' =>'Selecciona Búsqueda')); ?>
 
 	<div class="row hide" data-id='1'>
 		<label>Buscar:</label>

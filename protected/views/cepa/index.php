@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-        <a href="cepa/create">
+        <a href="cepa/create?especie=<?php echo $id;?>">
             <div class="agregar cepa"></div>
         </a>
     </div><!-- search-form -->
@@ -26,7 +26,7 @@ $this->breadcrumbs=array(
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'cepa',
-            'dataProvider'=>$model->search(),
+            'dataProvider'=>$model->search($id),
             'summaryText'=> '',
             'columns'=>$model->adminSearch()
         ));

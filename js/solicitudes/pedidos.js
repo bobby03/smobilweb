@@ -71,8 +71,8 @@ $(document).ready(function()
                             <div class="pedidoInfo">'+direccion+'</div>\n\
                         </div>\n\
                         <div class="botonesPedido">\n\
-                            <div class="editarPedido" data-id="'+tot+'">E</div>\n\
-                            <div class="borrarPedido">X</div>\n\
+                            <div class="editarPedido" data-id="'+tot+'"></div>\n\
+                            <div class="borrarPedido"></div>\n\
                         </div>\n\
                     </div>';
         $('.pedidosWraper').append(html);

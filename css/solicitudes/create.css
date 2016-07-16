@@ -211,6 +211,14 @@ div.botonesPedido
     background-repeat: no-repeat;
     cursor: pointer;
 }
+.editarPedido
+{
+    background-image: url(./../../images/solicitud/editar.png)
+}
+.borrarPedido
+{
+    background-image: url(./../../images/solicitud/borrar.png)
+}
 div.botones
 {
     margin-top: 15px;
@@ -272,9 +280,20 @@ div.viajeLoc, div.viajeSel
     width: 12%;
     margin-left: 15px;
     height: 30px;
-    background-color: #0077B0;
+    /*background-color: #0077B0;*/
     border-radius: 5px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
+}
+div.viajeLoc
+{
+    background-image: url(./../../images/solicitud/botonUbicacion.png);
+}
+div.viajeSel
+{
+    background-image: url(./../../images/solicitud/botonAgregar.png);
 }
 div.crearViaje input[type="submit"]
 {
