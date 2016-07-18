@@ -1346,7 +1346,7 @@ eof;
             }
             $return['codigo'] =$return['codigo'].<<<eof
                             <div class="grafScroll hide" data-rece="4">
-                                <canvas id="historialTanque4" width="$width" height="405"></canvas>
+                                <canvas id="historialTanque4" width="$width"height="405"></canvas>
                             </div>
 eof;
             $return['cond'] =
@@ -1491,18 +1491,13 @@ eof;
                 case 'cond':    $nombre='Conductividad'; break;
                 case 'orp':     $nombre='Potencial óxido reducción'; break;
             }
-            $return['codigo'] = <<<eof
-                <div class="historial parametro">
-                    <div class="titulo">Historial de parámetro</div>
-                    <div class="subtitulo">$nombre</div>
-                    <div class="historialGraficasWraper">
-                        <div class="graficasWraper">
-eof;
             $cont = 0;
             $colors = ['#4363AE','#8DC63F','#7F3F98','#FF5BB2','#27AAE1','#ED1C24','#8B5E3C','#FF7236'];
             $datasets = [];
             $flag = true;
-            $menu = '';
+            $menu = <<<eof
+                <div class="menuSeccion" data-tanque="-1">Todos</div>
+eof;
             $i = 0;
             foreach($tanques as $info)
             {
@@ -1532,23 +1527,67 @@ eof;
                     'pointHoverRadius'      => 10,
                     'data'                  => $datas,
                 ];
+                $return['graf'.$i]=
+                array
+                (
+                    'type' => 'line',
+                    'data'=>array
+                    (
+                        'labels'    => $labels,
+                        'datasets'  => [$datasets[$i]]
+                    ),
+                    'options' => array
+                    (
+                        'animation'             => false,
+                        'fontSize'              => 20,
+                        'responsive'            => false,
+                        'legend'                => array('display' => false),
+                        'scales'                => array
+                        (
+                            'yAxes' => 
+                            [array(
+                                'ticks' => array
+                                (
+                                    'min'       => 0,
+                                )
+                            )]
+                        )
+                    )
+                );
                 $flag = false;
                 $menu = $menu.<<<eof
-                    <div class="menuSeccion">
-                        <div></div><div class="menuOpcion" data-tanque="{$info['id_tanque']}" style="color:{$colors[$i]}">{$info['nombre']}</div>
-                    </div>
+                    <div class="menuSeccion" data-tanque="$i">{$info['nombre']}</div>
 eof;
                 $i++;
             }
+            $return['total'] = $i;
+            $return['codigo'] = <<<eof
+                <div class="historial parametro">
+                    <div class="titulo">Historial de parámetro</div>
+                    <div class="subtitulo">$nombre</div>
+                    <div class="historialGraficasWraper">
+                    <div class="menuTanques">
+                        <div class="menuParametros">$menu</div>
+                    </div>
+                        <div class="graficasWraper">
+eof;
             $width = ($cont * 98)+40;
             if($width < 1032)
                 $width = 1032;
             $return['codigo'] =$return['codigo'].<<<eof
-                            <div class="grafScroll">
-                                <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
-                            </div>
+                <div class="grafScroll" data-parame="-1">
+                    <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
+                </div>
 eof;
-            $return['grafica'] =
+            for($j = 0; $j < $i; $j++)
+            {
+                $return['codigo'] =$return['codigo'].<<<eof
+                    <div class="grafScroll hide" data-parame="$j">
+                        <canvas id="parametrosGrafica$j" width="$width" height="405"></canvas>
+                    </div>
+eof;
+            }
+            $return['graficaTodos'] =
             array
             (
                 'type' => 'line',
@@ -1575,15 +1614,11 @@ eof;
                     )
                 )
             );
-            $return['codigo'] = $return['codigo'].
-                    '   </div>
-                        <div class="menuTanques">
-                            <div class="menuArriba">
-                                <div class="menuTitulo">Seleccionar tanques:</div>
-                                <div class="menuTodos"><div></div>Ver todos</div>
-                            </div>
-                            <div class="menuParametros">'.$menu.'</div>
-                        </div>
+//                            <div class="menuArriba">
+//                                <div class="menuTitulo">Seleccionar tanques:</div>
+//                                <div class="menuTodos"><div></div>Ver todos</div>
+//                            </div>
+            $return['codigo'] = $return['codigo'].'
                     </div>
                 </div>';
             echo json_encode($return);

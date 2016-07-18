@@ -390,23 +390,26 @@ div.menuTodos
     width: 50%;
     font-size: 18px;
 }
-.menuArriba
+.menuParametros
 {
+    background-color: #0077B0;
     margin-bottom: 23px;
 }
 .menuSeccion
 {
     font-size: 18px;
     float: left;
-    width: 20%;
+    width: 110px;
     cursor: pointer;
-    margin-bottom: 16px;
+    line-height: 30px;
+    color: #FFFFFF;
+    text-align: center;
 }
-.menuSeccion div
+.menuSeccion.selected
 {
-    float: left;
+    background-color: #09B7C9;
 }
-.menuSeccion div:first-child
+/*.menuSeccion div:first-child
 {
     width: 0;
     height: 0;
@@ -415,8 +418,8 @@ div.menuTodos
     position: relative;
     top: -1px;
     margin-right: 10px;
-}
-.menuSeccion div:first-child:after
+}*/
+/*.menuSeccion div:first-child:after
 {
     content: '';
     position: absolute;
@@ -490,7 +493,7 @@ div.menuTodos
 .menuSeccion:nth-child(8) div:first-child:after
 {
     border-top-color: #FF7236;
-}
+}*/
 div.mapaPopup
 {
     width: 1184px;
@@ -577,7 +580,6 @@ div.mapaPopup .titulo
 .menuParametros:after,
 .menuTanques:after,
 .menuArriba:after,
-.menuSeccion:after,
 .entregasPopup:after
 {
     display: block;

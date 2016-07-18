@@ -2691,3 +2691,343 @@ Stack trace:
 REQUEST_URI=/SMobilWeb/index.php/viajes/GetParametroGrafica?viaje=26&flag=5
 HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/26
 ---
+2016/07/18 11:33:02 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '40', '1', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=40&flag=1&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:02 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '40', '3', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=40&flag=3&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:02 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '40', '2', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=40&flag=2&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:02 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '40', '4', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=40&flag=4&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 40)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '40', '5', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=40&flag=5&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '41', '1', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=41&flag=1&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '41', '2', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=41&flag=2&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '41', '3', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=41&flag=3&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '41', '4', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=41&flag=4&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
+2016/07/18 11:33:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (499)
+in C:\xampp\htdocs\SmobilWeb\index.php (13)
+2016/07/18 11:33:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.uploadtempa' doesn't exist. The SQL statement executed was: SELECT `esc`.`id`, `esc`.`fecha`, `esc`.`hora`, `esc`.`ubicacion`, `upT`.`ox`, `upT`.`id_tanque`, `upT`.`ph`, `upT`.`temp`, `upT`.`cond`, `upT`.`orp`, `upT`.`id`
+FROM `escalon_viaje_ubicacion` `esc`
+JOIN `uploadTempa` `upT` ON upT.id_escalon_viaje_ubicacion = esc.id
+WHERE (esc.id_viaje = 33) AND (upT.id_tanque = 41)
+ORDER BY `upT`.`id` DESC LIMIT 1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(499): CDbCommand->queryRow()
+#2 [internal function]: ViajesController->actionGetTanqueGrafica('33', '41', '5', 'true')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanqueGrafic...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/SMobilWeb/index.php/viajes/GetTanqueGrafica?viaje=33&id=41&flag=5&flag2=true
+HTTP_REFERER=http://localhost/SMobilWeb/index.php/viajes/33
+---
