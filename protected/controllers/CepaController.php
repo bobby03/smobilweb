@@ -101,18 +101,19 @@ class CepaController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($especie)
 	{
 		$model=new Cepa;
-
+                $model->id_especie = $especie;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Cepa']))
 		{
-			$model->attributes=$_POST['Cepa'];
-			if($model->save())
-				$this->redirect(array('index'));
+                    $model->attributes=$_POST['Cepa'];
+                    $model->id_especie = $especie;
+                    if($model->save())
+                        $this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -164,14 +165,15 @@ class CepaController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($id)
 	{
-            $model=new Cepa('search');
+            $model=new Cepa("search($id)");
             $model->unsetAttributes(); 
             if(isset($_GET['Cepa']))
                     $model->attributes=$_GET['Cepa'];
             $this->render('index',array(
                     'model'=>$model,
+                    'id' => $id
             ));
 	}
 

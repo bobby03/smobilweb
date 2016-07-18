@@ -8,10 +8,6 @@ $cs->registerScriptFile($baseUrl.'/js/search.js');
 $this->breadcrumbs=array(
 	'Estacions',
 );
-
-$this->menu=array(
-	array('label'=>'Create Estacion', 'url'=>array('create'))
-);
 ?>
 
 <h1>Estaciones</h1>
@@ -21,6 +17,9 @@ $this->menu=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
+    <a href="estacion/create">
+        <div class="agregar estacion"></div>
+    </a>
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array

@@ -39,7 +39,7 @@
 				</div>
 
 
-<<<<<<< HEAD
+
 						<div class="row hide" data-tipo="1">
 											<label class= "letreros">Cliente</label>
 											<div class="form-cMedium">
@@ -53,13 +53,13 @@
 											<?php echo $form->error($model,'id_usr'); ?>
 										</div>
 		</div>
-=======
+<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'pwd'); ?>
 		<?php echo $form->passwordField($model,'pwd',array('size'=>35,'maxlength'=>35)); ?>
 		<?php echo $form->error($model,'pwd'); ?>
 	</div>
->>>>>>> 3b2bee3526ec78a0050746bb3cdd7a602c0ed4d0
+-->
 
 
 		 <div class="form-cRight">

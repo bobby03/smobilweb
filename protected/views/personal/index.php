@@ -6,21 +6,20 @@
     $this->breadcrumbs=array(
         'Personals',
     );
-
-    $this->menu=array(
-        array('label'=>'Create Personal', 'url'=>array('create'))
-    );
 ?>
 
 
 <h1>Personal</h1>
 
 <div class="principal">
-<div class="search-form" >
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+    <div class="search-form" >
+    <?php $this->renderPartial('_search',array(
+            'model'=>$model,
+    )); ?>
+    <a href="personal/create">
+        <div class="agregar personal"></div>
+    </a>
+    </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (

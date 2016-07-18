@@ -97,7 +97,7 @@ class Cepa extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -116,6 +116,7 @@ class Cepa extends CActiveRecord
 		$criteria->compare('cond_max',$this->cond_max);
 		$criteria->compare('orp_min',$this->orp_min);
 		$criteria->compare('orp_max',$this->orp_max);
+                $criteria->addCondition("id_especie = $id");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -150,6 +151,11 @@ eof;
         {
             $cepa = Cepa::model()->findByPk($id);
             return $cepa->nombre_cepa;
+        }
+        public function getCepa1($id)
+        {
+            $cepa = Cepa::model()->findByPk($id);
+            return $cepa;
         }
     public function adminSearch()
     {

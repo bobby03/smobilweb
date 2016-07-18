@@ -61,25 +61,27 @@
                 <?php endif;?>
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
                 <span class="css-select-moz">
-                    <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select'));?>
+                    <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
                     <?php echo $form->error($model,'id_responsable'); ?>
                 </span>
             </div>
-            <div class="row">
-                <label>Técnico(s)</label>
-                <span class="css-select-moz">
-                    <?php echo $form->dropDownList($personal,'id_personal[1][tecnico]', $personal->getpersonal(2), array('class'=>'css-select','multiple'=>'true')); ?>
-                    <?php echo $form->error($model,'id_personal[1][tecnico]'); ?>
-                </span>
-            </div>
-            <div class="row">
-                <label>Chofer(es)</label>
-                <span class="css-select-moz">
-                    <?php echo $form->dropDownList($personal,'id_personal[1][chofer]', $personal->getpersonal(1), array('class'=>'css-select','multiple'=>'true')); ?>
-                    <?php echo $form->error($model,'id_personal[1][chofer]'); ?>
-                </span>
-                </span>
-            </div>
+            <?php if($model->isNewRecord):?>
+                <div class="row">
+                    <label>Técnico(s)</label>
+                    <span class="css-select-moz">
+                        <?php echo $form->dropDownList($personal,'id_personal[1][tecnico]', $personal->getpersonal(2), array('class'=>'css-select','multiple'=>'true')); ?>
+                        <?php echo $form->error($model,'id_personal[1][tecnico]'); ?>
+                    </span>
+                </div>
+                <div class="row">
+                    <label>Chofer(es)</label>
+                    <span class="css-select-moz">
+                        <?php echo $form->dropDownList($personal,'id_personal[1][chofer]', $personal->getpersonal(1), array('class'=>'css-select','multiple'=>'true')); ?>
+                        <?php echo $form->error($model,'id_personal[1][chofer]'); ?>
+                    </span>
+                    </span>
+                </div>
+            <?php endif;?>
         </div>
         <div class="formContainer1">
             <div class="row">
@@ -92,7 +94,7 @@
                                echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), 
                                     array
                                     (
-                                        'disabled'=>'disabled',
+//                                        'disabled'=>'disabled',
                                         'class'=>'css-select',
                                         'value'=>$model->id_estacion
                                     ));
@@ -174,14 +176,23 @@
     </div>-->
     <div class="siguiente dos">Siguiente</div>
 </div>
-    <div class="tab hide" data-tab="3">
+    <div class="tab hide" data-tab="3"> 
 <!--        <div class="contenedorClientes">
             <?php // print_r($pedidos);?>
             <?php // $this->getClientes($pedidos);?>
         </div>-->
-        <div class="row buttons">
-            <?php echo CHtml::submitButton('Finalizar'); ?>
-        </div>
+        <?php 
+        $o=1;
+        foreach($pedidos['pedido'] as $data){
+        for($i=1;$i<=$data['tanques'];$i++){
+            
+            include 'xviaje.php';
+            $o++;
+        }
+    }
+
+        ?>
+
     </div>
 <?php $this->endWidget(); ?>
 

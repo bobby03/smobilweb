@@ -5,8 +5,11 @@ $(document).ready(function()
     var loc = window.location.href;
     var index2 = loc.lastIndexOf('/');
     var viaje = loc.substring(index2+1);
+    var ubi;
     var myDir = {lat: 31.870803236698222, lng: -116.66807770729065};
     var mapDiv = $('#map')[0];
+    var total = 1;
+    var delay = 250;
     var map = new google.maps.Map(mapDiv, 
     {
         center: myDir,
@@ -15,7 +18,7 @@ $(document).ready(function()
         draggable: false,
         zoomControl: false,
         scrollwheel: false,
-        disableDoubleClickZoom: false
+        disableDoubleClickZoom: true
     });
     graficarPorTanque();
     graficarPorParametro();
@@ -26,27 +29,181 @@ $(document).ready(function()
         $.ajax(
         {
             type: 'GET',
-            url: 'GetAlertas',
+            url: 'GetAlertasTanque',
             dataType: 'JSON', 
             data:
             {
                 viaje: viaje,
                 id: id
             },
-            success: function(data2)
+            success: function(data)
             {
                 $.colorbox(
                 {
-                    html: html,
+                    html: data,
                     onComplete: function()
                     {
-
+                        $.colorbox.resize();
+                        $('.tituloAlerta').text('Alertas: '+nombre);
+                        $('.tableRow > div:nth-child(5n)').each(function()
+                        {
+                            var texto = $(this).text();
+                            var div = $(this);
+                            reverseGeocoding(texto, 2, div);
+                        });
+                        $('.tableRow > div').each(function()
+                        {
+                            var h = $(this).height();
+                            var height = (50-h)/2;
+                            $(this).css('padding',height+'px 0');
+                        });
+                        
                     }
                 });
             },
             error: function(a,b,c)
             {
-                console.log(a, b, c)
+                console.log(a, b, c);
+            }
+        });
+    });
+    $('[data-id="2"] .boton.adve').click(function()
+    {
+        total = 1;
+        delay = 250;
+        var id = $(this).data('ale');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetAlertasParametro',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                $.colorbox(
+                {
+                    html: data,
+                    onComplete: function()
+                    {
+                        $.colorbox.resize();
+                        $('.tableRow > div:nth-child(5n)').each(function()
+                        {
+                            if(total <= 5)
+                            {
+                                var texto = $(this).text();
+                                var div = $(this);
+//                                setTimeout(reverseGeocoding, delay, texto, 2, div);
+                                reverseGeocoding(texto, 2, div);
+                                delay = delay + 250;
+                            }
+                            else
+                            {
+                                $(this).parent().addClass('hide');
+                            }
+                            total ++;
+                        });
+                        $('.tableRow > div').each(function()
+                        {
+                            var h = $(this).height();
+                            var height = (50-h)/2;
+                            $(this).css('padding',height+'px 0');
+                        });
+                        
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
+    $('[data-id="1"] .boton.graf').click(function()
+    {
+        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
+        var id = $(this).data('graf');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetHistorialTanque',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                console.log(data);
+                $.colorbox(
+                {
+                    html: data.codigo,
+                    onComplete: function()
+                    {
+                        $('.historial .titulo').text('Historial '+nombre);
+                        var ctx1 = $('#historialTanque1');
+                        var myChart1 = new Chart(ctx1, data.od);
+                        var ctx2 = $('#historialTanque2');
+                        var myChart2 = new Chart(ctx2, data.temp);
+                        var ctx3 = $('#historialTanque3');
+                        var myChart3 = new Chart(ctx3, data.ph);
+                        var ctx4 = $('#historialTanque4');
+                        var myChart4 = new Chart(ctx4, data.cond);
+                        var ctx5 = $('#historialTanque5');
+                        var myChart5 = new Chart(ctx5, data.orp);
+                        $.colorbox.resize();
+                        $('[data-para]').click(function()
+                        {
+                            var id = $(this).data('para');
+                            $('[data-para]').removeClass('selected');
+                            $(this).addClass('selected');
+                            $('.grafScroll').addClass('hide');
+                            $('.grafScroll[data-rece="'+id+'"]').removeClass('hide');
+                        });
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
+    $('[data-id="2"] .boton.graf').click(function()
+    {
+        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
+        var id = $(this).data('ale');
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetHistorialParametro',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id
+            },
+            success: function(data)
+            {
+                console.log(data);
+                $.colorbox(
+                {
+                    html: data.codigo,
+                    onComplete: function()
+                    {
+                        var ctx1 = $('#parametrosGrafica');
+                        var myChart1 = new Chart(ctx1, data.grafica);
+                        
+                    }
+                });
+            },
+            error: function(a,b,c)
+            {
+                console.log(a, b, c);
             }
         });
     });
@@ -81,7 +238,7 @@ $(document).ready(function()
                         {
                             var tiempo = data2.tiempo;
                             var datos = data2.viaje;
-                            var ubi = datos.ubicacion;
+                            ubi = datos.ubicacion;
                             var index = ubi.indexOf(',');
                             var lat = parseFloat(ubi.substring(1,index));
                             var index2 = ubi.length;
@@ -96,7 +253,7 @@ $(document).ready(function()
                             map.setCenter(ubi);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
-                            reverseGeocoding(datos.ubicacion);
+                            reverseGeocoding(datos.ubicacion, 1, false);
                             $('.datosWraper span.distancia').text(data2.distancia);
                             flag2 = false;
                         }
@@ -148,7 +305,7 @@ $(document).ready(function()
             }); 
         });
     }
-    function reverseGeocoding(direccion)
+    function reverseGeocoding(direccion, flag, div)
     {
         var geocoder = new google.maps.Geocoder;
         var infowindow = new google.maps.InfoWindow;
@@ -163,14 +320,64 @@ $(document).ready(function()
                 if (results[1]) 
                 {
                     infowindow.setContent(results[1].formatted_address);
-                    $('.datosWraper > div:last-child span').text(infowindow.content);
+                    if(flag == 1)
+                        $('.datosWraper > div:last-child span').text(infowindow.content);
+                    if(flag == 2)
+                        div.text(infowindow.content);
                 } 
                 else 
                     window.alert('No results found');
               
             } 
-            else 
-                window.alert('Geocoder failed due to: ' + status);
+            else
+            {
+                reverseGeocoding(direccion, flag, div);
+//                window.alert('Geocoder failed due to: ' + status);
+            }
         });
     }
+    $('#map').click(function()
+    {
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetMapa',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje
+            },
+            success: function(data)
+            {
+                $.colorbox(
+                {
+                    html:data,
+                    onComplete: function()
+                    {
+                        var mapDiv2 = $('#mapa2')[0];
+                        var map2 = new google.maps.Map(mapDiv2, 
+                        {
+                            center: ubi,
+                            zoom: 15,
+                            disableDefaultUI: true,
+                            draggable: false,
+                            zoomControl: false,
+                            scrollwheel: false,
+                            disableDoubleClickZoom: true
+                        });
+                        var marker = new google.maps.Marker(
+                        {        
+                            position: ubi,
+                            map: map2
+                        });
+                    }
+                });
+                
+            },
+            error: function(a, b, c)
+            {
+                console.log(a, b, c);
+            }
+        });
+    });
 });

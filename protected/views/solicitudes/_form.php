@@ -166,16 +166,17 @@ eof;
                                     if($data->tanques > 1)
                                         $tanque = 'Tanques';
                                     elseif($data->tanques == 1)
-                                        $tanques = 'Tanque';
+                                        $tanque = 'Tanque';
                                 ?>
                                 <div class="pedidoInfo"><?php echo $tanque;?>: <?php echo $data->tanques;?></div>
                                 <div class="pedidoInfo"><?php echo ClientesDomicilio::model()->findByPk($data->id_direccion)->domicilio;?></div>
                             </div>
                             <div class="botonesPedido">
-                                <div class="editarPedido" data-id="<?php echo $i;?>">E</div>
-                                <div class="borrarPedido">X</div>
+                                <div class="editarPedido" data-id="<?php echo $i;?>"></div>
+                                <div class="borrarPedido"></div>
                             </div>
                         </div>
+                    <?php $i++;?>
                     <?php endforeach;?>
                     <?php endif;?>
                 </div>

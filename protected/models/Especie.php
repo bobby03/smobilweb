@@ -131,7 +131,16 @@ class Especie extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {cepa}</div>',
+                    'buttons' => array
+                    (
+                        'cepa' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/IconoCepa.svg',
+                            'options'=>array('id'=>'cepa','title'=>'', 'class' => 'cepa'),
+                            'url' => 'Yii::app()->createUrl("cepa?id=$data->id")',
+                        )
+                    )
 		)
             );
         }

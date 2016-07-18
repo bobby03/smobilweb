@@ -10,12 +10,7 @@
 $this->breadcrumbs=array(
 	'Clientes',
 );
-
-$this->menu=array(
-	array('label'=>'Create Clientes', 'url'=>array('create'))
-);
 ?>
-
 <h1>Clientes</h1>
 
 <div class="principal">
@@ -23,6 +18,9 @@ $this->menu=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
+        <a href="clientes/create">
+            <div class="agregar clientes"></div>
+        </a>
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array(

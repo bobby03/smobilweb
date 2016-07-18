@@ -2,17 +2,13 @@
 /* @var $this ClientesController */
 /* @var $model Clientes */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Clientes'=>array('index'),
 	$model->id,
-);
-
-$this->menu=array(
-	array('label'=>'List Clientes', 'url'=>array('index')),
-	array('label'=>'Create Clientes', 'url'=>array('create')),
-	array('label'=>'Update Clientes', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Clientes', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Clientes', 'url'=>array('admin')),
 );
 ?>
 

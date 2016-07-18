@@ -2,17 +2,13 @@
 /* @var $this CepaController */
 /* @var $model Cepa */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Cepas'=>array('index'),
 	$model->id,
-);
-
-$this->menu=array(
-	array('label'=>'List Cepa', 'url'=>array('index')),
-	array('label'=>'Create Cepa', 'url'=>array('create')),
-	array('label'=>'Update Cepa', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Cepa', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Cepa', 'url'=>array('admin')),
 );
 ?>
 

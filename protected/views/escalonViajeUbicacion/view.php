@@ -2,6 +2,10 @@
 /* @var $this EscalonViajeUbicacionController */
 /* @var $model EscalonViajeUbicacion */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Escalon Viaje Ubicacions'=>array('index'),
 	$model->id,

@@ -1,3 +1,106 @@
+/*
+ * FORM ICONS
+ */
+#Viajes_id_responsable{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+.row.success #Viajes_id_responsable{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_success.png');
+}
+.row.error #Viajes_id_responsable{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
+}
+
+
+
+
+#SolicitudesViaje_id_personal_1_tecnico{
+  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+.row.success #Viajes_fecha_salida,
+.row.success #Viajes_hora_salida
+{
+  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+.row.error #Viajes_fecha_salida,
+.row.error #Viajes_hora_salida
+{
+  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
+}
+
+
+.row.error #Viajes_id_estacion{
+  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_error.png');
+}
+
+.row.success #Viajes_id_estacion{
+  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_success.png');
+}
+
+#Viajes_id_estacion{
+  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+#Viajes_fecha_salida, #Viajes_hora_salida{
+  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen
+{
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/usuarios/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left:0;
+}
+
+
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen.success,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.success
+{
+
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/form/bg_success.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+
+}
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen.error,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error
+{
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/form/bg_error.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
 div.pedido
 {
     float: left;
@@ -8,6 +111,10 @@ div.pedido
     border-radius: 5px;
     overflow: hidden;
 }
+div.form
+{
+    margin-top: 60px !important;
+}
 div.tituloEspecie
 {
     background-color: #0077B0;
@@ -17,7 +124,7 @@ div.tituloEspecie
 }
 div.menuTabs
 {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     position: relative;
 }
 div.nombreTabs
@@ -64,12 +171,13 @@ div.pedidoWraper div span
 }
 div.tab[data-tab="1"] div.formContainer1
 {
-    width: 50%;
+    width: 47%;
     float: left;
 }
 .siguiente.uno
 {
     margin-right: 108px;
+    margin-top: 20px;
 }
 .siguiente.dos
 {
@@ -179,13 +287,118 @@ div.tab:after
 
 div.chosen-container.error{
         border: 2px solid #c00 !important;
-        border-left: 30px solid #c00 !important;
+      /*border-left: 30px solid #c00 !important;*/
+        background-color: #FEE !important;
+}
 
+div.chosen-container.error > ul{
+        background-color: #FEE !important;
 }
 
 div.chosen-container.success{
-    background: #E6EFC2 !important;
+    background-color: #E6EFC2 !important;
     border-color: #C6D880 !important;
 
 }
 
+div.chosen-container.success  > ul{
+    background-color: #E6EFC2 !important;
+}
+#contV3{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 3px solid #49DBD0;
+    margin:auto;
+    width:60%;
+    font-family: 'Roboto-Regular';
+    color:black;
+    font-weight: bold;
+    float: left;
+}
+.izq{
+    float: right;
+    width: 10%;
+    position: relative;
+    left:50px;
+    top:-45px;
+}
+#vt1,#vt2{
+    font-family: 'Roboto-Regular';
+    line-height: 45px;
+    background-color: #0077b0;
+    border:0px solid white;
+    height: 45px;
+    color: white;
+    padding:0px;
+    margin:0px;
+    font-family: 'Roboto-Regular';
+    font-size: 20px;
+    padding-left:30px;
+    vertical-align: middle;
+}
+#vt1{
+    border-radius: 7px 7px 0px 0px;
+-moz-border-radius: 7px 7px 0px 0px;
+-webkit-border-radius: 7px 7px 0px 0px;
+}
+#vt2{
+}
+#vc1,#vc2{
+    height:200px;
+    margin-left: 30px;
+}
+#vc1 p{margin-bottom: 1em;}
+#vc2 {
+    margin-bottom: 1em;
+    margin-top: 20px;
+}
+.vresalta{
+    font-size: 14px;
+    color:#0077b0;
+}
+#vtitulo{
+    color:#0077b0;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.vbox {
+    overflow: hidden;
+}
+.boxCont {
+    overflow: hidden;
+    width: 100%;
+    margin-left:20%;
+    margin-bottom: 30px;
+}
+
+.content {
+
+    padding: 0 20px;
+    text-align: justify;
+}
+
+.left {
+    float: left;
+    width: 40%;
+}
+
+.left .content {
+}
+
+.right {
+    margin-top: 50px;
+    float: right;
+    width: 40%;
+}
+#vcont th{
+    width:20%;
+}
+.pc, .pf{
+    width: 20%;
+    color:#0077b0;
+}
+#vcont{
+    width: 70% !important;
+}

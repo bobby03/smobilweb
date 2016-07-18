@@ -24,9 +24,12 @@
         ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php //echo $form->errorSummary($model); ?>
+	<div class="row buttons">
+            <div class="addTanque">Agregar tanque</div>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+	</div>
         <div class="allTanques">
             <?php $i = 1;?>
             <?php if(count($model->status)>0):?>
@@ -53,7 +56,6 @@
                             <?php echo $form->dropDownList($model,"status[$i][activo]", Tanque::model()->getAllActivo(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
                             <?php echo $form->error($model,'activo'); ?>
                     </div>
-                    <div class="editarTanque">Editar</div>
                     <?php $i++;?>
                 </div>
             <?php endforeach;?>
@@ -73,10 +75,6 @@
             <?php endif;?>
 	</div>
 
-	<div class="row buttons">
-            <div class="addTanque">Agregar tanque</div>
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
 
 <?php $this->endWidget(); ?>
 

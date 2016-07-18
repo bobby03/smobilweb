@@ -16,14 +16,6 @@
             'Viajes'=>array('index'),
             $model->id,
     );
-
-//    $this->menu=array(
-//	array('label'=>'List Viajes', 'url'=>array('index')),
-//	array('label'=>'Create Viajes', 'url'=>array('create')),
-//	array('label'=>'Update Viajes', 'url'=>array('update', 'id'=>$model->id)),
-//	array('label'=>'Delete Viajes', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-//	array('label'=>'Manage Viajes', 'url'=>array('admin')),
-//);
 ?>
 <?php if($model->status == 1):?>
 <h1>Detalles de viaje #<?php echo $model->id; ?></h1>
@@ -113,7 +105,7 @@
                             <div><?php echo $data['codigo'];?></div>
                         </div>
                         <div class="derecha">
-                            <div class="boton graf"></div>
+                            <div class="boton graf" data-graf="<?php echo $data['id'];?>"></div>
                             <div class="boton adve" data-ale="<?php echo $data['id'];?>"></div>
                         </div>
                     </div>
@@ -136,8 +128,8 @@
                         <div>Oxígeno disuelto</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton graf" data-ale="ox"></div>
+                        <div class="boton adve" data-ale="ox"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -150,8 +142,8 @@
                         <div>Temperatura</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton graf" data-ale="temp"></div>
+                        <div class="boton adve" data-ale="temp"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -164,8 +156,8 @@
                         <div>PH</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton graf" data-ale="ph"></div>
+                        <div class="boton adve" data-ale="ph"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -178,8 +170,8 @@
                         <div>Conductividad</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton graf" data-ale="cond"></div>
+                        <div class="boton adve" data-ale="cond"></div>
                     </div>
                 </div>
                 <div class="grafica">
@@ -192,8 +184,8 @@
                         <div>Potencial óxido reducción</div>
                     </div>
                     <div class="derecha">
-                        <div class="boton graf"></div>
-                        <div class="boton adve"></div>
+                        <div class="boton graf" data-ale="orp"></div>
+                        <div class="boton adve" data-ale="orp"></div>
                     </div>
                 </div>
                 <div class="grafica">
