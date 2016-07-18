@@ -60,9 +60,15 @@
 			</div>
 		</div>
 		<!-- Gráficas -->
+		<?php $datos = Monitoreo::model()->fijo(7);
+		echo $datos[3]['nombre'];
+		
+		?>
 
 		<div class='grafica der'>
 			<p class="tit">Oxígeno disuelto</p>
+
+
 		</div>
 		<div class='grafica'>
 			<p class="tit">Temperatura</p>
