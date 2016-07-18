@@ -88,9 +88,7 @@
         </span>   
          <span class="containerBox">
                     <div class="row">
-
-                            <h3><label class="cLetreros">Direcciones</label><h2 class = "letrero-container"></h2></h3>
-
+                        <h3><label class="cLetreros">Direcciones</label><h2 class = "letrero-container"></h2></h3>
                    </div>
         </span>
         <span class= "containerBox">
@@ -100,13 +98,13 @@
                                         <div class="allMapa" data-id="1">
                                            <label class="letreros">Ubicación</label>
                                             <div id="map" data-map="1"></div>
-                                         <!--    <div class="row ubi">
+                                             <div class="row ubi">
                                          
                                                 <div class="form-cXMedium">
-                                                    <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                                    <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
                                                     <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
                                                 </div>
-                                            </div>-->
+                                            </div>
                                               <div class="row dom">
                                                 <label class="letreros">Domicilio</label>
                                                     <div class="form-cXLarge">
@@ -121,7 +119,6 @@
                                                     <?php echo $form->error($direccion,'descripcion');?>
                                                     </div>
                                             </div>
-                                             <h2 class="letrero-containerx"></h2>
                                         </div>
                                     <?php else:?>
                                         <?php $i = 1;?>
@@ -136,7 +133,7 @@
                                                     <div id="map" data-map="<?php echo $i;?>"></div>
                                                     <div class="row ubi">
                                                        <label class="letreros">Ubicación</label>
-                                                        <?php echo $form->textField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
                                                         <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
                                                     </div>
                                                     <div class="row des">
@@ -175,13 +172,11 @@
 
                                     <div class="containerbutton">
                                          <div class="row buttons">
-                                              <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+                                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+                                            <div class="addDireccion">Agregar dirección</div> 
                                         </div>
                                     </div>
                 </div>
-                <div class="form-cRight">
-                            <div class="addDireccion">Agregar Otra Dirección</div> 
-                        </div>
            </span>
     </div>
 

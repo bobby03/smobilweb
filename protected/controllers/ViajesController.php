@@ -275,7 +275,7 @@ class ViajesController extends Controller
                     }
                 }
             }
-            print_r($model);
+//            print_r($model);
             $this->render('create',array
             (
                 'model' =>$model,
