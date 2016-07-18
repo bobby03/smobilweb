@@ -206,7 +206,7 @@ div.botonesPedido
     float: left;
     width: 50%;
     height: 15px;
-    background-size: 30px 30px;
+    background-size: 16px 16px;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -247,7 +247,7 @@ div.botones .continuar
 div.subtitulos div
 {
     float: left;
-    width: 33%;
+    width: 37%;
     color: #0077B0;
 }
 div.subtitulos div:nth-child(2)
@@ -257,8 +257,8 @@ div.subtitulos div:nth-child(2)
 div.renglon div:nth-child(1),
 div.renglon div:nth-child(2)
 {
-    width: 30%;
-    margin-right: 3%;
+    width: 37%;
+    /*margin-right: 3%;*/
     float: left;
 }
 div.renglon div:nth-child(2)
@@ -277,9 +277,9 @@ div.tablaViajes
 div.viajeLoc, div.viajeSel
 {
     float: left;
-    width: 12%;
+    width: 43px;
     margin-left: 15px;
-    height: 30px;
+    height: 34px;
     /*background-color: #0077B0;*/
     border-radius: 5px;
     background-size: 100% 100%;
