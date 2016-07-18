@@ -34,6 +34,8 @@ return array(
 			'redactorUpload'=>true, // enable Redactor image upload
 		),
 	),
+
+	'homeUrl'=>array('site/login'),
 	// application components
 	'components'=>array(
 		'user'=>array(

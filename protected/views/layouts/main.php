@@ -39,6 +39,7 @@
 
 	<div id="mainmenu">
 		<div class= "menuTop"></div>
+
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 
@@ -52,10 +53,17 @@
 				array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 				array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
 				array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo')),
+			    array('label'=>'Usuario: ('.Yii::app()->user->name.')','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
 //				array('label'=>'Cepa', 'url'=>array('/cepa')),
 
 			),
 		)); ?>
+<!--
+	<?php if (!Yii::app()->user->isGuest){ ?>
+   <ul><li> <a href="<?php echo Yii::app()->createAbsoluteUrl('site/logout'); ?>">Salir</a></li></ul>
+    <?php
+}?>-->
+
 	</div><!-- mainmenu 
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
