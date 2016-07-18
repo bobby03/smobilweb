@@ -41,6 +41,7 @@
 		<div class= "menuTop"></div>
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
+
 				array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
 				array('label'=>'Personal', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal')),
 				array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles')),
@@ -50,15 +51,9 @@
 				array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes')),
 				array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 				array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
+				array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo')),
 //				array('label'=>'Cepa', 'url'=>array('/cepa')),
-				
-				
-				
-				
-				
-				
-				
-				
+
 			),
 		)); ?>
 	</div><!-- mainmenu 
