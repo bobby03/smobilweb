@@ -146,7 +146,7 @@ $(document).ready(function()
                     {
                         $('.historial .titulo').text('Historial '+nombre);
                         var ctx1 = $('#historialTanque1');
-                        var myChart1 = new Chart(ctx1, data.od);
+                        var myChart1 = new Chart(ctx1, data.ox);
                         var ctx2 = $('#historialTanque2');
                         var myChart2 = new Chart(ctx2, data.temp);
                         var ctx3 = $('#historialTanque3');
@@ -189,15 +189,61 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                console.log(data);
                 $.colorbox(
                 {
                     html: data.codigo,
                     onComplete: function()
                     {
-                        var ctx1 = $('#parametrosGrafica');
-                        var myChart1 = new Chart(ctx1, data.grafica);
-                        
+                        var ctx = $('#parametrosGrafica');
+                        var myChart = new Chart(ctx, data.graficaTodos);
+                        if(data.graf0 != '' && data.graf0 != null)
+                        {
+                            var ctx0 = $('#parametrosGrafica0');
+                            var myChart0 = new Chart(ctx0, data.graf0);
+                        }
+                        if(data.graf1 != '' && data.graf1 != null)
+                        {
+                            var ctx1 = $('#parametrosGrafica1');
+                            var myChart1 = new Chart(ctx1, data.graf1);
+                        }
+                        if(data.graf2 != '' && data.graf2 != null)
+                        {
+                            var ctx2 = $('#parametrosGrafica2');
+                            var myChart2 = new Chart(ctx2, data.graf2);
+                        }
+                        if(data.graf3 != '' && data.graf3 != null)
+                        {
+                            var ctx3 = $('#parametrosGrafica3');
+                            var myChart3 = new Chart(ctx3, data.graf3);
+                        }
+                        if(data.graf4 != '' && data.graf4 != null)
+                        {
+                            var ctx4 = $('#parametrosGrafica4');
+                            var myChart4 = new Chart(ctx4, data.graf4);
+                        }
+                        if(data.graf5 != '' && data.graf5 != null)
+                        {
+                            var ctx5 = $('#parametrosGrafica5');
+                            var myChart5 = new Chart(ctx5, data.graf5);
+                        }
+                        if(data.graf6 != '' && data.graf6 != null)
+                        {
+                            var ctx6 = $('#parametrosGrafica6');
+                            var myChart6 = new Chart(ctx6, data.graf6);
+                        }
+                        if(data.graf7 != '' && data.graf7 != null)
+                        {
+                            var ctx7 = $('#parametrosGrafica7');
+                            var myChart7 = new Chart(ctx7, data.graf7);
+                        }
+                        $('.menuSeccion').click(function()
+                        {
+                            var id = $(this).attr('data-tanque');
+                            $('.menuSeccion').removeClass('selected');
+                            $(this).addClass('selected');
+                            $('[data-parame]').addClass('hide');
+                            $('[data-parame="'+id+'"]').removeClass('hide');
+                        });
                     }
                 });
             },
