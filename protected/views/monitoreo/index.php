@@ -63,7 +63,7 @@
         <!-- Gráficas por parametro -->
         
 
-        <div class="tab hide" data-tab='1'>
+        <div class="tab" data-tab='1'>
             <?php
             $l=true;
             foreach($tanques as $data):
@@ -98,7 +98,7 @@
             
         </div>
 
-        <div class="tab" data-tab='2'>
+        <div class="tab hide" data-tab='2'>
             <div class="tanque der" data-para="1">
                 <div class="hDatos">
                     <div class="datIzq">
