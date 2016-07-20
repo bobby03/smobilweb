@@ -104,15 +104,19 @@ class Monitoreo extends CActiveRecord
 		$criteria->compare('ct',$this->ct);
 		$criteria->compare('ox',$this->ox);
 		$criteria->compare('ph',$this->ph);
-		$criteria->compare('t2',$this->t2);
-		$criteria->compare('ec',$this->ec);
-		$criteria->compare('od',$this->od);
+		$criteria->compare('temp',$this->temp);
+		$criteria->compare('cond',$this->cond);
 		$criteria->compare('orp',$this->orp);
 		$criteria->compare('alerta',$this->alerta);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function estaciones(){
+		$datos = Yii::app()->db->createCommand('SELECT id,tipo,identificador,no_personal,marca,color,ubicacion,disponible,activo FROM estacion WHERE tipo=2')->queryAll();
+		return new CActiveDataProvider($datos);
 	}
 
 	/**
@@ -127,7 +131,7 @@ class Monitoreo extends CActiveRecord
 	}
 	public static function fijo($estacion){
 
-		$datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,uploadtemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,t2,ec,od,orp,alerta FROM estacion 
+		$datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,uploadtemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta FROM estacion 
 													JOIN tanque ON estacion.id=tanque.id_estacion 
 													JOIN uploadtemp ON tanque.id=uploadtemp.id_tanque 
 													WHERE estacion.id='.$estacion)->queryAll();

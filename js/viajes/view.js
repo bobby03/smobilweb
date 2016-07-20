@@ -262,6 +262,7 @@ $(document).ready(function()
             $(this).find('.grafica div').each(function()
             {
                 var flag = $(this).attr('data-num');
+
                 $.ajax(
                 {
                     type: 'GET',

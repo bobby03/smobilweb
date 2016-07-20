@@ -111,7 +111,7 @@
                     </div>
                     <h3>Variables de monitoreo</h3>
                     <div class="grafica" data-tanque="<?php echo $data['id'];?>">
-                        <div data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
+                        <div data-num="1"><canvas id="graf1" width="100" height="190"></canvas></div>
                         <div data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
                         <div data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
                         <div data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>

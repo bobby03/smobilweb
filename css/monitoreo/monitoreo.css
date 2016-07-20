@@ -79,6 +79,7 @@ p{
 	text-align: center;
 	font-size: 18px;
 	border-left:4px solid #49dbd0;
+	border-right:4px solid #49dbd0;
 }
 .enlace:hover{
 	color:white !important;
@@ -100,11 +101,31 @@ p{
 	color:white;
 }
 /* Detalles de monitoreo */ 
-.grafica{
+.tanques{
 	margin:0px;
 	width:450px;
 	float: left;
 }
 .der{
 	margin-right:155px;
+	height: 190px;
+	width:42%;
+}
+.izq{
+	height: 190px;
+	width:42%;
+}
+
+.select{
+	color:white !important;
+	text-decoration: none;
+	background-color: #49dbd0;
+}
+.tanque{
+	float:left;
+}
+.graf{
+	width:80px;
+	height:120px;
+	float:left;
 }
