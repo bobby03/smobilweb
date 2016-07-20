@@ -70,7 +70,6 @@ $(document).ready(function()
                 },
                 success: function(data2)
                 {
-                    console.log('Hola');
                     var ctx = $('canvas#grafP'+cont+'');
                     if(data2 != '' && data2 != null)
                         var myChart = new Chart(ctx, data2);

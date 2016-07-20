@@ -28,26 +28,34 @@
 
         <div id="esp">
             <div id="esp1">
-                <p class="subtit">Cliente:</p>      
-                <p>Granja pastel</p>
+                <p class="subtit">Estación fija:</p>      
+                <p><?php echo $fijas['identificador']?></p>
             </div>
 
             <div id="esp2">
-                <p class="subtit">Ubicación:</p>    
-                <p>Mexicali 185 Periferico Norte</p>    
+                 <p class="subtit">Marca:</p>  
+               <p><?php echo $fijas['marca']?></p>
+                <p class="subtit">Color:</p>  
+                <p><?php echo $fijas['color']?></p>
             </div>
 
             <div id="esp3">
-                <p class="subtit">Tiempo de monitoreo:</p>  
-                <p>2 dias, diez horas, 14 minutos</p>
-
+               <p class="subtit">Número de personal:</p>    
+                <p><?php echo $fijas['no_personal']?></p>
+                <p class="subtit">Disponibilidad:</p>    
+                <?php 
+                if($fijas['disponible']==1){$disp="Disponible";}else{$disp="No disponible";}
+                if($fijas['activo']==1){$act="Activo";}else{$act="Inactivo";}
+                ?>
+                <p><?php echo $disp?></p>
+                 <p class="subtit">Actividad:</p> 
+                 <p><?php echo $act?></p>
             </div>
 
+
             <div id="esp4">
-                <p class="subtit">Fecha de inicio:</p>      
-                <p>20-03-2016</p>
-                <p class="subtit">Fecha de término:</p>     
-                <p>27-03-2016</p>
+                <p class="subtit">Ubicación:</p>    
+                <p><?php echo $fijas['ubicacion']?></p>
             </div>
         </div>
 

@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 $baseUrl = Yii::app()->baseUrl;
 $cs = Yii::app()->getClientScript();
-$cs->registerCssFile($baseUrl.'/css/monitoreo/monitoreo.css');
+$cs->registerCssFile($baseUrl.'/css/estacion/estacion.css');
 $cs->registerScriptFile($baseUrl.'/js/search.js');
 $this->breadcrumbs=array(
     'Monitoreo Fijo',

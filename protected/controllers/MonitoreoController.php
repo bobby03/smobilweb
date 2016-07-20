@@ -46,7 +46,7 @@ class MonitoreoController extends Controller
                 ->where("estacion.id=$id")
                 ->queryAll();
         $estaciones = Yii::app()->db->createCommand()
-                ->select('id,identificador')
+                ->select('*')
                 ->from('estacion')
                 ->where("estacion.id=$id")
                 ->andWhere("tipo=2")
