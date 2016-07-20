@@ -26,7 +26,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion',
             'summaryText'=>'',
-            'dataProvider'=>$model->search(),
+            'dataProvider'=>$model->search1(),
             'columns'=>$model->adminSearch()
         )); 
     ?>

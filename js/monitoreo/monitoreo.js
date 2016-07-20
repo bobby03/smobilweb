@@ -16,6 +16,8 @@ $(document).ready(function()
     {
         $('.tab[data-tab="1"] .tanque' ).each(function()
         {
+            var estacion = $(this).find('.grafica').attr('datos');
+            
             var id = $(this).find('.grafica').attr('data-tanque');
             var i = 1;
             
@@ -25,10 +27,11 @@ $(document).ready(function()
                 $.ajax(
                 {
                     type: 'GET',
-                    url: 'monitoreo/GetTanqueGrafica',
+                    url: 'GetTanqueGrafica',
                     dataType: 'JSON', 
                     data:
                     {
+                        estacion: estacion,
                         id: id,
                         flag: flag,
                         flag2: flag2
@@ -54,12 +57,11 @@ $(document).ready(function()
         $('.tab[data-tab="2"] .tanque').each(function()
         {
             var cont = $(this).attr('data-para');
-            
-            var estacion=8;
+            var estacion=$(this).attr('datos');
             $.ajax(
             {
                 type: 'GET',
-                url: 'monitoreo/GetParametroGrafica',
+                url: 'GetParametroGrafica',
                 dataType: 'JSON', 
                 data:
                 {

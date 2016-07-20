@@ -4,22 +4,16 @@ class MonitoreoController extends Controller
 {
 	public function actionIndex()
 	{
+
 		$model = new Monitoreo('search');
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Monitoreo']))
                 $model->attributes=$_GET['Solicitudes'];
             
-            $tanques = Yii::app()->db->createCommand()
-                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
-                ->from('estacion')
-                ->join('tanque','estacion.id=tanque.id_estacion')
-                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
-                ->where("estacion.id=9")
-                ->queryAll();
+            
             $this->render('index',array(
-                    'model'=>$model,'tanques'=>$tanques
+                    'model'=>$model
             ));
-
 	}
 	// Uncomment the following methods and override them if needed
 	/*
@@ -41,15 +35,44 @@ class MonitoreoController extends Controller
 													JOIN uploadTemp ON tanque.id=uploadTemp.id_tanque 
 													WHERE estacion.id='.$estacion)->queryAll();
 	*/
-	
-	public function actionGetTanqueGrafica($id, $flag, $flag2)
+    
+	public function actionView($id)
+    {
+        $tanques = Yii::app()->db->createCommand()
+                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
+                ->from('estacion')
+                ->join('tanque','estacion.id=tanque.id_estacion')
+                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
+                ->where("estacion.id=$id")
+                ->queryAll();
+        $estaciones = Yii::app()->db->createCommand()
+                ->select('id,identificador')
+                ->from('estacion')
+                ->where("estacion.id=$id")
+                ->andWhere("tipo=2")
+                ->limit(1)
+                ->queryRow();
+
+            $this->render('monitoreo',array(
+                'fijas'=>$this->loadModel($estaciones),
+                'tanques'=>$tanques
+            ));
+    }
+        public function loadModel($estacion)
+    {
+        if(empty($estacion))
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $estacion;
+    }
+
+	public function actionGetTanqueGrafica($estacion,$id, $flag, $flag2)
         {
             $datos = Yii::app()->db->createCommand()
                 ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
                 ->from('estacion')
                 ->join('tanque','estacion.id=tanque.id_estacion')
                 ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
-                ->where("estacion.id=9")
+                ->where("estacion.id=$estacion")
                 ->andWhere("tanque.id=$id")
                 ->order('idUpl DESC')
                 ->limit(1)
