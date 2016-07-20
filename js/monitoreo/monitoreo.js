@@ -16,8 +16,6 @@ $(document).ready(function()
         $('.tab[data-tab="1"] .tanque' ).each(function()
         {
             var id = $(this).find('.grafica').attr('data-tanque');
-
-            
             var i = 1;
             
             $(this).find('.grafica div').each(function()
@@ -48,6 +46,33 @@ $(document).ready(function()
                     }
                 }); 
             });
+        });
+    }
+    function graficarPorParametro()
+    {
+        $('.allTanques[data-id="2"] .tanque').each(function()
+        {
+            var cont = $(this).attr('data-para');
+            $.ajax(
+            {
+                type: 'GET',
+                url: 'monitoreo/GetParametroGrafica',
+                dataType: 'JSON', 
+                data:
+                {
+                    flag: cont
+                },
+                success: function(data2)
+                {
+                    var ctx = $('canvas#grafP'+cont+'');
+                    if(data2 != '' && data2 != null)
+                        var myChart = new Chart(ctx, data2);
+                },
+                error: function(a,b,c)
+                {
+                    console.log(a, b, c);
+                }
+            }); 
         });
     }
 

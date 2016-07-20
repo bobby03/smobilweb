@@ -8,9 +8,18 @@ class MonitoreoController extends Controller
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Monitoreo']))
                 $model->attributes=$_GET['Solicitudes'];
+            
+            $tanques = Yii::app()->db->createCommand()
+                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
+                ->from('estacion')
+                ->join('tanque','estacion.id=tanque.id_estacion')
+                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
+                ->where("estacion.id=9")
+                ->queryAll();
             $this->render('index',array(
-                    'model'=>$model,
+                    'model'=>$model,'tanques'=>$tanques
             ));
+
 	}
 	// Uncomment the following methods and override them if needed
 	/*
@@ -27,20 +36,22 @@ class MonitoreoController extends Controller
 	}*/
 
 	/*
-		$datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,uploadtemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta FROM estacion 
+		$datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta FROM estacion 
 													JOIN tanque ON estacion.id=tanque.id_estacion 
-													JOIN uploadtemp ON tanque.id=uploadtemp.id_tanque 
+													JOIN uploadTemp ON tanque.id=uploadTemp.id_tanque 
 													WHERE estacion.id='.$estacion)->queryAll();
 	*/
 	
 	public function actionGetTanqueGrafica($id, $flag, $flag2)
         {
             $datos = Yii::app()->db->createCommand()
-                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadtemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
+                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
                 ->from('estacion')
                 ->join('tanque','estacion.id=tanque.id_estacion')
-                ->join('uploadtemp','tanque.id=uploadtemp.id_tanque')
-                ->where("estacion.id=8")
+                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
+                ->where("estacion.id=9")
+                ->andWhere("tanque.id=$id")
+                ->order('idUpl DESC')
                 ->limit(1)
                 ->queryRow();
             $return = array();
@@ -261,6 +272,250 @@ class MonitoreoController extends Controller
                                     (
                                         'min'       => 0,
                                        'max'       => 40,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+            }
+            echo json_encode($return);
+        }
+        public function actionGetParametroGrafica($estacion, $flag)
+        {
+            $datos = Yii::app()->db->createCommand()
+                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
+                ->from('estacion')
+                ->join('tanque','estacion.id=tanque.id_estacion')
+                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
+                ->where("estacion.id=$estacion")
+                ->andWhere("tanque.id=$id")
+                ->order('idUpl DESC')
+                ->queryAll();
+                
+            foreach($datos as $data)
+                $nombre[] = $data['nombre'];
+            $escalon = Yii::app()->db->createCommand()
+                ->select('id')
+                ->from('escalon_viaje_ubicacion')
+                ->where("id_viaje = $viaje")
+                ->order("id DESC")
+                ->limit(1)
+                ->queryRow();
+            $datos = Yii::app()->db->createCommand()
+                ->selectDistinct('esc.id, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
+                ->from('escalon_viaje_ubicacion as esc')
+                ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+                ->where("esc.id_viaje = $viaje")
+                ->andWhere("upT.id_escalon_viaje_ubicacion = {$escalon['id']}")
+                ->queryAll();
+            $colors = ['#9EE7DD', '#FE713D', '#0079AB', '#5F7D8A', '#9EE7DD', '#FE713D', '#0079AB', '#5F7D8A'];
+            switch ($flag)
+            {
+                case 1: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['ox'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2,
+                                    'borderWidth'       => 1
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'animation' => false,
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 2: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['temp'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'animation' => false,
+                            'legend'    => array
+                            (
+                                'display' => false
+                                
+                            ),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 3: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['ph'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'animation' => false,
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 4: 
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['cond'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'animation' => false,
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                                    )
+                                )]
+                            )
+                        )
+                    );
+                break;
+                case 5:
+                    foreach($datos as $data)
+                    {
+                        $valores[] = $data['orp'];
+                    }
+                    $return =
+                    array
+                    (
+                        'type' => 'bar',
+                        'data'=>array
+                        (
+                            'labels'    => $nombre,
+                            'datasets'  => 
+                            [
+                                (object)
+                                [
+                                    'data'              => $valores,
+                                    'backgroundColor'   => $colors,
+                                    'fontSize'          => 2
+                                ]
+                            ]
+                        ),
+                        'options' => array
+                        (
+                            'animation' => false,
+                            'legend'    => array('display' => false),
+                            'scales'    => array
+                            (
+                                'yAxes' => 
+                                [array(
+                                    'ticks' => array
+                                    (
+                                        'min'       => 0,
+//                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                     )
                                 )]

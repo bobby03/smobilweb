@@ -61,83 +61,113 @@
             </div>
         </div>
         <!-- Gráficas por parametro -->
-        <div class="tab hide" data-tab='2'>
-            <?php $datos = Monitoreo::model()->fijo(8);
-            
-            
-            ?>
+        
 
-            <div class='grafica der' data-tanque="1">
-                <p class="tit">Oxígeno disuelto</p>
+        <div class="tab hide" data-tab='1'>
+            <?php
+            $l=true;
+            foreach($tanques as $data):
+                if($l==true){
+                    $lado="der";
+                }else{$lado="izq";}
+                ?>
+
+            <div class="tanque <?php echo $lado;?>">
+                <div class="hDatos">
+                <div class="datIzq">
+                    <p class="tit"><?php echo $data['nombre'];?></p>
+                    <p><span class="subtit">Capacidad: </span><?php echo $data['capacidad']." litros";?></p>
+                </div>
+                <div class="datDer">
+                    <div class="boton graf" data-graf="<?php echo $data['idTan'];?>"></div>
+                    <div class="boton adve" data-ale="<?php echo $data['idTan'];?>"></div>
+                </div>
+                </div>
+                <h3>Variables de monitoreo</h3>
+            <div class='grafica' data-tanque="<?php echo $data['idTan'];?>">
                 
+                <div class="graf" data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
+                <div class="graf" data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
+                <div class="graf" data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
+                <div class="graf" data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
+                <div class="graf" data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
             </div>
-            <div class='grafica' data-tanque="2">
-                <p class="tit">Temperatura</p>
             </div>
-            <div class='grafica der' data-tanque="3">
-                <p class="tit">PH</p>
-            </div>
-            <div class='grafica' data-tanque="4">
-                <p class="tit">Conectividad</p>
-            </div>
-            <div class='grafica der' data-tanque="5">
-                <p class="tit">Potencial óxido reducción</p>
-            </div>
+            
+        <?php $l=!$l; endforeach?>
+            
         </div>
 
-        <div class="tab" data-tab='1'>
-            <?php $datos = Monitoreo::model()->fijo(8);
-            
-            ?>
-            <div class="tanque der">
-            <div class='grafica' data-tanque="1">
-                <p class="tit">Tanque 1</p>
-                <div class="graf" data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
+        <div class="tab" data-tab='2'>
+            <div class="tanque" data-para="1">
+                <div class="titulosWraper">
+                    <div class="izquierda">
+                        <div ><p class="tit">Oxígeno disuelto</p></div>
+                    </div>
+                    <div class="derecha">
+                        <div class="boton graf" data-ale="ox"></div>
+                        <div class="boton adve" data-ale="ox"></div>
+                    </div>
+                </div>
+                <div class="grafica">
+                    <canvas id="grafP1" width="447" height="190"></canvas>
+                </div>
             </div>
+            <div class="tanque" data-para="2">
+                <div class="titulosWraper">
+                    <div class="izquierda">
+                        <div><p class="tit">Temperatura</p></div>
+                    </div>
+                    <div class="derecha">
+                        <div class="boton graf" data-ale="temp"></div>
+                        <div class="boton adve" data-ale="temp"></div>
+                    </div>
+                </div>
+                <div class="grafica">
+                    <canvas id="grafP2" width="447" height="190"></canvas>
+                </div>
             </div>
-            <div class="tanque izq">
-            <div class='grafica' data-tanque="2">
-                <p class="tit">Temperatura</p>
-                <div class="graf" data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
+            <div class="tanque" data-para="3">
+                <div class="titulosWraper">
+                    <div class="izquierda">
+                        <div><p class="tit">PH</p></div>
+                    </div>
+                    <div class="derecha">
+                        <div class="boton graf" data-ale="ph"></div>
+                        <div class="boton adve" data-ale="ph"></div>
+                    </div>
+                </div>
+                <div class="grafica">
+                    <canvas id="grafP3" width="447" height="190"></canvas>
+                </div>
             </div>
+            <div class="tanque" data-para="4">
+                <div class="titulosWraper">
+                    <div class="izquierda">
+                        <div><p class="tit">Conductividad</p></div>
+                    </div>
+                    <div class="derecha">
+                        <div class="boton graf" data-ale="cond"></div>
+                        <div class="boton adve" data-ale="cond"></div>
+                    </div>
+                </div>
+                <div class="grafica">
+                    <canvas id="grafP4" width="447" height="190"></canvas>
+                </div>
             </div>
-            <div class="tanque der">
-            <div class='grafica' data-tanque="3">
-                <p class="tit">PH</p>
-                <div class="graf" data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
-            </div>
-            </div>
-            <div class="tanque izq">
-            <div class='grafica' data-tanque="4">
-                <p class="tit">Conectividad</p>
-                <div class="graf" data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
-            </div>
-            </div>
-            <div class="tanque der">
-            <div class='grafica' data-tanque="5">
-                <p class="tit">Potencial óxido reducción</p>
-                <div class="graf" data-num="1"><canvas id="graf1" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
-                <div class="graf" data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
-            </div>
+            <div class="tanque" data-para="5">
+                <div class="titulosWraper">
+                    <div class="izquierda">
+                        <div><p class="tit">Potencial óxido reducción</p></div>
+                    </div>
+                    <div class="derecha">
+                        <div class="boton graf" data-ale="orp"></div>
+                        <div class="boton adve" data-ale="orp"></div>
+                    </div>
+                </div>
+                <div class="grafica">
+                    <canvas id="grafP5" width="447" height="190"></canvas>
+                </div>
             </div>
         </div>
 
