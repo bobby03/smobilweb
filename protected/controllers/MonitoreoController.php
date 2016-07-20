@@ -284,37 +284,22 @@ class MonitoreoController extends Controller
         }
         public function actionGetParametroGrafica($estacion, $flag)
         {
-            $datos = Yii::app()->db->createCommand()
+            $tanques = Yii::app()->db->createCommand()
                 ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
                 ->from('estacion')
                 ->join('tanque','estacion.id=tanque.id_estacion')
                 ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
                 ->where("estacion.id=$estacion")
-                ->andWhere("tanque.id=$id")
                 ->order('idUpl DESC')
                 ->queryAll();
                 
-            foreach($datos as $data)
+            foreach($tanques as $data)
                 $nombre[] = $data['nombre'];
-            $escalon = Yii::app()->db->createCommand()
-                ->select('id')
-                ->from('escalon_viaje_ubicacion')
-                ->where("id_viaje = $viaje")
-                ->order("id DESC")
-                ->limit(1)
-                ->queryRow();
-            $datos = Yii::app()->db->createCommand()
-                ->selectDistinct('esc.id, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
-                ->from('escalon_viaje_ubicacion as esc')
-                ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
-                ->where("esc.id_viaje = $viaje")
-                ->andWhere("upT.id_escalon_viaje_ubicacion = {$escalon['id']}")
-                ->queryAll();
             $colors = ['#9EE7DD', '#FE713D', '#0079AB', '#5F7D8A', '#9EE7DD', '#FE713D', '#0079AB', '#5F7D8A'];
             switch ($flag)
             {
                 case 1: 
-                    foreach($datos as $data)
+                    foreach($tanques as $data)
                     {
                         $valores[] = $data['ox'];
                     }
@@ -356,7 +341,7 @@ class MonitoreoController extends Controller
                     );
                 break;
                 case 2: 
-                    foreach($datos as $data)
+                    foreach($tanques as $data)
                     {
                         $valores[] = $data['temp'];
                     }
@@ -401,7 +386,7 @@ class MonitoreoController extends Controller
                     );
                 break;
                 case 3: 
-                    foreach($datos as $data)
+                    foreach($tanques as $data)
                     {
                         $valores[] = $data['ph'];
                     }
@@ -442,7 +427,7 @@ class MonitoreoController extends Controller
                     );
                 break;
                 case 4: 
-                    foreach($datos as $data)
+                    foreach($tanques as $data)
                     {
                         $valores[] = $data['cond'];
                     }
@@ -483,7 +468,7 @@ class MonitoreoController extends Controller
                     );
                 break;
                 case 5:
-                    foreach($datos as $data)
+                    foreach($tanques as $data)
                     {
                         $valores[] = $data['orp'];
                     }

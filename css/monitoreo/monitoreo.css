@@ -111,8 +111,10 @@ p{
 	margin-right:155px;
 	height: 340px;
 	width:42%;
+
 }
 .izq{
+	float:right;
 	height: 340px;
 	width:42%;
 }

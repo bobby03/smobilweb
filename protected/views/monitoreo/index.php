@@ -99,12 +99,12 @@
         </div>
 
         <div class="tab" data-tab='2'>
-            <div class="tanque" data-para="1">
-                <div class="titulosWraper">
-                    <div class="izquierda">
+            <div class="tanque der" data-para="1">
+                <div class="hDatos">
+                    <div class="datIzq">
                         <div ><p class="tit">Oxígeno disuelto</p></div>
                     </div>
-                    <div class="derecha">
+                    <div class="datDer">
                         <div class="boton graf" data-ale="ox"></div>
                         <div class="boton adve" data-ale="ox"></div>
                     </div>
@@ -113,12 +113,12 @@
                     <canvas id="grafP1" width="447" height="190"></canvas>
                 </div>
             </div>
-            <div class="tanque" data-para="2">
-                <div class="titulosWraper">
-                    <div class="izquierda">
-                        <div><p class="tit">Temperatura</p></div>
+            <div class="tanque izq" data-para="2">
+                <div class="hDatos">
+                    <div class="datIzq">
+                        <div ><p class="tit">Temperatura</p></div>
                     </div>
-                    <div class="derecha">
+                    <div class="datDer">
                         <div class="boton graf" data-ale="temp"></div>
                         <div class="boton adve" data-ale="temp"></div>
                     </div>
@@ -127,12 +127,12 @@
                     <canvas id="grafP2" width="447" height="190"></canvas>
                 </div>
             </div>
-            <div class="tanque" data-para="3">
-                <div class="titulosWraper">
-                    <div class="izquierda">
-                        <div><p class="tit">PH</p></div>
+            <div class="tanque der" data-para="3">
+                <div class="hDatos">
+                    <div class="datIzq">
+                        <div ><p class="tit">PH</p></div>
                     </div>
-                    <div class="derecha">
+                    <div class="datDer">
                         <div class="boton graf" data-ale="ph"></div>
                         <div class="boton adve" data-ale="ph"></div>
                     </div>
@@ -141,12 +141,12 @@
                     <canvas id="grafP3" width="447" height="190"></canvas>
                 </div>
             </div>
-            <div class="tanque" data-para="4">
-                <div class="titulosWraper">
-                    <div class="izquierda">
-                        <div><p class="tit">Conductividad</p></div>
+            <div class="tanque izq" data-para="4">
+                <div class="hDatos">
+                    <div class="datIzq">
+                        <div ><p class="tit">Conductividad</p></div>
                     </div>
-                    <div class="derecha">
+                    <div class="datDer">
                         <div class="boton graf" data-ale="cond"></div>
                         <div class="boton adve" data-ale="cond"></div>
                     </div>
@@ -155,12 +155,12 @@
                     <canvas id="grafP4" width="447" height="190"></canvas>
                 </div>
             </div>
-            <div class="tanque" data-para="5">
-                <div class="titulosWraper">
-                    <div class="izquierda">
-                        <div><p class="tit">Potencial óxido reducción</p></div>
+            <div class="tanque der" data-para="5">
+                <div class="hDatos">
+                    <div class="datIzq">
+                        <div ><p class="tit">Potencial óxido de reducción</p></div>
                     </div>
-                    <div class="derecha">
+                    <div class="datDer">
                         <div class="boton graf" data-ale="orp"></div>
                         <div class="boton adve" data-ale="orp"></div>
                     </div>

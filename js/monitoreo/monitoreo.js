@@ -10,6 +10,7 @@ $(document).ready(function()
         $('[data-tab="'+id+'"]').removeClass('hide');
     });
         graficarPorTanque();
+        graficarPorParametro();
     
     function graficarPorTanque()
     {
@@ -50,9 +51,11 @@ $(document).ready(function()
     }
     function graficarPorParametro()
     {
-        $('.allTanques[data-id="2"] .tanque').each(function()
+        $('.tab[data-tab="2"] .tanque').each(function()
         {
             var cont = $(this).attr('data-para');
+            
+            var estacion=8;
             $.ajax(
             {
                 type: 'GET',
@@ -60,10 +63,12 @@ $(document).ready(function()
                 dataType: 'JSON', 
                 data:
                 {
+                    estacion: estacion,
                     flag: cont
                 },
                 success: function(data2)
                 {
+                    console.log('Hola');
                     var ctx = $('canvas#grafP'+cont+'');
                     if(data2 != '' && data2 != null)
                         var myChart = new Chart(ctx, data2);
