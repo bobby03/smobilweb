@@ -70,6 +70,10 @@
                 <div class="enlace select" data-id="1">Por tanque</div>
             </div>
         </div>
+        <div class="divTit hide">
+            <div id='enLeft'><h2>Estación sin datos</h2></div>
+        </div>
+
         <!-- Gráficas por parametro -->
         
 
@@ -89,8 +93,8 @@
                     <p><span class="subtit">Capacidad: </span><?php echo $data['capacidad']." litros";?></p>
                 </div>
                 <div class="datDer">
-                    <div class="boton graf" data-graf="<?php echo $data['idTan'];?>"></div>
-                    <div class="boton adve" data-ale="<?php echo $data['idTan'];?>"></div>
+                    <div class="boton graf" datos="<?php echo $id;?>" data-graf="<?php echo $data['idTan'];?>"></div>
+                    <div class="boton adve" datos="<?php echo $id;?>" data-ale="<?php echo $data['idTan'];?>"></div>
                 </div>
                 </div>
                 <h3>Variables de monitoreo</h3>
