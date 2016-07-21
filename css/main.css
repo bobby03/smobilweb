@@ -45,15 +45,15 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	/*background: #EFEFEF;*/
+	background: #FFF;
 }
 
 #page
 {
-	
 	margin: 0;
 	background: white;
-	border: 1px solid #C9E0ED;
+	/*border: 1px solid #C9E0ED;*/
 }
 
 #header
@@ -91,11 +91,11 @@ body
 
 #footer
 {
-	padding: 10px;
+/*	padding: 10px;
 	margin: 10px 20px;
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	border-top: 1px solid #C9E0ED;*/
 }
 
 #logo
@@ -115,7 +115,7 @@ body
 	box-sizing:border-box;
 	padding:0 10px;
     z-index: 10;
-    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.5 );
+    box-shadow: 3px -2px 10px 0px rgba(0, 0, 0, 0.5 )
 }
 
 #mainmenu ul
@@ -205,6 +205,12 @@ body
 
   #mainmenu ul li#solicitudes a{
 	background-image: url('./../images/menu/solicitudes.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 4px 11px;
+ }
+  #mainmenu ul li#viajes a{
+	background-image: url('./../images/menu/iconoViajes.svg');
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 4px 11px;
