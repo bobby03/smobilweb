@@ -37,4 +37,6 @@ class UserIdentity extends CUserIdentity
             }
             return !$this->errorCode;
 	}
+    
+  
 }

@@ -76,12 +76,28 @@ class SiteController extends Controller
 	{
 		if($error=Yii::app()->errorHandler->error)
 		{
-			if(Yii::app()->request->isAjaxRequest)
+			if(Yii::app()->request->isAjaxRequest){
 				echo $error['message'];
-			else
-				$this->render('error', $error);
+			}else{
+
+                switch($error['code'])
+                {
+                        case 403:
+
+                                $this->render('error403', array('error' => $error));
+                                break;
+                        default:
+                        		$this->render('error', $error);
+
+                }
+				
+			}
 		}
 	}
+
+
+
+
 
 	/**
 	 * Displays the contact page

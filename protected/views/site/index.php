@@ -13,6 +13,7 @@ if(Yii::app()->user->isGuest)
 {
 $this->redirect(Yii::app()->homeUrl);
 }
+
 ?>
 
 

@@ -27,7 +27,7 @@ class Monitoreo extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'uploadtemp';
+		return 'uploadTemp';
 	}
 
 	/**
