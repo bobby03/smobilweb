@@ -21,7 +21,7 @@
   </head>
 
 
-  <body>
+  <body class="<?php echo isset($this->classes) ? $this->classes : '' ?>">
     <div class="container" id="page">
       <?php
 		$baseUrl = Yii::app()->baseUrl;
@@ -50,7 +50,7 @@
 							'items'=>array(
 									 array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
-									 array('label'=>'Usuario: ('.Yii::app()->user->name.')','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),				    
+									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),				    
 									),));
 
 						break;
@@ -68,7 +68,7 @@
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 									 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
 									 array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo')),
-									 array('label'=>'Usuario: ('.Yii::app()->user->name.')','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
+									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
 									 ),	));
 						break;	
 
@@ -85,7 +85,7 @@
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 									 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
 									 array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo')),
-									 array('label'=>'Usuario: ('.Yii::app()->user->name.')','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
+									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
 									 ),	));
 						break;
 				}

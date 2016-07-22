@@ -5,7 +5,7 @@
 $baseUrl = Yii::app()->baseUrl;
 $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/login/login.css');
-$cs->registerScriptFile($baseUrl.'/js/login.js');
+//$cs->registerScriptFile($baseUrl.'/js/login.js');
 $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
