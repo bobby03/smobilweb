@@ -86,7 +86,7 @@
                 }else{$lado="izq";}
                 ?>
 
-            <div class="tanque <?php echo $lado;?>" >
+            <div class="tanque <?php echo $lado;?> " >
                 <div class="hDatos">
                 <div class="datIzq">
                     <p class="tit"><?php echo $data['nombre'];?></p>
@@ -119,8 +119,8 @@
                         <div ><p class="tit">Oxígeno disuelto</p></div>
                     </div>
                     <div class="datDer">
-                        <div class="boton graf" data-ale="ox"></div>
-                        <div class="boton adve" data-ale="ox"></div>
+                        <div class="boton graf" datos="<?php echo $id;?>" data-ale="ox"></div>
+                        <div class="boton adve" datos="<?php echo $id;?>" data-ale="ox"></div>
                     </div>
 
                 </div>
@@ -135,8 +135,8 @@
                         <div ><p class="tit">Temperatura</p></div>
                     </div>
                     <div class="datDer">
-                        <div class="boton graf" data-ale="temp"></div>
-                        <div class="boton adve" data-ale="temp"></div>
+                        <div class="boton graf" datos="<?php echo $id;?>" data-ale="temp"></div>
+                        <div class="boton adve" datos="<?php echo $id;?>" data-ale="temp"></div>
                     </div>
                 </div>
                 <h3>Tanques</h3>
@@ -150,8 +150,8 @@
                         <div ><p class="tit">PH</p></div>
                     </div>
                     <div class="datDer">
-                        <div class="boton graf" data-ale="ph"></div>
-                        <div class="boton adve" data-ale="ph"></div>
+                        <div class="boton graf" datos="<?php echo $id;?>" data-ale="ph"></div>
+                        <div class="boton adve" datos="<?php echo $id;?>" data-ale="ph"></div>
                     </div>
                 </div>
                 <h3>Tanques</h3>
@@ -165,8 +165,8 @@
                         <div ><p class="tit">Conductividad</p></div>
                     </div>
                     <div class="datDer">
-                        <div class="boton graf" data-ale="cond"></div>
-                        <div class="boton adve" data-ale="cond"></div>
+                        <div class="boton graf" datos="<?php echo $id;?>" data-ale="cond"></div>
+                        <div class="boton adve" datos="<?php echo $id;?>" data-ale="cond"></div>
                     </div>
                 </div>
                 <h3>Tanques</h3>
@@ -180,8 +180,8 @@
                         <div ><p class="tit">Potencial óxido de reducción</p></div>
                     </div>
                     <div class="datDer">
-                        <div class="boton graf" data-ale="orp"></div>
-                        <div class="boton adve" data-ale="orp"></div>
+                        <div class="boton graf" datos="<?php echo $id;?>" data-ale="orp"></div>
+                        <div class="boton adve" datos="<?php echo $id;?>" data-ale="orp"></div>
                     </div>
                 </div>
                 <h3>Tanques</h3>
