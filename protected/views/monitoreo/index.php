@@ -6,17 +6,15 @@ $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/estacion/estacion.css');
 $cs->registerScriptFile($baseUrl.'/js/search.js');
 $this->breadcrumbs=array(
-	'Estacions',
+    'Monitoreo Fijo',
 );
 ?>
 
-<h1>Estaciones</h1>
+<h1>Monitoreo Fijo</h1>
+
 <div class="principal">
 
     <div class="search-form" >
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
     <a href="estacion/create">
         <div class="agregar estacion"></div>
     </a>
@@ -26,8 +24,8 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion',
             'summaryText'=>'',
-            'dataProvider'=>$model->search1(),
-            'columns'=>$model->adminSearch()
+            'dataProvider'=>Estacion::model()->search1(),
+            'columns'=>Estacion::model()->adminSearch()
         )); 
     ?>
 </div>

@@ -161,7 +161,47 @@ class Estacion extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    public function search1()
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
+        $criteria=new CDbCriteria;
+
+        $criteria->compare('id',$this->id);
+        $criteria->compare('tipo',$this->tipo);
+        $criteria->compare('identificador',$this->identificador,true);
+        $criteria->compare('no_personal',$this->no_personal);
+        $criteria->compare('marca',$this->marca,true);
+        $criteria->compare('color',$this->color,true);
+        $criteria->compare('ubicacion',$this->ubicacion,true);
+        $criteria->compare('disponible',$this->disponible);
+        $criteria->compare('activo',$this->activo);
+                $criteria->addCondition("activo=1");
+                $criteria->addCondition("tipo=2");
+               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
+                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
+                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
+                                "%')");*/
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
+    }
+    public function search2($id)
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
+
+        $datos = Yii::app()->db->createCommand()
+                ->select('id,identificador')
+                ->from('estacion')
+                ->where("estacion.id=$id")
+                ->limit(1)
+                ->queryRow();
+               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
+                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
+                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
+                                "%')");*/
+        return $datos;
+    }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

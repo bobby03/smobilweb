@@ -101,7 +101,9 @@ float:left;
 
 }
 
-
+body.usuarios #usuario table{
+  width: 100% !important;
+}
 /*
  *   FORM ICONS
  */

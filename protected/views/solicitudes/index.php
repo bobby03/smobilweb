@@ -4,9 +4,8 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
     $this->breadcrumbs=array
-    (
-	'Solicitudes',
-    );
+    ('Solicitudes',);
+    
 ?>
 
 <h1>Solicitudes</h1>
