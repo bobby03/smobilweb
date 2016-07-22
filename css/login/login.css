@@ -5,12 +5,14 @@
 
 body.site-login{
 	overflow-x: hidden !important;
-    background-image: url('./../../images/esmobil-logo.png');
-    background-position: top 80px center;
-    background-repeat: no-repeat;
-    background-size: 16%;
+    padding-top: 120px;
 }
-
+body.site-login img#slogo{
+    width: 340px;
+    margin: 0 auto;
+    display: inherit;
+    margin-bottom: 46px;
+}
 
 body.site-login #page{
 	margin:0 auto;
@@ -22,9 +24,8 @@ body.site-login #contentWrapper{
 }
 body.site-login #contentWrapper #content{
 	margin:0 auto !important;
-    width: 250px;
-    height: 280px;
-    margin-top: 220px !important;
+    width: 400px;
+   /* margin-top: 220px !important;*/
 }
 
 body.site-login #contentWrapper #content div.form{
