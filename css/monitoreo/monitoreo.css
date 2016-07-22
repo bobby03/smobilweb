@@ -71,6 +71,7 @@ p{
 	font-family: 'Roboto-Regular';
 }
 .enlace{
+	cursor: pointer;
 	color:white;
 	text-decoration: none;
 	float:right;
@@ -144,6 +145,7 @@ p{
 	float:right;
 }
 .boton.graf {
+	cursor: pointer;
     background-image: url('../../images/viajes/botonHistorial.png');
     width: 52px;
     height: 38px;
@@ -152,6 +154,7 @@ p{
 
 }
 .boton.adve {
+	cursor: pointer;
     background-image: url('../../images/viajes/botonAlertas.png');
     width: 52px;
     height: 38px;
