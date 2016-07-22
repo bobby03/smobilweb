@@ -190,7 +190,7 @@ $('[data-tab="1"] .boton.graf').click(function()
         var estacion = $(this).attr('datos');
         var nombre = $(this).parent().siblings('.datIzq').children('p:first-child').text();
         var id = $(this).data('graf');
-        
+        alert(estacion+"   "+id);
         $.ajax(
         {
             type: 'GET',
@@ -238,20 +238,19 @@ $('[data-tab="1"] .boton.graf').click(function()
             }
         });
     });
-
     $('[data-tab="2"] .boton.graf').click(function()
     {
-        var estacion = $(this).attr('datos');
-        var nombre = $(this).parent().siblings('.datIzq').children('p:first-child').text();
+        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
         var id = $(this).data('ale');
-        $.ajax(
+        alert("Si funco por parametro");
+       /* $.ajax(
         {
             type: 'GET',
             url: 'GetHistorialParametro',
             dataType: 'JSON', 
             data:
             {
-                estacion: estacion,
+                viaje: viaje,
                 id: id
             },
             success: function(data)
@@ -318,7 +317,7 @@ $('[data-tab="1"] .boton.graf').click(function()
             {
                 console.log(a, b, c);
             }
-        });
+        });*/
     });
 
 	});
