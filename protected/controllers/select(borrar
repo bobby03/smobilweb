@@ -92,3 +92,7 @@ $(document).ready(function(){
  	var content = $('.divTable > .divTbody > .divTr:first-child');
 	content.trigger('click');
 });  
+
+
+
+/* SELECT DISTINCT sv.id_solicitud, cd.ubicacion_mapa FROM clientes_domicilio as cd JOIN solicitud_tanques as st ON st.id_domicilio = cd.id JOIN solicitudes_viaje as sv ON sv.id_solicitud = st.id_solicitud WHERE sv.id_viaje = '27'*/

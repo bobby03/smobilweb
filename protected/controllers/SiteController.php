@@ -44,7 +44,7 @@ class SiteController extends Controller
 			->join("estacion est","est.id = t.id_estacion")
 			->join("personal as p","p.id = t.id_responsable")
 			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
-			->where("t.status = '1
+			->where("t.status = '2
 				+.0'")
 				->queryAll();
 
@@ -175,7 +175,8 @@ class SiteController extends Controller
                 {
                    $return["html"] .= "
                    	<div class='tanque'>
-                   		<span class='titulotanque'> Tanque {$data["ct"]}</span>
+                   	<div class='tanque-container-titulo'>
+                   		<span class='titulotanque'> Tanque {$data["ct"]}</span></div>
                    		<div class='variables-wrapper'> 
                    			<div class='var-oz'>
                    				<div class='icon-oz'></div>
@@ -197,9 +198,31 @@ class SiteController extends Controller
             else
             {
                 $return['result'] = 0;
+                $return["html"] .="<div class='letreroError'>Este viaje no tiene registros de viaje en ruta, porfavor, p&oacute;ngase en contacto con el administrador.</div>"; 
+
             }
             echo json_encode($return);
 	}
+
+
+	public function actionPrueba($id) {
+			$return['result'] = 0 ;
+		    $return['html'] = "";
+         	$last =  Yii::app()->db->createCommand("SELECT v.id,est.identificador FROM viajes as v JOIN estacion as est ON est.id = v.id_estacion where v.id = {$id}")
+			->queryAll();
+
+			if(count($last)>0){
+                foreach($last as $data){
+ 				$return["html"] = "<label class='tituloV3'>3.Ubicación: {$data["identificador"]}</label>";
+				}
+        	$return['result'] = 1;
+    	}
+        echo json_encode($return);
+	}
+
+
+
+
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
