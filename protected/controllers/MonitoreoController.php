@@ -92,11 +92,11 @@ class MonitoreoController extends Controller
                     <div class="titulo"></div>
                     <div class="historialGraficasWraper">
                         <div class="menuHistorial">
-                            <div class="selected" data-para="1">Oxígeno disuelto</div>
-                            <div data-para="2">Temperatura</div>
-                            <div data-para="3">PH</div>
-                            <div data-para="4">Conductividad</div>
-                            <div data-para="5">ORP</div>
+                            <div class="enlaceC selected" data-para="1">Oxígeno disuelto</div>
+                            <div class="enlaceC" data-para="2">Temperatura</div>
+                            <div class="enlaceC" data-para="3">PH</div>
+                            <div class="enlaceC" data-para="4">Conductividad</div>
+                            <div class="enlaceC" data-para="5">ORP</div>
                         </div>
                         <div class="graficasWraper">
 eof;
