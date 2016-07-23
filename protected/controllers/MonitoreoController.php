@@ -591,6 +591,164 @@ eof;
             }
             echo json_encode($return);
         }
+        public function actionGetHistorialParametro($estacion, $id)
+        {
+            $total = Yii::app()->db->createCommand('SELECT r.id,r.id_tanque,r.fecha,r.hora,r.ox from registro r 
+                 WHERE r.id_tanque='.$id.
+                ' ORDER BY r.id DESC')
+                ->queryAll();
+            $count = count($total);
+            if($count > 333)
+                $limit = $count - 333;
+            else
+                $limit = 0;
+            $tanques = Yii::app()->db->createCommand('SELECT t.id,t.id_estacion,t.nombre FROM tanque t 
+            WHERE t.id_estacion='.$estacion)
+                ->queryAll();
+            $datos = Yii::app()->db->createCommand('SELECT * FROM registro r
+            WHERE r.id_tanque='.$id.
+            ' ORDER BY r.id ASC')
+                ->queryAll();
+            switch($id)
+            {
+                case 'ox':      $nombre='Oxígeno disuelto'; break;
+                case 'temp':    $nombre='Temperatura'; break;
+                case 'ph':      $nombre='PH'; break;
+                case 'cond':    $nombre='Conductividad'; break;
+                case 'orp':     $nombre='Potencial óxido reducción'; break;
+            }
+            $cont = 0;
+            $colors = ['#4363AE','#8DC63F','#7F3F98','#FF5BB2','#27AAE1','#ED1C24','#8B5E3C','#FF7236'];
+            $datasets = [];
+            $flag = true;
+            $menu = <<<eof
+                <div class="menuSeccion" data-tanque="-1">Todos</div>
+eof;
+            $i = 0;
+            foreach($tanques as $info)
+            {
+                $datas = [];
+                $labels = [];
+                foreach($datos as $data)
+                {
+                    if($data['id_tanque'] == $info['id_tanque'])
+                    {
+                        if($flag)
+                        {
+                            $cont++;
+                        }
+                        $labels[] = $data['hora'];
+                        $datas[] = $data[$id];
+                    }
+                }
+                $datasets[] = 
+                [
+                    'label'                 => $id,
+                    'fill'                  => false,
+                    'lineTension '          => 0,
+                    'borderColor'           => $colors[$i],
+                    'pointBorderColor'      => $colors[$i],
+                    'pointBackgroundColor'  => $colors[$i],
+                    'pointBorderWidth'      => 5,
+                    'pointHoverRadius'      => 10,
+                    'data'                  => $datas,
+                ];
+                $return['graf'.$i]=
+                array
+                (
+                    'type' => 'line',
+                    'data'=>array
+                    (
+                        'labels'    => $labels,
+                        'datasets'  => [$datasets[$i]]
+                    ),
+                    'options' => array
+                    (
+                        'animation'             => false,
+                        'fontSize'              => 20,
+                        'responsive'            => false,
+                        'legend'                => array('display' => false),
+                        'scales'                => array
+                        (
+                            'yAxes' => 
+                            [array(
+                                'ticks' => array
+                                (
+                                    'min'       => 0,
+                                )
+                            )]
+                        )
+                    )
+                );
+                $flag = false;
+                $menu = $menu.<<<eof
+                    <div class="menuSeccion" data-tanque="$i">{$info['nombre']}</div>
+eof;
+                $i++;
+            }
+            $return['total'] = $i;
+            $return['codigo'] = <<<eof
+                <div class="historial parametro">
+                    <div class="titulo">Historial de parámetro</div>
+                    <div class="subtitulo">$nombre</div>
+                    <div class="historialGraficasWraper">
+                    <div class="menuTanques">
+                        <div class="menuParametros">$menu</div>
+                    </div>
+                        <div class="graficasWraper">
+eof;
+            $width = ($cont * 98)+40;
+            if($width < 1032)
+                $width = 1032;
+            $return['codigo'] =$return['codigo'].<<<eof
+                <div class="grafScroll" data-parame="-1">
+                    <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
+                </div>
+eof;
+            for($j = 0; $j < $i; $j++)
+            {
+                $return['codigo'] =$return['codigo'].<<<eof
+                    <div class="grafScroll hide" data-parame="$j">
+                        <canvas id="parametrosGrafica$j" width="$width" height="405"></canvas>
+                    </div>
+eof;
+            }
+            $return['graficaTodos'] =
+            array
+            (
+                'type' => 'line',
+                'data'=>array
+                (
+                    'labels'    => $labels,
+                    'datasets'  => $datasets
+                ),
+                'options' => array
+                (
+                    'animation'             => false,
+                    'fontSize'              => 20,
+                    'responsive'            => false,
+                    'legend'                => array('display' => false),
+                    'scales'                => array
+                    (
+                        'yAxes' => 
+                        [array(
+                            'ticks' => array
+                            (
+                                'min'       => 0,
+                            )
+                        )]
+                    )
+                )
+            );
+//                            <div class="menuArriba">
+//                                <div class="menuTitulo">Seleccionar tanques:</div>
+//                                <div class="menuTodos"><div></div>Ver todos</div>
+//                            </div>
+            $return['codigo'] = $return['codigo'].'
+                    </div>
+                </div>';
+            echo json_encode($return);
+        }
 
         public function actionGetParametroGrafica($estacion, $flag)
         {

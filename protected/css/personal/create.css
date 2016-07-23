@@ -1,0 +1,237 @@
+div.form {
+    width: 90% !important;
+    margin: 0 auto;
+}
+div.form-containerWraper:after
+{
+    content: '';
+    display:block;
+    clear: both;
+}
+div.containerbutton{
+    margin-top: 20px;
+      float: right;
+    width: 110px;
+}
+
+div.form label {
+    margin-bottom: 5px !important;
+}
+
+label.letreros{
+	font-size: 14px !important;
+	color: #0077B0;
+}
+
+/*      ************          */
+
+
+.form-cSmall{
+	width:100px;
+}
+.form-cMedium{
+	width:180px;
+}
+.form-cLarge{
+	width:250px;
+}
+
+.form-cRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+
+}
+.form-cLeft{
+float:left;
+width: 300px;
+ margin-left: 35px;
+}
+.form-container1{
+width:135px;
+height:6px;
+float:left;
+
+
+}
+.form-container2{
+ width:135px;
+ padding-top:20px;
+ height: 50px;
+float:left;
+
+ }
+.containerBoxRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+}
+.containertBoxLeft{
+  float:left;
+  width: 300px;  
+  margin-left: 35px;
+}
+
+.containerBox{
+  float:left;
+  width: 100%;
+}
+
+/*     *       */
+.cLetreros{
+  margin-left: 29px;
+  font-size: 14px !important;
+  color: #0077B0;
+      margin-top: 26px;
+}
+
+.letrero-container{
+ background-color:  #E4E7EB;
+ height: 4px;
+ width:68%;
+}
+
+
+
+/*
+ *   FORM ICONS
+ */
+
+
+#Personal_nombre{
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+#Personal_nombre.error{
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_error.png');
+}
+#Personal_nombre.success{
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+
+
+#Personal_apellido {
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Personal_apellido.error {
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_error.png');
+}
+#Personal_apellido.success {
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+#Personal_tel{
+  background-image: url('../../images/personal/iconoTelefono.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Personal_tel.error{
+  background-image: url('../../images/personal/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
+#Personal_tel.success{
+  background-image: url('../../images/personal/iconoTelefono.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+
+
+#Personal_rfc{
+  background-image: url('../../images/personal/iconoRFC.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Personal_rfc.error{
+  background-image: url('../../images/personal/iconoRFC.png'), url('../../images/form/bg_error.png');
+}
+#Personal_rfc.success{
+  background-image: url('../../images/personal/iconoRFC.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+
+
+#Personal_domicilio{
+  background-image: url('../../images/personal/iconoDomicilio.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Personal_domicilio.error{
+  background-image: url('../../images/personal/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
+#Personal_domicilio.success{
+  background-image: url('../../images/personal/iconoDomicilio.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+
+
+#Personal_correo{
+  background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Personal_correo.error{
+  background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg_error.png');
+
+}
+#Personal_correo.sucess{
+  background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg_success.png');
+
+}
+
+
+
+
+
+#Personal_id_rol{
+  background-image: url('../../images/personal/iconoTipoUsuario.png'), url('../../images/form/bg.png');
+  background-position: 4px 6px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Personal_id_rol.error{
+  background-image: url('../../images/personal/iconoTipoUsuario.png'), url('../../images/form/bg_error.png');
+
+}
+#Personal_id_rol.success{
+  background-image: url('../../images/personal/iconoTipoUsuario.png'), url('../../images/form/bg_success.png');
+
+}
+
+
+

@@ -1,0 +1,177 @@
+div.addTanque 
+{
+    float: right;
+    background-color: #0077b0;
+    border-radius: 5px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    width: 171px;
+    cursor: pointer;
+    color: #FFFFFF;
+    text-align: center;
+}
+div.editarTanque
+{
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 10px;
+    background-color: #C6D880;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+div.form div.row.buttons
+{
+    width: 71%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+div.form input[type="submit"]
+{
+    float: right;
+    width: 171px; 
+    margin-right: 50px;
+    font-size: 18px;
+    height: 35px;
+    line-height: 35px;
+}
+div.tanque
+{
+    float: left;
+    width: 250px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid #0077B0;
+    border-radius: 5px;
+    /*overflow: hidden;*/
+    padding: 20px;
+}
+.form-container1{
+float:left;
+width: 300px;
+margin-right: 100px;
+}
+.form-container2{
+float:left;
+width: 300px;
+}
+
+div.form-containerWraper:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/**********/
+div.form-containerWraper:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*   *    */
+
+div.form {
+    width: 90% !important;
+    margin: 0 auto;
+}
+div.form-containerWraper:after
+{
+    content: '';
+    display:block;
+    clear: both;
+}
+div.containerbutton{
+    width: 142px;
+    margin-left: 99px;
+    margin-top: 101px;
+}
+
+label.letreros{
+    font-size: 14px !important;
+    color: #0077B0;
+}
+
+/*      ************          */
+
+.form-cSmall {
+    width: 160px;
+}
+
+.form-cLarge{
+    width:250px;
+}
+
+.form-cXLarge{
+    width:400px;
+}
+
+.form-cRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+
+}
+.form-cLeft{
+float:left;
+width: 300px;
+ margin-left: 35px;
+}
+.form-container1{
+width:135px;
+height:66px;
+float:left;
+
+
+}
+.form-container2{
+ width:135px;
+ padding-top:26px;
+ padding-left: 135px;
+ height: 50px;
+
+ }
+.containerBoxRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+}
+.containertBoxLeft{
+  float:left;
+  width: 300px;  
+  margin-left: 35px;
+}
+
+.containerBox{
+float:left;
+width: 100%;
+margin-top:10px;
+margin-bottom:10px;
+
+}
+
+/*     *       */
+.cLetreros{
+  margin-left: 29px;
+  font-size: 14px !important;
+  color: #0077B0;
+}
+
+.letrero-container{
+ background-color:  #E4E7EB;
+ height: 4px;
+ width:68%;
+}
+
+.allTanques:after
+{
+    clear: both;
+    display: block;
+    content: '';
+}

@@ -1,0 +1,15 @@
+$(document).ready(function(){
+    $('.checkboxcolor').click(function()
+    {
+        if($(this).hasClass('selected'))
+        {
+            $(this).removeClass('selected');
+            $('#LoginForm_rememberMe').prop('checked',false);
+        }
+        else
+        {
+            $(this).addClass('selected');
+            $('#LoginForm_rememberMe').prop('checked',true);
+        }    
+    });
+})
