@@ -137,21 +137,46 @@ class SiteController extends Controller
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
+
+		
+
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
+
 			if($model->validate() && $model->login())
                         {
-                            $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
+
+
+                           $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
+
+                           	/*
+                           	 
+                           	 Evita el error 500 al momento de hacer el login valiando 
+                           	 que el usuario y contraseña sea smobiladmin.
+
+                           	 */
+
+							if(isset($usuario)){}else{
+								if(($_POST['LoginForm']['username']==='smobiladmin') && ($_POST['LoginForm']['password']==='smobiladmin'))
+								{
+									$this->redirect(Yii::app()->user->returnUrl);
+								}
+							}
+
+
                             if($usuario->tipo_usr == 1)
                             {
                                 Yii::app()->user->id = 'Cliente';
                             }
                             elseif($usuario->tipo_usr == 2)
                             {
-                                $personal = Personal::model()->findByPk($usuario->id_usr);
-                                $rol = Roles::model()->findByPk($personal->id_rol);
-                                Yii::app()->user->id = $rol->nombre_rol;
+                               $personal = Personal::model()->findByPk($usuario->id_usr);
+                               $rol = Roles::model()->findByPk($personal->id_rol);
+                               Yii::app()->user->id = $rol->nombre_rol;
+
+                     
                             }
+                        
                             $this->redirect(Yii::app()->user->returnUrl);
                         }
 		}
