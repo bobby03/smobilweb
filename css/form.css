@@ -7,7 +7,8 @@ div.search-form div.wide.form
 {
     width: 250px;
     margin: 0;
-    margin-left: 35px;
+    /*margin-left: 35px;*/
+    float: left;
 }
 .chosen-container-multi .chosen-choices
 {
@@ -256,6 +257,7 @@ div.wide.form label
     color: #0077b0;
     line-height: 20px;
     margin-right: 15px;
+    font-size: 14px;
 }
 
 div.wide.form .row
@@ -281,9 +283,17 @@ h2
     text-indent: 40px;
     height: 30px;
 }
+.grid-view .empty
+{
+    font-style: normal;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
 div.formContainer1:after,
 div.row.titulos:after,
-div.row:after
+div.row:after,
+div.search-form:after
 {
     clear: both;
     content: '';

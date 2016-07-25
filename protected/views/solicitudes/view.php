@@ -2,17 +2,13 @@
 /* @var $this SolicitudesController */
 /* @var $model Solicitudes */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Solicitudes'=>array('index'),
 	$model->id,
-);
-
-$this->menu=array(
-	array('label'=>'List Solicitudes', 'url'=>array('index')),
-	array('label'=>'Create Solicitudes', 'url'=>array('create')),
-	array('label'=>'Update Solicitudes', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Solicitudes', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Solicitudes', 'url'=>array('admin')),
 );
 ?>
 

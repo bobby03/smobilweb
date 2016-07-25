@@ -4,14 +4,8 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
     $this->breadcrumbs=array
-    (
-	'Solicitudes',
-    );
-
-    $this->menu=array
-    (
-	array('label'=>'Create Solicitudes', 'url'=>array('create'))
-    );
+    ('Solicitudes',);
+    
 ?>
 
 <h1>Solicitudes</h1>
@@ -20,6 +14,9 @@
     <?php $this->renderPartial('_search',array(
 	'model'=>$model,
     )); ?>
+    <a href="solicitudes/create">
+        <div class="agregar solicitudes"></div>
+    </a>
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
@@ -27,6 +24,20 @@
         'id'=>'solicitud',
         'dataProvider'=>$model->search(),
         'summaryText'=> '',
-        'columns'=>$model->adminSearch()
+        'columns'=>$model->adminSearch(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('tr td:nth-child(2)').each(function()
+            {
+                var texto = $(this).text();
+                var columna = $(this).siblings('.button-column');
+                var index = texto.indexOf('proceso');
+                if(index == -1)
+                {
+                    columna.find('a.update').remove();
+                    columna.find('a.delete').remove();
+                }
+            });
+        }"
     )); ?>
 </div>

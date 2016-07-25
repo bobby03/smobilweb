@@ -1,77 +1,106 @@
-#header{
-        width: 100% !important;
-        background-color: #0077b0 !important;
-        height: 85px !important;
-        border-bottom: 3px solid #49dbd0 !important;
 
-}
-#mainmenu{
-  display:none
-}
+/*
+*  GENERA ESTILOS PARA EL LOGIN
+*/
 
-#footer{
-    border-top: 3px solid #49dbd0 !important;
-    margin: 0px !important;
-    background-color: #0077b0 !important;
-    padding: 25px !important;
-
+body.site-login{
+	overflow-x: hidden !important;
+    padding-top: 120px;
 }
-#content{
-        width: 418px;
-    height: 233px;
-    margin-top: 87px;
-    margin-left: 342px;
+body.site-login img#slogo{
+    width: 340px;
+    margin: 0 auto;
+    display: inherit;
+    margin-bottom: 46px;
 }
 
-label.llogin{
-    font-size: 15px !important;
-    color:#0077b0;
+body.site-login #page{
+	margin:0 auto;
 }
-div.form input, div.form textarea, div.form select, div.form .chosen-container {
-    /* margin: 0.2em 0 0.5em 0; */
+
+body.site-login #contentWrapper{
+	margin:0 !important;
+
+}
+body.site-login #contentWrapper #content{
+	margin:0 auto !important;
+    width: 400px;
+   /* margin-top: 220px !important;*/
+}
+
+body.site-login #contentWrapper #content div.form{
+	width: 240px; 
+}
+
+body.site-login #contentWrapper #content div.form form input[type="text"],
+body.site-login #contentWrapper #content div.form form input[type="submit"],
+body.site-login #contentWrapper #content div.form form input[type="password"]{
+    width: 240px ; 
     min-height: 30px;
     box-sizing: border-box;
     border: 2px solid #0077b0;
     border-radius: 5px;
-    border-left: 30px solid #0077b0;
     text-indent: 5px;
-    width: 20% !important;
+      
 }
 
-div.form input[type="submit"] {
-    background-color: #40B2BF !important;
-    text-indent: 0;
-    border: 0;
-    color: #FFFFFF;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 4px;
+body.site-login form#login-form .rememberMe{
+    width: 100% !important;  
+    
 }
 
-div.rememberMe{
-    width:11% !important;
-    color:#40B2BF;
-    position: relative;
+body.site-login form#login-form .rememberMe label{
+    vertical-align: 13px !Important;  
+      font-size: 12px;
 }
-h1{
+
+body.site-login form#login-form label{
+    font-size: 15px;
+    color:#0077b0;
+}
+    
+body.site-login form#login-form .checkboxcolor{
+	display: none;
+}
+
+body.site-login form #LoginForm_rememberMe{
+	width: 15px !Important;
+    height: 15px !Important;
+}
+
+body.site-login form .errorMessage{
+	height: 15px;
+	display: inline-block;
+}
+
+
+body.site-login #mainmenu{
+  display:none
+}
+
+body.site-login h1{
     display: none;
 }
 
-div.checkboxcolor{
-    width: 8px;
-    height:8px;
-    left: 7px;
-    top:3px;
-    background-color: #ffffff;
-    cursor: pointer;
-    border: 2px solid gray;
+body.site-login input[type="submit"] {
+    background-color: #40B2BF;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 4px;
+}
+
+
+body.site-login #footer{
+    border-top: 2px solid #49dbd0 !important;
+    margin: 0px !important;
+    background-color: #0077b0 !important;
+    padding: 25px !important;
     position: absolute;
+	bottom: 0;
+	width: 100%;
+
 }
-input[type="checkbox"]{
-   /* display: none;*/
-  
-}
-div.checkboxcolor.selected{
-    background-color:red;
-}
+
+
+
 

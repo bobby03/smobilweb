@@ -22,63 +22,64 @@ $baseUrl = Yii::app()->baseUrl;
 
 
 <div class="form-containerWraper">
-<div class="form-container1">
+<div class="form-cLeft">
 	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
-		<?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'nombre'); ?>
+		<label class="letreros">Nombre</label>
+		<div class="form-cLarge"><?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50)); ?></div>
+		<!--<?php echo $form->error($model,'nombre'); ?>-->
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'apellido'); ?>
-		<?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'apellido'); ?>
+		<label class="letreros">Apellido</label>
+		<div class="form-cLarge"><?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50)); ?></div>
+		<!--<?php echo $form->error($model,'apellido'); ?>-->
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'tel'); ?>
-		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
-		<?php echo $form->error($model,'tel'); ?>
+		<label class="letreros">Teléfono</label>
+		<div class="form-cMedium"><?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?></div>
+		<!--<?php echo $form->error($model,'tel'); ?>-->
 	</div>
 
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'rfc'); ?>
-		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
-		<?php echo $form->error($model,'rfc'); ?>
+		<label class="letreros">RFC</label>
+		<div class="form-cMedium"><?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?></div>
+	<!--	<?php echo $form->error($model,'rfc'); ?>-->
 	</div>
 </div>
-<div class="form-container2">
+<div class="form-cRight">
 	<div class="row">
-		<?php echo $form->labelEx($model,'domicilio'); ?>
-		<?php echo $form->textField($model,'domicilio',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'domicilio'); ?>
+		<label class="letreros">Domicilio</label>
+		<div class="form-cXLarge"><?php echo $form->textField($model,'domicilio',array('size'=>60,'maxlength'=>150)); ?>
+	<!--	<?php echo $form->error($model,'domicilio'); ?>-->
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_rol'); ?>
-		<span class='css-select-moz'>
+	<label class="letreros">Rol</label>
+	<div class="form-cMedium"><span class='css-select-moz'>
                     <?php echo $form->dropDownList($model,'id_rol', Roles::model()->getAllRoles(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
-                </span>
-		<?php echo $form->error($model,'id_rol'); ?>
+                </span></div>
+	<!--	<?php echo $form->error($model,'id_rol'); ?>-->
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'correo'); ?>
-		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'correo'); ?>
+		<label class="letreros">E-mail</label>
+		<div class="form-cXLarge"><?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?></div>
+	<!--	<?php echo $form->error($model,'correo'); ?>-->
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'puesto'); ?>
-		<?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'puesto'); ?>
+		<label class="letreros">Puesto</label>
+		<div class="form-cMedium"><?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100)); ?></div>
+	<!--	<?php echo $form->error($model,'puesto'); ?>-->
 	</div>
 </div>
 <div class="containerbutton">
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div></div>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
+	</div>
+</div>	
 </div>
 <?php $this->endWidget(); ?>
 

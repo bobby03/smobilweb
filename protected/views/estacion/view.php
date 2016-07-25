@@ -7,13 +7,10 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
-$this->menu=array(
-	array('label'=>'List Estacion', 'url'=>array('index')),
-	array('label'=>'Create Estacion', 'url'=>array('create')),
-	array('label'=>'Update Estacion', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Estacion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Estacion', 'url'=>array('admin')),
-);
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+ 
 ?>
 
 <h1>View Estacion #<?php echo $model->id; ?></h1>
@@ -32,3 +29,4 @@ $this->menu=array(
 		'activo',
 	),
 )); ?>
+

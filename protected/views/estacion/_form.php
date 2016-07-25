@@ -16,8 +16,16 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+    'enableAjaxValidation'=>true,
+    'clientOptions' => array(
+        'validateOnSubmit' => true,
+        'validateOnChange' => true,
+        'validateOnType' => true,
+        ),
+    )); 
+
+
+?>
 
 
 <div class="form-containerWraper">
@@ -27,6 +35,7 @@
 				<label class= "letreros">Especie</label>
 					<div class="form-cLarge">
 						<span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo', $model->getAllTipo(), array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
+						<?php echo $form->error($model,'tipo'); ?>
 				
 					</div>
 			</div>
@@ -35,6 +44,7 @@
 				<label class= "letreros">Identificador</label>
 					<div class="form-cLarge">
 					<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
+					<?php echo $form->error($model,'identificador'); ?>
 				</div>
 			</div>
 
@@ -42,6 +52,7 @@
 				<label class= "letreros">No. Personal</label>
 				<div class="form-cLarge">
 					<?php echo $form->textField($model,'no_personal'); ?>
+					<?php echo $form->error($model,'no_personal'); ?>
 				</div>
 			</div>
 
@@ -49,19 +60,22 @@
 				<label class= "letreros">Marca</label>
 					<div class="form-cLarge">	
 					<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
+					<?php echo $form->error($model,'marca'); ?>
 					</div>
 			</div>
 		</div>
 
-		<div class="form-cRight">
+		<div class="form-cLeft">
 			<div class="row">
 				<label class= "letreros">Color</label>
 				<div class="form-cLarge"><?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?></div>
+				<?php echo $form->error($model,'color'); ?>
 			</div>
 
 			<div class="row">
 				<label class= "letreros">Ubicación</label>
 				<div class="form-cXLarge"><?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?></div>
+				<?php echo $form->error($model,'ubicacion'); ?>
 				
 			</div>
 		        <?php if ($model->isNewRecord):?>
@@ -69,13 +83,15 @@
 			<div class="row">
 				<?php echo $form->labelEx($model,'disponible'); ?>
 				<span class="css-select-moz"><?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
+				<?php echo $form->error($model,'disponile'); ?>
+				
 				</div>
 			</div>
 		<?php endif;?>
 
 		    <div class="containerbutton">
 				<div class="row buttons">
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
 				</div>
 		</div>
 </div>

@@ -119,7 +119,25 @@ class SolicitudesController extends Controller
                     $model->fecha_entrega = null;
                     $model->fecha_estimada = null;
                     $model->codigo = 'En proceso';
-                    if($model->save())
+                    if($model->id != '')
+                    {
+                        $model2 = Solicitudes::model()->findByPk($model->id);
+                        $model2->update();
+                        $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
+                        foreach($_POST['pedido'] as $data)
+                        {
+                            $pedido = new Pedidos();
+                            $pedido->id_cepa = $data['cepa'];
+                            $pedido->id_especie = $data['especie'];
+                            $pedido->id_solicitud = $model->id;
+                            $pedido->id_direccion = $data['destino'];
+                            $pedido->tanques = $data['tanques'];
+                            $pedido->cantidad = $data['cantidad'];
+                            $pedido->save();
+                        }
+                        $this->redirect(array('index'));
+                    }
+                    elseif($model->save())
                     {
                         $model->id = Yii::app()->db->getLastInsertId();
                         foreach($_POST['pedido'] as $data)
@@ -162,7 +180,6 @@ class SolicitudesController extends Controller
                 $i = count($tanques);
                 if($i > 0)
                 {
-
                     $todosViajes[$data->id] = array
                     (
                         'cantidad' => $i,
@@ -177,7 +194,7 @@ class SolicitudesController extends Controller
                             <div class="tablaViajes">';
             foreach($viajes as $data)
             {
-                if($todosViajes[$data->id_estacion])
+                if(isset($todosViajes[$data->id_estacion]))
                 {
                     $imprimir = $imprimir.<<<eof
                         <div class="renglon">

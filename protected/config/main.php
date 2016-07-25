@@ -34,16 +34,21 @@ return array(
 			'redactorUpload'=>true, // enable Redactor image upload
 		),
 	),
+
+	'homeUrl'=>array('site/login'),
 	// application components
 	'components'=>array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+			'class'=>'WebUser',
 		),
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+			'showScriptName'=>false,
+     		'caseSensitive'=>false,  
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -54,16 +59,6 @@ return array(
 //		'db'=>array(
 //			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 //		),
-                'clientScript'=>array(
-			'packages'=>array(
-				'jquery'=>array(
-					'baseUrl'=>'http://code.jquery.com/',
-					'js'=>array(
-						'jquery-1.11.2.min.js'
-					),
-				),
-			),
-		),
 		// uncomment the following to use a MySQL database
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
@@ -95,10 +90,10 @@ return array(
 				),
 				// uncomment the following to show log messages on web pages
 				
-//				array(
-//					'class'=>'CWebLogRoute',
-//				),
-				
+/*				array(
+					'class'=>'CWebLogRoute',
+				),
+*/				
 			),
 		),
 	),
@@ -112,6 +107,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+		'locationLat'=>'31.870803236698222',
+		'locationLon'=>'-116.66807770729065',
 	),
 	
 );

@@ -2,6 +2,10 @@
 /* @var $this SolicitudTanquesController */
 /* @var $model SolicitudTanques */
 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+
 $this->breadcrumbs=array(
 	'Solicitud Tanques'=>array('index'),
 	$model->id,

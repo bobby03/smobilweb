@@ -1,3 +1,4 @@
-.grid-view table.items {
-    width: 70% !important;
+td.button-column
+{
+    width: 80px !important;
 }

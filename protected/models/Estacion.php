@@ -35,9 +35,50 @@ class Estacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo, identificador, no_personal, marca, color, ubicacion', 'required'),
-			array('id, tipo, no_personal, disponible, activo', 'numerical', 'integerOnly'=>true),
-			array('identificador, marca, color, ubicacion', 'length', 'max'=>50),
+
+
+            array('tipo','required','message'=>'Este campo es obligatorio'),
+            array(
+                'tipo',
+                'numerical',
+                'integerOnly'=>true),
+
+
+            array('identificador','required','message'=>'Este campo es obligatorio'),
+            array(
+                'identificador',
+                'length',
+                'max'=>50),
+
+           array('no_personal','required','message'=>'Este campo es obligatorio'),
+           array(
+                'no_personal',
+                'numerical',
+                'integerOnly'=>true,
+                'message'=>'Solo se aceptan numeros'),
+
+
+            array('marca','required','message'=>'Este campo es obligatorio'),
+            array(
+                'marca',
+                'length',
+                'max'=>50),
+
+            array('color','required','message'=>'Este campo es obligatorio'),
+            array(
+                'color',
+                'length',
+                'max'=>50),
+
+            array('ubicacion','required','message'=>'Este campo es obligatorio'),
+            array(
+                'ubicacion',
+                'length',
+                'max'=>50),
+
+             array('disponible','required','message'=>'Este campo es obligatorio'),
+
+			array('id, disponible, activo', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),
@@ -120,7 +161,47 @@ class Estacion extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    public function search1()
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
+        $criteria=new CDbCriteria;
+
+        $criteria->compare('id',$this->id);
+        $criteria->compare('tipo',$this->tipo);
+        $criteria->compare('identificador',$this->identificador,true);
+        $criteria->compare('no_personal',$this->no_personal);
+        $criteria->compare('marca',$this->marca,true);
+        $criteria->compare('color',$this->color,true);
+        $criteria->compare('ubicacion',$this->ubicacion,true);
+        $criteria->compare('disponible',$this->disponible);
+        $criteria->compare('activo',$this->activo);
+                $criteria->addCondition("activo=1");
+                $criteria->addCondition("tipo=2");
+               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
+                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
+                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
+                                "%')");*/
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
+    }
+    public function search2($id)
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
+
+        $datos = Yii::app()->db->createCommand()
+                ->select('id,identificador')
+                ->from('estacion')
+                ->where("estacion.id=$id")
+                ->limit(1)
+                ->queryRow();
+               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
+                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
+                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
+                                "%')");*/
+        return $datos;
+    }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -240,7 +321,7 @@ class Estacion extends CActiveRecord
                     (
                         'tanque' => array
                         (
-                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.png',
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
                             'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
                             'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
                         )

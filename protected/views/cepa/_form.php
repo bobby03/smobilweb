@@ -5,7 +5,7 @@
  $baseUrl = Yii::app()->baseUrl;
 ?>
 
-<div class="form">
+<div class="form cepa">
 <?php 
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/cepa/create.css');
@@ -22,7 +22,7 @@
 	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 		<span class="containerBox">
-		 		<div class="form-cLeft">
+		 		<div class="form-container1">
 		 	<!--NCEPA --> 
 			        <div class="row">
 						<label class= "letreros">Nombre de Cepa</label>
@@ -33,20 +33,10 @@
 							 ?>
 						</div>
 					</div>
-			 <!--Cantidad-->
-					<div class="row">
-						<label class= "letreros">Cantidad</label>
-							<div class="form-cSmall">
-							<?php 
-							echo $form->numberField($model,'cantidad');
-							echo $form->error($model,'cantidad');
-							 ?>
-						</div>
-					</div>
 				</div>
 
 		<!--Especie-->  
-				<div class="form-cRight">
+				<div class="form-container1 last">
 					<div class="row">
 						<label class= "letreros">Especie</label>
 							<div class="form-cLarge">
@@ -61,7 +51,7 @@
 <!--separador-->		
 		<span class="containerBox">
 			
-				<label class="cLetreros">rangos máximos y mínimos</label>
+				<label class="cLetreros">Rangos minimos y maximos</label>
 				<hr class="letrero-container"></hr>
 			
 		</span>
@@ -70,10 +60,11 @@
 		<!--Temperatura-->
 		<span class="containerBox">
 			<div class="containertBoxLeft">
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">Temperatura</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php 
 								echo $form->numberField($model,'temp_min');
 								echo $form->error($model,'temp_min');
@@ -81,9 +72,10 @@
 							</div>
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
+                                                <span>max</span>
 					    	<?php 
 					    	echo $form->numberField($model,'temp_max');
 					    	echo $form->error($model,'temp_max');
@@ -93,36 +85,40 @@
 				</div>
 
 		<!--Ph-->
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
-						<label class= "letreros">Ph</label>
+						<label class= "letreros">pH</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php echo $form->numberField($model,'ph_min');
 								echo $form->error($model,'ph_min'); ?>
 							</div>
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
+                                                    <span>max</span>
 							<?php echo $form->numberField($model,'ph_max');
 							echo $form->error($model,'ph_max'); ?>
 						</div>
 					</div>
 				</div>
 			<!--Oxigeno-->
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">Oxigeno</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php echo $form->numberField($model,'ox_min');
 								echo $form->error($model,'ox_min'); ?>
 							</div>
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
+                                                    <span>max</span>
 							<?php echo $form->numberField($model,'ox_max');
 							echo $form->error($model,'ox_max'); ?>
 						</div>
@@ -133,18 +129,20 @@
 
 			<!--Conductividad-->   
 			<div class="containerBoxRight">
-					<div class="form-container1">
+					<div class="form-container11">
 						<div class="row">
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
+                                                                    <span>min</span>
 									<?php echo $form->numberField($model,'cond_min');
 									echo $form->error($model,'cond_min'); ?>
 								</div>
 						</div>
 					</div>
-					<div class="form-container2">
+					<div class="form-container12">
 						<div class="row">
 							<div class="form-cSmall">
+                                                            <span>max</span>
 								<?php echo $form->numberField($model,'cond_max');
 								echo $form->error($model,'cond_max'); ?>
 							</div>
@@ -152,26 +150,28 @@
 					</div>
 
 			<!-- ORP-->
-				<div class="form-container1">
+				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
+                                                            <span>min</span>
 								<?php echo $form->numberField($model,'orp_min');
 								echo $form->error($model,'orp_min'); ?>
 
 							</div>	
 					</div>
 				</div>
-				<div class="form-container2">
+				<div class="form-container12">
 					<div class="row">
-						<div class="form-cSmall"0>
+						<div class="form-cSmall">
+                                                    <span>max</span>
 								<?php echo $form->numberField($model,'orp_max');
 								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
 				</div>
 					<div class="row buttons">
-						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 					</div>
 			</div>
   		</span>

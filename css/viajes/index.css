@@ -1,6 +1,7 @@
 div.tabs
 {
     background-color: #0077B0;
+    margin-top: 50px; 
 }
 div.tabs div.tab
 {
@@ -12,6 +13,10 @@ div.tabs div.tab
     line-height: 25px;
     font-size: 18px;
     color: #FFFFFF;
+}
+div.tabContent
+{
+    margin-top: 30px;
 }
 div.tab.select
 {

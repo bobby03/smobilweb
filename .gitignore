@@ -51,3 +51,7 @@ assets/*
 protected/runtime/
 protected/runtime/*
 .DS_Store
+protected/config/database.php
+*.log
+protected/runtime/application.log
+protected/config/database.php

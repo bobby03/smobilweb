@@ -1,13 +1,12 @@
 div.addTanque 
 {
     float: right;
-    margin-left: 25px;
-    background-color: #0088cc;
+    background-color: #0077b0;
     border-radius: 5px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 20px;
-    width: 185px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    width: 171px;
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
@@ -24,13 +23,32 @@ div.editarTanque
     text-align: center;
     cursor: pointer;
 }
+div.form div.row.buttons
+{
+    width: 71%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+div.form input[type="submit"]
+{
+    float: right;
+    width: 171px; 
+    margin-right: 50px;
+    font-size: 18px;
+    height: 35px;
+    line-height: 35px;
+}
 div.tanque
 {
-    border-bottom: 1px solid #D6D6D6;
-}
-div.tanque:last-child 
-{
-    border-bottom: 0;
+    float: left;
+    width: 250px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid #0077B0;
+    border-radius: 5px;
+    /*overflow: hidden;*/
+    padding: 20px;
 }
 .form-container1{
 float:left;
@@ -149,4 +167,11 @@ margin-bottom:10px;
  background-color:  #E4E7EB;
  height: 4px;
  width:68%;
+}
+
+.allTanques:after
+{
+    clear: both;
+    display: block;
+    content: '';
 }

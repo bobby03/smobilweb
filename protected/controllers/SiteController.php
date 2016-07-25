@@ -29,7 +29,44 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
+		$criteria = new CDbCriteria();
+		/*$criteria->select = "t.*, est.identificador, p.nombre, p.apellido";
+		$criteria->from = 'viajes as t';
+		$criteria->join = "JOIN estacion est ON est.id = t.id_estacion";
+		$criteria->join .= " JOIN personal as p ON p.id = t.id_responsable";
+		$criteria->join .= " JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id";
+		$criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
+		
+		$model = Yii::app()->db->createCommand()
+			->selectDistinct("t.*, est.identificador, p.nombre, p.apellido")
+			->from('viajes as t')
+			->join("estacion est","est.id = t.id_estacion")
+			->join("personal as p","p.id = t.id_responsable")
+			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
+			->where("t.status = '1
+				+.0'")
+				->queryAll();
+
+				/*lo voy a ocupar no borrar**/
+		$viajes_disponibles =  Yii::app()->db->createCommand(
+				'SELECT v.id as "id_viaje", est.identificador as "nombre", 
+					(SELECT count(t.id) 
+						FROM tanque as t 
+						WHERE t.id_estacion = v.id_estacion 
+						AND t.status = 1 
+						AND t.activo = 1) as "disponibles", 
+					(SELECT DISTINCT cd.domicilio 
+						FROM solicitudes_viaje as sv 
+						JOIN solicitud_tanques as st ON st.id_solicitud = sv.id_solicitud 
+						JOIN clientes_domicilio as cd ON cd.id = st.id_domicilio 
+						WHERE sv.id_viaje = v.id ORDER BY cd.id DESC LIMIT 1) as "ultimo"
+				FROM viajes as v 
+				JOIN estacion as est ON est.id=v.id_estacion 
+				WHERE v.status = 1')
+			->queryAll();
+
+		$this->render('index', array('enruta'=>$model, 'enespera'=> $viajes_disponibles));
 	}
 
 	/**
@@ -39,12 +76,28 @@ class SiteController extends Controller
 	{
 		if($error=Yii::app()->errorHandler->error)
 		{
-			if(Yii::app()->request->isAjaxRequest)
+			if(Yii::app()->request->isAjaxRequest){
 				echo $error['message'];
-			else
-				$this->render('error', $error);
+			}else{
+
+                switch($error['code'])
+                {
+                        case 403:
+
+                                $this->render('error403', array('error' => $error));
+                                break;
+                        default:
+                        		$this->render('error', $error);
+
+                }
+				
+			}
 		}
 	}
+
+
+
+
 
 	/**
 	 * Displays the contact page
@@ -110,7 +163,43 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+	public function actionDashboardTanques($id) {
+		$return['result'] = 0 ;
+		$return['html'] = "";
+		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+		->queryAll();
 
+            if(count($last) > 0)
+            {
+                foreach($last as $data)
+                {
+                   $return["html"] .= "
+                   	<div class='tanque'>
+                   		<span class='titulotanque'> Tanque {$data["ct"]}</span>
+                   		<div class='variables-wrapper'> 
+                   			<div class='var-oz'>
+                   				<div class='icon-oz'></div>
+                   				<div class='txt'>{$data["ox"]}</div>
+                   			</div>
+                   			<div class='var-ph'>
+                   				<div class='icon-ph'></div>
+                   				<div class='txt'>{$data["ph"]}</div>
+                   			</div>
+                   			<div class='var-tm'>
+                   				<div class='icon-tm'></div>
+                   				<div class='txt'>{$data["temp"]}</div>
+                   			</div>
+                   		</div>
+                   	</div>";
+                }
+                $return['result'] = 1;
+            }
+            else
+            {
+                $return['result'] = 0;
+            }
+            echo json_encode($return);
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */

@@ -1,6 +1,10 @@
 <?php
 /* @var $this EspecieController */
 /* @var $model Especie */
+ 
+ $baseUrl = Yii::app()->baseUrl;
+ $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
 
 $this->breadcrumbs=array(
 	'Especies'=>array('index'),

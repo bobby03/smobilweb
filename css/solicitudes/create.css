@@ -3,10 +3,15 @@ div.formContainer1
     width: 35%;
     float: left;
 }
+div.form
+{
+    margin-top: 53px !important;
+}
 div.formContainer2
 {
     width: 50%;
     float: right;
+    margin-right: 20px;
 }
 div.form h2
 {
@@ -87,11 +92,6 @@ div.row.cantidad div
     width: 45%;
     float: left;
 }
-div.row.cantidad div.noTanques
-{
-    float: right;
-    margin-top: 13px;
-}
 div.row.cantidad div.noTanques input
 {
     float: right;
@@ -110,8 +110,8 @@ div.botonOtra
 {
     float: right;
     width: 20%;
-    height: 25px;
-    line-height: 25px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     cursor: pointer;
     background-color: #0077B0;
@@ -177,10 +177,10 @@ div.pedidoViaje:nth-child(3)
 {
     padding-bottom: 15px;
 }
-/*div.pedido:last-child
+div.pedido:last-child
 {
     padding-bottom: 35px;
-}*/
+}
 div.datosPedido
 {
     float: left;
@@ -206,10 +206,19 @@ div.botonesPedido
     float: left;
     width: 50%;
     height: 15px;
-    background-size: 30px 30px;
+    background-size: 16px 16px;
+ /*   background-size: 30px 30px;*/
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+}
+.editarPedido
+{
+    background-image: url(./../../images/solicitud/editar.png)
+}
+.borrarPedido
+{
+    background-image: url(./../../images/solicitud/borrar.png)
 }
 div.botones
 {
@@ -239,7 +248,7 @@ div.botones .continuar
 div.subtitulos div
 {
     float: left;
-    width: 33%;
+    width: 37%;
     color: #0077B0;
 }
 div.subtitulos div:nth-child(2)
@@ -249,8 +258,8 @@ div.subtitulos div:nth-child(2)
 div.renglon div:nth-child(1),
 div.renglon div:nth-child(2)
 {
-    width: 30%;
-    margin-right: 3%;
+    width: 37%;
+    /*margin-right: 3%;*/
     float: left;
 }
 div.renglon div:nth-child(2)
@@ -269,12 +278,28 @@ div.tablaViajes
 div.viajeLoc, div.viajeSel
 {
     float: left;
-    width: 12%;
+    width: 43px;
     margin-left: 15px;
+<<<<<<< HEAD
+    height: 34px;
+    /*background-color: #0077B0;*/
+=======
     height: 30px;
     background-color: #0077B0;
+>>>>>>> 16e8e969bcc3bf073fd478de6d60eb932642b79a
     border-radius: 5px;
+    background-size: 47px 34px;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
+}
+div.viajeLoc
+{
+    background-image: url(./../../images/solicitud/botonUbicacion.png);
+}
+div.viajeSel
+{
+    background-image: url(./../../images/solicitud/botonAgregar.png);
 }
 div.crearViaje input[type="submit"]
 {
@@ -294,3 +319,37 @@ div.renglon:after
     clear: both;
     content: '';
 }
+
+/*
+ *   FORM ICONS
+ */
+
+
+#Solicitudes_id_clientes_chosen{
+  background-image: url('../../images/solicitud/IconoClientesSolicitud.png'), url('../../images/usuarios/bg.png');
+  background-position: 6px 3px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
+#Especie_id_chosen{
+  background-image: url('../../images/solicitud/iconoPezSolicitud.png'), url('../../images/usuarios/bg.png');
+  background-position: 5px 5px,left;
+  background-size: 21px, 30px;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
+#Cepa_id_chosen{
+  background-image: url('../../images/solicitud/iconoCepasSolicitud.png'), url('../../images/usuarios/bg.png');
+  background-position: 6px 8px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
