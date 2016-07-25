@@ -565,10 +565,12 @@ div.container-logo{
         margin-top: 10px;
 }
 .drawLine1{
-    height:10px;
-    width:1000px;
-    background-color: blue;
-    line-height: 190px;
+       height: 8px;
+    width: 100%;
+    max-width: 1129px;
+    background-color: #09b7c9;
+    float: left;
+    margin-top: 24px;
 }
 
 /*
