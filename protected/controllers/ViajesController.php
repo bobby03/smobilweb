@@ -96,12 +96,12 @@ class ViajesController extends Controller
 //            if($model->status != 1)
 //            {
                 $tanques = Yii::app()->db->createCommand()
-                        ->selectDistinct('solTa.id_domicilio, solTa.id_tanque, solTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
+                        ->selectDistinct('SolTa.id_domicilio, SolTa.id_tanque, SolTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
                         ->from('solicitudes_viaje as solVi')
-                        ->join('solicitud_tanques as solTa','solTa.id_solicitud = solVi.id_solicitud')
-                        ->join('solicitudes as sol','sol.id = solTa.id_solicitud')
+                        ->join('solicitud_tanques as SolTa','SolTa.id_solicitud = solVi.id_solicitud')
+                        ->join('solicitudes as sol','sol.id = SolTa.id_solicitud')
                         ->join('clientes as cli','cli.id = sol.id_clientes')
-                        ->join('tanque as tan','tan.id = solTa.id_tanque')
+                        ->join('tanque as tan','tan.id = SolTa.id_tanque')
                         ->where("solVi.id_viaje = :id",array(':id'=>(int)$id))
                         ->queryAll();
 //            }
@@ -728,12 +728,12 @@ EOF;
         public function actionGetParametroGrafica($viaje, $flag)
         {
             $tanques = Yii::app()->db->createCommand()
-                ->selectDistinct('solTa.id_domicilio, solTa.id_tanque, solTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
+                ->selectDistinct('SolTa.id_domicilio, SolTa.id_tanque, SolTa.id_cepas, SolTa.cantidad_cepas, cli.nombre_empresa, sol.codigo, tan.nombre, tan.id')
                 ->from('solicitudes_viaje as solVi')
-                ->join('solicitud_tanques as solTa','solTa.id_solicitud = solVi.id_solicitud')
-                ->join('solicitudes as sol','sol.id = solTa.id_solicitud')
+                ->join('solicitud_tanques as SolTa','SolTa.id_solicitud = solVi.id_solicitud')
+                ->join('solicitudes as sol','sol.id = SolTa.id_solicitud')
                 ->join('clientes as cli','cli.id = sol.id_clientes')
-                ->join('tanque as tan','tan.id = solTa.id_tanque')
+                ->join('tanque as tan','tan.id = SolTa.id_tanque')
                 ->where("solVi.id_viaje = :id",array(':id'=>(int)$viaje))
                 ->queryAll();
             foreach($tanques as $data)

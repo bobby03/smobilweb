@@ -1,9 +1,10 @@
 /* Datos de monitoreo*/
 #datosMon{
-	width:1061px;
-	height: 253px;
+	width:1200px;
+	height: 300px;
 	border:4px solid #49dbd0;
 	margin:auto;
+	margin-top: 35px;
 	font-family: 'Roboto-Regular';
 }
 p{
@@ -66,10 +67,11 @@ p{
 #detallesMon{
 	margin:auto;
 	margin-top:27px;
-	width:1061px;
+	width:1200px;
 	font-family: 'Roboto-Regular';
 }
 .enlace{
+	cursor: pointer;
 	color:white;
 	text-decoration: none;
 	float:right;
@@ -79,6 +81,7 @@ p{
 	text-align: center;
 	font-size: 18px;
 	border-left:4px solid #49dbd0;
+	border-right:4px solid #49dbd0;
 }
 .enlace:hover{
 	color:white !important;
@@ -100,11 +103,68 @@ p{
 	color:white;
 }
 /* Detalles de monitoreo */ 
-.grafica{
+.tanques{
 	margin:0px;
 	width:450px;
 	float: left;
 }
 .der{
 	margin-right:155px;
+	height: 340px;
+	width:42%;
+
+}
+.izq{
+	float:right;
+	height: 340px;
+	width:42%;
+}
+
+.select{
+	color:white !important;
+	text-decoration: none;
+	background-color: #49dbd0;
+}
+.tanque{
+	float:left;
+}
+.graf{
+	width:85px;
+	height:120px;
+	float:left;
+}
+.hDatos{
+	width:100%;
+	height: 100px;
+
+}
+.datIzq{
+	float:left;
+}
+.datDer{
+	float:right;
+}
+.boton.graf {
+	cursor: pointer;
+    background-image: url('../../images/viajes/botonHistorial.png');
+    width: 52px;
+    height: 38px;
+    float:left;
+    margin-top: 40px;
+
+}
+.boton.adve {
+	cursor: pointer;
+    background-image: url('../../images/viajes/botonAlertas.png');
+    width: 52px;
+    height: 38px;
+    float:left;
+    margin-left:10px;
+    margin-top: 40px;
+}
+h3 {
+    background-color: #CEDCE4;
+    line-height: 30px;
+    color: #0077B0;
+    text-align: center;
 }

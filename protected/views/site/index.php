@@ -7,6 +7,13 @@ $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/inicio/inicio.css');
 $cs->registerScriptFile($baseUrl.'/js/inicio/inicio.js');
 $this->pageTitle=Yii::app()->name;
+
+// IF NOT LOGGED IN, GO TO LOGIN SCREEN
+if(Yii::app()->user->isGuest)
+{
+$this->redirect(Yii::app()->homeUrl);
+}
+
 ?>
 
 
