@@ -32,6 +32,7 @@ $(document).ready(function(){
  
   			cargaTanques(id);
  			cargaUbicacion(id);
+    
   		   $(this).addClass('selected');
   		}
   	});
@@ -54,7 +55,9 @@ $(document).ready(function(){
   	        },
   	        success: function(data) {
   	        	$('.contenedor-tanques').empty();
-        		$('.contenedor-tanques').append(data.html);
+        		  $('.contenedor-tanques').append(data.html);
+              //$('.containerEntregaV2').text(data.linea);
+                console.log(data.linea);
   	        },
   	        error: function( a, b, c){
   	        	console.log(a, b, c);

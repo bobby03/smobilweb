@@ -1,0 +1,301 @@
+div.form
+{
+    width: 1200px;
+    margin: 0 auto;
+}
+div.search-form div.wide.form
+{
+    width: 250px;
+    margin: 0;
+    /*margin-left: 35px;*/
+    float: left;
+}
+.chosen-container-multi .chosen-choices
+{
+    border: 0;
+    box-sizing: border-box;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type=text]
+{
+    margin: 0;
+    height: auto;
+    min-height: 24px;
+}
+.chosen-container-single .chosen-single div b
+{
+    display: none !important;
+}
+div.form div.row.cantidad input
+{
+    border-left: 2px solid #0077b0;
+}
+div.form input,
+div.form textarea,
+div.form select,
+div.form .chosen-container
+{
+    /*margin: 0.2em 0 0.5em 0;*/
+    min-height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    width: 100%;
+}
+div.form input[type="submit"]
+{
+    background-color: #0077b0;
+    text-indent: 0;
+    border: 0;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+.css-select-moz 
+{
+    position: relative;
+    display: inline-block;
+    /*overflow: hidden;*/
+    width: 100%;
+    background: #FFFFFF;
+}
+.css-select-moz select, 
+.css-select select
+{
+    background: transparent;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    margin: 0;
+    font-family: 'Roboto-Regular';
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    height: 20px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+}
+.css-select-moz:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 100%;
+    top: 0;
+    right: 9px;
+    font-size: 60%;
+    line-height: 30px;
+    padding: 0 7px;
+    background: transparent url(../images/flechaDropdown.png) no-repeat center right;
+    background-size: 11px 7px;
+    color: white;
+    pointer-events: none;
+}
+div.search-form input
+{
+    border-radius:10px;
+    width: 160px;
+    text-indent: 10px;
+    border:1px solid #B0B0B0;
+    min-height: 20px;
+}
+.chosen-container-active .chosen-single
+{
+    border: 0;
+    box-shadow: none;
+}
+.chosen-container-single .chosen-single
+{
+    border: 0;
+    background: none;
+}
+.chosen-container-active.chosen-with-drop .chosen-single
+{
+    background-image: none;
+    border: none;
+}
+/*div.form input[type="submit"]
+{
+    width: 150px;
+    float: right;
+    height: 35px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 5px;
+}*/
+div.form fieldset
+{
+	border: 1px solid #DDD;
+	padding: 10px;
+	margin: 0 0 10px 0;
+    -moz-border-radius:7px;
+}
+
+div.form label
+{
+    font-weight: bold;
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 10px;
+}
+div.form .row
+{
+    margin: 10px 0;
+}
+div.formContainer1 div.nombreSeccion
+{
+    width: 16.66666666666667%;
+    float: left
+}
+div.formContainer1 div.separador
+{
+    float: left;
+    width: 83.33333333333333%;
+}
+div.formContainer1 div.separador > div
+{
+    float: left;
+    width: 20%;
+}
+div.formContainer1 div.separador div div.botonTodos
+{
+    height: 22px;
+    background-color: #C6D880;
+    line-height: 22px;
+    font-size: 14px;
+    width: 50%;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+div.row.titulos > div
+{
+    float: left;
+    width: 16.66666666666667%;
+}
+div.form .hint
+{
+	margin: 0;
+	padding: 0;
+	color: #999;
+}
+
+div.form .note
+{
+	font-style: italic;
+}
+
+div.form span.required
+{
+	color: red;
+}
+
+div.form div.error label:first-child,
+div.form label.error,
+div.form span.error
+{
+	color: #C00;
+}
+
+div.form div.error input,
+div.form div.error textarea,
+div.form div.error select,
+div.form input.error,
+div.form textarea.error,
+div.form select.error
+{
+	background: #FEE;
+	border-color: #C00;
+}
+
+div.form div.success input,
+div.form div.success textarea,
+div.form div.success select,
+div.form input.success,
+div.form textarea.success,
+div.form select.success
+{
+	background: #E6EFC2;
+	border-color: #C6D880;
+}
+
+div.form div.success label
+{
+	color: inherit;
+}
+
+div.form .errorSummary
+{
+	border: 2px solid #C00;
+	padding: 7px 7px 12px 7px;
+	margin: 0 0 20px 0;
+	background: #FEE;
+	font-size: 0.9em;
+}
+
+div.form .errorMessage
+{
+	color: red;
+	font-size: 0.9em;
+}
+
+div.form .errorSummary p
+{
+	margin: 0;
+	padding: 5px;
+}
+
+div.form .errorSummary ul
+{
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+
+div.wide.form label
+{
+    float: left;
+    color: #0077b0;
+    line-height: 20px;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+div.wide.form .row
+{
+	clear: left;
+}
+
+div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
+{
+	clear: left;
+	padding-left: 110px;
+}
+div.chosen-container
+{
+    width: 100% !important;
+    box-sizing: border-box;
+}
+h2
+{
+    background-color: #0077B0;
+    color: #FFFFFF;
+    line-height: 30px;
+    text-indent: 40px;
+    height: 30px;
+}
+.grid-view .empty
+{
+    font-style: normal;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+div.formContainer1:after,
+div.row.titulos:after,
+div.row:after,
+div.search-form:after
+{
+    clear: both;
+    content: '';
+    display: block;
+}

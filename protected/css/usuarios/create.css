@@ -1,0 +1,139 @@
+div.form {
+    width: 90% !important;
+    margin: 0 auto;
+}
+div.form-containerWraper:after
+{
+    content: '';
+    display:block;
+    clear: both;
+}
+div.containerbutton{
+    margin-top: 20px;
+    
+    width: 110px;
+    float: right;
+}
+
+div.form label {
+    margin-bottom: 5px !important;
+}
+
+label.letreros{
+	font-size: 14px !important;
+	color: #0077B0;
+}
+
+/*      ************          */
+
+
+.form-cSmall{
+	width:100px;
+}
+.form-cMedium{
+	width:170px;
+}
+.form-cLarge{
+	width:250px;
+}
+
+.form-cRight{
+  width: 250px;
+  float:left;
+  padding-top: 1px;
+
+}
+.form-cLeft{
+float:left;
+width: 300px;
+ margin-left: 35px;
+}
+.form-container1{
+width:135px;
+height:6px;
+float:left;
+
+
+}
+.form-container2{
+ width:135px;
+ padding-top:20px;
+ height: 50px;
+float:left;
+
+ }
+.containerBoxRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+}
+.containertBoxLeft{
+  float:left;
+  width: 300px;  
+  margin-left: 35px;
+}
+
+.containerBox{
+  float:left;
+  width: 100%;
+}
+
+/*     *       */
+.cLetreros{
+  margin-left: 29px;
+  font-size: 14px !important;
+  color: #0077B0;
+      margin-top: 26px;
+}
+
+.letrero-container{
+ background-color:  #E4E7EB;
+ height: 4px;
+ width:68%;
+}
+
+/*
+ *   FORM ICONS
+ */
+
+
+#Usuarios_usuario{
+  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+#Usuarios_tipo_usr{
+  background-image: url('../../images/usuarios/iconoTipoUsuario.png'), url('../../images/usuarios/bg.png');
+  background-position: 6px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#Usuarios_pwd{
+  background-image: url('../../images/usuarios/iconoContrasena.png'), url('../../images/usuarios/bg.png');
+  background-position: 10px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+
+#clienteList{
+  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}
+
+
+#personalList{
+  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  border-left:0;
+}

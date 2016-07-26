@@ -63,16 +63,9 @@ $this->redirect(Yii::app()->homeUrl);
   
   					</div>
   					<div class="container-box">
-							<div class="separador1"></div>
-
-						<div class="contenedor-rutas-entregas">
-							<div class="containerSalidaV2"></div>
- 						<div class="containerEntregaV2"></div>
- 								<div class="drawLine1"></div>
- 
- 						</div>
- 						<div class="separador2"></div>
-
+						<div class="separador1"></div>
+ 						<div class="containerRuta"></div>
+ 						<div class="separador2"></div>		
 					</div>
 					<div class="container-box">
 						<div class="container-table viaje">
@@ -98,6 +91,7 @@ $this->redirect(Yii::app()->homeUrl);
   			    		</div>
  			    		<div class="container-logo"></div>
   					</div>
+  				</div>
   			  
   			    <div class="container-granja none"></div>
 			</div>

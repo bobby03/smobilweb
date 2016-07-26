@@ -1,0 +1,112 @@
+
+div.form.cepa {
+    width: 100%;
+    max-width: 670px;
+    margin: 0 auto;
+}
+div.form-containerWraper:after
+{
+    content: '';
+    display:block;
+    clear: both;
+}
+div.containerbutton{
+    margin-top: 20px;
+    width: 110px;
+    float: right;
+}
+
+div.form label {
+    margin-bottom: 5px !important;
+}
+
+label.letreros{
+	font-size: 14px !important;
+	color: #0077B0;
+}
+
+/*      ************          */
+
+
+.form-cSmall
+{
+    width:100px;
+    position: relative;
+}
+.form-cSmall span
+{
+    display: block;
+    color: #FFFFFF;
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    font-size: 11px;
+}
+
+.form-cLarge{
+	width:250px;
+}
+
+.form-cRight{
+  width: 300px;
+  float:left;
+  padding-top: 1px;
+
+}
+.form-container1{
+    float: left;
+    width: 250px;
+    margin: 0 20px 0 60px; 
+}
+.form-container1.last {
+    margin-left: 20px;
+}
+
+.form-container11{
+    float: left;
+    width: 100px;
+   
+}
+
+.form-container12{
+    float: left;
+    width: 100px;
+    margin: 0px 0 2px 50px;
+    padding-top: 21px;
+}
+/*****/
+
+.containerBoxRight{
+    width: 250px;
+    float: right;
+    margin-left: 9px;
+    margin-right: 70px;
+
+}
+.containertBoxLeft{
+    float: left;
+    width: 275px;
+    margin-left: 60px;
+}
+
+.containerBox{
+  float:left;
+  width: 100%;
+}
+
+/*     *       */
+.cLetreros
+{
+    margin-left: 29px;
+    font-size: 14px !important;
+    color: #0077B0;
+    margin-top: 26px;
+    text-indent: 30px;
+}
+
+.letrero-container{
+   background-color:  #E4E7EB;
+   height: 4px;
+   margin: 0 auto;
+   width: 90%;
+}
