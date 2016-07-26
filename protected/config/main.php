@@ -109,6 +109,7 @@ return array(
 		'adminEmail'=>'webmaster@example.com',
 		'locationLat'=>'31.870803236698222',
 		'locationLon'=>'-116.66807770729065',
+		'location'=>'Ensenada, BC, MX',
 	),
 	
 );
