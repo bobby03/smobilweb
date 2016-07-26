@@ -44,11 +44,10 @@ class SiteController extends Controller
 			->join("estacion est","est.id = t.id_estacion")
 			->join("personal as p","p.id = t.id_responsable")
 			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
-			->where("t.status = '1
+			->where("t.status = '2
 				+.0'")
 				->queryAll();
 
-				/*lo voy a ocupar no borrar**/
 		$viajes_disponibles =  Yii::app()->db->createCommand(
 				'SELECT v.id as "id_viaje", est.identificador as "nombre", 
 					(SELECT count(t.id) 
@@ -95,10 +94,6 @@ class SiteController extends Controller
 		}
 	}
 
-
-
-
-
 	/**
 	 * Displays the contact page
 	 */
@@ -142,21 +137,46 @@ class SiteController extends Controller
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
+
+		
+
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
+
 			if($model->validate() && $model->login())
                         {
-                            $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
+
+
+                           $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
+
+                           	/*
+                           	 
+                           	 Evita el error 500 al momento de hacer el login valiando 
+                           	 que el usuario y contraseña sea smobiladmin.
+
+                           	 */
+
+							if(isset($usuario)){}else{
+								if(($_POST['LoginForm']['username']==='smobiladmin') && ($_POST['LoginForm']['password']==='smobiladmin'))
+								{
+									$this->redirect(Yii::app()->user->returnUrl);
+								}
+							}
+
+
                             if($usuario->tipo_usr == 1)
                             {
                                 Yii::app()->user->id = 'Cliente';
                             }
                             elseif($usuario->tipo_usr == 2)
                             {
-                                $personal = Personal::model()->findByPk($usuario->id_usr);
-                                $rol = Roles::model()->findByPk($personal->id_rol);
-                                Yii::app()->user->id = $rol->nombre_rol;
+                               $personal = Personal::model()->findByPk($usuario->id_usr);
+                               $rol = Roles::model()->findByPk($personal->id_rol);
+                               Yii::app()->user->id = $rol->nombre_rol;
+
+                     
                             }
+                        
                             $this->redirect(Yii::app()->user->returnUrl);
                         }
 		}
@@ -175,31 +195,49 @@ class SiteController extends Controller
                 {
                    $return["html"] .= "
                    	<div class='tanque'>
-                   		<span class='titulotanque'> Tanque {$data["ct"]}</span>
-                   		<div class='variables-wrapper'> 
-                   			<div class='var-oz'>
-                   				<div class='icon-oz'></div>
-                   				<div class='txt'>{$data["ox"]}</div>
-                   			</div>
-                   			<div class='var-ph'>
-                   				<div class='icon-ph'></div>
-                   				<div class='txt'>{$data["ph"]}</div>
-                   			</div>
-                   			<div class='var-tm'>
-                   				<div class='icon-tm'></div>
-                   				<div class='txt'>{$data["temp"]}</div>
-                   			</div>
-                   		</div>
-                   	</div>";
-                }
-                $return['result'] = 1;
-            }
+                   			<div class='tanque-container-titulo'>
+                    		<span class='titulotanque'> Tanque {$data["ct"]}</span></div>
+                     		<div class='variables-wrapper'> 
+                     			<div class='var-oz'>
+                     				<div class='icon-oz'></div>
+                    				<div class='txt'>{$data["ox"]}</div>
+                    			</div>
+                    			<div class='var-ph'>
+                    				<div class='icon-ph'></div>
+                    				<div class='txt'>{$data["ph"]}</div>
+                    			</div>
+                    			<div class='var-tm'>
+                    				<div class='icon-tm'></div>
+                    				<div class='txt'>{$data["temp"]}</div>
+                    			</div>
+                    		</div>
+                    	</div>";
+                   }
+                 $return['result'] = 1;
+               }
             else
             {
-                $return['result'] = 0;
+                  $return['result'] = 0;
+                $return["html"] .="<div class='letreroError'>Este viaje no tiene registros de viaje en ruta, porfavor, p&oacute;ngase en contacto con el administrador.</div>"; 
+ 
             }
-            echo json_encode($return);
-	}
+         echo json_encode($return);
+  	}
+  		public function actionPrueba($id) {
+ 			$return['result'] = 0 ;
+ 		    $return['html'] = "";
+          	$last =  Yii::app()->db->createCommand("SELECT v.id,est.identificador FROM viajes as v JOIN estacion as est ON est.id = v.id_estacion where v.id = {$id}")
+ 			->queryAll();
+ 
+ 			if(count($last)>0){
+                 foreach($last as $data){
+  				$return["html"] = "<label class='tituloV3'>3.Ubicación: {$data["identificador"]}</label>";
+ 				}
+         	$return['result'] = 1;
+     	}
+         echo json_encode($return);
+ 	}
+
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
