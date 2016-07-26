@@ -80,7 +80,7 @@ body
 #contentWrapper
 {
 	margin-left: 179px;
-	margin-top: 47px;
+	margin-top: 0px;
 
 }
 
@@ -697,7 +697,18 @@ table.detail-view tr.even{
     
     width:200px;
 }
+/*
+*  ESTILOS PARA EL HEADER
+*/
 
+#headerSmobil{
+	background-color: #E8E8E8;
+	height: 50px;
+	background-image: url('./../images/header-logo.png');
+	background-position: right 13px top 8px;
+    background-repeat: no-repeat;
+    background-size: 87px;
+}
 
 /*
 *  ERROR 403
