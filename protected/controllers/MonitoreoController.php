@@ -43,7 +43,7 @@ class MonitoreoController extends Controller
         JOIN tanque ON estacion.id=tanque.id_estacion
         JOIN uploadTemp ON tanque.id=uploadTemp.id_tanque
         WHERE estacion.id='.$id.'
-        ORDER BY tanque.id,uploadtemp.id DESC LIMIT 2000'.chr(41).' consulta
+        ORDER BY tanque.id,uploadTemp.id DESC LIMIT 2000'.chr(41).' consulta
         GROUP BY idtan')
                 ->queryAll();
         $estaciones = Yii::app()->db->createCommand()
