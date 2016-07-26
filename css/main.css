@@ -440,9 +440,14 @@ div.botones-content
 }
 .grid-view table.items th a {
      color: #0077b0 ;
-   }
+ }
+
+.grid-view table.items tr{
+   	height: 35px;
+ }
+ 
 .grid-view table.items tr.odd {
-    background: #E8E8E8 ;
+    background: #F2F2F2;
 }
 .grid-view table.items tr.even {
     background: #ffffff;
@@ -702,7 +707,7 @@ table.detail-view tr.even{
 */
 
 #headerSmobil{
-	background-color: #E8E8E8;
+	background-color: #F2F2F2;
 	height: 50px;
 	background-image: url('./../images/header-logo.png');
 	background-position: right 13px top 8px;
