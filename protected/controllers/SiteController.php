@@ -196,7 +196,8 @@ class SiteController extends Controller
                 $return["html"] .="<div class='letreroError'>Este viaje no tiene registros de viaje en ruta, porfavor, p&oacute;ngase en contacto con el administrador.</div>"; 
  
             }
-         echo json_encode($return);
+         $return['linea'] = $this->GetDistancia($id);
+          echo json_encode($return);
   	}
   		public function actionPrueba($id) {
  			$return['result'] = 0 ;
@@ -212,7 +213,65 @@ class SiteController extends Controller
      	}
          echo json_encode($return);
  	}
-
+ 	public function rad($x)
+  {
+        return $x * pi() / 180;
+   }
+ /*
+ 			function dashbboard	
+ */  
+ public function GetDistancia($id)
+ { 
+ 	$recorrido = Yii::app()->db->createCommand()
+     	->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio')
+        ->from('clientes_domicilio as cd')
+        ->join('solicitud_tanques as st','st.id_domicilio = cd.id')
+        ->join('solicitudes_viaje as sv','sv.id_solicitud = st.id_solicitud')
+        ->where("sv.id_viaje = $id")
+        ->queryAll();
+    $arreglo = array();
+    $d = 0;
+    $p1 = $p2 = array();
+    foreach($recorrido as $data)
+    {
+            $p1[0] = Yii::app()->params['locationLat'];
+            $p1[1] = Yii::app()->params['locationLon'];
+        
+        $hay = strlen($data['ubicacion_mapa']);
+        $coord = substr($data['ubicacion_mapa'], 1, $hay-1);
+        $p2 = explode(",", $coord);
+        $R = 6378137; // Earth’s mean radius in meter
+        $dLat = $this->rad($p2[0] - $p1[0]);
+        $dLong = $this->rad($p2[1] - $p1[1]);
+        $a = sin($dLat / 2) * sin($dLat / 2) +
+          cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
+          sin($dLong / 2) * sin($dLong / 2);
+		$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+		$arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio']);
+	}
+	$total = count($arreglo);
+ 	for($i=0;$i<$total; $i++)
+ 	{
+		for($j=$i+1;$j<$total;$j++)
+		{
+		    if( $arreglo[$i]['distancia']>$arreglo[$j]['distancia'])
+		    {
+	    	    $aux =$arreglo[$i];
+	    		$arreglo[$i]=$arreglo[$j];
+	    		$arreglo[$j] =$aux;
+		    }
+		}
+	}
+	$viaje = Viajes::model()->findByPk($id);
+	$html = '';
+	$total++;
+	$width = 'style="width: ' . (100)/$total.'%"';
+   	foreach ($arreglo as $data) 
+   	{
+   		$html = $html.'';
+   	}
+	return $html;
+ } 
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
