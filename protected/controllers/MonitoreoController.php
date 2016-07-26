@@ -70,22 +70,22 @@ class MonitoreoController extends Controller
     }
     public function actionGetHistorialTanque($estacion, $id)
         {
-            $total = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.status,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro r
+            $total = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.status,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
             JOIN tanque t ON r.id_tanque = t.id
             JOIN estacion est ON est.id=t.id_estacion
-            WHERE t.id=42
-            AND est.id=8')
+            WHERE t.id='.$id.'
+            AND est.id='.$estacion)
                 ->queryAll();
             $count = count($total);
             if($count > 333)
                 $limit = $count - 333;
             else
                 $limit = 0;
-            $datos = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.status,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro r
+            $datos = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.status,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
             JOIN tanque t ON r.id_tanque = t.id
             JOIN estacion est ON est.id=t.id_estacion
-            WHERE t.id=42
-            AND est.id=8')
+            WHERE t.id='.$id.'
+            AND est.id='.$estacion)
                 ->queryAll();
             $return['codigo'] = <<<eof
                 <div class="historial">
@@ -388,14 +388,12 @@ eof;
 
 	public function actionGetTanqueGrafica($estacion,$id, $flag, $flag2)
         {
-            $datos = Yii::app()->db->createCommand()
-                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
-                ->from('estacion')
-                ->join('tanque','estacion.id=tanque.id_estacion')
-                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
-                ->where("estacion.id=$estacion")
-                ->andWhere("tanque.id=$id")
-                ->order('idUpl DESC')
+            $datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,r.id AS idr,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ox,ph,temp,cond,orp
+              FROM estacion                
+              JOIN tanque ON estacion.id=tanque.id_estacion
+              JOIN registro_camp r ON tanque.id=r.id_tanque
+              WHERE estacion.id='.$estacion.'
+              AND tanque.id='.$id.' ORDER BY idr DESC')
                 ->limit(1)
                 ->queryRow();
             $return = array();
@@ -591,23 +589,188 @@ eof;
             }
             echo json_encode($return);
         }
-        public function actionGetHistorialParametro($estacion, $id)
+        public function actionGetAlertasParametro($estacion, $id)
         {
-            $total = Yii::app()->db->createCommand('SELECT r.id,r.id_tanque,r.fecha,r.hora,r.ox from registro r 
-                 WHERE r.id_tanque='.$id.
-                ' ORDER BY r.id DESC')
+            $uploads = Yii::app()->db->createCommand('SELECT rc.id,cs.id as idcs,t.id as idt, c.id as idcepa, c.nombre_cepa,c.'.$id.'_min,c.'.$id.'_max, t.nombre as nombre, rc.fecha,rc.hora,rc.'.$id.',rc.ct
+            FROM registro_camp rc
+            JOIN camp_sensado cs ON rc.id_camp_sensado=cs.id
+            JOIN camp_tanque ct ON ct.id_camp_sensado=cs.id 
+            JOIN cepa c ON ct.id_cepa=c.id 
+            JOIN tanque t ON rc.id_tanque=t.id
+            WHERE rc.alerta>0
+            AND rc.id_estacion='.$estacion.'
+            AND ( rc.'.$id.'<c.'.$id.'_min OR rc.'.$id.'>c.'.$id.'_max)')
+                    ->queryAll();
+            if(count($uploads) > 0)
+            {
+                if($id == 'ox')
+                    $nombre = 'Oxígeno';
+                elseif($id == 'temp')
+                    $nombre = 'Temperatura';
+                elseif($id == 'cond')
+                    $nombre = 'Conductividad';
+                elseif($id == 'orp')
+                    $nombre = 'Potencial óxido reducción';
+                elseif($id == 'ph')
+                    $nombre = 'PH';
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta">Alertas: '.$nombre.'</div>
+                        <div class="tablaAlertas">
+                            <div class="tablaTitulos">
+                                <span>Origen</span><span>Mínimo</span><span>Máximo</span><span>Acción</span><span>Hora</span><span>Fecha</span>
+                            </div>
+                            <div class="tablaWraper">';
+                            
+                foreach($uploads as $data)
+                {
+                    if($data[$id] > $data[$id.'_max'] || $data[$id] < $data[$id.'_max'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data[$id] > $data[$id.'_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $min=$id."_min";
+                        $max=$id."_max";
+                        $return = $return.<<<eof
+                                <div>{$data['nombre']}</div><div>{$data[$min]}</div><div>{$data[$max]}</div><div>{$data[$id]}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+eof;
+                    }
+                }
+                $return = $return.'</div>
+                        </div>
+                        </div>';
+            }
+            else
+            {
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta2">Parámetro sin alertas</div>
+                        <div class="tablaAlertas">
+                        </div>
+                    </div>';
+            }
+            echo json_encode($return);
+        }
+
+        public function actionGetAlertasTanque($estacion, $id)
+        {
+            $uploads = Yii::app()->db->createCommand('SELECT rc.id,cs.id as idcs,t.id as idt, cepa.*, t.nombre as nombre, rc.fecha,rc.hora,rc.temp,rc.ph,rc.ox,rc.cond,rc.orp,rc.alerta,rc.ct
+            FROM registro_camp rc
+            JOIN camp_sensado cs ON rc.id_camp_sensado=cs.id
+            JOIN camp_tanque ct ON ct.id_camp_sensado=cs.id 
+            JOIN cepa ON ct.id_cepa=cepa.id 
+            JOIN tanque t ON rc.id_tanque=t.id
+            WHERE rc.id_tanque='.$id.'
+            AND rc.alerta>0')
+                    ->queryAll();
+            if(count($uploads) > 0)
+            {
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta">Alertas: </div>
+                        <div class="tablaAlertas">
+                            <div class="tablaTitulos">
+                                <span>Origen</span><span>Mínimo</span><span>Máximo</span><span>Acción</span><span>Hora</span><span>Fecha</span>
+                            </div>
+                            <div id="tablaScroll">
+                            <div class="tablaWraper">';
+                            
+                foreach($uploads as $data)
+                {
+                    if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['temp'] > $data['temp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Temperatura</div><div>{$data['temp_min']}º</div><div>{$data['temp_max']}º</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+eof;
+                    }
+                    if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ox'] > $data['ox_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Oxígeno</div><div>{$data['ox_min']}</div><div>{$data['ox_max']}</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+eof;
+                    }
+                    if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ph'] > $data['ph_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>PH</div><div>{$data['ph_min']}</div><div>{$data['ph_max']}</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+eof;
+                    }
+                    if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['cond'] > $data['cond_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Conductividad</div><div>{$data['cond_min']}</div><div>{$data['cond_max']}</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+eof;
+                    }
+                    if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['orp'] > $data['orp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                                <div>Óxido reducción</div><div>{$data['orp_min']}</div><div>{$data['orp_max']}</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+eof;
+                    }
+                }
+                $return = $return.'</div></div>
+                        </div>
+                        </div>';
+            }
+            else
+            {
+                $return = '
+                    <div class="alertas">
+                        <div class="tituloAlerta2">Tanque sin alertas</div>
+                        </div>
+                    </div>';
+            }
+            echo json_encode($return);
+        }
+        public function actionGetHistorialParametro($estacion, $id)
+        {// Total de tanques
+            $total = Yii::app()->db->createCommand('SELECT r.hora, r.'.$id.', r.id_tanque, r.id               
+                FROM registro_camp r
+                WHERE r.id_estacion='.$estacion.'
+                ORDER BY r.id DESC')
                 ->queryAll();
             $count = count($total);
             if($count > 333)
                 $limit = $count - 333;
             else
                 $limit = 0;
-            $tanques = Yii::app()->db->createCommand('SELECT t.id,t.id_estacion,t.nombre FROM tanque t 
-            WHERE t.id_estacion='.$estacion)
+            //Tanques
+            $tanques = Yii::app()->db->createCommand('SELECT * FROM tanque t
+            JOIN registro_camp r ON t.id=r.id_tanque
+            WHERE t.id_estacion='.$estacion.'
+            GROUP BY t.id')
                 ->queryAll();
-            $datos = Yii::app()->db->createCommand('SELECT * FROM registro r
-            WHERE r.id_tanque='.$id.
-            ' ORDER BY r.id ASC')
+            $datos = Yii::app()->db->createCommand('SELECT r.hora, r.'.$id.', r.id_tanque, r.id               
+                FROM registro_camp r
+                WHERE r.id_estacion='.$estacion.'
+                ORDER BY r.id ASC')
                 ->queryAll();
             switch($id)
             {
@@ -622,7 +785,7 @@ eof;
             $datasets = [];
             $flag = true;
             $menu = <<<eof
-                <div class="menuSeccion" data-tanque="-1">Todos</div>
+                <div class="menuSeccion enlaceP" data-tanque="-1">Todos</div>
 eof;
             $i = 0;
             foreach($tanques as $info)
@@ -682,7 +845,7 @@ eof;
                 );
                 $flag = false;
                 $menu = $menu.<<<eof
-                    <div class="menuSeccion" data-tanque="$i">{$info['nombre']}</div>
+                    <div class="menuSeccion enlaceP" data-tanque="$i">{$info['nombre']}</div>
 eof;
                 $i++;
             }
@@ -690,7 +853,7 @@ eof;
             $return['codigo'] = <<<eof
                 <div class="historial parametro">
                     <div class="titulo">Historial de parámetro</div>
-                    <div class="subtitulo">$nombre</div>
+                    <div class="subtitulo tit">$nombre</div>
                     <div class="historialGraficasWraper">
                     <div class="menuTanques">
                         <div class="menuParametros">$menu</div>
@@ -752,13 +915,14 @@ eof;
 
         public function actionGetParametroGrafica($estacion, $flag)
         {
-            $tanques = Yii::app()->db->createCommand()
-                ->select('estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta')
-                ->from('estacion')
-                ->join('tanque','estacion.id=tanque.id_estacion')
-                ->join('uploadTemp','tanque.id=uploadTemp.id_tanque')
-                ->where("estacion.id=$estacion")
-                ->order('idUpl DESC')
+            $tanques = Yii::app()->db->createCommand('  SELECT * FROM '.chr(40).'SELECT estacion.id AS idEst,tanque.id AS idTan,r.id AS idr,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ox,ph,temp,cond,orp
+                FROM estacion
+                JOIN tanque ON estacion.id=tanque.id_estacion
+                JOIN registro_camp r ON tanque.id=r.id_tanque
+                WHERE estacion.id='.$estacion.'
+                ORDER BY idTan,idr DESC
+                  LIMIT 1000'.chr(41).' consulta
+                GROUP BY idTan')
                 ->queryAll();
                 
             foreach($tanques as $data)

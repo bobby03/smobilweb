@@ -85,17 +85,18 @@ $(document).ready(function()
 
     $("[data-tab='1'] .boton.adve").click(function()
     {
+        var estacion = $(this).attr('datos');
         var nombre = $(this).parent().siblings('.datIzq').children('p:first-child').text();
         var id = $(this).data('ale');
-        alert("Si funco por tanque:D");
-        /*$.ajax(
+        //alert(id+" "+nombre+" "+estacion);
+        $.ajax(
         {
             type: 'GET',
             url: 'GetAlertasTanque',
             dataType: 'JSON', 
             data:
             {
-                viaje: viaje,
+                estacion:estacion,
                 id: id
             },
             success: function(data)
@@ -111,7 +112,6 @@ $(document).ready(function()
                         {
                             var texto = $(this).text();
                             var div = $(this);
-                            reverseGeocoding(texto, 2, div);
                         });
                         $('.tableRow > div').each(function()
                         {
@@ -127,22 +127,22 @@ $(document).ready(function()
             {
                 console.log(a, b, c);
             }
-        });*/
+        });
     });
 $('[data-tab="2"] .boton.adve').click(function()
     {
         total = 1;
         delay = 250;
         var id = $(this).data('ale');
-        alert('Si funco por parámetro');
-        /*$.ajax(
+        estacion=$(this).attr('datos');
+        $.ajax(
         {
             type: 'GET',
             url: 'GetAlertasParametro',
             dataType: 'JSON', 
             data:
             {
-                viaje: viaje,
+                estacion:estacion,
                 id: id
             },
             success: function(data)
@@ -159,8 +159,7 @@ $('[data-tab="2"] .boton.adve').click(function()
                             {
                                 var texto = $(this).text();
                                 var div = $(this);
-//                                setTimeout(reverseGeocoding, delay, texto, 2, div);
-                                reverseGeocoding(texto, 2, div);
+                                
                                 delay = delay + 250;
                             }
                             else
@@ -183,14 +182,13 @@ $('[data-tab="2"] .boton.adve').click(function()
             {
                 console.log(a, b, c);
             }
-        });*/
+        });
     });
 $('[data-tab="1"] .boton.graf').click(function()
     {
         var estacion = $(this).attr('datos');
         var nombre = $(this).parent().siblings('.datIzq').children('p:first-child').text();
         var id = $(this).data('graf');
-        alert(estacion+"   "+id);
         $.ajax(
         {
             type: 'GET',
@@ -240,17 +238,17 @@ $('[data-tab="1"] .boton.graf').click(function()
     });
     $('[data-tab="2"] .boton.graf').click(function()
     {
-        var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
+        var nombre = $(this).parent().siblings('.datIzq').children('div:first-child').text();
         var id = $(this).data('ale');
-        alert("Si funco por parametro");
-       /* $.ajax(
+        var estacion = $(this).attr('datos');
+        $.ajax(
         {
             type: 'GET',
             url: 'GetHistorialParametro',
             dataType: 'JSON', 
             data:
             {
-                viaje: viaje,
+                estacion: estacion,
                 id: id
             },
             success: function(data)
@@ -317,7 +315,7 @@ $('[data-tab="1"] .boton.graf').click(function()
             {
                 console.log(a, b, c);
             }
-        });*/
+        });
     });
 
 	});
