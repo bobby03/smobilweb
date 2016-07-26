@@ -63,6 +63,8 @@ class NCButtonColumn extends CButtonColumn
             $this->buttons['delete']['click']=<<<EOD
             function(evt)
             {
+
+
                 evt.preventDefault();
                 var href = $(this).attr('href');
                 var index1 = (href.lastIndexOf('/'))+1;
@@ -93,9 +95,10 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            index1 = (href.indexOf('index.php/'))+10;
-                            index2 = href.indexOf('/delete');
-                            var controller = href.substring(index1, index2);
+                            
+                            var urlSplit = href.split( '/' );
+                            var controller = urlSplit[ urlSplit.length - 3 ]; 
+                            
                             controller = controller.toLowerCase().replace(/\b[a-z]/g, function(letter) 
                             {
                                 return letter.toUpperCase();
