@@ -164,7 +164,7 @@ $this->redirect(Yii::app()->homeUrl);
   			    	<?php 
 	  			    $us++;
 	  			    endforeach;?>
-  			    	<div class="progressbar">
+  			    	<!--<div class="progressbar">
 						<div class="menuTabs">
 						        <div class="bolaChica selected"></div>
 						        <div class="lineaChica selected"></div>
@@ -176,7 +176,7 @@ $this->redirect(Yii::app()->homeUrl);
 						        <div class="lineaChica"></div>
 						        <div class="bolaChica"></div>
 						    </div>
-  			    	</div>
+  			    	</div>-->
 
   			    	<div class="info">
   			    		<?php 
@@ -205,9 +205,7 @@ $this->redirect(Yii::app()->homeUrl);
   			    		
   			    	</div>
 
-  			    	<div class="ubicacion">
-  			    		
-  			    	</div>
+  			    	
 
   			    </div>
 			</div>
