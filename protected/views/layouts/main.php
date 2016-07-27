@@ -94,7 +94,6 @@
       </div>
 
       <div id="contentWrapper">
-      <div id="headerSmobil"></div>
       		<?php echo $content; ?>
       </div>
 
