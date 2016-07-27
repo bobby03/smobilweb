@@ -181,6 +181,19 @@ body.clientes-create div.des div input{
 }
 
 
+body.clientes-create  #content{
+    background-image: url('./../../images/dashboard/logoTransparente.png');
+    background-position: right 15% top 70%;
+    background-repeat: no-repeat;
+
+}
+
+
+body.clientes-create #sidebar{
+  display: none;
+}
+
+
 
 /*
 *  Iconos a Inputs
