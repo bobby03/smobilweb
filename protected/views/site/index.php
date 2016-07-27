@@ -26,7 +26,7 @@ $this->redirect(Yii::app()->homeUrl);
 			       		<div id="granja" >Estaciones</div>
 			    	</div>
 			    </h1>
-			    <div class="container-viaje none">
+			    <div class="container-viaje">
 			    	<div class="container-box">
 			    			<div class="divBox1">
  			    				<div class="divTitulo1">
@@ -95,7 +95,7 @@ $this->redirect(Yii::app()->homeUrl);
   					</div>
   				</div>
   			  
-  			    <div class="container-granja">
+  			    <div class="container-granja none">
   			    	<div class="dash1">
 	  			    	<div class="estacion">
 	  			    		<p class="topcont">1. Selecciona una estación</p>
@@ -114,6 +114,7 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    		</div>
 	  			    	</div>
 	  			    	<div class="reg"></div>
+	  			    	<div class="reg2"></div>
 
 
 	  			    	<div class="contenido">
@@ -121,29 +122,34 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    		
 	  			    		<div class="lcontenido">
 	  			    			<div>
-
 	  			    			</div>
 	  			    			<?php 
 	  			    			$o=1;
 	  			    			foreach($estaciones as $est):?>
-	  			    			<div data-id="est<?php echo $o;?>" class="cont none">
+	  			    			<div data-id="est<?php echo $o;?>" class="cont hide">
+	  			    				<?php 
+	  			    				$id=$est['id_estacion'];
+	  			    				$datos=$this->actionGetTanques($id);
+	  			    				?>
 	  			    			<?php
-	  			    			for($i=1;$i<=8;$i++):?>
+
+	  			    			foreach($datos as $dato):?>
 	  			    				<div class="litan">
-	  			    					<div class="tanT"><p class="pTan">Tanque <?php echo $i;?></p></div>
-		  			    					<div class="oxico"></div><label class="clab">80 mg/L</label>
-		  			    					<div class="phico"></div><label class="clab">30</label>
-		  			    					<div class="tempico"></div><label class="clab">120°C</label>
+	  			    					<div class="tanT"><p class="pTan"><?php echo $dato['tnombre']; ?></p></div>
+
+		  			    					<div class="oxico"></div><label class="clab"><?php echo intval($dato['ox']); ?> mg/L</label>
+		  			    					<div class="phico"></div><label class="clab"><?php echo intval($dato['ph']); ?></label>
+		  			    					<div class="tempico"></div><label class="clab"><?php echo intval($dato['temp']); ?>°C</label>
 	  			    				</div>
 	  			    			<?php
-	  			    			endfor;
+	  			    			endforeach;
 	  			    			?>
 	  			    			</div>
 	  			    		</div> <!-- Fin de div contenido-->
 	  			    	<?php 
 	  			    	$o++;
 	  			    	endforeach;?>
-
+	  			    	<div class="reg3"></div>
 	  			    	</div>
 
 
@@ -155,22 +161,30 @@ $this->redirect(Yii::app()->homeUrl);
   			    	</div>
 
   			    	<div class="info">
-  			    		<div class="infocliente">
-  			    			<p class="tit">Granja Arrecife Azul S. de R. L.</p>
+  			    		<?php 
+  			    		$id=$est['id_estacion'];
+	  			    	$datos=$this->actionGetTanques2($id);
+  			    		$u=1;
+  			    		foreach($estaciones as $est):?>
+	  			    		<div data-id="est<?php echo $u;?>" class="infocliente hide">
+  			    			<p id="titc" class="tit"><?php echo $est['identificador'];?></p>
   			    			<p class="infocont">
-  			    				<span>Playitas #1230</span>
-  			    				<span>Colonia: Ciprés</span>
-  			    				<span>Ensenada, Baja California, Méx.</span>
+  			    				<span><?php echo $est['ubicacion']?></span>
   			    			</p>
   			    		</div>
-  			    		<div class="infocontacto">
+
+  			    		<div data-id="est<?php echo $u;?>" class="infocontacto hide">
   			    			<p class="tit">Contacto:</p>
   			    			<p class="infocont">
-  			    				<span>José Luis Aguirre Fernández</span>
-  			    				<span>Tel. 178 45 23</span>
-  			    				<span>E-mail: jaguirre@arrecifeazul.mx</span>
+  			    				<span><?php echo $est['nombre']." ".$est['apellido'];?></span>
+  			    				<span>Tel. <?php echo $est['tel'];?></span>
+  			    				<span>E-mail: <?php echo $est['correo'];?></span>
   			    			</p>
-  			    		</div>
+  			    		</div>	
+	  			    	<?php 
+	  			    	$u++;
+	  			    	endforeach;?>
+  			    		
   			    	</div>
 
   			    	<div class="ubicacion">
