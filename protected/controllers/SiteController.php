@@ -290,11 +290,42 @@ class SiteController extends Controller
 	$viaje = Viajes::model()->findByPk($id);
 	$html = '';
 	$total++;
-	$width = 'style="width: ' . (100)/$total.'%"';
-   	foreach ($arreglo as $data) 
-   	{
-   		$html = $html.'';
-   	}
+	
+
+
+		if($total > 0){
+				$width = 'style="width: ' . (100)/$total.'%"';
+				$html = $html. '
+					<div class="containerBoxR" '.$width.'>
+						<div>
+							<div class="ctxtr"></div>
+								<div class="circle"></div>
+							<div class="containerLinea">
+								<div class="drawLine2"></div>
+							</div>
+						</div>
+					</div>';/*crear la parte del cajon*/
+			   	foreach ($arreglo as $data) 
+			   	{
+					$html = $html.'
+					<div class="containerBoxR" '.$width.'>
+				   		 	<div>
+				   		 	<div class="ctxtr"></div>
+									<div class="circle"></div>
+								<div class="containerLinea">
+									<div class="drawLine2"></div>
+								</div>
+							</div>
+					   	</div>';
+				    $i++;
+   				}
+   			}
+   			else{
+   					$html .'<div class="containerBoxR">
+   									<div class="letreroError>Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
+   				
+   			}	
+   	
 	return $html;
  } 
 	/**
