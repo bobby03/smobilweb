@@ -753,3 +753,7 @@ table.detail-view tr.even{
     text-align: center;
     width: 100%;
 }
+#cboxOverlay{
+	background-color: #0077B0;
+	opacity: .8 !important;
+}
