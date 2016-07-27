@@ -73,7 +73,6 @@ class SiteController extends Controller
 				AND e.tipo=2
 				AND cs.activo=1')
 			->queryAll();
-
 		$this->render('index', array('enruta'=>$model, 'enespera'=> $viajes_disponibles,'estaciones'=>$estaciones));
 	}
 
@@ -313,5 +312,47 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+	public function actionGetTanques($id){
+		$tanques= Yii::app()->db->createCommand(
+				'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp FROM estacion e 
+				JOIN camp_sensado cs ON cs.id_estacion=e.id
+				JOIN personal p ON cs.id_responsable=p.id
+				JOIN tanque t ON t.id_estacion=e.id
+				JOIN registro_camp r ON t.id=r.id_tanque
+				WHERE e.activo=1 
+				AND e.tipo=2
+				AND cs.activo=1
+				AND t.activo=1
+				ORDER BY r.id DESC
+				LIMIT 3000
+				) consulta
+                WHERE idest ='.$id.'
+				GROUP BY idtan
+				ORDER BY idest
+				')
+		->queryAll();
+		return $tanques;
+	}
+	public function actionGetTanques2($id){
+		$tanques= Yii::app()->db->createCommand(
+				'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
+				JOIN camp_sensado cs ON cs.id_estacion=e.id
+				JOIN personal p ON cs.id_responsable=p.id
+				JOIN tanque t ON t.id_estacion=e.id
+				JOIN registro_camp r ON t.id=r.id_tanque
+				WHERE e.activo=1 
+				AND e.tipo=2
+				AND cs.activo=1
+				AND t.activo=1
+				ORDER BY r.id DESC
+				LIMIT 3000
+				) consulta
+                WHERE idest ='.$id.'
+				GROUP BY idtan
+				ORDER BY idest
+				')
+		->queryRow();
+		return $tanques;
 	}
 }
