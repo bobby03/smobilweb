@@ -80,7 +80,7 @@ body
 #contentWrapper
 {
 	margin-left: 179px;
-	margin-top: 47px;
+	margin-top: 0px;
 
 }
 
@@ -121,9 +121,10 @@ body
 #mainmenu ul
 {
 	margin:0px;
-	width:100%;
+	width:90%;
 	box-sizing: border-box;
     padding: 0;
+    margin:0 auto;
 }
 #mainmenu .menuTop
 {
@@ -139,17 +140,21 @@ body
 	width:100%;
 	display: block;
 	border-bottom: 1px solid #49DBD0;
-	transition: background-position 0.2s ease;
+	/*transition: background-position 0.2s ease;*/
 	background-image: url('./../images/menu/flecha.png');
 	background-size: 7px;
     background-repeat: no-repeat;
-    background-position: right 20px center;
+    background-position: right 15px center;
 }
 
 #mainmenu ul li:hover
 {
-    background-position: right 15px center;
-    background-color:#09B7C9;
+  /*  background-position: right 15px center;*/
+    background-color:#21B7C7;
+}
+
+#mainmenu ul li[active="1"]{
+	background-color:#21B7C7;
 }
 
 #mainmenu ul li:last-child
@@ -440,9 +445,14 @@ div.botones-content
 }
 .grid-view table.items th a {
      color: #0077b0 ;
-   }
+ }
+
+.grid-view table.items tr{
+   	height: 35px;
+ }
+ 
 .grid-view table.items tr.odd {
-    background: #E8E8E8 ;
+    background: #F2F2F2;
 }
 .grid-view table.items tr.even {
     background: #ffffff;
@@ -697,7 +707,18 @@ table.detail-view tr.even{
     
     width:200px;
 }
+/*
+*  ESTILOS PARA EL HEADER
+*/
 
+#headerSmobil{
+	background-color: #F2F2F2;
+	height: 50px;
+	background-image: url('./../images/header-logo.png');
+	background-position: right 13px top 8px;
+    background-repeat: no-repeat;
+    background-size: 87px;
+}
 
 /*
 *  ERROR 403

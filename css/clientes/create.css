@@ -6,7 +6,7 @@
 
 
 #map {
-    /*width: 416px;*/
+    width: 550px;
     height: 218px;
 }
 
@@ -76,7 +76,11 @@ label.letreros{
     color: #0077B0;
 }
 
-/*      ************          */
+
+
+
+
+
 
 .form-cSmall{
     width:100px;
@@ -105,7 +109,7 @@ width: 300px;
 
  .form-cLeft1 {
     float: left;
-    width:436px;
+    width:550px;
     margin-left: 60px;
 }
 .form-cRight1{
@@ -167,6 +171,33 @@ margin-bottom:10px;
   margin-top: 10px;
  }
 
+
+body.clientes-create div.dom div input{
+  width:550px !important;
+}
+
+body.clientes-create div.des div input{
+  width:550px !important;
+}
+
+
+body.clientes-create  #content{
+    background-image: url('./../../images/dashboard/logoTransparente.png');
+    background-position: right 15% top 70%;
+    background-repeat: no-repeat;
+
+}
+
+
+body.clientes-create #sidebar{
+  display: none;
+}
+
+
+
+/*
+*  Iconos a Inputs
+*/
 
 
 
