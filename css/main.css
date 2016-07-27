@@ -415,10 +415,20 @@ div.botones-content
     padding-top: 20px;
 }
 
+.grid-view .button-column{
+    width: 120px;
+    text-align: center !important;
+
+}
 .grid-view .button-column img
 {
     width: 16px;
-    height: 16px;
+    height: 16px; 
+}
+
+.grid-view .button-column a
+{
+	margin:0 2px 0 2px;
 }
 
 
