@@ -201,6 +201,43 @@ body.clientes-create #sidebar{
 
 
 
+
+.ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0 !important;
+}
+.error .ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
+.success .ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+
+
+#Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg.png');
+  background-position: 10px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+.error #Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
+}
+.success #Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
 #Clientes_rfc{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg.png');
   background-position: 10px 5px,left;
@@ -208,10 +245,10 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0;
 }
-#Clientes_rfc.error{
+.error #Clientes_rfc{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_rfc.success{
+.success #Clientes_rfc{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_success.png');
 }
 
