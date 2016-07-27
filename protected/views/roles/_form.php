@@ -47,10 +47,10 @@
             <div class="separador">
                 <?php echo $form->hiddenField($acciones,'seccion[1][seccion]'); ?>
                 <div><div class="botonTodos" data-id="1">Marcar</div></div>
-                <div><?php echo $form->checkBox($acciones,'seccion[1][alta]'); ?></div>   
-                <div><?php echo $form->checkBox($acciones,'seccion[1][baja]'); ?></div>
-                <div><?php echo $form->checkBox($acciones,'seccion[1][consulta]'); ?></div>
-                <div><?php echo $form->checkBox($acciones,'seccion[1][edicion]'); ?></div>
+                <div class="cb1"><?php echo $form->checkBox($acciones,'seccion[1][alta]'); ?></div>   
+                <div class="cb1"><?php echo $form->checkBox($acciones,'seccion[1][baja]'); ?></div>
+                <div class="cb1"><?php echo $form->checkBox($acciones,'seccion[1][consulta]'); ?></div>
+                <div class="cb1"><?php echo $form->checkBox($acciones,'seccion[1][edicion]'); ?></div>
             </div>
 	</div>
 	<div class="row">
@@ -142,8 +142,8 @@
             </div>
 	</div>
     </div>
-    <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+    <div class="row buttons submitb">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Save'); ?>
     </div>
         
 
