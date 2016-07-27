@@ -5,7 +5,9 @@
 $baseUrl = Yii::app()->baseUrl;
 $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/inicio/inicio.css');
+$cs->registerCssFile($baseUrl.'/css/inicio/estilo.css');
 $cs->registerScriptFile($baseUrl.'/js/inicio/inicio.js');
+$cs->registerScriptFile($baseUrl.'/js/inicio/estaciones.js');
 $this->pageTitle=Yii::app()->name;
 
 // IF NOT LOGGED IN, GO TO LOGIN SCREEN
@@ -24,7 +26,7 @@ $this->redirect(Yii::app()->homeUrl);
 			       		<div id="granja" >Estaciones</div>
 			    	</div>
 			    </h1>
-			    <div class="container-viaje">
+			    <div class="container-viaje none">
 			    	<div class="container-box">
 			    			<div class="divBox1">
  			    				<div class="divTitulo1">
@@ -93,5 +95,87 @@ $this->redirect(Yii::app()->homeUrl);
   					</div>
   				</div>
   			  
-  			    <div class="container-granja none"></div>
+  			    <div class="container-granja">
+  			    	<div class="dash1">
+	  			    	<div class="estacion">
+	  			    		<p class="topcont">1. Selecciona una estación</p>
+	  			    		<p class="divThead">Estaciones</p>
+	  			    		<div class="lestacion">
+	  			    			<?php 
+	  			    			$i=1;
+	  			    			foreach($estaciones as $est):?>
+	  			    				<div data-id="est<?php echo $i;?>" class="liest">
+	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div><label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
+	  			    				</div>
+	  			    			<?php
+	  			    			$i++;
+	  			    			endforeach;
+	  			    			?>
+	  			    		</div>
+	  			    	</div>
+	  			    	<div class="reg"></div>
+
+
+	  			    	<div class="contenido">
+	  			    		<p class="topcont">2. Contenido:</p>
+	  			    		
+	  			    		<div class="lcontenido">
+	  			    			<div>
+
+	  			    			</div>
+	  			    			<?php 
+	  			    			$o=1;
+	  			    			foreach($estaciones as $est):?>
+	  			    			<div data-id="est<?php echo $o;?>" class="cont none">
+	  			    			<?php
+	  			    			for($i=1;$i<=8;$i++):?>
+	  			    				<div class="litan">
+	  			    					<div class="tanT"><p class="pTan">Tanque <?php echo $i;?></p></div>
+		  			    					<div class="oxico"></div><label class="clab">80 mg/L</label>
+		  			    					<div class="phico"></div><label class="clab">30</label>
+		  			    					<div class="tempico"></div><label class="clab">120°C</label>
+	  			    				</div>
+	  			    			<?php
+	  			    			endfor;
+	  			    			?>
+	  			    			</div>
+	  			    		</div> <!-- Fin de div contenido-->
+	  			    	<?php 
+	  			    	$o++;
+	  			    	endforeach;?>
+
+	  			    	</div>
+
+
+  			    	</div>
+  			    	<div class="ubicacion">
+  			    		<span>3. Ubicación: Granja Arrecife Azul S. de R.L.</span>
+  			    	</div>
+  			    	<div class="progressbar">
+  			    	</div>
+
+  			    	<div class="info">
+  			    		<div class="infocliente">
+  			    			<p class="tit">Granja Arrecife Azul S. de R. L.</p>
+  			    			<p class="infocont">
+  			    				<span>Playitas #1230</span>
+  			    				<span>Colonia: Ciprés</span>
+  			    				<span>Ensenada, Baja California, Méx.</span>
+  			    			</p>
+  			    		</div>
+  			    		<div class="infocontacto">
+  			    			<p class="tit">Contacto:</p>
+  			    			<p class="infocont">
+  			    				<span>José Luis Aguirre Fernández</span>
+  			    				<span>Tel. 178 45 23</span>
+  			    				<span>E-mail: jaguirre@arrecifeazul.mx</span>
+  			    			</p>
+  			    		</div>
+  			    	</div>
+
+  			    	<div class="ubicacion">
+  			    		
+  			    	</div>
+
+  			    </div>
 			</div>

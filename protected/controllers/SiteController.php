@@ -65,7 +65,16 @@ class SiteController extends Controller
 				WHERE v.status = 1')
 			->queryAll();
 
-		$this->render('index', array('enruta'=>$model, 'enespera'=> $viajes_disponibles));
+		$estaciones= Yii::app()->db->createCommand(
+				'SELECT * FROM estacion e 
+				JOIN camp_sensado cs ON cs.id_estacion=e.id
+				JOIN personal p ON cs.id_responsable=p.id
+				WHERE e.activo=1 
+				AND e.tipo=2
+				AND cs.activo=1')
+			->queryAll();
+
+		$this->render('index', array('enruta'=>$model, 'enespera'=> $viajes_disponibles,'estaciones'=>$estaciones));
 	}
 
 	/**
