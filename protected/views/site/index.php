@@ -153,10 +153,29 @@ $this->redirect(Yii::app()->homeUrl);
 
 
   			    	</div>
-  			    	<div class="ubicacion">
-  			    		<span>3. Ubicación: Granja Arrecife Azul S. de R.L.</span>
+  			    	<?php 
+  			    	$id=$est['id_estacion'];
+	  			   	$datos=$this->actionGetTanques2($id);
+  			    	$us=1;
+  			    	foreach($estaciones as $est):?>
+  			    	<div data-id="est<?php echo $us;?>"class="ubicacion hide">
+  			    		<span>3. Ubicación: <?php echo $est['ubicacion'];?> .</span>
   			    	</div>
+  			    	<?php 
+	  			    $us++;
+	  			    endforeach;?>
   			    	<div class="progressbar">
+						<div class="menuTabs">
+						        <div class="bolaChica selected"></div>
+						        <div class="lineaChica selected"></div>
+						        <div class="bolaGrande selected">1</div>
+						        <div class="lineaGandre"></div>
+						        <div class="bolaGrande ">2</div>
+						        <div class="lineaGandre"></div>
+						        <div class="bolaGrande">3</div>
+						        <div class="lineaChica"></div>
+						        <div class="bolaChica"></div>
+						    </div>
   			    	</div>
 
   			    	<div class="info">
