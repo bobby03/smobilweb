@@ -8,9 +8,8 @@ $('.liest').click(function()
         $('.cont').addClass('hide');
         $('.infocliente').addClass('hide');
         $('.infocontacto').addClass('hide');
+        $('.ubicacion').addClass('hide');
         $('[data-id="'+id+'"]').removeClass('hide');
-        $('[data-idc="'+id+'"]').removeClass('hide');
-        $('[data-idr="'+id+'"]').removeClass('hide');
         
     });
 
