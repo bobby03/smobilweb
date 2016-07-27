@@ -1,3 +1,9 @@
+#content{
+  background-image: url('../../images/dashboard/logoTransparente.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+
+}
 .dash1{
 	margin-top:30px;
 	width: auto;
@@ -232,4 +238,68 @@ font-size: 14px;
 }
 .container-granja{
 	height: 300px;
+}
+
+div.bolaChica
+{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    float: left;
+    background-color: #09B7C9;
+    margin-top: 13px;
+}
+.bolaChica.selected,
+.bolaChica.selected,
+.bolaChica.selected,
+.bolaChica.selected
+{
+    background-color: #0077B0;
+}
+div.lineaChica
+{
+    float: left;
+    width: 140px;
+    height: 5px;
+    margin-top: 21px;
+    background-color: #09B7C9;
+}
+div.bolaGrande
+{
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 50%;
+    background-color: #09B7C9;
+    cursor: default;
+}
+div.lineaGandre
+{
+    float: left;
+    width: 365px;
+    height: 5px;
+    margin-top: 21px;
+    background-color: #09B7C9;
+}
+.bolaChica.selected,
+.lineaChica.selected,
+.bolaGrande.selected,
+.lineaGandre.selected
+{
+    background-color: #0077B0;
+}
+.siguiente
+{
+    float: right;
+    color: #FFFFFF;
+    background-color: #0077B0;
+    border-radius: 5px;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    /*margin-right: 120px;*/
 }

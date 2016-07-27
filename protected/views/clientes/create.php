@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Clientes</h1>
+<h1>Nuevo Cliente</h1>
 
 <?php 
     $direccion = ClientesDomicilio::model();
