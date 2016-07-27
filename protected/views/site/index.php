@@ -60,13 +60,12 @@ $this->redirect(Yii::app()->homeUrl);
   									<label class = "tituloV1">2. Contenido:</label>
   								</div>
   								<div class="contenedor-tanques"></div>
-								<div class="container-lineBox"><h3 class="container-line2"></h3></div>
-  							</div>
+								<div class="container-lineBox"><h3 class="container-line2"></h3></div> 							</div>
   
   					</div>
   					<div class="container-box">
 						<div class="separador1"></div>
- 						<div class="containerRuta"></div>
+ 						<div class="containerRuta"><div class="containerR1"></div></div>
  						<div class="separador2"></div>		
 					</div>
 					<div class="container-box">
@@ -91,7 +90,7 @@ $this->redirect(Yii::app()->homeUrl);
 							   	    </div>	
  					    	</div>
   			    		</div>
- 			    		<div class="container-logo"></div>
+ 			  
   					</div>
   				</div>
   			  

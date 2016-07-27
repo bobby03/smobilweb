@@ -56,7 +56,8 @@ $(document).ready(function(){
   	        success: function(data) {
   	        	$('.contenedor-tanques').empty();
         		  $('.contenedor-tanques').append(data.html);
-              //$('.containerEntregaV2').text(data.linea);
+              $('.containerR1').empty();
+              $('.containerR1').append(data.linea);
                 console.log(data.linea);
   	        },
   	        error: function( a, b, c){
