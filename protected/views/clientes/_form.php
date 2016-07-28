@@ -108,7 +108,7 @@
                                               <div class="row dom">
                                                 <label class="letreros">Domicilio</label>
                                                     <div class="form-cXLarge">
-                                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'ClienteDomicilio')); ?>
                                                     <?php echo $form->error($direccion,'domicilio'); ?>
                                                     </div>
                                             </div>

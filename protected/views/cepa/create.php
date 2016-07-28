@@ -7,10 +7,6 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Cepa', 'url'=>array('index')),
-	array('label'=>'Manage Cepa', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Create Cepa</h1>

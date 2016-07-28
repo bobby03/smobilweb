@@ -415,10 +415,20 @@ div.botones-content
     padding-top: 20px;
 }
 
+.grid-view .button-column{
+    width: 120px;
+    text-align: center !important;
+
+}
 .grid-view .button-column img
 {
     width: 16px;
-    height: 16px;
+    height: 16px; 
+}
+
+.grid-view .button-column a
+{
+	margin:0 2px 0 2px;
 }
 
 
@@ -742,4 +752,52 @@ table.detail-view tr.even{
     margin: 0 auto;
     text-align: center;
     width: 100%;
+}
+#cboxOverlay{
+	background-color: #0077B0;
+	opacity: .8 !important;
+}
+.ingesp{
+	height: 20px;
+	width: 260px;
+	margin-left:33px;
+	margin-top: 10px;
+	min-height: 30px;
+    
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    box-sizing: border-box;
+}
+.esp{
+	font-family: 'Roboto-Regular';
+	font-size: 14pt;
+	height: 20px;
+	color: #0077b0;
+	font-weight: bold;
+	width: 50px;
+	margin-left: 33px;
+	margin-top: 20px;
+}
+.btnadd{
+	    line-height: 30px;
+    float: left;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background-color: #0077b0;
+    color: white;
+    width: 100px;
+    height: 34px;
+    border: 0px solid white;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    left: 201px;
+    display: inline-block;
+}
+
+#ui-datepicker-div{
+	width:auto;
 }

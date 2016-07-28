@@ -160,13 +160,15 @@ div.formContainer1 div.separador > div
 div.formContainer1 div.separador div div.botonTodos
 {
     height: 22px;
-    background-color: #C6D880;
+    background-color: #1178AF;
+    color:white;
     line-height: 22px;
     font-size: 14px;
-    width: 50%;
+    width: 100px;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    font-family: 'Roboto-Regular';
 }
 div.row.titulos > div
 {
@@ -205,7 +207,7 @@ div.form textarea.error,
 div.form select.error
 {
 	background: #FEE;
-	border-color: #C00;
+	border-color: #FFF;
 }
 
 div.form div.success input,
@@ -215,8 +217,8 @@ div.form input.success,
 div.form textarea.success,
 div.form select.success
 {
-	background: #E6EFC2;
-	border-color: #C6D880;
+	background: #FFF;
+	border-color: #0077B0;
 }
 
 div.form div.success label
@@ -298,4 +300,14 @@ div.search-form:after
     clear: both;
     content: '';
     display: block;
+}
+#Roles_nombre_rol{
+    width: 300px;
+}
+.submitb{
+    float:right;
+    width: 150px;
+}
+.cb1{
+   
 }
