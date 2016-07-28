@@ -519,6 +519,11 @@ h2{
     width: 100%;
     background-color: #09b7c9;
 }
+.container-circulo{
+width: 25px;
+float:left;
+
+}
 .circle{
     width: 25px;
     height: 25px;
@@ -528,15 +533,19 @@ h2{
     border-radius: 50px;   
     position: absolute;
     transition: 0.3s all;
-    top: 0;
-    position: relative;
-
+    bottom: -7px;
+    left: -1px;
+    z-index: 10;
 }
-.circle:hover
+.textCircle.siHover .circle:hover
 {
     width: 50px;
     height: 50px;
-    top:-14px;
+    bottom: -19px;
+}
+.textCircle.siHover:hover .ctxtr
+{
+    visibility: visible;
 }
 .containerRuta{
     width: 100%;
@@ -550,22 +559,29 @@ h2{
     text-align: center;
 }
 .containerBoxR{
-    height: 60px;
+    height: 130px;
     float: left;
+}
+.textCircle
+{
+    width: 100%;
+    height: 100%;
 }
 .containerBoxR:last-child .circle
 {
-    right: 0;
+    
+     left:89%;
 }
 .containerBoxR:last-child .containerLinea
 {
     padding-left: 0;
     padding-right: 2px;
 }
-.containerBoxR > div:first-child{
+.containerBoxR > div:last-child{
     position:relative;
+    height:130px;
 }
-.containerBoxR > div:first-child:after, 
+.containerBoxR > div:last-child:after, 
 .containerLinea:after{
     display: block;
     clear: both;
@@ -578,9 +594,41 @@ h2{
     padding-top: 7px;
     padding-left: 2px;
     box-sizing:border-box;
-    float:left;
+    position: absolute;
+    bottom: 0;
+    z-index: 9;
 }
 .ctxtr{
     width: 100%;
     height: 100px;
+    visibility: hidden;
+    position:absolute;
+}
+.containerBoxR:first-child .ctxtr{
+ visibility: visible;
+}
+.containerBoxR:last-child .ctxtr{
+ visibility: visible;
+}
+#bubbleC{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    background-color: #fff;
+    border: 8px solid #666;
+    border-radius: 30px 30px 30px 0px;
+    box-shadow: 2px 2px 4px #888;
+}
+#bubbleC:after{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -4px;
+    top: 39px;
+    border: 20px solid;
+    border-color: #666 transparent transparent #666;
+    border-color: #666 transparent transparent #666;
 }

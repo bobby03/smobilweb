@@ -67,4 +67,19 @@ $(document).ready(function(){
 	 }
  	var content = $('.dashboardInicio > tbody > tr:first-child');
 	content.trigger('click');
+	var flag = false;
+	$('.circle').hover(function()
+	{ 
+		flag = false;
+		if($(this).closest('.containerBoxR').children('.ctxtr').is(':hidden'))
+		{ 
+			flag = true;
+			$(this).closest('.containerBoxR').children('.ctxtr').show();	
+		}
+	},
+	function()
+	{
+		if(flag)
+			$(this).closest('.containerBoxR').children('.ctxtr').hide();	
+	});
 });  
