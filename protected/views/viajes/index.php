@@ -16,11 +16,12 @@
         <div class="tab" data-id="2"><span>En ruta</span></div>
         <div class="tab" data-id="3"><span>Finalizado</span></div>
     </div>
-    <div class="search-form" style="display:none;">
+      <div class="search-form" style="display:none;">
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
     </div><!-- search-form -->
+
     <div class="tabContent" data-tan="1">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
@@ -32,6 +33,7 @@
     )); 
     ?>
     </div>
+    
     <div class="tabContent hide" data-tan="2">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
@@ -43,6 +45,7 @@
     )); 
     ?>
     </div>
+
     <div class="tabContent hide" data-tan="3">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (

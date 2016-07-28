@@ -114,10 +114,14 @@ class EspecieController extends Controller
 			if($model->save())
 				$this->redirect(array('index'));
 		}
-
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+	public function actionCreate1($Especie)
+	{
+		echo "hola";
+
 	}
 
 	/**
@@ -215,4 +219,5 @@ class EspecieController extends Controller
 			Yii::app()->end();
 		}
 	}
+
 }
