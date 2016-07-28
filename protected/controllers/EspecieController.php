@@ -118,9 +118,14 @@ class EspecieController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionCreate1($Especie)
+	public function actionCreate1()
 	{
-		echo "hola";
+		$especie=$_POST['especie'];
+		$nuevo= new Especie;
+		$nuevo->nombre=$especie;
+		$nuevo->save();
+		//$this->render('create',array('model'=>$nuevo));
+		echo json_encode($especie);
 
 	}
 
@@ -146,6 +151,7 @@ class EspecieController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+		echo json_encode($model);
 	}
 
 	/**

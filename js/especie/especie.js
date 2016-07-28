@@ -56,24 +56,24 @@ $(document).ready(function()
                 ;
                 $('.btnadd').click(function()
                 {
-                    var Especie = document.getElementById('ingesp').value;
+                    var especie = document.getElementById('ingesp').value;
                     $.ajax(
                     {
                         type: 'POST',
-                        url: '/especie/create',
+                        url: '/especie/Create1',
                         dataType: 'JSON', 
                         data:
                         {
-                            Especie: Especie
+                            especie: especie
                         },
                         success: function(data)
                         {
-                            //$('#cboxClose').click();
-                            alert(hola);
+                            $('#cboxClose').click();
+                             window.location = "especie";
                         },
                         error: function(a, b, c)
                         {
-                            console.log('error');
+                            
                         }
                     });
                 });
