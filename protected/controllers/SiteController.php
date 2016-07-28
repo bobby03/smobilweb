@@ -44,8 +44,7 @@ class SiteController extends Controller
 			->join("estacion est","est.id = t.id_estacion")
 			->join("personal as p","p.id = t.id_responsable")
 			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
-			->where("t.status = '2
-				+.0'")
+			->where("t.status = 2")
 				->queryAll();
 
 		$viajes_disponibles =  Yii::app()->db->createCommand(
@@ -196,7 +195,7 @@ class SiteController extends Controller
 		$return['html'] = "";
 		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
 		->queryAll();
-
+		$flag = true;
             if(count($last) > 0)
             {
                 foreach($last as $data)
@@ -227,9 +226,9 @@ class SiteController extends Controller
             {
                   $return['result'] = 0;
                 $return["html"] .="<div class='letreroError'>Este viaje no tiene registros de viaje en ruta, porfavor, p&oacute;ngase en contacto con el administrador.</div>"; 
- 
+ 				$flag = false;
             }
-         $return['linea'] = $this->GetDistancia($id);
+         $return['linea'] = $this->GetDistancia($id, $flag);
           echo json_encode($return);
   	}
   		public function actionPrueba($id) {
@@ -253,16 +252,18 @@ class SiteController extends Controller
  /*
  			function dashbboard	
  */  
- public function GetDistancia($id)
+ public function GetDistancia($id, $bandera)
  { 
  	$recorrido = Yii::app()->db->createCommand()
-     	->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio')
+     	->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio,v.fecha_salida')
         ->from('clientes_domicilio as cd')
         ->join('solicitud_tanques as st','st.id_domicilio = cd.id')
         ->join('solicitudes_viaje as sv','sv.id_solicitud = st.id_solicitud')
+        ->join('viajes as v','v.id = sv.id_viaje')
         ->where("sv.id_viaje = $id")
         ->queryAll();
     $arreglo = array();
+    $arreglo2= array();
     $d = 0;
     $p1 = $p2 = array();
     foreach($recorrido as $data)
@@ -298,39 +299,52 @@ class SiteController extends Controller
 	$viaje = Viajes::model()->findByPk($id);
 	$html = '';
 	$total++;
-	
 
-
-		if($total > 0){
+		if($bandera == true){
 				$width = 'style="width: ' . (100)/$total.'%"';
 				$html = $html. '
 					<div class="containerBoxR" '.$width.'>
-						<div>
-							<div class="ctxtr"></div>
-								<div class="circle"></div>
+					
+						<div>	
+									<div class="textCircle">
+									<div class="circle"></div>
+									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'</label></div>
+									</div>
 							<div class="containerLinea">
 								<div class="drawLine2"></div>
 							</div>
 						</div>
 					</div>';/*crear la parte del cajon*/
+				$mar = 1;
 			   	foreach ($arreglo as $data) 
 			   	{
 					$html = $html.'
 					<div class="containerBoxR" '.$width.'>
-				   		 	<div>
-				   		 	<div class="ctxtr"></div>
+				   		 
+				   		 	<div>	
+				   		 		';
+				   		 		if($mar == $total-1)
+									$html = $html.'	<div class="textCircle">';
+								else
+									$html = $html.'	<div class="textCircle siHover">';
+					$html = $html.'	
 									<div class="circle"></div>
+									<div class="ctxtr"> <div class="bubbleC"><label class="txtRuta">'.$data["idLocacion"].'</label></div></div>
+								</div>
 								<div class="containerLinea">
 									<div class="drawLine2"></div>
 								</div>
 							</div>
 					   	</div>';
-				    $i++;
-   				}
+					   	$mar = $mar + 1 ;
+				 
+   				
    			}
-   			else{
-   					$html .'<div class="containerBoxR">
-   									<div class="letreroError>Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
+   		}
+   			
+   		else{
+   					$html=$html .'<div class="containerBoxR">
+   									<div class="letreroError">Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
    				
    			}	
    	

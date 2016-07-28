@@ -30,7 +30,6 @@
 					<div class="form-cLarge">
 						<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100));
 						echo $form->error($model,'nombre');
-
 						 ?>
 					</div>
 				</div>
@@ -38,7 +37,7 @@
     <div class="form-cRight">
 			<div class="containerbutton">
 				<div class="row buttons">
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Save'); ?>
 				</div>
 			</div>
 	</div>

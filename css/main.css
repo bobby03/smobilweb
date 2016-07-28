@@ -715,6 +715,7 @@ table.detail-view tr.even{
 	opacity: .8 !important;
 }
 
+
 #cboxWrapper{
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
@@ -738,8 +739,24 @@ table.detail-view tr.even{
 }
 .aceptar-boton{
 	background-color: #0077b0;
-	float:left;
+	float:right;
 	color:white;
+	margin-right: 10px;
+	position: relative;
+	border-radius: 5px;
+	display: inline-block;
+	margin:0 auto;
+	width: 100px;
+	padding: 6px;
+	text-align: center;
+	
+	cursor: pointer;
+
+}
+.cancelar-boton{
+	background-color: #0077b0;
+	float:left;
+	color: white;
 	position: relative;
 	border-radius: 5px;
 	display: inline-block;
@@ -749,22 +766,51 @@ table.detail-view tr.even{
 	text-align: center;
 	margin-left: 10px;
 	cursor: pointer;
-
-}
-.cancelar-boton{
-	background-color: #0077b0;
-	float:right;
-	color: white;
-	position: relative;
-	border-radius: 5px;
-	display: inline-block;
-	margin:0 auto;
-	width: 100px;
-	padding: 6px;
-	text-align: center;
-	margin-right: 10px;
-	cursor: pointer;
 }
 
 #cboxLoadedContent { margin: 0 }
 #cboxClose { display: none !important; }	
+
+.ingesp{
+	height: 20px;
+	width: 260px;
+	margin-left:33px;
+	margin-top: 10px;
+	min-height: 30px;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    box-sizing: border-box;
+}
+.esp{
+	font-family: 'Roboto-Regular';
+	font-size: 14pt;
+	height: 20px;
+	color: #0077b0;
+	font-weight: bold;
+	width: 50px;
+	margin-left: 33px;
+	margin-top: 20px;
+}
+.btnadd{
+	    line-height: 30px;
+    float: left;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background-color: #0077b0;
+    color: white;
+    width: 100px;
+    height: 34px;
+    border: 0px solid white;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    left: 201px;
+    display: inline-block;
+}
+
+#ui-datepicker-div{
+	width:auto;
+}

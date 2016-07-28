@@ -37,6 +37,8 @@ $(document).ready(function(){
   		}
   	});
 
+   
+
 		function cargaTanques(id) {
  		var url = window.location.href;
  		var pos = url.lastIndexOf('php');
@@ -58,7 +60,11 @@ $(document).ready(function(){
         		  $('.contenedor-tanques').append(data.html);
               $('.containerR1').empty();
               $('.containerR1').append(data.linea);
-                console.log(data.linea);
+
+              var container  = $(".containerR1");
+              container.children('.containerBoxR').last().find('.bubbleC').removeClass('bubbleC');
+              container.children('.containerBoxR').last().find('.txtRuta').removeClass('txtRuta').addClass('txtR2');
+              console.log(container.length);
   	        },
   	        error: function( a, b, c){
   	        	console.log(a, b, c);
@@ -91,7 +97,9 @@ $(document).ready(function(){
  	    });
  	 }
  
-  	var content = $('.divTable > .divTbody > .divTr:first-child');
-  	content.trigger('click');
+	var content = $('.divTable > .divTbody > .divTr:first-child');
+	content.trigger('click');
+
+
   });
 

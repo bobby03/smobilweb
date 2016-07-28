@@ -262,6 +262,7 @@ class Viajes extends CActiveRecord
                 'value' => 'Viajes::model()->getStatus($data->status)',
                 'filter' => Viajes::model()->getAllStatus()
             ),
+
             array
             (
                 'name' => 'id_solicitudes',
@@ -275,12 +276,21 @@ class Viajes extends CActiveRecord
                 'value' => 'Personal::model()->getPersonal($data->id_responsable)',
                 'filter' => Personal::model()->getAllPersonal()
             ),
+
+
+
             array
             (
                 'name' => 'id_estacion',
-                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                //'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                 'filter' => Estacion::model()->getAllEstacionMovil()
             ),
+
+
+
+
+
+
             array
             (
                 'name'=>'fecha_salida',
