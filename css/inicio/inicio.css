@@ -603,32 +603,45 @@ float:left;
     height: 100px;
     visibility: hidden;
     position:absolute;
+    margin-top: 33px;
+    margin-left:18px;
 }
 .containerBoxR:first-child .ctxtr{
- visibility: visible;
+    visibility: visible;
+    margin-top: 45px;
+    margin-left: -48px;
 }
 .containerBoxR:last-child .ctxtr{
  visibility: visible;
 }
-#bubbleC{
+.bubbleC{
     position: relative;
     width: 200px;
-    height: 100px;
+    height: 38px;
     text-align: center;
     line-height: 100px;
-    background-color: #fff;
-    border: 8px solid #666;
-    border-radius: 30px 30px 30px 0px;
-    box-shadow: 2px 2px 4px #888;
+    background-color: #09b7c9;
+    border: 8px solid #09b7c9;
+    border-radius: 30px 30px 30px 0px; 
+    line-height: 36px;
 }
-#bubbleC:after{
-    content: ' ';
+ .bubbleC:after{
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
-    left: -4px;
-    top: 39px;
-    border: 20px solid;
-    border-color: #666 transparent transparent #666;
-    border-color: #666 transparent transparent #666;
+    left: -7px;
+    top: 43px;
+    border: 12px solid;
+    border-color: #09b7c9 transparent transparent #09b7c9;
+}
+.txtRuta{
+    font-size: 15px;
+    color:#ffffff;
+}
+.txtR2{
+    font-family: 'AllerDisplay';
+    font-size:17px;
+    color:#000000;
+
 }

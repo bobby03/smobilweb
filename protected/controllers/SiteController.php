@@ -308,7 +308,7 @@ class SiteController extends Controller
 						<div>	
 									<div class="textCircle">
 									<div class="circle"></div>
-									<div  class="ctxtr">'.Yii::app()->params["location"].'</div>
+									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'</label></div>
 									</div>
 							<div class="containerLinea">
 								<div class="drawLine2"></div>
@@ -329,7 +329,7 @@ class SiteController extends Controller
 									$html = $html.'	<div class="textCircle siHover">';
 					$html = $html.'	
 									<div class="circle"></div>
-									<div id="bubbleC"class="ctxtr">'.$data["idLocacion"].'</div>
+									<div class="ctxtr"> <div class="bubbleC"><label class="txtRuta">'.$data["idLocacion"].'</label></div></div>
 								</div>
 								<div class="containerLinea">
 									<div class="drawLine2"></div>
