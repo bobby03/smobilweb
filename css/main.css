@@ -403,12 +403,7 @@ div.search-form
 	background: #80CFFF;
 }
 
-div.botones-content
-{
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
-}
+
 .grid-view {
     padding: 0;
     border-top: 2px solid #d8d8d8;
@@ -493,19 +488,7 @@ div.principal
     width: 1200px;
     margin: 0 auto;
 }
-#cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxBottomCenter, #cboxBottomLeft,
-#cboxBottomRight, #cboxMiddleLeft, #cboxMiddleRight, #cboxClose
-{
-    display: none;
-}
-#cboxLoadedContent
-{
-    margin-bottom: 0 !important;
-}
-#cboxLoadedContent, #cboxContent
-{
-    background-color: transparent !important;
-}
+
 div.principal:after
 {
     display: block;
@@ -529,25 +512,13 @@ div.principal:after
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
 }
-/*#cboxWrapper{
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	background-color: #FFF;
-	border-left:0px;
-	color: #000;
-	width:327px !important;
-	border: 0px solid white;
-	height: 160px;
 
-}*/
 div.value-content{
 
 	font-family: 'Roboto-Regular';
 	font-size: 14pt;
 	margin:0 auto;
 	text-align: center;
-	
 	color:#005099;
 }
 div.mensaje-content{
@@ -556,55 +527,7 @@ div.mensaje-content{
 	font-family: 'Roboto-Regular';
 	font-size: 13pt;
 	text-align: center;
-	
 	color:#000;
-}
-#colorbox .sub-content
-{
-	border-radius: 5px;
-	width: 327px;
-    background-color: #FFFFFF;
-	height:215px;
-}
-.botones-content{
-	height:auto !important;
-	margin-top: 34px;
-}
-.aceptar-boton{
-	line-height: 30px;
-	float:left;
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	background-color: #0077b0;
-	color:white;
-	width: 100px;
-	height:34px;
-	border:0px solid white;
-	margin:0 auto;
-	text-align: center;
-	position:absolute;
-	left:201px;
-	display: inline-block;
-
-}
-.cancelar-boton{
-	line-height: 30px;
-	float:left;
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	margin-left:26px;
-	background-color: #0077b0;
-	color:white;
-	width: 100px;
-	height:34px;
-	border:0px solid white;
-	margin:0 auto;
-	position: absolute;
-	left:26px;
-	text-align: center;
-	display: inline-block;
 }
 
 .agregar
@@ -753,7 +676,95 @@ table.detail-view tr.even{
     text-align: center;
     width: 100%;
 }
+
+
+
+
+/*
+* ESTILOS COLORBOX
+*/
+
+#cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxBottomCenter, #cboxBottomLeft,
+#cboxBottomRight, #cboxMiddleLeft, #cboxMiddleRight
+{
+
+    width:0px;
+    height:0px;
+    background: none;
+}
+
+#cboxContent button {
+    border:none;
+}
+#cboxClose {
+  	 width:0px;
+    height:0px;
+  	display: none;
+}
+
+
+#cboxLoadedContent
+{
+	width:auto !important;
+    display: block;
+}
+
+
 #cboxOverlay{
 	background-color: #0077B0;
 	opacity: .8 !important;
 }
+
+#cboxWrapper{
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	background-color: #FFF;
+}
+
+#colorbox .mensaje-content
+{
+	margin:20px 15px 20px 15px;
+	display: block;
+
+}
+
+.botones-content{
+    height: auto;
+    width: 100%;
+    display: inline-block;
+    bottom: 13px;
+    position: absolute;
+}
+.aceptar-boton{
+	background-color: #0077b0;
+	float:left;
+	color:white;
+	position: relative;
+	border-radius: 5px;
+	display: inline-block;
+	margin:0 auto;
+	width: 100px;
+	padding: 6px;
+	text-align: center;
+	margin-left: 10px;
+	cursor: pointer;
+
+}
+.cancelar-boton{
+	background-color: #0077b0;
+	float:right;
+	color: white;
+	position: relative;
+	border-radius: 5px;
+	display: inline-block;
+	margin:0 auto;
+	width: 100px;
+	padding: 6px;
+	text-align: center;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+#cboxLoadedContent { margin: 0 }
+#cboxClose { display: none !important; }	
