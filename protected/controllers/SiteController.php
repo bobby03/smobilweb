@@ -285,13 +285,13 @@ class SiteController extends Controller
 
 		$fecha = strtotime($data['fecha_entrega']);
 
-			$entregado = 'no_entregado';
+		/*	$entregado = 'no_entregado';
 		
 			}
 
 		else{
 			$entregado = 'entregado';
-			}	
+			}	*/
 			//var_dump($data["fecha_entrega"]);
 			
 		$arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio'], 'entregado' => $entregado, 'salida' => $data['fecha_salida']);
