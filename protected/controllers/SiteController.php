@@ -285,13 +285,13 @@ class SiteController extends Controller
 
 		$fecha = strtotime($data['fecha_entrega']);
 
-		/*	$entregado = 'no_entregado';
-		
-			}
+          if($fecha == null){ 
+			$entregado = 'no_entregado';		
+		}
 
 		else{
 			$entregado = 'entregado';
-			}	*/
+			}	
 			//var_dump($data["fecha_entrega"]);
 			
 		$arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio'], 'entregado' => $entregado, 'salida' => $data['fecha_salida']);
@@ -321,7 +321,7 @@ class SiteController extends Controller
 						<div>	
 									<div class="textCircle">
 									<div class="circle entregado"></div>
-									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'</label></div>
+									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
 									</div>
 							<div class="containerLinea">
 								<div class="drawLine2 entregado"></div>
