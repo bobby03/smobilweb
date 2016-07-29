@@ -46,9 +46,10 @@
 
 				case 1: //Menu para Tipo de Usuario Cliente
 
+
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-									 array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),				    
 									),));
@@ -58,7 +59,7 @@
 				case 2: //Menu para Tipo de Usuario Personal
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-									 array('label'=>'Inicio', 'url'=>array('../'),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
 									 array('label'=>'Personal', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
@@ -75,7 +76,7 @@
 				default:
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-									 						 array('label'=>'Inicio', 'url'=>array('../'),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
 									 array('label'=>'Personal', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),

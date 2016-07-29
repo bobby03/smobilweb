@@ -737,11 +737,11 @@ table.detail-view tr.even{
     bottom: 13px;
     position: absolute;
 }
-.aceptar-boton{
+.sub-content .botones-content .aceptar-boton{
 	background-color: #0077b0;
 	float:right;
 	color:white;
-	margin-right: 10px;
+	margin-right: 10px !important;
 	position: relative;
 	border-radius: 5px;
 	display: inline-block;
@@ -749,11 +749,10 @@ table.detail-view tr.even{
 	width: 100px;
 	padding: 6px;
 	text-align: center;
-	
 	cursor: pointer;
-
 }
-.cancelar-boton{
+
+.sub-content .botones-content .cancelar-boton{
 	background-color: #0077b0;
 	float:left;
 	color: white;
@@ -770,6 +769,10 @@ table.detail-view tr.even{
 
 #cboxLoadedContent { margin: 0 }
 #cboxClose { display: none !important; }	
+
+/*
+* TERMINAN ESTILOS COLORBOX
+*/
 
 .ingesp{
 	height: 20px;

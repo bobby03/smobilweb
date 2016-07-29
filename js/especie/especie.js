@@ -51,6 +51,8 @@ $(document).ready(function()
         $.colorbox(
         {
             html: miHtml,
+            width:'450px', 
+            height:'190px',
             onComplete: function()
             {
                 ;

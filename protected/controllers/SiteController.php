@@ -255,10 +255,11 @@ class SiteController extends Controller
  public function GetDistancia($id, $bandera)
  { 
  	$recorrido = Yii::app()->db->createCommand()
-     	->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio,v.fecha_salida')
+     	->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio,v.fecha_salida, s.fecha_entrega')
         ->from('clientes_domicilio as cd')
         ->join('solicitud_tanques as st','st.id_domicilio = cd.id')
         ->join('solicitudes_viaje as sv','sv.id_solicitud = st.id_solicitud')
+        ->join('solicitudes as s','s.id = sv.id_solicitud')
         ->join('viajes as v','v.id = sv.id_viaje')
         ->where("sv.id_viaje = $id")
         ->queryAll();
@@ -281,7 +282,19 @@ class SiteController extends Controller
           cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
           sin($dLong / 2) * sin($dLong / 2);
 		$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-		$arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio']);
+
+		$fecha = strtotime($data['fecha_entrega']);
+
+          if($fecha == null){ 
+			$entregado = 'no_entregado';		
+		}
+
+		else{
+			$entregado = 'entregado';
+			}	
+			//var_dump($data["fecha_entrega"]);
+			
+		$arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio'], 'entregado' => $entregado, 'salida' => $data['fecha_salida']);
 	}
 	$total = count($arreglo);
  	for($i=0;$i<$total; $i++)
@@ -307,11 +320,11 @@ class SiteController extends Controller
 					
 						<div>	
 									<div class="textCircle">
-									<div class="circle"></div>
-									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'</label></div>
+									<div class="circle entregado"></div>
+									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
 									</div>
 							<div class="containerLinea">
-								<div class="drawLine2"></div>
+								<div class="drawLine2 entregado"></div>
 							</div>
 						</div>
 					</div>';/*crear la parte del cajon*/
@@ -328,11 +341,11 @@ class SiteController extends Controller
 								else
 									$html = $html.'	<div class="textCircle siHover">';
 					$html = $html.'	
-									<div class="circle"></div>
+									<div class="circle '.$data['entregado'].'"></div>
 									<div class="ctxtr"> <div class="bubbleC"><label class="txtRuta">'.$data["idLocacion"].'</label></div></div>
 								</div>
 								<div class="containerLinea">
-									<div class="drawLine2"></div>
+									<div class="drawLine2 '.$data['entregado'].'"></div>
 								</div>
 							</div>
 					   	</div>';
