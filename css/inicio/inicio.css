@@ -518,11 +518,13 @@ h2{
     height: 10px;
     width: 100%;
     background-color: #09b7c9;
+    transition: 6s all;
 }
 .drawLine2.entregado{
     height: 10px;
     width: 100%;
     background-color: #0077b0;
+    transition: 6s all;
 }
 .container-circulo{
 width: 25px;
