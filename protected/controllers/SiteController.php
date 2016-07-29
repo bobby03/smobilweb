@@ -284,9 +284,10 @@ class SiteController extends Controller
 		$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
 
 		$fecha = strtotime($data['fecha_entrega']);
+
           if($fecha == null){ 
 			$entregado = 'no_entregado';		
-			}
+		}
 
 		else{
 			$entregado = 'entregado';
