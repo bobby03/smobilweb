@@ -53,7 +53,7 @@ eof;
     <div class="formContainer1">
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'solicitudes-form',
-            'action'=>$baseUrl.'/index.php/viajes/create',
+            'action'=>$baseUrl.'/viajes/create',
     //        'htmlOptions'=>array('name'=>'SolicitudesForm'),
             // Please note: When you enable ajax validation, make sure the corresponding
             // controller action is handling ajax validation correctly.

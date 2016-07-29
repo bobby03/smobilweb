@@ -103,11 +103,11 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model = new Solicitudes();
-                $estacion = new Estacion();
-                $especies = new Especie();
-                $cepa = new Cepa();
-                $direccion = new ClientesDomicilio();
+		  $model = new Solicitudes();
+          $estacion = new Estacion();
+          $especies = new Especie();
+          $cepa = new Cepa();
+          $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
