@@ -65,7 +65,7 @@ class SiteController extends Controller
 			->queryAll();
 
 		$estaciones= Yii::app()->db->createCommand(
-				'SELECT * FROM estacion e 
+				'SELECT *,e.id as idest FROM estacion e 
 				JOIN camp_sensado cs ON cs.id_estacion=e.id
 				JOIN personal p ON cs.id_responsable=p.id
 				WHERE e.activo=1 
