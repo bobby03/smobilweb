@@ -321,7 +321,7 @@ class SiteController extends Controller
 						<div>	
 									<div class="textCircle">
 									<div class="circle entregado"></div>
-									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'</label></div>
+									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
 									</div>
 							<div class="containerLinea">
 								<div class="drawLine2 entregado"></div>
