@@ -278,9 +278,11 @@ eof;
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Solicitudes']))
                 $model->attributes=$_GET['Solicitudes'];
-            $this->render('index',array(
-                    'model'=>$model,
-            ));
+                $this->render('index',array(
+                        'model'=>$model,
+                ));
+
+
 	}
 
 	/**
@@ -290,12 +292,12 @@ eof;
 	{
 		$model=new Solicitudes('search');
 		$model->unsetAttributes();  // clear any default values
+
 		if(isset($_GET['Solicitudes']))
 			$model->attributes=$_GET['Solicitudes'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+    		$this->render('admin',array(
+    			'model'=>$model,
+    		));
 	}
 
 	/**
