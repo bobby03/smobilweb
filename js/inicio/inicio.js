@@ -32,9 +32,12 @@ $(document).ready(function(){
  
   			cargaTanques(id);
  			cargaUbicacion(id);
+    
   		   $(this).addClass('selected');
   		}
   	});
+
+   
 
 		function cargaTanques(id) {
  		var url = window.location.href;
@@ -54,7 +57,14 @@ $(document).ready(function(){
   	        },
   	        success: function(data) {
   	        	$('.contenedor-tanques').empty();
-        		$('.contenedor-tanques').append(data.html);
+        		  $('.contenedor-tanques').append(data.html);
+              $('.containerR1').empty();
+              $('.containerR1').append(data.linea);
+
+              var container  = $(".containerR1");
+              container.children('.containerBoxR').last().find('.bubbleC').removeClass('bubbleC');
+              container.children('.containerBoxR').last().find('.txtRuta').removeClass('txtRuta').addClass('txtR2');
+              console.log(container.length);
   	        },
   	        error: function( a, b, c){
   	        	console.log(a, b, c);
@@ -87,7 +97,9 @@ $(document).ready(function(){
  	    });
  	 }
  
-  	var content = $('.divTable > .divTbody > .divTr:first-child');
-  	content.trigger('click');
+	var content = $('.divTable > .divTbody > .divTr:first-child');
+	content.trigger('click');
+
+
   });
 

@@ -6,7 +6,7 @@
 
 
 #map {
-    /*width: 416px;*/
+    width: 550px;
     height: 218px;
 }
 
@@ -76,7 +76,11 @@ label.letreros{
     color: #0077B0;
 }
 
-/*      ************          */
+
+
+
+
+
 
 .form-cSmall{
     width:100px;
@@ -105,7 +109,7 @@ width: 300px;
 
  .form-cLeft1 {
     float: left;
-    width:436px;
+    width:550px;
     margin-left: 60px;
 }
 .form-cRight1{
@@ -168,6 +172,70 @@ margin-bottom:10px;
  }
 
 
+body.clientes-create div.dom div input{
+  width:550px !important;
+}
+
+body.clientes-create div.des div input{
+  width:550px !important;
+}
+
+
+body.clientes-create  #content{
+    background-image: url('./../../images/dashboard/logoTransparente.png');
+    background-position: right 15% top 70%;
+    background-repeat: no-repeat;
+
+}
+
+
+body.clientes-create #sidebar{
+  display: none;
+}
+
+
+
+/*
+*  Iconos a Inputs
+*/
+
+
+
+
+.ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0 !important;
+}
+.error .ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
+.success .ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_success.png');
+}
+
+
+
+
+
+
+#Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg.png');
+  background-position: 10px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+.error #Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
+}
+.success #Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_success.png');
+}
+
+
 
 
 #Clientes_rfc{
@@ -177,10 +245,10 @@ margin-bottom:10px;
   padding-left: 35px;
   border-left:0;
 }
-#Clientes_rfc.error{
+.error #Clientes_rfc{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_rfc.success{
+.success #Clientes_rfc{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_success.png');
 }
 

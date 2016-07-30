@@ -6,7 +6,7 @@ $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/estacion/estacion.css');
 $cs->registerScriptFile($baseUrl.'/js/search.js');
 $this->breadcrumbs=array(
-	'Estacions',
+	'Estaciones',
 );
 ?>
 
@@ -24,9 +24,9 @@ $this->breadcrumbs=array(
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'estacion',
+            'id'=>'estacion-grid',
             'summaryText'=>'',
-            'dataProvider'=>$model->search1(),
+            'dataProvider'=>$model->search(),
             'columns'=>$model->adminSearch()
         )); 
     ?>

@@ -7,6 +7,10 @@ body.site-login{
 	overflow-x: hidden !important;
     padding-top: 120px;
 }
+
+body.site-login #headerSmobil{
+    display: none;
+}
 body.site-login img#slogo{
     width: 340px;
     margin: 0 auto;

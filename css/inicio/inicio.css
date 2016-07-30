@@ -323,10 +323,10 @@ h2{
 .divTbody{
     width:100%;
     height:227px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .divTr{
-    width: 521px;
+    
     height: 23px;
     border-bottom: 3px dashed #EAEAEA;
     padding-top: 14px;
@@ -358,10 +358,10 @@ h2{
 .divTbody2{
     width:735px;
     height:271px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .divTr2{
-    width: 716px;
+  
     height: 31px;
     border-bottom: 3px dashed #EAEAEA;
     padding-top: 20px;
@@ -502,312 +502,168 @@ h2{
     height:100%;
     max-height:80px;
     background-color: blue;
-    float: right;
    margin-top: 10px;
 }
 .drawLine1{
-    height:10px;
-    width:1000px;
-    background-color: blue;
+    height: 10px;
+    width: 63px;
+    background-color: #09b7c9;
     line-height: 190px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
- table.dashboardInicio{
-     width: 100%;
- +    max-width: 538px;
- +    height: 100%;
- +    max-height:271px;
- +    margin: 0 ;
- +    color:#414042;
- +}
- +table.dashboardInicio tr:last-child td{
- +    border-bottom: 0;
-  }
- +
- +.dashboardInicio  tr:hover, 
- +.dashboardInicio tr.selected{
- +    background-color: #09b7c9;
- +    color:#ffffff; 
- +} 
-}
-table.dashboardviajes-disponibles,
-table.dashbpardInicio{
-    width:96.46%;
-    border-style: solid;
-    border-color: #1178AF;
-    margin-top: 8px;
-}
-thead th{
-    height: 30px;
-    background-color: #1178AF;
-    border-bottom: 14px solid #21B7C7;
-}
-tr{
-    width: 90.46%;
-}
-td{
-    border-bottom-style:  dashed;
-    border-color: #EAEAEA;
-    border-width: 2px;
-    padding:0;
-    height: 37px;   
-}
-td.botonIrViaje{
-   width: 57px;
-   padding-right: 41px;
-
-}
-table.dashboardInicio tr:last-child td{
-    border-bottom: 0;
-}
-.dashboardInicio  tr:hover, 
-.dashboardInicio tr.selected{
-    background-color: #21B7C7;
-    color:#ffffff; 
-} 
-.container-table{
-    width: 92.46%;
-    max-width: 595px;
     float: left;
-    height: 100%
- }
- .container-table.viaje{
-    width: 100%;
-    max-width: 735px;
-    float: left;
-}
-.container-line1{
-    width:15px;
-    float: right;
-    background-color: #21B7C7;
-    height: 4px;   
-    margin-top: 157px;
- }
-.container-line2{
-    width: 4px;
-    height: 250px;
-    float: right;
-    background-color: #21B7C7;
-    margin-top: 36px;
-    margin-right: 12px;
-}
-.container-lineBox{
-    width: 2.0%;
-    float: left;
-    margin-top: -24px;
-    display: block;
-    margin-left: 11px;
-}*/
-/**    Tanque *     **/
-/*.contenedor-tanques{
-    width:94.53%;
+    margin-top: 34%;
+    margin-left: 9px;
     float:left;
 }
-.contenedor-tanques .tanque {
-    width: 32%;
-    margin: 1% 1% 1% 0;
-    float: left;
-    border-radius: 9px;
-    text-align: center;
-    border: 0.1em solid #1178AF;
-    background-color: #1178AF;
-
-}
-.contenedor-tanques .tanque:nth-child(3n) {
-    margin-right: 0;
-}
-.titulotanque{
-    color:#FFFFFF;
-    margin: 0;
-    background-color:  #1178AF;
-
-}
-.tanque > div{
-    background-color: #ffffff;
-    text-align: right;
-    border-radius: 0 0 9px 9px; 
-    float: left;
+.drawLine2.no_entregado{
+    height: 10px;
     width: 100%;
+    background-color: #09b7c9;
+    transition: 6s all;
 }
-.tanque > div > .var-oz{
-    background-color: #ffffff;
-    border-radius: 0 0 0 9px;
-    height: 52px;
-    width: 32%;
-    float: left;
-    margin-right: 1%;
-
-}
-.tanque > div > .var-ph{
-    background-color: #ffffff;
-    height: 52px;
-    width: 32%;
-    float: left;
-    margin-right: 1%;
-}
-.tanque > div > .var-tm{
-    background-color: #ffffff;
-    border-radius: 0 0 9px 0;
-    height: 52px;
-    width: 32%;
-    float: left;
-    margin-right: 1%;
-}
-.txt{
-    font-size: 12px;
-    font-weight: bold;
-    float: left;
-    height: 100%;
-    line-height: 52px;
-}
-
-/* Contenedores de ubicación*/
-
-/*.container-boxSeparador1{
-    background-color:#F2F2F2;
+.drawLine2.entregado{
+    height: 10px;
     width: 100%;
-    max-width:1200px;
-    height:50px;
+    background-color: #0077b0;
+    transition: 6s all;
+}
+.container-circulo{
+width: 25px;
+float:left;
+
+}
+.circle.no_entregado{
+    width: 25px;
+    height: 25px;
+    background: #09b7c9;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;   
+    position: absolute;
+    transition: 0.3s all;
+    bottom: -7px;
+    left: -1px;
+    z-index: 10;
+}
+.circle.entregado{
+    width: 25px;
+    height: 25px;
+    background: #0077b0;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;   
+    position: absolute;
+    transition: 0.3s all;
+    bottom: -7px;
+    left: -1px;
+    z-index: 10;
+}
+.textCircle.siHover .circle:hover
+{
+    width: 50px;
+    height: 50px;
+    bottom: -19px;
+}
+.textCircle.siHover:hover .ctxtr
+{
+    visibility: visible;
+}
+.containerRuta{
+    width: 100%;
+    height:170px;
+    display: block;
+
+}
+.containerR1{
+    width: 100%;
+    height:50%;
     text-align: center;
 }
-.container-boxUbicacion{
-    width:100%;
-    height: 50%;
+.containerBoxR{
+    height: 130px;
+    float: left;
 }
-.container-boxSeparador2{
-    background-color:#F2F2F2;
+.textCircle
+{
     width: 100%;
-    max-width:1200px;
-    height:25px;
-    text-align: center;
-}
-
-div.iconCamion{
-  background-image: url('../../images/dashboard/iconoCamion.png');
-  background-repeat:no-repeat;
-  float:left;
-  width:24px;height:18px;
-  margin-left: 13px;
-}
-div.iconChofer{
-  background-image: url("../../images/dashboard/iconoChofer.png");
-  background-repeat:no-repeat;
-  float:left;  width:24px;height:18px;
-  margin-right:13px;
-}
-div.iconPersonal{
-   background-image: url("../../images/dashboard/iconoPersonal.png");
-   background-repeat:no-repeat;      width: 12px;
-   height: 18px;
-   float: left;
-   margin-right: 13px;
-
-}
-.dashboardInicio tbody tr:hover td div.iconChofer,
-.dashboardInicio tbody tr.selected td div.iconChofer  {
-    background-image: url("../../images/dashboard/iconoChoferBlanco.png");
-}
-.dashboardInicio tbody tr:hover td div.iconCamion,
-.dashboardInicio tbody tr.selected td div.iconCamion  {
-    background-image: url("../../images/dashboard/iconoCamionBlanco.png");
-}
-.dashboardInicio tbody tr:hover td div.iconPersonal,
-.dashboardInicio tbody tr.selected td div.iconPersonal  {
-    background-image: url("../../images/dashboard/iconoPersonalBlanco.png");
-}
-.icon-oz{
-    background-image: url("../../images/dashboard/iconoOxigeno.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 20px;
     height: 100%;
-    float: left;
-    margin-left: 7px;
-
 }
-.icon-ph{
-    background-image: url("../../images/dashboard/iconoPH.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 24px;
-    height: 100%;
-    background-size: 100%;
-    float: left;
+.containerBoxR:last-child .circle
+{
+    
+     left:89%;
 }
-.icon-tm{
-    background-image: url("../../images/dashboard/iconoTemp.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    width: 11px;
-    height: 100%;
-    float: left;
+.containerBoxR:last-child .containerLinea
+{
+    padding-left: 0;
+    padding-right: 2px;
 }
-.contenedor-tanques:after,
-.contenedor-tanques *:after{
-    content:"";
+.containerBoxR > div:last-child{
+    position:relative;
+    height:130px;
+}
+.containerBoxR > div:last-child:after, 
+.containerLinea:after{
     display: block;
     clear: both;
+    content: '';
 }
-.divIcon{
-    width: 20px;
-    height: 14px;
-    float: left;
-    margin-left: 9px;
-    margin-top: 16px;
-    margin-bottom: 20px;
-}
-.divIcon:nth-child(2n){
-     margin-left: 0;
-}
-
-.drawLine1{
-       height: 8px;
+.containerLinea
+{    
+    height: 17px;
     width: 100%;
-    max-width: 1129px;
-    background-color: #09b7c9;
-    float: left;
-    margin-top: 24px;
+    padding-top: 7px;
+    padding-left: 2px;
+    box-sizing:border-box;
+    position: absolute;
+    bottom: 0;
+    z-index: 9;
 }
-
-.divText{
-    width: 80%;
-    height: 100%;
-    float: right;
-    margin-left: 9px;
-    margin-top: 16px;
-    margin-bottom: 20px;
+.ctxtr{
+    width: 100%;
+    height: 100px;
+    visibility: hidden;
+    position:absolute;
+    margin-top: 33px;
+    margin-left:18px;
 }
-.botonIr{
-    width: 57px;
-    height: 31px;
-    background: #0077b0;
-    border-radius: 5px;
-    cursor: pointer;
+.containerBoxR:first-child .ctxtr{
+    visibility: visible;
+    margin-top: 45px;
+    margin-left: -48px;
+}
+.containerBoxR:last-child .ctxtr{
+ visibility: visible;
+ margin-top: 45px;
+}
+.bubbleC{
+    position: relative;
+    width: 200px;
+    height: 38px;
     text-align: center;
-    line-height: 34px;
- }    
- .boxTitulos{
-    width:100%;
+    line-height: 100px;
+    background-color: #09b7c9;
+    border: 8px solid #09b7c9;
+    border-radius: 30px 30px 30px 0px; 
+    line-height: 36px;
+    right: -7px;
+}
+ .bubbleC:after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -7px;
+    top: 34px;
+    border: 12px solid;
+    border-color: #09b7c9 transparent transparent #09b7c9;
+}
+.txtRuta{
+    font-size: 15px;
+    color:#ffffff;
+}
+.txtR2{
+    font-family: 'AllerDisplay';
+    font-size:17px;
+    color:#000000;
 
- }*/
+}

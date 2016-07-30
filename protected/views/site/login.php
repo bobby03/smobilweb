@@ -10,7 +10,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
 );
-
+if(Yii::app()->user->isGuest){ 
 ?>
 
 <!--<h1>Login</h1>-->
@@ -57,3 +57,6 @@ $this->breadcrumbs=array(
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+<?php } else{
+	$this->redirect(Yii::app()->baseUrl);
+	} ?>

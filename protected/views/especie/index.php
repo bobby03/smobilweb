@@ -3,6 +3,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/especie/especie.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/especie/especie.js');
 
 
     $this->breadcrumbs=array(
@@ -21,7 +22,7 @@
         </a>
     </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array(
-            'id'=>'especie',
+            'id'=>'especies-grid',
             'dataProvider'=>$model->search(),
 
             'summaryText'=>'',
