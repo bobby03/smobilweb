@@ -110,19 +110,23 @@ public function getSearchSolicitud(){
 
 		$criteria=new CDbCriteria;
 
+		$criteria->select = '*';
+		$criteria->condition = false;
+
 		if($this->id_clientes!=''){
 			$criteria->select = '*';
-			$criteria->condition = "id_clientes LIKE '%".$this->id_clientes."%'";
+			$criteria->condition = "id_clientes = '".$this->id_clientes."'";
 			
 		}
 		
-
 		if($this->codigo!=''){	
 			$criteria->select = '*';
 			$criteria->condition = "codigo LIKE '%".$this->codigo."%'";
 		}
-		
-		
+
+
+
+		fb($criteria);
 		/*
 		OR fecha_alta LIKE '%".$this->codigo.
                                 "%' OR hora_alta LIKE '%".$this->codigo.
