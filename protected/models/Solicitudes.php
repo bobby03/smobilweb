@@ -109,10 +109,20 @@ public function getSearchSolicitud(){
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		//$criteria->compare('id',$this->id);
 
-		$criteria->addcondition("(id_clientes LIKE '%".$this->id_clientes."%' OR codigo LIKE '%".$this->codigo."%' )");
+		if($this->id_clientes!=''){
+			$criteria->select = '*';
+			$criteria->condition = "id_clientes LIKE '%".$this->id_clientes."%'";
+			
+		}
+		
 
+		if($this->codigo!=''){	
+			$criteria->select = '*';
+			$criteria->condition = "codigo LIKE '%".$this->codigo."%'";
+		}
+		
+		
 		/*
 		OR fecha_alta LIKE '%".$this->codigo.
                                 "%' OR hora_alta LIKE '%".$this->codigo.

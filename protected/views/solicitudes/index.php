@@ -3,7 +3,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
-    $this->breadcrumbs=array('Solicitudes');
+    $this->breadcrumbs=array('Solicitudes',);
     
 ?>
 
@@ -13,8 +13,6 @@
     <?php 
             $this->renderPartial('_search',array(
 	       'model'=>$model,)); 
-
-
     ?>
 
     <a href="solicitudes/create">
