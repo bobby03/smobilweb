@@ -16,13 +16,21 @@ if(Yii::app()->user->isGuest)
 $this->redirect(Yii::app()->homeUrl);
 }
 
+
+	
+		//$arregloFechas=array_push($arregloFechas,$fecha);
+
+		
+	//$diff=date_diff($date1,$date2);
+	//$diferencia=$diff->format("%a");
+$fecha_i='2016-07-23';
 ?>
 
 
 			<div class="principal index">
 				<h1 class="barraViajeGranja">
 				    <div class="tabs">
-			        	<div id="viaje" class="selected">Viajes</div>
+			        	<div id="viaje" class="selected">Viajes </div>
 			       		<div id="granja" >Estaciones</div>
 			    	</div>
 			    </h1>
@@ -183,14 +191,14 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    	$datos=$this->actionGetTanques2($id);
   			    		$u=1;
   			    		foreach($estaciones as $est):?>
-	  			    		<div data-id="est<?php echo $u;?>" class="infocliente hide">
+	  			    		<div data-id="est<?php echo $u;?>" class="infocliente hide none">
   			    			<p id="titc" class="tit"><?php echo $est['identificador'];?></p>
   			    			<p class="infocont">
   			    				<span><?php echo $est['ubicacion']?></span>
   			    			</p>
   			    		</div>
 
-  			    		<div data-id="est<?php echo $u;?>" class="infocontacto hide">
+  			    		<div data-id="est<?php echo $u;?>" class="infocontacto hide none">
   			    			<p class="tit">Contacto:</p>
   			    			<p class="infocont">
   			    				<span><?php echo $est['nombre']." ".$est['apellido'];?></span>
