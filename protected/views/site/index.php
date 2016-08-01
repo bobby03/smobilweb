@@ -16,6 +16,8 @@ if(Yii::app()->user->isGuest)
 $this->redirect(Yii::app()->homeUrl);
 }
 
+
+
 ?>
 
 
@@ -48,6 +50,7 @@ $this->redirect(Yii::app()->homeUrl);
 										    			?>
 										  </div>	
 								    	</div>
+  					    	
   					    		</div>
   
   					    		<div class="container-line">
@@ -94,7 +97,7 @@ $this->redirect(Yii::app()->homeUrl);
   					</div>
   				</div>
   			  
-  			    <div class="container-granja none">
+  			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
   			    	<div class="dash1">
 	  			    	<div class="estacion">
 	  			    		<p class="topcont">1. Selecciona una estación</p>
@@ -103,7 +106,7 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    			<?php 
 	  			    			$i=1;
 	  			    			foreach($estaciones as $est):?>
-	  			    				<div data-id="est<?php echo $i;?>" class="liest">
+	  			    				<div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
 	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div><label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
 	  			    				</div>
 	  			    			<?php
@@ -121,6 +124,7 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    		
 	  			    		<div class="lcontenido">
 	  			    			<div>
+	  			    				<p class="estv" >Seleccione una estación</p>
 	  			    			</div>
 	  			    			<?php 
 	  			    			$o=1;
@@ -164,19 +168,17 @@ $this->redirect(Yii::app()->homeUrl);
   			    	<?php 
 	  			    $us++;
 	  			    endforeach;?>
-  			    	<!--<div class="progressbar">
-						<div class="menuTabs">
-						        <div class="bolaChica selected"></div>
-						        <div class="lineaChica selected"></div>
-						        <div class="bolaGrande selected">1</div>
-						        <div class="lineaGandre"></div>
-						        <div class="bolaGrande ">2</div>
-						        <div class="lineaGandre"></div>
-						        <div class="bolaGrande">3</div>
-						        <div class="lineaChica"></div>
-						        <div class="bolaChica"></div>
-						    </div>
-  			    	</div>-->
+  			    	<div class="progressbar">
+
+  			    		<div class="container-est">
+						<div class="sepest"></div>
+ 						<div class="containerEst"><div class="containerE1"></div></div>
+ 						<div class="sepest2"></div>		
+						</div>
+
+
+						
+  			    	</div>
 
   			    	<div class="info">
   			    		<?php 

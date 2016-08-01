@@ -4,10 +4,13 @@ $(document).ready(function(){
 		if(!$(this).hasClass('selected')){
 			$('.container-viaje').toggleClass('none');
 			$('.container-granja').toggleClass('none');
-
+      $('.infocontacto').addClass('hide');
+      $('.infocliente').addClass('hide');
+      $('.ubicacion').addClass('hide');
 			$('#viaje').toggleClass('selected');
-			$('#granja').toggleClass('selected');
-
+			$('.progressbar').addClass('hide');
+      $('#granja').toggleClass('selected');
+      
 		}
 
 	});
@@ -16,7 +19,6 @@ $(document).ready(function(){
 		if(!$(this).hasClass('selected')){
 			$('.container-granja').toggleClass('none');
 			$('.container-viaje').toggleClass('none');
-		
 			$('#granja').toggleClass('selected');
 			$('#viaje').toggleClass('selected');
 			
