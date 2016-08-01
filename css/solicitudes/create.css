@@ -392,7 +392,7 @@ div.cancelarDireccion
 
 
 body.solicitudes-create .OtroDom{
-    background-image: url(''), 
+    background-image: url('./../../images/solicitud/botonUbicacion.png'), 
                       url('../../images/form/bg.png');
     background-position: 8px 5px,left;
     background-repeat: no-repeat;
