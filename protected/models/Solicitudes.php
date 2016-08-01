@@ -124,9 +124,6 @@ public function getSearchSolicitud(){
 			$criteria->condition = "codigo LIKE '%".$this->codigo."%'";
 		}
 
-
-
-		fb($criteria);
 		/*
 		OR fecha_alta LIKE '%".$this->codigo.
                                 "%' OR hora_alta LIKE '%".$this->codigo.
