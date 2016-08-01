@@ -40,7 +40,7 @@
 					<div class="row">
 						<label class= "letreros">Especie</label>
 							<div class="form-cLarge">
-								<span class="css-select-moz"><?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
+								<span class="css-select-moz"><?php echo $form->dropDownList($model,'id_especie', Especie::model()->getAllEspecies(),array('empty'=>'Seleccionar', 'class'=>'css-select','disabled'=>'disabled')); ?></span>
 								<?php echo $form->error($model,'id_especie'); ?>
 							</div>
 					</div>

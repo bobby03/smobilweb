@@ -59,7 +59,7 @@
             
             <div class='row buttons izq'>
             <?php 
-            if($i==0){
+            if($i==1){
                 echo CHtml::submitButton('Finalizar');
             }
             ?>

@@ -53,7 +53,7 @@ eof;
     <div class="formContainer1">
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'solicitudes-form',
-            'action'=>$baseUrl.'/index.php/viajes/create',
+            'action'=>$baseUrl.'/viajes/create',
     //        'htmlOptions'=>array('name'=>'SolicitudesForm'),
             // Please note: When you enable ajax validation, make sure the corresponding
             // controller action is handling ajax validation correctly.
@@ -64,25 +64,33 @@ eof;
 	<!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
         <?php echo $form->hiddenField($model, 'id');?>
 	<?php echo $form->errorSummary($model); ?>
+
         <div class="domicilioForm hide"> 
+            <div class="Odom">
             <div class="row dom">
                 <?php echo $form->labelEx($direccion,'domicilio'); ?>
-                <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom inputDom')); ?>
             </div>
             <div id="map" data-map="1"></div>
             <div class="row ubi">
                 <?php echo $form->labelEx($direccion,'ubicacion_mapa'); ?>
-                <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
             </div>
             <div class="row des">
                 <?php echo $form->labelEx($direccion,'descripcion'); ?>
-                <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom')); ?>
             </div>
             <div class="row buttons">
                 <div class="aceptarDireccion">Aceptar</div>
                 <div class="cancelarDireccion">Cancelar</div>
             </div>
+            </div>
         </div>
+
+
+
+
+
         <h2>Clientes</h2>
 	<div class="row">
             <span class='css-select-moz'>

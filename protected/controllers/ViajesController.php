@@ -513,7 +513,7 @@ EOF;
                     $hay = strlen($data->ubicacion);
                     $coord = substr($data->ubicacion, 1, $hay-1);
                     $p2 = explode(",", $coord);
-//                    $p2[0] = ();
+//                  $p2[0] = ();
                     $R = 6378137; // Earth’s mean radius in meter
                     $dLat = $this->rad($p2[0] - $p1[0]);
                     $dLong = $this->rad($p2[1] - $p1[1]);

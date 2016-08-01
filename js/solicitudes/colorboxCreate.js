@@ -6,6 +6,8 @@ $(document).ready(function()
         $.colorbox(
         {
             html: html,
+            width:'600px', 
+            height:'525px',
             onComplete: function()
             {
                 googleMap();

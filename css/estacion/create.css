@@ -175,3 +175,8 @@ margin-bottom:10px;
     display: block;
     content: '';
 }
+
+
+body.estacion-create #sidebar{
+    display: none;
+}

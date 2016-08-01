@@ -63,6 +63,8 @@ class NCButtonColumn extends CButtonColumn
             $this->buttons['delete']['click']=<<<EOD
             function(evt)
             {
+
+
                 evt.preventDefault();
                 var href = $(this).attr('href');
                 var index1 = (href.lastIndexOf('/'))+1;
@@ -70,8 +72,9 @@ class NCButtonColumn extends CButtonColumn
                 var id = href.substring(index1, index2);
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
-                var mensaje = '¿Está seguro que desea eliminar está '+header;
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
+                var mensaje = '¿Está seguro que desea eliminar el registro '+nombre+'?';
+                
                 miHtml= miHtml +='<div class="sub-content">';
                 miHtml= miHtml +='  <div class="title-content">Eliminar '+header+'</div>';
                 miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
@@ -85,6 +88,8 @@ class NCButtonColumn extends CButtonColumn
                 $.colorbox(
                 {
                     html: miHtml,
+                    width:'450px', 
+                    height:'190px',
                     onComplete: function()
                     {
                         $('.cancelar-boton').click(function()
@@ -93,9 +98,10 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            index1 = (href.indexOf('index.php/'))+10;
-                            index2 = href.indexOf('/delete');
-                            var controller = href.substring(index1, index2);
+                            
+                            var urlSplit = href.split( '/' );
+                            var controller = urlSplit[ urlSplit.length - 3 ]; 
+                            
                             controller = controller.toLowerCase().replace(/\b[a-z]/g, function(letter) 
                             {
                                 return letter.toUpperCase();
@@ -141,6 +147,9 @@ class NCButtonColumn extends CButtonColumn
                                 }
                             });
                         });
+
+                       
+                      
                     }
                 });
             }

@@ -7,11 +7,14 @@
 <script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.js"></script>
 <?php
+
     $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/view.css');
     $cs->registerScriptFile($baseUrl.'/js/viajes/view.js');
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
+    
     $this->breadcrumbs=array(
             'Viajes'=>array('index'),
             $model->id,
@@ -26,6 +29,8 @@
 <?php endif;?>
 <div class="principal">
     <?php if($model->status == 1):?>
+
+
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
             'attributes'=>array(

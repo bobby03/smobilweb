@@ -222,12 +222,14 @@ class WebServiceController extends Controller
                     // Solicitud_tanques
                     $tanks = Yii::app()->db->createCommand()
                     // tanque, Domicilio, cepa
-                        ->select('t.nombre, t.capacidad, t.id_estacion, d.domicilio, d.ubicacion_mapa, d.descripcion, c.nombre_cepa, c.temp_min, c.temp_max, c.ph_min, c.ph_max, c.ox_min, c.ox_max, c.cond_min, c.cond_max, c.orp_min, c.orp_max, cantidad_cepas')
+                        ->selectDistinct('sv.id_viaje, t.id, st.id_tanque,t.nombre, t.capacidad, t.id_estacion, d.domicilio, d.ubicacion_mapa, d.descripcion, c.nombre_cepa, c.temp_min, c.temp_max, c.ph_min, c.ph_max, c.ox_min, c.ox_max, c.cond_min, c.cond_max, c.orp_min, c.orp_max, cantidad_cepas, e.nombre as nombre_producto')
                         ->from('solicitud_tanques st')
                         ->join('tanque t','st.id_tanque = t.id')
                         ->join('clientes_domicilio d', 'st.id_domicilio = d.id')
                         ->join('cepa c', 'st.id_cepas = c.id')
-                        ->where('id_solicitud =:idS',array(':idS'=>$VDvalue['id_solicitudes']))
+                        ->join('solicitudes_viaje sv','sv.id_solicitud = st.id_solicitud')
+                        ->join('especie e','e.id = c.id_especie')
+                        ->where('st.id_solicitud =:idS',array(':idS'=>$VDvalue['id_solicitudes']))
                         ->queryAll();
                     ;
                     //-----End Solicitud_tanques

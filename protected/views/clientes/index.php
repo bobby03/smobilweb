@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array(
-            'id'=>'cliente',
+            'id'=>'clientes-grid',
             'dataProvider'=>$model->search(),
 
             'summaryText'=> '',

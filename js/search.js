@@ -15,10 +15,15 @@ $(document).ready(function()
     });
     $('#searchDropDown').on('change',function()
     {
+        if($('#searchDropDown option:selected').val() ==''){
+           $('.search-form form').trigger("reset");
+
+        }
         var id = $(this).val();
         $('.search-form div.row[data-id]').addClass('hide');
         $('.search-form div.row[data-id="'+id+'"]').removeClass('hide');
     });
+
     $('.search-form select').on('change',function(){
          $('.search-form form').submit();
     });

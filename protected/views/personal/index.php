@@ -23,7 +23,7 @@
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
-    'id'=>'personal',
+    'id'=>'personal-grid',
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
     'columns'=>$model->adminSearch()
