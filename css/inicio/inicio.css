@@ -659,15 +659,15 @@ float:left;
 }
 .bubbleD{
     position: relative;
-    bottom: 20px;
+    bottom: 10px;
     z-index: 10;
     width: 200px;
-    height: 40px;
+    height: 45px;
     text-align: center;
     background-color: #09b7c9;
     border: 8px solid #09b7c9;
     border-radius: 30px 30px 30px 0px; 
-    line-height: 20px;
+    line-height: 15px;
     right: -7px;
 }
  .bubbleD:after{
@@ -676,13 +676,18 @@ float:left;
     width: 0;
     height: 0;
     left: -7px;
-    top: 34px;
+    top: 45px;
     border: 12px solid;
     border-color: #09b7c9 transparent transparent #09b7c9;
 }
 .txtRuta{
     font-size: 15px;
     color:#ffffff;
+}
+.txtRuta2{
+    font-size: 15px;
+    color:#ffffff;
+
 }
 .txtR2{
     font-family: 'AllerDisplay';
@@ -702,5 +707,26 @@ float:left;
     font-size:14px;
     color:#000;
     font-weight: lighter;
+
+}
+.siHover2 .circle
+{
+    width: 60px;
+    height: 60px;
+    bottom: -19px;
+    left:-20px;
+    color:white;
+    text-align: center;
+    line-height: 15px;
+}
+.textCircle.siHover2:hover .ctxtr
+{
+    visibility: visible;
+}
+#verH{
+    padding-top: 0px;
+    color:white;
+    text-decoration: none;
+    line-height: 20px;
 
 }

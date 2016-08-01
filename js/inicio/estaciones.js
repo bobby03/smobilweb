@@ -5,13 +5,15 @@ $('.liest').click(function()
     {
         var id = $(this).attr('data-id');
         estacion = $(this).attr('data-estacion');
+        $('.infocliente').addClass('hide');
+        $('.infocontacto').addClass('hide');
         $('.liest').removeClass('selected');
         $(this).addClass('selected');
         $('.cont').addClass('hide');
-        $('.infocliente').addClass('hide');
-        $('.infocontacto').addClass('hide');
         $('.ubicacion').addClass('hide');
         $('[data-id="'+id+'"]').removeClass('hide');
+        $('.progressbar').removeClass('hide');
+        
         cargaTanques(estacion); 
 
     });
@@ -41,6 +43,7 @@ function cargaTanques(id) {
               var container  = $(".containerE1");
               container.children('.containerBoxR').last().find('.bubbleD').removeClass('bubbleD');
               container.children('.containerBoxR').last().find('.txtRuta').removeClass('txtRuta').addClass('txtR2');
+            
               //console.log(container.length);
             },
             error: function( a, b, c){

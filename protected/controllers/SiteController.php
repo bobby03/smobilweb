@@ -451,7 +451,13 @@ WHERE cs.id_estacion='.$id)
 
 	}while ($fecha_f!=$fecha);
 	$conteo=count($a);
+	$hoy=date('Y-m-d');
+	$indice=array_search($hoy, $a);
 	//$bandera=false;
+
+	
+	$fi=substr($fecha_i,-2).'-'.substr($fecha_i, 5,2).'-'.substr($fecha_i, 0,4);
+
 		if($bandera == true){
 				$width = 'style="width: ' . (100)/($conteo+1).'%"';
 				$html = $html. '
@@ -459,17 +465,35 @@ WHERE cs.id_estacion='.$id)
 					
 						<div>	
 									<div class="textCircle">
-									<div class="circle no_entregado"></div>
-									<div  class="ctxtr"><label class="txtR3">'.'Inicio monitoreo'.'<br>'.$fecha_i.'</label></div>
+									<div class="circle entregado"></div>
+									<div  class="ctxtr"><label class="txtR3">'.'Inicio monitoreo'.'<br><span class="ldate">'.$fi.'</span></label></div>
 									</div>
 							<div class="containerLinea">
-								<div class="drawLine2 no_entregado"></div>
+								<div class="drawLine2 entregado"></div>
 							</div>
 						</div>
 					</div>';/*crear la parte del cajon*/
 				$mar = 1;
 			   	for ($i=0;$i<($conteo);$i++) 
 			   	{
+			   		if($i<$indice){
+			   			$ent='entregado';
+			   			$ent1='entregado';
+			   			$hov="siHover";
+			   			$txt='';
+			   		}else{
+			   			$ent='no_entregado';
+			   			$ent1='no_entregado';
+			   			$hov="siHover";
+			   			$txt='';
+			   		}
+			   		if($i==$indice){
+			   			$ent='entregado';
+			   			$hov="siHover2";
+			   			$txt='<a id="verH" href="monitoreo/'.$id.'">Ver historial</a>';
+			   		}
+			   		$f=substr($a[$i],-2).'-'.substr($a[$i], 5,2).'-'.substr($a[$i], 0,4);
+
 					$html = $html.'
 					<div class="containerBoxR" '.$width.'>
 				   		 
@@ -478,13 +502,14 @@ WHERE cs.id_estacion='.$id)
 				   		 		if($mar == $conteo)
 									$html = $html.'	<div class="textCircle">';
 								else
-									$html = $html.'	<div class="textCircle siHover">';
+									$html = $html.'	<div class="textCircle '.$hov.'">';
 					$html = $html.'	
-									<div class="circle no_entregado"></div>
-									<div class="ctxtr"><div class="bubbleD"><label class="txtRuta">Fecha:</br>'.$a[$i].'</label></div></div>
+									<div class="circle '.$ent.'">'.$txt.'</div>
+									<div class="ctxtr"><div class="bubbleD">
+									<label class="txtRuta2"><p id="historial"></p>Fecha:</br>'.$f.'</label></div></div>
 								</div>
 								<div class="containerLinea">
-									<div class="drawLine2 no_entregado"></div>
+									<div class="drawLine2 '.$ent1.'"></div>
 								</div>
 							</div>
 					   	</div>';
