@@ -629,7 +629,7 @@ float:left;
 .containerBoxR:first-child .ctxtr{
     visibility: visible;
     margin-top: 45px;
-    margin-left: -48px;
+    margin-left: 0px;
 }
 .containerBoxR:last-child .ctxtr{
  visibility: visible;
@@ -732,10 +732,11 @@ float:left;
     visibility: visible;
 }
 #verH{
-    padding-top: 0px;
+    
     color:white;
     text-decoration: none;
     line-height: 20px;
+    margin-top: 20px !important;
 
 }
 .estv{
@@ -744,4 +745,25 @@ float:left;
   color:#1178AF;
   height: 200px;
   line-height: 200px;
+}
+.ctxtr2{
+    width: 100%;
+    height: 100px;
+    visibility: hidden;
+    position:absolute;
+    margin-top: 33px;
+    margin-left:18px;
+}
+.containerBoxR:first-child .ctxtr2{
+    visibility: visible;
+    margin-top: 45px;
+    margin-left: 0px;
+}
+.containerBoxR:last-child .ctxtr2{
+ visibility: visible;
+ margin-top: 45px;
+}
+.textCircle.siHover:hover .ctxtr2
+{
+    visibility: visible;
 }

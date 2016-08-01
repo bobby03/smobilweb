@@ -482,6 +482,7 @@ WHERE cs.id_estacion='.$id)
 			   			$ent1='entregado';
 			   			$hov="siHover";
 			   			$txt='';
+			   			$clase="";
 			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
 			   		}else{
 			   			$ent='no_entregado';
@@ -489,15 +490,18 @@ WHERE cs.id_estacion='.$id)
 			   			$hov="siHover";
 			   			$txt='';
 			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
+			   			$clase="";
 			   		}
 			   		if($i==$indice){
 			   			$ent='entregado';
 			   			$hov="siHover2";
 			   			$txt='<a id="verH" href="monitoreo/'.$id.'">Ver historial</a>';
 			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
+			   			$clase="";
 			   		}
 			   		if($i==($conteo-1)){
 			   			$fin='<label class="txtR4">'.'Fin monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
+			   			$clase="cotro";
 			   		}
 			   		
 
@@ -512,7 +516,7 @@ WHERE cs.id_estacion='.$id)
 									$html = $html.'	<div class="textCircle '.$hov.'">';
 					$html = $html.'	
 									<div class="circle '.$ent.'">'.$txt.'</div>
-									<div class="ctxtr"><div class="bubbleD">
+									<div class="ctxtr2"><div class="bubbleD '.$clase.'">
 									 '.$fin.'  </div></div>
 								</div>
 								<div class="containerLinea">
