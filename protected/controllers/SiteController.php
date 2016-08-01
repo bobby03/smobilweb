@@ -476,23 +476,30 @@ WHERE cs.id_estacion='.$id)
 				$mar = 1;
 			   	for ($i=0;$i<($conteo);$i++) 
 			   	{
+			   		$f=substr($a[$i],-2).'-'.substr($a[$i], 5,2).'-'.substr($a[$i], 0,4);
 			   		if($i<$indice){
 			   			$ent='entregado';
 			   			$ent1='entregado';
 			   			$hov="siHover";
 			   			$txt='';
+			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
 			   		}else{
 			   			$ent='no_entregado';
 			   			$ent1='no_entregado';
 			   			$hov="siHover";
 			   			$txt='';
+			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
 			   		}
 			   		if($i==$indice){
 			   			$ent='entregado';
 			   			$hov="siHover2";
 			   			$txt='<a id="verH" href="monitoreo/'.$id.'">Ver historial</a>';
+			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
 			   		}
-			   		$f=substr($a[$i],-2).'-'.substr($a[$i], 5,2).'-'.substr($a[$i], 0,4);
+			   		if($i==($conteo-1)){
+			   			$fin='<label class="txtR4">'.'Fin monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
+			   		}
+			   		
 
 					$html = $html.'
 					<div class="containerBoxR" '.$width.'>
@@ -506,7 +513,7 @@ WHERE cs.id_estacion='.$id)
 					$html = $html.'	
 									<div class="circle '.$ent.'">'.$txt.'</div>
 									<div class="ctxtr"><div class="bubbleD">
-									<label class="txtRuta2"><p id="historial"></p>Fecha:</br>'.$f.'</label></div></div>
+									 '.$fin.'  </div></div>
 								</div>
 								<div class="containerLinea">
 									<div class="drawLine2 '.$ent1.'"></div>

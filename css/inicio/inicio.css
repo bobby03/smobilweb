@@ -675,7 +675,7 @@ float:left;
     position: absolute;
     width: 0;
     height: 0;
-    left: -7px;
+    left: -8px;
     top: 45px;
     border: 12px solid;
     border-color: #09b7c9 transparent transparent #09b7c9;
@@ -697,14 +697,22 @@ float:left;
 }
 .txtR3{
     font-family: 'Roboto-Regular';
-    font-size:14px;
+    font-size:13px;
     color:#000;
     font-weight: bold;
 
 }
 .txtR4{
     font-family: 'Roboto-Regular';
-    font-size:14px;
+    font-size:13px;
+    color:#000;
+    font-weight: bold;
+    text-align: right !important;
+
+}
+.ldate{
+  font-family: 'Roboto-Regular';
+    font-size:12px;
     color:#000;
     font-weight: lighter;
 
@@ -729,4 +737,11 @@ float:left;
     text-decoration: none;
     line-height: 20px;
 
+}
+.estv{
+  text-align: center;
+  font-size: 22px;
+  color:#1178AF;
+  height: 200px;
+  line-height: 200px;
 }

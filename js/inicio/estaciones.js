@@ -13,7 +13,7 @@ $('.liest').click(function()
         $('.ubicacion').addClass('hide');
         $('[data-id="'+id+'"]').removeClass('hide');
         $('.progressbar').removeClass('hide');
-        
+        $('.estv').addClass('hide');
         cargaTanques(estacion); 
 
     });

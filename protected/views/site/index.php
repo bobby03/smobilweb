@@ -124,6 +124,7 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    		
 	  			    		<div class="lcontenido">
 	  			    			<div>
+	  			    				<p class="estv" >Seleccione una estación</p>
 	  			    			</div>
 	  			    			<?php 
 	  			    			$o=1;
