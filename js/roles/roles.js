@@ -37,23 +37,37 @@ $(document).ready(function()
             $(this).parent().siblings('div').children('div.botonTodos').addClass('clicked');
             $(this).parent().siblings('div').children('div.botonTodos').text('Desmarcar'); 
         }
-        if($(this).is(':checked')){
+
+
+
+        if($(this).is(':checked')) {
 
               if($(this).hasClass('altaBox')){
                     $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
                     $(this).parent().parent().attr('data-iz',$id);
                     $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
                 }
+
                  if($(this).hasClass('bajaBox')){
                     $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
                     $(this).parent().parent().attr('data-iz',$id);
                     $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
                 }
+
                  if($(this).hasClass('editBox')){
                     $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
                     $(this).parent().parent().attr('data-iz',$id);
                     $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
                 }
+        }
+
+
+        if(!$('input.consultaBox').is("checked")){
+            $idConsulta = $(this).parent().parent().attr('data-id');
+            if($(this).parent().parent().find('[type="checkbox"]').is(':checked')){
+                $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+            }
+           
         }
       
 
