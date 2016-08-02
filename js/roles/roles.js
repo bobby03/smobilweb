@@ -18,6 +18,7 @@ $(document).ready(function()
     });
     $('[type="checkbox"]').click(function()
     {
+
         var total = 0;
         if($(this).is(':checked'))
             total++;
@@ -36,7 +37,28 @@ $(document).ready(function()
             $(this).parent().siblings('div').children('div.botonTodos').addClass('clicked');
             $(this).parent().siblings('div').children('div.botonTodos').text('Desmarcar'); 
         }
+        if($(this).is(':checked')){
+
+              if($(this).hasClass('altaBox')){
+                    $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
+                    $(this).parent().parent().attr('data-iz',$id);
+                    $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                }
+                 if($(this).hasClass('bajaBox')){
+                    $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
+                    $(this).parent().parent().attr('data-iz',$id);
+                    $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                }
+                 if($(this).hasClass('editBox')){
+                    $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
+                    $(this).parent().parent().attr('data-iz',$id);
+                    $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                }
+        }
+      
+
     });
+
     function checkBox()
     {
         $('div.separador').each(function()
@@ -64,6 +86,7 @@ $(document).ready(function()
             });
         });
     }
+
     borrarBotones();
     function borrarBotones()
     {
@@ -78,4 +101,16 @@ $(document).ready(function()
             }
         });
     }
+
+
+    function activaConsulta()
+    {
+
+        if ($('[type="checkbox"].alta').is(':checked')) {
+            console.log($(this));
+        }
+
+    }
+
+
 });
