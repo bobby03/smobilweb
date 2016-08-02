@@ -63,9 +63,9 @@ $(document).ready(function()
 
 
         if(!$('input.consultaBox').is("checked")){
-            $idConsulta = $(this).parent().parent().attr('data-id');
+            $idConsulta = $(this).parent().parent().attr('data-iz');
             if($(this).parent().parent().find('[type="checkbox"]').is(':checked')){
-                $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                $('[data-iz='+$idConsulta+']').find('input.consultaBox').prop( "checked", true );
             }
            
         }
