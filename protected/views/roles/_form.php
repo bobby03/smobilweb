@@ -143,7 +143,7 @@
 	</div>
     </div>
     <div class="row buttons submitb">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Guardar'); ?>
     </div>
         
 

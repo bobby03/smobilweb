@@ -623,22 +623,23 @@ table.detail-view tr.even{
 	float:right;
 	width:400px;
 }
-.table-view .data {
-	background-image: url('./../images/usuarios/iconoNombre.png'), url('./../images/usuarios/bg.png');
+.table-view .data 
+{
+    background-image: url('./../images/usuarios/iconoNombre.png'), url('./../images/usuarios/bg.png');
     background-position: 8px 5px,left;
     background-repeat: no-repeat;
     padding-left: 36px;
     height: 28px;
     display: inline-block;
     border-left: 0;
-    border-color: #f5f5f5;
-    background-color: #FFF;
-    border:2px solid #f5f5f5;
     border-radius: 7px;
+    border: 0;
+    background-color: #FFF;
     display: table-cell; 
     vertical-align: middle;
-    
     width:200px;
+    font-size: 15px;
+    cursor: default;
 }
 /*
 *  ESTILOS PARA EL HEADER

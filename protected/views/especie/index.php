@@ -22,11 +22,18 @@
         </a>
     </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array(
-            'id'=>'especies-grid',
-            'dataProvider'=>$model->search(),
+        'id'=>'especies-grid',
+        'dataProvider'=>$model->search(),
 
-            'summaryText'=>'',
-            'columns'=>$model->adminSearch()
+        'summaryText'=>'',
+        'columns'=>$model->adminSearch(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.view').remove();
+            });
+        }"
     )); ?>
     <?php // $this->widget('zii.widgets.CListView', array(
     //    'dataProvider'=>$dataProvider,

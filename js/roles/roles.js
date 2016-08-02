@@ -110,9 +110,9 @@ $(document).ready(function()
             var index = check.lastIndexOf('/');
             var id = parseInt(check.substring(index+1));
             if(id == 1 || id == 2 || id == 3)
-            {
                 $(this).find('a').remove();
-            }
+            else
+                $(this).find('a.view').remove();
         });
     }
 

@@ -73,3 +73,24 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/solicitudes
 HTTP_REFERER=http://localhost/SmobilWeb/viajes
 ---
+2016/08/02 11:39:01 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "update". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('update')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/updat...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/update/10
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo
+---
+2016/08/02 11:41:57 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "create". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('create')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/creat...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/create
+---

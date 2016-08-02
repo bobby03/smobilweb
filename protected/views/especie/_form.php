@@ -26,7 +26,7 @@
 <div class="form-containerWraper">
 	<div class="form-cRight">
 			<div class="row">
-				<label class="letreros">Nueva Especie</label>
+				<label class="letreros">Especie</label>
 					<div class="form-cLarge">
 						<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100));
 						echo $form->error($model,'nombre');
