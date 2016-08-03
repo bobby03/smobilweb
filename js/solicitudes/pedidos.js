@@ -123,7 +123,7 @@ $(document).ready(function()
         $('#Solicitudes_id_clientes').removeAttr('disabled');
         $('#Solicitudes_id_clientes').trigger('chosen:update');
         console.log('hola');
-        //$('#solicitudes-form').submit();
+        $('#solicitudes-form').submit();
     });
 
     function borrarPedido()

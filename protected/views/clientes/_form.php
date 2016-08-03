@@ -172,7 +172,7 @@
 
                                     <div class="containerbutton">
                                          <div class="row buttons">
-                                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+                                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
                                             <div class="addDireccion">Agregar dirección</div> 
                                         </div>
                                     </div>

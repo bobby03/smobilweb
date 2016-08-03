@@ -40,7 +40,7 @@ class Solicitudes extends CActiveRecord
 		return array(
 			array('id_clientes', 'required'),
 			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
-                        array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
+                        //array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
 			// The following rule is used by search().
