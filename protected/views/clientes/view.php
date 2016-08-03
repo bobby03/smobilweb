@@ -12,17 +12,18 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>View Clientes #<?php echo $model->id; ?></h1>
+<h1>Ver clientes #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'nombre_empresa',
-		'nombre_contacto',
-		'apellido_contacto',
-		'correo',
-		'rfc',
-		'tel',
+        'nullDisplay'=>'No hay datos disponibles',
+	'attributes'=>array
+        (
+            'nombre_empresa',
+            'nombre_contacto',
+            'apellido_contacto',
+            'correo',
+            'rfc',
+            'tel',
 	),
 )); ?>

@@ -3,21 +3,23 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
-    $this->breadcrumbs=array
-    ('Solicitudes',);
+    $this->breadcrumbs=array('Solicitudes',);
     
 ?>
 
 <h1>Solicitudes</h1>
 <div class="principal">
    <div class="search-form" >
-    <?php $this->renderPartial('_search',array(
-	'model'=>$model,
-    )); ?>
+    <?php 
+            $this->renderPartial('_search',array(
+	       'model'=>$model,)); 
+    ?>
+
     <a href="solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>
-    </div><!-- search-form -->
+
+    </div>
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (

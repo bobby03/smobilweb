@@ -38,6 +38,8 @@
                 {
                     $(this).find('a').remove();
                 }
+                else
+                    $(this).find('a.view').remove();
             });
         }"
     )); ?>

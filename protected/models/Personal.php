@@ -166,6 +166,11 @@ class Personal extends CActiveRecord
         		->queryRow();
     		return $chofer['nombre'].' '.$chofer['apellido'];
         }
+        public function getRolPersonal($id)
+        {
+            $personal = Personal::model()->findByPk($id);
+            return $personal->id_rol;
+        }
         public function adminSearch()
         {
             return array

@@ -83,7 +83,7 @@ class Solicitudes extends CActiveRecord
 	}
 public function getSearchSolicitud(){
             return array('1'=>'Cliente',
-                         '2'=>'Código'/*,
+                         '2'=>'Codigo'/*,
                          '3'=>'Fecha Alta',
                          '4'=>'Hora Alta',
                          '5'=>'Fecha Estimada',
@@ -110,7 +110,30 @@ public function getSearchSolicitud(){
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->select = '*';
+		$criteria->condition = false;
+
+		if($this->id_clientes!=''){
+			$criteria->select = '*';
+			$criteria->condition = "id_clientes = '".$this->id_clientes."'";
+			
+		}
+		
+		if($this->codigo!=''){	
+			$criteria->select = '*';
+			$criteria->condition = "codigo LIKE '%".$this->codigo."%'";
+		}
+
+		/*
+		OR fecha_alta LIKE '%".$this->codigo.
+                                "%' OR hora_alta LIKE '%".$this->codigo.
+                                "%' OR fecha_estimada LIKE '%".$this->codigo.
+                                "%' OR hora_estimada LIKE '%".$this->codigo.
+                                "%' OR fecha_entrega LIKE '%".$this->codigo.
+                                "%' OR hora_entrega LIKE '%".$this->codigo.
+                                "%' OR notas LIKE '%".$this->codigo."%'*/
+
+
 		/*$criteria->compare('id_clientes',$this->id_clientes);
 		$criteria->compare('codigo',$this->codigo,true);
 		$criteria->compare('fecha_alta',$this->fecha_alta,true);
@@ -120,20 +143,12 @@ public function getSearchSolicitud(){
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
 		$criteria->compare('notas',$this->notas,true);*/
-		$criteria->addcondition("(id_clientes LIKE '%".$this->codigo.
-								"%' OR codigo LIKE '%".$this->codigo.
-                                "%' OR fecha_alta LIKE '%".$this->codigo.
-                                "%' OR hora_alta LIKE '%".$this->codigo.
-                                "%' OR fecha_estimada LIKE '%".$this->codigo.
-                                "%' OR hora_estimada LIKE '%".$this->codigo.
-                                "%' OR fecha_entrega LIKE '%".$this->codigo.
-                                "%' OR hora_entrega LIKE '%".$this->codigo.
-                                "%' OR notas LIKE '%".$this->codigo."%')");
-
-                
+		
+  
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+
 	}
 
 	/**

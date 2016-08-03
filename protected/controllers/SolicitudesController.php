@@ -103,11 +103,11 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model = new Solicitudes();
-                $estacion = new Estacion();
-                $especies = new Especie();
-                $cepa = new Cepa();
-                $direccion = new ClientesDomicilio();
+		  $model = new Solicitudes();
+          $estacion = new Estacion();
+          $especies = new Especie();
+          $cepa = new Cepa();
+          $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -278,9 +278,11 @@ eof;
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Solicitudes']))
                 $model->attributes=$_GET['Solicitudes'];
-            $this->render('index',array(
-                    'model'=>$model,
-            ));
+                $this->render('index',array(
+                        'model'=>$model,
+                ));
+
+
 	}
 
 	/**
@@ -290,12 +292,12 @@ eof;
 	{
 		$model=new Solicitudes('search');
 		$model->unsetAttributes();  // clear any default values
+
 		if(isset($_GET['Solicitudes']))
 			$model->attributes=$_GET['Solicitudes'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+    		$this->render('admin',array(
+    			'model'=>$model,
+    		));
 	}
 
 	/**

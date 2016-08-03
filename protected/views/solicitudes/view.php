@@ -10,22 +10,24 @@ $this->breadcrumbs=array(
 	'Solicitudes'=>array('index'),
 	$model->id,
 );
+$model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
 ?>
 
-<h1>View Solicitudes #<?php echo $model->id; ?></h1>
+<h1>Ver solicitud #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'id_clientes',
-		'codigo',
-		'fecha_alta',
-		'hora_alta',
-		'fecha_estimada',
-		'hora_estimada',
-		'fecha_entrega',
-		'hora_entrega',
-		'notas',
+        'nullDisplay'=>'No hay datos disponibles',
+	'attributes'=>array
+        (
+            'id_clientes',
+            'codigo',
+            'fecha_alta',
+            'hora_alta',
+            'fecha_estimada',
+            'hora_estimada',
+            'fecha_entrega',
+            'hora_entrega',
+            'notas',
 	),
 )); ?>

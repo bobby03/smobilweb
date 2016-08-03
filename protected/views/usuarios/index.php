@@ -3,6 +3,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/usuarios/usuarios.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/usuarios/index.js');
     $this->breadcrumbs=array(
 	'Usuarioses',
     );
@@ -25,7 +26,13 @@
     'id'=>'usuario',
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
-   
-    'columns'=>$model->adminSearch()
+    'columns'=>$model->adminSearch(),
+    'afterAjaxUpdate' => "function(id,data)
+    {
+        $('.items tbody tr').each(function()
+        {
+            $(this).find('a.view').remove();
+        });
+    }"
 )); ?>
 </div>
