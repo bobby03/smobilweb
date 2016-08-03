@@ -292,25 +292,54 @@ class ViajesController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel((int)$id);
+                $personal = SolicitudesViaje::model()->findAll("id_viaje =".(int)$id);
+                $personalModel = new SolicitudesViaje();
                 $model->fecha_salida = date('d-m-Y', strtotime($model->fecha_salida));
                 $model->hora_salida = date('H:i', strtotime($model->hora_salida));
-                $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
-                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Viajes']))
 		{
 			$model->attributes=$_POST['Viajes'];
                         $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+                        $personal = SolicitudesViaje::model()->findAll("id_viaje = ".(int)$id." AND id_solicitud = $model->id_solicitudes");
 			if($model->save())
-				$this->redirect(array('index'));
+                        {
+                            foreach($personal as $data)
+                                $data->delete();
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_solicitud = $model->id_solicitudes;
+                                $nuevo->id_viaje = (int)$id;
+                                $nuevo->save();
+                            }
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_solicitud = $model->id_solicitudes;
+                                $nuevo->id_viaje = (int)$id;
+                                $nuevo->save();
+                            }
+                            $this->redirect(array('index'));
+                        }
 		}
-
+                $roles = array('chofer'=>array(),'tecnico'=>array());
+                foreach($personal as $data)
+                {
+                    $rol = Personal::model()->getRolPersonal($data->id_personal);
+                    if($rol == 1)
+                        $roles['chofer'][$data->id_personal] = array('selected' => 'selected');
+                    if($rol == 2)
+                        $roles['tecnico'][$data->id_personal] = array('selected' => 'selected');
+                }
 		$this->render('update',array(
-			'model'=>$model,
+			'model'     => $model,
+                        'personal'  => $personalModel,
+                        'roles'     => $roles
 		));
 	}
 
