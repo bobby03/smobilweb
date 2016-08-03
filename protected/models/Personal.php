@@ -169,7 +169,7 @@ class Personal extends CActiveRecord
         public function getRolPersonal($id)
         {
             $personal = Personal::model()->findByPk($id);
-            return $personal->id_rol;
+            return $personal['id_rol'];
         }
         public function adminSearch()
         {
