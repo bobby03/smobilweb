@@ -38,6 +38,8 @@ class SiteController extends Controller
 		$criteria->join .= " JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id";
 		$criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
 		
+
+		/*Tanques*/
 		$model = Yii::app()->db->createCommand()
 			->selectDistinct("t.*, est.identificador, p.nombre, p.apellido")
 			->from('viajes as t')
@@ -47,6 +49,7 @@ class SiteController extends Controller
 			->where("t.status = 2")
 				->queryAll();
 
+				/*Viajes Disponibles*/
 		$viajes_disponibles =  Yii::app()->db->createCommand(
 				'SELECT v.id as "id_viaje", est.identificador as "nombre", 
 					(SELECT count(t.id) 
