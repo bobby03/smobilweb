@@ -25,7 +25,8 @@
     (
         'id'=>'solicitud',
         'dataProvider'=>$model->search(),
-        'summaryText'=> '',
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearch(),
         'afterAjaxUpdate' => "function(id,data)
         {
