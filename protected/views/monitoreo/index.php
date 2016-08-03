@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
 <div class="principal">
 
     <div class="search-form" >
-    <a href="estacion/create">
+    <a href="estacion/create/2">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->
@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
             'id'=>'estacion',
             'summaryText'=>'',
             'dataProvider'=>Estacion::model()->search1(),
-            'columns'=>Estacion::model()->adminSearch()
+            'columns'=>Estacion::model()->adminSearch2()
         )); 
     ?>
 </div>
