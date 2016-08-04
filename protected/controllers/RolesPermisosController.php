@@ -90,7 +90,7 @@ class RolesPermisosController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+fb($_POST['RolesPermisos']);
 		if(isset($_POST['RolesPermisos']))
 		{
 			$model->attributes=$_POST['RolesPermisos'];

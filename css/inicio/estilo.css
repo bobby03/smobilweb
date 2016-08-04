@@ -214,8 +214,9 @@ font-size: 14px;
 	
 	width: 300px;
 	height: 100px;
-	margin-top:20px;
+	margin-top:80px;
 	margin-left: 20px;
+	
 	
 }
 .tit{
@@ -224,13 +225,13 @@ font-size: 14px;
 	margin-left: 6px;
 	font-family: 'Roboto-Regular';
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 17px;
 }
 .infocont{
 	margin-left: 6px;
 }
 .infocont span{
-	font-size: 13px;	
+	font-size: 15px;	
 	display:block;
 }
 .info{
@@ -302,4 +303,7 @@ div.lineaGandre
     text-align: center;
     cursor: pointer;
     /*margin-right: 120px;*/
+}
+.cotro{
+	text-align: right;
 }

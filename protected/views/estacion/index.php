@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="estacion/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->

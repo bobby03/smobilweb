@@ -24,8 +24,8 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
+        'nullDisplay'=>'No hay datos disponibles',
 	'attributes'=>array(
-		'id',
 		'nombre',
 	),
 )); ?>

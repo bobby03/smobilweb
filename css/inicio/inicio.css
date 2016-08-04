@@ -629,7 +629,7 @@ float:left;
 .containerBoxR:first-child .ctxtr{
     visibility: visible;
     margin-top: 45px;
-    margin-left: -48px;
+    margin-left: 0px;
 }
 .containerBoxR:last-child .ctxtr{
  visibility: visible;
@@ -657,13 +657,113 @@ float:left;
     border: 12px solid;
     border-color: #09b7c9 transparent transparent #09b7c9;
 }
+.bubbleD{
+    position: relative;
+    bottom: 10px;
+    z-index: 10;
+    width: 200px;
+    height: 45px;
+    text-align: center;
+    background-color: #09b7c9;
+    border: 8px solid #09b7c9;
+    border-radius: 30px 30px 30px 0px; 
+    line-height: 15px;
+    right: -7px;
+}
+ .bubbleD:after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -8px;
+    top: 45px;
+    border: 12px solid;
+    border-color: #09b7c9 transparent transparent #09b7c9;
+}
 .txtRuta{
     font-size: 15px;
     color:#ffffff;
+}
+.txtRuta2{
+    font-size: 15px;
+    color:#ffffff;
+
 }
 .txtR2{
     font-family: 'AllerDisplay';
     font-size:17px;
     color:#000000;
 
+}
+.txtR3{
+    font-family: 'Roboto-Regular';
+    font-size:13px;
+    color:#000;
+    font-weight: bold;
+
+}
+.txtR4{
+    font-family: 'Roboto-Regular';
+    font-size:13px;
+    color:#000;
+    font-weight: bold;
+    text-align: right !important;
+
+}
+.ldate{
+  font-family: 'Roboto-Regular';
+    font-size:12px;
+    color:#000;
+    font-weight: lighter;
+
+}
+.siHover2 .circle
+{
+    width: 60px;
+    height: 60px;
+    bottom: -19px;
+    left:-20px;
+    color:white;
+    text-align: center;
+    line-height: 15px;
+}
+.textCircle.siHover2:hover .ctxtr
+{
+    visibility: visible;
+}
+#verH{
+    
+    color:white;
+    text-decoration: none;
+    line-height: 20px;
+    margin-top: 20px !important;
+
+}
+.estv{
+  text-align: center;
+  font-size: 22px;
+  color:#1178AF;
+  height: 200px;
+  line-height: 200px;
+}
+.ctxtr2{
+    width: 100%;
+    height: 100px;
+    visibility: hidden;
+    position:absolute;
+    margin-top: 33px;
+    margin-left:18px;
+}
+.containerBoxR:first-child .ctxtr2{
+    visibility: visible;
+    margin-top: 45px;
+    margin-left: 0px;
+}
+.containerBoxR:last-child .ctxtr2{
+ visibility: visible;
+ margin-top: 45px;
+}
+.textCircle.siHover:hover .ctxtr2
+{
+    visibility: visible;
 }

@@ -65,7 +65,7 @@ class SiteController extends Controller
 			->queryAll();
 
 		$estaciones= Yii::app()->db->createCommand(
-				'SELECT * FROM estacion e 
+				'SELECT *,e.id as idest FROM estacion e 
 				JOIN camp_sensado cs ON cs.id_estacion=e.id
 				JOIN personal p ON cs.id_responsable=p.id
 				WHERE e.activo=1 
@@ -328,7 +328,7 @@ class SiteController extends Controller
 							</div>
 						</div>
 					</div>';/*crear la parte del cajon*/
-				$mar = 1;
+				$mar = 0;
 			   	foreach ($arreglo as $data) 
 			   	{
 					$html = $html.'
@@ -413,4 +413,129 @@ class SiteController extends Controller
 		->queryRow();
 		return $tanques;
 	}
+	public function actionDbpb($id) {
+		$return['result'] = 0 ;
+		$return['html'] = "";
+		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+		->queryAll();
+		$flag = true;
+
+         $return['linea'] = $this->GetPB($id, $flag);
+          echo json_encode($return);
+  	}
+	public function GetPB($id, $bandera)
+ { 
+ 	$recorrido = Yii::app()->db->createCommand('SELECT *, curdate() as hoy FROM camp_sensado cs 
+WHERE cs.id_estacion='.$id)
+        ->queryRow();
+    $arreglo = array();
+    $arreglo2= array();
+    $d = 0;
+    $p1 = $p2 = array();
+	$total = count($arreglo);
+	$html = '';
+	$total++;
+
+
+	$fecha_i=$recorrido['fecha_inicio'];
+	$fecha_f=$recorrido['fecha_fin'];
+	$date1=date_create($fecha_i);
+	$date2=date_create($fecha_f);
+	$fecha=$fecha_i;
+	
+	do{
+	$date2=date_create($fecha);
+		$date2->add(new DateInterval('P1D'));
+		$fecha=$date2->format('Y-m-d');
+		$a[]=$fecha;
+
+	}while ($fecha_f!=$fecha);
+	$conteo=count($a);
+	$hoy=date('Y-m-d');
+	$indice=array_search($hoy, $a);
+	//$bandera=false;
+
+	
+	$fi=substr($fecha_i,-2).'-'.substr($fecha_i, 5,2).'-'.substr($fecha_i, 0,4);
+
+		if($bandera == true){
+				$width = 'style="width: ' . (100)/($conteo+1).'%"';
+				$html = $html. '
+					<div class="containerBoxR" '.$width.'>
+					
+						<div>	
+									<div class="textCircle">
+									<div class="circle entregado"></div>
+									<div  class="ctxtr"><label class="txtR3">'.'Inicio monitoreo'.'<br><span class="ldate">'.$fi.'</span></label></div>
+									</div>
+							<div class="containerLinea">
+								<div class="drawLine2 entregado"></div>
+							</div>
+						</div>
+					</div>';/*crear la parte del cajon*/
+				$mar = 1;
+			   	for ($i=0;$i<($conteo);$i++) 
+			   	{
+			   		$f=substr($a[$i],-2).'-'.substr($a[$i], 5,2).'-'.substr($a[$i], 0,4);
+			   		if($i<$indice){
+			   			$ent='entregado';
+			   			$ent1='entregado';
+			   			$hov="siHover";
+			   			$txt='';
+			   			$clase="";
+			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
+			   		}else{
+			   			$ent='no_entregado';
+			   			$ent1='no_entregado';
+			   			$hov="siHover";
+			   			$txt='';
+			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
+			   			$clase="";
+			   		}
+			   		if($i==$indice){
+			   			$ent='entregado';
+			   			$hov="siHover2";
+			   			$txt='<a id="verH" href="monitoreo/'.$id.'">Ver historial</a>';
+			   			$fin='<label class="txtRuta2">Fecha:</br>'.$f.'</label>';
+			   			$clase="";
+			   		}
+			   		if($i==($conteo-1)){
+			   			$fin='<label class="txtR4">'.'Fin monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
+			   			$clase="cotro";
+			   		}
+			   		
+
+					$html = $html.'
+					<div class="containerBoxR" '.$width.'>
+				   		 
+				   		 	<div>	
+				   		 		';
+				   		 		if($mar == $conteo)
+									$html = $html.'	<div class="textCircle">';
+								else
+									$html = $html.'	<div class="textCircle '.$hov.'">';
+					$html = $html.'	
+									<div class="circle '.$ent.'">'.$txt.'</div>
+									<div class="ctxtr2"><div class="bubbleD '.$clase.'">
+									 '.$fin.'  </div></div>
+								</div>
+								<div class="containerLinea">
+									<div class="drawLine2 '.$ent1.'"></div>
+								</div>
+							</div>
+					   	</div>';
+					   	$mar = $mar + 1 ;
+				 
+   				
+   			}
+   		}
+   			
+   		else{
+   					$html=$html .'<div class="containerBoxR">
+   									<div class="letreroError">Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
+   				
+   			}	
+   	
+	return $html;
+ } 
 }

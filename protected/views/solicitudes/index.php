@@ -15,7 +15,7 @@
 	       'model'=>$model,)); 
     ?>
 
-    <a href="solicitudes/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>
 
@@ -25,7 +25,8 @@
     (
         'id'=>'solicitud',
         'dataProvider'=>$model->search(),
-        'summaryText'=> '',
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearch(),
         'afterAjaxUpdate' => "function(id,data)
         {
