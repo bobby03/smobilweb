@@ -1,24 +1,23 @@
 $(document).ready(function()
 {
-    var noMap = 1;
+    var noMap = parseInt(1);
     $('.addDireccion').click(function()
     {
         var nuevoMapa = $('.allMapa[data-id="1"]').clone();
-//        $('.row.mapa').append('<div class="allMapa"><?php echo $noDirrecion;?></div>');
         $('.row.mapa').append(nuevoMapa);
-        noMap = noMap + 1;
+        noMap = parseInt(noMap) + 1;
         $('.row.mapa').children().last('allMapa').attr('data-id', noMap);
-        $('.row.mapa').children().last('allMapa').children('#map').attr('data-map', noMap);
-        $('.row.mapa').children().last('allMapa').children('#map').empty();
-        $('.row.mapa').children().last('allMapa').children('.row.dom').children('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][domicilio]');
-        $('.row.mapa').children().last('allMapa').children('.row.dom').children('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_domicilio');
-        $('.row.mapa').children().last('allMapa').children('.row.dom').children('input').val('');
-        $('.row.mapa').children().last('allMapa').children('.row.ubi').children('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][ubicacion_mapa]');
-        $('.row.mapa').children().last('allMapa').children('.row.ubi').children('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_ubicacion_mapa');
-        $('.row.mapa').children().last('allMapa').children('.row.ubi').children('input').val('');
-        $('.row.mapa').children().last('allMapa').children('.row.des').children('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][descripcion]');
-        $('.row.mapa').children().last('allMapa').children('.row.des').children('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_descripcion');
-        $('.row.mapa').children().last('allMapa').children('.row.des').children('input').val('');
+        $('.allMapa[data-id="'+noMap+'"]').children('#map').attr('data-map', noMap);
+        $('.allMapa[data-id="'+noMap+'"]').children('#map').empty();
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][domicilio]');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_domicilio');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').val('');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.ubi').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][ubicacion_mapa]');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.ubi').find('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_ubicacion_mapa');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.ubi').find('input').val('');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.des').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][descripcion]');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.des').find('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_descripcion');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.des').find('input').val('');
         initMap();
     });
     function initMap()

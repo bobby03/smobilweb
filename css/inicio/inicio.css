@@ -315,7 +315,7 @@ h2{
 .divThead{
     height: 30px;
     background-color: #1178AF;
-    border-bottom: 14px solid #21B7C7;
+    /*border-bottom: 14px solid #21B7C7;*/
     line-height: 33px;
     text-align: left;
     padding-left: 13px;
@@ -350,7 +350,7 @@ h2{
 .divThead2{
     height: 33px;
     background-color: #1178AF;
-    border-bottom: 16px solid #21B7C7;
+    /*border-bottom: 16px solid #21B7C7;*/
     line-height: 35px;
     text-align: left;
     padding-left: 13px;

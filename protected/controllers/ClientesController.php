@@ -176,10 +176,10 @@ class ClientesController extends Controller
                         }
                         $update->save();
                     }
+                    fb('redirect');
                     $this->redirect(array('index'));
                 }
             }
-
             $this->render('update',array(
                 'model'     =>$model,
                 'direccion' =>$direccion

@@ -5,6 +5,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/roles/roles.js');
+    $cs->registerCssFile($baseUrl.'/css/roles/create.css');
 ?>
 
 <div class="form">

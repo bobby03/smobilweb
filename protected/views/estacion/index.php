@@ -27,7 +27,12 @@ $this->breadcrumbs=array(
             'id'=>'estacion-grid',
             'summaryText'=>'',
             'dataProvider'=>$model->search(),
-            'columns'=>$model->adminSearch()
+            'columns'=>$model->adminSearch(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
         )); 
     ?>
 </div>

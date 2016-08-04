@@ -25,7 +25,12 @@ $this->breadcrumbs=array(
             'id'=>'estacion',
             'summaryText'=>'',
             'dataProvider'=>Estacion::model()->search1(),
-            'columns'=>Estacion::model()->adminSearch()
+            'columns'=>Estacion::model()->adminSearch(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
         )); 
     ?>
 </div>

@@ -6,7 +6,7 @@
 
 
 #map {
-    width: 550px;
+    width: 500px;
     height: 218px;
 }
 
@@ -21,6 +21,16 @@ div.addDireccion {
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
+}
+div.allMapa
+{
+    margin-bottom: 47px;
+    width: 500px;
+    float: left;
+}
+div.allMapa:nth-child(odd)
+{
+    margin-right: 75px;
 }
 div.allMapa:last-child div.row.des
 {
@@ -67,8 +77,8 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-    width: 100%;
-  float: right;
+    width: 500px;
+  float: left;
 }
 
 label.letreros{
@@ -109,7 +119,7 @@ width: 300px;
 
  .form-cLeft1 {
     float: left;
-    width:550px;
+    /*width:550px;*/
     margin-left: 60px;
 }
 .form-cRight1{
@@ -172,21 +182,13 @@ margin-bottom:10px;
  }
 
 
-body.clientes-create div.dom div input{
-  width:550px !important;
-}
 
-body.clientes-create div.des div input{
-  width:550px !important;
-}
-
-
-body.clientes-create  #content{
+/*body.clientes-create  #content{
     background-image: url('./../../images/dashboard/logoTransparente.png');
     background-position: right 15% top 70%;
     background-repeat: no-repeat;
 
-}
+}*/
 
 
 body.clientes-create #sidebar{

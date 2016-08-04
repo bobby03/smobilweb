@@ -9,7 +9,7 @@
 ?>
 
 
-<h1>Personal</h1>
+<h1>Empleados</h1>
 
 <div class="principal">
     <div class="search-form" >
@@ -24,7 +24,11 @@
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
     'id'=>'personal-grid',
-    
+    'pager' => array
+    (
+        'class' => 'PagerSA',
+        'header'=>'',
+    ),
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
     'columns'=>$model->adminSearch()

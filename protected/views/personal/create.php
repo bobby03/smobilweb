@@ -10,6 +10,6 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h1>Agregar Personal</h1>
+<h1>Agregar empleado</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
