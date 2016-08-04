@@ -61,7 +61,27 @@
 
     </div>
 
-
+<?php
+        $emsg=0;
+        if($cantTanques['cTan']==0){
+            $emsg=1;
+        }
+        if(empty($tanques)):
+                
+                ?>
+            <div id="detallesMon">
+                <?php 
+                if($emsg==1){
+                    echo '<h3>Estación sin tanques</h3>';
+            }else{
+                echo '<h3>Estación sin monitoreo</h3>';
+            }
+            ?>
+                
+            </div>
+            <?php
+            else:
+        ?>
     <div id="detallesMon">
         <div class="divTit">
             <div id='enLeft'><h2>Detalles del monitoreo</h2></div>
@@ -80,6 +100,7 @@
         <div class="tab" data-tab='1'>
             <?php
             $l=true;
+            
             foreach($tanques as $data):
                 if($l==true){
                     $lado="der";
@@ -111,7 +132,6 @@
         <?php $l=!$l; endforeach?>
             
         </div>
-
         <div class="tab hide" data-tab='2'>
             <div class="tanque der" datos="<?php echo $id;?>" data-para="1">
                 <div class="hDatos">
@@ -190,7 +210,7 @@
                 </div>
             </div>
         </div>
-
+    <?php endif;?>
     </div>
 </div>
 <?php  $cs->registerCssFile($baseUrl.'/css/monitoreo/monitoreo.css');?>

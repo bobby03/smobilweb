@@ -798,8 +798,8 @@ table.detail-view tr.even{
 	margin-top: 20px;
 }
 .btnadd{
-	    line-height: 30px;
-    float: left;
+	line-height: 34px;
+	float:left;
     border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
@@ -808,11 +808,9 @@ table.detail-view tr.even{
     width: 100px;
     height: 34px;
     border: 0px solid white;
-    margin: 0 auto;
+    cursor: pointer;
     text-align: center;
-    position: absolute;
-    left: 201px;
-    display: inline-block;
+  
 }
 
 #ui-datepicker-div{

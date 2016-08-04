@@ -282,7 +282,7 @@ class Viajes extends CActiveRecord
             array
             (
                 'name' => 'id_estacion',
-                //'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                 'filter' => Estacion::model()->getAllEstacionMovil()
             ),
 

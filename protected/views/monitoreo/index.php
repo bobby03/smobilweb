@@ -15,6 +15,7 @@ $this->breadcrumbs=array(
 <div class="principal">
 
     <div class="search-form" >
+
     <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create">
         <div class="agregar estacion"></div>
     </a>
@@ -22,10 +23,11 @@ $this->breadcrumbs=array(
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'estacion',
+            'id'=>'estacion-grid',
             'summaryText'=>'',
+            'enableSorting'=>true,
             'dataProvider'=>Estacion::model()->search1(),
-            'columns'=>Estacion::model()->adminSearch()
+            'columns'=>Estacion::model()->adminSearch2()
         )); 
     ?>
 </div>
