@@ -153,6 +153,17 @@ class EspecieController extends Controller
 		));
 		echo json_encode($model);
 	}
+	public function actionUpdate1()
+	{
+		$id=$_POST['id'];
+		$model=$this->loadModel($id);
+		$model->nombre=$_POST['especie'];
+		$model->save();
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		echo json_encode($_POST['especie']);
+		
+	}
 
 	/**
 	 * Deletes a particular model.
