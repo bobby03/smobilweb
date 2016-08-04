@@ -22,9 +22,9 @@ $this->breadcrumbs=array(
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'estacion',
+            'id'=>'estacion-grid',
             'summaryText'=>'',
-            'enableSorting'=>false,
+            'enableSorting'=>true,
             'dataProvider'=>Estacion::model()->search1(),
             'columns'=>Estacion::model()->adminSearch2()
         )); 
