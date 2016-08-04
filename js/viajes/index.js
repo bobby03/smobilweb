@@ -8,4 +8,8 @@ $(document).ready(function()
         $('.tabContent').addClass('hide');
         $('[data-tan="'+id+'"]').removeClass('hide');
     });
+    $('.items tbody tr').each(function()
+    {
+        $(this).find('a.delete').remove();
+    });
 });

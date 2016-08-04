@@ -201,12 +201,6 @@ class Viajes extends CActiveRecord
         (
             array
             (
-                'name' => 'status',
-                'value' => 'Viajes::model()->getStatus($data->status)',
-                'filter' => Viajes::model()->getAllStatus()
-            ),
-            array
-            (
                 'name' => 'id_solicitudes',
                 'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
                 'filter' => Clientes::model()->getAllClientesViajes(),
@@ -256,12 +250,6 @@ class Viajes extends CActiveRecord
     {
         return array
         (
-            array
-            (
-                'name' => 'status',
-                'value' => 'Viajes::model()->getStatus($data->status)',
-                'filter' => Viajes::model()->getAllStatus()
-            ),
 
             array
             (
@@ -323,12 +311,6 @@ class Viajes extends CActiveRecord
     {
         return array
         (
-            array
-            (
-                'name' => 'status',
-                'value' => 'Viajes::model()->getStatus($data->status)',
-                'filter' => Viajes::model()->getAllStatus()
-            ),
             array
             (
                 'name' => 'id_solicitudes',

@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
 
     <div class="search-form" >
 
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create">
+    <a href="<?php echo $baseUrl;?>/estacion/create?tipo=2">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->

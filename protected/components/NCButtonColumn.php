@@ -106,6 +106,7 @@ class NCButtonColumn extends CButtonColumn
                             {
                                 return letter.toUpperCase();
                             });
+                            console.log(controller);
                             href = 'delete';
                             $.ajax(
                             {

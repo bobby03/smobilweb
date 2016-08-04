@@ -29,7 +29,14 @@
         'dataProvider'=>$model->searchStatus1(1),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch1()
+        'columns'=>$model->adminSearch1(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.delete').remove();
+            });
+        }"
     )); 
     ?>
     </div>
@@ -41,7 +48,14 @@
         'dataProvider'=>$model->searchStatus1(2),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch2()
+        'columns'=>$model->adminSearch2(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.delete').remove();
+            });
+        }"
     )); 
     ?>
     </div>
@@ -53,7 +67,14 @@
         'dataProvider'=>$model->searchStatus1(3),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch3()
+        'columns'=>$model->adminSearch3(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.delete').remove();
+            });
+        }"
     )); 
     ?>
     </div>
