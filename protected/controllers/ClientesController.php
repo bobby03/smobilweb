@@ -92,9 +92,23 @@ class ClientesController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id}");
+            $array = array();
+            $direccion = new ClientesDomicilio;
+            $i = 1;
+            foreach($query as $data)
+            {
+                $array[$i]['domicilio'] = $data->domicilio;
+                $array[$i]['ubicacion_mapa'] = $data->ubicacion_mapa;
+                $array[$i]['descripcion'] = $data->descripcion;
+                $array[$i]['id'] = $data->id;
+                $i++;
+            }
+            $direccion->domicilio = $array;
+            $this->render('view',array(
+                'model'=>$this->loadModel($id),
+                'direccion' => $direccion
+            ));
 	}
 
 	/**

@@ -153,15 +153,11 @@ class Estacion extends CActiveRecord
 		$criteria->compare('disponible',$this->disponible);
 		$criteria->compare('activo',$this->activo);
                 $criteria->addCondition("activo=1");
-               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
-                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
-                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
-                                "%')");*/
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-    public function search1()
+    public function search1($tipo)
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -176,12 +172,8 @@ class Estacion extends CActiveRecord
         $criteria->compare('ubicacion',$this->ubicacion,true);
         $criteria->compare('disponible',$this->disponible);
         $criteria->compare('activo',$this->activo);
-                $criteria->addCondition("activo=1");
-                $criteria->addCondition("tipo=2");
-               /* $criteria->addcondition("(tipo LIKE '%".$this->tipo."%' OR identificador LIKE '%".$this->tipo.
-                                "%' OR no_personal LIKE '%".$this->tipo."%' OR marca LIKE '%".$this->tipo.
-                                "%' OR color LIKE '%".$this->tipo."%' OR ubicacion LIKE '%".$this->tipo."%' OR disponible LIKE '%".$this->tipo.
-                                "%')");*/
+        $criteria->addCondition("activo=1");
+        $criteria->addCondition("tipo=$tipo");
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
         ));
@@ -295,12 +287,6 @@ class Estacion extends CActiveRecord
         {
             return array
             (
-                array
-                (
-                    'name' => 'tipo',
-                    'value' => 'Estacion::model()->getTipo($data->tipo)',
-                    'filter' => Estacion::model()->getAllTipo()
-                ),
                 'identificador',
                 'no_personal',
                 'marca',

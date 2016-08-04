@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="estacion/create">
+    <a href="<?php echo $baseUrl;?>/estacion/create?tipo=1">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->
@@ -26,7 +26,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion-grid',
             'summaryText'=>'',
-            'dataProvider'=>$model->search(),
+            'dataProvider'=>$model->search1(1),
             'columns'=>$model->adminSearch(),
             'pager' => array
             (

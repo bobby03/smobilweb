@@ -26,11 +26,12 @@ div.editarTanque
 div.form div.row.buttons
 {
     margin: 0;
+    margin-top: 27px;
+    float: right;
 }
 div.form input[type="submit"]
 {
     width: 171px; 
-    margin-right: 50px;
     font-size: 18px;
     height: 35px;
     line-height: 35px;
@@ -83,10 +84,6 @@ div.form-containerWraper:after
     display:block;
     clear: both;
 }
-div.containerbutton
-{
-    margin-left: 597px;
-}
 
 label.letreros{
     font-size: 14px !important;
@@ -100,7 +97,7 @@ label.letreros{
 }
 
 .form-cLarge{
-    width:250px;
+    width:100%;
 }
 
 .form-cXLarge{

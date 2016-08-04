@@ -101,10 +101,10 @@ class EstacionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($tipo)
 	{
 		$model=new Estacion;
-
+                $model->tipo = $tipo;
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 

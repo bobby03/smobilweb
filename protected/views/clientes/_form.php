@@ -28,7 +28,6 @@
         'validateOnType' => true,
         ),
     )); 
-    $noDireccion = 1;
 ?>
 
 
@@ -123,6 +122,7 @@
                         <?php if(count($direccion['domicilio'])>0):?>
                             <?php foreach($direccion['domicilio'] as $data):?>
                                 <div class="allMapa" data-id="<?php echo $i;?>">
+                                    <div id="map" data-map="<?php echo $i;?>"></div>
                                     <div class="row ubi">
                                         <div class="form-cXMedium">
                                             <?php echo $form->hiddenField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
@@ -136,7 +136,6 @@
                                             <?php echo $form->error($direccion,'domicilio'); ?>
                                         </div>
                                     </div>
-                                    <div id="map" data-map="<?php echo $i;?>"></div>
                                     <div class="row des">
                                         <div class="form-cXLarge">
                                             <label class="letreros">Descripción</label>
@@ -152,21 +151,26 @@
                             <?php endforeach;?>
                         <?php else:?>
                             <div class="allMapa" data-id="1">
-                                <div class="row dom">
-                                    <?php echo $form->labelEx($direccion,'domicilio'); ?>
-                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
-                                    <?php echo $form->error($direccion,'domicilio'); ?>
-                                </div>
                               <div id="map" data-map="1"></div>
                                 <div class="row ubi">
-                                    <?php echo $form->labelEx($direccion,'ubicacion_mapa'); ?>
-                                    <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
-                                    <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
+                                    <div class="form-cXMedium">
+                                        <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                        <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
+                                    </div>
+                                </div>
+                                <div class="row dom">
+                                    <div class="form-cXLarge">
+                                        <label class="letreros">Domicilio</label>
+                                        <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                                        <?php echo $form->error($direccion,'domicilio'); ?>
+                                    </div>
                                 </div>
                                 <div class="row des">
-                                    <?php echo $form->labelEx($direccion,'descripcion'); ?>
-                                    <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
-                                    <?php echo $form->error($direccion,'descripcion');?>
+                                    <div class="form-cXLarge">
+                                        <label class="letreros">Descripción</label>
+                                        <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                                        <?php echo $form->error($direccion,'descripcion');?>
+                                    </div>
                                 </div>
                             </div>
                         <?php endif;?>

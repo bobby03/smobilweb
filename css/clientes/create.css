@@ -66,10 +66,6 @@ div.form-containerWraper:after
 
 /*   *    */
 
-div.form {
-    width: 90% !important;
-    margin: 0 auto;
-}
 div.form-containerWraper:after
 {
     content: '';
@@ -172,7 +168,7 @@ margin-bottom:10px;
 .letrero-container{
  background-color:  #E4E7EB;
  height: 4px;
- width:80%;
+ /*width:80%;*/
 }
 .letrero-containerx{
   background-color:  #E4E7EB;
