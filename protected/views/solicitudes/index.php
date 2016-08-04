@@ -15,7 +15,7 @@
 	       'model'=>$model,)); 
     ?>
 
-    <a href="solicitudes/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>
 

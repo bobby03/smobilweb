@@ -16,7 +16,7 @@
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="usuarios/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/usuarios/create">
         <div class="agregar usuarios"></div>
     </a>
     </div><!-- search-form -->
