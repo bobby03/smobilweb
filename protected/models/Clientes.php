@@ -77,7 +77,7 @@ class Clientes extends CActiveRecord
 			array(
 				'rfc',
 				'length',
-				'is'=>13,
+				'is'=>12,
 				'message'=>'RFC No valido'),
 
 

@@ -74,7 +74,7 @@
                     <div class="row">
                         <label class="letreros">RFC</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+                            <?php echo $form->textField($model,'rfc',array('size'=>12,'maxlength'=>12)); ?>
                             <?php echo $form->error($model,'rfc'); ?>
                            </div>
                     </div>
