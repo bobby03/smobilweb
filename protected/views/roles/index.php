@@ -15,7 +15,7 @@
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="roles/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/roles/create">
         <div class="agregar roles"></div>
     </a>
     </div><!-- search-form -->

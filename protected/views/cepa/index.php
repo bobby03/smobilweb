@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-        <a href="cepa/create?especie=<?php echo $id;?>">
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/cepa/create?especie=<?php echo $id;?>">
             <div class="agregar cepa"></div>
         </a>
     </div><!-- search-form -->

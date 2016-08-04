@@ -8,7 +8,7 @@ $baseUrl = Yii::app()->baseUrl;
 <div class="form">
 <?php 
     $cs = Yii::app()->getClientScript();  
-    $cs->registerCssFile($baseUrl.'/css/personal/create.css');
+    $cs->registerCssFile($baseUrl.'/css/personal/create.css?id='.rand());
     $cs->registerScriptFile($baseUrl.'/js/clientes/googleMap.js');
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(

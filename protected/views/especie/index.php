@@ -17,7 +17,7 @@
         <?php $this->renderPartial('_search',array(
                 'model'=>$model,
         )); ?>
-        <a href="especie/create">
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/especie/create">
             <div class="agregar especie"></div>
         </a>
     </div><!-- search-form -->

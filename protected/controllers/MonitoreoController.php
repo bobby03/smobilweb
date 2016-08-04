@@ -38,6 +38,11 @@ class MonitoreoController extends Controller
     
 	public function actionView($id)
     {
+        $cantTanques= Yii::app()->db->createCommand('SELECT count(t.id) as cTan FROM tanque t
+        JOIN estacion e ON t.id_estacion=e.id
+        WHERE t.activo=1
+        AND t.id_estacion='.$id)
+        ->queryRow();
         $tanques = Yii::app()->db->createCommand('SELECT * FROM '.chr(40).'SELECT uploadTemp.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
         FROM estacion
         JOIN tanque ON estacion.id=tanque.id_estacion
@@ -56,7 +61,8 @@ class MonitoreoController extends Controller
 
             $this->render('monitoreo',array(
                 'fijas'=>$this->loadModel($estaciones),
-                'tanques'=>$tanques
+                'tanques'=>$tanques,
+                'cantTanques'=>$cantTanques
             ));
     }
         public function loadModel($estacion)

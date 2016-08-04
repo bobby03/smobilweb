@@ -15,16 +15,18 @@ $this->breadcrumbs=array(
 <div class="principal">
 
     <div class="search-form" >
-    <a href="estacion/create">
+
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'estacion',
+            'id'=>'estacion-grid',
             'summaryText'=>'',
-            'dataProvider'=>Estacion::model()->search1(),
+            'enableSorting'=>true,
+            'dataProvider'=>Estacion::model()->search1(2),
             'columns'=>Estacion::model()->adminSearch(),
             'pager' => array
             (
