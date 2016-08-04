@@ -24,6 +24,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion',
             'summaryText'=>'',
+            'enableSorting'=>false,
             'dataProvider'=>Estacion::model()->search1(),
             'columns'=>Estacion::model()->adminSearch2()
         )); 

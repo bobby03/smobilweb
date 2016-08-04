@@ -344,12 +344,7 @@ class Estacion extends CActiveRecord
                 'marca',
                 'color',
                 'ubicacion',
-                array
-                (
-                    'name' => 'disponible',
-                    'value' => 'Estacion::model()->getDisponible($data->disponible)',
-                    'filter' => Estacion::model()->getAllDisponible()
-                ),
+                
                 array
                 (
                     'class'=>'NCButtonColumn',
