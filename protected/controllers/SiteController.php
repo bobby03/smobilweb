@@ -453,7 +453,23 @@ WHERE cs.id_estacion='.$id)
 	$conteo=count($a);
 	$hoy=date('Y-m-d');
 	$indice=array_search($hoy, $a);
-	//$bandera=false;
+	$ss=0;
+	if ($indice==null){
+		if($hoy>$a[0]){
+			$ss=1;
+			$indice=$conteo-1;
+		}else{
+			$ss=2;
+		}
+
+	}
+	/*$fi='2008-1-15';
+	$ff='2009-10-15';
+	if($fi<$ff){
+		echo 'hola';
+	}else{
+		echo 'deshola';
+	}*/
 
 	
 	$fi=substr($fecha_i,-2).'/'.substr($fecha_i, 5,2).'/'.substr($fecha_i, 0,4);
@@ -500,8 +516,13 @@ WHERE cs.id_estacion='.$id)
 			   			$clase="";
 			   		}
 			   		if($i==($conteo-1)){
-			   			$fin='<label class="txtR4">'.'Fin monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
+			   			$fin='<label class="txtR4">'.'Fin monitoreo'.$indice.'<br><span class="ldate">'.$f.'</span></label>';
 			   			$clase="cotro";
+			   		}
+			   		if($ss==2){
+			   			$ent='no_entregado';
+			   			$txt='';
+			   			$hov='siHover';
 			   		}
 			   		
 
@@ -511,7 +532,7 @@ WHERE cs.id_estacion='.$id)
 				   		 	<div>	
 				   		 		';
 				   		 		if($mar == $conteo)
-									$html = $html.'	<div class="textCircle">';
+									$html = $html.'	<div class="textCircle '.$hov.'">';
 								else
 									$html = $html.'	<div class="textCircle '.$hov.'">';
 					$html = $html.'	
@@ -520,7 +541,7 @@ WHERE cs.id_estacion='.$id)
 									 '.$fin.'  </div></div>
 								</div>
 								<div class="containerLinea">
-									<div class="drawLine2 '.$ent1.'"></div>
+									<div class="drawLine2 '.$ent.'"></div>
 								</div>
 							</div>
 					   	</div>';
