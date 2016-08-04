@@ -456,7 +456,7 @@ WHERE cs.id_estacion='.$id)
 	//$bandera=false;
 
 	
-	$fi=substr($fecha_i,-2).'-'.substr($fecha_i, 5,2).'-'.substr($fecha_i, 0,4);
+	$fi=substr($fecha_i,-2).'/'.substr($fecha_i, 5,2).'/'.substr($fecha_i, 0,4);
 
 		if($bandera == true){
 				$width = 'style="width: ' . (100)/($conteo+1).'%"';
@@ -476,7 +476,7 @@ WHERE cs.id_estacion='.$id)
 				$mar = 1;
 			   	for ($i=0;$i<($conteo);$i++) 
 			   	{
-			   		$f=substr($a[$i],-2).'-'.substr($a[$i], 5,2).'-'.substr($a[$i], 0,4);
+			   		$f=substr($a[$i],-2).'/'.substr($a[$i], 5,2).'/'.substr($a[$i], 0,4);
 			   		if($i<$indice){
 			   			$ent='entregado';
 			   			$ent1='entregado';

@@ -24,13 +24,9 @@
                     <div class="right">
                         <p><span class="vresalta">Fecha de salida:</span> <span class="fsalida"> </span></p>
                         
-                        <p><span class="vresalta">Nombre de Tanque:</span> <?php echo $o;?></p>
+                        <p><span class="vresalta">Nombre de Tanque:</span><span class="ntan<?php echo $o?>"></span></p>
                     </div>
-                    <script type="text/javascript">
-//                    document.write(document.getElementById('Viajes_fecha_salida'));
-
-                    
-                    </script>
+                   
 
                  </div>
                 <div id="vt2">

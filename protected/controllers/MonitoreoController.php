@@ -125,12 +125,12 @@ class MonitoreoController extends Controller
         WHERE t.activo=1
         AND t.id_estacion='.$id)
         ->queryRow();
-        $tanques = Yii::app()->db->createCommand('SELECT * FROM '.chr(40).'SELECT uploadTemp.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
+        $tanques = Yii::app()->db->createCommand('SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
         FROM estacion
         JOIN tanque ON estacion.id=tanque.id_estacion
-        JOIN uploadTemp ON tanque.id=uploadTemp.id_tanque
+        JOIN registro_camp rc ON tanque.id=rc.id_tanque
         WHERE estacion.id='.$id.'
-        ORDER BY tanque.id,uploadTemp.id DESC LIMIT 2000'.chr(41).' consulta
+        ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
         GROUP BY idtan')
                 ->queryAll();
         $estaciones = Yii::app()->db->createCommand()
