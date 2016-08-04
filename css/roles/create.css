@@ -1,0 +1,44 @@
+div.form label 
+{
+    float: left;
+    line-height: 30px;
+    padding-right: 30px;
+}
+div.row.titulos > div 
+{
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 26px;
+    border-right: 1px solid #49dbd0;
+    width: 199px !important;
+    text-align: center;
+}
+div.row.titulos > div:last-child
+{
+    border-right: 0;
+}
+div.row.titulos
+{
+    background-color: #0077B0;
+}
+div.formContainer1 div.separador div div.botonTodos
+{
+    margin: 0 auto;
+}
+div.form input[type="checkbox"]
+{
+    min-height: 19px !important;
+}
+.submitb
+{
+    margin-top: 15px !important;
+}
+div.form input[type="submit"], .submitb
+{
+    width: 130px !important;
+}
+div.formContainer1 div.separador div div.botonTodos
+{
+    height: 26px !important;
+    line-height: 27px !important;
+}

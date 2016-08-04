@@ -7,14 +7,8 @@ $this->breadcrumbs=array(
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
-
-$this->menu=array(
-	array('label'=>'List Clientes', 'url'=>array('index')),
-	array('label'=>'Create Clientes', 'url'=>array('create')),
-	array('label'=>'View Clientes', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Clientes', 'url'=>array('admin')),
-);
 ?>
+
 
 <h1>Actualizar Cliente <?php echo $model->nombre_empresa; ?></h1>
 

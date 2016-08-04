@@ -24,7 +24,11 @@
     (
         'id'=>'rol',
         'dataProvider'=>$model->search(),
-
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
         'summaryText'=> '',
         'columns'=>$model->adminSearch(),
         'afterAjaxUpdate' => "function(id,data)

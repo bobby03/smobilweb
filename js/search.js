@@ -16,6 +16,7 @@ $(document).ready(function()
     });
     $('#searchDropDown').on('change',function()
     {
+        $('');
         if($('#searchDropDown option:selected').val() ==''){
            $('.search-form form').trigger("reset");
 

@@ -7,10 +7,8 @@ $this->breadcrumbs=array(
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
-
-
 ?>
 
-<h1>Editar estaci&oacute;n <?php echo $model->id; ?></h1>
+<h1>Editar estaci&oacute;n <?php echo $model->identificador; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

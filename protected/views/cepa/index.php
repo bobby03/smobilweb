@@ -28,7 +28,12 @@ $this->breadcrumbs=array(
             'id'=>'cepa',
             'dataProvider'=>$model->search($id),
             'summaryText'=> '',
-            'columns'=>$model->adminSearch()
+            'columns'=>$model->adminSearch(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
         ));
     ?>
     
