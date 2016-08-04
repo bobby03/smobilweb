@@ -23,8 +23,8 @@
                     
                     <div class="right">
                         <p><span class="vresalta">Fecha de salida:</span> <span class="fsalida"> </span></p>
-                        <p><span class="vresalta">No. Remision:</span> 7</p>
-                        <p><span class="vresalta">No. Tanque:</span> <?php echo $o;?></p>
+                        
+                        <p><span class="vresalta">Nombre de Tanque:</span> <?php echo $o;?></p>
                     </div>
                     <script type="text/javascript">
 //                    document.write(document.getElementById('Viajes_fecha_salida'));
@@ -59,7 +59,7 @@
             
             <div class='row buttons izq'>
             <?php 
-            if($i==1){
+            if($o==1){
                 echo CHtml::submitButton('Finalizar');
             }
             ?>
