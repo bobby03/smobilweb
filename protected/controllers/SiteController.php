@@ -193,7 +193,7 @@ class SiteController extends Controller
 	public function actionDashboardTanques($id) {
 		$return['result'] = 0 ;
 		$return['html'] = "";
-		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadtemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
 		->queryAll();
 		$flag = true;
             if(count($last) > 0)
