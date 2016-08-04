@@ -187,17 +187,10 @@ margin-bottom:10px;
 }*/
 
 
-body.clientes-create #sidebar{
-  display: none;
-}
-
-
 
 /*
 *  Iconos a Inputs
 */
-
-
 
 
 .ClienteDomicilio{
@@ -207,15 +200,9 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0 !important;
 }
-.error .ClienteDomicilio{
+.ClienteDomicilio.error{
   background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
 }
-.success .ClienteDomicilio{
-  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_success.png');
-}
-
-
-
 
 
 
@@ -226,11 +213,8 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0;
 }
-.error #Clientes_nombre_empresa{
+#Clientes_nombre_empresa.error{
   background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
-}
-.success #Clientes_nombre_empresa{
-  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_success.png');
 }
 
 
@@ -243,11 +227,8 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0;
 }
-.error #Clientes_rfc{
+#Clientes_rfc.error{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
-}
-.success #Clientes_rfc{
-  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_success.png');
 }
 
 
@@ -263,9 +244,7 @@ body.clientes-create #sidebar{
 #Clientes_correo.error{
   background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_correo.success{
-  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_success.png');
-}
+
 
 
 
@@ -280,9 +259,7 @@ body.clientes-create #sidebar{
 #Clientes_tel.error{
   background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_tel.success{
-  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_success.png');
-}
+
 
 
 
@@ -297,9 +274,6 @@ body.clientes-create #sidebar{
 #Clientes_nombre_contacto.error{
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_nombre_contacto.success{
-  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_success.png');
-}
 
 
 
@@ -313,7 +287,5 @@ body.clientes-create #sidebar{
 }
 #Clientes_apellido_contacto.error{
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
-}
-#Clientes_apellido_contacto.success{
-  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_success.png');
+  border: 2px solid #cc0403;
 }

@@ -9,7 +9,10 @@
 <?php 
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/clientes/googleMap.js');
-    $cs->registerCssFile($baseUrl.'/css/clientes/create.css');
+    $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
+    $cs->registerScriptFile($baseUrl.'/js/clientes/ClientesMask.js?id='.rand());
+    $cs->registerCssFile($baseUrl.'/css/clientes/create.css?id='.rand());
+    $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css?id='.rand());
 ?>
 <div class="form">
 
@@ -21,7 +24,7 @@
     // controller action is handling ajax validation correctly.
     // There is a call to performAjaxValidation() commented in generated controller code.
     // See class documentation of CActiveForm for details on this.
-    'enableAjaxValidation'=>true,
+    // 'enableAjaxValidation'=>true,
     'clientOptions' => array(
         'validateOnSubmit' => true,
         'validateOnChange' => true,
@@ -79,7 +82,7 @@
                     <div class="row">
                         <label class="letreros">Teléfono</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
+                            <?php echo $form->textField($model,'tel',array('size'=>14,'minlength'=>14)); ?>
                             <?php echo $form->error($model,'tel'); ?>
                            </div>
                     </div>

@@ -85,8 +85,8 @@ class Clientes extends CActiveRecord
 			array(
 				'tel',
 				'length',
-				'max'=>12,
-				'message'=>'Maximo 12 Caracteres'),
+				'min'=>13,
+				'message'=>'El telefono no es valido'),
 
 
 		/*	array('domicilio','required','message'=>'Este campo es obligatorio'),

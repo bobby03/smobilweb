@@ -223,7 +223,8 @@ div.form textarea.error,
 div.form select.error
 {
 	background: #FEE;
-	border-color: #FFF;
+    border-color: #cc0403;
+	
 }
 
 div.form div.success input,

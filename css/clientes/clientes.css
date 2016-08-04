@@ -1,0 +1,5 @@
+body.clientes-create #sidebar,
+body.clientes-update #sidebar
+{
+  display: none;
+}
