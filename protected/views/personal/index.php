@@ -16,7 +16,7 @@
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="personal/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/personal/create">
         <div class="agregar personal"></div>
     </a>
     </div><!-- search-form -->
