@@ -5,6 +5,7 @@ $(document).ready(function()
     	$('.search-form').toggle();
     	return false;
     });
+
     $('.search-form form').submit(function()
     {
         $('.grid-view').yiiGridView('update', 
@@ -20,12 +21,30 @@ $(document).ready(function()
 
         }
         var id = $(this).val();
+
         $('.search-form div.row[data-id]').addClass('hide');
-        $('.search-form div.row[data-id="'+id+'"]').removeClass('hide');
+        $('.search-form div.row[data-id].hide input').val('');
+        $('.search-form div.row[data-id="'+id+'"]').removeClass('hide').addClass('active');
+        $('.search-form div.row[data-id] input').remove('active');
+        $('.search-form div.row[data-id="'+id+'"] input').addClass('active');
+
+     /*   $('div.row input.active').on('keyup', function() {
+     
+            if($(this).val().length == 0) {
+                $('.search-form form').submit();
+            }
+
+        });*/
+
     });
 
     $('.search-form select').on('change',function(){
          $('.search-form form').submit();
     });
 
+    $('.search-form input').on('keyup',function(){
+         $('.search-form form').submit();
+    });
+
+ 
 });
