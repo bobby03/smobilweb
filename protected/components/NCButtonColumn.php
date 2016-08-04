@@ -73,13 +73,14 @@ class NCButtonColumn extends CButtonColumn
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
-                var mensaje = '¿Está seguro que desea eliminar el registro '+nombre+'?';
+                var mensaje = '¿Está seguro que desea eliminar este registro?';
                 
                 miHtml= miHtml +='<div class="sub-content">';
-                miHtml= miHtml +='  <div class="title-content">Eliminar '+header+'</div>';
-                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
                 miHtml= miHtml +='      <div class="separator-content"></div>';
                 miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
+                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                
                 miHtml= miHtml +='      <div class="botones-content">';
                 miHtml= miHtml +='          <div class="aceptar-boton">Aceptar</div>';
                 miHtml= miHtml +='          <div class="cancelar-boton">Cancelar</div>';
