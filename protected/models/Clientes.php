@@ -69,17 +69,15 @@ class Clientes extends CActiveRecord
 			array(
 				'correo',
 			  	'match',
-			    'pattern'=>"/^[A-z0-9_\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
+			    'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
 				'message'=>'El correo no es valido'),
 			
 
-			array('rfc','required','message'=>'Este campo es obligatorio'),
-			array(
-				'rfc',
-				'length',
-				'is'=>12,
-				'message'=>'RFC No valido'),
-
+			array('rfc','required','message'=>'RFC No Valido'),
+			array('rfc',
+				  	'match',
+			    	'pattern'=>"/^(([A-Za-z]){3})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
+					'message'=>'RFC No Valido'),
 
 			array('tel','required','message'=>'Este campo es obligatorio'),
 			array(
@@ -159,6 +157,7 @@ class Clientes extends CActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

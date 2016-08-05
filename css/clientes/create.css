@@ -203,6 +203,10 @@ margin-bottom:10px;
 .ClienteDomicilio.error{
   background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
 }
+.error .ClienteDomicilio{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
+
 
 
 
@@ -214,6 +218,9 @@ margin-bottom:10px;
   border-left:0;
 }
 #Clientes_nombre_empresa.error{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
+}
+.error #Clientes_nombre_empresa{
   background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
 }
 
@@ -230,6 +237,9 @@ margin-bottom:10px;
 #Clientes_rfc.error{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
 }
+.error #Clientes_rfc{
+  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
+}
 
 
 
@@ -244,6 +254,10 @@ margin-bottom:10px;
 #Clientes_correo.error{
   background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_error.png');
 }
+.error #Clientes_correo{
+  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_error.png');
+}
+
 
 
 
@@ -257,6 +271,9 @@ margin-bottom:10px;
   border-left:0;
 }
 #Clientes_tel.error{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
+.error #Clientes_tel{
   background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
 
@@ -274,7 +291,9 @@ margin-bottom:10px;
 #Clientes_nombre_contacto.error{
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
 }
-
+.error #Clientes_nombre_contacto{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+}
 
 
 
@@ -286,6 +305,10 @@ margin-bottom:10px;
   border-left:0;
 }
 #Clientes_apellido_contacto.error{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
+.error #Clientes_apellido_contacto{
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
