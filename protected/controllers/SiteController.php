@@ -516,7 +516,7 @@ WHERE cs.id_estacion='.$id)
 			   			$clase="";
 			   		}
 			   		if($i==($conteo-1)){
-			   			$fin='<label class="txtR4">'.'Fin monitoreo'.$indice.'<br><span class="ldate">'.$f.'</span></label>';
+			   			$fin='<label class="txtR4">'.'Terminó monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
 			   			$clase="cotro";
 			   		}
 			   		if($ss==2){
