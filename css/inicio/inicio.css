@@ -328,7 +328,7 @@ h2{
 .divTr{
     
     height: 23px;
-    border-bottom: 3px dashed #EAEAEA;
+    border-bottom: 1.5px dashed #aaa;
     padding-top: 14px;
 }
 .divTd{
