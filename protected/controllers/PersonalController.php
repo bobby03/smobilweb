@@ -79,6 +79,8 @@
 	public function actionCreate()
 	{
             $model=new Personal;
+
+             $this->performAjaxValidation($model);
             if(isset($_POST['Personal']))
             {
                 $model->attributes=$_POST['Personal'];
