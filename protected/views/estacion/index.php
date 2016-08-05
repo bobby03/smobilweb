@@ -6,7 +6,7 @@ $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/estacion/estacion.css');
 $cs->registerScriptFile($baseUrl.'/js/search.js');
 $this->breadcrumbs=array(
-	'Estacions',
+	'Estaciones',
 );
 ?>
 
@@ -17,17 +17,22 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="estacion/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create/tipo/1">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'estacion',
+            'id'=>'estacion-grid',
             'summaryText'=>'',
-            'dataProvider'=>$model->search1(),
-            'columns'=>$model->adminSearch()
+            'dataProvider'=>$model->search1(1),
+            'columns'=>$model->adminSearch(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
         )); 
     ?>
 </div>

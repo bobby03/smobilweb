@@ -10,6 +10,7 @@ div.addTanque
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
+    margin-right: 130px;
 }
 div.editarTanque
 {
@@ -25,19 +26,19 @@ div.editarTanque
 }
 div.form div.row.buttons
 {
-    width: 71%;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin: 0;
+    margin-top: 27px;
+    margin-bottom: 22px;
+    /*float: right;*/
 }
 div.form input[type="submit"]
 {
-    float: right;
     width: 171px; 
-    margin-right: 50px;
     font-size: 18px;
     height: 35px;
     line-height: 35px;
+    float: right;
+    margin-right: 25px;
 }
 div.tanque
 {
@@ -49,6 +50,7 @@ div.tanque
     border-radius: 5px;
     /*overflow: hidden;*/
     padding: 20px;
+    margin-bottom: 50px;
 }
 .form-container1{
 float:left;
@@ -77,20 +79,11 @@ div.form-containerWraper:after
 
 /*   *    */
 
-div.form {
-    width: 90% !important;
-    margin: 0 auto;
-}
 div.form-containerWraper:after
 {
     content: '';
     display:block;
     clear: both;
-}
-div.containerbutton{
-    width: 142px;
-    margin-left: 99px;
-    margin-top: 101px;
 }
 
 label.letreros{
@@ -105,7 +98,7 @@ label.letreros{
 }
 
 .form-cLarge{
-    width:250px;
+    width:100%;
 }
 
 .form-cXLarge{
@@ -174,4 +167,16 @@ margin-bottom:10px;
     clear: both;
     display: block;
     content: '';
+}
+
+
+body.estacion-create #sidebar{
+    display: none;
+}
+
+div.form-cLeftContainer:after
+{
+    content: '';
+    display: block;
+    clear: both;
 }

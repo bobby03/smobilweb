@@ -18,15 +18,19 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-        <a href="clientes/create">
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes/create">
             <div class="agregar clientes"></div>
         </a>
     </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array(
-            'id'=>'cliente',
+            'id'=>'clientes-grid',
             'dataProvider'=>$model->search(),
-
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
             'summaryText'=> '',
             'columns'=>$model->adminSearch()
     )); ?>

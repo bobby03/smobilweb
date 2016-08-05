@@ -34,9 +34,8 @@ $(document).ready(function()
                     $('.row.pedido').removeClass('hide');
                     $('.titulo').removeClass('hide');
                 },
-                error: function(a, b, c)
+                error: function()
                 {
-//                    console.log(a, b, c);
                     var url = direccion+'GetCliente';
                     $.ajax(
                     {
@@ -60,7 +59,7 @@ $(document).ready(function()
                         },
                         error: function(a, b, c)
                         {
-                            console.log(a, b, c);
+//                            console.log(a, b, c);
                         }
                     });
                 }
@@ -98,7 +97,7 @@ $(document).ready(function()
                     $('.row.cepa').removeClass('hide');
                     $('.requerida input').val('');
                 },
-                error: function(a, b, c)
+                error: function()
                 {
                     var url = direccion+'GetCepas';
                     $.ajax(
@@ -120,7 +119,7 @@ $(document).ready(function()
                         },
                         error: function(a, b, c)
                         {
-                            console.log(a, b, c);
+//                            console.log(a, b, c);
                         }
                     });
                 }

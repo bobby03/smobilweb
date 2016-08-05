@@ -21,9 +21,29 @@ div.search-form div.wide.form
     height: auto;
     min-height: 24px;
 }
+.chosen-container .chosen-results::-webkit-scrollbar 
+{
+    width: 5px;
+}
+.chosen-container .chosen-results::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    background-color: #CEDCE4;
+    border-radius: 10px;
+}
+.chosen-container .chosen-results::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #939598;
+}
 .chosen-container-single .chosen-single div b
 {
     display: none !important;
+}
+.chosen-container-single .chosen-single span
+{
+    line-height: 26px;
 }
 div.form div.row.cantidad input
 {
@@ -160,13 +180,15 @@ div.formContainer1 div.separador > div
 div.formContainer1 div.separador div div.botonTodos
 {
     height: 22px;
-    background-color: #C6D880;
+    background-color: #1178AF;
+    color:white;
     line-height: 22px;
     font-size: 14px;
-    width: 50%;
+    width: 100px;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    font-family: 'Roboto-Regular';
 }
 div.row.titulos > div
 {
@@ -205,7 +227,8 @@ div.form textarea.error,
 div.form select.error
 {
 	background: #FEE;
-	border-color: #C00;
+    border-color: #cc0403;
+	
 }
 
 div.form div.success input,
@@ -215,8 +238,8 @@ div.form input.success,
 div.form textarea.success,
 div.form select.success
 {
-	background: #E6EFC2;
-	border-color: #C6D880;
+	background: #FFF;
+	border-color: #0077B0;
 }
 
 div.form div.success label
@@ -298,4 +321,14 @@ div.search-form:after
     clear: both;
     content: '';
     display: block;
+}
+#Roles_nombre_rol{
+    width: 300px;
+}
+.submitb{
+    float:right;
+    width: 150px;
+}
+.cb1{
+   
 }

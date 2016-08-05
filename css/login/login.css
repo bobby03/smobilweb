@@ -7,6 +7,10 @@ body.site-login{
 	overflow-x: hidden !important;
     padding-top: 120px;
 }
+
+body.site-login #headerSmobil{
+    display: none;
+}
 body.site-login img#slogo{
     width: 340px;
     margin: 0 auto;
@@ -101,6 +105,13 @@ body.site-login #footer{
 
 }
 
-
-
-
+body.site-login #top{
+    border-bottom: 2px solid #49dbd0 !important;
+    margin: 0px !important;
+    background-color: #0077b0 !important;
+    padding: 25px !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}

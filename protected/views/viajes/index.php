@@ -16,11 +16,12 @@
         <div class="tab" data-id="2"><span>En ruta</span></div>
         <div class="tab" data-id="3"><span>Finalizado</span></div>
     </div>
-    <div class="search-form" style="display:none;">
+      <div class="search-form" style="display:none;">
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
     </div><!-- search-form -->
+
     <div class="tabContent" data-tan="1">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
@@ -28,10 +29,18 @@
         'dataProvider'=>$model->searchStatus1(1),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch1()
+        'columns'=>$model->adminSearch1(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.delete').remove();
+            });
+        }"
     )); 
     ?>
     </div>
+    
     <div class="tabContent hide" data-tan="2">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
@@ -39,10 +48,18 @@
         'dataProvider'=>$model->searchStatus1(2),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch2()
+        'columns'=>$model->adminSearch2(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.delete').remove();
+            });
+        }"
     )); 
     ?>
     </div>
+
     <div class="tabContent hide" data-tan="3">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
@@ -50,7 +67,14 @@
         'dataProvider'=>$model->searchStatus1(3),
         'summaryText'=> '',
     //    'filter'=>$model,
-        'columns'=>$model->adminSearch3()
+        'columns'=>$model->adminSearch3(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                $(this).find('a.delete').remove();
+            });
+        }"
     )); 
     ?>
     </div>

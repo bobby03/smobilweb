@@ -45,11 +45,16 @@ $(document).ready(function()
                     {
                         $.colorbox.resize();
                         $('.tituloAlerta').text('Alertas: '+nombre);
+                        var total = 0;
                         $('.tableRow > div:nth-child(5n)').each(function()
                         {
-                            var texto = $(this).text();
-                            var div = $(this);
-                            reverseGeocoding(texto, 2, div);
+                            if(total < 6)
+                            {
+                                var texto = $(this).text();
+                                var div = $(this);
+                                reverseGeocoding(texto, 2, div);
+                                total++;
+                            }
                         });
                         $('.tableRow > div').each(function()
                         {
@@ -298,6 +303,8 @@ $(document).ready(function()
                             });
                             markers.push(marker);
                             map.setCenter(ubi);
+                            $('.txtA.ultimo span').text(data2.ultimo);
+//                            console.log(data2);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
                             reverseGeocoding(datos.ubicacion, 1, false);
@@ -307,7 +314,7 @@ $(document).ready(function()
                     },
                     error: function(a,b,c)
                     {
-                        console.log(a, b, c)
+                        console.log(a, b, c);
                     }
                 }); 
             });

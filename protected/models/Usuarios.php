@@ -148,9 +148,10 @@ class Usuarios extends CActiveRecord
         }
     public function adminSearch()
     {
+    	
         return array
         (
-            'usuario',
+   //         'usuario',
 //            array
 //            (
 //                'name' => 'pwd',
@@ -165,15 +166,15 @@ class Usuarios extends CActiveRecord
             array
             (
                 'name' => 'id_usr',
-                'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
-                'filter' => ''
+                //'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
+                //'filter' => ''
             ),
             array
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-            ),
+            )
         );
     }
 }

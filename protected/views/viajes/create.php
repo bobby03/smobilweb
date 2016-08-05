@@ -7,10 +7,6 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Viajes', 'url'=>array('index')),
-	array('label'=>'Manage Viajes', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Datos del viajes</h1>

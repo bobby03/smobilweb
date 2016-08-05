@@ -29,62 +29,79 @@
 		$cs->registerScriptFile($baseUrl.'/js/inputs.js');
 	?>
     
-    <!--
-		<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-		</div>
-	-->
-
       <div id="mainmenu">
         <div class= "menuTop">
         </div>
         <?php 
 
+
 		if(!Yii::app()->user->isGuest){
+
+
+			// Construye el Menu en Base a los Roles Asignados en la sesion.
+			$menu = array();
+			array_push($menu,array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)));
+			if(Yii::app()->user->checkAccess('readPersonal')){ array_push($menu,array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false))); }
+			if(Yii::app()->user->checkAccess('readRoles')){array_push($menu,array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false))); }
+			if(Yii::app()->user->checkAccess('readClientes')){array_push($menu,array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)));}
+			if(Yii::app()->user->checkAccess('readEstacion')){array_push($menu,array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)));}
+			if(Yii::app()->user->checkAccess('readEspecie')){array_push($menu,array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)));}
+			if(Yii::app()->user->checkAccess('readSolicitudes')){array_push($menu,array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)));}
+			if(Yii::app()->user->checkAccess('readViajes')){array_push($menu,array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)));}
+			if(Yii::app()->user->checkAccess('readUsuarios')){array_push($menu,array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)));}
+			if(Yii::app()->user->checkAccess('readMonitoreo')){array_push($menu,array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo','active'=>$this->id=='monitoreo'?true:false)));}
+			array_push($menu,array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')));
+
+
 
 			switch (Yii::app()->user->getTipoUsuario()) {
 
 				case 1: //Menu para Tipo de Usuario Cliente
 
+
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-									 array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),				    
 									),));
 
 						break;
 
-				case 2: //Menu para Tipo de Usuario Personal
-						$this->widget('zii.widgets.CMenu',array(
-							'items'=>array(
-									 array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
-									 array('label'=>'Personal', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal')),
-									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles')),
-									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes')),
-									 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion')),
-									 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie')),
-									 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes')),
-									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
-									 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
-									 array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo')),
-									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
-									 ),	));
+				case 2:     //Menu para Tipo de Usuario Personal
+							if(Yii::app()->user->name =='smobiladmin'){ //Si el usuario es smobiladmin muestra todas las secciones
+								$this->widget('zii.widgets.CMenu',array(
+										'items'=>array(
+												 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+												 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
+												 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
+												 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
+												 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
+												 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
+												 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
+												 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
+												 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)),
+												 array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo','active'=>$this->id=='monitoreo'?true:false)),
+												 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
+												 ),	));
+							}else{	// Muestra secciones de acuerdo a los roles asignados
+								$this->widget('zii.widgets.CMenu',array('items'=>$menu));			
+							}
 						break;	
 
 				default:
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-									 array('label'=>'Inicio', 'url'=>array('/'),'itemOptions'=>array('id' => 'inicio')),
-									 array('label'=>'Personal', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal')),
-									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles')),
-									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes')),
-									 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion')),
-									 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie')),
-									 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes')),
-									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
-									 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios')),
-									 array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo')),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+									 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
+									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
+									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
+									 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
+									 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
+									 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
+									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
+									 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)),
+									 array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo','active'=>$this->id=='monitoreo'?true:false)),
 									 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
 									 ),	));
 						break;
@@ -94,6 +111,7 @@
       </div>
 
       <div id="contentWrapper">
+      <div id="headerSmobil"></div>
       		<?php echo $content; ?>
       </div>
 

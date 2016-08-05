@@ -18,6 +18,7 @@ $(document).ready(function()
     });
     $('[type="checkbox"]').click(function()
     {
+
         var total = 0;
         if($(this).is(':checked'))
             total++;
@@ -36,7 +37,42 @@ $(document).ready(function()
             $(this).parent().siblings('div').children('div.botonTodos').addClass('clicked');
             $(this).parent().siblings('div').children('div.botonTodos').text('Desmarcar'); 
         }
+
+
+
+        if($(this).is(':checked')) {
+
+              if($(this).hasClass('altaBox')){
+                    $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
+                    $(this).parent().parent().attr('data-iz',$id);
+                    $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                }
+
+                 if($(this).hasClass('bajaBox')){
+                    $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
+                    $(this).parent().parent().attr('data-iz',$id);
+                    $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                }
+
+                 if($(this).hasClass('editBox')){
+                    $id = $(this).parent().parent().find('div.botonTodos').attr('data-id');
+                    $(this).parent().parent().attr('data-iz',$id);
+                    $('[data-iz='+$id+']').find('input.consultaBox').prop( "checked", true );
+                }
+        }
+
+
+        if(!$('input.consultaBox').is("checked")){
+            $idConsulta = $(this).parent().parent().attr('data-iz');
+            if($(this).parent().parent().find('[type="checkbox"]').is(':checked')){
+                $('[data-iz='+$idConsulta+']').find('input.consultaBox').prop( "checked", true );
+            }
+           
+        }
+      
+
     });
+
     function checkBox()
     {
         $('div.separador').each(function()
@@ -64,6 +100,7 @@ $(document).ready(function()
             });
         });
     }
+
     borrarBotones();
     function borrarBotones()
     {
@@ -73,9 +110,21 @@ $(document).ready(function()
             var index = check.lastIndexOf('/');
             var id = parseInt(check.substring(index+1));
             if(id == 1 || id == 2 || id == 3)
-            {
                 $(this).find('a').remove();
-            }
+            else
+                $(this).find('a.view').remove();
         });
     }
+
+
+    function activaConsulta()
+    {
+
+        if ($('[type="checkbox"].alta').is(':checked')) {
+            console.log($(this));
+        }
+
+    }
+
+
 });

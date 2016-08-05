@@ -10,12 +10,13 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
 );
-
+if(Yii::app()->user->isGuest){ 
 ?>
 
 <!--<h1>Login</h1>-->
 
 <!--<p>Please fill out the following form with your login credentials:</p>-->
+<div id="top"></div>
 <div>
 	<img src="./../images/esmobil-logo.png" id="slogo" />
 </div>
@@ -56,3 +57,6 @@ $this->breadcrumbs=array(
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+<?php } else{
+	$this->redirect(Yii::app()->baseUrl);
+	} ?>

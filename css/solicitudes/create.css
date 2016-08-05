@@ -17,9 +17,9 @@ div.form h2
 {
     background-color: #E6E7E8;
     color: #0077B0;
+    height: 30px;
     line-height: 30px;
     text-align: center;
-    height: 30px;
     text-indent: 0;
 }
 div.form input, .css-select
@@ -29,12 +29,12 @@ div.form input, .css-select
 }
 div.formContainer2 div.wraper
 {
-    width: 100%;
-    box-sizing: border-box;
     border: 1px solid #0077B0;
+    box-sizing: border-box;
+    min-height: 50px;
     padding: 10px;
     position: relative;
-    min-height: 50px;
+    width: 100%;
 }
 div.fechaYora
 {
@@ -54,8 +54,8 @@ div.titulo, div.titulo2
 {
     color: #0077B0;
     font-size: 14px;
-    padding-bottom: 10px;
     font-weight: bold;
+    padding-bottom: 10px;
 }
 div.titulo2
 {
@@ -67,16 +67,16 @@ div.datosCliente span
 }
 div.form .agregar
 {
-    width: 150px;
+    background-color: #0077B0;
+    border-radius: 5px;
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
     float: right;
     height: 35px;
     line-height: 35px;
     text-align: center;
-    cursor: pointer;
-    background-color: #0077B0;
-    color: #FFFFFF;
-    border: 0;
-    border-radius: 5px;
+    width: 150px;
 }
 .pedidosWraper
 {
@@ -108,15 +108,15 @@ div.row.direcciones span.css-select-moz
 }
 div.botonOtra
 {
+    background-color: #0077B0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
     float: right;
-    width: 20%;
     height: 30px;
     line-height: 30px;
     text-align: center;
-    cursor: pointer;
-    background-color: #0077B0;
-    color: #FFFFFF;
-    border-radius: 5px;
+    width: 20%;
 }
 div.form div.formContainer1 .row
 {
@@ -131,31 +131,8 @@ div.form label
     color: #0077B0;
     padding-bottom: 10px;
 }
-#map
-{
-    width: 350px;
-    height: 150px;
-    margin: 0 auto;
-}
-#colorbox div.row.buttons
-{
-    margin-top: 15px;
-}
-div.aceptarDireccion, div.cancelarDireccion
-{
-    width: 20%;
-    line-height: 25px;
-    text-align: center;
-    background-color: #0077B0;
-    color: #FFFFFF;
-    border-radius: 5px;
-    float: left;
-    cursor: pointer;
-}
-div.cancelarDireccion
-{
-    float: right;
-}
+
+
 #scroll::-webkit-scrollbar 
 {
     width: 5px;
@@ -192,26 +169,32 @@ div.botonesPedido
     width: 30%;
     margin-top: 15px;
 }
+
 .pedidoInfo:nth-child(8)
 {
     text-align: center;
 }
+
 .pedidoInfo:nth-child(8), .pedidoInfo:nth-child(7)
 {
     width: 50%;
     float: left;
 }
-.editarPedido, .borrarPedido
+
+.editarPedido, 
+.borrarPedido
 {
-    float: left;
-    width: 50%;
-    height: 15px;
-    background-size: 16px 16px;
- /*   background-size: 30px 30px;*/
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 16px 16px;
     cursor: pointer;
+    float: left;
+    height: 15px;
+    width: 50%;
+
 }
+
+
 .editarPedido
 {
     background-image: url(./../../images/solicitud/editar.png)
@@ -235,15 +218,15 @@ div.botones .continuar
 div.botones .guardar,
 div.botones .continuar
 {
-    float: right;
-    width: 25%;
     border-radius: 5px;
     color: #FFFFFF;
+    cursor: pointer;
+    float: right;
     height: 30px;
     line-height: 30px;
-    text-align: center;
     margin-left: 15px;
-    cursor: pointer;
+    text-align: center;
+    width: 25%;
 }
 div.subtitulos div
 {
@@ -277,21 +260,16 @@ div.tablaViajes
 }
 div.viajeLoc, div.viajeSel
 {
-    float: left;
-    width: 43px;
-    margin-left: 15px;
-<<<<<<< HEAD
-    height: 34px;
-    /*background-color: #0077B0;*/
-=======
-    height: 30px;
     background-color: #0077B0;
->>>>>>> 16e8e969bcc3bf073fd478de6d60eb932642b79a
-    border-radius: 5px;
-    background-size: 47px 34px;
-    background-repeat: no-repeat;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: 47px 34px;
+    border-radius: 5px;
     cursor: pointer;
+    float: left;
+    height: 30px;
+    margin-left: 15px;
+    width: 43px;
 }
 div.viajeLoc
 {
@@ -326,30 +304,197 @@ div.renglon:after
 
 
 #Solicitudes_id_clientes_chosen{
-  background-image: url('../../images/solicitud/IconoClientesSolicitud.png'), url('../../images/usuarios/bg.png');
+  background-image: url('../../images/solicitud/IconoClientesSolicitud.png'), 
+                    url('../../images/usuarios/bg.png');
   background-position: 6px 3px,left;
   background-repeat: no-repeat;
-  padding-left: 30px;
   border-left:0;
+  padding-left: 30px;
 }
 
 
 #Especie_id_chosen{
-  background-image: url('../../images/solicitud/iconoPezSolicitud.png'), url('../../images/usuarios/bg.png');
+  background-image: url('../../images/solicitud/iconoPezSolicitud.png'), 
+                    url('../../images/usuarios/bg.png');
   background-position: 5px 5px,left;
-  background-size: 21px, 30px;
   background-repeat: no-repeat;
-  padding-left: 30px;
+  background-size: 21px, 30px;
   border-left:0;
+  padding-left: 30px;
 }
 
 
 #Cepa_id_chosen{
-  background-image: url('../../images/solicitud/iconoCepasSolicitud.png'), url('../../images/usuarios/bg.png');
+  background-image: url('../../images/solicitud/iconoCepasSolicitud.png'), 
+                    url('../../images/usuarios/bg.png');
   background-position: 6px 8px,left;
   background-repeat: no-repeat;
-  padding-left: 30px;
   border-left:0;
+  padding-left: 30px;
 }
 
 
+/**
+*   AGREGAR DIRECCION - BEGIN
+**/
+
+
+body.solicitudes-create #map
+{
+    height: 250px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+div.aceptarDireccion, 
+div.cancelarDireccion
+{
+    background-color: #0077B0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    width: 100px;
+}
+
+div.aceptarDireccion{
+    background-color: #0077b0;
+    border-radius: 5px;
+    color:white;
+    cursor: pointer;
+    display: inline-block;
+    float:right;
+    margin-right: 10px !important;
+    margin:0 auto;
+    padding: 6px;
+    position: relative;
+    text-align: center;
+    width: 100px;
+}
+
+div.cancelarDireccion
+{
+    background-color: #0077b0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    float:left;
+    margin-left: 10px;
+    margin:0 auto;
+    padding: 6px;
+    position: relative;
+    text-align: center;
+    width: 100px;
+}
+
+
+body.solicitudes-create .OtroDom{
+    background-image: url('./../../images/solicitud/botonUbicacion.png'), 
+                      url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+
+
+body.solicitudes-create .OtroDom.inputDom{
+    background-image: url('../../images/personal/iconoDomicilio.png'), 
+                      url('../../images/form/bg.png') !important;
+    background-position: 6px 5px,left;
+}
+
+body.solicitudes-create .OtroDom.readOnly{
+    border:2px solid #dee5e8;
+    border-left: 30px solid #dee5e8;
+    background-image: none; 
+    padding-left: 0px;
+}
+
+
+
+body.solicitudes-create input.OtroDom{
+    border-left: 0;
+    border-radius: 5px;
+    border: 2px solid #0077b0;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    min-height: 30px;
+    text-indent: 5px;
+    width: 100%;
+}
+
+body.solicitudes-create .Odom{
+    margin:10px;
+}
+
+ body.solicitudes-create .Odom label{
+    color: #0077B0;
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+ }
+
+  body.solicitudes-create .Odom .buttons{
+    margin-top: 10px;
+  }
+
+/**
+*   AGREGAR DIRECCION - END
+**/
+.direccionesContainer
+{
+    width: 480px;
+}
+.direccionesContainer .titulo
+{
+    height: 53px;
+    line-height: 67px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    text-indent: 34px;
+    font-size: 28px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 4px solid #00B8C7;
+}
+.direccionesTabla
+{
+    margin: 35px;
+}
+.direccion-wraper
+{
+    float: left;
+    width: 175px;
+}
+.direccion
+{
+    font-size:14px;
+    /*float: left;*/
+}
+.direccion-wraper:nth-child(odd)
+{
+    margin-right: 25px;
+}
+.direccionIcono
+{
+    background-image: url("../../images/dashboard/iconoUbicacion.png");
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 27px;
+    float: left;
+    background-size: 14px;
+    margin-right: 5px;
+}
+
+.direccion-wraper:after,
+.direccionesTabla:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}

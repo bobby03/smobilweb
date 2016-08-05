@@ -5,6 +5,8 @@
     $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/viajes/create.js');
+    $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
+    $cs->registerScriptFile($baseUrl.'/js/viajes/validacion.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (
@@ -112,7 +114,7 @@
             <div class="row">
                 <?php echo $form->labelEx($model,'hora_salida'); ?>
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
-                 <?php echo $form->error($model,'hora_salida'); ?>
+                <?php echo $form->error($model,'hora_salida'); ?>
             </div>
             <div class="siguiente uno">Siguiente</div>
 	</div>
@@ -152,7 +154,7 @@
                         <?php echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>
                         <div class="selectTanque hide">
                             <label>Seleccionar Tanque</label>
-                            <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
+                            <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select ttan ttan'.$i, 'data-tan'=>$tot));?>
                             <?php 
                             $t = "codigo[".$tot."][tanque]";
 

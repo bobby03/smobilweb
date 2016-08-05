@@ -101,10 +101,10 @@ class EstacionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($tipo)
 	{
 		$model=new Estacion;
-
+        $model->tipo = $tipo;
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 
@@ -114,7 +114,12 @@ class EstacionController extends Controller
                         $model->activo = 1;
                         $model->disponible = 1;
 			if($model->save())
+                        {
+                            if($tipo == 1)
 				$this->redirect(array('index'));
+                            else
+				$this->redirect(array('monitoreo/index'));
+                        }
 		}
 
 		$this->render('create',array(
@@ -159,7 +164,7 @@ class EstacionController extends Controller
 		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	*/
-			                echo json_encode('');
+                echo json_encode('');
 		}
 
 	/**

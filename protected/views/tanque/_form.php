@@ -36,15 +36,15 @@
             <?php foreach($model->status as $data):?>
                 <div class="tanque" data-id="<?php echo $i;?>">
                     <?php echo $form->hiddenField($model,"status[$i][id]");?>
-                    <div class="row cap">
-                            <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
-                            <?php echo $form->error($model,'capacidad'); ?>
-                    </div>
                     <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
                             <?php echo $form->textField($model,"status[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
                             <?php echo $form->error($model,'nombre'); ?>
+                    </div>
+                    <div class="row cap">
+                            <?php echo $form->labelEx($model,'capacidad'); ?>
+                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
+                            <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                     <div class="row sta">
                             <?php echo $form->labelEx($model,'status'); ?>
@@ -61,15 +61,15 @@
             <?php endforeach;?>
             <?php else:?>
                 <div class="tanque" data-id="<?php echo $i;?>">
-                    <div class="row cap">
-                            <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
-                            <?php echo $form->error($model,'capacidad'); ?>
-                    </div>
                     <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
                             <?php echo $form->textField($model,"status[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
                             <?php echo $form->error($model,'nombre'); ?>
+                    </div>
+                    <div class="row cap">
+                            <?php echo $form->labelEx($model,'capacidad'); ?>
+                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
+                            <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                 </div>
             <?php endif;?>

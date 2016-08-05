@@ -37,13 +37,39 @@ $(document).ready(function()
                 $('#Solicitudes_id_clientes').removeAttr('disabled').trigger("chosen:updated");
                 $('#solicitudes-form').submit();
             });
+            $('.viajeLoc').click(function()
+            {
+                var id2 = $(this).data('viaje');
+                var url = direccion+'GetDirecciones';
+                $.ajax(
+                {
+                    type: 'GET',
+                    url: url,
+                    dataType: 'JSON', 
+                    data:
+                    {
+                        id: id2
+                    },
+                    success:function(data)
+                    {
+                        $.colorbox(
+                        {
+                            html: data
+                        });
+                    },
+                    error:function(a,b,c)
+                    {
+                        console.log(a,b,c);
+                    }
+                });
+            });
             countPedidos();
             borrarPedido();
             editarPedido();
         },
         error: function(a, b, c)
         {
-            console.log(a, b, c);
+//            console.log(a, b, c);
         }
     });
     function countPedidos()
@@ -92,19 +118,31 @@ $(document).ready(function()
         $('.editarPedido').click(function()
         {
             var id          = $(this).attr('data-id');
-            var especieID   = parseInt($('[name="especiePedido'+id+'"]').val());
-            var cepaID      = parseInt($('[name="cepaPedido'+id+'"]').val());
-            var cantidad    = parseInt($('[name="cantidadPedido'+id+'"]').val());
-            var direccionID = parseInt($('[name="destinoPedido'+id+'"]').val());
+            var especieID   = parseInt($('[name="pedido['+id+'][especie]"]').val());
+            var cepaID      = parseInt($('[name="pedido['+id+'][cepa]"]').val());
+            var cantidad    = parseInt($('[name="pedido['+id+'][cantidad]"]').val());
+            var direccionID = parseInt($('[name="pedido['+id+'][destino]"]').val());
+            var tanques = parseInt($('[name="pedido['+id+'][tanques]"]').val());
+//            console.log(id, especieID, cepaID, cantidad, direccionID);
             $('#Especie_id').val(especieID);
             $('#Especie_id').trigger("change");
             $('#Especie_id').trigger("chosen:updated");
-            $('#requerida input').val(cantidad);
+            $('#Cepa_id').val(cepaID);
+            $('#Cepa_id').trigger("change");
+            $('#Cepa_id').trigger("chosen:updated");
+            $('#Cepa_nombre_cepa_1_cantidad').val(cantidad);
+            $('#tanquesNO').val(tanques);
             $('#ClientesDomicilio_domicilio').val(direccionID);
             $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-//            $(this).closest('.pedido').remove();
+            $(this).closest('.pedido').remove();
             changeCepa(cepaID);
         });
+    }
+    function changeCepa(cepaID)
+    {
+        $('#Cepa_id').val(cepaID);
+        $('#Cepa_id').trigger("change");
+        $('#Cepa_id').trigger("chosen:updated");
     }
 //    $('.row.pedido').removeClass('hide');
 //    $('.titulo').removeClass('hide');

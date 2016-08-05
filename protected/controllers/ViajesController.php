@@ -93,6 +93,55 @@ class ViajesController extends Controller
 	public function actionView($id)
 	{
             $model = Viajes::model()->findByPk((int)$id);
+            $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
+            $guardar = array();
+            $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+            $i = 0;
+            foreach($solicitudTanque as $data)
+            {
+                $cepa = Cepa::model()->findByPk($data->id_cepas);
+                $pedido = array
+                (
+                    'especie'=> $cepa->id_especie,
+                    'cepa'=>$data->id_cepas,
+                    'cantidad'=>$data->cantidad_cepas,
+                    'destino'=>$data->id_domicilio,
+                    'tanques'=>1,
+                    'id_tanque'=>$data->id_tanque
+                );
+                $pedidos['pedido'][$i] = $pedido;
+                $i++;
+            }
+            foreach($guardar as $data)
+            {
+                $pedidos['pedido'][$i] = $data;
+                $i++;
+            }
+            foreach($prueba as $data2)
+            {
+                $guardar = array();
+                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
+                foreach($solicitudTanque as $data)
+                {
+                    $cepa = Cepa::model()->findByPk($data->id_cepas);
+                    $pedido = array
+                    (
+                        'especie'=> $cepa->id_especie,
+                        'cepa'=>$data->id_cepas,
+                        'cantidad'=>$data->cantidad_cepas,
+                        'destino'=>$data->id_domicilio,
+                        'tanques'=>1,
+                        'id_tanque'=>$data->id_tanque
+                    );
+                    $pedidos['pedido'][$i] = $pedido;
+                    $i++;
+                }
+                foreach($guardar as $data)
+                {
+                    $pedidos['pedido'][$i] = $data;
+                    $i++;
+                }
+            }
 //            if($model->status != 1)
 //            {
                 $tanques = Yii::app()->db->createCommand()
@@ -107,7 +156,8 @@ class ViajesController extends Controller
 //            }
             $this->render('view',array(
                 'model'=>$model,
-                'tanques'=>$tanques
+                'tanques'=>$tanques,
+                'pedidos' => $pedidos
             ));
 	}
 
@@ -145,7 +195,10 @@ class ViajesController extends Controller
                     $update = Yii::app()->db->createCommand()->update('solicitudes',$solicitudes->attributes,"id = $solicitudes->id");
                 }
                 else
+                {
                     $solicitudes->save();
+                    $solicitudes->id = Yii::app()->db->getLastInsertID();
+                }
                 if(isset($_POST['NuevoRecord']))
                 {
                     if($_POST['NuevoRecord'] == 0)
@@ -292,25 +345,54 @@ class ViajesController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel((int)$id);
+                $personal = SolicitudesViaje::model()->findAll("id_viaje =".(int)$id);
+                $personalModel = new SolicitudesViaje();
                 $model->fecha_salida = date('d-m-Y', strtotime($model->fecha_salida));
                 $model->hora_salida = date('H:i', strtotime($model->hora_salida));
-                $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
-                $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Viajes']))
 		{
 			$model->attributes=$_POST['Viajes'];
                         $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-                        $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
+                        $personal = SolicitudesViaje::model()->findAll("id_viaje = ".(int)$id." AND id_solicitud = $model->id_solicitudes");
 			if($model->save())
-				$this->redirect(array('index'));
+                        {
+                            foreach($personal as $data)
+                                $data->delete();
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_solicitud = $model->id_solicitudes;
+                                $nuevo->id_viaje = (int)$id;
+                                $nuevo->save();
+                            }
+                            foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = $data;
+                                $nuevo->id_solicitud = $model->id_solicitudes;
+                                $nuevo->id_viaje = (int)$id;
+                                $nuevo->save();
+                            }
+                            $this->redirect(array('index'));
+                        }
 		}
-
+                $roles = array('chofer'=>array(),'tecnico'=>array());
+                foreach($personal as $data)
+                {
+                    $rol = Personal::model()->getRolPersonal($data->id_personal);
+                    if($rol == 1)
+                        $roles['chofer'][$data->id_personal] = array('selected' => 'selected');
+                    if($rol == 2)
+                        $roles['tecnico'][$data->id_personal] = array('selected' => 'selected');
+                }
 		$this->render('update',array(
-			'model'=>$model,
+			'model'     => $model,
+                        'personal'  => $personalModel,
+                        'roles'     => $roles
 		));
 	}
 
@@ -513,7 +595,7 @@ EOF;
                     $hay = strlen($data->ubicacion);
                     $coord = substr($data->ubicacion, 1, $hay-1);
                     $p2 = explode(",", $coord);
-//                    $p2[0] = ();
+//                  $p2[0] = ();
                     $R = 6378137; // Earth’s mean radius in meter
                     $dLat = $this->rad($p2[0] - $p1[0]);
                     $dLong = $this->rad($p2[1] - $p1[1]);
@@ -527,11 +609,12 @@ EOF;
                 }
                 $d = $d/1000;
                 $return['distancia'] = round($d, 2).' Km';
-                $viaje = Viajes::model()->findByPk($viaje);
-                $empieza = new DateTime($viaje->fecha_salida.' '.$viaje->hora_salida);
+                $viajes = Viajes::model()->findByPk($viaje);
+                $empieza = new DateTime($viajes->fecha_salida.' '.$viajes->hora_salida);
                 $termina = new DateTime($datos['fecha'].' '.$datos['hora']);
                 $diferencia = $termina->diff($empieza);
                 $return['tiempo'] = $diferencia->format('%d dias %h horas, %I minutos y %S segundos');
+                $return['ultimo'] = $this->GetDistancia($viaje);
             }
             $return['viaje'] = $datos;
             switch ($flag)
@@ -725,6 +808,52 @@ EOF;
             }
             echo json_encode($return);
         }
+        public function GetDistancia($viaje)
+        { 
+            $recorrido = Yii::app()->db->createCommand()
+                ->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio')
+                ->from('clientes_domicilio as cd')
+                ->join('solicitud_tanques as st','st.id_domicilio = cd.id')
+                ->join('solicitudes_viaje as sv','sv.id_solicitud = st.id_solicitud')
+                ->join('solicitudes as s','s.id = sv.id_solicitud')
+                ->join('viajes as v','v.id = sv.id_viaje')
+                ->where("sv.id_viaje = $viaje")
+                ->queryAll();
+            $arreglo = array();
+            $d = 0;
+            $p1 = $p2 = array();
+            foreach($recorrido as $data)
+            {
+                $p1[0] = Yii::app()->params['locationLat'];
+                $p1[1] = Yii::app()->params['locationLon'];
+                $hay = strlen($data['ubicacion_mapa']);
+                $coord = substr($data['ubicacion_mapa'], 1, $hay-1);
+                $p2 = explode(",", $coord);
+                $R = 6378137; // Earth’s mean radius in meter
+                $dLat = $this->rad($p2[0] - $p1[0]);
+                $dLong = $this->rad($p2[1] - $p1[1]);
+                $a = sin($dLat / 2) * sin($dLat / 2) +
+                    cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
+                    sin($dLong / 2) * sin($dLong / 2);
+                       $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                $fecha = strtotime($data['fecha_entrega']);
+                $arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio']);
+            }
+            $total = count($arreglo);
+            for($i=0;$i<$total; $i++)
+            {
+                for($j=$i+1;$j<$total;$j++)
+                {
+                    if( $arreglo[$i]['distancia']>$arreglo[$j]['distancia'])
+                    {
+                        $aux =$arreglo[$i];
+                        $arreglo[$i]=$arreglo[$j];
+                        $arreglo[$j] =$aux;
+                    }
+                }
+            }
+            return $arreglo[$total-1]['idLocacion'];
+        } 
         public function actionGetParametroGrafica($viaje, $flag)
         {
             $tanques = Yii::app()->db->createCommand()
@@ -1059,9 +1188,12 @@ eof;
             else
             {
                 $return = '
-                    <div class="alertas">
-                        <div class="tituloAlerta2">Sin alertas en </div>
-                        <div class="tablaAlertas">
+                    <div class="alertas" style="width: 500px; height: 300px;">
+                        <div class="tituloAlerta" style="background-color:#0077B0">Sin alertas en </div>
+                        <div class="tablaTitulos" style="font-size: 28px;">
+                            <div class="tablaAlertas">
+                                <span style="padding:15px;text-indent:0; width: 100%; border-bottom:0;">Este tanque no presenta alertas hasta el momento.</span>
+                            </div>
                         </div>
                     </div>';
             }
@@ -1123,9 +1255,12 @@ eof;
             else
             {
                 $return = '
-                    <div class="alertas">
-                        <div class="tituloAlerta2">Sin alertas en </div>
-                        <div class="tablaAlertas">
+                    <div class="alertas" style="width: 500px; height: 300px;">
+                        <div class="tituloAlerta" style="background-color:#0077B0">Sin alertas en </div>
+                        <div class="tablaTitulos" style="font-size: 28px;">
+                            <div class="tablaAlertas">
+                                <span style="padding:15px;text-indent:0; width: 100%; border-bottom:0;">No existen alertas de este parametro hasta el momento.</span>
+                            </div>
                         </div>
                     </div>';
             }

@@ -15,7 +15,7 @@
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="roles/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/roles/create">
         <div class="agregar roles"></div>
     </a>
     </div><!-- search-form -->
@@ -24,7 +24,11 @@
     (
         'id'=>'rol',
         'dataProvider'=>$model->search(),
-
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
         'summaryText'=> '',
         'columns'=>$model->adminSearch(),
         'afterAjaxUpdate' => "function(id,data)
@@ -38,6 +42,8 @@
                 {
                     $(this).find('a').remove();
                 }
+                else
+                    $(this).find('a.view').remove();
             });
         }"
     )); ?>

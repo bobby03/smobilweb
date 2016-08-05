@@ -7,12 +7,9 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Personal', 'url'=>array('index')),
-	array('label'=>'Manage Personal', 'url'=>array('admin')),
-);
+
 ?>
 
-<h1>Create Personal</h1>
+<h1>Agregar empleado</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

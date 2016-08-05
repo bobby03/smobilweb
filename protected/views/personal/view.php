@@ -10,21 +10,23 @@ $this->breadcrumbs=array(
 	'Personals'=>array('index'),
 	$model->id,
 );
+$model->id_rol = Roles::model()->getRol($model->id_rol);
 ?>
 
-<h1>View Personal #<?php echo $model->id; ?></h1>
+<h1>Ver empleado <?php echo $model->nombre.' '.$model->apellido; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'nombre',
-		'apellido',
-		'tel',
-		'rfc',
-		'domicilio',
-		'id_rol',
-		'correo',
-		'puesto',
+        'nullDisplay'=>'No hay datos disponibles',
+	'attributes'=>array
+        (
+            'nombre',
+            'apellido',
+            'tel',
+            'rfc',
+            'domicilio',
+            'id_rol',
+            'correo',
+            'puesto',
 	),
 )); ?>

@@ -36,14 +36,29 @@ class Personal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
+			array('nombre, apellido, tel, domicilio, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('correo','email','message'=>'No tiene formato de email'),
 			array('nombre, apellido', 'length', 'max'=>50),
-			array('tel', 'length', 'max'=>12),
-			array('rfc', 'length', 'max'=>15),
+			
+			
+			
 			array('domicilio', 'length', 'max'=>150),
 			array('correo, puesto', 'length', 'max'=>100),
+
+			array('rfc','required','message'=>'RFC No Valido'),
+			array('rfc',
+				  	'match',
+			    	'pattern'=>"/^(([A-Za-z]){4})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
+					'message'=>'RFC No Valido'),
+
+
+			array('tel','required','message'=>'Teléfono no Valido'),
+			array('tel',
+				  'length',
+				   'is'=>14,
+				   'message'=>'Teléfono no Valido'),
+
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'safe', 'on'=>'search'),
@@ -165,6 +180,11 @@ class Personal extends CActiveRecord
         		->andWhere("per.id_rol = 1")
         		->queryRow();
     		return $chofer['nombre'].' '.$chofer['apellido'];
+        }
+        public function getRolPersonal($id)
+        {
+            $personal = Personal::model()->findByPk($id);
+            return $personal['id_rol'];
         }
         public function adminSearch()
         {

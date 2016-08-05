@@ -114,10 +114,19 @@ class EspecieController extends Controller
 			if($model->save())
 				$this->redirect(array('index'));
 		}
-
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+	public function actionCreate1()
+	{
+		$especie=$_POST['especie'];
+		$nuevo= new Especie;
+		$nuevo->nombre=$especie;
+		$nuevo->save();
+		//$this->render('create',array('model'=>$nuevo));
+		echo json_encode($especie);
+
 	}
 
 	/**
@@ -142,6 +151,24 @@ class EspecieController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+		echo json_encode($model);
+	}
+	public function actionUpdate1()
+	{
+		$id=$_POST['id'];
+		$model=$this->loadModel($id);
+		$model->nombre=$_POST['especie'];
+
+		if($model->save()){
+		echo json_encode(true);	//$this->redirect(array('index'));
+		}
+				
+
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		//echo json_encode($model);
+		
 	}
 
 	/**
@@ -215,4 +242,5 @@ class EspecieController extends Controller
 			Yii::app()->end();
 		}
 	}
+
 }
