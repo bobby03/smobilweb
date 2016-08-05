@@ -37,32 +37,32 @@ $(document).ready(function()
                 $('#Solicitudes_id_clientes').removeAttr('disabled').trigger("chosen:updated");
                 $('#solicitudes-form').submit();
             });
-//             $('.viajesLoc').click(function()
-//        {
-//            var id = $(this).data('viaje');
-//            var url = direccion+'GetDirecciones';
-//            $.ajax(
-//            {
-//                type: 'GET',
-//                url: url,
-//                dataType: 'JSON', 
-//                data:
-//                {
-//                    id: id
-//                },
-//                success:function(data)
-//                {
-//                    $.colorbox(
-//                    {
-//                        html: data
-//                    });
-//                },
-//                error:function(a,b,c)
-//                {
-//                    console.log(a,b,c);
-//                }
-//            });
-//        });
+            $('.viajeLoc').click(function()
+            {
+                var id2 = $(this).data('viaje');
+                var url = direccion+'GetDirecciones';
+                $.ajax(
+                {
+                    type: 'GET',
+                    url: url,
+                    dataType: 'JSON', 
+                    data:
+                    {
+                        id: id2
+                    },
+                    success:function(data)
+                    {
+                        $.colorbox(
+                        {
+                            html: data
+                        });
+                    },
+                    error:function(a,b,c)
+                    {
+                        console.log(a,b,c);
+                    }
+                });
+            });
             countPedidos();
             borrarPedido();
             editarPedido();

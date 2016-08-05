@@ -376,6 +376,37 @@ eof;
                 $return = array('boolean' => false);
             echo json_encode ($return);
         }
+        public function actionGetDirecciones($id)
+        {
+            $direcciones = Yii::app()->db->createCommand()
+                ->selectDistinct('cliD.domicilio, cli.nombre_empresa')
+                ->from('solicitudes_viaje as solV')
+                ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                ->join('clientes_domicilio as cliD','cliD.id = solT.id_domicilio')
+                ->join('clientes as cli', 'cli.id = cliD.id_cliente')
+                ->where("solV.id_viaje = $id")
+                ->queryAll();
+            $return =<<<eof
+                    <div class="direccionesContainer">
+                        <div class="titulo">Direcciones</div>
+                        <div class="direccionesTabla">
+eof;
+            foreach($direcciones as $data)
+            {
+                $return =$return.<<<eof
+                            <div class="direccion-wraper">
+                                <div class="direccionIcono"></div>
+                                <div class="direccion">{$data['domicilio']}</div>
+                            </div>
+eof;
+            }
+            $return =$return.<<<eof
+                            
+                        </div>
+                    </div>
+eof;
+            echo json_encode($return);
+        }
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='solicitudes-form')

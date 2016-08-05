@@ -446,3 +446,55 @@ body.solicitudes-create .Odom{
 /**
 *   AGREGAR DIRECCION - END
 **/
+.direccionesContainer
+{
+    width: 480px;
+}
+.direccionesContainer .titulo
+{
+    height: 53px;
+    line-height: 67px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+    text-indent: 34px;
+    font-size: 28px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 4px solid #00B8C7;
+}
+.direccionesTabla
+{
+    margin: 35px;
+}
+.direccion-wraper
+{
+    float: left;
+    width: 175px;
+}
+.direccion
+{
+    font-size:14px;
+    /*float: left;*/
+}
+.direccion-wraper:nth-child(odd)
+{
+    margin-right: 25px;
+}
+.direccionIcono
+{
+    background-image: url("../../images/dashboard/iconoUbicacion.png");
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 27px;
+    float: left;
+    background-size: 14px;
+    margin-right: 5px;
+}
+
+.direccion-wraper:after,
+.direccionesTabla:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
