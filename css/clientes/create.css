@@ -1,13 +1,34 @@
-/*#map 
-{
-    width: 500px;
-    height: 400px;
-}*/
-
-
 #map {
     width: 500px;
     height: 218px;
+}
+
+div.form .row.buttons
+{
+    width: 100%;
+}
+
+a.cancelarDireccion {
+    background-color: #0077b0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 63px;
+    text-align: center;
+    text-decoration: none;
+    width: 185px;
+}
+
+div.form input[type="submit"]
+{
+    float: left;
+    margin-left: 23%;
+    width: 185px !important;
+    font-size: 15px;
 }
 
 div.addDireccion {
@@ -18,10 +39,13 @@ div.addDireccion {
     line-height: 30px;
     font-size: 15px;
     width: 185px;
+    margin-right: 70px;
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
 }
+
+
 div.allMapa
 {
     margin-bottom: 47px;
@@ -47,16 +71,7 @@ div.form input, div.form textarea, div.form select, div.form .chosen-container
     text-indent: 5px;
     width: 100% !important;
 }
-div.form input[type="submit"]
-{
-    float: left;
-    width: 185px !important;
-    font-size: 15px;
-}
-div.form .row.buttons
-{
-    width: 100%;
-}
+
 div.form-containerWraper:after
 {
     content: '';
@@ -73,8 +88,7 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-    width: 500px;
-  float: left;
+   width: 100%;
 }
 
 label.letreros{
