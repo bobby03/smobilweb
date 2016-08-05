@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+
+    
     $('.tab').click(function()
     {
         var id = $(this).attr('data-id');
