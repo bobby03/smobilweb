@@ -79,9 +79,9 @@ body
  }
 #contentWrapper
 {
-	margin-left: 179px;
-	margin-top: 0px;
-
+    margin-left: 179px;
+    margin-top: 0px;
+    width: 100%;
 }
 
 #sidebar

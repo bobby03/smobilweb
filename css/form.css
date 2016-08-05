@@ -41,6 +41,10 @@ div.search-form div.wide.form
 {
     display: none !important;
 }
+.chosen-container-single .chosen-single span
+{
+    line-height: 26px;
+}
 div.form div.row.cantidad input
 {
     border-left: 2px solid #0077b0;

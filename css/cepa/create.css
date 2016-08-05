@@ -67,7 +67,12 @@ label.letreros{
     width: 100px;
    
 }
-
+input[type="submit"]
+{
+    width: 150px !important;
+    float: right;
+    margin-top: 31px;
+}
 .form-container12{
     float: left;
     width: 100px;

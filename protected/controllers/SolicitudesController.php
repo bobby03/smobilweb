@@ -103,11 +103,11 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		  $model = new Solicitudes();
-          $estacion = new Estacion();
-          $especies = new Especie();
-          $cepa = new Cepa();
-          $direccion = new ClientesDomicilio();
+            $model = new Solicitudes();
+            $estacion = new Estacion();
+            $especies = new Especie();
+            $cepa = new Cepa();
+            $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -124,32 +124,44 @@ class SolicitudesController extends Controller
                         $model2 = Solicitudes::model()->findByPk($model->id);
                         $model2->update();
                         $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
-                        foreach($_POST['pedido'] as $data)
+                        if(isset($_POST['pedido']))
                         {
-                            $pedido = new Pedidos();
-                            $pedido->id_cepa = $data['cepa'];
-                            $pedido->id_especie = $data['especie'];
-                            $pedido->id_solicitud = $model->id;
-                            $pedido->id_direccion = $data['destino'];
-                            $pedido->tanques = $data['tanques'];
-                            $pedido->cantidad = $data['cantidad'];
-                            $pedido->save();
+                            if(count($_POST['pedido']) > 0)
+                            {
+                                foreach($_POST['pedido'] as $data)
+                                {
+                                    $pedido = new Pedidos();
+                                    $pedido->id_cepa = $data['cepa'];
+                                    $pedido->id_especie = $data['especie'];
+                                    $pedido->id_solicitud = $model->id;
+                                    $pedido->id_direccion = $data['destino'];
+                                    $pedido->tanques = $data['tanques'];
+                                    $pedido->cantidad = $data['cantidad'];
+                                    $pedido->save();
+                                }
+                            }
                         }
                         $this->redirect(array('index'));
                     }
                     elseif($model->save())
                     {
                         $model->id = Yii::app()->db->getLastInsertId();
-                        foreach($_POST['pedido'] as $data)
+                        if(isset($_POST['pedido']))
                         {
-                            $pedido = new Pedidos();
-                            $pedido->id_cepa = $data['cepa'];
-                            $pedido->id_especie = $data['especie'];
-                            $pedido->id_solicitud = $model->id;
-                            $pedido->id_direccion = $data['destino'];
-                            $pedido->tanques = $data['tanques'];
-                            $pedido->cantidad = $data['cantidad'];
-                            $pedido->save();
+                            if(count($_POST['pedido']) > 0)
+                            {
+                                foreach($_POST['pedido'] as $data)
+                                {
+                                    $pedido = new Pedidos();
+                                    $pedido->id_cepa = $data['cepa'];
+                                    $pedido->id_especie = $data['especie'];
+                                    $pedido->id_solicitud = $model->id;
+                                    $pedido->id_direccion = $data['destino'];
+                                    $pedido->tanques = $data['tanques'];
+                                    $pedido->cantidad = $data['cantidad'];
+                                    $pedido->save();
+                                }
+                            }
                         }
                         $this->redirect(array('index'));
                     }

@@ -180,9 +180,10 @@ div.form div.tab div.row
 }
 div.form div.tab div.row.buttons
 {
-    float: left;
-    margin-top: 50px;
+    float: right;
+    margin-top: 35px;
     width: 100px;
+    margin-right: 167px;
 }
 div.contenedorClientes
 {

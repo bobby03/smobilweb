@@ -11,7 +11,6 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/view.css');
-    $cs->registerScriptFile($baseUrl.'/js/viajes/view.js');
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     
@@ -29,9 +28,9 @@
 <?php endif;?>
 <div class="principal">
     <?php if($model->status == 1):?>
-
-
-    <?php $this->widget('zii.widgets.CDetailView', array(
+    <?php $cs->registerCssFile($baseUrl.'/css/viajes/create.css');?>
+    <div class="form">
+        <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
             'attributes'=>array(
                 array(
@@ -68,9 +67,51 @@
                     'value'=>Estacion::model()->getEstacion($model->id_estacion)
                 )
             ),
-    )); ?>
+        )); ?>
+        <div>
+            <?php $tot = 1;?>
+        <?php foreach($pedidos['pedido'] as $data):?>
+            <?php for($i = 1; $i <= $data['tanques']; $i++):?>
+                <div class="pedido">
+                    <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
+                    <?php if(isset($data['id_tanque'])):?>
+                    <div class="pedidoWraper gris">
+                        <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                        <div>Cantidad: <span><?php echo $data['cantidad'];?></span></div>
+                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                        <div class="selectTanque">
+                            <label>Tanque</label>
+                            <div style="color: #000000">
+                                <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else:?>
+                    <div class="pedidoWraper">
+                        <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
+                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                        <div class="selectTanque hide">
+                            <label>Seleccionar Tanque</label>
+                            <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
+                            <?php 
+                            $t = "codigo[".$tot."][tanque]";
+
+                            echo $form->error($model,$t); ?>
+                        </div>
+                    </div>
+                    <?php endif;?>
+                </div>
+                <?php $tot++; ?>
+            <?php endfor;?>
+        <?php endforeach; ?>
+        </div>
+    </div>
     <?php endif;?>
     <?php if($model->status == 2):?>
+    <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); ?>
     <div class="detallesViaje">
         <div class="datosViaje">
             <div class="titulo">Datos del viaje<span>Ultima actualización:</span></div>

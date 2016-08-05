@@ -161,6 +161,20 @@ public function getSearchSolicitud(){
 	{
 		return parent::model($className);
 	}
+    public function getFechaTabla($date)
+    {
+        if($date == null)
+            return 'Sin fecha';
+        else
+            return date("d-m-Y", strtotime($date));
+    }
+    public function getHoraTabla($date)
+    {
+        if($date == null)
+            return 'Sin hora';
+        else
+            return date("H:i", strtotime($date));
+    }
     public function adminSearch()
     {
         return array
@@ -185,12 +199,12 @@ public function getSearchSolicitud(){
             array
             (
                 'name'=>'fecha_estimada',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_estimada))'
+                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
             ),
             array
             (
                 'name'=>'hora_estimada',
-                'value' => 'date("H:i", strtotime($data->hora_estimada))'
+                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
             ),
 //            array
 //            (
