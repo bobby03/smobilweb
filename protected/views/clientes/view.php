@@ -69,7 +69,7 @@
                         </div>
                         <div class="row des">
                             <div class="form-cXLarge">
-                                <div class="title">Descripci&oacute;</div>
+                                <div class="title">Descripci&oacute;n</div>
                                 <div class="data"><?php echo $data['descripcion'];?></div>
                             </div>
                         </div>
