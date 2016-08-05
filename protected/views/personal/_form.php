@@ -49,12 +49,10 @@ $baseUrl = Yii::app()->baseUrl;
 		<?php echo $form->error($model,'rfc'); ?>
 	</div>
 </div>
+
 <div class="form-cRight">
-	<div class="row">
-		<label class="letreros">Domicilio</label>
-		<div class="form-cXLarge"><?php echo $form->textField($model,'domicilio',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'domicilio'); ?>
-	</div>
+
+
 
 	<div class="row">
 	<label class="letreros">Rol</label>
@@ -72,15 +70,18 @@ $baseUrl = Yii::app()->baseUrl;
 
 	<div class="row">
 		<label class="letreros">Puesto</label>
-		<div class="form-cMedium"><?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100)); ?></div>
+		<div class="form-cMedium"><?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100,'class'=>'ValidaAlpha')); ?></div>
 		<?php echo $form->error($model,'puesto'); ?>
 	</div>
-</div>
-<div class="containerbutton">
+	<div class="containerbutton">
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
 	</div>
 </div>	
+</div>
+
+
+
 </div>
 <?php $this->endWidget(); ?>
 

@@ -36,14 +36,14 @@ class Personal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido, tel, domicilio, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
+			array('nombre, apellido, tel, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('correo','email','message'=>'No tiene formato de email'),
 			array('nombre, apellido', 'length', 'max'=>50),
 			
 			
 			
-			array('domicilio', 'length', 'max'=>150),
+		/*	array('domicilio', 'length', 'max'=>150),*/
 			array('correo, puesto', 'length', 'max'=>100),
 
 			array('rfc','required','message'=>'RFC No Valido'),
