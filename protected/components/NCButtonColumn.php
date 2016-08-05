@@ -108,7 +108,8 @@ class NCButtonColumn extends CButtonColumn
                                 return letter.toUpperCase();
                             });
                             console.log(controller);
-                            href = 'delete';
+                            //href = 'delete';
+                             href = controller+'/delete';
                             $.ajax(
                             {
                                 type: 'GET',
@@ -125,8 +126,8 @@ class NCButtonColumn extends CButtonColumn
                                 },
                                 error: function(a, b, c)
                                 {
-                                    console.log(a, b, c);
-                                    href = controller+'/delete';
+                                  /* console.log(a, b, c);
+                                   
                                     $.ajax(
                                     {
                                         type: 'GET',
@@ -145,7 +146,7 @@ class NCButtonColumn extends CButtonColumn
                                         {
                                             console.log(a, b, c);
                                         }
-                                    });
+                                    });*/
                                 }
                             });
                         });
