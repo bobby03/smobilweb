@@ -13,30 +13,37 @@ div.row.titulos > div
     width: 199px !important;
     text-align: center;
 }
+
 div.row.titulos > div:last-child
 {
     border-right: 0;
 }
+
 div.row.titulos
 {
     background-color: #0077B0;
 }
+
 div.formContainer1 div.separador div div.botonTodos
 {
     margin: 0 auto;
 }
+
 div.form input[type="checkbox"]
 {
     min-height: 19px !important;
 }
+
 .submitb
 {
     margin-top: 15px !important;
 }
+
 div.form input[type="submit"], .submitb
 {
     width: 130px !important;
 }
+
 div.formContainer1 div.separador div div.botonTodos
 {
     height: 26px !important;
