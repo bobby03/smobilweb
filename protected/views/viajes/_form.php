@@ -5,6 +5,7 @@
     $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/viajes/create.js');
+
     $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (
@@ -112,7 +113,7 @@
             <div class="row">
                 <?php echo $form->labelEx($model,'hora_salida'); ?>
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
-                 <?php echo $form->error($model,'hora_salida'); ?>
+                <?php echo $form->error($model,'hora_salida'); ?>
             </div>
             <div class="siguiente uno">Siguiente</div>
 	</div>
