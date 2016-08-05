@@ -41,7 +41,7 @@
                     <div class="row">
                         <label class="letreros">Nombre de Empresa</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150,'class'=>'ValidaAlpha')); ?>
+                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
                             <?php echo $form->error($model,'nombre_empresa'); ?>
                            </div>
                     </div>
@@ -179,7 +179,7 @@
                         <?php endif;?>
                     <?php endif;?>
                     </div>
-                
+
                 </div>
            </span>
     </div>
