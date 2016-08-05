@@ -525,7 +525,7 @@ div.mensaje-content{
 	margin:0 auto;
 	margin-top: 20px;
 	font-family: 'Roboto-Regular';
-	font-size: 13pt;
+	font-size: 14pt;
 	text-align: center;
 	color:#000;
 }
@@ -742,7 +742,7 @@ table.detail-view tr.even{
 	background-color: #0077b0;
 	float:right;
 	color:white;
-	margin-right: 10px !important;
+	margin-right: 70px !important;
 	position: relative;
 	border-radius: 5px;
 	display: inline-block;
@@ -751,6 +751,7 @@ table.detail-view tr.even{
 	padding: 6px;
 	text-align: center;
 	cursor: pointer;
+	font-size: 14pt;
 }
 
 .sub-content .botones-content .cancelar-boton{
@@ -764,8 +765,9 @@ table.detail-view tr.even{
 	width: 100px;
 	padding: 6px;
 	text-align: center;
-	margin-left: 10px;
+	margin-left: 70px;
 	cursor: pointer;
+	font-size: 14pt;
 }
 
 #cboxLoadedContent { margin: 0 }

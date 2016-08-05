@@ -104,7 +104,7 @@ class EstacionController extends Controller
 	public function actionCreate($tipo)
 	{
 		$model=new Estacion;
-                $model->tipo = $tipo;
+        $model->tipo = $tipo;
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 

@@ -98,18 +98,18 @@ div.principal.index{
 /* Tipo de titulos */
   
  label.tituloV1{
-     font-family: 'CenturyGothic';
+     
      font-size: 19px;
      color:#0077b0; 
      margin-left: 12px;   
 }
 label.tituloV2{
-     font-family: 'CenturyGothic'; 
+     
      font-size: 14px;
      color:#FFFFFF; 
 }
 label.estiloV1{
-     font-family:'MyriadPro-Regular';
+     
      font-size: 14px;
 }
 .txt{
@@ -124,7 +124,7 @@ label.estiloV1{
     color:#2C87B7; 
 }
 .estilov2{
-    font-family: 'MyriadPro-Regular';   
+    
     font-size: 16px;
     color:#414042;
 }
@@ -164,7 +164,7 @@ div.iconPersonal{
       background-image: url("../../images/dashboard/iconoPersonalBlanco.png");
 }
 .icon-oz{
-    background-image: url("../../images/dashboard/iconoOxigeno.png");
+    background-image: url("../../images/dashboard/IconoOxigeno.png");
     background-repeat: no-repeat;
     background-position: center;
     width: 20px;
@@ -482,7 +482,6 @@ h2{
      height: 19px;
 }
 .tituloV3{
-    font-family: 'CenturyGothic';
     font-size: 19px;
     color: #0077b0;
     margin-left: 12px;
@@ -690,7 +689,7 @@ float:left;
 
 }
 .txtR2{
-    font-family: 'AllerDisplay';
+  
     font-size:17px;
     color:#000000;
 

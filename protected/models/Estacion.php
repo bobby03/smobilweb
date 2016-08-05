@@ -294,12 +294,6 @@ class Estacion extends CActiveRecord
                 'ubicacion',
                 array
                 (
-                    'name' => 'disponible',
-                    'value' => 'Estacion::model()->getDisponible($data->disponible)',
-                    'filter' => Estacion::model()->getAllDisponible()
-                ),
-                array
-                (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
@@ -313,6 +307,37 @@ class Estacion extends CActiveRecord
                         )
                     )
 		)
+            );
+        }
+        public function adminSearch1()
+        {
+            return array
+            (
+                'identificador',
+                'no_personal',
+                'marca',
+                'color',
+                'ubicacion',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'buttons' => array
+                    (
+                        'tanque' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
+                            'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
+                            'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
+                        ),
+                        'update' => array
+                        (
+                            
+                            'url' => 'Yii::app()->createUrl("estacion/update", array("id"=>$data->id))',
+                        )
+                    )
+        )
             );
         }
 }

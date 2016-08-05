@@ -158,10 +158,16 @@ class EspecieController extends Controller
 		$id=$_POST['id'];
 		$model=$this->loadModel($id);
 		$model->nombre=$_POST['especie'];
-		$model->save();
+
+		if($model->save()){
+		echo json_encode(true);	//$this->redirect(array('index'));
+		}
+				
+
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		echo json_encode($_POST['especie']);
+		//echo json_encode($model);
 		
 	}
 

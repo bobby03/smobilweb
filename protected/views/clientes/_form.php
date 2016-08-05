@@ -10,9 +10,9 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/clientes/googleMap.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
-    $cs->registerScriptFile($baseUrl.'/js/clientes/ClientesMask.js?id='.rand());
-    $cs->registerCssFile($baseUrl.'/css/clientes/create.css?id='.rand());
-    $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css?id='.rand());
+    $cs->registerScriptFile($baseUrl.'/js/clientes/validacion.js?d='.rand());
+    $cs->registerCssFile($baseUrl.'/css/clientes/create.css?d='.rand());
+    $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css');
 ?>
 <div class="form">
 
@@ -41,7 +41,7 @@
                     <div class="row">
                         <label class="letreros">Nombre de Empresa</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
+                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'nombre_empresa'); ?>
                            </div>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="row">
                         <label class="letreros">Nombre de Contacto</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'nombre_contacto'); ?>
                            </div>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="row">
                         <label class="letreros"> Apellido de Contacto </label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'apellido_contacto'); ?>
                             </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="row">
                         <label class="letreros">RFC</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+                            <?php echo $form->textField($model,'rfc',array('size'=>12,'maxlength'=>12)); ?>
                             <?php echo $form->error($model,'rfc'); ?>
                            </div>
                     </div>
