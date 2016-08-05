@@ -10,8 +10,8 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/clientes/googleMap.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
-    $cs->registerScriptFile($baseUrl.'/js/clientes/validacion.js?d='.rand());
-    $cs->registerCssFile($baseUrl.'/css/clientes/create.css?d='.rand());
+    $cs->registerScriptFile($baseUrl.'/js/clientes/validacion.js');
+    $cs->registerCssFile($baseUrl.'/css/clientes/create.css');
     $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css');
 ?>
 <div class="form">
