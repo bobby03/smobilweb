@@ -71,7 +71,7 @@ class Cepa extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_especie' => 'Especie',
-			'nombre_cepa' => 'Nombre Cepa',
+			'nombre_cepa' => 'Nombre de la cepa',
 			'temp_min' => 'Temp Min',
 			'temp_max' => 'Temp Max',
 			'ph_min' => 'Ph Min',
@@ -117,6 +117,7 @@ class Cepa extends CActiveRecord
 		$criteria->compare('orp_min',$this->orp_min);
 		$criteria->compare('orp_max',$this->orp_max);
                 $criteria->addCondition("id_especie = $id");
+                $criteria->addCondition("activo = 1");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -161,11 +162,11 @@ eof;
     {
         return array
         (
-            array(
-                'name'=>'id_especie',
-                'value'=>'Especie::model()->getEspecie($data->id_especie)',
-                'filter'=>  Especie::model()->getAllEspecies()
-            ),
+//            array(
+//                'name'=>'id_especie',
+//                'value'=>'Especie::model()->getEspecie($data->id_especie)',
+//                'filter'=>  Especie::model()->getAllEspecies()
+//            ),
             'nombre_cepa',
          /*    array(
                 'name' => 'temp_min',

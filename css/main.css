@@ -629,6 +629,7 @@ table.detail-view tr.even{
     background-size: 87px;
     width: 100%;
     position: fixed;
+    top: 0;
 }
 
 /*
