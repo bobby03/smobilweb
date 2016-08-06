@@ -73,8 +73,7 @@ eof;
             </div>
             <div id="map" data-map="1"></div>
             <div class="row ubi">
-                <?php echo $form->labelEx($direccion,'ubicacion_mapa'); ?>
-                <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
+                <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
             </div>
             <div class="row des">
                 <?php echo $form->labelEx($direccion,'descripcion'); ?>

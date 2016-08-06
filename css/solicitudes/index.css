@@ -1,0 +1,34 @@
+div.tabs
+{
+    background-color: #0077B0;
+    margin-top: 50px; 
+}
+div.tabs div.tab
+{
+    width: 125px;
+    float: left;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    line-height: 25px;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+div.tabContent
+{
+    margin-top: 40px;
+}
+div.tab.select
+{
+    background-color: #09B7C9;
+}
+div.tabs:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
+.agregar
+{
+    margin: 5px 0;
+}

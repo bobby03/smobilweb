@@ -3,49 +3,91 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
+    $cs->registerCssFile($baseUrl.'/css/solicitudes/index.css');
     $this->breadcrumbs=array('Solicitudes',);
     
 ?>
 
 <h1>Solicitudes</h1>
 <div class="principal">
-   <div class="search-form" >
-    <?php 
-            $this->renderPartial('_search',array(
-	       'model'=>$model,)); 
-    ?>
-
+    <div class="tabs">
+        <div class="tab select" data-id="1"><span>Sin asignar</span></div>
+        <div class="tab" data-id="2"><span>Asignadas</span></div>
+        <div class="tab" data-id="3"><span>En ruta</span></div>
+        <div class="tab" data-id="4"><span>Finalizado</span></div>
+    </div>
     <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>
-
-    </div>
-
+    <div class="tabContent" data-tan="1">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'solicitud',
-        'dataProvider'=>$model->search(),
+        'id'=>'viaje1',
+        'dataProvider'=>$model->searchStatus(0),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
-        'columns'=>$model->adminSearch(),
+        'columns'=>$model->adminSearch1(),
         'pager' => array
         (
             'class' => 'PagerSA',
             'header'=>'',
-        ),
-        'afterAjaxUpdate' => "function(id,data)
-        {
-            $('tr td:nth-child(2)').each(function()
-            {
-                var texto = $(this).text();
-                var columna = $(this).siblings('.button-column');
-                var index = texto.indexOf('proceso');
-                if(index == -1)
-                {
-                    columna.find('a.update').remove();
-                    columna.find('a.delete').remove();
-                }
-            });
-        }"
-    )); ?>
+        )
+    //    'filter'=>$model,
+    )); 
+    ?>
+    </div>
+    
+    <div class="tabContent hide" data-tan="2">
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'viaje2',
+        'dataProvider'=>$model->searchStatus(1),
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+    //    'filter'=>$model,
+        'columns'=>$model->adminSearch2(),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        )
+    )); 
+    ?>
+    </div>
+
+    <div class="tabContent hide" data-tan="3">
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'viaje3',
+        'dataProvider'=>$model->searchStatus(2),
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+    //    'filter'=>$model,
+        'columns'=>$model->adminSearch3(),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        )
+    )); 
+    ?>
+    </div>
+    <div class="tabContent hide" data-tan="4">
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'viaje3',
+        'dataProvider'=>$model->searchStatus(3),
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+    //    'filter'=>$model,
+        'columns'=>$model->adminSearch4(),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        )
+    )); 
+    ?>
+    </div>
 </div>
+
