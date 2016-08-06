@@ -25,7 +25,8 @@ $this->breadcrumbs=array(
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'estacion-grid',
-            'summaryText'=>'',
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
             'dataProvider'=>$model->search1(1),
             'columns'=>$model->adminSearch(),
             'pager' => array

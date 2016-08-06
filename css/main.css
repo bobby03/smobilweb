@@ -452,6 +452,7 @@ h1 {
     width: 100%;
     position: fixed;
     top: 50px;
+    z-index: 10;
 }
 .grid-view table.items th a:hover 
 {
@@ -630,6 +631,7 @@ table.detail-view tr.even{
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 10;
 }
 
 /*

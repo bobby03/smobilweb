@@ -119,31 +119,7 @@ class SolicitudesController extends Controller
                     $model->fecha_entrega = null;
                     $model->fecha_estimada = null;
                     $model->codigo = 'En proceso';
-                    if($model->id != '')
-                    {
-                        $model2 = Solicitudes::model()->findByPk($model->id);
-                        $model2->update();
-                        $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
-                        if(isset($_POST['pedido']))
-                        {
-                            if(count($_POST['pedido']) > 0)
-                            {
-                                foreach($_POST['pedido'] as $data)
-                                {
-                                    $pedido = new Pedidos();
-                                    $pedido->id_cepa = $data['cepa'];
-                                    $pedido->id_especie = $data['especie'];
-                                    $pedido->id_solicitud = $model->id;
-                                    $pedido->id_direccion = $data['destino'];
-                                    $pedido->tanques = $data['tanques'];
-                                    $pedido->cantidad = $data['cantidad'];
-                                    $pedido->save();
-                                }
-                            }
-                        }
-                        $this->redirect(array('index'));
-                    }
-                    elseif($model->save())
+                    if($model->save())
                     {
                         $model->id = Yii::app()->db->getLastInsertId();
                         if(isset($_POST['pedido']))
@@ -252,7 +228,29 @@ eof;
                     $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
                     $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
                     if($model->save())
-                            $this->redirect(array('index'));
+                    {
+                        $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
+                        if(isset($_POST['pedido']))
+                        {
+                            if(count($_POST['pedido']) > 0)
+                            {
+                                foreach($_POST['pedido'] as $data)
+                                {
+                                    $pedido = new Pedidos();
+                                    $pedido->id_cepa = $data['cepa'];
+                                    $pedido->id_especie = $data['especie'];
+                                    $pedido->id_solicitud = $model->id;
+                                    $pedido->id_direccion = $data['destino'];
+                                    $pedido->tanques = $data['tanques'];
+                                    $pedido->cantidad = $data['cantidad'];
+                                    $pedido->save();
+                                }
+                            }
+                        }
+                        else
+                            $model->delete();
+                        $this->redirect(array('index'));
+                    }
             }
 
             $this->render('update',array(
@@ -272,13 +270,28 @@ eof;
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $id")->execute();
-
+            $model = Solicitudes::model()->findByPk($id);
+            fb($model->attributes);
+            if($model->status == 0)
+                $model->delete();
+            elseif($model->status == 1)
+            {
+                $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
+                $tanques = SolicitudTanques::model()->findAll("id_solicitud = $model->id");
+                fb($tanques);
+                foreach ($tanques as $data)
+                {
+//                    fb($data);
+                    $tanque = Tanque::model()->findByPk($data['id_tanque']);
+                    $tanque->status = 1;
+                    if($tanque->save())
+                        $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
+                }
+            }
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	/*	if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
-		                echo json_encode('');	
+            echo json_encode('');	
 	}
 
 	/**

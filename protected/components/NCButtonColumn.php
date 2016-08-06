@@ -99,17 +99,6 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            
-                            var urlSplit = href.split( '/' );
-                            var controller = urlSplit[ urlSplit.length - 3 ]; 
-                            
-                            controller = controller.toLowerCase().replace(/\b[a-z]/g, function(letter) 
-                            {
-                                return letter.toUpperCase();
-                            });
-                            console.log(controller);
-                            //href = 'delete';
-                             href = controller+'/delete';
                             $.ajax(
                             {
                                 type: 'GET',

@@ -32,7 +32,13 @@
     (
         'id'=>'viaje1',
         'dataProvider'=>$model->searchStatus1(1),
-        'summaryText'=> '',
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
     //    'filter'=>$model,
         'columns'=>$model->adminSearch1(),
         'afterAjaxUpdate' => "function(id,data)
@@ -51,9 +57,15 @@
     (
         'id'=>'viaje2',
         'dataProvider'=>$model->searchStatus1(2),
-        'summaryText'=> '',
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
     //    'filter'=>$model,
         'columns'=>$model->adminSearch2(),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
         'afterAjaxUpdate' => "function(id,data)
         {
             $('.items tbody tr').each(function()
@@ -70,9 +82,15 @@
     (
         'id'=>'viaje3',
         'dataProvider'=>$model->searchStatus1(3),
-        'summaryText'=> '',
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
     //    'filter'=>$model,
         'columns'=>$model->adminSearch3(),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
         'afterAjaxUpdate' => "function(id,data)
         {
             $('.items tbody tr').each(function()

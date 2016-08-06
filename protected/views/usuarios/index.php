@@ -27,7 +27,13 @@
 (
     'id'=>'usuario',
     'dataProvider'=>$model->search(),
-    'summaryText'=> '',
-    'columns'=>$model->adminSearch()
+    'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+    'template' => "{items}{summary}{pager}",
+    'columns'=>$model->adminSearch(),
+    'pager' => array
+    (
+        'class' => 'PagerSA',
+        'header'=>'',
+    )
 )); ?>
 </div>
