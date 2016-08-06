@@ -122,6 +122,10 @@ div.view-cepa input:disabled{
     background-color: #FFF !important;
     background: #FFF !important;
 }
+
+.regresarCepa{
+    margin-top: 30px;
+}
 /*
 div.view-cepa input{
     border: 2px solid #e4e7eb !important;
