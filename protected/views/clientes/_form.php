@@ -41,13 +41,13 @@
                     <div class="row">
                         <label class="letreros">Nombre de Empresa</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150,'class'=>'ValidaAlpha')); ?>
+                            <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
                             <?php echo $form->error($model,'nombre_empresa'); ?>
                            </div>
                     </div>
 
                     <div class="row">
-                        <label class="letreros">Nombre de Contacto</label>
+                        <label class="letreros">Nombre(s) de Contacto</label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'nombre_contacto'); ?>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros"> Apellido de Contacto </label>
+                        <label class="letreros"> Apellido(s) de Contacto </label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'apellido_contacto'); ?>
@@ -179,16 +179,17 @@
                         <?php endif;?>
                     <?php endif;?>
                     </div>
-                    <div class="containerbutton">
-                         <div class="row buttons">
-                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
-                            <div class="addDireccion">Agregar dirección</div> 
-                        </div>
-                    </div>
+
                 </div>
            </span>
     </div>
-
+    <div class="containerbutton">
+                         <div class="row buttons">
+                             <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
+                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+                            <div class="addDireccion">Nueva dirección</div> 
+                        </div>
+                    </div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

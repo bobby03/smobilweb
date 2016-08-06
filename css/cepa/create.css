@@ -1,4 +1,3 @@
-
 div.form.cepa {
     width: 100%;
     max-width: 670px;
@@ -25,7 +24,7 @@ label.letreros{
 	color: #0077B0;
 }
 
-/*      ************          */
+
 
 
 .form-cSmall
@@ -115,3 +114,20 @@ input[type="submit"]
    margin: 0 auto;
    width: 90%;
 }
+
+
+/* VIEW CEPA*/
+
+div.view-cepa input:disabled{
+    background-color: #FFF !important;
+    background: #FFF !important;
+}
+/*
+div.view-cepa input{
+    border: 2px solid #e4e7eb !important;
+    border-left: 30px solid  #e4e7eb !important;
+}
+
+div.view-cepa .form-cSmall span{
+    color: #0077b0;
+}*/

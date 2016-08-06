@@ -25,7 +25,7 @@ $this->redirect(Yii::app()->homeUrl);
 				<h1 class="barraViajeGranja">
 				    <div class="tabs">
 			        	<div id="viaje" class="selected">Viajes</div>
-			       		<div id="granja" >Estaciones</div>
+			       		<div id="granja" >Siembras</div>
 			    	</div>
 			    </h1>
 			    <div class="container-viaje">
