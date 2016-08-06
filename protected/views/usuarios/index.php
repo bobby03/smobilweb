@@ -12,14 +12,16 @@
 <h1>Usuarios</h1>
 
 <div class="principal">
+
+
     <div class="search-form" >
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/usuarios/create">
-        <div class="agregar usuarios"></div>
-    </a>
-    </div><!-- search-form -->
+        <?php $this->renderPartial('_search',array(
+                'model'=>$model,
+        )); ?>
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/usuarios/create">
+            <div class="agregar usuarios"></div>
+        </a>
+    </div>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (

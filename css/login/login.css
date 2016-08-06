@@ -50,6 +50,7 @@ body.site-login #contentWrapper #content div.form form input[type="password"]{
 
 body.site-login form#login-form .rememberMe{
     width: 100% !important;  
+    text-align: center;
     
 }
 

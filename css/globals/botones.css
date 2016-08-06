@@ -1,0 +1,19 @@
+.gBoton{
+	background-color: #0077b0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 63px;
+    text-align: center;
+    text-decoration: none;
+    width: 185px;
+}
+
+a.gBoton:hover{
+	text-decoration: none;
+	color:#FFF;
+}

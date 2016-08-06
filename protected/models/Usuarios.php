@@ -162,7 +162,6 @@ class Usuarios extends CActiveRecord
             (
                 'name' => 'id_usr',
                 'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
-                //'filter' => ''
             ),
             array
             (

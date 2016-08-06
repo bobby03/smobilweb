@@ -41,7 +41,16 @@ class Viajes extends CActiveRecord
 			array('id_responsable','required','message'=>'Debe seleccionar un responsable'),
 			array('id_estacion','required','message'=>'Debe seleccionar una estacion'),
 			array('fecha_salida','required','message'=>'Debe especificar una fecha'),
-			array('hora_salida','required','message'=>'Debe especificar una hora'),
+
+
+
+            array('hora_salida','required','message'=>'Este campo es obligatorio'),
+            array(
+                'hora_salida',
+                'match',
+                'pattern'=>"/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/",
+                'message'=>'Formato de Hora no valido'),
+
 	
 			array('id_solicitudes, status', 'required'),
 			array('id, id_solicitudes, id_responsable, id_estacion, status', 'numerical', 'integerOnly'=>true),
@@ -49,6 +58,9 @@ class Viajes extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'safe', 'on'=>'search'),
+
+
+            //([01]?[0-9]|2[0-3]):[0-5][0-9]
 		);
 	}
 
