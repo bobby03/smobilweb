@@ -201,10 +201,10 @@ div.form div.tab div.row.buttons
     margin-top: 50px;
     width: 100px;
     margin-right: 167px;
-    /* --- */
+    /* --- 
     position: fixed;
     top:230px;
-    right: 0;
+    right: 0; */
 }
 div.contenedorClientes
 {
