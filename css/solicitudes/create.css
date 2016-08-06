@@ -339,7 +339,7 @@ div.renglon:after
 **/
 
 
-body.solicitudes-create #map
+#map
 {
     height: 250px;
     margin-bottom: 10px;
@@ -391,32 +391,25 @@ div.cancelarDireccion
 }
 
 
-body.solicitudes-create .OtroDom{
-    background-image: url('./../../images/solicitud/botonUbicacion.png'), 
-                      url('../../images/form/bg.png');
-    background-position: 8px 5px,left;
+.OtroDom{
+    background-image: url('../../images/form/bg.png');
+    /*background-position: 8px 5px,left;*/
     background-repeat: no-repeat;
     padding-left: 30px;
     border-left: 0;
 }
-
-
-body.solicitudes-create .OtroDom.inputDom{
+.OtroDom.inputDom{
     background-image: url('../../images/personal/iconoDomicilio.png'), 
                       url('../../images/form/bg.png') !important;
     background-position: 6px 5px,left;
 }
-
-body.solicitudes-create .OtroDom.readOnly{
+.OtroDom.readOnly{
     border:2px solid #dee5e8;
     border-left: 30px solid #dee5e8;
     background-image: none; 
     padding-left: 0px;
 }
-
-
-
-body.solicitudes-create input.OtroDom{
+input.OtroDom{
     border-left: 0;
     border-radius: 5px;
     border: 2px solid #0077b0;
@@ -427,11 +420,11 @@ body.solicitudes-create input.OtroDom{
     width: 100%;
 }
 
-body.solicitudes-create .Odom{
+.Odom{
     margin:10px;
 }
 
- body.solicitudes-create .Odom label{
+.Odom label{
     color: #0077B0;
     display: block;
     font-size: 1.1em;
@@ -439,7 +432,7 @@ body.solicitudes-create .Odom{
     margin-bottom: 5px;
  }
 
-  body.solicitudes-create .Odom .buttons{
+.Odom .buttons{
     margin-top: 10px;
   }
 
