@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Cepas</h1>
+<h1>Cepas de la especie <?php echo $especie->nombre;?></h1>
 <div class="principal">
     <div class="search-form" >
     <?php $this->renderPartial('_search',array(
@@ -27,7 +27,8 @@ $this->breadcrumbs=array(
         (
             'id'=>'cepa',
             'dataProvider'=>$model->search($id),
-            'summaryText'=> '',
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearch(),
             'pager' => array
             (

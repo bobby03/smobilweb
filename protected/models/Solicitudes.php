@@ -39,13 +39,13 @@ class Solicitudes extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_clientes', 'required'),
-			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
+			array('id, id_clientes, status', 'numerical', 'integerOnly'=>true),
                         //array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'safe', 'on'=>'search'),
+			array('id, status, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -150,6 +150,27 @@ public function getSearchSolicitud(){
 		));
 
 	}
+        public function searchStatus($id)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+            $criteria=new CDbCriteria;
+            $criteria->compare('id_clientes',$this->id_clientes);
+            $criteria->compare('codigo',$this->codigo,true);
+            $criteria->compare('fecha_alta',$this->fecha_alta,true);
+            $criteria->compare('hora_alta',$this->hora_alta,true);
+            $criteria->compare('fecha_estimada',$this->fecha_estimada,true);
+            $criteria->compare('hora_estimada',$this->hora_estimada,true);
+            $criteria->compare('fecha_entrega',$this->fecha_entrega,true);
+            $criteria->compare('hora_entrega',$this->hora_entrega,true);
+            $criteria->compare('notas',$this->notas,true);
+            $criteria->compare('status',$this->status,true);
+            $criteria->addcondition("status = $id");
+
+            return new CActiveDataProvider($this, array(
+                    'criteria'=>$criteria,
+            ));
+
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -175,7 +196,7 @@ public function getSearchSolicitud(){
         else
             return date("H:i", strtotime($date));
     }
-    public function adminSearch()
+    public function adminSearch1()
     {
         return array
         (
@@ -222,6 +243,156 @@ public function getSearchSolicitud(){
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
+    public function adminSearch2()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+            array
+            (
+                'name'=>'fecha_estimada',
+                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+            ),
+            array
+            (
+                'name'=>'hora_estimada',
+                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
+    public function adminSearch3()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+            array
+            (
+                'name'=>'fecha_estimada',
+                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+            ),
+            array
+            (
+                'name'=>'hora_estimada',
+                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view}</div>'
+            )
+        );
+    }
+    public function adminSearch4()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_estimada',
+//                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_estimada',
+//                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+//            ),
+            array
+            (
+                'name'=>'fecha_entrega',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+            ),
+            array
+            (
+                'name'=>'hora_entrega',
+                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view}</div>'
             )
         );
     }

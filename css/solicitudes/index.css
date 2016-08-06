@@ -5,7 +5,7 @@ div.tabs
 }
 div.tabs div.tab
 {
-    width: 100px;
+    width: 125px;
     float: left;
     padding: 5px 0;
     text-align: center;
@@ -22,19 +22,13 @@ div.tab.select
 {
     background-color: #09B7C9;
 }
-
-
-.agregar.viaje{
-    background-image: url('../../images/menu/iconoViajes.svg');
-    background-color: #0077B0;
-    margin: 5px 0;
-}
-
-div.tabs:after,
-.add-wraper a:after,
-.agregar.viaje:after,
-.add-wraper:after {
-    content: "";
+div.tabs:after
+{
     display: block;
     clear: both;
+    content: '';
+}
+.agregar
+{
+    margin: 5px 0;
 }

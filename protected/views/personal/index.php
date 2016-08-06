@@ -24,13 +24,14 @@
 <?php $this->widget('zii.widgets.grid.CGridView', array
 (
     'id'=>'personal-grid',
+    'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+    'template' => "{items}{summary}{pager}",
     'pager' => array
     (
         'class' => 'PagerSA',
         'header'=>'',
     ),
     'dataProvider'=>$model->search(),
-    'summaryText'=> '',
     'columns'=>$model->adminSearch()
 )); 
 ?>

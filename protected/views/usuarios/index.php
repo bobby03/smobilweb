@@ -27,14 +27,13 @@
 (
     'id'=>'usuario',
     'dataProvider'=>$model->search(),
-    'summaryText'=> '',
+    'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+    'template' => "{items}{summary}{pager}",
     'columns'=>$model->adminSearch(),
-    'afterAjaxUpdate' => "function(id,data)
-    {
-        $('.items tbody tr').each(function()
-        {
-            $(this).find('a.view').remove();
-        });
-    }"
+    'pager' => array
+    (
+        'class' => 'PagerSA',
+        'header'=>'',
+    )
 )); ?>
 </div>
