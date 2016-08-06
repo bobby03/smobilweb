@@ -164,7 +164,7 @@ $this->breadcrumbs=array(
 						</div>
 					</div>
 						<div class="row buttons">
-							<a class="gBoton" href="javascript:history.go(-1);">Regresar</a> 
+							<a class="gBoton regresarCepa" href="javascript:history.go(-1);">Regresar</a> 
 						</div>
 				</div>
 	  		</span>
