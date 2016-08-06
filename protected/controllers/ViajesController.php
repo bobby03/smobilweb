@@ -190,6 +190,7 @@ class ViajesController extends Controller
                 $codigo = substr(Clientes::model()->getCliente($solicitudes->id_clientes),0,2);
                 $codigo = $codigo.date('Ymdhi');
                 $solicitudes->codigo = $codigo;
+                $solicitudes->status = 1;
                 if($solicitudes->id != '' && $solicitudes->id != null)
                 {
                     $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $solicitudes->id")->execute();

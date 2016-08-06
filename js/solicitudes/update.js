@@ -4,12 +4,11 @@ $(document).ready(function()
     var index3 = loc.length;
     var index2 = loc.indexOf('update');
     var direccion = loc.substring(0,index2);
-    var url = direccion+'GetCliente';
     var id = loc.substring(index2+7,index3);
     $.ajax(
     {
         type: 'GET',
-        url: url,
+        url: direccion+'GetCliente',
         dataType: 'JSON', 
         data:
         {
@@ -40,11 +39,10 @@ $(document).ready(function()
             $('.viajeLoc').click(function()
             {
                 var id2 = $(this).data('viaje');
-                var url = direccion+'GetDirecciones';
                 $.ajax(
                 {
                     type: 'GET',
-                    url: url,
+                    url: direccion+'GetDirecciones',
                     dataType: 'JSON', 
                     data:
                     {
@@ -134,7 +132,7 @@ $(document).ready(function()
             $('#tanquesNO').val(tanques);
             $('#ClientesDomicilio_domicilio').val(direccionID);
             $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-            $(this).closest('.pedido').remove();
+            $(this).closest('.pedidoViaje').remove();
             changeCepa(cepaID);
         });
     }

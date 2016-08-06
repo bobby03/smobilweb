@@ -17,7 +17,7 @@ $(document).ready(function()
             $.ajax(
             {
                 type: 'GET',
-                url: 'GetCliente',
+                url: direccion+'GetCliente',
                 dataType: 'JSON', 
                 data:
                 {
@@ -36,32 +36,7 @@ $(document).ready(function()
                 },
                 error: function()
                 {
-                    var url = direccion+'GetCliente';
-                    $.ajax(
-                    {
-                        type: 'GET',
-                        url: url,
-                        dataType: 'JSON', 
-                        data:
-                        {
-                            id: id,
-                            flag: 1
-                        },
-                        success: function(data)
-                        {
-                            $('.datosCliente').empty();
-                            $('.datosCliente').append(data.cliente);
-                            $('#ClientesDomicilio_domicilio option:gt(0)').remove();
-                            $('#ClientesDomicilio_domicilio').append(data.domicilio);
-                            $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-                            $('.row.pedido').removeClass('hide');
-                            $('.titulo').removeClass('hide');
-                        },
-                        error: function(a, b, c)
-                        {
-//                            console.log(a, b, c);
-                        }
-                    });
+                    
                 }
             });
         }
@@ -83,7 +58,7 @@ $(document).ready(function()
             $.ajax(
             {
                 type: 'GET',
-                url: 'GetCepas',
+                url: direccion+'GetCepas',
                 dataType: 'JSON', 
                 data:
                 {
@@ -99,29 +74,7 @@ $(document).ready(function()
                 },
                 error: function()
                 {
-                    var url = direccion+'GetCepas';
-                    $.ajax(
-                    {
-                        type: 'GET',
-                        url: url,
-                        dataType: 'JSON', 
-                        data:
-                        {
-                            id: id
-                        },
-                        success: function(data)
-                        {
-                            $('#Cepa_id option:gt(0)').remove();
-                            $('#Cepa_id').append(data);
-                            $('#Cepa_id').trigger("chosen:updated");
-                            $('.row.cepa').removeClass('hide');
-                            $('.requerida input').val('');
-                        },
-                        error: function(a, b, c)
-                        {
-//                            console.log(a, b, c);
-                        }
-                    });
+                    
                 }
             });
         }
