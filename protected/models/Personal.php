@@ -123,6 +123,8 @@ class Personal extends CActiveRecord
 		$criteria->compare('id_rol',$this->id_rol);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('puesto',$this->puesto,true);
+		$criteria->addcondition('activo = 1');
+                
 		/*$criteria->addcondition("(nombre LIKE '%".$this->nombre."%' OR apellido LIKE '%".$this->nombre.
                                 "%' OR tel LIKE '%".$this->nombre.
                                 "%' OR rfc LIKE '%".$this->nombre.
@@ -134,6 +136,9 @@ class Personal extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                    'pagination'=>array(
+                            'pageSize'=>15,
+                        )
 		));
 	}
 	 public function getSearchPersonal(){

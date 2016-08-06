@@ -183,7 +183,7 @@ class RolesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
         
-        $acciones->seccion = $array;
+                $acciones->seccion = $array;
 		if(isset($_POST['Roles']))
 		{
                     $oldRol = Roles::model()->findByPk($model->id);

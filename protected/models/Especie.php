@@ -75,9 +75,12 @@ class Especie extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('nombre',$this->nombre,true);
-
+                $criteria->addCondition("activo=1");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                    'pagination'=>array(
+                            'pageSize'=>15,
+                        )
 		));
 	}
 
