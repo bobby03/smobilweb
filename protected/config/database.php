@@ -8,7 +8,7 @@ return array(
 	'connectionString' => 'mysql:host=localhost;dbname=movsens',
 	'emulatePrepare' => true,
 	'username' => 'root',
-	'password' => 'hola',
+	'password' => '',
 	'charset' => 'utf8',
 	
 );
