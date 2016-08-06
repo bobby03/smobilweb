@@ -1,7 +1,7 @@
 div.tabs
 {
     background-color: #0077B0;
-    margin-top: 50px; 
+    margin-top: 15px; 
 }
 div.tabs div.tab
 {
@@ -22,9 +22,26 @@ div.tab.select
 {
     background-color: #09B7C9;
 }
-div.tabs:after
-{
+
+.add-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    height: 51px;
+    margin-top: 50px; 
+}
+.add-wrapper a {
+    display: block;
+}
+.agregar.viaje{
+    background-image: url('../../images/menu/iconoViajes.svg');
+    background-color: #0077B0;
+}
+
+div.tabs:after,
+.add-wraper a:after,
+.agregar.viaje:after,
+.add-wraper:after {
+    content: "";
     display: block;
     clear: both;
-    content: '';
 }

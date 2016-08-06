@@ -11,6 +11,11 @@
 <h1>Viajes</h1>
 
 <div class="principal">
+    <div class="add-wrapper">
+         <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes/create">
+            <div class="agregar viaje"></div>
+        </a>
+    </div>
     <div class="tabs">
         <div class="tab select" data-id="1"><span>En espera</span></div>
         <div class="tab" data-id="2"><span>En ruta</span></div>
@@ -20,8 +25,8 @@
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    </div><!-- search-form -->
 
+    </div><!-- search-form -->
     <div class="tabContent" data-tan="1">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
