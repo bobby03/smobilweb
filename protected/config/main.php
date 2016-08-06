@@ -47,8 +47,8 @@ return array(
 		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-			'showScriptName'=>false,
-     		'caseSensitive'=>false,  
+			'showScriptName'=>true,
+     		'caseSensitive'=>true,  
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -73,7 +73,7 @@ return array(
         'clientScript'=>array(
 			'packages'=>array(
 				'jquery'=>array(
-					'baseUrl'=>'http://code.jquery.com/',
+					'baseUrl'=>'https://code.jquery.com/',
 					'js'=>array(
 						'jquery-1.11.2.min.js',
 						'jquery-migrate-1.1.0.min.js'
@@ -90,10 +90,12 @@ return array(
 				),
 				// uncomment the following to show log messages on web pages
 				
+
 				array(
 					'class'=>'CWebLogRoute',
 				),
 				
+=======
 			),
 		),
 	),
