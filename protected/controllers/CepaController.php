@@ -155,7 +155,10 @@ class CepaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('cepa',$model->attributes,"id = ".(int)$id."");
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		/*if(!isset($_GET['ajax']))
@@ -172,11 +175,13 @@ class CepaController extends Controller
 	{
             $model=new Cepa("search($id)");
             $model->unsetAttributes(); 
+            $nombre = Especie::model()->findByPk($id);
             if(isset($_GET['Cepa']))
                     $model->attributes=$_GET['Cepa'];
             $this->render('index',array(
-                    'model'=>$model,
-                    'id' => $id
+                    'model'     =>$model,
+                    'id'        => $id,
+                    'especie'   =>$nombre
             ));
 	}
 

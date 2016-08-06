@@ -28,13 +28,6 @@
     'id'=>'usuario',
     'dataProvider'=>$model->search(),
     'summaryText'=> '',
-    'columns'=>$model->adminSearch(),
-    'afterAjaxUpdate' => "function(id,data)
-    {
-        $('.items tbody tr').each(function()
-        {
-            $(this).find('a.view').remove();
-        });
-    }"
+    'columns'=>$model->adminSearch()
 )); ?>
 </div>
