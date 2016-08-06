@@ -62,7 +62,7 @@ class Usuarios extends CActiveRecord
 			'usuario' => 'Nombre de usuario',
 			'pwd' => 'Clave',
 			'tipo_usr' => 'Tipo de usuario',
-			'id_usr' => 'Usuario',
+			'id_usr' => 'Empleado/cliente',
 		);
 	}
 
@@ -86,8 +86,8 @@ class Usuarios extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('pwd',$this->pwd,true);
-		/*$criteria->compare('usuario',$this->usuario,true);
-		$criteria->compare('tipo_usr',$this->tipo_usr);
+		$criteria->compare('usuario',$this->usuario,true);
+		/*criteria->compare('tipo_usr',$this->tipo_usr);
 		$criteria->compare('id_usr',$this->id_usr);*/
 
 		$criteria->addcondition("(usuario LIKE '%".$this->usuario.
@@ -151,12 +151,7 @@ class Usuarios extends CActiveRecord
     	
         return array
         (
-    //         'usuario',
-	//            array
-	//            (
-	//                'name' => 'pwd',
-	//                'value' => '$data->pwd'
-	//            ),
+            'usuario',
             array
             (
                 'name' => 'tipo_usr',
@@ -167,7 +162,6 @@ class Usuarios extends CActiveRecord
             (
                 'name' => 'id_usr',
                 'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
-                'filter' => ''
             ),
             array
             (

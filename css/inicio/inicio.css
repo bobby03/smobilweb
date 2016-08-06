@@ -8,7 +8,8 @@ div.principal.index{
     width: 100%;
     max-width: 1190px;
     border: 0;
-	margin-bottom: 0;
+    margin-bottom: 0;
+    position: initial;
 }
 .tabs {
     height: 51px;
@@ -765,4 +766,11 @@ float:left;
 .textCircle.siHover:hover .ctxtr2
 {
     visibility: visible;
+}
+
+.container-viaje:after
+{
+    display: block;
+    clear: both;
+    content: '';
 }

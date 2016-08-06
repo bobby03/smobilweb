@@ -5,6 +5,8 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/estacion/create.js');
+    $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
+     $cs->registerScriptFile($baseUrl.'/js/estacion/validacion.js');
     $cs->registerCssFile($baseUrl.'/css/estacion/create.css');
 ?>
 
@@ -27,7 +29,7 @@
 
 	<?php //echo $form->errorSummary($model); ?>
 	<div class="row buttons">
-            <div class="addTanque">Agregar tanque</div>
+            <div class="addTanque">Nuevo tanque</div>
             <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 	</div>
         <div class="allTanques">
@@ -42,8 +44,8 @@
                             <?php echo $form->error($model,'nombre'); ?>
                     </div>
                     <div class="row cap">
-                            <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
+                            <?php echo $form->labelEx($model,'capacidad (Litros)'); ?>
+                            <?php echo $form->textField($model,"status[$i][capacidad]",array('class'=>'ttan')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                     <div class="row sta">

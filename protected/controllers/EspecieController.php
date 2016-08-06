@@ -178,7 +178,10 @@ class EspecieController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('especie',$model->attributes,"id = ".(int)$id."");
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 //		if(!isset($_GET['ajax']))
 //                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
