@@ -185,7 +185,7 @@
     </div>
     <div class="containerbutton">
                          <div class="row buttons">
-                             <a class="cancelarDireccion" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
+                             <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
                             <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
                             <div class="addDireccion">Nueva dirección</div> 
                         </div>

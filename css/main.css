@@ -1,39 +1,13 @@
-@font-face{
-	font-family:'Roboto-Medium';
-	src:url(../fonts/Roboto-Medium.ttf);
-}
-@font-face{
-	font-family:'Roboto-Regular';
-	src:url(../fonts/Roboto-Regular.ttf);
-}
-@font-face{
-	font-family:'Roboto-Light';
-	src:url(../fonts/Roboto-Light.ttf);
-}
-@font-face{
-	font-family:'Roboto-Black';
-	src:url(../fonts/Roboto-Black.ttf);
-}
-@font-face{
-	font-family:'Roboto-ThinItalic';
-	src:url(../fonts/Roboto-ThinItalic.ttf);
-}
-@font-face{
-	font-family:'Roboto-LightItalic';
-	src:url(../fonts/Roboto-LightItalic.ttf);
-}
-@font-face{
-	font-family:'Roboto-Bold';
-	src:url(../fonts/Roboto-Bold.ttf);
-}
-@font-face{
-	font-family:'Roboto-Italic';
-	src:url(../fonts/Roboto-Italic.ttf);
-}
-div, input
-{
+@import url("globals/botones.css");
+@import url("globals/fonts.css");
+
+
+div, 
+input{
     font-family: 'Roboto-Regular';
 }
+
+
 select option:hover
 {
     background-color: #49DBD0 !important;
@@ -45,16 +19,25 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	/*background: #EFEFEF;*/
 	background: #FFF;
 }
 
-#page
-{
-	margin: 0;
-	background: white;
-	/*border: 1px solid #C9E0ED;*/
-}
+
+
+/* ESTRUCTURA GLOBAL DEL SITIO */
+	
+	.container {
+		margin-left: 180px;
+	}
+
+	#page {
+		background: white;
+	}
+
+	#content {
+    	padding: 0;
+ 	}
+
 
 #header
 {
@@ -69,19 +52,16 @@ body
     display:block;
     width: calc(100% - 180px);
     z-index: 10;
-
 }
 
 
-#content
-{
-    padding: 0;
- }
+
+
 #contentWrapper
 {
-    margin-left: 179px;
     margin-top: 0px;
-    width: 100%;
+  
+ 
 }
 
 #sidebar
@@ -89,14 +69,7 @@ body
 	padding: 20px 20px 20px 0;
 }
 
-#footer
-{
-/*	padding: 10px;
-	margin: 10px 20px;
-	font-size: 0.8em;
-	text-align: center;
-	border-top: 1px solid #C9E0ED;*/
-}
+#footer{}
 
 #logo
 {
@@ -113,7 +86,6 @@ body
 	width:180px;
 	height: 100%;
 	box-sizing:border-box;
-/*	padding:0 10px;*/
     z-index: 10;
     box-shadow: 3px -2px 10px 0px rgba(0, 0, 0, 0.5 )
 }

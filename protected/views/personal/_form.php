@@ -25,13 +25,13 @@ $baseUrl = Yii::app()->baseUrl;
 <div class="form-containerWraper">
 <div class="form-cLeft">
 	<div class="row">
-		<label class="letreros">Nombre</label>
+		<label class="letreros">Nombre(s)</label>
 		<div class="form-cLarge"><?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?></div>
 		<?php echo $form->error($model,'nombre'); ?>
 	</div>
 
 	<div class="row">
-		<label class="letreros">Apellido</label>
+		<label class="letreros">Apellido(s)</label>
 		<div class="form-cLarge"><?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?></div>
 		<?php echo $form->error($model,'apellido'); ?>
 	</div>

@@ -151,12 +151,12 @@ class Usuarios extends CActiveRecord
     	
         return array
         (
-   //         'usuario',
-//            array
-//            (
-//                'name' => 'pwd',
-//                'value' => '$data->pwd'
-//            ),
+    //         'usuario',
+	//            array
+	//            (
+	//                'name' => 'pwd',
+	//                'value' => '$data->pwd'
+	//            ),
             array
             (
                 'name' => 'tipo_usr',
@@ -166,8 +166,8 @@ class Usuarios extends CActiveRecord
             array
             (
                 'name' => 'id_usr',
-                //'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
-                //'filter' => ''
+                'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
+                'filter' => ''
             ),
             array
             (

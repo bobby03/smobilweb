@@ -136,8 +136,11 @@ class CepaController extends Controller
 		if(isset($_POST['Cepa']))
 		{
 			$model->attributes=$_POST['Cepa'];
-			if($model->save())
+			if($model->save()){
 				$this->redirect(array('index'));
+			}
+				
+			
 		}
 
 		$this->render('update',array(
@@ -157,8 +160,8 @@ class CepaController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	
-	*/                echo json_encode('');
+		*/   
+		echo json_encode('');
 
 		}
 
