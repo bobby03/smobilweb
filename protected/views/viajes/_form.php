@@ -20,7 +20,7 @@
         )
     ));
 ?>
-
+<?php if($nuevo == false): ?>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -197,5 +197,11 @@
 
     </div>
 <?php $this->endWidget(); ?>
-
 </div><!-- form -->
+
+<?php else:?>
+SI ENTRA
+<?php endif;?>
+
+
+

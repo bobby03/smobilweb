@@ -1,7 +1,7 @@
 div.tabs
 {
     background-color: #0077B0;
-    margin-top: 15px; 
+    margin-top: 50px; 
 }
 div.tabs div.tab
 {
@@ -16,25 +16,18 @@ div.tabs div.tab
 }
 div.tabContent
 {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 div.tab.select
 {
     background-color: #09B7C9;
 }
 
-.add-wrapper {
-    width: 1200px;
-    margin: 0 auto;
-    height: 51px;
-    margin-top: 50px; 
-}
-.add-wrapper a {
-    display: block;
-}
+
 .agregar.viaje{
     background-image: url('../../images/menu/iconoViajes.svg');
     background-color: #0077B0;
+    margin: 5px 0;
 }
 
 div.tabs:after,
