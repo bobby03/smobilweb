@@ -53,7 +53,7 @@
                 </div>
             </div>
             
-            <div class='row buttons izq'>
+            <div class='row buttons floating'>
             <?php 
             if($o==1){
                 echo CHtml::submitButton('Finalizar');
