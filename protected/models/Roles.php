@@ -93,7 +93,7 @@ class Roles extends SMActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($act)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -102,7 +102,7 @@ class Roles extends SMActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre_rol',$this->nombre_rol,true);
 		$criteria->compare('activo',$this->activo);
-                $criteria->addCondition("activo=1");
+                $criteria->addCondition("activo=$act");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
