@@ -198,9 +198,13 @@ div.form div.tab div.row
 div.form div.tab div.row.buttons
 {
     float: right;
-    margin-top: 35px;
+    margin-top: 50px;
     width: 100px;
     margin-right: 167px;
+    /* --- */
+    position: fixed;
+    top:230px;
+    right: 0;
 }
 div.contenedorClientes
 {

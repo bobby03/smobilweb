@@ -154,6 +154,7 @@ class ViajesController extends Controller
                         ->where("solVi.id_viaje = :id",array(':id'=>(int)$id))
                         ->queryAll();
 //            }
+            // print_r($tanques);
             $this->render('view',array(
                 'model'=>$model,
                 'tanques'=>$tanques,
@@ -328,7 +329,7 @@ class ViajesController extends Controller
                     }
                 }
             }
-//            print_r($model);
+
             $this->render('create',array
             (
                 'model' =>$model,
@@ -390,9 +391,9 @@ class ViajesController extends Controller
                         $roles['tecnico'][$data->id_personal] = array('selected' => 'selected');
                 }
 		$this->render('update',array(
-			'model'     => $model,
-                        'personal'  => $personalModel,
-                        'roles'     => $roles
+			    'model'     => $model,
+                'personal'  => $personalModel,
+                'roles'     => $roles
 		));
 	}
 
@@ -836,7 +837,7 @@ EOF;
                     cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
                     sin($dLong / 2) * sin($dLong / 2);
                        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-                $fecha = strtotime($data['fecha_entrega']);
+                $fecha = isset($data['fecha_entrega'])?strtotime($data['fecha_entrega']): 'error';
                 $arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio']);
             }
             $total = count($arreglo);
@@ -885,6 +886,7 @@ EOF;
             switch ($flag)
             {
                 case 1: 
+                $valores = array();
                     foreach($datos as $data)
                     {
                         $valores[] = $data['ox'];
@@ -927,6 +929,7 @@ EOF;
                     );
                 break;
                 case 2: 
+                $valores = array();
                     foreach($datos as $data)
                     {
                         $valores[] = $data['temp'];
@@ -972,9 +975,10 @@ EOF;
                     );
                 break;
                 case 3: 
+                $valores = array();
                     foreach($datos as $data)
                     {
-                        $valores[] = $data['ph'];
+                        $valores[] = isset($data['ph'])?$data['ph']:0;
                     }
                     $return =
                     array
@@ -1013,6 +1017,7 @@ EOF;
                     );
                 break;
                 case 4: 
+                $valores = array();
                     foreach($datos as $data)
                     {
                         $valores[] = $data['cond'];
@@ -1054,6 +1059,7 @@ EOF;
                     );
                 break;
                 case 5:
+                $valores = array();
                     foreach($datos as $data)
                     {
                         $valores[] = $data['orp'];

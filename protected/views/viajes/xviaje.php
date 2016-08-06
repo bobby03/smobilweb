@@ -34,7 +34,7 @@
                 </div>
                 <div id="vc2">
                     <p><span class="vresalta">Especie:</span> <?php echo Especie::model()->getEspecie($data['especie']);?> </p>
-                    <p><span class="vresalta">No. Organismos:</span> <?php echo $data['cantidad'];?></p>
+                    <p><span class="vresalta">No. Organismos:</span> <?php echo $data['tanques']>=1?$data['cantidad']/ $data['tanques']:'revisar tanques';?></p>
                     <table id="vcont">
                         <tr class="pf">
                             <th class="pc"></th><th>Mínima</th><th>Máxima</th>
