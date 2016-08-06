@@ -1,6 +1,9 @@
 $(document).ready(function()
 {
     var tot = 1;
+    var loc = window.location.href;
+    var index2 = loc.indexOf('update');
+    var direccion = loc.substring(0,index2);
     if(!$('.pedidos').hasClass('hide'))
     {
         $('.pedidoViaje').each(function()
@@ -114,6 +117,32 @@ $(document).ready(function()
             $('#Solicitudes_id_clientes').trigger('chosen:update');
             $('#solicitudes-form').submit();
         });
+        $('.viajeLoc').click(function()
+        {
+            var id2 = $(this).data('viaje');
+            var url = direccion+'GetDirecciones';
+            $.ajax(
+            {
+                type: 'GET',
+                url: url,
+                dataType: 'JSON', 
+                data:
+                {
+                    id: id2
+                },
+                success:function(data)
+                {
+                    $.colorbox(
+                    {
+                        html: data
+                    });
+                },
+                error:function(a,b,c)
+                {
+                    console.log(a,b,c);
+                }
+            });
+        });
     });
 
     $('div.guardar').click(function()
@@ -192,7 +221,8 @@ $(document).ready(function()
                 $(this).removeClass('hide');
         });
     }
-    $('#Solicitudes_id_clientes').change(
+    $('#Solicitudes_id_clientes').change
+    (
         function(){
            var sc = $('#Solicitudes_id_clientes').val();
             if (sc== "") {
@@ -203,7 +233,8 @@ $(document).ready(function()
             }
         }
         );
- $('#Especie_id').change(
+    $('#Especie_id').change
+    (
         function(){
            var eid = $('#Especie_id').val();
             if (eid== "") {
@@ -214,7 +245,8 @@ $(document).ready(function()
             }
         }
         );
- $('#Cepa_id').change(
+    $('#Cepa_id').change
+    (
         function(){
            var cepaID = $('#Cepa_id').val();
             if (cepaID== "") {
@@ -226,7 +258,8 @@ $(document).ready(function()
         }
         );
 
- $('#ClientesDomicilio_domicilio').change(
+    $('#ClientesDomicilio_domicilio').change
+    (
         function(){
            var direccionID = $('#ClientesDomicilio_domicilio').val();
            console.log(direccionID);
@@ -237,5 +270,5 @@ $(document).ready(function()
                 $('#ClientesDomicilio_domicilio_chosen').css('border-color', '#0077B0');
             }
         }
-        );
+    );
 });

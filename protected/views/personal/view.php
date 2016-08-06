@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 $model->id_rol = Roles::model()->getRol($model->id_rol);
 ?>
 
-<h1>Ver personal #<?php echo $model->id; ?></h1>
+<h1>Ver empleado <?php echo $model->nombre.' '.$model->apellido; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

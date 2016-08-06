@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create/tipo/1">
         <div class="agregar estacion"></div>
     </a>
     </div><!-- search-form -->
@@ -26,8 +26,13 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion-grid',
             'summaryText'=>'',
-            'dataProvider'=>$model->search(),
-            'columns'=>$model->adminSearch()
+            'dataProvider'=>$model->search1(1),
+            'columns'=>$model->adminSearch(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
         )); 
     ?>
 </div>

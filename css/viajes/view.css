@@ -74,6 +74,11 @@
     color: #000000;
     padding-left: 5px;
 }
+.txtA.ultimo span
+{
+    float: left;
+    padding-left: 0;
+}
 .datosWraper > div > span
 {
     color: #000000;
@@ -568,6 +573,7 @@ div.mapaPopup .titulo
 }
 
 
+
 .datosWraper:after,
 .detallesViaje:after,
 .allTanques:after,
@@ -580,7 +586,8 @@ div.mapaPopup .titulo
 .menuParametros:after,
 .menuTanques:after,
 .menuArriba:after,
-.entregasPopup:after
+.entregasPopup:after,
+.direccion-wraper:after
 {
     display: block;
     clear: both;

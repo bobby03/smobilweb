@@ -9,7 +9,10 @@
 <?php 
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/clientes/googleMap.js');
+    $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
+    $cs->registerScriptFile($baseUrl.'/js/clientes/validacion.js');
     $cs->registerCssFile($baseUrl.'/css/clientes/create.css');
+    $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css');
 ?>
 <div class="form">
 
@@ -21,14 +24,13 @@
     // controller action is handling ajax validation correctly.
     // There is a call to performAjaxValidation() commented in generated controller code.
     // See class documentation of CActiveForm for details on this.
-    'enableAjaxValidation'=>true,
+    // 'enableAjaxValidation'=>true,
     'clientOptions' => array(
         'validateOnSubmit' => true,
         'validateOnChange' => true,
         'validateOnType' => true,
         ),
     )); 
-    $noDireccion = 1;
 ?>
 
 
@@ -45,17 +47,17 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros">Nombre de Contacto</label>
+                        <label class="letreros">Nombre(s) de Contacto</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'nombre_contacto'); ?>
                            </div>
                     </div>
 
                     <div class="row">
-                        <label class="letreros"> Apellido de Contacto </label>
+                        <label class="letreros"> Apellido(s) de Contacto </label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'apellido_contacto'); ?>
                             </div>
                     </div>
@@ -72,7 +74,7 @@
                     <div class="row">
                         <label class="letreros">RFC</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+                            <?php echo $form->textField($model,'rfc',array('size'=>12,'maxlength'=>12)); ?>
                             <?php echo $form->error($model,'rfc'); ?>
                            </div>
                     </div>
@@ -80,7 +82,7 @@
                     <div class="row">
                         <label class="letreros">Teléfono</label>
                             <div class="form-cLarge">
-                            <?php echo $form->numberField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
+                            <?php echo $form->textField($model,'tel',array('size'=>14,'minlength'=>14)); ?>
                             <?php echo $form->error($model,'tel'); ?>
                            </div>
                     </div>
@@ -92,94 +94,102 @@
                    </div>
         </span>
         <span class= "containerBox">
-                    <div class="form-cLeft1">   
-                                <div class="row mapa">
-                                    <?php if($model->isNewRecord):?> 
-                                        <div class="allMapa" data-id="1">
-                                           <label class="letreros">Ubicación</label>
-                                            <div id="map" data-map="1"></div>
-                                             <div class="row ubi">
-                                         
-                                                <div class="form-cXMedium">
-                                                    <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
-                                                    <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
-                                                </div>
-                                            </div>
-                                              <div class="row dom">
-                                                <label class="letreros">Domicilio</label>
-                                                    <div class="form-cXLarge">
-                                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'ClienteDomicilio')); ?>
-                                                    <?php echo $form->error($direccion,'domicilio'); ?>
-                                                    </div>
-                                            </div>
-                                            <div class="row des">
-                                               <label class="letreros">Descripción</label>
-                                                    <div class="form-cXLarge">
-                                                    <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
-                                                    <?php echo $form->error($direccion,'descripcion');?>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    <?php else:?>
-                                        <?php $i = 1;?>
-                                        <?php if(count($direccion['domicilio'])>0):?>
-                                            <?php foreach($direccion['domicilio'] as $data):?>
-                                                <div class="allMapa" data-id="<?php echo $i;?>">
-                                                    <div class="row dom">
-                                                        <label class="letreros">Domicilio</label>
-                                                        <?php echo $form->textField($direccion,"domicilio[$i][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
-                                                        <?php echo $form->error($direccion,'domicilio'); ?>
-                                                    </div>
-                                                    <div id="map" data-map="<?php echo $i;?>"></div>
-                                                    <div class="row ubi">
-                                                       <label class="letreros">Ubicación</label>
-                                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
-                                                        <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
-                                                    </div>
-                                                    <div class="row des">
-                                                        <label class="letreros">Descripción</label>
-                                                        <?php echo $form->textField($direccion,"domicilio[$i][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
-                                                        <?php echo $form->error($direccion,'descripcion');?>
-                                                    </div>
-                                                    <div class="row">
-                                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][id]")?>
-                                                    </div>
-                                                </div>
-                                                <?php $i++;?>
-                                            <?php endforeach;?>
-                                        <?php else:?>
-                                            <div class="allMapa" data-id="1">
-                                                <div class="row dom">
-                                                    <?php echo $form->labelEx($direccion,'domicilio'); ?>
-                                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
-                                                    <?php echo $form->error($direccion,'domicilio'); ?>
-                                                </div>
-                                              <div id="map" data-map="1"></div>
-                                                <div class="row ubi">
-                                                    <?php echo $form->labelEx($direccion,'ubicacion_mapa'); ?>
-                                                    <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
-                                                    <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
-                                                </div>
-                                                <div class="row des">
-                                                    <?php echo $form->labelEx($direccion,'descripcion'); ?>
-                                                    <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
-                                                    <?php echo $form->error($direccion,'descripcion');?>
-                                                </div>
-                                            </div>
-                                        <?php endif;?>
-                                    <?php endif;?>
+            <div class="form-cLeft1">   
+                <div class="row mapa">
+                    <?php if($model->isNewRecord):?> 
+                        <div class="allMapa" data-id="1">
+                            <div id="map" data-map="1"></div>
+                             <div class="row ubi">
+                                <div class="form-cXMedium">
+                                    <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                    <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
+                                </div>
+                            </div>
+                            <div class="row dom">
+                                <label class="letreros">Domicilio</label>
+                                <div class="form-cXLarge">
+                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'ClienteDomicilio')); ?>
+                                    <?php echo $form->error($direccion,'domicilio'); ?>
+                                </div>
+                            </div>
+                            <div class="row des">
+                               <label class="letreros">Descripción</label>
+                                    <div class="form-cXLarge">
+                                    <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                                    <?php echo $form->error($direccion,'descripcion');?>
                                     </div>
+                            </div>
+                        </div>
+                    <?php else:?>
+                        <?php $i = 1;?>
+                        <?php if(count($direccion['domicilio'])>0):?>
+                            <?php foreach($direccion['domicilio'] as $data):?>
+                                <div class="allMapa" data-id="<?php echo $i;?>">
+                                    <div id="map" data-map="<?php echo $i;?>"></div>
+                                    <div class="row ubi">
+                                        <div class="form-cXMedium">
+                                            <?php echo $form->hiddenField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                            <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="row dom">
+                                        <div class="form-cXLarge">
+                                            <label class="letreros">Domicilio</label>
+                                            <?php echo $form->textField($direccion,"domicilio[$i][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                                            <?php echo $form->error($direccion,'domicilio'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="row des">
+                                        <div class="form-cXLarge">
+                                            <label class="letreros">Descripción</label>
+                                            <?php echo $form->textField($direccion,"domicilio[$i][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                                            <?php echo $form->error($direccion,'descripcion');?>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][id]")?>
+                                    </div>
+                                </div>
+                                <?php $i++;?>
+                            <?php endforeach;?>
+                        <?php else:?>
+                            <div class="allMapa" data-id="1">
+                              <div id="map" data-map="1"></div>
+                                <div class="row ubi">
+                                    <div class="form-cXMedium">
+                                        <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                        <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
+                                    </div>
+                                </div>
+                                <div class="row dom">
+                                    <div class="form-cXLarge">
+                                        <label class="letreros">Domicilio</label>
+                                        <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                                        <?php echo $form->error($direccion,'domicilio'); ?>
+                                    </div>
+                                </div>
+                                <div class="row des">
+                                    <div class="form-cXLarge">
+                                        <label class="letreros">Descripción</label>
+                                        <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                                        <?php echo $form->error($direccion,'descripcion');?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                    <?php endif;?>
+                    </div>
 
-                                    <div class="containerbutton">
-                                         <div class="row buttons">
-                                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
-                                            <div class="addDireccion">Agregar dirección</div> 
-                                        </div>
-                                    </div>
                 </div>
            </span>
     </div>
-
+    <div class="containerbutton">
+                         <div class="row buttons">
+                             <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
+                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+                            <div class="addDireccion">Nueva dirección</div> 
+                        </div>
+                    </div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

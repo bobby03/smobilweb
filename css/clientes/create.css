@@ -1,13 +1,24 @@
-/*#map 
-{
-    width: 500px;
-    height: 400px;
-}*/
-
-
 #map {
-    width: 550px;
+    width: 500px;
     height: 218px;
+}
+
+div.form .row.buttons
+{
+    width: 100%;
+}
+
+a.cancelarDireccion {
+    float: left;
+    margin-left: 63px;
+}
+
+div.form input[type="submit"]
+{
+    float: left;
+    margin-left: 23%;
+    width: 185px !important;
+    font-size: 15px;
 }
 
 div.addDireccion {
@@ -18,9 +29,22 @@ div.addDireccion {
     line-height: 30px;
     font-size: 15px;
     width: 185px;
+    margin-right: 70px;
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
+}
+
+
+div.allMapa
+{
+    margin-bottom: 47px;
+    width: 500px;
+    float: left;
+}
+div.allMapa:nth-child(odd)
+{
+    margin-right: 75px;
 }
 div.allMapa:last-child div.row.des
 {
@@ -37,16 +61,7 @@ div.form input, div.form textarea, div.form select, div.form .chosen-container
     text-indent: 5px;
     width: 100% !important;
 }
-div.form input[type="submit"]
-{
-    float: left;
-    width: 185px !important;
-    font-size: 15px;
-}
-div.form .row.buttons
-{
-    width: 100%;
-}
+
 div.form-containerWraper:after
 {
     content: '';
@@ -56,10 +71,6 @@ div.form-containerWraper:after
 
 /*   *    */
 
-div.form {
-    width: 90% !important;
-    margin: 0 auto;
-}
 div.form-containerWraper:after
 {
     content: '';
@@ -67,8 +78,7 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-    width: 100%;
-  float: right;
+   width: 100%;
 }
 
 label.letreros{
@@ -109,7 +119,7 @@ width: 300px;
 
  .form-cLeft1 {
     float: left;
-    width:550px;
+    /*width:550px;*/
     margin-left: 60px;
 }
 .form-cRight1{
@@ -162,7 +172,7 @@ margin-bottom:10px;
 .letrero-container{
  background-color:  #E4E7EB;
  height: 4px;
- width:80%;
+ /*width:80%;*/
 }
 .letrero-containerx{
   background-color:  #E4E7EB;
@@ -172,34 +182,19 @@ margin-bottom:10px;
  }
 
 
-body.clientes-create div.dom div input{
-  width:550px !important;
-}
 
-body.clientes-create div.des div input{
-  width:550px !important;
-}
-
-
-body.clientes-create  #content{
+/*body.clientes-create  #content{
     background-image: url('./../../images/dashboard/logoTransparente.png');
     background-position: right 15% top 70%;
     background-repeat: no-repeat;
 
-}
-
-
-body.clientes-create #sidebar{
-  display: none;
-}
+}*/
 
 
 
 /*
 *  Iconos a Inputs
 */
-
-
 
 
 .ClienteDomicilio{
@@ -209,14 +204,12 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0 !important;
 }
+.ClienteDomicilio.error{
+  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
 .error .ClienteDomicilio{
   background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_error.png');
 }
-.success .ClienteDomicilio{
-  background-image: url('../../images/clientes/iconoDomicilio.png'), url('../../images/form/bg_success.png');
-}
-
-
 
 
 
@@ -228,11 +221,11 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0;
 }
-.error #Clientes_nombre_empresa{
+#Clientes_nombre_empresa.error{
   background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
 }
-.success #Clientes_nombre_empresa{
-  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_success.png');
+.error #Clientes_nombre_empresa{
+  background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg_error.png');
 }
 
 
@@ -245,11 +238,11 @@ body.clientes-create #sidebar{
   padding-left: 35px;
   border-left:0;
 }
-.error #Clientes_rfc{
+#Clientes_rfc.error{
   background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
 }
-.success #Clientes_rfc{
-  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_success.png');
+.error #Clientes_rfc{
+  background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg_error.png');
 }
 
 
@@ -265,9 +258,11 @@ body.clientes-create #sidebar{
 #Clientes_correo.error{
   background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_correo.success{
-  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_success.png');
+.error #Clientes_correo{
+  background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg_error.png');
 }
+
+
 
 
 
@@ -282,9 +277,10 @@ body.clientes-create #sidebar{
 #Clientes_tel.error{
   background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_tel.success{
-  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_success.png');
+.error #Clientes_tel{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
+
 
 
 
@@ -299,10 +295,9 @@ body.clientes-create #sidebar{
 #Clientes_nombre_contacto.error{
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
 }
-#Clientes_nombre_contacto.success{
-  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_success.png');
+.error #Clientes_nombre_contacto{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
 }
-
 
 
 
@@ -315,7 +310,9 @@ body.clientes-create #sidebar{
 }
 #Clientes_apellido_contacto.error{
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
 }
-#Clientes_apellido_contacto.success{
-  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_success.png');
+.error #Clientes_apellido_contacto{
+  background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
 }

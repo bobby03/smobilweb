@@ -4,7 +4,9 @@
 /* @var $form CActiveForm */
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/roles/roles.css?id='.rand());
     $cs->registerScriptFile($baseUrl.'/js/roles/roles.js');
+    $cs->registerCssFile($baseUrl.'/css/roles/create.css');
 ?>
 
 <div class="form">

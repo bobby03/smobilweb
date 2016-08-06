@@ -21,9 +21,29 @@ div.search-form div.wide.form
     height: auto;
     min-height: 24px;
 }
+.chosen-container .chosen-results::-webkit-scrollbar 
+{
+    width: 5px;
+}
+.chosen-container .chosen-results::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    background-color: #CEDCE4;
+    border-radius: 10px;
+}
+.chosen-container .chosen-results::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #939598;
+}
 .chosen-container-single .chosen-single div b
 {
     display: none !important;
+}
+.chosen-container-single .chosen-single span
+{
+    line-height: 26px;
 }
 div.form div.row.cantidad input
 {
@@ -92,11 +112,13 @@ div.form input[type="submit"]
 }
 div.search-form input
 {
-    border-radius:10px;
-    width: 160px;
-    text-indent: 10px;
-    border:1px solid #B0B0B0;
-    min-height: 20px;
+    min-height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    width: 100%;
 }
 .chosen-container-active .chosen-single
 {
@@ -207,7 +229,8 @@ div.form textarea.error,
 div.form select.error
 {
 	background: #FEE;
-	border-color: #FFF;
+    border-color: #cc0403;
+	
 }
 
 div.form div.success input,

@@ -10,6 +10,7 @@ div.addTanque
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
+    margin-right: 130px;
 }
 div.editarTanque
 {
@@ -26,14 +27,18 @@ div.editarTanque
 div.form div.row.buttons
 {
     margin: 0;
+    margin-top: 27px;
+    margin-bottom: 22px;
+    /*float: right;*/
 }
 div.form input[type="submit"]
 {
     width: 171px; 
-    margin-right: 50px;
     font-size: 18px;
     height: 35px;
     line-height: 35px;
+    float: right;
+    margin-right: 25px;
 }
 div.tanque
 {
@@ -45,6 +50,7 @@ div.tanque
     border-radius: 5px;
     /*overflow: hidden;*/
     padding: 20px;
+    margin-bottom: 50px;
 }
 .form-container1{
 float:left;
@@ -73,19 +79,11 @@ div.form-containerWraper:after
 
 /*   *    */
 
-div.form {
-    width: 90% !important;
-    margin: 0 auto;
-}
 div.form-containerWraper:after
 {
     content: '';
     display:block;
     clear: both;
-}
-div.containerbutton
-{
-    margin-left: 597px;
 }
 
 label.letreros{
@@ -100,7 +98,7 @@ label.letreros{
 }
 
 .form-cLarge{
-    width:250px;
+    width:100%;
 }
 
 .form-cXLarge{

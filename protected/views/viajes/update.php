@@ -7,6 +7,8 @@ $baseUrl = Yii::app()->baseUrl;
     $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/viajes/update.js');
+    $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
+    $cs->registerScriptFile($baseUrl.'/js/viajes/validacion.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (

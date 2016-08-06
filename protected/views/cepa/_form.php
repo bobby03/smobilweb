@@ -18,7 +18,6 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
-
 	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 		<span class="containerBox">

@@ -92,9 +92,23 @@ class ClientesController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id}");
+            $array = array();
+            $direccion = new ClientesDomicilio;
+            $i = 1;
+            foreach($query as $data)
+            {
+                $array[$i]['domicilio'] = $data->domicilio;
+                $array[$i]['ubicacion_mapa'] = $data->ubicacion_mapa;
+                $array[$i]['descripcion'] = $data->descripcion;
+                $array[$i]['id'] = $data->id;
+                $i++;
+            }
+            $direccion->domicilio = $array;
+            $this->render('view',array(
+                'model'=>$this->loadModel($id),
+                'direccion' => $direccion
+            ));
 	}
 
 	/**
@@ -176,10 +190,10 @@ class ClientesController extends Controller
                         }
                         $update->save();
                     }
+                    fb('redirect');
                     $this->redirect(array('index'));
                 }
             }
-
             $this->render('update',array(
                 'model'     =>$model,
                 'direccion' =>$direccion
@@ -193,7 +207,10 @@ class ClientesController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('clientes',$model->attributes,"id = ".(int)$id."");
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		//if(!isset($_GET['ajax']))

@@ -105,11 +105,16 @@ float:left;
   padding-left: 30px;
   border-left:0;
 }
-
+.error #Personal_nombre{
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
 #Personal_nombre.error{
   background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+
+
 
 #Personal_apellido {
   background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg.png');
@@ -118,11 +123,15 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
 #Personal_apellido.error {
   background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_error.png');
-    border: 2px solid #cc0403;
+  border: 2px solid #cc0403;
 }
+.error #Personal_apellido {
+  background-image: url('../../images/personal/iconoNombre.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
+
 
 #Personal_tel{
   background-image: url('../../images/personal/iconoTelefono.png'), url('../../images/form/bg.png');
@@ -131,11 +140,16 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
 #Personal_tel.error{
   background-image: url('../../images/personal/iconoTelefono.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+.error #Personal_tel{
+  background-image: url('../../images/personal/iconoTelefono.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
+
+
 
 #Personal_rfc{
   background-image: url('../../images/personal/iconoRFC.png'), url('../../images/form/bg.png');
@@ -144,11 +158,16 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
-#Personal_rfc.error{
+.error #Personal_rfc{
   background-image: url('../../images/personal/iconoRFC.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+ #Personal_rfc.error{
+  background-image: url('../../images/personal/iconoRFC.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
+
+
 
 #Personal_domicilio{
   background-image: url('../../images/personal/iconoDomicilio.png'), url('../../images/form/bg.png');
@@ -157,11 +176,17 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
+.error #Personal_domicilio{
+  background-image: url('../../images/personal/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
 #Personal_domicilio.error{
   background-image: url('../../images/personal/iconoDomicilio.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+
+
+
 
 #Personal_correo{
   background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg.png');
@@ -170,11 +195,16 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
 #Personal_correo.error{
   background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+.error #Personal_correo{
+  background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
+
+
 
 
 #Personal_id_rol{
@@ -184,7 +214,10 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
+.error #Personal_id_rol{
+  background-image: url('../../images/personal/iconoTipoUsuario.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
 #Personal_id_rol.error{
   background-image: url('../../images/personal/iconoTipoUsuario.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
@@ -198,11 +231,15 @@ float:left;
   padding-left: 35px;
   border-left:0;
 }
-
+.error #Personal_puesto{
+  background-image: url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
 #Personal_puesto.error{
   background-image: url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+
 
 
 #content{

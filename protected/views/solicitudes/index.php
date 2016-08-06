@@ -28,6 +28,11 @@
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearch(),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
         'afterAjaxUpdate' => "function(id,data)
         {
             $('tr td:nth-child(2)').each(function()

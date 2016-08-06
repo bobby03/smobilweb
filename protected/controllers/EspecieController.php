@@ -153,6 +153,23 @@ class EspecieController extends Controller
 		));
 		echo json_encode($model);
 	}
+	public function actionUpdate1()
+	{
+		$id=$_POST['id'];
+		$model=$this->loadModel($id);
+		$model->nombre=$_POST['especie'];
+
+		if($model->save()){
+		echo json_encode(true);	//$this->redirect(array('index'));
+		}
+				
+
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		//echo json_encode($model);
+		
+	}
 
 	/**
 	 * Deletes a particular model.
@@ -161,7 +178,10 @@ class EspecieController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('especie',$model->attributes,"id = ".(int)$id."");
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 //		if(!isset($_GET['ajax']))
 //                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));

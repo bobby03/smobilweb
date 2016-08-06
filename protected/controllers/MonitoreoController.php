@@ -2,6 +2,88 @@
 
 class MonitoreoController extends Controller
 {
+    /**
+	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 */
+        public function actionDelete($id)
+	{
+            Estacion::model()->findByPk($id)->delete();
+            echo json_encode('');
+        }
+	public $layout='//layouts/column2';
+
+	/**
+	 * @return array action filters
+	 */
+	public function filters()
+	{
+		return array(
+			'accessControl', // perform access control for CRUD operations
+			//'postOnly + delete', // we only allow deletion via POST request
+		);
+	}
+        public function accessRules()
+        {
+            $return = array();
+            if(Yii::app()->user->checkAccess('createEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('create'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('readEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('index','view'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('editEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('update'),
+                    'users'     => array('*')
+                );
+            if(Yii::app()->user->checkAccess('deleteEstacion') || Yii::app()->user->id == 'smobiladmin')
+                $return[] = array
+                (
+                    'allow',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            else
+                $return[] = array
+                (
+                    'deny',
+                    'actions'   => array('delete'),
+                    'users'     => array('*')
+                );
+            return $return;
+	}
 	public function actionIndex()
 	{
 
@@ -38,12 +120,17 @@ class MonitoreoController extends Controller
     
 	public function actionView($id)
     {
-        $tanques = Yii::app()->db->createCommand('SELECT * FROM '.chr(40).'SELECT uploadTemp.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
+        $cantTanques= Yii::app()->db->createCommand('SELECT count(t.id) as cTan FROM tanque t
+        JOIN estacion e ON t.id_estacion=e.id
+        WHERE t.activo=1
+        AND t.id_estacion='.$id)
+        ->queryRow();
+        $tanques = Yii::app()->db->createCommand('SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
         FROM estacion
         JOIN tanque ON estacion.id=tanque.id_estacion
-        JOIN uploadTemp ON tanque.id=uploadTemp.id_tanque
+        JOIN registro_camp rc ON tanque.id=rc.id_tanque
         WHERE estacion.id='.$id.'
-        ORDER BY tanque.id,uploadTemp.id DESC LIMIT 2000'.chr(41).' consulta
+        ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
         GROUP BY idtan')
                 ->queryAll();
         $estaciones = Yii::app()->db->createCommand()
@@ -56,7 +143,8 @@ class MonitoreoController extends Controller
 
             $this->render('monitoreo',array(
                 'fijas'=>$this->loadModel($estaciones),
-                'tanques'=>$tanques
+                'tanques'=>$tanques,
+                'cantTanques'=>$cantTanques
             ));
     }
         public function loadModel($estacion)

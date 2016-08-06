@@ -26,7 +26,11 @@ $this->breadcrumbs=array(
     <?php $this->widget('zii.widgets.grid.CGridView', array(
             'id'=>'clientes-grid',
             'dataProvider'=>$model->search(),
-
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
             'summaryText'=> '',
             'columns'=>$model->adminSearch()
     )); ?>
