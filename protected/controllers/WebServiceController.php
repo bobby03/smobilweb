@@ -27,6 +27,7 @@ class WebServiceController extends Controller
 			);
 		$this->render('index', array('data'=>$data) );
 	}
+
     public function actionUpload(){
         //upload?lat=31.8710559&lng=-116.6669508&id_viaje=30&idTank=28&CT=1&OX=n%2Fa&PH=4.215&T2=22.50&EC=n%2Fa&OD=115.01
         $Campaing = array();
@@ -122,6 +123,7 @@ class WebServiceController extends Controller
        
         echo json_encode($Campaing);
     }
+
     public function actionDriver(){
     	$driver = isset($_GET['driver'])?$_GET['driver']:null;
         $pass = isset($_GET['pass'])?$_GET['pass']:null;
@@ -167,6 +169,7 @@ class WebServiceController extends Controller
     		
     	echo json_encode($ax);
     }
+
     public function actionGetViaje(){
         $idResp = isset($_GET['idResp'])?$_GET['idResp']:0;
         $idViaje = isset($_GET['Viaje'])?$_GET['Viaje']:0;
@@ -266,6 +269,7 @@ class WebServiceController extends Controller
     }
         echo json_encode($result);
     }
+
     public function actionSolicitudes(){
         //get idViaje, datos responsable, solicitudes.
         $idResp = isset($_GET['id'])?$_GET['id']:0; // id
@@ -294,7 +298,7 @@ class WebServiceController extends Controller
             //----------------------- /USER DATA  RESP-----------------------
                 //----------------------- Plataforma Viaje ----------------------------
             $PlataformasViaje = Yii::app()->db->createCommand()
-                ->select('v.id, id_solicitudes , id_clientes, status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, E.ID AS ID_EST')
+                ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, E.ID AS ID_EST')
                 ->from('viajes  v')
                 ->join('estacion e','id_estacion = e.id')
                 ->join('solicitudes s','s.id = v.id_solicitudes')
@@ -438,6 +442,7 @@ class WebServiceController extends Controller
         // echo json_encode($rx);
         echo json_encode($rx);
     }
+
     public function actionGetDataDriver(){
     	// $ax = isset($_GET['ax'] )?$_GET['ax']:'0';
         $ac = null;
@@ -489,10 +494,28 @@ class WebServiceController extends Controller
     		$rx = array('Name'=>'NO TRIP','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
     	echo json_encode($rx);
     }
+
     public function actionReceiveData(){
     	$dt=isset($_GET['dt'])?$_GET['dt']:"0";
     	//query
     	$sql = "insert into table (data) values (dt) ".$dt;
     	echo $sql;
     }
+    public function actionUpdatestatus(){
+        $idViaje = isset($_GET['id'])?$_GET['id']:0;
+        $status = isset($_GET['status'])?$_GET['status']:0;
+        $table = 'viajes';
+        $column = array('status'=>$status);
+        $conditions = "id = :idViaje";
+        $params = array(":idViaje"=>$idViaje);
+
+        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+        $aResult = null;
+        if($update > 0)
+            $aResult = array('sCode'=>"OK",'upadted'=>$update,'code'=>200);
+        else
+            $aResult = array('sCode'=>"NO",'upadted'=>$update,'code'=>300);
+        echo json_encode($aResult);
+    }
+
 }
