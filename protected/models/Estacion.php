@@ -78,10 +78,10 @@ class Estacion extends CActiveRecord
 
              array('disponible','required','message'=>'Este campo es obligatorio'),
 
-			array('id, disponible, activo', 'numerical', 'integerOnly'=>true),
+			array('id, disponible, activo, id_granja', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),
+			array('id, id_granja, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -104,6 +104,7 @@ class Estacion extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'id_granja' => 'ID granja',
 			'tipo' => 'Tipo',
 			'identificador' => 'Identificador',
 			'no_personal' => 'No Personal',
@@ -144,6 +145,7 @@ class Estacion extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('id_granja',$this->id_granja);
 		$criteria->compare('tipo',$this->tipo);
 		$criteria->compare('identificador',$this->identificador,true);
 		$criteria->compare('no_personal',$this->no_personal);
@@ -160,13 +162,14 @@ class Estacion extends CActiveRecord
                         )
 		));
 	}
-    public function search1($tipo)
+    public function search1($tipo,$act)
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
 
         $criteria=new CDbCriteria;
 
         $criteria->compare('id',$this->id);
+        $criteria->compare('id_granja',$this->id_granja);
         $criteria->compare('tipo',$this->tipo);
         $criteria->compare('identificador',$this->identificador,true);
         $criteria->compare('no_personal',$this->no_personal);
@@ -175,7 +178,7 @@ class Estacion extends CActiveRecord
         $criteria->compare('ubicacion',$this->ubicacion,true);
         $criteria->compare('disponible',$this->disponible);
         $criteria->compare('activo',$this->activo);
-        $criteria->addCondition("activo=1");
+        $criteria->addCondition("activo=$act");
         $criteria->addCondition("tipo=$tipo");
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
@@ -340,7 +343,7 @@ class Estacion extends CActiveRecord
                             'url' => 'Yii::app()->createUrl("estacion/update", array("id"=>$data->id))',
                         )
                     )
-        )
+                )
             );
         }
 }

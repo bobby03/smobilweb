@@ -1,5 +1,13 @@
 $(document).ready(function()
 { 
+     $('.tab').click(function()
+    {
+        var id = $(this).attr('data-id');
+        $('.tab').removeClass('select');
+        $(this).addClass('select');
+        $('.tabContent').addClass('hide');
+        $('[data-tan="'+id+'"]').removeClass('hide');
+    });
     checkBox();
     $('div.botonTodos').click(function()
     {
@@ -109,10 +117,11 @@ $(document).ready(function()
             var check = $(this).find('a.view').attr('href');
             var index = check.lastIndexOf('/');
             var id = parseInt(check.substring(index+1));
-            if(id == 1 || id == 2 || id == 3)
-                $(this).find('a').remove();
-            else
-                $(this).find('a.view').remove();
+            if(id == 1 || id == 2 || id == 3){
+                $(this).find('a.delete').remove();
+                $(this).find('a.update').remove();
+            }
+            
         });
     }
 
