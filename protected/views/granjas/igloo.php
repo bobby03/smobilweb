@@ -6,12 +6,12 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
    ?>
-
+<h1>Crear nuevo igloo</h1>
 <div class="form">
 	<?php $cs->registerCssFile($baseUrl.'/css/estacion/create.css') ?>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'estacion-form',
+	'id'=>'igloo-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -81,7 +81,7 @@
             <?php endif;?>
             <div class="containerbutton">
                     <div class="row buttons">
-                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+                            <?php echo CHtml::submitButton('Guardar'); ?>
                     </div>
             </div>
         </div>
