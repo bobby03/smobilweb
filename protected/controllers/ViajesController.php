@@ -19,6 +19,7 @@ class ViajesController extends Controller
 		);
 	}
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
+        fb(Pedidos::model()->findAll("id_solicitud = {$solicitud}"));
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
             // $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");

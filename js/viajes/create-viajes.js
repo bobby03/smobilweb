@@ -18,9 +18,9 @@ $(document).ready(function() {
 		console.log('solicitud: '+solicitud);
 
 		$.ajax({
-			type:'POST',
+			type:'GET',
             url: 'GetTanquesConSolicitud',
-            dataType: 'json',
+            dataType: 'JSON',
             data: {
             	solicitud: solicitud,
             	camion: camion
