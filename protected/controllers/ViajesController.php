@@ -19,9 +19,11 @@ class ViajesController extends Controller
 		);
 	}
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
-        fb(Pedidos::model()->findAll("id_solicitud = {$solicitud}"));
+            fb(Pedidos::model()->findAll("id_solicitud = {$solicitud}"));
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
+
+   
             // $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");
             // $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 1 AND activo = 1");
             // $return = array();
@@ -87,7 +89,13 @@ class ViajesController extends Controller
                 ?>
             </div>-->
     */
-            echo json_encode( $pedidos );
+
+            $this->layout=false;
+            header('Content-type: application/json');
+            $data=array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\'));'),$pedidos);
+            echo json_encode($data);
+            Yii::app()->end(); 
+
         }
 	/**
 	 * Specifies the access control rules.
