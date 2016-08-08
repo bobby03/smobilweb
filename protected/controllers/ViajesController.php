@@ -19,78 +19,52 @@ class ViajesController extends Controller
 		);
 	}
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
-            fb(Pedidos::model()->findAll("id_solicitud = {$solicitud}"));
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
             $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");
             $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 1 AND activo = 1");
-            // $return = array();
-            // $return['Tanques_ocupados'] = $tanquesOcupados;
-            // $return['Tanques_desocupados'] = $tanquesDesocupados;
-            // $return['pedidos'] = $pedidos;    
-    /*
+            $total_tanques = count($tanquesDesocupados) + count($tanquesOcupados);
 
-                    <?php// $tot = 1;?>
-                    <?php //foreach($pedidos['pedido'] as $data):?>
-                        <?php //for($i = 1; $i <= $data['tanques']; $i++):?>
-                            <div class="pedido">
-                                <div class="tituloEspecie">Pedido <?php// echo $tot;?></div>
-                                <?php // if(isset($data['id_tanque'])):?>
-                                <div class="pedidoWraper gris">an><
-                                    <div>Especie: <span><?php //echo Especie::model()->getEspecie($data['especie']);?></sp/div>
-                                    <div>Cepa: <span><?php //echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                                    <div>Cantidad: <span><?php ///echo $data['cantidad'];?></span></div>
-                                    <div>Destino: <span style="display: block"><?php //echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                                    <div class="selectTanque">
-                                        <label>Tanque</label>
-                                        <div style="color: #000000">
-                                            <?php //echo Tanque::model()->getTanque($data['id_tanque']);?>
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="pedidosWraper">
-                <?php echo $form->hiddenField($sol,'id_clientes',array('value'=>""));?>
-                <?php echo $form->hiddenField($sol,'notas',array('value'=>""));?>
-                <?php echo $form->hiddenField($sol,'id',array('value'=>""));?>
-                            <?php //else:?>
-                            <div class="pedidoWraper">
-                                <div>Especie: <span><?php// echo Especie::model()->getEspecie($data['especie']);?></span></div>
-                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][especie]",array('value'=>$data['especie']))?>
-                                <div>Cepa: <span><?php// echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][cepa]",array('value'=>$data['cepa']))?>
-                                <div>Cantidad: <span><?php// echo $data['cantidad']/$data['tanques'];?></span></div>
-                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][cantidad]",array('value'=>($data['cantidad']/$data['tanques'])))?>
-                                <div>Destino: <span style="display: block"><?php //echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>
-                                <div class="selectTanque hide">
+             $tot = 1;
+             $html = "";
+             foreach($pedidos as $data) {
+
+                 for($i = 1; $i <= $data->tanques; $i++){
+                    $cantidad = $data->cantidad/$data->tanques;
+                      $html .="<div class='pedido'>
+                                <div class='tituloEspecie'>Pedido {$tot}</div>
+                                <div class='pedidoWraper' style='height: 178px;>
+                                    <div>Especie: <span>".Especie::model()->getEspecie($data->id_especie)."</span></div>
+                                    <input value='{$data->id_especie}' name='Solicitudes[codigo][{$tot}][especie]' id='Solicitudes_codigo_{$tot}_especie' type='hidden' autocomplete='off'>                        
+                                    <div>Cepa: <span>".Cepa::model()->getCepa($data->id_cepa)."</span></div>
+                                    <input value='{$data->id_cepa}' name='Solicitudes[codigo][{$tot}][cepa]'' id='Solicitudes_codigo_{$tot}_cepa' type='hidden' autocomplete='off'>                        
+                                    <div>Cantidad: <span>{$cantidad}</span></div>
+                                    <input value='{$cantidad}' name='Solicitudes[codigo][{$tot}][cantidad]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' autocomplete='off'>                        
+                                    <div>Destino: <span style='isplay: block'>".ClientesDomicilio::model()->getDomicilio($data->id_direccion)."</span></div>
+                                    <input value='{$data->id_direccion}' name='Solicitudes[codigo][{$tot}][destino]' id='Solicitudes_codigo_{$tot}_destino' type='hidden' autocomplete='off'>                        
+                                    <div class='selectTanque success'>
                                     <label>Seleccionar Tanque</label>
-                                    <?php //echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select ttan ttan'.$i, 'data-tan'=>$tot));?>
-                                    <?php 
-                                    //$t = "codigo[".$tot."][tanque]";
+                                    <select class='css-select ttan ttan{$tot}'' data-tan='{$tot}' name='Solicitudes[codigo][{$tot}][tanque]' id='Solicitudes_codigo_{$tot}_tanque'>
+                                        <option>Seleccionar</option> ";
+                                   
+                                foreach($tanquesDesocupados as $dt) {
+                                    $html .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
 
-                                    //echo $form->error($model,$t); ?>
-                                </div>
+                                }
+                            $html .="</select>                            
+                                <div class='errorMessage' id='Viajes_codigo_{$tot}_tanque_em_' style='display:none'></div>                        
+                            </div>                     
                             </div>
-                            <?php// endif;?>
-                        </div>
-                        <?php// $tot++; ?>
-                    <?php //endfor;?>
-                <?php //endforeach; ?> -->
-            </div>
-        <!--    <div class="row">
-                <?php 
-                 //   echo $form->labelEx($model,'status');
-                  //  if($model->isNewRecord)
-                  //      echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50));
-                  //  else
-                    //    echo $form->textField($model,'status',array('readonly'=>'readonly','size'=>50,'maxlength'=>50, 'value'=>  Viajes::model()->getStatus($model->status)));
-                ?>
-            </div>-->
-    */
+                        </div>"   ;
+                        $tot++;
+                    }
+                }
+         
 
             $this->layout=false;
             header('Content-type: application/json');
             $data = array();
+            $data['html'] = $html;
             $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
             echo json_encode($data);
             Yii::app()->end(); 
