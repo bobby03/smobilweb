@@ -41,10 +41,12 @@
         'columns'=>$model->adminSearch(),
     )); ?>
 </div>
+
 <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
+
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'rol',
+        'id'=>'rol2',
         'dataProvider'=>$model->search(0),
         'pager' => array
         (
