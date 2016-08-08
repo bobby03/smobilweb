@@ -195,6 +195,16 @@ public function getSearchSolicitud(){
             return 'Sin hora';
         else
             return date("H:i", strtotime($date));
+    } 
+    public function getClientesEnEspera() {
+        $cr = new CDbCriteria();
+        $foreach = Solicitudes::model()->findAll('status = 0');
+        $id_clientes = array();
+        foreach ($foreach as $data) {
+            $nombre_Cliente = Clientes::model()->findall("id = $data->id_clientes");
+            $id_clientes[$data->id] = $nombre_Cliente[0]->nombre_empresa;
+        }
+        return $id_clientes;  
     }
     public function adminSearch1()
     {

@@ -18,7 +18,76 @@ class ViajesController extends Controller
 			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
+    public function actionGetTanquesConSolicitud($solicitud, $camion) {
 
+            $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
+            // $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");
+            // $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 1 AND activo = 1");
+            // $return = array();
+            // $return['Tanques_ocupados'] = $tanquesOcupados;
+            // $return['Tanques_desocupados'] = $tanquesDesocupados;
+            // $return['pedidos'] = $pedidos;    
+    /*
+
+                    <?php// $tot = 1;?>
+                    <?php //foreach($pedidos['pedido'] as $data):?>
+                        <?php //for($i = 1; $i <= $data['tanques']; $i++):?>
+                            <div class="pedido">
+                                <div class="tituloEspecie">Pedido <?php// echo $tot;?></div>
+                                <?php // if(isset($data['id_tanque'])):?>
+                                <div class="pedidoWraper gris">an><
+                                    <div>Especie: <span><?php //echo Especie::model()->getEspecie($data['especie']);?></sp/div>
+                                    <div>Cepa: <span><?php //echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                                    <div>Cantidad: <span><?php ///echo $data['cantidad'];?></span></div>
+                                    <div>Destino: <span style="display: block"><?php //echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                                    <div class="selectTanque">
+                                        <label>Tanque</label>
+                                        <div style="color: #000000">
+                                            <?php //echo Tanque::model()->getTanque($data['id_tanque']);?>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="pedidosWraper">
+                <?php echo $form->hiddenField($sol,'id_clientes',array('value'=>""));?>
+                <?php echo $form->hiddenField($sol,'notas',array('value'=>""));?>
+                <?php echo $form->hiddenField($sol,'id',array('value'=>""));?>
+                            <?php //else:?>
+                            <div class="pedidoWraper">
+                                <div>Especie: <span><?php// echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][especie]",array('value'=>$data['especie']))?>
+                                <div>Cepa: <span><?php// echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][cepa]",array('value'=>$data['cepa']))?>
+                                <div>Cantidad: <span><?php// echo $data['cantidad']/$data['tanques'];?></span></div>
+                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][cantidad]",array('value'=>($data['cantidad']/$data['tanques'])))?>
+                                <div>Destino: <span style="display: block"><?php //echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                                <?php// echo $form->hiddenField($solicitudes,"codigo[$tot][destino]",array('value'=>$data['destino']))?>
+                                <div class="selectTanque hide">
+                                    <label>Seleccionar Tanque</label>
+                                    <?php //echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select ttan ttan'.$i, 'data-tan'=>$tot));?>
+                                    <?php 
+                                    //$t = "codigo[".$tot."][tanque]";
+
+                                    //echo $form->error($model,$t); ?>
+                                </div>
+                            </div>
+                            <?php// endif;?>
+                        </div>
+                        <?php// $tot++; ?>
+                    <?php //endfor;?>
+                <?php //endforeach; ?> -->
+            </div>
+        <!--    <div class="row">
+                <?php 
+                 //   echo $form->labelEx($model,'status');
+                  //  if($model->isNewRecord)
+                  //      echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50));
+                  //  else
+                    //    echo $form->textField($model,'status',array('readonly'=>'readonly','size'=>50,'maxlength'=>50, 'value'=>  Viajes::model()->getStatus($model->status)));
+                ?>
+            </div>-->
+    */
+            echo json_encode( $pedidos );
+        }
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -340,7 +409,7 @@ class ViajesController extends Controller
                         $i++;
                     }
                 }
-            }\
+            }
         }
         if($haypost == false) {
             $isNewRecord = true;
@@ -1785,6 +1854,7 @@ eof;
                 </div>';
             echo json_encode($return);
         }
+    
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='viajes-form')
