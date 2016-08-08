@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	'Roles'=>array('index'),
 	$model->id,
 );
-$model->activo = Roles::model()->g
+//$model->activo = Roles::model()->g
 ?>
 
 <h1>Rol #<?php echo $model->nombre_rol; ?></h1>
