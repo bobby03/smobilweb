@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Monitoreo Fijo</h1>
+<h1>Granjas</h1>
 
 <div class="principal">
 

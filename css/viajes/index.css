@@ -25,8 +25,7 @@ div.tab.select
 
 
 .agregar.viaje{
-    background-image: url('../../images/menu/iconoViajes.svg');
-    background-color: #0077B0;
+    background-image: url('../../images/viajes/iconoNuevoCamion.svg');
     margin: 5px 0;
 }
 
