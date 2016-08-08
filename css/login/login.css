@@ -66,8 +66,8 @@ body.site-login form#login-form .rememberMe{
 }
 
 body.site-login form#login-form .rememberMe label{
-    vertical-align: 13px !Important;  
-      font-size: 12px;
+    vertical-align: 11px !Important;  
+    font-size: 12px;
 }
 
 body.site-login form#login-form label{
