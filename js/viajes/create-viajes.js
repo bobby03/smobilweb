@@ -25,10 +25,10 @@ $(document).ready(function() {
             	solicitud: solicitud,
             	camion: camion
             },
-            succes: function(data) {
+            success: function(data) {
             	console.log(data);
             },
-            error:function(a,b,c) {	
+            error: function(a,b,c) {	
                 console.log(a, b, c);
             }
 		});

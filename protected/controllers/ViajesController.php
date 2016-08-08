@@ -22,10 +22,8 @@ class ViajesController extends Controller
             fb(Pedidos::model()->findAll("id_solicitud = {$solicitud}"));
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
-
-   
-            // $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");
-            // $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 1 AND activo = 1");
+            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");
+            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 1 AND activo = 1");
             // $return = array();
             // $return['Tanques_ocupados'] = $tanquesOcupados;
             // $return['Tanques_desocupados'] = $tanquesDesocupados;
@@ -92,7 +90,8 @@ class ViajesController extends Controller
 
             $this->layout=false;
             header('Content-type: application/json');
-            $data=array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\'));'),$pedidos);
+            $data = array();
+            $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
             echo json_encode($data);
             Yii::app()->end(); 
 
