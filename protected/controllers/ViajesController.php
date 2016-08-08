@@ -340,7 +340,7 @@ class ViajesController extends Controller
                         $i++;
                     }
                 }
-            }\
+            }
         }
         if($haypost == false) {
             $isNewRecord = true;
