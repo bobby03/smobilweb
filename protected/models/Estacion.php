@@ -162,7 +162,7 @@ class Estacion extends CActiveRecord
                         )
 		));
 	}
-    public function search1($tipo)
+    public function search1($tipo,$act)
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -178,7 +178,7 @@ class Estacion extends CActiveRecord
         $criteria->compare('ubicacion',$this->ubicacion,true);
         $criteria->compare('disponible',$this->disponible);
         $criteria->compare('activo',$this->activo);
-        $criteria->addCondition("activo=1");
+        $criteria->addCondition("activo=$act");
         $criteria->addCondition("tipo=$tipo");
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,

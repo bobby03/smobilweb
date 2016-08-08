@@ -16,15 +16,24 @@ div.tabs div.tab
 }
 div.tabContent
 {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 div.tab.select
 {
     background-color: #09B7C9;
 }
-div.tabs:after
-{
+
+
+.agregar.viaje{
+    background-image: url('../../images/viajes/iconoNuevoCamion.svg');
+    margin: 5px 0;
+}
+
+div.tabs:after,
+.add-wraper a:after,
+.agregar.viaje:after,
+.add-wraper:after {
+    content: "";
     display: block;
     clear: both;
-    content: '';
 }

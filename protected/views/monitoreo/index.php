@@ -27,7 +27,7 @@ $this->breadcrumbs=array(
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'template' => "{items}{summary}{pager}",
             'enableSorting'=>true,
-            'dataProvider'=>Estacion::model()->search1(2),
+            'dataProvider'=>Estacion::model()->search1(2,1),
             'columns'=>Estacion::model()->adminSearch1(),
             'pager' => array
             (

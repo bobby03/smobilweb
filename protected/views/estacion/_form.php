@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label class= "letreros">No. Personal</label>
+                    <label class= "letreros">Capacidad de pasajeros</label>
                     <div class="form-cLarge">
                         <?php echo $form->textField($model,'no_personal'); ?>
                         <?php echo $form->error($model,'no_personal'); ?>

@@ -3,42 +3,42 @@
 *  GENERA ESTILOS PARA EL LOGIN
 */
 
-body.site-login{
+body.-site-login{
 	overflow-x: hidden !important;
     padding-top: 120px;
 }
 
-body.site-login #headerSmobil{
+body.-site-login #headerSmobil{
     display: none;
 }
-body.site-login img#slogo{
+body.-site-login img#slogo{
     width: 340px;
     margin: 0 auto;
     display: inherit;
     margin-bottom: 46px;
 }
 
-body.site-login #page{
+body.-site-login #page{
 	margin:0 auto;
 }
 
-body.site-login #contentWrapper{
+body.-site-login #contentWrapper{
 	margin:0 !important;
 
 }
-body.site-login #contentWrapper #content{
+body.-site-login #contentWrapper #content{
 	margin:0 auto !important;
     width: 400px;
    /* margin-top: 220px !important;*/
 }
 
-body.site-login #contentWrapper #content div.form{
+body.-site-login #contentWrapper #content div.form{
 	width: 240px; 
 }
 
-body.site-login #contentWrapper #content div.form form input[type="text"],
-body.site-login #contentWrapper #content div.form form input[type="submit"],
-body.site-login #contentWrapper #content div.form form input[type="password"]{
+body.-site-login #contentWrapper #content div.form form input[type="text"],
+body.-site-login #contentWrapper #content div.form form input[type="submit"],
+body.-site-login #contentWrapper #content div.form form input[type="password"]{
     width: 240px ; 
     min-height: 30px;
     box-sizing: border-box;
@@ -48,46 +48,46 @@ body.site-login #contentWrapper #content div.form form input[type="password"]{
       
 }
 
-body.site-login form#login-form .rememberMe{
+body.-site-login form#login-form .rememberMe{
     width: 100% !important;  
     text-align: center;
     
 }
 
-body.site-login form#login-form .rememberMe label{
+body.-site-login form#login-form .rememberMe label{
     vertical-align: 13px !Important;  
       font-size: 12px;
 }
 
-body.site-login form#login-form label{
+body.-site-login form#login-form label{
     font-size: 15px;
     color:#0077b0;
 }
     
-body.site-login form#login-form .checkboxcolor{
+body.-site-login form#login-form .checkboxcolor{
 	display: none;
 }
 
-body.site-login form #LoginForm_rememberMe{
+body.-site-login form #LoginForm_rememberMe{
 	width: 15px !Important;
     height: 15px !Important;
 }
 
-body.site-login form .errorMessage{
+body.-site-login form .errorMessage{
 	height: 15px;
 	display: inline-block;
 }
 
 
-body.site-login #mainmenu{
+body.-site-login #mainmenu{
   display:none
 }
 
-body.site-login h1{
+body.-site-login h1{
     display: none;
 }
 
-body.site-login input[type="submit"] {
+body.-site-login input[type="submit"] {
     background-color: #40B2BF;
     color: #FFFFFF;
     text-align: center;
@@ -95,7 +95,7 @@ body.site-login input[type="submit"] {
 }
 
 
-body.site-login #footer{
+body.-site-login #footer{
     border-top: 2px solid #49dbd0 !important;
     margin: 0px !important;
     background-color: #0077b0 !important;
@@ -106,7 +106,7 @@ body.site-login #footer{
 
 }
 
-body.site-login #top{
+body.-site-login #top{
     border-bottom: 2px solid #49dbd0 !important;
     margin: 0px !important;
     background-color: #0077b0 !important;

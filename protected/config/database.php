@@ -9,6 +9,12 @@ return array(
 	'emulatePrepare' => true,
 	'username' => 'smobile_user',
 	'password' => 'm0b1l3',
+	// 'connectionString' => 'mysql:host=localhost;dbname=movsens',
+	// 'emulatePrepare' => true,
+	// 'username' => 'root',
+	// 'password' => 'hola',
+	// 'username' => 'root',
+	// 'password' => '',
 	'charset' => 'utf8',
 	
 );

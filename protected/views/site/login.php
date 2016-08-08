@@ -18,7 +18,7 @@ if(Yii::app()->user->isGuest){
 <!--<p>Please fill out the following form with your login credentials:</p>-->
 <div id="top"></div>
 <div>
-	<img src="./../images/esmobil-logo.png" id="slogo" />
+	<img src="./../../images/esmobil_logo.png" id="slogo" />
 </div>
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(

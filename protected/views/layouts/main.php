@@ -7,8 +7,8 @@
     <meta name="language" content="es">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script> 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
@@ -20,8 +20,17 @@
 	?>
   </head>
 
+	<?php 
+		$LoginClass =  isset($this->classes) ? $this->classes : '' ;
+		$patterns = array();
+		$patterns[0] = 'index.php';
+		$patterns[1] = 'index.php-';
+		$replace = array();
+		$replace[0] = '';
+		$replace[1] = '';
 
-  <body class="<?php echo isset($this->classes) ? $this->classes : '' ?>">
+	?>
+  <body class="<?php echo str_replace($patterns,$replace,$LoginClass) ?>">
     <div class="container" id="page">
       <?php
 		$baseUrl = Yii::app()->baseUrl;
