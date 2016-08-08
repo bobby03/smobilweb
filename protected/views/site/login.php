@@ -17,10 +17,11 @@ if(Yii::app()->user->isGuest){
 
 <!--<p>Please fill out the following form with your login credentials:</p>-->
 <div id="top"></div>
-<div>
-	<img src="./../../images/esmobil_logo.png" id="slogo" />
-</div>
+
 <div class="form">
+
+	<img src="./../images/esmobil-logo.png" id="slogo" />
+
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,

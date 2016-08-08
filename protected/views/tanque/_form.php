@@ -50,12 +50,12 @@
                     </div>
                     <div class="row sta">
                             <?php echo $form->labelEx($model,'status'); ?>
-                            <?php echo $form->dropDownList($model,"status[$i][status]", Tanque::model()->getAllStatus(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                            <?php echo $form->dropDownList($model,"status[$i][status]", Tanque::model()->getAllStatus(), array('empty'=>'Seleccionar', 'class'=>'css-select status')); ?>
                             <?php echo $form->error($model,'status'); ?>
                     </div>
                     <div class="row act">
                             <?php echo $form->labelEx($model,'activo'); ?>
-                            <?php echo $form->dropDownList($model,"status[$i][activo]", Tanque::model()->getAllActivo(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                            <?php echo $form->dropDownList($model,"status[$i][activo]", Tanque::model()->getAllActivo(), array('empty'=>'Seleccionar', 'class'=>'css-select activo')); ?>
                             <?php echo $form->error($model,'activo'); ?>
                     </div>
                     <?php $i++;?>
