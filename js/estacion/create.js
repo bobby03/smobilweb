@@ -33,5 +33,14 @@ $(document).ready(function()
             $('.allTanques').children().last().children('.row.act').remove();
         }
     });
+    
+     $('.tab').click(function()
+    {
+        var id = $(this).attr('data-id');
+        $('.tab').removeClass('select');
+        $(this).addClass('select');
+        $('.tabContent').addClass('hide');
+        $('[data-tan="'+id+'"]').removeClass('hide');
+    });
 });
         
