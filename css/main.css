@@ -784,18 +784,7 @@ table.detail-view tr.even{
 * TERMINAN ESTILOS COLORBOX
 */
 
-.ingesp{
-    height: 20px;
-    width: 260px;
-    margin-left:33px;
-    margin-top: 10px;
-    min-height: 30px;
-    border: 2px solid #0077b0;
-    border-radius: 5px;
-    border-left: 30px solid #0077b0;
-    text-indent: 5px;
-    box-sizing: border-box;
-}
+
 .esp{
     font-family: 'Roboto-Regular';
     font-size: 14pt;
