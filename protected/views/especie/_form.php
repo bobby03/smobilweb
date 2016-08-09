@@ -22,7 +22,6 @@
 )); ?>
 
 
-	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 	<div class="form-cRight">
 			<div class="row">

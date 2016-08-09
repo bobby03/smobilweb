@@ -48,7 +48,7 @@
 
 
 <!--separador-->		
-		<span class="containerBox">
+		<span class="containerBox rangosCepa">
 			
 				<label class="cLetreros">Rangos minimos y maximos</label>
 				<hr class="letrero-container"></hr>
@@ -132,7 +132,7 @@
 						<div class="row">
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
-                                                                    <span>min</span>
+                                     <span>min</span>
 									<?php echo $form->numberField($model,'cond_min');
 									echo $form->error($model,'cond_min'); ?>
 								</div>
@@ -141,7 +141,7 @@
 					<div class="form-container12">
 						<div class="row">
 							<div class="form-cSmall">
-                                                            <span>max</span>
+                                <span>max</span>
 								<?php echo $form->numberField($model,'cond_max');
 								echo $form->error($model,'cond_max'); ?>
 							</div>
@@ -153,8 +153,8 @@
 					<div class="row">
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
-                                                            <span>min</span>
-								<?php echo $form->numberField($model,'orp_min');
+                                <span>min</span>
+								<?php echo $form->numberField($model,'orp_min',array('value'=>'0.00'));
 								echo $form->error($model,'orp_min'); ?>
 
 							</div>	
@@ -163,8 +163,8 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-                                                    <span>max</span>
-								<?php echo $form->numberField($model,'orp_max');
+                                 <span>max</span>
+								<?php echo $form->numberField($model,'orp_max',array('value'=>'0.00'));
 								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
