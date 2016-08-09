@@ -75,6 +75,7 @@ $baseUrl = Yii::app()->baseUrl;
 	</div>
 	<div class="containerbutton">
 	<div class="row buttons">
+		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/personal">Cancelar</a> 
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
 	</div>
 </div>	
