@@ -78,10 +78,10 @@ class Estacion extends CActiveRecord
 
              array('disponible','required','message'=>'Este campo es obligatorio'),
 
-			array('id, disponible, activo, id_granja', 'numerical', 'integerOnly'=>true),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, id_granja, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),
+            array('id, disponible, activo, id_granja', 'numerical', 'integerOnly'=>true),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('id, id_granja, tipo, identificador, no_personal, marca, color, ubicacion, disponible, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -160,6 +160,31 @@ class Estacion extends CActiveRecord
                     'pagination'=>array(
                             'pageSize'=>15,
                         )
+		));
+	}
+	public function searchTanqueGranja($id,$flag)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+		$criteria=new CDbCriteria;
+		$criteria->compare('id',$this->id);
+		$criteria->compare('id_granja',$this->id_granja);
+		$criteria->compare('tipo',$this->tipo);
+		$criteria->compare('identificador',$this->identificador,true);
+		$criteria->compare('no_personal',$this->no_personal);
+		$criteria->compare('marca',$this->marca,true);
+		$criteria->compare('color',$this->color,true);
+		$criteria->compare('ubicacion',$this->ubicacion,true);
+		$criteria->compare('disponible',$this->disponible);
+		$criteria->compare('activo',$this->activo);
+                $criteria->addCondition("activo=$flag");
+                $criteria->addCondition("id_granja=$id");
+		return new CActiveDataProvider($this, array
+                (
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
 		));
 	}
     public function search1($tipo,$act)
@@ -310,6 +335,36 @@ class Estacion extends CActiveRecord
                             'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
                             'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
                             'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
+                        )
+                    )
+		)
+            );
+        }
+        public function adminSearchPlanta()
+        {
+            return array
+            (
+                'identificador',
+                'no_personal',
+                'marca',
+                'color',
+                'ubicacion',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'buttons' => array
+                    (
+                        'tanque' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
+                            'options'=>array('id'=>'_tanque','title'=>'', 'class' => 'tanque'),
+                            'url' => 'Yii::app()->createUrl("tanque/create", array("id"=>$data->id))',
+                        ),
+                        'delete' => array
+                        (
+                            'url' => 'Yii::app()->createUrl("estacion/delete", array("id"=>$data->id))',
                         )
                     )
 		)

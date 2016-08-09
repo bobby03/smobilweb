@@ -146,27 +146,36 @@ body
 	padding-left: 15px;
 }
 
-#mainmenu ul li#inicio a{
-	background-image: url('./../images/menu/inicio.svg');
+#mainmenu ul li#inicio a
+{
+    background-image: url('./../images/menu/inicio.svg');
     background-size: 17px;
     background-repeat: no-repeat;
     background-position: 15px 10px;
  }
 
 
-#mainmenu ul li#personal a{
-	background-image: url('./../images/menu/personal.svg');
+#mainmenu ul li#personal a
+{
+    background-image: url('./../images/menu/personal.svg');
     background-size: 15px;
     background-repeat: no-repeat;
     background-position: 15px 8px;
  }
 
 
-#mainmenu ul li#roles a{
+#mainmenu ul li#roles a
+{
 	background-image: url('./../images/menu/roles.svg');
     background-size: 15px;
     background-repeat: no-repeat;
     background-position: 15px 6px;
+ }
+#mainmenu ul li#granjas a{
+	background-image: url('./../images/menu/granja.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 15px 10px;
  }
 
  #mainmenu ul li#clientes a{
@@ -546,6 +555,16 @@ div.mensaje-content{
 .agregar.usuarios
 {
     background-image: url('./../images/crear/iconoNuevoUsuario.svg');
+}
+.agregar.granjas
+{
+    background-image: url('./../images/crear/nuevaGranja.png');
+    margin: 10px 0;
+}
+.agregar.planta
+{
+    background-image: url('./../images/crear/nuevoAlmacen.png');
+    margin: 10px 0;
 }
 
 

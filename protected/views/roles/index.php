@@ -39,6 +39,21 @@
         ),
         'summaryText'=> '',
         'columns'=>$model->adminSearch(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $('.items tbody tr').each(function()
+            {
+                var check = $(this).find('a.view').attr('href');
+                var index = check.lastIndexOf('/');
+                var id = parseInt(check.substring(index+1));
+                if(id == 1 || id == 2 || id == 3)
+                {
+                    $(this).find('a').remove();
+                }
+                else
+                    $(this).find('a.view').remove();
+            });
+        }"
     )); ?>
 </div>
 
@@ -53,9 +68,9 @@
             'class' => 'PagerSA',
             'header'=>'',
         ),
-        'summaryText'=> '',
-        'columns'=>$model->adminSearch(),
-        
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+        'columns'=>$model->adminSearchBorrados(),
     )); ?>
 </div>
 

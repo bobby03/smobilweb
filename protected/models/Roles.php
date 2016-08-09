@@ -144,6 +144,7 @@ class Roles extends SMActiveRecord
                 case 7: return 'Solicitudes'; break;
                 case 8: return 'Usuarios'; break;
                 case 9: return 'Viajes'; break;
+                case 10: return 'Granjas'; break;
             }
         }
         
@@ -158,6 +159,28 @@ class Roles extends SMActiveRecord
                     'header'=>'Acciones',
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
 		)
+            );
+        }
+        public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre_rol',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("granjas/reactivar", array("id"=>$data->id))',
+                        )
+                    )
+                )
             );
         }
 }
