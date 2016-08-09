@@ -169,7 +169,7 @@ class RolesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-                $query = RolesPermisos::model()->findAllBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id}");
+                $query = RolesPermisos::model()->findAllBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND activo = 1");
                 $array = array();
                 $acciones = new RolesPermisos;
                 foreach($query as $data)

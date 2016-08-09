@@ -155,7 +155,7 @@ class Personal extends CActiveRecord
 	}
         public function getAllPersonal()
         {
-            $personal = Personal::model()->findAll();
+            $personal = Personal::model()->findAll('activo = 1');
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;
