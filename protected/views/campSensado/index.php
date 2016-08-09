@@ -32,7 +32,7 @@
         (
             'id'=>'campsensado-grid',
             'summaryText'=>'',
-        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search(1),
             'columns'=>$model->adminSearch(),
             'pager' => array
@@ -40,6 +40,12 @@
                 'class' => 'PagerSA',
                 'header'=>'',
             ),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('campsensado-grid2');
+            }"
         )); 
     ?>
     </div>
@@ -50,8 +56,11 @@
         (
             'id'=>'campsensado-grid2',
             'summaryText'=>'',
+            'ajaxUpdate'=>true,
             'dataProvider'=>$model->search(0),
-            'columns'=>$model->adminSearch(),
+            'columns'=>$model->adminSearchBorrados(),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
             'pager' => array
             (
                 'class' => 'PagerSA',

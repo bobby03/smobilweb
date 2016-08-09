@@ -34,7 +34,7 @@ $this->breadcrumbs=array(
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'cepa',
+            'id'=>'cepa-grid',
             'dataProvider'=>$model->search($id,1),
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
@@ -45,19 +45,19 @@ $this->breadcrumbs=array(
                 'class' => 'PagerSA',
                 'header'=>'',
             ),
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('cepa-grid2');
+            }"
         ));
     ?>
     
 </div>
-
-
-
-
 <!--Inactivos-->
 <div class="tabContent hide" data-tan="2"> 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'cepa2',
+        'id'=>'cepa-grid2',
         'dataProvider'=>$model->search($id,0),
         'pager' => array
         (
