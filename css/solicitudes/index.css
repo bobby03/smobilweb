@@ -16,7 +16,7 @@ div.tabs div.tab
 }
 div.tabContent
 {
-    margin-top: 40px;
+    margin-top: 40px !important;
 }
 div.tab.select
 {

@@ -187,7 +187,14 @@ class EspecieController extends Controller
 //                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
                 echo json_encode('');
 	}
-
+        public function actionReactivar($id)
+	{
+            $model = Especie::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('especie',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
 	/**
 	 * Lists all models.
 	 */
