@@ -237,7 +237,7 @@ eof;
                         (
                             'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
                             'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
-                            'url' => 'Yii::app()->createUrl("cepa/", array("id"=>$data->id))',
+                            'url' => 'Yii::app()->createUrl("cepa/reactivar/".$data->id)',
                         )
                     )
                 )
