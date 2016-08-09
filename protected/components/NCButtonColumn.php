@@ -99,6 +99,94 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
+                            console.log(href);
+                            $.ajax(
+                            {
+                                type: 'GET',
+                                url: href,
+                                dataType: 'JSON', 
+                                data:
+                                {
+                                    id: id
+                                },
+                                success: function(data)
+                                {
+                                    $.fn.yiiGridView.update(header);
+                                    $('#cboxClose').click();
+                                },
+                                error: function(a, b, c)
+                                {
+                                  /* console.log(a, b, c);
+                                   
+                                    $.ajax(
+                                    {
+                                        type: 'GET',
+                                        url: href,
+                                        dataType: 'JSON', 
+                                        data:
+                                        {
+                                            id: id
+                                        },
+                                        success: function(data)
+                                        {
+                                            $.fn.yiiGridView.update(header);
+                                            $('#cboxClose').click();
+                                        },
+                                        error: function(a, b, c)
+                                        {
+                                            console.log(a, b, c);
+                                        }
+                                    });*/
+                                }
+                            });
+                        });
+
+                       
+                      
+                    }
+                });
+            }
+EOD;
+            $this->buttons['reactivar']['click']=<<<EOD
+            function(evt)
+            {
+
+
+                evt.preventDefault();
+                var href = $(this).attr('href');
+                var index1 = (href.lastIndexOf('/'))+1;
+                var index2 = href.length;
+                var id = href.substring(index1, index2);
+                var miHtml = '';
+                var header = $('.grid-view').attr('id');
+                var nombre = $(this).parents('tr').eq(0).find('td').html();
+                var mensaje = '¿Está seguro que desea reactivar este registro?';
+                
+                miHtml= miHtml +='<div class="sub-content">';
+                miHtml= miHtml +='  <div class="title-content">Reactivar</div>';
+                miHtml= miHtml +='      <div class="separator-content"></div>';
+                miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
+                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                
+                miHtml= miHtml +='      <div class="botones-content">';
+                miHtml= miHtml +='          <div class="aceptar-boton">Aceptar</div>';
+                miHtml= miHtml +='          <div class="cancelar-boton">Cancelar</div>';
+                miHtml= miHtml +='      </div>';
+                miHtml= miHtml +='</div>';
+                $.colorbox(
+                {
+                    html: miHtml,
+                    width:'450px', 
+                    height:'190px',
+                    onComplete: function()
+                    {
+                        $('.cancelar-boton').click(function()
+                        {
+                            $('#cboxClose').click();
+                        });
+                        $('.aceptar-boton').click(function()
+                        {
+                            console.log(href);
                             $.ajax(
                             {
                                 type: 'GET',

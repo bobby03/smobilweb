@@ -101,26 +101,51 @@ class GranjasController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-        public function actionIgloo($id)
+        public function actionPlantaProduccion($id)
         {
-            $model=new Estacion;
+            $model=new Estacion();
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Estacion']))
+			$model->attributes=$_GET['Estacion'];
+
+		$this->render('plantaProduccion',array(
+                    'model'=>$model,
+                    'id'=>$id
+		));
+        }
+        public function actionNuevaPlanta($id)
+        {
+            $model = new Estacion();
             $model->tipo = 2;
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
-
+//            $this->performAjaxValidation($model);
             if(isset($_POST['Estacion']))
             {
-                    $model->attributes=$_POST['Estacion'];
-                    $model->id_granja = $id;
-                    $model->activo = 1;
-                    $model->disponible = 1;
-                    if($model->save())
-                    {
-                        $this->redirect(array('index'));
-                    }
+                $model->attributes=$_POST['Estacion'];
+                $model->id_granja = $id;
+                $model->activo = 1;
+                $model->disponible = 1;
+                $columnas = array
+                (
+                    'id_granja' => $id,
+                    'identificador' => $_POST['Estacion']['identificador'],
+                    'no_personal' => $_POST['Estacion']['no_personal'],
+                    'marca' => $_POST['Estacion']['marca'],
+                    'color' => $_POST['Estacion']['color'],
+                    'ubicacion' => $_POST['Estacion']['ubicacion'],
+                    'activo' => 1,
+                    'disponible' => 1,
+                    'tipo' => 2,
+                );
+                $insert = YII::app()->db->createCommand()->insert('estacion',$columnas);
+                if($insert > 0)
+                {
+                    unset($_POST['Estacion']);
+                    $this->redirect(array('granjas/plantaProduccion/'.$id));
+                }
             }
 
-            $this->render('igloo',array(
+            $this->render('nuevaPlanta',array(
                     'model'=>$model,
             ));
         }
@@ -160,7 +185,7 @@ class GranjasController extends Controller
 		{
 			$model->attributes=$_POST['Granjas'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -175,11 +200,31 @@ class GranjasController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            $model = Granjas::model()->findByPk($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                ->update('granjas',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
+	public function actionReactivar($id)
+	{
+            $model = Granjas::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('granjas',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
+        
+        
+	public function actionDeletePlanta($id)
+	{
+            $model = Estacion::model()->findByPk($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                ->update('estacion',$model->attributes,"id = ".(int)$id."");
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if(!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -191,7 +236,6 @@ class GranjasController extends Controller
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Estacion']))
                     $model->attributes=$_GET['Granjas'];
-
             $this->render('index',array(
                     'model'=>$model,
             ));
@@ -206,8 +250,7 @@ class GranjasController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Granjas']))
 			$model->attributes=$_GET['Granjas'];
-
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}

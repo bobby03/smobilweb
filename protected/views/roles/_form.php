@@ -143,6 +143,17 @@
                 <div><?php echo $form->checkBox($acciones,'seccion[9][edicion]', array('class'=>'editBox')); ?></div>
             </div>
 	</div>
+	<div class="row">
+            <div class="nombreSeccion">Granjas</div>
+            <div class="separador">
+                <?php echo $form->hiddenField($acciones,'seccion[10][seccion]'); ?>
+                <div><div class="botonTodos" data-id="10">Marcar</div></div>
+                <div><?php echo $form->checkBox($acciones,'seccion[10][alta]', array('class'=>'altaBox')); ?></div>   
+                <div><?php echo $form->checkBox($acciones,'seccion[10][baja]', array('class'=>'bajaBox')); ?></div>
+                <div><?php echo $form->checkBox($acciones,'seccion[10][consulta]', array('class'=>'consultaBox')); ?></div>
+                <div><?php echo $form->checkBox($acciones,'seccion[10][edicion]', array('class'=>'editBox')); ?></div>
+            </div>
+	</div>
     </div>
     <div class="row buttons submitb">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Guardar'); ?>

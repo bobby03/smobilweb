@@ -123,8 +123,6 @@ $(document).ready(function()
                 $(this).find('a.view').remove();
         });
     }
-
-
     function activaConsulta()
     {
 
