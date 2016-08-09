@@ -81,7 +81,7 @@ class Granjas extends SMActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -92,7 +92,7 @@ class Granjas extends SMActiveRecord
 		$criteria->compare('direccion',$this->direccion,true);
 		$criteria->compare('responsable',$this->responsable,true);
 		$criteria->compare('activo',$this->activo);
-                $criteria->addCondition("activo=1");
+                $criteria->addCondition("activo=$flag");
 		return new CActiveDataProvider($this, array(
                     'criteria'=>$criteria,
                     'pagination'=>array(
@@ -129,7 +129,31 @@ class Granjas extends SMActiveRecord
                         (
                             'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
                             'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
-                            'url' => 'Yii::app()->createUrl("granjas/igloo", array("id"=>$data->id))',
+                            'url' => 'Yii::app()->createUrl("granjas/plantaProduccion", array("id"=>$data->id))',
+                        )
+                    )
+                )
+            );
+        }
+        public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre',
+                'direccion',
+                'responsable',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("granjas/reactivar", array("id"=>$data->id))',
                         )
                     )
                 )

@@ -117,15 +117,12 @@ $(document).ready(function()
             var check = $(this).find('a.view').attr('href');
             var index = check.lastIndexOf('/');
             var id = parseInt(check.substring(index+1));
-            if(id == 1 || id == 2 || id == 3){
-                $(this).find('a.delete').remove();
-                $(this).find('a.update').remove();
-            }
-            
+            if(id == 1 || id == 2 || id == 3)
+                $(this).find('a').remove();
+            else
+                $(this).find('a.view').remove();
         });
     }
-
-
     function activaConsulta()
     {
 
