@@ -78,7 +78,7 @@ class Usuarios extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -87,8 +87,7 @@ class Usuarios extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('pwd',$this->pwd,true);
 		$criteria->compare('usuario',$this->usuario,true);
-		/*criteria->compare('tipo_usr',$this->tipo_usr);
-		$criteria->compare('id_usr',$this->id_usr);*/
+		$criteria->addcondition("activo = $flag");
 
 		$criteria->addcondition("(usuario LIKE '%".$this->usuario.
 								"%' OR tipo_usr LIKE '%".$this->usuario.
@@ -168,6 +167,40 @@ class Usuarios extends CActiveRecord
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
+    public function adminSearchVacio()
+    {
+    	
+        return array
+        (
+            'usuario',
+            array
+            (
+                'name' => 'tipo_usr',
+                'value' => 'Usuarios::model()->getTipoUsuario($data->tipo_usr)',
+                'filter' => Usuarios::model()->getAllTipoUsuario()
+            ),
+            array
+            (
+                'name' => 'id_usr',
+                'value' => 'Usuarios::model()->getUsuario($data->tipo_usr, $data->id_usr)',
+            ),
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                'buttons' => array
+                (
+                    'reactivar' => array
+                    (
+                        'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                        'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                        'url' => 'Yii::app()->createUrl("usuarios/reactivar", array("id"=>$data->id))',
+                    )
+                )
             )
         );
     }

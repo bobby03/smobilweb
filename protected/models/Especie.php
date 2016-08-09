@@ -67,7 +67,7 @@ class Especie extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search($activo)
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -75,13 +75,13 @@ class Especie extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('nombre',$this->nombre,true);
-		$criteria->addCondition("activo=$activo");
-
+                $criteria->addCondition("activo=$flag");
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-                    'pagination'=>array(
-                            'pageSize'=>15,
-                        )
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
 		));
 	}
 
@@ -148,7 +148,7 @@ class Especie extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {cepa}</div>',
+                    'template'=>'<div class="buttonsWraper">{update} {delete} {cepa}</div>',
                     'buttons' => array
                     (
                         'cepa' => array
@@ -161,8 +161,6 @@ class Especie extends CActiveRecord
 		)
             );
         }
-
-
         public function adminSearchBorrados()
         {
             return array
@@ -172,14 +170,14 @@ class Especie extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
                     'buttons' => array
                     (
                         'reactivar' => array
                         (
                             'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
-                            'options'=>array('id'=>'cepa','title'=>'', 'class' => 'cepa'),
-                            'url' => 'Yii::app()->createUrl("/especie/reactivar/id/$data->id")',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("especie/reactivar", array("id"=>$data->id))',
                         )
                     )
                 )

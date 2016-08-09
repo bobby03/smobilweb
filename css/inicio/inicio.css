@@ -328,9 +328,12 @@ h2{
 }
 .divTr{
     
-    height: 23px;
+    /*height: 23px;*/
     border-bottom: 1.5px dashed #aaa;
     padding-top: 14px;
+    display: inline-block;
+    margin-top: -3px;
+    width: 100%;
 }
 .divTd{
     width: 33%;
