@@ -50,41 +50,54 @@ $(document).ready(function(){
 			});
 		}
 	});
-function changeCepas() {
-	$('.css-select.especie').on('change', function() {
-		var id = $(this).val();
-		var selector_change = $(this).closest('.pedidoWraper').find('.css-select.cepa');
-		if($(this).val()!="") { 
-			$.ajax({
-				type : 'GET',
-				url  : 'GetCepasFromEspecie',
-				dataType : 'JSON',
-				data: {
-					id: id
-				},
-				success: function(data) {
-					selector_change.empty();
-					selector_change.html(data.cepas);
-				},
-				error: function(a,b,c) {
-					console.log(a,b,c);
-				}
-			});
-			selector_change.removeAttr('disabled');
-		}
-		else{
-			selector_change.empty();
-			selector_change.html('<option>Seleccionar</option>');
-			selector_change.prop('disabled', 'disabled');
-		}
-	});
-}
-	// $('.css-select.especie').on('change', function() {
-	// 	$(this).closest('.pedidoWraper').find('.css-select.cepa').removeAttr('disabled');
-	// });
-
-	$('.siguiente.dos').on('click', function() {
-
-	});
+    $('.siguiente.dos').on('click', function() {
+        var planta = $('#CampSensado_id_estacion').val();
+        var estacion = $('#Viajes_id_estacion').val();
+        $.ajax({
+            type: 'GET',
+            url: 'GetResumenViaje',
+            dataType: 'JSON',
+            data: {
+                solicitud: solicitud,
+                camion: camion
+            },
+            success: function(data) {
+                $('.inner-third-wrapper').empty();
+                $('.inner-third-wrapper').append(data.html);
+            },
+            error: function(a,b,c) {
+                console.log(a, b, c);
+            }
+        });
+    });
+	function changeCepas() {
+		$('.css-select.especie').on('change', function() {
+			var id = $(this).val();
+			var selector_change = $(this).closest('.pedidoWraper').find('.css-select.cepa');
+			if($(this).val()!="") { 
+				$.ajax({
+					type : 'GET',
+					url  : 'GetCepasFromEspecie',
+					dataType : 'JSON',
+					data: {
+						id: id
+					},
+					success: function(data) {
+						selector_change.empty();
+						selector_change.html(data.cepas);
+					},
+					error: function(a,b,c) {
+						console.log(a,b,c);
+					}
+				});
+				selector_change.removeAttr('disabled');
+			}
+			else{
+				selector_change.empty();
+				selector_change.html('<option>Seleccionar</option>');
+				selector_change.prop('disabled', 'disabled');
+			}
+		});
+	}
 
 });
