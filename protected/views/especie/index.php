@@ -4,6 +4,7 @@
     $cs->registerCssFile($baseUrl.'/css/especie/especie.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/especie/especie.js?C='.rand());
+    $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
 
 
     $this->breadcrumbs=array(
@@ -13,6 +14,14 @@
 
 <h1>Especies</h1>
 <div class="principal">
+
+    <div class="tabs">
+        <div class="tab select" data-id="1"><span>Activos</span></div>
+        <div class="tab" data-id="2"><span>Inactivos</span></div>
+    </div>
+
+<!--Activos-->
+<div class="tabContent" data-tan="1"> 
     <div class="search-form" >
         <?php $this->renderPartial('_search',array(
                 'model'=>$model,
@@ -24,7 +33,7 @@
     <?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'especies-grid',
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
-        'dataProvider'=>$model->search(),
+        'dataProvider'=>$model->search(1),
         'pager' => array
         (
             'class' => 'PagerSA',
@@ -41,8 +50,27 @@
             });
         }"
     )); ?>
-    <?php // $this->widget('zii.widgets.CListView', array(
-    //    'dataProvider'=>$dataProvider,
-    //    'itemView'=>'_view',
-    //)); ?>
+</div>
+
+
+
+<!--Inactivos-->
+<div class="tabContent hide" data-tan="2"> 
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'especies-grid2',
+        'dataProvider'=>$model->search(0),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+        'columns'=>$model->adminSearchBorrados(),
+    )); ?>
+</div>
+
+
+
 </div>

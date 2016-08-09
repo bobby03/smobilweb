@@ -118,6 +118,8 @@ class EspecieController extends Controller
 			'model'=>$model,
 		));
 	}
+
+	
 	public function actionCreate1()
 	{
 		$especie=$_POST['especie'];
@@ -153,6 +155,10 @@ class EspecieController extends Controller
 		));
 		echo json_encode($model);
 	}
+
+
+
+
 	public function actionUpdate1()
 	{
 		$id=$_POST['id'];
@@ -162,14 +168,12 @@ class EspecieController extends Controller
 		if($model->save()){
 		echo json_encode(true);	//$this->redirect(array('index'));
 		}
-				
-
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		//echo json_encode($model);
-		
 	}
+
+	
 
 	/**
 	 * Deletes a particular model.
@@ -183,9 +187,18 @@ class EspecieController extends Controller
             $update = Yii::app()->db->createCommand()
                     ->update('especie',$model->attributes,"id = ".(int)$id."");
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//		if(!isset($_GET['ajax']))
-//                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-                echo json_encode('');
+		//		if(!isset($_GET['ajax']))
+		//                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+            echo json_encode('');
+	}
+
+	public function actionReactivar($id)
+	{
+            $model = Especie::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('especie',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
 	}
 
 	/**
