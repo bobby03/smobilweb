@@ -878,3 +878,80 @@ HTTP_REFERER=http://localhost/SmobilWeb/solicitudes
 ---
 =======
 >>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
+2016/08/09 12:05:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 12:05:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) in C:\xampp\htdocs\SmobilWeb\protected\models\Especie.php:164
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Especie')
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(208): spl_autoload_call('Especie')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#15 {main}
+REQUEST_URI=/SmobilWeb/especie
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 12:06:17 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC), expecting ';' or '{' in C:\xampp\htdocs\SmobilWeb\protected\models\Especie.php:167
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Especie')
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(208): spl_autoload_call('Especie')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#15 {main}
+REQUEST_URI=/SmobilWeb/especie
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 12:06:27 [error] [exception.CException] CException: Especie and its behaviors do not have a method or closure named "adminSearchBorrados". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('adminSearchBorr...', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\views\especie\index.php(61): CActiveRecord->__call('adminSearchBorr...', Array)
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#6 C:\xampp\htdocs\SmobilWeb\protected\controllers\EspecieController.php(213): CController->render('index', Array)
+#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EspecieController->actionIndex()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('especie')
+#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#20 {main}
+REQUEST_URI=/SmobilWeb/especie
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---

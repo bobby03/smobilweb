@@ -161,13 +161,7 @@ class Especie extends CActiveRecord
 		)
             );
         }
-<<<<<<< HEAD
-        public function adminSearchVacio()
-=======
-
-
         public function adminSearchBorrados()
->>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
         {
             return array
             (
@@ -176,23 +170,14 @@ class Especie extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-<<<<<<< HEAD
                     'template'=>'<div class="buttonsWraper">{reactivar}</div>',
-=======
-                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
->>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
                     'buttons' => array
                     (
                         'reactivar' => array
                         (
                             'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
-<<<<<<< HEAD
                             'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
                             'url' => 'Yii::app()->createUrl("especie/reactivar", array("id"=>$data->id))',
-=======
-                            'options'=>array('id'=>'cepa','title'=>'', 'class' => 'cepa'),
-                            'url' => 'Yii::app()->createUrl("/especie/reactivar/id/$data->id")',
->>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
                         )
                     )
                 )
