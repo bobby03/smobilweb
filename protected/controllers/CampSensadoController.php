@@ -176,6 +176,17 @@ class CampSensadoController extends Controller
 		}
 		echo json_encode( $return );
 	}
+	public function actionGetCepasFromEspecie($id) {
+
+		$cepas  = Cepa::model()->findAll('id_especie = '.(int)$id.' AND activo = 1');
+		$return = array();
+		$return['cepas'] = "<option>Seleccionar</option>";
+		foreach($cepas as $data ) {
+			$return['cepas'] .= "<option value='{$data->id}'>{$data->nombre_cepa}</option>"; 
+		}
+
+		echo json_encode($return);
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

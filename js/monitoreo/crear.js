@@ -50,10 +50,32 @@ $(document).ready(function(){
 			});
 		}
 	});
-public function changeCepas() {
+function changeCepas() {
 	$('.css-select.especie').on('change', function() {
-		if($(this).val()!=""){ 
-			$(this).closest('.pedidoWraper').find('.css-select.cepa').removeAttr('disabled');
+		var id = $(this).val();
+		var selector_change = $(this).closest('.pedidoWraper').find('.css-select.cepa');
+		if($(this).val()!="") { 
+			$.ajax({
+				type : 'GET',
+				url  : 'GetCepasFromEspecie',
+				dataType : 'JSON',
+				data: {
+					id: id
+				},
+				success: function(data) {
+					selector_change.empty();
+					selector_change.html(data.cepas);
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+			});
+			selector_change.removeAttr('disabled');
+		}
+		else{
+			selector_change.empty();
+			selector_change.html('<option>Seleccionar</option>');
+			selector_change.prop('disabled', 'disabled');
 		}
 	});
 }

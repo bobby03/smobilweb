@@ -117,6 +117,7 @@
 
     <div class="tab hide" data-tab="2">
    		<div class="pedidosWraper"></div>
+        <div class="siguiente dos">Siguiente</div>
     </div>
     <div class="tab hide" data-tab="3">
 
