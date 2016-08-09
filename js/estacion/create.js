@@ -42,5 +42,22 @@ $(document).ready(function()
         $('.tabContent').addClass('hide');
         $('[data-tan="'+id+'"]').removeClass('hide');
     });
+     $('.status').each(function(){
+        a=$('option:selected',this).text();
+        if(a=='Ocupado'){
+            $(this).parent().siblings('.act').children('.activo').attr('disabled',true);
+        }else{
+            $(this).parent().siblings('.act').children('.activo').attr('disabled',false);
+        }
+     });
+     $('.status').change(function()
+     {
+        a=$('option:selected',this).text();
+        if(a=='Ocupado'){
+            $(this).parent().siblings('.act').children('.activo').attr('disabled',true);
+        }else{
+            $(this).parent().siblings('.act').children('.activo').attr('disabled',false);
+        }
+     });
 });
-        
+
