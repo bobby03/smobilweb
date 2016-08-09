@@ -162,7 +162,10 @@ class CampSensado extends CActiveRecord
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
                     'buttons' => array
                     (
-                        
+                       'view'=> array 
+                       (
+                       	'url' => 'Yii::app()->createUrl("monitoreo/$data->id_estacion")',
+                       	) 
                     )
 		)
             );

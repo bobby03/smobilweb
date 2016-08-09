@@ -227,7 +227,7 @@ class CampSensadoController extends Controller
             $model->activo = 0;
             $update = Yii::app()->db->createCommand()
                     ->update('camp_sensado',$model->attributes,"id = ".(int)$id."");
-            echo json_encode(true);
+            echo json_encode('');
 	}
 	public function actionReactivar($id)
 	{
