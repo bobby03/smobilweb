@@ -45,6 +45,10 @@
                     'class' => 'PagerSA',
                     'header'=>'',
                 ),
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('granjas-grid2');
+            }"
         )); ?>
     </div>
     <div class="tabContent hide" data-tan="2">
@@ -53,6 +57,7 @@
                 'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
                 'template' => "{items}{summary}{pager}",
                 'enableSorting'=>true,
+                'ajaxUpdate'=>true,
                 'dataProvider'=>$model->search(0),
                 'columns'=>$model->adminSearchBorrados(),
                 'pager' => array
