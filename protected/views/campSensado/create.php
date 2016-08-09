@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List CampSensado', 'url'=>array('index')),
-	array('label'=>'Manage CampSensado', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Create CampSensado</h1>
+<h1>Nueva siembra</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array(
+											'model'=>$model, 
+											'granjas' => $granjas,
+											'personal' => $personal
+											)); ?>

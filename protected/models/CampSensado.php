@@ -72,7 +72,7 @@ class CampSensado extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_responsable' => 'Responsable',
-			'id_estacion' => 'Estacion',
+			'id_estacion' => 'Planta de producción',
 			'nombre_camp' => 'Nombre de la campaña',
 			'fecha_inicio' => 'Fecha de inicio',
 			'hora_inicio' => 'Hora de inicio',
