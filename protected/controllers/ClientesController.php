@@ -217,6 +217,14 @@ class ClientesController extends Controller
 		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	                echo json_encode('');
 	}
+        public function actionReactivar($id)
+	{
+            $model = Clientes::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('clientes',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
 
 	/**
 	 * Lists all models.

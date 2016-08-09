@@ -107,7 +107,7 @@ class Estacion extends CActiveRecord
 			'id_granja' => 'ID granja',
 			'tipo' => 'Tipo',
 			'identificador' => 'Identificador',
-			'no_personal' => 'No Personal',
+			'no_personal' => 'Capacidad de <br>pasajeros',
 			'marca' => 'Marca',
 			'color' => 'Color',
 			'ubicacion' => 'Ubicacion',

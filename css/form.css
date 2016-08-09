@@ -10,6 +10,19 @@ div.search-form div.wide.form
     /*margin-left: 35px;*/
     float: left;
 }
+div.search-form div.row
+{
+    clear: none !important;
+    float: left;
+    width: 250px;
+    margin: 0;
+}
+div.search-form #searchDropDown
+{
+    width: 250px;
+    margin-right: 25px;
+    float: left;
+}
 .chosen-container-multi .chosen-choices
 {
     border: 0;
@@ -61,9 +74,7 @@ div.form .chosen-container
     border-radius: 5px;
     border-left: 30px solid #0077b0;
     text-indent: 5px;
-    width: 250px;
-    float: left;
-    margin-right: 25px;
+    width: 100%;
 }
 div.form input[type="submit"]
 {
@@ -164,9 +175,7 @@ div.form label
 }
 div.form .row
 {
-    /*margin: 10px 0;*/
-    float: left;
-    width: 250px;
+    margin: 10px 0;
 }
 div.formContainer1 div.nombreSeccion
 {
@@ -287,6 +296,11 @@ div.wide.form label
     line-height: 20px;
     margin-right: 15px;
     font-size: 14px;
+}
+
+div.wide.form .row
+{
+	clear: left;
 }
 
 div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
