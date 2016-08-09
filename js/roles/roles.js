@@ -104,15 +104,14 @@ $(document).ready(function()
     borrarBotones();
     function borrarBotones()
     {
-        $('.items tbody tr').each(function()
+        $('.si-busqueda .items tbody tr').each(function()
         {
             var check = $(this).find('a.delete').attr('href');
+            console.log(check);
             var index = check.lastIndexOf('/');
             var id = parseInt(check.substring(index+1));
             if(id == 1 || id == 2 || id == 3)
                 $(this).find('a').remove();
-            else
-                $(this).find('a.view').remove();
         });
     }
     function activaConsulta()
