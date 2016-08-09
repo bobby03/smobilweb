@@ -155,7 +155,7 @@
             </div>
 	</div>
 	<div class="row">
-            <div class="nombreSeccion">Siembras</div>
+            <div class="nombreSeccion">Campos de sensado</div>
             <div class="separador">
                 <?php echo $form->hiddenField($acciones,'seccion[11][seccion]'); ?>
                 <div><div class="botonTodos" data-id="10">Marcar</div></div>

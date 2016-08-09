@@ -184,12 +184,12 @@
            </span>
     </div>
     <div class="containerbutton">
-                         <div class="row buttons">
-                             <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
-                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
-                            <div class="addDireccion">Nueva dirección</div> 
-                        </div>
-                    </div>
+        <div class="row buttons">
+            <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
+           <div class="addDireccion">Nueva dirección</div> 
+           <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+       </div>
+   </div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
