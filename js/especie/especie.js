@@ -1,17 +1,19 @@
 $(document).ready(function()
 {
+
     $('div.agregar.especie').click(function(evt)
     {
         evt.preventDefault();
         var href = window.location.href;
          miHtml= '<div class="sub-content">\n\
-                <div class="title-content">Agregar especie '+'</div>\n\
-                <div class="esp">Especie</div>\n\
+                 <div class="title-content">Agregar especie</div>\n\
+                 <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
                 <input id="ingesp" class="ingesp" type="text">\n\
                 <div class="botones-content">\n\
                     <div class="btnadd">Agregar</div>\n\
                 </div>\n\
+                <script>UpperCaseInput();</script>\n\
         </div>';
         $.colorbox(
         {
@@ -23,7 +25,7 @@ $(document).ready(function()
                 
                 $('.btnadd').click(function()
                 {
-                    var especie = document.getElementById('ingesp').value;
+
                     $.ajax(
                     {
                         type: 'POST',
@@ -68,6 +70,7 @@ $(document).ready(function()
                 <div class="botones-content">\n\
                     <div class="btnadd btnUpdate">Aceptar</div>\n\
                 </div>\n\
+              <script>UpperCaseInput();</script>\n\
         </div>';
         $.colorbox(
         {
@@ -80,6 +83,12 @@ $(document).ready(function()
                 $('.btnUpdate').click(function()
                 {
        
+                   val = $('#ingesp').val();
+
+        val = val.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+        }); 
+         $('#ingesp').val(val);
                     var especie = document.getElementById('ingesp').value;
 
                     $.ajax(
@@ -111,4 +120,15 @@ $(document).ready(function()
     {       
         $(this).find('a.view').remove();
     });
+
 });
+
+function UpperCaseInput(){
+       $('#ingesp').on('keyup', function(event) {
+        $(this).val(function(i, v){
+            return v.replace(/[a-zA-z]/, function(c){
+               return c.toUpperCase();
+            })
+        })
+    });
+}
