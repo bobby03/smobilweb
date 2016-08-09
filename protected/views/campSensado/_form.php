@@ -122,8 +122,10 @@
     <div class="tab hide" data-tab="3">
 
 	<div class="row buttons">
-            <div class="inner-third-wrapper"></div>
-		<?php echo CHtml::submitButton('Finalizar'); ?>
+        <div class="inner-third-wrapper"></div>
+        <div class="row buttons floating">
+			<?php echo CHtml::submitButton('Finalizar'); ?>
+		</div>
 	</div>
 
     </div>
