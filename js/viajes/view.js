@@ -24,10 +24,47 @@ $(document).ready(function()
     graficarPorParametro();
     $('[data-id="1"] .boton.adve').click(function()
     {
+        // console.log('paramretro graph');
         var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
         var id = $(this).data('ale');
+        /*
+        $.ajax({
+            type:'GET',
+            url:'GetAlertaParametroModel',
+            data:{
+                viaje: viaje,
+                id: id
+            },
+            success: function(data){
+                $.colorbox({
+                    html:data,
+                    onComplete: function(){
+                        // $.colorbox.resize();
+                        $('#alertaGrid tbody tr td:last-child').each(function()
+                        {
+                            
+                                var texto = $(this).text();
+                                var div = $(this);
+                                console.log(texto);
+                                reverseGeocoding(texto, 2, div);
+                            //    total++;
+                            
+                        });
+
+                    }
+                });
+            },
+            error:function(a,b,c){
+                console.log(a,b,c);
+            }
+
+        }); 
+        */
+        // *
         $.ajax(
         {
+            //GetAlertaParametroModel
+            //GetAlertasTanque
             type: 'GET',
             url: 'GetAlertasTanque',
             dataType: 'JSON', 
@@ -38,6 +75,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
+
                 $.colorbox(
                 {
                     html: data,
@@ -61,8 +99,7 @@ $(document).ready(function()
                             var h = $(this).height();
                             var height = (50-h)/2;
                             $(this).css('padding',height+'px 0');
-                        });
-                        
+                        });                        
                     }
                 });
             },
@@ -70,7 +107,7 @@ $(document).ready(function()
             {
                 console.log(a, b, c);
             }
-        });
+        }); // */
     });
     $('[data-id="2"] .boton.adve').click(function()
     {
@@ -79,6 +116,9 @@ $(document).ready(function()
         var id = $(this).data('ale');
         $.ajax(
         {
+        // Original :  GetAlertasParametro 
+        //actionGetAlertaParametroModel
+        // console.log("Entre Aquí");
             type: 'GET',
             url: 'GetAlertasParametro',
             dataType: 'JSON', 
@@ -304,7 +344,7 @@ $(document).ready(function()
                             markers.push(marker);
                             map.setCenter(ubi);
                             $('.txtA.ultimo span').text(data2.ultimo);
-//                            console.log(data2);
+                           console.log(data2);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
                             reverseGeocoding(datos.ubicacion, 1, false);
@@ -366,7 +406,11 @@ $(document).ready(function()
         var lng = direccion.length;
         var input = direccion.substring(1,lng-1);
         var latlngStr = input.split(',', 2);
-        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        var lt = latlngStr[0].substring(0,10);
+        var ln = latlngStr[1].substring(0,10);
+        console.log("Lat: "+lt);
+        console.log("Lng: "+ln);
+        var latlng = {lat: parseFloat(lt), lng: parseFloat(ln)};
         geocoder.geocode({'location': latlng}, function(results, status) 
         {
             if (status === google.maps.GeocoderStatus.OK) 

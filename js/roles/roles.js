@@ -106,7 +106,7 @@ $(document).ready(function()
     {
         $('.items tbody tr').each(function()
         {
-            var check = $(this).find('a.view').attr('href');
+            var check = $(this).find('a.delete').attr('href');
             var index = check.lastIndexOf('/');
             var id = parseInt(check.substring(index+1));
             if(id == 1 || id == 2 || id == 3)
