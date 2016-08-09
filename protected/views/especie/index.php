@@ -5,6 +5,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $cs->registerScriptFile($baseUrl.'/js/especie/especie.js?C='.rand());
+    $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
 
 
     $this->breadcrumbs=array(
@@ -41,18 +42,23 @@
             'columns'=>$model->adminSearch()
         )); ?>
     </div>
-    <div class="tabContent hide" data-tan="2">
-    <?php $this->widget('zii.widgets.grid.CGridView', array(
-        'id'=>'especies-grid2',
-        'dataProvider'=>$model->search(0),
-        'pager' => array
+
+
+
+    <!--Inactivos-->
+    <div class="tabContent hide" data-tan="2"> 
+        <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'class' => 'PagerSA',
-            'header'=>'',
-        ),
-        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-        'template' => "{items}{summary}{pager}",
-        'columns'=>$model->adminSearchVacio()
-    )); ?>
+            'id'=>'especies-grid2',
+            'dataProvider'=>$model->search(0),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
+            'columns'=>$model->adminSearchBorrados(),
+        )); ?>
     </div>
 </div>

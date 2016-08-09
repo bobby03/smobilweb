@@ -125,9 +125,13 @@ class Viajes extends CActiveRecord
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+        return new CActiveDataProvider($this, array(
+           'criteria'=>$criteria,
+                                'pagination'=>array(
+                                    'pageSize'=>15,
+                            ),
+          ));
+
 	}
         public function searchStatus1($flag)
 	{
@@ -145,9 +149,13 @@ class Viajes extends CActiveRecord
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
                 $criteria->addCondition("status = $flag");
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		
+        return new CActiveDataProvider($this, array(
+           'criteria'=>$criteria,
+                                'pagination'=>array(
+                                    'pageSize'=>15,
+                            ),
+          ));
 	}
 	/**
 	 * Returns the static model of the specified AR class.

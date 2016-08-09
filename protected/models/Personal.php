@@ -205,7 +205,7 @@ class Personal extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Operaciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{update} {delete}</div>'
 		)
             );
         }
@@ -232,7 +232,7 @@ class Personal extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Operaciones',
-                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
                     'buttons' => array
                     (
                         'reactivar' => array

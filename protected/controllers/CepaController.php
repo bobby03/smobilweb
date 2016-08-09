@@ -165,9 +165,22 @@ class CepaController extends Controller
 		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		*/   
-		echo json_encode('');
+		echo json_encode('true');
 
 		}
+
+
+
+	public function actionReactivar($id)
+	{
+            $model = Cepa::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('cepa',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('true');
+	}
+
+
 
 	/**
 	 * Lists all models.

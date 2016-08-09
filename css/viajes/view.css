@@ -46,9 +46,14 @@
     padding-left: 25px;
     height: 212px;
 }
-.datosWraper > div:nth-child(3)
+.datosWraper > div:last-child
 {
     border: 0;
+}
+.finalizado > div{
+    width: 295px !important;
+    height: 95px !important;
+    padding-left: 50px !important;
 }
 .subtitulo
 {
@@ -200,6 +205,13 @@ div.grafica > div
     background-color: #FFFFFF;
     border-radius: 5px;
 }
+
+.alertas.vParams{
+    width: 760px !important;
+     height: 540px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
 .tituloAlerta
 {
     height: 71px;
@@ -230,6 +242,7 @@ div.grafica > div
 .tablaWraper
 {
     margin: 0 80px;
+    overflow-y: scroll;
 }
 .tablaWraper > div > div
 {

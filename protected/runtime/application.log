@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2016/08/08 15:24:41 [error] [exception.CException] CException: Property "CButtonColumn.customButtonLabel" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
 Stack trace:
 #0 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CButtonColumn.php(203): CComponent->__get('customButtonLab...')
@@ -875,3 +876,5 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/solicitudes/74
 HTTP_REFERER=http://localhost/SmobilWeb/solicitudes
 ---
+=======
+>>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25

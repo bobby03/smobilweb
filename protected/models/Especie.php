@@ -95,8 +95,12 @@ class Especie extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+
         public function getAllEspeciesSolicitud()
         {
+        	
             $especies = $this->findAll();
             $cepa = Cepa::model()->findAll();
             $return = array();
@@ -113,19 +117,28 @@ class Especie extends CActiveRecord
             }
             return $return;
         }
+
+
+
+
         public function getAllEspecies()
         {
-            $especies = Especie::model()->findAll();
+            $especies =Especie::model()->findAllBySql('SELECT * FROM especie WHERE activo = 1');
             $return = array();
             foreach($especies as $data)
                 $return[$data->id] = $data->nombre;
             return $return;
         }
+
+
         public function getEspecie($id)
         {
             $especie = Especie::model()->findByPk($id);
             return $especie->nombre;
         }
+
+
+
         public function adminSearch()
         {
             return array
@@ -148,7 +161,13 @@ class Especie extends CActiveRecord
 		)
             );
         }
+<<<<<<< HEAD
         public function adminSearchVacio()
+=======
+
+
+        public function adminSearchBorrados()
+>>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
         {
             return array
             (
@@ -157,14 +176,23 @@ class Especie extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
+<<<<<<< HEAD
                     'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+=======
+                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+>>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
                     'buttons' => array
                     (
                         'reactivar' => array
                         (
                             'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+<<<<<<< HEAD
                             'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
                             'url' => 'Yii::app()->createUrl("especie/reactivar", array("id"=>$data->id))',
+=======
+                            'options'=>array('id'=>'cepa','title'=>'', 'class' => 'cepa'),
+                            'url' => 'Yii::app()->createUrl("/especie/reactivar/id/$data->id")',
+>>>>>>> 38676859784b2123a48f81a7fb3949f67ca79f25
                         )
                     )
                 )
