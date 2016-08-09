@@ -40,12 +40,12 @@ class CampSensado extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_responsable, id_estacion', 'required'),
-			array('id_viaje, id_responsable, id_estacion, activo', 'numerical', 'integerOnly'=>true),
+			array('id_responsable, id_estacion, status, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre_camp', 'length', 'max'=>45),
 			array('fecha_inicio, hora_inicio, fecha_fin, hora_fin', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_viaje, id_responsable, id_estacion, nombre_camp, fecha_inicio, hora_inicio, fecha_fin, hora_fin, activo', 'safe', 'on'=>'search'),
+			array('id, id_viaje, id_responsable, id_estacion, nombre_camp, fecha_inicio, hora_inicio, fecha_fin, hora_fin, status, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,15 +71,13 @@ class CampSensado extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_viaje' => 'Id Viaje',
-			'id_responsable' => 'Id Responsable',
-			'id_estacion' => 'Id Estacion',
-			'nombre_camp' => 'Nombre Camp',
-			'fecha_inicio' => 'Fecha Inicio',
-			'hora_inicio' => 'Hora Inicio',
-			'fecha_fin' => 'Fecha Fin',
-			'hora_fin' => 'Hora Fin',
-			'activo' => 'Activo',
+			'id_responsable' => 'Responsable',
+			'id_estacion' => 'Estacion',
+			'nombre_camp' => 'Nombre de la campaña',
+			'fecha_inicio' => 'Fecha de inicio',
+			'hora_inicio' => 'Hora de inicio',
+			'fecha_fin' => 'Fecha de terminación',
+			'hora_fin' => 'Hora de terminación',
 		);
 	}
 
@@ -102,7 +100,6 @@ class CampSensado extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('id_viaje',$this->id_viaje);
 		$criteria->compare('id_responsable',$this->id_responsable);
 		$criteria->compare('id_estacion',$this->id_estacion);
 		$criteria->compare('nombre_camp',$this->nombre_camp,true);
@@ -110,6 +107,7 @@ class CampSensado extends CActiveRecord
 		$criteria->compare('hora_inicio',$this->hora_inicio,true);
 		$criteria->compare('fecha_fin',$this->fecha_fin,true);
 		$criteria->compare('hora_fin',$this->hora_fin,true);
+		$criteria->compare('status',$this->status,true);
 		$criteria->compare('activo',$this->activo);
 
 		return new CActiveDataProvider($this, array(
