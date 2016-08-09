@@ -5,3 +5,37 @@ td.button-column
 {
     width: 80px !important;
 }
+
+body.especie div.tabs{
+    background-color: #0077B0;
+    margin-top: 50px; 
+}
+
+body.especie div.tabs div.tab{
+    width: 100px;
+    float: left;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    line-height: 25px;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+body.especie div.tabContent{
+    margin-top: 30px;
+}
+
+body.especie div.tab.select{
+    background-color: #09B7C9;
+}
+
+body.especie div.tabs:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+
+body.especie div.row.titulos{
+	text-align: center;
+}

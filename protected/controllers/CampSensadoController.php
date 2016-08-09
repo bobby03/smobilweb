@@ -207,11 +207,17 @@ class CampSensadoController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		//$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		//if(!isset($_GET['ajax']))
+		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$this->loadModel($id);
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('camp_sensado',$model->attributes,"id = ".(int)$id."");
+            echo json_encode(true);
 	}
 
 	/**
@@ -219,9 +225,17 @@ class CampSensadoController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('CampSensado');
+		/*$dataProvider=new CActiveDataProvider('CampSensado');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+		));*/
+		$model=new CampSensado('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Estacion']))
+			$model->attributes=$_GET['Estacion'];
+
+		$this->render('index',array(
+			'model'=>$model,
 		));
 	}
 

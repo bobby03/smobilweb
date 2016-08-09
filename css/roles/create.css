@@ -39,13 +39,21 @@ div.form input[type="checkbox"]
     margin-top: 15px !important;
 }
 
-div.form input[type="submit"], .submitb
-{
-    width: 130px !important;
-}
-
 div.formContainer1 div.separador div div.botonTodos
 {
     height: 26px !important;
     line-height: 27px !important;
 }
+
+body.roles div.row.buttons{
+    width:240px;
+    text-align: right;
+}
+
+body.roles div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    margin-left: 20px;
+    font-size: 15px !Important;
+}
+

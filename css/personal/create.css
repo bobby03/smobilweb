@@ -10,8 +10,8 @@ div.form-containerWraper:after
 }
 div.containerbutton{
     margin-top: 20px;
-      float: right;
-    width: 110px;
+    float: right;
+    
 }
 
 div.form label {
@@ -240,10 +240,17 @@ float:left;
   border: 2px solid #cc0403;
 }
 
-
-
 #content{
   background-image: url('../../images/dashboard/logoTransparente.png');
   background-position: right 16% bottom;
   background-repeat: no-repeat;
 }
+
+
+body.personal div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    margin-left: 20px;
+    font-size: 15px !Important;
+}
+

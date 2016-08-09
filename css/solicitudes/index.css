@@ -16,7 +16,7 @@ div.tabs div.tab
 }
 div.tabContent
 {
-    margin-top: 40px;
+    margin-top: 40px !important;
 }
 div.tab.select
 {
@@ -30,5 +30,5 @@ div.tabs:after
 }
 .agregar
 {
-    margin: 5px 0;
+    margin: 6px 0;
 }

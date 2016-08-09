@@ -271,14 +271,14 @@ eof;
 	public function actionDelete($id)
 	{
             $model = Solicitudes::model()->findByPk($id);
-            fb($model->attributes);
+//            fb($model->attributes);
             if($model->status == 0)
                 $model->delete();
             elseif($model->status == 1)
             {
                 $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
                 $tanques = SolicitudTanques::model()->findAll("id_solicitud = $model->id");
-                fb($tanques);
+//                fb($tanques);
                 foreach ($tanques as $data)
                 {
 //                    fb($data);

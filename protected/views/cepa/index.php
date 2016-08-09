@@ -5,6 +5,7 @@
     $cs = Yii::app()->getClientScript();
     
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
 
 
 $this->breadcrumbs=array(
@@ -14,6 +15,14 @@ $this->breadcrumbs=array(
 
 <h1>Cepas de la especie <?php echo $especie->nombre;?></h1>
 <div class="principal">
+
+    <div class="tabs">
+        <div class="tab select" data-id="1"><span>Activos</span></div>
+        <div class="tab" data-id="2"><span>Inactivos</span></div>
+    </div>
+
+    <!--Activos-->
+<div class="tabContent" data-tan="1"> 
     <div class="search-form" >
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
@@ -26,7 +35,7 @@ $this->breadcrumbs=array(
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'cepa',
-            'dataProvider'=>$model->search($id),
+            'dataProvider'=>$model->search($id,1),
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'template' => "{items}{summary}{pager}",
@@ -40,3 +49,26 @@ $this->breadcrumbs=array(
     ?>
     
 </div>
+
+
+
+
+<!--Inactivos-->
+<div class="tabContent hide" data-tan="2"> 
+    <?php $this->widget('zii.widgets.grid.CGridView', array
+    (
+        'id'=>'cepa2',
+        'dataProvider'=>$model->search($id,0),
+        'pager' => array
+        (
+            'class' => 'PagerSA',
+            'header'=>'',
+        ),
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'template' => "{items}{summary}{pager}",
+        'columns'=>$model->adminSearchBorrados(),
+    )); ?>
+</div>
+
+</div>
+

@@ -241,11 +241,44 @@
         </div>
     </div>
     <?php endif;?>
-    <!-- -->
+    <!--  FINALIZADO -->
     <?php if($model->status == 3):?>
-    <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); ?>
+    <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); 
+    ?>
     <div class="detallesViaje">
-        <div class="datosViaje" style="width:1080px">
+
+        <div class="datosViaje" style="width:1200px; height:180px;">
+            <div class="titulo">Datos del viaje</div>
+            <div class="datosWraper finalizado">
+                <div>
+                    <div class="subtitulo">Viaje #<?php echo $model->id;?></div>
+                    <div class="txtA">Fecha salida:<span><?php echo $model->fecha_salida;?></span></div>
+<!--                     <div class="txtA ultimo">Último destino:<span></span></div>
+ -->                </div>
+                <div>
+                    <div class="txtA">Tiempo de viaje:</div>
+                    <?php 
+                        $datetime1 = new DateTime($model->fecha_salida);
+                        $datetime2 = new DateTime($model->fecha_entrega);
+                        $interval = $datetime1->diff($datetime2);
+                        
+                        echo "<span>".$interval->format('%m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos')."</span>";
+                        // echo "<span>".$interval->format('%R%a d&iacute;as %d %H:%M horas')."</span>";
+                    ?>
+                    <span class="tiempo"></span>
+                </div>
+                <div>
+                 <div class="txtA ultimo">Distancia recorrida:</div>
+                    <span class="distancia"><?php echo number_format(intval($this->getDistanciaKm($model->id)), 2, '.', ' '),' Km'; ?></span>
+                </div>
+                <div>
+                    <div class="txtA">Fecha entrega:</div><span><? echo $model->fecha_entrega; ?></span>
+                </div>
+
+            </div>
+        </div>
+
+       <!--  <div class="datosViaje" style="width:1080px">
             <div class="titulo">Datos del viaje<span>Ultima actualización:</span></div>
             <div class="datosWraper">
                 <div>
@@ -264,7 +297,7 @@
                     <span></span>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="mapaWraper" style="display:none;width:0;height:0">
             <div class="titulo">Mapa</div>
             <div id="map" style="display:none"></div>

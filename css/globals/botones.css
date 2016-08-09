@@ -17,3 +17,13 @@ a.gBoton:hover{
 	text-decoration: none;
 	color:#FFF;
 }
+
+body.personal .gBoton{
+  width: 109px;
+      margin-left: 0px;
+}
+
+body.roles .gBoton{
+  width: 109px;
+      margin-left: 0px;
+}

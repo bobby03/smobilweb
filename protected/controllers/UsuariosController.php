@@ -169,7 +169,14 @@ class UsuariosController extends Controller
 		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	                echo json_encode('');	
 	}
-
+        public function actionReactivar($id)
+	{
+            $model = Usuarios::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('usuarios',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
 	/**
 	 * Lists all models.
 	 */

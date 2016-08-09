@@ -135,7 +135,7 @@ class Granjas extends SMActiveRecord
                     (
                         'iglu' => array
                         (
-                            'imageUrl'=> Yii::app()->baseUrl . '/images/tanque.svg',
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/plantas.svg',
                             'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
                             'url' => 'Yii::app()->createUrl("granjas/plantaProduccion", array("id"=>$data->id))',
                         )

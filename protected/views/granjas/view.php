@@ -13,12 +13,13 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>View Granjas <?php echo $model->nombre; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'direccion',
-		'responsable',
-	),
-)); ?>
+<h1>Ver <?php echo $model->nombre; ?></h1>
+<div class="form">
+    <?php $this->widget('zii.widgets.CDetailView', array(
+            'data'=>$model,
+            'attributes'=>array(
+                    'direccion',
+                    'responsable',
+            ),
+    )); ?>
+</div>
