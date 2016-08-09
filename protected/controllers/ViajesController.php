@@ -18,6 +18,26 @@ class ViajesController extends Controller
 			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
+    public function actionGetIdCliente($s) {
+        $solicitud = Solicitudes::model()->findByPk((int) $s);
+        $html = $solicitud->id_clientes;
+        if($solicitud->notas !='' && $solicitud->notas != NULL) {
+            $nota = $solicitud->notas;
+        }
+        else {
+            $nota = "no hay notas";
+        }
+
+        $this->layout=false;
+        header('Content-type: application/json');
+        $data = array();
+
+        $data['html'] = $html;
+        $data['nota'] = $nota;
+        echo json_encode($data);
+        Yii::app()->end(); 
+    }
+
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
@@ -68,6 +88,117 @@ class ViajesController extends Controller
             $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
             echo json_encode($data);
             Yii::app()->end(); 
+
+        }
+        public function actionGetResumenViaje($solicitud, $camion) {
+            $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
+            $id_cliente = Solicitudes::model()->findByPk((int)$solicitud);
+            $cliente = Clientes::model()->findByPk($id_cliente->id_clientes);
+            $data['id_cliente'] = $id_cliente;
+            // var_dump($cliente);
+            $o=1;
+            $html ="";
+            foreach($pedidos as $data){
+                for($i=1;$i<=$data->tanques;$i++){
+                    $html.= "<div class='boxCont'>
+                                <div id='contV3'>
+                                    
+                                    <div id='vt1'>
+                                        <div class='headerT'>Cliente</div>
+                                    </div>
+                                    <div id='vc1' class='vbox'>
+                                        <div class='left'>
+                                            <p id='vtitulo'>";
+                                            $nombreEmpresa = $cliente->nombre_empresa;
+                            $html .=$nombreEmpresa;
+
+                            $html.="
+                        </p>
+                        <p><span class='vresalta'>RFC:</span>";
+                        $rf = $cliente->rfc;
+                        $html.=$rf;
+                        $html.="</p>
+                        <p><span class='vresalta'>Contacto:</span> ";
+                        $nombrecontacto = $cliente->nombre_contacto." ".$cliente->apellido_contacto;
+                        $html.=$nombrecontacto;
+                        $html.="</p>
+
+                        <p><span class='vresalta'>Domicilio de entrega:</span></br>
+                        ";
+                        $domicilio = ClientesDomicilio::model()->getDomicilio($data->id_direccion);
+                        $html.=$domicilio;
+                        $html.="</p>
+                    </div>
+
+                    
+                    <div class='right'>
+                        <p><span class='vresalta'>Fecha de salida:</span> <span class='fsalida'> </span></p>
+                        
+                        <p><span class='vresalta'>Nombre de Tanque:</span><span class='ntan{$o}'></span></p>
+                    </div>
+                   
+
+                     </div>
+                    <div id='vt2'>
+                         <div class='headerT'>Datos de la especie</div>
+                    </div>
+                    <div id='vc2'>
+                        <p><span class='vresalta'>Especie:</span>";
+                        $especie = Especie::model()->getEspecie($data->id_especie);
+                        $html.=$especie;
+                        $html.=" </p>
+                        <p><span class='vresalta'>No. Organismos:</span> ";
+                        if($data->tanques >=1) {
+                            $total = $data->cantidad/$data->tanques;
+                        }
+                        else {
+                            $total = 'revisar tanques';
+                        }
+                        
+                        $html.=$total;
+                        $html.="></p>
+                        <table id='vcont'>
+                            <tr class='pf'>
+                                <th class='pc'></th><th>Mínima</th><th>Máxima</th>
+                            </tr>
+                            <tr>";
+
+                            $cepa=Cepa::model()->getCepa1($data->id_cepa);
+                            $html .="
+                                <th class='pc'>Temperatura (Temp)</th><th> {$cepa->temp_min}</th><th>{$cepa->temp_max}</th>
+                            </tr>
+                            <tr>
+                                <th class='pc'>PH (ph)</th><th>{$cepa->ph_min}</th><th>{$cepa->ph_max}</th>
+                            </tr>
+                            <tr>
+                                <th class='pc'>Oxígeno (O)</th><th> {$cepa->ox_min}</th><th>{$cepa->ox_min}</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class='row buttons floating'>";
+               
+                if($o==1){
+                    $html.= '<input type="submit" name="yt0" value="Finalizar" />';
+                }
+               $html .=" </div>
+            
+                 </div>";
+                   
+                    $o++;
+                }
+            }
+            // fb($html);
+
+            $this->layout=false;
+            header('Content-type: application/json');
+            $data = array();
+            $data['cliente'] = $cliente;
+            $data['html'] = $html;
+            // $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_clientes\',\'codigo\'));'),$id_cliente);
+            
+            echo json_encode($data);
 
         }
 	/**
@@ -234,8 +365,9 @@ class ViajesController extends Controller
 //                print_r($_POST);
             $model->attributes = $_POST['Viajes'];
             $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-            if($_POST['Solicitudes']['id_clientes'] != '' && $_POST['Solicitudes']['id_clientes'] != null)
-                $solicitudes->id = $_POST['Solicitudes']['id'];
+            if(isset($_POST['Solicitudes']['id_clientes']))
+                if($_POST['Solicitudes']['id_clientes'] != '' && $_POST['Solicitudes']['id_clientes'] != null)
+                    $solicitudes->id = $_POST['Solicitudes']['id'];
             $solicitudes->id_clientes = $_POST['Solicitudes']['id_clientes'];
             $solicitudes->notas = $_POST['Solicitudes']['notas'];
             $solicitudes->fecha_alta = date('Y-m-d');

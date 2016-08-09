@@ -248,9 +248,14 @@
                                     'class'=>'css-select',
                                      'value'=>$sol->id
                                 ));
-                                // );
                      ?>
                     <?php echo $form->error($model,'id_solicitudes[1]'); ?>
+
+                </span>
+                 <span class"hidden-input">
+                    <input  class="hiden-input" name='Solicitudes[id_clientes]' id='Solicitudes_id_clientes' type='hidden' autocomplete='off'>
+                    <input  class="hiden-input-id" name='Solicitudes[id]' id='Solicitudes_id' type='hidden' autocomplete='off'>
+                    <input  class="hiden-input-notas" name='Solicitudes[notas]' id='Solicitudes_notas' type='hidden' autocomplete='off'>
                 </span>
             </div>
             <div class="formContainer1">
@@ -325,6 +330,10 @@
             <div class="pedidosWraper"></div>   
             <div class="siguiente dos">Siguiente</div>
         </div>
+
+         <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="3">
+            <div class="inner-third-wrapper"></div>
+         </div>
 <?php
     $this->endWidget();
 ?>
