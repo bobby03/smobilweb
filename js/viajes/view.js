@@ -406,7 +406,11 @@ $(document).ready(function()
         var lng = direccion.length;
         var input = direccion.substring(1,lng-1);
         var latlngStr = input.split(',', 2);
-        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        var lt = latlngStr[0].substring(0,10);
+        var ln = latlngStr[1].substring(0,10);
+        console.log("Lat: "+lt);
+        console.log("Lng: "+ln);
+        var latlng = {lat: parseFloat(lt), lng: parseFloat(ln)};
         geocoder.geocode({'location': latlng}, function(results, status) 
         {
             if (status === google.maps.GeocoderStatus.OK) 
