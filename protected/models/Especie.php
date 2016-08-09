@@ -67,7 +67,7 @@ class Especie extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($activo)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -75,7 +75,8 @@ class Especie extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('nombre',$this->nombre,true);
-                $criteria->addCondition("activo=1");
+		$criteria->addCondition("activo=$activo");
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
                     'pagination'=>array(
@@ -94,8 +95,12 @@ class Especie extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+
         public function getAllEspeciesSolicitud()
         {
+        	
             $especies = $this->findAll();
             $cepa = Cepa::model()->findAll();
             $return = array();
@@ -112,19 +117,28 @@ class Especie extends CActiveRecord
             }
             return $return;
         }
+
+
+
+
         public function getAllEspecies()
         {
-            $especies = Especie::model()->findAll();
+            $especies =Especie::model()->findAllBySql('SELECT * FROM especie WHERE activo = 1');
             $return = array();
             foreach($especies as $data)
                 $return[$data->id] = $data->nombre;
             return $return;
         }
+
+
         public function getEspecie($id)
         {
             $especie = Especie::model()->findByPk($id);
             return $especie->nombre;
         }
+
+
+
         public function adminSearch()
         {
             return array
@@ -145,6 +159,30 @@ class Especie extends CActiveRecord
                         )
                     )
 		)
+            );
+        }
+
+
+        public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'cepa','title'=>'', 'class' => 'cepa'),
+                            'url' => 'Yii::app()->createUrl("/especie/reactivar/id/$data->id")',
+                        )
+                    )
+                )
             );
         }
 }

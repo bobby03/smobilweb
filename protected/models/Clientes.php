@@ -123,9 +123,9 @@ class Clientes extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_empresa' => 'Nombre Empresa',
-			'nombre_contacto' => 'Nombre Contacto',
-			'apellido_contacto' => 'Apellido Contacto',
+			'nombre_empresa' => 'Nombre de la empresa',
+			'nombre_contacto' => 'Nombre de contacto',
+			'apellido_contacto' => 'Apellido de contacto',
 			'correo' => 'Correo',
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',
@@ -144,7 +144,7 @@ class Clientes extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -157,7 +157,7 @@ class Clientes extends CActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
-                $criteria->addcondition('activo = 1');
+                $criteria->addcondition('activo = '.$flag);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
                         'pagination'=>array(
@@ -234,6 +234,33 @@ class Clientes extends CActiveRecord
                     'header'=>'Acciones',
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
 		)
+            );
+        }
+        public function adminSearchVacios()
+        {
+            return array
+            (
+                'nombre_empresa',
+		'nombre_contacto',
+		'apellido_contacto',
+		'correo',
+		'rfc',
+                'tel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("clientes/reactivar", array("id"=>$data->id))',
+                        )
+                    )
+                )
             );
         }
 }
