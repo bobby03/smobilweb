@@ -11,7 +11,25 @@ $(document).ready(function() {
 
 	}
 	console.log(new_url);
-	
+	$('#Viajes_id_solicitudes').on('change', function(){
+        var sol = $(this).val();
+        $.ajax({
+            type:'GET',
+            url: 'GetIdCliente',
+            dataType: 'JSON',
+            data: {
+                s: sol
+            },
+            success: function(data) {
+                $('.hiden-input').val(data.html);
+                $('.hiden-input-id').val(sol);
+                $('.hiden-input-notas').val(data.nota);
+            },
+            error: function(a,b,c) {    
+                console.log(a, b, c);
+            }
+        });
+    });
 	$('.siguiente.uno').on('click', function(){
 		var solicitud = $('#Viajes_id_solicitudes').val();
 		var camion = $('#Viajes_id_estacion').val();
@@ -35,6 +53,28 @@ $(document).ready(function() {
 		});
 
 	});
+
+    $('.siguiente.dos').on('click', function() {
+        var solicitud = $('#Viajes_id_solicitudes').val();
+        var camion = $('#Viajes_id_estacion').val();
+        $.ajax({
+            type: 'GET',
+            url: 'GetResumenViaje',
+            dataType: 'JSON',
+            data: {
+                solicitud: solicitud,
+                camion: camion
+            },
+            success: function(data) {
+                $('.inner-third-wrapper').empty();
+                $('.inner-third-wrapper').append(data.html);
+            },
+            error: function(a,b,c) {
+                console.log(a, b, c);
+            }
+        });
+    });
+
 	function validateChangesTanque(){
 		$('[data-tan]').on('change', function() {
             var num = $(this).val();
