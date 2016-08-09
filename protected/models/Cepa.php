@@ -97,7 +97,7 @@ class Cepa extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search($id)
+	public function search($id,$activo)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -117,7 +117,7 @@ class Cepa extends CActiveRecord
 		$criteria->compare('orp_min',$this->orp_min);
 		$criteria->compare('orp_max',$this->orp_max);
                 $criteria->addCondition("id_especie = $id");
-                $criteria->addCondition("activo = 1");
+                $criteria->addCondition("activo=$activo");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
                         'pagination'=>array(
@@ -219,4 +219,28 @@ eof;
             )
         );
     }
+
+
+       public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre_cepa',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("cepa/", array("id"=>$data->id))',
+                        )
+                    )
+                )
+            );
+        }
 }
