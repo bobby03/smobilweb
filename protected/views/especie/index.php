@@ -39,7 +39,11 @@
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'template' => "{items}{summary}{pager}",
-            'columns'=>$model->adminSearch()
+            'columns'=>$model->adminSearch(),
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('especies-grid2');
+            }"
         )); ?>
     </div>
 
@@ -51,6 +55,7 @@
         (
             'id'=>'especies-grid2',
             'dataProvider'=>$model->search(0),
+            'ajaxUpdate'=>true,
             'pager' => array
             (
                 'class' => 'PagerSA',

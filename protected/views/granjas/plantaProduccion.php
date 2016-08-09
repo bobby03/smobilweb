@@ -42,6 +42,10 @@ div.tabContent
                 'class' => 'PagerSA',
                 'header'=>'',
             ),
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('estacion-grid2');
+            }"
         )); 
     ?>
     </div>
@@ -51,8 +55,9 @@ div.tabContent
         (
             'id'=>'estacion-grid2',
             'summaryText'=>'',
+            'ajaxUpdate'=>true,
             'dataProvider'=>$model->searchTanqueGranja($id,0),
-            'columns'=>$model->adminSearchPlanta(),
+            'columns'=>$model->adminSearchPlantaVacio(),
             'pager' => array
             (
                 'class' => 'PagerSA',
