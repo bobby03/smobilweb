@@ -10,6 +10,19 @@ div.search-form div.wide.form
     margin: 0;
     float: left;
 }
+div.search-form div.row
+{
+    clear: none !important;
+    float: left;
+    width: 250px;
+    margin: 0;
+}
+div.search-form #searchDropDown
+{
+    width: 250px;
+    margin-right: 25px;
+    float: left;
+}
 .chosen-container-multi .chosen-choices
 {
     border: 0;
@@ -61,11 +74,6 @@ div.form .chosen-container
     border-left: 30px solid #0077b0;
     text-indent: 5px;
     width: 100%;
-    /*
-     width: 250px;
-     float: left;
-     margin-right: 25px;
-     */
 }
 div.form input[type="submit"]
 {
@@ -167,10 +175,6 @@ div.form label
 div.form .row
 {
     margin: 10px 0;
- /*   
-    float: left;
-    width: 250px;
- */
 }
 div.formContainer1 div.nombreSeccion
 {
