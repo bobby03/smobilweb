@@ -11,6 +11,7 @@ $(document).ready(function()
                 <div class="separator-content"></div>\n\
                 <input id="ingesp" class="ingesp" type="text">\n\
                 <div class="botones-content">\n\
+                    <a class="gBoton" href="">Cancelar</a> \n\
                     <div class="btnadd">Agregar</div>\n\
                 </div>\n\
                 <script>UpperCaseInput();</script>\n\

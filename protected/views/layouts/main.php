@@ -106,7 +106,7 @@
 												 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)),
 												 array('label'=>'Granjas', 'url'=>array('/granjas'),'itemOptions'=>array('id' => 'granjas','active'=>$this->id=='granjas'?true:false)),
 												 array('label'=>'Siembras', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo','active'=>$this->id=='monitoreo'?true:false)),
-												 array('label'=>'CampSensado', 'url'=>array('/campsensado'),'itemOptions'=>array('id' => 'campsensado','active'=>$this->id=='campsensado'?true:false)),
+												 array('label'=>'CampSensado', 'url'=>array('/CampSensado'),'itemOptions'=>array('id' => 'campsensado','active'=>$this->id=='campsensado'?true:false)),
 												 array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),
 												 ),	));
 							}else{	// Muestra secciones de acuerdo a los roles asignados
