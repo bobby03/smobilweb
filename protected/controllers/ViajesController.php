@@ -158,7 +158,7 @@ class ViajesController extends Controller
                         }
                         
                         $html.=$total;
-                        $html.="></p>
+                        $html.="</p>
                         <table id='vcont'>
                             <tr class='pf'>
                                 <th class='pc'></th><th>Mínima</th><th>Máxima</th>

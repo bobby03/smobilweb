@@ -235,29 +235,7 @@
         <div class="bolaChica"></div>
     </div>
     <div class="tab <?php  if(!$model->isNewRecord) echo 'hide';?>" data-tab="1">
-            <div class="row">
-                <label>Solicitudes sin asignar</label>
-                <span class="css-select-moz">
-                    <?php
-                            $sol = new Solicitudes();
-                             echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getClientesEnEspera(),
-                                array
-                                (
-                                    'empty'=>'Seleccionar',
-//                                        'disabled'=>'disabled',
-                                    'class'=>'css-select',
-                                     'value'=>$sol->id
-                                ));
-                     ?>
-                    <?php echo $form->error($model,'id_solicitudes[1]'); ?>
-
-                </span>
-                 <span class"hidden-input">
-                    <input  class="hiden-input" name='Solicitudes[id_clientes]' id='Solicitudes_id_clientes' type='hidden' autocomplete='off'>
-                    <input  class="hiden-input-id" name='Solicitudes[id]' id='Solicitudes_id' type='hidden' autocomplete='off'>
-                    <input  class="hiden-input-notas" name='Solicitudes[notas]' id='Solicitudes_notas' type='hidden' autocomplete='off'>
-                </span>
-            </div>
+           
             <div class="formContainer1">
                 <?php if($model->isNewRecord):?>
                 <input type="hidden" name="NuevoRecord" value="0" form="viajes-form">
@@ -292,7 +270,30 @@
                     </div>
                 <?php endif;?>
             </div>
-            <div class="formContainer1">
+            <div class="formContainer1"> 
+                <div class="row">
+                    <label>Solicitudes sin asignar</label>
+                    <span class="css-select-moz">
+                        <?php
+                                $sol = new Solicitudes();
+                                 echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getClientesEnEspera(),
+                                    array
+                                    (
+                                        'empty'=>'Seleccionar',
+    //                                        'disabled'=>'disabled',
+                                        'class'=>'css-select',
+                                         'value'=>$sol->id
+                                    ));
+                         ?>
+                        <?php echo $form->error($model,'id_solicitudes[1]'); ?>
+
+                    </span>
+                     <span class"hidden-input">
+                        <input  class="hiden-input" name='Solicitudes[id_clientes]' id='Solicitudes_id_clientes' type='hidden' autocomplete='off'>
+                        <input  class="hiden-input-id" name='Solicitudes[id]' id='Solicitudes_id' type='hidden' autocomplete='off'>
+                        <input  class="hiden-input-notas" name='Solicitudes[notas]' id='Solicitudes_notas' type='hidden' autocomplete='off'>
+                    </span>
+                </div>
                 <div class="row">
                     <?php echo $form->labelEx($model,'id_estacion'); ?>
                     <span class="css-select-moz">
