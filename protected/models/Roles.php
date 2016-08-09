@@ -158,7 +158,7 @@ class Roles extends SMActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{update} {delete}</div>'
 		)
             );
         }
@@ -171,7 +171,7 @@ class Roles extends SMActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
                     'buttons' => array
                     (
                         'reactivar' => array

@@ -39,24 +39,29 @@
         'header'=>'',
     ),
     'dataProvider'=>$model->search(1),
-    'columns'=>$model->adminSearch()
+    'columns'=>$model->adminSearch(),
+    'afterAjaxUpdate' => "function(id,data)
+    {
+        $.fn.yiiGridView.update('personal-grid2');
+    }"
 )); 
 ?>
     </div>
     <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
         <?php $this->widget('zii.widgets.grid.CGridView', array
-(
-    'id'=>'personal',
-    'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-    'template' => "{items}{summary}{pager}",
-    'pager' => array
-    (
-        'class' => 'PagerSA',
-        'header'=>'',
-    ),
-    'dataProvider'=>  Personal::model()->search(0),
-    'columns'=>$model->adminSearchVacios()
-)); 
+        (
+            'id'=>'personal-grid2',
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
+            'ajaxUpdate'=>true,
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
+            'dataProvider'=>  Personal::model()->search(0),
+            'columns'=>$model->adminSearchVacios()
+        )); 
 ?>
     </div>
 </div>

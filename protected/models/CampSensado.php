@@ -45,7 +45,7 @@ class CampSensado extends CActiveRecord
 			array('fecha_inicio, hora_inicio, fecha_fin, hora_fin', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_viaje, id_responsable, id_estacion, nombre_camp, fecha_inicio, hora_inicio, fecha_fin, hora_fin, status, activo', 'safe', 'on'=>'search'),
+			array('id, id_responsable, id_estacion, nombre_camp, fecha_inicio, hora_inicio, fecha_fin, hora_fin, status, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,7 +72,7 @@ class CampSensado extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_responsable' => 'Responsable',
-			'id_estacion' => 'Estacion',
+			'id_estacion' => 'Planta de producción',
 			'nombre_camp' => 'Nombre de la campaña',
 			'fecha_inicio' => 'Fecha de inicio',
 			'hora_inicio' => 'Hora de inicio',
@@ -93,7 +93,7 @@ class CampSensado extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -109,6 +109,7 @@ class CampSensado extends CActiveRecord
 		$criteria->compare('hora_fin',$this->hora_fin,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('activo',$this->activo);
+		$criteria->addCondition("activo=$flag");
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -125,4 +126,48 @@ class CampSensado extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	public function getResp($id)
+        {
+                    $resp = Personal::model()->findByPk($id);
+                    return $resp->nombre.' '.$resp->apellido;
+        }
+        public function getEstacion($id)
+        {
+                    $nombre = Estacion::model()->findByPk($id);
+                    return $nombre->identificador;
+        }
+	public function adminSearch()
+        {
+            return array
+            (
+                'nombre_camp',
+                array
+	            (
+	               'name' => 'id_estacion',
+                	'value' => 'CampSensado::model()->getEstacion($data->id_estacion)',
+	            ),
+	            array
+	            (
+	               'name' => 'id_responsable',
+                	'value' => 'CampSensado::model()->getResp($data->id_responsable)',
+	            ),
+                'fecha_inicio',
+                'hora_inicio',
+                'fecha_fin',
+                'hora_fin',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                    'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                       	'url' => 'Yii::app()->createUrl("monitoreo/$data->id_estacion")',
+                       	) 
+                    )
+		)
+            );
+        }
 }

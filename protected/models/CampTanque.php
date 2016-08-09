@@ -33,7 +33,7 @@ class CampTanque extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_tanque, id_camp_sensado, id_cepa', 'required'),
-			array('id_tanque, id_camp_sensado, id_cepa', 'numerical', 'integerOnly'=>true),
+			array('id_tanque, id_camp_sensado, id_cepa, cantidad', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_tanque, id_camp_sensado, id_cepa', 'safe', 'on'=>'search'),
@@ -64,6 +64,7 @@ class CampTanque extends CActiveRecord
 			'id_tanque' => 'Id Tanque',
 			'id_camp_sensado' => 'Id Camp Sensado',
 			'id_cepa' => 'Id Cepa',
+			'cantidad' => 'cantidad de peces',
 		);
 	}
 
@@ -89,6 +90,7 @@ class CampTanque extends CActiveRecord
 		$criteria->compare('id_tanque',$this->id_tanque);
 		$criteria->compare('id_camp_sensado',$this->id_camp_sensado);
 		$criteria->compare('id_cepa',$this->id_cepa);
+		$criteria->compare('cantidad',$this->cantidad);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -370,6 +370,32 @@ class Estacion extends CActiveRecord
 		)
             );
         }
+        public function adminSearchPlantaVacio()
+        {
+            return array
+            (
+                'identificador',
+                'no_personal',
+                'marca',
+                'color',
+                'ubicacion',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("estacion/reactivar", array("id"=>$data->id))',
+                        )
+                    )
+                )
+            );
+        }
         public function adminSearch1()
         {
             return array
@@ -396,6 +422,32 @@ class Estacion extends CActiveRecord
                         (
                             
                             'url' => 'Yii::app()->createUrl("estacion/update", array("id"=>$data->id))',
+                        )
+                    )
+                )
+            );
+        }
+        public function adminSearchVacio()
+        {
+            return array
+            (
+                'identificador',
+                'no_personal',
+                'marca',
+                'color',
+                'ubicacion',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("estacion/reactivar", array("id"=>$data->id))',
                         )
                     )
                 )

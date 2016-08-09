@@ -31,8 +31,9 @@
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'rol',
+        'id'=>'rol-grid',
         'dataProvider'=>$model->search(1),
+        'ajaxUpdate'=>true,
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'pager' => array
         (
@@ -44,18 +45,15 @@
         'columns'=>$model->adminSearch(),
         'afterAjaxUpdate' => "function(id,data)
         {
-            $('.items tbody tr').each(function()
+            $('.si-busqueda tbody tr').each(function()
             {
-                var check = $(this).find('a.view').attr('href');
-                var index = check.lastIndexOf('/');
-                var id = parseInt(check.substring(index+1));
+                var hrefId = $(this).find('a.delete').attr('href');
+                var urlSplit = hrefId.split( '/' );
+                var id = urlSplit[ urlSplit.length - 1 ]; 
                 if(id == 1 || id == 2 || id == 3)
-                {
                     $(this).find('a').remove();
-                }
-                else
-                    $(this).find('a.view').remove();
             });
+            $.fn.yiiGridView.update('rol-grid2');
         }"
     )); ?>
 </div>
@@ -64,8 +62,9 @@
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'rol2',
+        'id'=>'rol-grid2',
         'dataProvider'=>$model->search(0),
+        'ajaxUpdate'=>true,
         'pager' => array
         (
             'class' => 'PagerSA',
@@ -74,6 +73,10 @@
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearchBorrados(),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $.fn.yiiGridView.update('rol-grid2');
+        }"
     )); ?>
 </div>
 

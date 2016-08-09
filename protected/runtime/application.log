@@ -955,3 +955,163 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/especie
 HTTP_REFERER=http://localhost/SmobilWeb/clientes
 ---
+2016/08/09 12:20:25 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:20:26 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:20:27 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:20:28 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:20:28 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:20:28 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:20:28 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 12:25:33 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "reactivar". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('reactivar')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('reactivar')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('personal/reacti...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/personal/reactivar/10?id=10
+HTTP_REFERER=http://localhost/SmobilWeb/personal
+---
+2016/08/09 13:15:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 13:20:06 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 13:20:06 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 13:20:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/09 13:35:04 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php:223)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ClientesController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ClientesController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ClientesController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ClientesController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
+REQUEST_URI=/SmobilWeb/clientes/reactivar/19?id=19
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php (223)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/09 13:37:21 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php:223)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ClientesController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ClientesController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ClientesController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ClientesController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
+REQUEST_URI=/SmobilWeb/clientes/reactivar/19?id=19
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php (223)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)

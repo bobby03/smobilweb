@@ -118,6 +118,17 @@
                 */
             echo json_encode('');
             }
+	public function actionReactivar($id)
+	{
+            $model = $this->loadModel($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                    ->update('personal',$model->attributes,"id = ".(int)$id."");
+            /*if(!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+                */
+            echo json_encode('');
+            }
 	public function actionIndex()
 	{
             $model=new Personal('search');
