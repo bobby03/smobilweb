@@ -10,7 +10,7 @@
     );
 
 ?>
-<h1>Camp Sensados</h1>
+<h1>Siembras</h1>
 
 <div class="principal">
     <div class="tabs">

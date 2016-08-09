@@ -101,8 +101,8 @@ class Especie extends CActiveRecord
         public function getAllEspeciesSolicitud()
         {
         	
-            $especies = $this->findAll();
-            $cepa = Cepa::model()->findAll();
+            $especies = $this->findAll('activo = 1');
+            $cepa = Cepa::model()->findAll('activo = 1');
             $return = array();
             foreach($especies as $data)
             {

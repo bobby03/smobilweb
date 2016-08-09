@@ -104,7 +104,7 @@ class CampSensadoController extends Controller
 	public function actionCreate()
 	{
 		$model=new CampSensado;
-		$granjas = Granjas::model()->findAll();
+		$granjas = Granjas::model()->findAll('activo = 1');
 		$personal = new SolicitudesViaje;
 
 		// Uncomment the following line if AJAX validation is needed
