@@ -69,6 +69,14 @@ class Granjas extends SMActiveRecord
                 '3'=>'Responsable'
             );
         }
+        public function getnombregranja()
+        {
+            $personal = Granjas::model()->findAll();
+            $return = array();
+            foreach($personal as $data)
+                $return[$data->id] = $data->nombre;
+            return $return; 
+        }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

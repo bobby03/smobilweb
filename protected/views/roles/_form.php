@@ -167,6 +167,7 @@
 	</div>
     </div>
     <div class="row buttons submitb">
+        <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/roles">Cancelar</a> 
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Guardar'); ?>
     </div>
         

@@ -50,17 +50,29 @@
 			// Construye el Menu en Base a los Roles Asignados en la sesion.
 			$menu = array();
 			array_push($menu,array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)));
+			//Movil
+			if(Yii::app()->user->checkAccess('readViajes')){array_push($menu,array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)));}
+			// - Camiones
+
+
+			//Granjas
+			if(Yii::app()->user->checkAccess('readGranjas')){array_push($menu,array('label'=>'Granjas', 'url'=>array('/granjas'),'itemOptions'=>array('id' => 'granjas','active'=>$this->id=='granjas'?true:false)));}
+			// - Siembra
+
+
+			//Administrativo
+			if(Yii::app()->user->checkAccess('readSolicitudes')){array_push($menu,array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)));}
+			if(Yii::app()->user->checkAccess('readClientes')){array_push($menu,array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)));}
+			if(Yii::app()->user->checkAccess('readEspecie')){array_push($menu,array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)));}
 			if(Yii::app()->user->checkAccess('readPersonal')){ array_push($menu,array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false))); }
 			if(Yii::app()->user->checkAccess('readRoles')){array_push($menu,array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false))); }
-			if(Yii::app()->user->checkAccess('readClientes')){array_push($menu,array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)));}
-			if(Yii::app()->user->checkAccess('readEstacion')){array_push($menu,array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)));}
-			if(Yii::app()->user->checkAccess('readEspecie')){array_push($menu,array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)));}
-			if(Yii::app()->user->checkAccess('readSolicitudes')){array_push($menu,array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)));}
-			if(Yii::app()->user->checkAccess('readViajes')){array_push($menu,array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)));}
 			if(Yii::app()->user->checkAccess('readUsuarios')){array_push($menu,array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)));}
+
+
+			if(Yii::app()->user->checkAccess('readEstacion')){array_push($menu,array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)));}		
 			if(Yii::app()->user->checkAccess('readMonitoreo')){array_push($menu,array('label'=>'Monitoreo', 'url'=>array('/monitoreo'),'itemOptions'=>array('id' => 'monitoreo','active'=>$this->id=='monitoreo'?true:false)));}
 			if(Yii::app()->user->checkAccess('readCampSensado')){array_push($menu,array('label'=>'CampSensado', 'url'=>array('/campSensado'),'itemOptions'=>array('id' => 'campsensado','active'=>$this->id=='campsensado'?true:false)));}
-			if(Yii::app()->user->checkAccess('readGranjas')){array_push($menu,array('label'=>'Granjas', 'url'=>array('/granjas'),'itemOptions'=>array('id' => 'granjas','active'=>$this->id=='granjas'?true:false)));}
+			
 			array_push($menu,array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')));
 
 
@@ -87,7 +99,7 @@
 												 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 												 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 												 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
-												 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
+											//	 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
 												 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
 												 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
 												 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
@@ -109,7 +121,7 @@
 									 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
-									 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
+								//	 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
 									 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
 									 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
