@@ -53,7 +53,7 @@
 			if(Yii::app()->user->checkAccess('readPersonal')){ array_push($menu,array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false))); }
 			if(Yii::app()->user->checkAccess('readRoles')){array_push($menu,array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false))); }
 			if(Yii::app()->user->checkAccess('readClientes')){array_push($menu,array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)));}
-			if(Yii::app()->user->checkAccess('readEstacion')){array_push($menu,array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)));}
+			//if(Yii::app()->user->checkAccess('readEstacion')){array_push($menu,array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)));}
 			if(Yii::app()->user->checkAccess('readEspecie')){array_push($menu,array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)));}
 			if(Yii::app()->user->checkAccess('readSolicitudes')){array_push($menu,array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)));}
 			if(Yii::app()->user->checkAccess('readViajes')){array_push($menu,array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)));}
@@ -87,7 +87,7 @@
 												 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 												 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 												 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
-												 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
+											//	 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
 												 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
 												 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
 												 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
@@ -109,7 +109,7 @@
 									 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
-									 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
+								//	 array('label'=>'Estaciones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
 									 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
 									 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
