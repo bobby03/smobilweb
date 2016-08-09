@@ -46,9 +46,14 @@
     padding-left: 25px;
     height: 212px;
 }
-.datosWraper > div:nth-child(3)
+.datosWraper > div:last-child
 {
     border: 0;
+}
+.finalizado > div{
+    width: 295px !important;
+    height: 95px !important;
+    padding-left: 50px !important;
 }
 .subtitulo
 {
@@ -237,6 +242,7 @@ div.grafica > div
 .tablaWraper
 {
     margin: 0 80px;
+    overflow-y: scroll;
 }
 .tablaWraper > div > div
 {

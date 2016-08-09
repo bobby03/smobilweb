@@ -344,7 +344,7 @@ $(document).ready(function()
                             markers.push(marker);
                             map.setCenter(ubi);
                             $('.txtA.ultimo span').text(data2.ultimo);
-//                            console.log(data2);
+                           console.log(data2);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
                             reverseGeocoding(datos.ubicacion, 1, false);

@@ -1017,6 +1017,36 @@ EOF;
             }
             echo json_encode($return);
         }
+
+    public function getDistanciaKm($viaje){
+        $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
+        $d = 0;
+        $p1 = $p2 = array();
+        foreach($recorrido as $data)
+        {
+            if($d == 0)
+            {
+                $p1[0] = Yii::app()->params['locationLat'];
+                $p1[1] = Yii::app()->params['locationLon'];
+            }
+            $hay = strlen($data->ubicacion);
+            $coord = substr($data->ubicacion, 1, $hay-1);
+            $p2 = explode(",", $coord);
+//                  $p2[0] = ();
+            $R = 6378137; // Earth’s mean radius in meter
+            $dLat = $this->rad($p2[0] - $p1[0]);
+            $dLong = $this->rad($p2[1] - $p1[1]);
+            $a = sin($dLat / 2) * sin($dLat / 2) +
+              cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
+              sin($dLong / 2) * sin($dLong / 2);
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $d = $d + ($R * $c);
+            $p1[0] = $p2[0];
+            $p1[1] = $p2[1];
+        }
+        $d = $d/1000;
+        return round($d, 2).' Km';
+    }
         public function GetDistancia($viaje)
         { 
             $recorrido = Yii::app()->db->createCommand()
@@ -1739,7 +1769,7 @@ eof;
                     'type' => 'line',
                     'data'=>array
                     (
-                        'labels'    => $labels,
+                        'labels'    => isset($labels)?$labels:"empty",
                         'datasets'  => 
                         [
                             (object)
@@ -1752,7 +1782,7 @@ eof;
                                 'pointBackgroundColor'  => "#3E66AA",
                                 'pointBorderWidth'      => 5,
                                 'pointHoverRadius'      => 10,
-                                'data'                  => $datasets,
+                                'data'                  => isset($datasets)?$datasets:"empty",
                             ]
                         ]
                     ),
@@ -1793,7 +1823,7 @@ eof;
                 'type' => 'line',
                 'data'=>array
                 (
-                    'labels'    => $labels2,
+                    'labels'    => isset($labels2)?$labels2:"empty",
                     'datasets'  => 
                     [
                         (object)
@@ -1806,7 +1836,7 @@ eof;
                             'pointBackgroundColor'  => "#3E66AA",
                             'pointBorderWidth'      => 5,
                             'pointHoverRadius'      => 10,
-                            'data'                  => $datasets2,
+                            'data'                  => isset($datasets2)?$datasets2:"empty",
                         ]
                     ]
                 ),
@@ -1848,7 +1878,7 @@ eof;
                 'type' => 'line',
                 'data'=>array
                 (
-                    'labels'    => $labels3,
+                    'labels'    =>isset($labels3)?$labels3:"empty",
                     'datasets'  => 
                     [
                         (object)
@@ -1861,7 +1891,7 @@ eof;
                             'pointBackgroundColor'  => "#3E66AA",
                             'pointBorderWidth'      => 5,
                             'pointHoverRadius'      => 10,
-                            'data'                  => $datasets3,
+                            'data'                  => isset($datasets3)?$datasets3:"empty",
                         ]
                     ]
                 ),
@@ -1903,7 +1933,7 @@ eof;
                 'type' => 'line',
                 'data'=>array
                 (
-                    'labels'    => $labels4,
+                    'labels'    => isset($labels4)?$labels4:"empty",
                     'datasets'  => 
                     [
                         (object)
@@ -1916,7 +1946,7 @@ eof;
                             'pointBackgroundColor'  => "#3E66AA",
                             'pointBorderWidth'      => 5,
                             'pointHoverRadius'      => 10,
-                            'data'                  => $datasets4,
+                            'data'                  => isset($datasets4)?$datasets4:"empty",
                         ]
                     ]
                 ),
@@ -1958,7 +1988,7 @@ eof;
                 'type' => 'line',
                 'data'=>array
                 (
-                    'labels'    => $labels5,
+                    'labels'    => isset($labels5)?$labels5:"empty",
                     'datasets'  => 
                     [
                         (object)
@@ -1971,7 +2001,7 @@ eof;
                             'pointBackgroundColor'  => "#3E66AA",
                             'pointBorderWidth'      => 5,
                             'pointHoverRadius'      => 10,
-                            'data'                  => $datasets5,
+                            'data'                  => isset($datasets5)?$datasets5:"empty",
                         ]
                     ]
                 ),
