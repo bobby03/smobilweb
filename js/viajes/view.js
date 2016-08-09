@@ -24,12 +24,54 @@ $(document).ready(function()
     graficarPorParametro();
     $('[data-id="1"] .boton.adve').click(function()
     {
+        // console.log('paramretro graph');
         var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
         var id = $(this).data('ale');
+        $.ajax({
+            type:'GET',
+            url:'GetAlertaParametroModel',
+            data:{
+                viaje: viaje,
+                id: id
+            },
+            success: function(data){
+                $.colorbox({
+                    html:data,
+                    onComplete: function(){
+
+                        $.colorbox.resize();
+                        $('#alertaGrid tbody tr td:last-child').each(function()
+                        {
+                            
+                                var texto = $(this).text();
+                                var div = $(this);
+                                console.log(texto);
+                                reverseGeocoding(texto, 2, div);
+
+                            //    total++;
+                            
+                        });
+                        $(document).on('click', "ul.yiiPager li.page a", function(e) {
+                            e.preventDefault();
+                            alert($(this).attr('href'));
+                            loadlistData($(this).attr('href'));
+                        });
+
+                    }
+                });
+            },
+            error:function(a,b,c){
+                console.log(a,b,c);
+            }
+
+        });
+        /*
         $.ajax(
         {
+            //GetAlertaParametroModel
+            //GetAlertasTanque
             type: 'GET',
-            url: 'GetAlertasTanque',
+            url: 'GetAlertaParametroModel',
             dataType: 'JSON', 
             data:
             {
@@ -38,6 +80,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
+
                 $.colorbox(
                 {
                     html: data,
@@ -61,8 +104,7 @@ $(document).ready(function()
                             var h = $(this).height();
                             var height = (50-h)/2;
                             $(this).css('padding',height+'px 0');
-                        });
-                        
+                        });                        
                     }
                 });
             },
@@ -70,15 +112,19 @@ $(document).ready(function()
             {
                 console.log(a, b, c);
             }
-        });
+        }); */
     });
     $('[data-id="2"] .boton.adve').click(function()
     {
+        console.log('Advent getAlertaparametroModel');
         total = 1;
         delay = 250;
         var id = $(this).data('ale');
         $.ajax(
         {
+        // Original :  GetAlertasParametro 
+        //actionGetAlertaParametroModel
+        // console.log("Entre Aquí");
             type: 'GET',
             url: 'GetAlertasParametro',
             dataType: 'JSON', 

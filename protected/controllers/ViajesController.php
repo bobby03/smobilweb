@@ -13,11 +13,13 @@ class ViajesController extends Controller
 	 */
 	public function filters()
 	{
+        
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
+     
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
             fb(Pedidos::model()->findAll("id_solicitud = {$solicitud}"));
 
@@ -236,7 +238,7 @@ class ViajesController extends Controller
                 'model'=>$model,
                 'tanques'=>$tanques,
                 'pedidos' => $pedidos
-            ));
+            ), false, true);
 	}
 
 	/**
@@ -1303,6 +1305,235 @@ eof;
             }
             echo json_encode($return);
         }
+
+        public function actionGetAlertaParametroModel($viaje,$id){
+            $t = 0; $p = 0; $o = 0; $c = 0; $tm=0; $ax = null; //ax 0 = down, ax 1 = up
+            $aDatosUT = array
+            (
+                    0=>'temp',
+                    1=>'ox',
+                    2=>'ph',
+                    3=>'cond',
+                    4=>'orp'
+            );
+            
+            Yii::app()->db->createCommand()->delete('alerts_temp');
+            $uploads = Yii::app()->db->createCommand()
+                    ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
+                    ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
+                    ->join('uploadTemp as upt','upt.id_tanque = tan.id')
+                    ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                    ->where("solV.id_viaje = $viaje")
+                    ->andWhere("tan.id = $id")
+                    ->andWhere("upt.alerta > 1")
+                    ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
+                    ->queryAll();
+            /*
+            $uploads = Yii::app()->db->createCommand()
+            ->select('v.id_solicitudes, st.id_tanque, st.id_cepas, ut.*, evu.*')
+            ->from('uploadtemp ut')
+            ->join('viajes v','v.id = :idS',array(':idS'=>$viaje))
+            ->join('solicitud_tanques st','st.id_tanque = :id',array(':id'=>$id))
+            ->join('escalon_viaje_ubicacion evu','evu.id_viaje = v.id')
+            ->join('cepa c','c.id = st.id_cepas')
+            ->where ('ut.id_tanque = st.id_tanque')
+            ->order(' ut.id desc')
+            ->queryAll();
+            */
+            // print_r($uploads);
+            foreach ($uploads as $key => $data) {
+                # code...
+                // $data = Yii::app()->db->createCommand()
+                //     ->select('*')
+                //     ->from('cepa ')
+                //     ->where('id = :idC',array(':idC'=>$value['id']))
+                //     ->queryRow();
+                //     // print_r($data);
+               
+                // print_r($value);
+                        
+
+                if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                    {
+                        $alerta = new AlertsTemp();
+                        if($data['temp'] > $data['temp_max']){
+                           $tm = $data['temp'] - $data['temp_max'];
+                           $alerta->flecha=0;
+                        }
+                        else{
+                            $tm = $data['temp_min'] - $data['temp'];
+                            $alerta->flecha=1;
+                        }
+
+                        $alerta->valor = $tm;
+                        $alerta->origen= 'temp';
+                        $alerta->flecha=$ax;
+                        $alerta->hora=$data['hora'];
+                        $alerta->fecha=$data['fecha'];
+                        $alerta->ubicacion=$data['ubicacion'];
+                        $alerta->save();
+                       
+                    }
+
+                    if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                    {
+                        $alerta = new AlertsTemp();
+                        if($data['ox'] > $data['ox_max']){
+                           $tm = $data['temp'] - $data['ox_max'];
+                           $alerta->flecha=0;
+                        }
+                        else{
+                            $tm = $data['ox_min'] - $data['ox'];
+                            $alerta->flecha=1;
+                        }
+
+                       $alerta->valor = $tm;
+                        $alerta->origen= 'Oxigeno';
+                        $alerta->flecha=$ax;
+                        $alerta->hora=$data['hora'];
+                        $alerta->fecha=$data['fecha'];
+                        $alerta->ubicacion=$data['ubicacion'];
+                        $alerta->save();
+                    }
+
+                    if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                    {
+                        $alerta = new AlertsTemp();
+                         if($data['ph'] > $data['ph_max']){
+                           $tm = $data['temp'] - $data['ph_max'];
+                           $alerta->flecha=0;
+                        }
+                        else{
+                            $tm = $data['ph_min'] - $data['ph'];
+                            $alerta->flecha=1;
+                        }
+
+                       $alerta->valor = $tm;
+                        $alerta->origen= 'Oxigeno';
+                        $alerta->flecha=$ax;
+                        $alerta->hora=$data['hora'];
+                        $alerta->fecha=$data['fecha'];
+                        $alerta->ubicacion=$data['ubicacion'];
+                        $alerta->save();
+                       
+
+                    }
+
+                    if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                    {
+                        $alerta = new AlertsTemp();
+                       if($data['cond'] > $data['cond_max']){
+                           $tm = $data['cond'] - $data['cond_max'];
+                           $alerta->flecha=0;
+                        }
+                        else{
+                            $tm = $data['cond_min'] - $data['cond'];
+                            $alerta->flecha=1;
+                        }
+
+                       $alerta->valor = $tm;
+                        $alerta->origen= 'Conductividad';
+                        $alerta->flecha=$ax;
+                        $alerta->hora=$data['hora'];
+                        $alerta->fecha=$data['fecha'];
+                        $alerta->ubicacion=$data['ubicacion'];
+                        $alerta->save();
+                    }
+
+                    if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                    {
+                        $alerta = new AlertsTemp();
+                        if($data['orp'] > $data['orp_max']){
+                           $tm = $data['orp'] - $data['orp_max'];
+                           $alerta->flecha=0;
+                        }
+                        else{
+                            $tm = $data['orp_min'] - $data['orp'];
+                            $alerta->flecha=1;
+                        }
+
+                       $alerta->valor = $tm;
+                        $alerta->origen= 'Oxido reducción Potencial';
+                        $alerta->flecha=$ax;
+                        $alerta->hora=$data['hora'];
+                        $alerta->fecha=$data['fecha'];
+                        $alerta->ubicacion=$data['ubicacion'];
+                        $alerta->save();
+                    }
+                   /* 
+                    echo $aDatosUT[$key];
+                    echo " UT ".$value[$aDatosUT[$key] ]."<br>";
+                    echo $aDatosUT[$key]."_min: ".$value[$aDatosUT[$key].'_min']."<br>";
+                    echo $aDatosUT[$key]."_max: ".$value[$aDatosUT[$key].'_max']."<br>";     
+
+                    if( $value['temp'] ] < $value['temp_min']  
+                        && $value['temp_min'] > 0 )
+                    {
+                        // echo "Minima ".$aDatosUT[$key].'_min'."<br>";
+                        $tm = $value[$aDatosUT[$key] ] - $value[$aDatosUT[$key].'_min'];
+                        $ax = 0;
+
+                    }
+                    if($value[$aDatosUT[$key] ]  > $value[$aDatosUT[$key].'_max']   
+                        && $value[$aDatosUT[$key].'_max'] > 0 )
+                    {
+                        // echo "Maximna ".$aDatosUT[$key].'_max'."<br>";
+                        $tm =  $value[$aDatosUT[$key].'_max'] - $value[$aDatosUT[$key] ] ;
+                        $ax = 1;
+                    }
+                $columns = array(
+                    'origen'=>$aDatosUT[$key],
+                    'valor'=>$tm,
+                    'flecha'=>$ax,
+                    'hora'=>$value['hora'],
+                    'fecha'=>$value['fecha'],
+                    'ubicacion'=>$value['ubicacion'],
+                    );
+                $table = 'alerts_temp';
+                if(isset($ax)){
+                    Yii::app()->db->createCommand()->insert($table,$columns);
+                    $ax = null;
+                }
+                // */
+                
+            }
+
+            // print_r($uploads);
+
+            // *
+            $model = new AlertsTemp();
+            /*
+            $tabla = '<div class="alertas" style="width: 500px; height: 300px;">
+                        <div class="tituloAlerta" style="background-color:#0077B0">Sin alertas en </div>
+                        <div class="tablaTitulos" style="font-size: 28px;">
+                            <div class="tablaAlertas">
+                                <span style="padding:15px;text-indent:0; width: 100%; border-bottom:0;">No existen alertas de este parametro hasta el momento.</span>
+                            </div>
+                        </div>
+                    </div>';
+                    */
+            return $this->widget('zii.widgets.grid.CGridView', array
+                (
+                    'id'=>'alertaGrid',
+                    'dataProvider'=>$model->search(),
+                    'summaryText'=> 'Alertas del {start} al {end} de un total de {count} registros.',
+                    'template' => "{items}{summary}{pager}",
+                    'columns'=>$model->adminSearch(),
+                    'pager' => array
+                        (
+                            'class' => 'PagerSA',
+                            'header'=>'',
+                        ),
+                )) ;
+                // */
+            // render($this);
+
+        }
+
+
         public function actionGetAlertasParametro($viaje, $id)
         {
             $uploads = Yii::app()->db->createCommand()
