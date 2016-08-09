@@ -41,10 +41,10 @@ $this->breadcrumbs=array(
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearch(),
-        'afterAjaxUpdate' => "function(id,data)
-        {
-            $.fn.yiiGridView.update('clientes-grid2');
-        }"
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('clientes-grid2');
+            }"
     )); ?>
 </div>
     <div class="tabContent hide" data-tan="2">
