@@ -56,19 +56,12 @@
         }"
     )); ?>
 </div>
+
 <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
-    <div class="search-form">
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/roles/create">
-        <div class="agregar roles"></div>
-    </a>
-    </div><!-- search-form -->
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'rol',
+        'id'=>'rol2',
         'dataProvider'=>$model->search(0),
         'pager' => array
         (
@@ -78,21 +71,6 @@
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearchBorrados(),
-        'afterAjaxUpdate' => "function(id,data)
-        {
-            $('.items tbody tr').each(function()
-            {
-                var check = $(this).find('a.view').attr('href');
-                var index = check.lastIndexOf('/');
-                var id = parseInt(check.substring(index+1));
-                if(id == 1 || id == 2 || id == 3)
-                {
-                    $(this).find('a').remove();
-                }
-                else
-                    $(this).find('a.view').remove();
-            });
-        }"
     )); ?>
 </div>
 

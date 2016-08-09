@@ -46,14 +46,7 @@ $this->breadcrumbs=array(
     ?>
     </div>
     <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
-    <div class="search-form" >
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create/tipo/2">
-        <div class="agregar estacion"></div>
-    </a>
-    </div><!-- search-form -->
+ 
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (

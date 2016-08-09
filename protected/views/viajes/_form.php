@@ -322,7 +322,7 @@
         </div>
         </div>
          <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="2">
-               
+            <div class="pedidosWraper"></div>   
             <div class="siguiente dos">Siguiente</div>
         </div>
 <?php

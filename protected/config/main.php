@@ -47,7 +47,15 @@ return array(
 		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-			'showScriptName'=>true,
+			/*
+				** IMPORTANTE **
+				NO CAMBIAR EL VALOR DE ShowScriptName a TRUE
+				Conservar en False.
+
+				Al modificar este valor se cambian los Body Class afectando el Diseño del CSS
+				y las peticiones en AJAX que ya se adaptaron.
+			*/
+			'showScriptName'=>false,
      		'caseSensitive'=>true,  
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
