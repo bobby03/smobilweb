@@ -35,7 +35,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion-grid',
             'summaryText'=>'',
-        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search1(1,1),
             'columns'=>$model->adminSearch(),
             'pager' => array
@@ -45,6 +45,10 @@ $this->breadcrumbs=array(
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'template' => "{items}{summary}{pager}",
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('estacion-grid2');
+            }"
         )); 
     ?>
     </div>
@@ -56,7 +60,8 @@ $this->breadcrumbs=array(
             'id'=>'estacion-grid2',
             'summaryText'=>'',
             'dataProvider'=>$model->search1(1,0),
-            'columns'=>$model->adminSearch(),
+            'columns'=>$model->adminSearchVacio(),
+            'ajaxUpdate'=>true,
             'pager' => array
             (
                 'class' => 'PagerSA',
