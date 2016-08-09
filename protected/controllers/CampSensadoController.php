@@ -243,9 +243,21 @@ class CampSensadoController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		//if(!isset($_GET['ajax']))
 		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		$this->loadModel($id);
             $model = $this->loadModel($id);
             $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('camp_sensado',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
+	public function actionReactivar($id)
+	{
+		//$this->loadModel($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		//if(!isset($_GET['ajax']))
+		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            $model = $this->loadModel($id);
+            $model->activo = 1;
             $update = Yii::app()->db->createCommand()
                     ->update('camp_sensado',$model->attributes,"id = ".(int)$id."");
             echo json_encode(true);
