@@ -229,6 +229,14 @@ body
     background-repeat: no-repeat;
     background-position: 15px 9px;
  }
+  #mainmenu ul li#campsensado a{
+    background-image: url('./../images/menu/siembra.svg');
+    background-size: 19px;
+    font-size: 12px;
+    padding-top: 12px;
+    background-repeat: no-repeat;
+    background-position: 15px 9px;
+ }
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
