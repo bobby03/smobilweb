@@ -189,7 +189,7 @@ class EspecieController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		//		if(!isset($_GET['ajax']))
 		//                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-            echo json_encode('');
+            echo json_encode('true');
 	}
 
 	public function actionReactivar($id)
@@ -198,8 +198,9 @@ class EspecieController extends Controller
             $model->activo = 1;
             $update = Yii::app()->db->createCommand()
                 ->update('especie',$model->attributes,"id = ".(int)$id."");
-            echo json_encode('');
+            echo json_encode('true');
 	}
+
 
 	/**
 	 * Lists all models.
