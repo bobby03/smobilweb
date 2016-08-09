@@ -145,6 +145,7 @@ class Roles extends SMActiveRecord
                 case 8: return 'Usuarios'; break;
                 case 9: return 'Viajes'; break;
                 case 10: return 'Granjas'; break;
+                case 11: return 'Siembra'; break;
             }
         }
         

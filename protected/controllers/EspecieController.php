@@ -200,8 +200,6 @@ class EspecieController extends Controller
                 ->update('especie',$model->attributes,"id = ".(int)$id."");
             echo json_encode('true');
 	}
-
-
 	/**
 	 * Lists all models.
 	 */

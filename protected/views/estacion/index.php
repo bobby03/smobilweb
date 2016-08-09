@@ -43,6 +43,8 @@ $this->breadcrumbs=array(
                 'class' => 'PagerSA',
                 'header'=>'',
             ),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
         )); 
     ?>
     </div>
@@ -60,6 +62,8 @@ $this->breadcrumbs=array(
                 'class' => 'PagerSA',
                 'header'=>'',
             ),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'template' => "{items}{summary}{pager}",
         )); 
     ?>
     </div>
