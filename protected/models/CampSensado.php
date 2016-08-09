@@ -170,4 +170,40 @@ class CampSensado extends CActiveRecord
 		)
             );
         }
+	public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre_camp',
+                array
+	            (
+	               'name' => 'id_estacion',
+                	'value' => 'CampSensado::model()->getEstacion($data->id_estacion)',
+	            ),
+	            array
+	            (
+	               'name' => 'id_responsable',
+                	'value' => 'CampSensado::model()->getResp($data->id_responsable)',
+	            ),
+                'fecha_inicio',
+                'hora_inicio',
+                'fecha_fin',
+                'hora_fin',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("campsensado/reactivar/".$data->id)',
+                        )
+                    )
+                )
+            );
+        }
 }

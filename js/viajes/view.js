@@ -81,24 +81,20 @@ $(document).ready(function()
                     html: data,
                     onComplete: function()
                     {
-                        $.colorbox.resize();
+//                        $.colorbox.resize();
                         $('.tituloAlerta').text('Alertas: '+nombre);
-                        var total = 0;
+//                        var total = 0;
                         $('.tableRow > div:nth-child(5n)').each(function()
                         {
-                            if(total < 6)
-                            {
-                                var texto = $(this).text();
-                                var div = $(this);
-                                reverseGeocoding(texto, 2, div);
-                                total++;
-                            }
+                            var texto = $(this).text();
+                            var div = $(this);
+                            reverseGeocoding(texto, 2, div);
                         });
                         $('.tableRow > div').each(function()
                         {
                             var h = $(this).height();
                             var height = (50-h)/2;
-                            $(this).css('padding',height+'px 0');
+                            $(this).css('padding',height+'px 0');               
                         });                        
                     }
                 });
@@ -421,7 +417,12 @@ $(document).ready(function()
                     if(flag == 1)
                         $('.datosWraper > div:last-child span').text(infowindow.content);
                     if(flag == 2)
+                    {
                         div.text(infowindow.content);
+                        var h = div.height();
+                        var height = (50-h)/2;
+                        div.css('padding',height+'px 0'); 
+                    } 
                 } 
                 else 
                     window.alert('No results found');

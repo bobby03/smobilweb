@@ -230,7 +230,7 @@ eof;
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
                     'buttons' => array
                     (
                         'reactivar' => array
