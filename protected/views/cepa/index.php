@@ -27,6 +27,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'cepa',
             'dataProvider'=>$model->search($id),
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearch(),

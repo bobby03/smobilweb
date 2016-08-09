@@ -33,7 +33,8 @@
     </a>
     <div class="tabContent" data-tan="1">
         <?php $this->widget('zii.widgets.grid.CGridView', array(
-                'id'=>'granjas-grid1',
+                'id'=>'granjas-grid',
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
                 'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
                 'template' => "{items}{summary}{pager}",
                 'enableSorting'=>true,

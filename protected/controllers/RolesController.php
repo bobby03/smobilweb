@@ -243,8 +243,8 @@ class RolesController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id);
-        $model = $this->loadModel($id);
+            $this->loadModel($id);
+            $model = $this->loadModel($id);
             $model->activo = 0;
             $update = Yii::app()->db->createCommand()
                     ->update('roles',$model->attributes,"id = ".(int)$id."");
@@ -254,7 +254,14 @@ class RolesController extends Controller
 	*/                 echo json_encode('');
 
 		}
-
+        public function actionReactivar($id)
+	{
+            $model = Roles::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('roles',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
 	/**
 	 * Lists all models.
 	 */

@@ -185,3 +185,174 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
 HTTP_REFERER=http://localhost/SmobilWeb/clientes
 ---
+2016/08/08 17:54:29 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php:212)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): GranjasController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): GranjasController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): GranjasController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): GranjasController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
+REQUEST_URI=/SmobilWeb/granjas/reactivar/6?id=6
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php (212)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/08 18:14:57 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php:212)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): GranjasController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): GranjasController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): GranjasController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): GranjasController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
+REQUEST_URI=/SmobilWeb/granjas/reactivar/8?id=8
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php (212)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/08 18:15:05 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:15:19 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php:212)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): GranjasController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): GranjasController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): GranjasController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): GranjasController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
+REQUEST_URI=/SmobilWeb/granjas/reactivar/6?id=6
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php (212)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/08 18:26:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:26:34 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:26:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:30:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:35:00 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:35:01 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:35:24 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:35:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:35:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:36:05 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:36:53 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/08 18:53:04 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---

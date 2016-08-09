@@ -25,6 +25,7 @@ $this->breadcrumbs=array(
 
     <?php $this->widget('zii.widgets.grid.CGridView', array(
             'id'=>'clientes-grid',
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search(),
             'pager' => array
             (

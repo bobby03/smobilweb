@@ -120,6 +120,9 @@ class Cepa extends CActiveRecord
                 $criteria->addCondition("activo = 1");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
 		));
 	}
 

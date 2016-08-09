@@ -12,7 +12,7 @@
 )); ?>
 
 	<div class="row" data-id='1'>
-		<label>Buscar:</label>
+		
 		<?php echo $form->textField($model,'nombre_cepa',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 

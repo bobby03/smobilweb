@@ -177,7 +177,7 @@ class Roles extends SMActiveRecord
                         (
                             'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
                             'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
-                            'url' => 'Yii::app()->createUrl("granjas/reactivar", array("id"=>$data->id))',
+                            'url' => 'Yii::app()->createUrl("roles/reactivar", array("id"=>$data->id))',
                         )
                     )
                 )

@@ -24,6 +24,7 @@
     (
         'id'=>'viaje1',
         'dataProvider'=>$model->searchStatus(0),
+        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearch1(),

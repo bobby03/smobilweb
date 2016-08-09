@@ -23,6 +23,7 @@
     </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'especies-grid',
+        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'dataProvider'=>$model->search(),
         'pager' => array
         (
