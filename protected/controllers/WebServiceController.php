@@ -505,16 +505,32 @@ class WebServiceController extends Controller
         $idViaje = isset($_GET['id'])?$_GET['id']:0;
         $status = isset($_GET['status'])?$_GET['status']:0;
         $table = 'viajes';
-        $column = array('status'=>$status);
+        $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
         $conditions = "id = :idViaje";
         $params = array(":idViaje"=>$idViaje);
 
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
         $aResult = null;
-        if($update > 0)
-            $aResult = array('sCode'=>"OK",'upadted'=>$update,'code'=>200);
+        if($update > 0){
+            $updateSols = Yii::app()->db->createCommand()
+                ->selectDistinct('id_solicitud')
+                ->from('solicitudes_viaje')
+                ->where('id_viaje = :idV',array(':idV'=>$idViaje))
+                ->queryAll();
+            foreach ($updateSols as $key => $value) {
+                # code...
+                $table = 'solicitudes';
+                $column = array('status'=>$status);
+                $conditions = "id = :idS";
+                $params = array(":idS"=>$value['id_solicitud']);
+                $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+            }
+            $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+
+        }
         else
-            $aResult = array('sCode'=>"NO",'upadted'=>$update,'code'=>300);
+            $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+        
         echo json_encode($aResult);
     }
 
