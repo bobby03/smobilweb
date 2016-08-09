@@ -4,6 +4,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerCssFile($baseUrl.'/css/roles/roles.css');
     $cs->registerScriptFile($baseUrl.'/js/roles/roles.js');
+    $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $this->breadcrumbs=array(
 	'Roles',
     );
@@ -32,12 +33,14 @@
     (
         'id'=>'rol',
         'dataProvider'=>$model->search(1),
+        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'pager' => array
         (
             'class' => 'PagerSA',
             'header'=>'',
         ),
-        'summaryText'=> '',
+        'template' => "{items}{summary}{pager}",
+        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'columns'=>$model->adminSearch(),
         'afterAjaxUpdate' => "function(id,data)
         {

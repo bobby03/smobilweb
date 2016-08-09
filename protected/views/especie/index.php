@@ -3,7 +3,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/especie/especie.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
-    $cs->registerScriptFile($baseUrl.'/js/especie/especie.js');
+    $cs->registerScriptFile($baseUrl.'/js/especie/especie.js?C='.rand());
 
 
     $this->breadcrumbs=array(
@@ -23,6 +23,7 @@
     </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'especies-grid',
+        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'dataProvider'=>$model->search(),
         'pager' => array
         (

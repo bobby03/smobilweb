@@ -112,8 +112,9 @@ class CepaController extends Controller
 		{
                     $model->attributes=$_POST['Cepa'];
                     $model->id_especie = $especie;
-                    if($model->save())
-                        $this->redirect(array('index?id='.$model->id_especie));
+                    if($model->save()){
+                        $this->redirect(array('?id='.$model->id_especie));
+                    }
 		}
 
 		$this->render('create',array(
@@ -136,9 +137,9 @@ class CepaController extends Controller
 		if(isset($_POST['Cepa']))
 		{
 			$model->attributes=$_POST['Cepa'];
-			if($model->save()){
-				$this->redirect(array('index'));
-			}
+				  if($model->save()){
+                        $this->redirect(array('?id='.$model->id_especie));
+                    }
 				
 			
 		}

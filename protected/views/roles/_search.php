@@ -11,7 +11,7 @@
 	'method'=>'get',
 )); ?>
 	<div class="row">
-		<label>Buscar:</label>
+		
 		<?php echo $form->textField($model,'nombre_rol',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 

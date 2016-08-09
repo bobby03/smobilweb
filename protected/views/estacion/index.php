@@ -35,6 +35,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion-grid',
             'summaryText'=>'',
+        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search1(1,1),
             'columns'=>$model->adminSearch(),
             'pager' => array

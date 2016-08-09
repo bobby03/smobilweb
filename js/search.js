@@ -8,7 +8,7 @@ $(document).ready(function()
 
     $('.search-form form').submit(function()
     {
-        $('.grid-view').yiiGridView('update', 
+        $('.si-busqueda').yiiGridView('update', 
         {
             data: $(this).serialize()
         });

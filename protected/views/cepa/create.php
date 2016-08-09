@@ -9,6 +9,6 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h1>Create Cepa</h1>
+<h1>Crear  Cepa</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

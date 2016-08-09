@@ -108,7 +108,7 @@ class Personal extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -123,22 +123,13 @@ class Personal extends CActiveRecord
 		$criteria->compare('id_rol',$this->id_rol);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('puesto',$this->puesto,true);
-		$criteria->addcondition('activo = 1');
-                
-		/*$criteria->addcondition("(nombre LIKE '%".$this->nombre."%' OR apellido LIKE '%".$this->nombre.
-                                "%' OR tel LIKE '%".$this->nombre.
-                                "%' OR rfc LIKE '%".$this->nombre.
-                                "%' OR domicilio LIKE '%".$this->nombre.
-                                "%' OR id_rol LIKE '%".$this->nombre.
-                                "%' OR correo LIKE '%".$this->nombre.
-                                "%' OR puesto LIKE '%".$this->nombre."%')");*/
-
-
+		$criteria->addcondition("activo = $flag");
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-                    'pagination'=>array(
-                            'pageSize'=>15,
-                        )
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
 		));
 	}
 	 public function getSearchPersonal(){
@@ -215,6 +206,42 @@ class Personal extends CActiveRecord
                     'class'=>'NCButtonColumn',
                     'header'=>'Operaciones',
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+		)
+            );
+        }
+        public function adminSearchVacios()
+        {
+            return array
+            (
+                'nombre',
+                'apellido',
+                
+                
+               // 'domicilio',
+                array
+                (
+                    'name' => 'id_rol',
+                    'value' => 'Roles::model()->getRol($data->id_rol)',
+                    'filter' => Roles::model()->getAllRoles()
+                ),
+                'puesto', 
+                'correo',
+                'rfc',
+                'tel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Operaciones',
+                    'template'=>'<div class="buttonsWraper">{view} {reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("personal/reactivar", array("id"=>$data->id))',
+                        )
+                    )
 		)
             );
         }

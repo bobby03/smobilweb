@@ -34,6 +34,7 @@ div.tabContent
         (
             'id'=>'estacion-grid',
             'summaryText'=>'',
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->searchTanqueGranja($id,1),
             'columns'=>$model->adminSearchPlanta(),
             'pager' => array
