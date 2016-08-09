@@ -208,11 +208,13 @@ class ViajesController extends Controller
                         ->queryAll();
 //            }
             // print_r($tanques);
-            $this->render('view',array(
-                'model'=>$model,
-                'tanques'=>$tanques,
-                'pedidos' => $pedidos
-            ), false, true);
+            
+                $this->render('view',array(
+                    'model'=>$model,
+                    'tanques'=>$tanques,
+                    'pedidos' => $pedidos
+                ));
+
 	}
 
 	/**
@@ -542,17 +544,17 @@ class ViajesController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
-	{
-		$model=new Viajes('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Viajes']))
-			$model->attributes=$_GET['Viajes'];
+	// public function actionAdmin()
+	// {
+	// 	$model=new Viajes('search');
+	// 	$model->unsetAttributes();  // clear any default values
+	// 	if(isset($_GET['Viajes']))
+	// 		$model->attributes=$_GET['Viajes'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
+	// 	$this->render('admin',array(
+	// 		'model'=>$model,
+	// 	));
+	// }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -1437,41 +1439,6 @@ eof;
                         $alerta->ubicacion=$data['ubicacion'];
                         $alerta->save();
                     }
-                   /* 
-                    echo $aDatosUT[$key];
-                    echo " UT ".$value[$aDatosUT[$key] ]."<br>";
-                    echo $aDatosUT[$key]."_min: ".$value[$aDatosUT[$key].'_min']."<br>";
-                    echo $aDatosUT[$key]."_max: ".$value[$aDatosUT[$key].'_max']."<br>";     
-
-                    if( $value['temp'] ] < $value['temp_min']  
-                        && $value['temp_min'] > 0 )
-                    {
-                        // echo "Minima ".$aDatosUT[$key].'_min'."<br>";
-                        $tm = $value[$aDatosUT[$key] ] - $value[$aDatosUT[$key].'_min'];
-                        $ax = 0;
-
-                    }
-                    if($value[$aDatosUT[$key] ]  > $value[$aDatosUT[$key].'_max']   
-                        && $value[$aDatosUT[$key].'_max'] > 0 )
-                    {
-                        // echo "Maximna ".$aDatosUT[$key].'_max'."<br>";
-                        $tm =  $value[$aDatosUT[$key].'_max'] - $value[$aDatosUT[$key] ] ;
-                        $ax = 1;
-                    }
-                $columns = array(
-                    'origen'=>$aDatosUT[$key],
-                    'valor'=>$tm,
-                    'flecha'=>$ax,
-                    'hora'=>$value['hora'],
-                    'fecha'=>$value['fecha'],
-                    'ubicacion'=>$value['ubicacion'],
-                    );
-                $table = 'alerts_temp';
-                if(isset($ax)){
-                    Yii::app()->db->createCommand()->insert($table,$columns);
-                    $ax = null;
-                }
-                // */
                 
             }
 
@@ -1489,27 +1456,36 @@ eof;
                         </div>
                     </div>';
                     */
-            return $this->widget('zii.widgets.grid.CGridView', array
-                (
-                    'id'=>'alertaGrid',
-                    'dataProvider'=>$model->search(),
-                    'summaryText'=> 'Alertas del {start} al {end} de un total de {count} registros.',
-                    'template' => "{items}{summary}{pager}",
-                    'columns'=>$model->adminSearch(),
-                    'pager' => array
-                        (
-                            'class' => 'PagerSA',
-                            'header'=>'',
-                        ),
-                )) ;
-                // */
-            // render($this);
+            if(!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('viewParams'));
+
+            // $lll =  $this->widget('zii.widgets.grid.CGridView', array
+            //     (
+            //         'id'=>'alertaGrid',
+            //         'dataProvider'=>$model->search(),
+            //         'summaryText'=> 'Alertas del {start} al {end} de un total de {count} registros.',
+            //         'template' => "{items}{summary}{pager}",
+            //         'columns'=>$model->adminSearch(),
+            //         'pager' => array
+            //             (
+            //                 'class' => 'PagerSA',
+            //                 'header'=>'',
+            //             ),
+            //     )) ;
+
+            echo json_encode("ok");
+
 
         }
 
+        public function actionViewParams(){
+            $model = new AlertsTemp;
+            $this->render('viewParams',array('model'=>$model));
+        }
 
         public function actionGetAlertasParametro($viaje, $id)
         {
+            $nombre = " Name "  ;
             $uploads = Yii::app()->db->createCommand()
                     ->selectDistinct("cep.*, tan.id as idTanque, tan.nombre, upt.$id, evu.hora, evu.fecha, evu.ubicacion")
                     ->from('solicitudes_viaje as solV')
