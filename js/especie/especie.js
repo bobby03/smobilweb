@@ -5,9 +5,10 @@ $(document).ready(function()
     {
         evt.preventDefault();
         var href = window.location.href;
-         miHtml= '<div class="sub-content">\n\
-                 <div class="title-content">Agregar especie</div>\n\
-                 <div class="esp">Especie</div>\n\
+        var miHtml= '\
+            <div class="sub-content">\n\
+                <div class="title-content">Agregar especie</div>\n\
+                <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
                 <input id="ingesp" class="ingesp" type="text">\n\
                 <div class="botones-content">\n\
@@ -15,7 +16,7 @@ $(document).ready(function()
                     <div class="btnadd">Agregar</div>\n\
                 </div>\n\
                 <script>UpperCaseInput();</script>\n\
-        </div>';
+            </div>';
         $.colorbox(
         {
             html: miHtml,
@@ -26,7 +27,7 @@ $(document).ready(function()
                 
                 $('.btnadd').click(function()
                 {
-
+                    var especie = $('#ingesp').val();
                     $.ajax(
                     {
                         type: 'POST',
@@ -63,7 +64,8 @@ $(document).ready(function()
         var miHtml = '';
         var nombre = $(this).parents('tr').eq(0).find('td').html();
       //  console.log(nombre);
-        miHtml= '<div class="sub-content">\n\
+        miHtml= '\
+            <div class="sub-content">\n\
                 <div class="title-content">Editar especie '+'</div>\n\
                 <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
@@ -71,27 +73,25 @@ $(document).ready(function()
                 <div class="botones-content">\n\
                     <div class="btnadd btnUpdate">Aceptar</div>\n\
                 </div>\n\
-              <script>UpperCaseInput();</script>\n\
-        </div>';
+                <script>UpperCaseInput();</script>\n\
+            </div>';
         $.colorbox(
         {
             html: miHtml,
             width:'400px', 
             height:'200px',
             onComplete: function()
-            {
-                
+            {        
                 $('.btnUpdate').click(function()
                 {
        
-                   val = $('#ingesp').val();
-
-        val = val.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-            return letter.toUpperCase();
-        }); 
-         $('#ingesp').val(val);
-                    var especie = document.getElementById('ingesp').value;
-
+                    var val = $('#ingesp').val();
+                    val = val.toLowerCase().replace(/\b[a-z]/g, function(letter) 
+                    {
+                        return letter.toUpperCase();
+                    }); 
+                    $('#ingesp').val(val);
+                    var especie = $('#ingesp').val();
                     $.ajax(
                     {
                         type: 'POST',
@@ -104,7 +104,6 @@ $(document).ready(function()
                         },
                         success: function(dataR)
                         {
-                     
                            parent.$.colorbox.close();
                            window.location = "especie";
                         },
