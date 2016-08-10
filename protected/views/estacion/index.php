@@ -12,6 +12,7 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>Camiones</h1>
+<?php print_r(Yii::app()->user->name);?>
 <div class="principal">
     <div class="tabs">
         <div class="tab select" data-id="1"><span>Activos</span></div>
