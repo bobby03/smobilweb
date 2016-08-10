@@ -1,0 +1,41 @@
+
+div.form {
+    width: 90% !important;
+    margin: 0 auto;
+}
+div.form-containerWraper:after
+{
+    content: '';
+    display:block;
+    clear: both;
+}
+div.containerbutton{
+    margin-top: 34px;
+    width: 300px;
+}
+
+label.letreros{
+    font-size: 14px !important;
+    color: #0077B0;
+}
+
+
+
+.form-cLarge{
+    width:200px;
+}
+
+.cLetreros{
+  margin-left: 29px;
+  font-size: 14px !important;
+  color: #0077B0;
+}
+
+
+body.granjas div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    margin-left: 20px;
+    font-size: 15px !Important;
+}
+

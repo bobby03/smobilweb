@@ -122,7 +122,7 @@ class Clientes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Usuario',
 			'nombre_empresa' => 'Nombre de la empresa',
 			'nombre_contacto' => 'Nombre(s) de contacto',
 			'apellido_contacto' => 'Apellido(s) de contacto',
@@ -157,7 +157,8 @@ class Clientes extends CActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
-                $criteria->addcondition('activo = '.$flag);
+		$criteria->compare('id',$this->id, true);
+        $criteria->addcondition('activo = '.$flag);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
                         'pagination'=>array(
@@ -218,6 +219,12 @@ class Clientes extends CActiveRecord
             $cliente = Clientes::model()->findByPk($id);
             return $cliente->nombre_empresa;
         }
+        public function getUserName($id){
+        	$usrName = Usuarios::model()->findAll("tipo_usr = 1 and id_usr = $id");
+
+        	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"Sin usuario";
+
+        }
         public function adminSearch()
         {
             return array
@@ -227,7 +234,8 @@ class Clientes extends CActiveRecord
 		'apellido_contacto',
 		'correo',
 		'rfc',
-                'tel',
+        'tel',
+        array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',

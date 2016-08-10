@@ -20,10 +20,20 @@ a.gBoton:hover{
 
 body.personal .gBoton{
   width: 109px;
-      margin-left: 0px;
+  margin-left: 0px;
 }
 
 body.roles .gBoton{
   width: 109px;
-      margin-left: 0px;
+  margin-left: 0px;
+}
+
+body.usuarios .gBoton{
+  width: 109px;
+  margin-left: 0px;
+}
+
+body.granjas .gBoton{
+  width: 109px;
+  margin-left: 0px;
 }

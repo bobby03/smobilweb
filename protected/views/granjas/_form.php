@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
-    $cs->registerCssFile($baseUrl.'/css/especie/create.css');
+    $cs->registerCssFile($baseUrl.'/css/granjas/create.css');
 ?>
 
 <div class="form">
@@ -48,6 +48,7 @@
     <div class="form-cRight">
         <div class="containerbutton">
 	<div class="row buttons">
+                    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas">Cancelar</a> 
                     <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 	</div>
         </div>

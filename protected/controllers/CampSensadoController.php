@@ -272,10 +272,11 @@ class CampSensadoController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));*/
+
 		$model=new CampSensado('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Estacion']))
-			$model->attributes=$_GET['Estacion'];
+		if(isset($_GET['CampSensado']))
+			$model->attributes=$_GET['CampSensado'];
 
 		$this->render('index',array(
 			'model'=>$model,

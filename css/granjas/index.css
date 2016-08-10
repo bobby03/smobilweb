@@ -28,3 +28,14 @@ div.tabs:after
     clear: both;
     content: '';
 }
+
+
+
+
+body.granjas div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    margin-left: 20px;
+    font-size: 15px !Important;
+}
+
