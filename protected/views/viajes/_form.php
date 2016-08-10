@@ -50,6 +50,8 @@
         <div class="lineaChica"></div>
         <div class="bolaChica"></div>
     </div>
+
+    <!-- - - - - - - - - - - - - - - - -  TAB 1 - - - - - - - - - - - - - - - - - - - - - - -->
     <div class="tab <?php if(!$model->isNewRecord) echo 'hide';?>" data-tab="1">
         <div class="formContainer1">
             <?php if($model->isNewRecord):?>
@@ -116,7 +118,6 @@
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
                 <?php echo $form->error($model,'hora_salida'); ?>
             </div>
-       
 
 
         <div class="botonesWrapper2">
@@ -128,6 +129,7 @@
 
 	</div>
     </div>
+    <!-- - - - - - - - - - - - - - - - -  TAB 2 - - - - - - - - - - - - - - - - - - - - - - -->
     <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="2">
     <div class="pedidosWraper">
         <?php echo $form->hiddenField($solicitudes,'id_clientes',array('value'=>$pedidos['Solicitudes']['id_clientes']));?>
@@ -185,13 +187,23 @@
                 echo $form->textField($model,'status',array('readonly'=>'readonly','size'=>50,'maxlength'=>50, 'value'=>  Viajes::model()->getStatus($model->status)));
         ?>
     </div>-->
+<<<<<<< HEAD
         <div class="botonesWrapper2">
             <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
             <div class="siguiente dos">Siguiente</div>
         </div>
+=======
+        <div class  = 'row buttons'>
+            <div class="gBoton bBoton" >Cancelar</div>
+            <div class="siguiente dos">Siguiente</div>
+        </div>
+
+>>>>>>> b23abac885509dc82eb41bd14696757580e4f774
 </div>
+    <!-- - - - - - - - - - - - - - - - -  TAB 3 - - - - - - - - - - - - - - - - - - - - - - -->
     <div class="tab hide" data-tab="3"> 
-<!--        <div class="contenedorClientes">
+        <!--
+         <div class="contenedorClientes">
             <?php // print_r($pedidos);?>
             <?php // $this->getClientes($pedidos);?>
         </div>-->
@@ -209,6 +221,7 @@
 
     </div>
 <?php $this->endWidget(); ?>
+
 </div><!-- form -->
 
 <?php else:?>
@@ -336,6 +349,7 @@
                     <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
                     <?php echo $form->error($model,'hora_salida'); ?>
                 </div>
+<<<<<<< HEAD
             <div class="botonesWrapper">
                 <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
                 <div class="siguiente uno">Siguiente</div>
@@ -347,6 +361,22 @@
                <div class="botonesWrapper2">
             <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
             <div class="siguiente dos">Siguiente</div>
+=======
+                <div class  = 'row'>
+                    <div class="gBoton fBoton" >Cancelar</div>
+                    <div class="siguiente uno fBoton">Siguiente</div>
+                </div>
+        </div>
+        </div>
+         <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="2">
+            <div class="pedidosWraper"></div> 
+            <div class  = 'row'>
+                    <div class="gBoton fBoton bUno" >Cancelar</div>
+                    <div class="siguiente uno fBoton">Siguiente</div>
+                </div>  
+            <!-- <div class="siguiente fBoton bBoton" >Regresar</div>
+            <div class="siguiente dos">Siguiente</div> -->
+>>>>>>> b23abac885509dc82eb41bd14696757580e4f774
         </div>
         </div>
 

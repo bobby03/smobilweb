@@ -165,6 +165,10 @@ class CampSensado extends CActiveRecord
                        'view'=> array 
                        (
                        	'url' => 'Yii::app()->createUrl("monitoreo/$data->id_estacion")',
+                       	),
+                       'delete'=> array 
+                       (
+                       	'url' => 'Yii::app()->createUrl("campsensado/delete1/$data->id")',
                        	) 
                     )
 		)

@@ -28,16 +28,32 @@ div.form div.row.buttons {
     margin: 0;
     margin-top: 27px;
     margin-bottom: 22px;
-    /*float: right;*/
+    float: left;
 }
 
 div.form input[type="submit"] {
-    width: 171px;
+    width: 140px;
     font-size: 18px;
     height: 35px;
     line-height: 35px;
-    float: right;
-    margin-right: 25px;
+    float: left;
+}
+
+.btncanc {
+    margin-right: 5px;
+    float: left;
+    width: 140px;
+    font-size: 18px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #0077b0;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 div.tanque {
@@ -50,6 +66,21 @@ div.tanque {
     /*overflow: hidden;*/
     padding: 20px;
     margin-bottom: 50px;
+    position: relative;
+}
+
+div.tacha {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    text-align: center;
+    cursor: pointer;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    border: 2px solid #0077B0;
+    color: #0077B0;
+    font-family: 'Roboto-Bold';
 }
 
 .form-container1 {
@@ -182,7 +213,7 @@ div.form-cLeftContainer:after {
     clear: both;
 }
 
-body.estacion div.form input[type="submit"] {
+<<<<<<< HEAD body.estacion div.form input[type="submit"] {
     position: relative;
     width: 107px;
     display: inline-block;
@@ -193,3 +224,4 @@ body.estacion div.form input[type="submit"] {
 
 
 }
+=======>>>>>>> b23abac885509dc82eb41bd14696757580e4f774
