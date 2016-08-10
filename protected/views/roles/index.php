@@ -47,9 +47,10 @@
         {
             $('.si-busqueda tbody tr').each(function()
             {
-                var hrefId = $(this).find('a.delete').attr('href');
-                var urlSplit = hrefId.split( '/' );
+                var check = $(this).find('a.delete').attr('href');
+                var urlSplit = check.split( '/' );
                 var id = urlSplit[ urlSplit.length - 1 ]; 
+
                 if(id == 1 || id == 2 || id == 3)
                     $(this).find('a').remove();
             });
@@ -75,7 +76,7 @@
         'columns'=>$model->adminSearchBorrados(),
         'afterAjaxUpdate' => "function(id,data)
         {
-            $.fn.yiiGridView.update('rol-grid2');
+          //$.fn.yiiGridView.update('rol-grid2');
         }"
     )); ?>
 </div>

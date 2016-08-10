@@ -36,6 +36,7 @@
     <div class="form-cRight">
 			<div class="containerbutton">
 				<div class="row buttons">
+				
 					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 				</div>
 			</div>

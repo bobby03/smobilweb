@@ -784,18 +784,7 @@ table.detail-view tr.even{
 * TERMINAN ESTILOS COLORBOX
 */
 
-.ingesp{
-    height: 20px;
-    width: 260px;
-    margin-left:33px;
-    margin-top: 10px;
-    min-height: 30px;
-    border: 2px solid #0077b0;
-    border-radius: 5px;
-    border-left: 30px solid #0077b0;
-    text-indent: 5px;
-    box-sizing: border-box;
-}
+
 .esp{
     font-family: 'Roboto-Regular';
     font-size: 14pt;
@@ -899,6 +888,67 @@ div.tab.select
 {
     background-color: #09B7C9;
 }
+
+/********** Cambio de lugar admin **************/
+
+.user-wrapper {
+    width: 100%;
+    height: 49px;
+    border-bottom: 1px solid #49dbd0;
+    position: relative;
+    cursor: pointer
+}
+.icono-user {
+    width: 50px;
+    height: 49px;
+    float: left;
+    background-image: url('./../images/menu/personal.svg');
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.user-wrapper .nombre {
+    color: #ffffff;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    left: 55px;
+    top: 19px;
+}
+span.triangulo {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #FFFFFF;
+    display: block;
+    position: absolute;
+    bottom: 18px;
+    left: 37px;
+}
+span.hidden-menu.hide {
+    display: none;
+}
+span.hidden-menu {
+    display: table;
+    position: absolute;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    bottom: -30px;
+    left: 50px;
+}
+.hidden-menu a {
+    color: white;
+    text-decoration: none;
+    line-height: 30px;
+}
+/********** Fin Cambio de lugar admin **************/
+
 div.tabs:after
 {
     display: block;

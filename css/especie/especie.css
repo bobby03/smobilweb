@@ -39,3 +39,41 @@ body.especie div.tabs:after{
 body.especie div.row.titulos{
 	text-align: center;
 }
+
+
+.ingesp{
+    height: 20px;
+    width: 260px;
+    margin-left:33px;
+    margin-top: 10px;
+    min-height: 30px;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    box-sizing: border-box;
+    display: block;
+}
+
+body.especie .botones-content .gBoton{
+        width: 100px;
+        padding: 2px;
+        height: 30px;
+        margin-left: 15px;
+        display: inline-block;
+}
+
+
+body.especie div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    display: inline-block;
+    font-size: 15px !Important;
+  
+}
+
+
+body.especie .btnadd{
+    float:right;
+      margin-right: 20px;
+}
