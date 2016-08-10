@@ -182,6 +182,15 @@ class Personal extends CActiveRecord
             $personal = Personal::model()->findByPk($id);
             return $personal['id_rol'];
         }
+        public function getUser($id)
+        {
+                    $user = Usuarios::model()->findByAttributes(array('tipo_usr'=>2,'id_usr'=>$id));
+                    if(!isset($user->usuario)){
+                    	return '--------';
+                    }else{
+                    return $user->usuario;
+                }
+        }
         public function adminSearch()
         {
             return array
@@ -191,6 +200,11 @@ class Personal extends CActiveRecord
                 
                 
                // 'domicilio',
+                array
+                (
+                   'name' => 'Usuario',
+                	'value' => 'Personal::model()->getUser($data->id)',
+                ),
                 array
                 (
                     'name' => 'id_rol',
