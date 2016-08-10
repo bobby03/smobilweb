@@ -20,7 +20,7 @@
         <div class="tab" data-id="2"><span>Inactivos</span></div>
     </div>
     <div class="tabContent" data-tan="1">
-        <div class="search-form" >
+        <div class="search-form" ><!-- search-form -->
             <?php $this->renderPartial('_search',array(
                     'model'=>$model,
             )); ?>
