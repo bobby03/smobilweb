@@ -5,7 +5,6 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
-    $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
    ?>
 
 <div class="form">
@@ -80,13 +79,11 @@
             </div>-->
             <?php endif;?>
             <div class="containerbutton">
-
                     <div class="row buttons">
-                        <a class="gBoton bBoton" >Cancelar</a>
-                        <div class='fCreate'><?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?></div>
 
+                            <div class="btncanc">Cancelar</div>
+                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
                     </div>
-                    
             </div>
         </div>
     </div>
@@ -96,3 +93,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+

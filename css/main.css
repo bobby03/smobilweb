@@ -82,11 +82,11 @@ body {
     padding: 0;
     margin: 0 auto;
 }
-
-#mainmenu .menuTop {
-    height: 85px;
+#mainmenu .menuTop
+{
+    height: 86px;
     width: 100%;
-    border-bottom: 1px solid #49DBD0;
+    border-bottom: 3px solid #49DBD0;
 }
 
 #mainmenu ul li {

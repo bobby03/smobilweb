@@ -1,5 +1,4 @@
-div.addTanque 
-{
+div.addTanque {
     float: right;
     background-color: #0077b0;
     border-radius: 5px;
@@ -12,8 +11,8 @@ div.addTanque
     text-align: center;
     margin-right: 130px;
 }
-div.editarTanque
-{
+
+div.editarTanque {
     width: 100px;
     height: 25px;
     line-height: 25px;
@@ -24,24 +23,41 @@ div.editarTanque
     text-align: center;
     cursor: pointer;
 }
-div.form div.row.buttons
-{
+
+div.form div.row.buttons {
     margin: 0;
+    width:100%;
     margin-top: 27px;
     margin-bottom: 22px;
-    /*float: right;*/
+    float: left;
 }
-div.form input[type="submit"]
-{
-    width: 171px; 
+
+div.form input[type="submit"] {
+    width: 140px;
     font-size: 18px;
     height: 35px;
     line-height: 35px;
-    float: right;
-    margin-right: 25px;
+    float: left;
 }
-div.tanque
-{
+
+.btncanc {
+    margin-right: 5px;
+    float: left;
+    width: 140px;
+    font-size: 18px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #0077b0;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+div.tanque {
     float: left;
     width: 250px;
     box-sizing: border-box;
@@ -51,45 +67,63 @@ div.tanque
     /*overflow: hidden;*/
     padding: 20px;
     margin-bottom: 50px;
-}
-.form-container1{
-float:left;
-width: 300px;
-margin-right: 100px;
-}
-.form-container2{
-float:left;
-width: 300px;
+    position: relative;
 }
 
-div.form-containerWraper:after
-{
+div.tacha {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    text-align: center;
+    cursor: pointer;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    border: 2px solid #0077B0;
+    color: #0077B0;
+    font-family: 'Roboto-Bold';
+}
+
+.form-container1 {
+    float: left;
+    width: 300px;
+    margin-right: 100px;
+}
+
+.form-container2 {
+    float: left;
+    width: 300px;
+}
+
+div.form-containerWraper:after {
     content: '';
     display: block;
     clear: both;
 }
+
 
 /**********/
-div.form-containerWraper:after
-{
+
+div.form-containerWraper:after {
     content: '';
     display: block;
     clear: both;
 }
+
 
 /*   *    */
 
-div.form-containerWraper:after
-{
+div.form-containerWraper:after {
     content: '';
-    display:block;
+    display: block;
     clear: both;
 }
 
-label.letreros{
+label.letreros {
     font-size: 14px !important;
     color: #0077B0;
 }
+
 
 /*      ************          */
 
@@ -97,95 +131,98 @@ label.letreros{
     width: 160px;
 }
 
-.form-cLarge{
-    width:100%;
+.form-cLarge {
+    width: 100%;
 }
 
-.form-cXLarge{
-    width:400px;
+.form-cXLarge {
+    width: 400px;
 }
 
-.form-cRight{
-  width: 300px;
-  float:left;
-  padding-top: 1px;
-
-}
-.form-cLeft{
-float:left;
-width: 300px;
- margin-left: 35px;
-}
-.form-container1{
-width:135px;
-height:66px;
-float:left;
-
-
-}
-.form-container2{
- width:135px;
- padding-top:26px;
- padding-left: 135px;
- height: 50px;
-
- }
-.containerBoxRight{
-  width: 300px;
-  float:left;
-  padding-top: 1px;
-}
-.containertBoxLeft{
-  float:left;
-  width: 300px;  
-  margin-left: 35px;
+.form-cRight {
+    width: 300px;
+    float: left;
+    padding-top: 1px;
 }
 
-.containerBox{
-float:left;
-width: 100%;
-margin-top:10px;
-margin-bottom:10px;
-
+.form-cLeft {
+    float: left;
+    width: 300px;
+    margin-left: 35px;
 }
+
+.form-container1 {
+    width: 135px;
+    height: 66px;
+    float: left;
+}
+
+.form-container2 {
+    width: 135px;
+    padding-top: 26px;
+    padding-left: 135px;
+    height: 50px;
+}
+
+.containerBoxRight {
+    width: 300px;
+    float: left;
+    padding-top: 1px;
+}
+
+.containertBoxLeft {
+    float: left;
+    width: 300px;
+    margin-left: 35px;
+}
+
+.containerBox {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 
 /*     *       */
-.cLetreros{
-  margin-left: 29px;
-  font-size: 14px !important;
-  color: #0077B0;
+
+.cLetreros {
+    margin-left: 29px;
+    font-size: 14px !important;
+    color: #0077B0;
 }
 
-.letrero-container{
- background-color:  #E4E7EB;
- height: 4px;
- width:68%;
+.letrero-container {
+    background-color: #E4E7EB;
+    height: 4px;
+    width: 68%;
 }
 
-.allTanques:after
-{
+.allTanques:after {
     clear: both;
     display: block;
     content: '';
 }
 
-
-body.estacion-create #sidebar{
+body.estacion-create #sidebar {
     display: none;
 }
 
-div.form-cLeftContainer:after
-{
+div.form-cLeftContainer:after {
     content: '';
     display: block;
     clear: both;
 }
 
-
-body.estacion div.form input[type="submit"]{
+<<<<<<< HEAD body.estacion div.form input[type="submit"] {
     position: relative;
     width: 107px;
+    display: inline-block;
     margin-left: 20px;
     font-size: 14px !important;
+    margin-right: 0 !important;
 }
 
+
+}
+=======>>>>>>> b23abac885509dc82eb41bd14696757580e4f774

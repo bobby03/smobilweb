@@ -48,7 +48,7 @@
                     </div>
                     <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad (Litros)'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]",array('class'=>'ttan')); ?>
+                            <?php echo $form->textField($model,"status[$i][capacidad]",array('class'=>'ttan','placeholder'=>'500')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                     <div class="row act">
@@ -61,6 +61,7 @@
             <?php endforeach;?>
             <?php else:?>
                 <div class="tanque" data-id="<?php echo $i;?>">
+                    <div class="tacha">X</div>
                     <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
                             <?php echo $form->textField($model,"status[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
@@ -68,7 +69,7 @@
                     </div>
                     <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]"); ?>
+                            <?php echo $form->textField($model,"status[$i][capacidad]",array('placeholder'=>'500')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                 </div>

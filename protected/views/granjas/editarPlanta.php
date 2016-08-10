@@ -11,7 +11,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerCssFile($baseUrl.'/css/estacion/create.css');
    ?>
-<h1>Crear nueva planta de producci&oacute;n</h1>
+<h1>Editar planta de producci&oacute;n <?php echo $model->identificador;?></h1>
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'estacion-form',
@@ -35,11 +35,10 @@
         resize: none;
         height: 150px;
     }
-</style>  
+</style>
 <div class="form-containerWraper">
     <div class="form-cLeftContainer">
         <div class="form-cLeft">
-                <?php echo $form->hiddenField($model,'tipo');?>
                 <div class="row">
                     <label class= "letreros">Identificador</label>
                     <div class="form-cLarge">
