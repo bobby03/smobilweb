@@ -38,6 +38,14 @@ body.granjas .gBoton {
     margin-left: 0px;
 }
 
+body.CampSensado .gBoton {
+    width: 120px;
+    margin-left: 0px;
+}
+
+
+
+
 .agregar {
     float: right;
     width: 51px;
