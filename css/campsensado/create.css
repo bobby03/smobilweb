@@ -150,10 +150,7 @@ div.tab[data-tab="1"] div.formContainer1 {
     float: left;
 }
 
-.siguiente.uno {
-    margin-right: 108px;
-    margin-top: 20px;
-}
+
 
 .siguiente.dos {
     margin-right: 10px;
@@ -256,7 +253,7 @@ div.lineaGandre {
 }
 
 .siguiente {
-    float: right;
+    display: inline-block;
     color: #FFFFFF;
     background-color: #0077B0;
     border-radius: 5px;
@@ -264,7 +261,6 @@ div.lineaGandre {
     line-height: 40px;
     text-align: center;
     cursor: pointer;
-    /*margin-right: 120px;*/
 }
 
 div.pedidosWraper:after,
@@ -398,4 +394,23 @@ div.chosen-container.error > ul {
 
 #vcont {
     width: 70% !important;
+}
+
+
+
+/* CAMP SENSADO */ 
+
+.botonesWrapper{
+    margin-top: 20px;
+    display: block;
+    padding-right: 100px;
+    text-align: right;
+}
+
+
+.botonesWrapper2{
+    margin-top: 20px;
+    display: block;
+    padding-right: 0px;
+    text-align: right;
 }
