@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 <h1>Nueva siembra</h1>
 
 <?php $this->renderPartial('_form', array(
-											'model'=>$model, 
-											'granjas' => $granjas,
-											'personal' => $personal
-											)); ?>
+		'model'=>$model, 
+		'granjas' => $granjas,
+		'personal' => $personal
+		)); ?>

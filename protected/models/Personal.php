@@ -84,7 +84,7 @@ class Personal extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Usuario',
+			'id' => 'ID',
 			'nombre' => 'Nombre(s)',
 			'apellido' => 'Apellido(s)',
 			'domicilio' => 'Domicilio',
@@ -182,12 +182,14 @@ class Personal extends CActiveRecord
             $personal = Personal::model()->findByPk($id);
             return $personal['id_rol'];
         }
-
-         public function getUserName($id){
-        	$usrName = Usuarios::model()->findAll("tipo_usr = 2 and id_usr = $id");
-
-        	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"Sin usuario";
-
+        public function getUser($id)
+        {
+                    $user = Usuarios::model()->findByAttributes(array('tipo_usr'=>2,'id_usr'=>$id));
+                    if(!isset($user->usuario)){
+                    	return '--------';
+                    }else{
+                    return $user->usuario;
+                }
         }
         public function adminSearch()
         {
@@ -200,6 +202,11 @@ class Personal extends CActiveRecord
                // 'domicilio',
                 array
                 (
+                   'name' => 'Usuario',
+                	'value' => 'Personal::model()->getUser($data->id)',
+                ),
+                array
+                (
                     'name' => 'id_rol',
                     'value' => 'Roles::model()->getRol($data->id_rol)',
                     'filter' => Roles::model()->getAllRoles()
@@ -208,7 +215,6 @@ class Personal extends CActiveRecord
                 'correo',
                 'rfc',
                 'tel',
-                 array('name'=>'id', 'value'=>'Personal::model()->getUserName($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',

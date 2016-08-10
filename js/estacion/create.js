@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+   
     var total = 0;
     function contar()
     {
@@ -9,6 +10,7 @@ $(document).ready(function()
         });
     }
     contar();
+
     $('.addTanque').click(function()
     {
         total = total + 1;
@@ -80,5 +82,9 @@ $(document).ready(function()
         });
      }
      borrarTanque();
+     $('.btncanc').click(function()
+     {
+        window.location.href = "../../";
+    });
 });
 

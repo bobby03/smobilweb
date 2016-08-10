@@ -8,4 +8,8 @@ $(document).ready(function()
         $('.tabContent').addClass('hide');
         $('[data-tan="'+id+'"]').removeClass('hide');
     });
+
+   $('.bBoton').click(function(){
+   		window.history.back();
+   });
 });

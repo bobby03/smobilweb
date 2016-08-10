@@ -3531,3 +3531,24 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/granjas/editarPlanta/16
 HTTP_REFERER=http://localhost/SmobilWeb/granjas/editarPlanta/16
 ---
+2016/08/10 14:10:28 [error] [exception.ParseError] ParseError: syntax error, unexpected '<<' (T_SL), expecting ')' in C:\xampp\htdocs\SmobilWeb\protected\models\Estacion.php:331
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Estacion')
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(186): spl_autoload_call('Estacion')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#15 {main}
+REQUEST_URI=/SmobilWeb/estacion
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/plantaProduccion/1
+---

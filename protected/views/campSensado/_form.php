@@ -11,7 +11,7 @@
     $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
     $cs->registerScriptFile($baseUrl.'/js/viajes/validacion.js');
-    $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
+    $cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
 
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (
@@ -109,16 +109,24 @@
 				<?php echo $form->textField($model,'hora_fin', array('placeholder'=>'hh:mm')); ?>
 				<?php echo $form->error($model,'hora_fin'); ?>
 			</div>
-			<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
-            <div class="siguiente uno">Siguiente</div>
+
+			<div class="botonesWrapper">
+				<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
+	            <div class="siguiente uno">Siguiente</div>
+            </div>
+
 		</div>
 
 	</div>
 
     <div class="tab hide" data-tab="2">
    		<div class="pedidosWraper"></div>
-   		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
-        <div class="siguiente dos">Siguiente</div>
+
+   		<div class="botonesWrapper2">
+	   		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
+	        <div class="siguiente dos">Siguiente</div>
+        </div>
+
     </div>
     <div class="tab hide" data-tab="3">
 

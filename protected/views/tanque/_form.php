@@ -7,6 +7,8 @@
     $cs->registerScriptFile($baseUrl.'/js/estacion/create.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
      $cs->registerScriptFile($baseUrl.'/js/estacion/validacion.js');
+         $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
+
     $cs->registerCssFile($baseUrl.'/css/estacion/create.css');
 ?>
 
@@ -29,6 +31,7 @@
 
 	<?php //echo $form->errorSummary($model); ?>
 	<div class="row buttons">
+            <a class="gBoton bBoton" >Cancelar</a>
             <div class="addTanque">Nuevo tanque</div>
             <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 	</div>

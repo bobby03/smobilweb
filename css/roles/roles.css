@@ -1,15 +1,13 @@
-.grid-view table
-{
+.grid-view table {
     width: 52% !important;
 }
 
-div.tabs
-{
+div.tabs {
     background-color: #0077B0;
-    margin-top: 50px; 
+    margin-top: 50px;
 }
-div.tabs div.tab
-{
+
+div.tabs div.tab {
     width: 100px;
     float: left;
     padding: 5px 0;
@@ -19,21 +17,21 @@ div.tabs div.tab
     font-size: 18px;
     color: #FFFFFF;
 }
-div.tabContent
-{
+
+div.tabContent {
     margin-top: 30px;
 }
-div.tab.select
-{
+
+div.tab.select {
     background-color: #09B7C9;
 }
-div.tabs:after
-{
+
+div.tabs:after {
     display: block;
     clear: both;
     content: '';
 }
 
-body.roles-create div.row.titulos{
-	text-align: center;
+body.roles-create div.row.titulos {
+    text-align: center;
 }
