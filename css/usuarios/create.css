@@ -10,10 +10,15 @@ div.form-containerWraper:after
 }
 div.containerbutton{
     margin-top: 20px;
-    
-    width: 110px;
     float: right;
 }
+body.usuarios div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    margin-left: 20px;
+    font-size: 15px !Important;
+}
+
 
 div.form label {
     margin-bottom: 5px !important;

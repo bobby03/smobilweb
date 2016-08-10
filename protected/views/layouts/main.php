@@ -32,7 +32,9 @@
 
 	?>
   <body class="<?php echo str_replace($patterns,$replace,$LoginClass) ?>">
+
     <div class="container" id="page">
+
       <?php
 		$baseUrl = Yii::app()->baseUrl;
 		$cs = Yii::app()->getClientScript();
@@ -96,7 +98,6 @@
 							'items'=>array(
 									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
-									 // array('label'=>''.Yii::app()->user->name.'','url'=>array('site/logout'),'itemOptions'=>array('id' => 'login')),				    
 									),));
 
 						break;
