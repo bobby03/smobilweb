@@ -109,7 +109,7 @@
 				<?php echo $form->textField($model,'hora_fin', array('placeholder'=>'hh:mm')); ?>
 				<?php echo $form->error($model,'hora_fin'); ?>
 			</div>
-
+			<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
             <div class="siguiente uno">Siguiente</div>
 		</div>
 
@@ -117,6 +117,7 @@
 
     <div class="tab hide" data-tab="2">
    		<div class="pedidosWraper"></div>
+   		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
         <div class="siguiente dos">Siguiente</div>
     </div>
     <div class="tab hide" data-tab="3">
@@ -124,6 +125,7 @@
 	<div class="row buttons">
         <div class="inner-third-wrapper"></div>
         <div class="row buttons floating">
+         	<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
 			<?php echo CHtml::submitButton('Finalizar'); ?>
 		</div>
 	</div>

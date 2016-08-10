@@ -92,7 +92,7 @@ class ClientesController extends Controller
 	 */
 	public function actionView($id)
 	{
-            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id} AND activo = 1");
+            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id}");
             $array = array();
             $direccion = new ClientesDomicilio;
             $i = 1;
@@ -117,8 +117,8 @@ class ClientesController extends Controller
 	 */
 	public function actionCreate()
 	{
-            $model=new Clientes;
-
+            $model = new Clientes;
+            $direccion = new ClientesDomicilio;
             // Uncomment the following line if AJAX validation is needed
              $this->performAjaxValidation($model);
 
@@ -139,10 +139,24 @@ class ClientesController extends Controller
                     }
                     $this->redirect(array('index'));
                 }
+                else
+                {
+                    $i = 1;
+                    $array = array();
+                    foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
+                    {
+                        $array[$i]['domicilio'] = $data['domicilio'];
+                        $array[$i]['ubicacion_mapa'] = $data['ubicacion_mapa'];
+                        $array[$i]['descripcion'] = $data['descripcion'];
+//                        $array[$i]['id'] = $data->id;
+                        $i++;
+                    }
+                    $direccion->domicilio = $array;   
+                }
             }
-
             $this->render('create',array(
                     'model'=>$model,
+                    'direccion'=>$direccion
             ));
 	}
 
@@ -190,8 +204,21 @@ class ClientesController extends Controller
                         }
                         $update->save();
                     }
-                    fb('redirect');
                     $this->redirect(array('index'));
+                }
+                else
+                {
+                    $array = array();
+                    $i = 1;
+                    foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
+                    {
+                        $array[$i]['domicilio'] = $data['domicilio'];
+                        $array[$i]['ubicacion_mapa'] = $data['ubicacion_mapa'];
+                        $array[$i]['descripcion'] = $data['descripcion'];
+//                        $array[$i]['id'] = $data->id;
+                        $i++;
+                    }
+                    $direccion->domicilio = $array; 
                 }
             }
             $this->render('update',array(

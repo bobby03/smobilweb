@@ -33,8 +33,6 @@
     )); 
 ?>
 
-
-
 <div class="form-containerWraper">
          <span class="containerBox">
             <div class="form-cLeft">
@@ -96,88 +94,64 @@
         <span class= "containerBox">
             <div class="form-cLeft1">   
                 <div class="row mapa">
-                    <?php if($model->isNewRecord):?> 
-                        <div class="allMapa" data-id="1">
-                            <div id="map" data-map="1"></div>
-                             <div class="row ubi">
-                                <div class="form-cXMedium">
-                                    <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
-                                    <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
-                                </div>
-                            </div>
-                            <div class="row dom">
-                                <label class="letreros">Domicilio</label>
-                                <div class="form-cXLarge">
-                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'ClienteDomicilio')); ?>
-                                    <?php echo $form->error($direccion,'domicilio'); ?>
-                                </div>
-                            </div>
-                            <div class="row des">
-                               <label class="letreros">Descripción</label>
-                                    <div class="form-cXLarge">
-                                    <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
-                                    <?php echo $form->error($direccion,'descripcion');?>
-                                    </div>
-                            </div>
-                        </div>
-                    <?php else:?>
-                        <?php $i = 1;?>
-                        <?php if(count($direccion['domicilio'])>0):?>
-                            <?php foreach($direccion['domicilio'] as $data):?>
-                                <div class="allMapa" data-id="<?php echo $i;?>">
-                                    <div id="map" data-map="<?php echo $i;?>"></div>
-                                    <div class="row ubi">
-                                        <div class="form-cXMedium">
-                                            <?php echo $form->hiddenField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
-                                            <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
-                                        </div>
-                                    </div>
-                                    <div class="row dom">
-                                        <div class="form-cXLarge">
-                                            <label class="letreros">Domicilio</label>
-                                            <?php echo $form->textField($direccion,"domicilio[$i][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
-                                            <?php echo $form->error($direccion,'domicilio'); ?>
-                                        </div>
-                                    </div>
-                                    <div class="row des">
-                                        <div class="form-cXLarge">
-                                            <label class="letreros">Descripción</label>
-                                            <?php echo $form->textField($direccion,"domicilio[$i][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
-                                            <?php echo $form->error($direccion,'descripcion');?>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][id]")?>
-                                    </div>
-                                </div>
-                                <?php $i++;?>
-                            <?php endforeach;?>
-                        <?php else:?>
-                            <div class="allMapa" data-id="1">
-                              <div id="map" data-map="1"></div>
+                    <?php $i = 1;?>
+                    <?php if(count($direccion['domicilio'])>0):?>
+                        <?php foreach($direccion['domicilio'] as $data):?>
+                            <div class="allMapa" data-id="<?php echo $i;?>">
+                                <div id="map" data-map="<?php echo $i;?>"></div>
                                 <div class="row ubi">
                                     <div class="form-cXMedium">
-                                        <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
                                         <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
                                     </div>
                                 </div>
                                 <div class="row dom">
                                     <div class="form-cXLarge">
                                         <label class="letreros">Domicilio</label>
-                                        <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                                        <?php echo $form->textField($direccion,"domicilio[$i][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
                                         <?php echo $form->error($direccion,'domicilio'); ?>
                                     </div>
                                 </div>
                                 <div class="row des">
                                     <div class="form-cXLarge">
                                         <label class="letreros">Descripción</label>
-                                        <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                                        <?php echo $form->textField($direccion,"domicilio[$i][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
                                         <?php echo $form->error($direccion,'descripcion');?>
                                     </div>
                                 </div>
+                                <?php if(isset($data['id'])):?>
+                                    <div class="row">
+                                        <?php echo $form->hiddenField($direccion,"domicilio[$i][id]")?>
+                                    </div>
+                                <?php endif;?>
                             </div>
+                            <?php $i++;?>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <div class="allMapa" data-id="1">
+                          <div id="map" data-map="1"></div>
+                            <div class="row ubi">
+                                <div class="form-cXMedium">
+                                    <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly')); ?>
+                                    <?php echo $form->error($direccion,'ubicacion_mapa'); ?>
+                                </div>
+                            </div>
+                            <div class="row dom">
+                                <div class="form-cXLarge">
+                                    <label class="letreros">Domicilio</label>
+                                    <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250)); ?>
+                                    <?php echo $form->error($direccion,'domicilio'); ?>
+                                </div>
+                            </div>
+                            <div class="row des">
+                                <div class="form-cXLarge">
+                                    <label class="letreros">Descripción</label>
+                                    <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250)); ?>
+                                    <?php echo $form->error($direccion,'descripcion');?>
+                                </div>
+                            </div>
+                        </div>
                         <?php endif;?>
-                    <?php endif;?>
                     </div>
 
                 </div>

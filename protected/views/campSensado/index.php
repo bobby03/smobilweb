@@ -26,10 +26,14 @@
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/especie/create">
-                <div class="agregar especie"></div>
+
+
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
+                <div class="agregar campsensado"></div>
             </a>
-    </div><!-- search-form -->
+    </div>
+
+    <!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid',
