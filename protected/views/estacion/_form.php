@@ -85,6 +85,7 @@
                     <div class="row buttons">
                         <a class="gBoton bBoton" >Cancelar</a>
                         <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+
                     </div>
                     
             </div>

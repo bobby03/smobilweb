@@ -180,3 +180,12 @@ div.form-cLeftContainer:after
     display: block;
     clear: both;
 }
+
+
+body.estacion div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    margin-left: 20px;
+    font-size: 14px !important;
+}
+

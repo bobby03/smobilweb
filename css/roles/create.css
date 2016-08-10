@@ -1,11 +1,10 @@
-div.form label 
-{
+div.form label {
     float: left;
     line-height: 30px;
     padding-right: 30px;
 }
-div.row.titulos > div 
-{
+
+div.row.titulos > div {
     font-size: 15px;
     color: #FFFFFF;
     line-height: 26px;
@@ -14,46 +13,39 @@ div.row.titulos > div
     text-align: center;
 }
 
-div.row.titulos > div:last-child
-{
+div.row.titulos > div:last-child {
     border-right: 0;
 }
 
-div.row.titulos
-{
+div.row.titulos {
     background-color: #0077B0;
 }
 
-div.formContainer1 div.separador div div.botonTodos
-{
+div.formContainer1 div.separador div div.botonTodos {
     margin: 0 auto;
 }
 
-div.form input[type="checkbox"]
-{
+div.form input[type="checkbox"] {
     min-height: 19px !important;
 }
 
-.submitb
-{
+.submitb {
     margin-top: 15px !important;
 }
 
-div.formContainer1 div.separador div div.botonTodos
-{
+div.formContainer1 div.separador div div.botonTodos {
     height: 26px !important;
     line-height: 27px !important;
 }
 
-body.roles div.row.buttons{
-    width:240px;
+body.roles div.row.buttons {
+    width: 240px;
     text-align: right;
 }
 
-body.roles div.form input[type="submit"]{
+body.roles div.form input[type="submit"] {
     position: relative;
     width: 107px;
     margin-left: 20px;
     font-size: 15px !Important;
 }
-

@@ -105,13 +105,23 @@ body.granjas .gBoton {
     margin-left: 0px;
 }
 
-body.CampSensado .gBoton {
-    width: 120px;
+body.estacion .gBoton {
+    width: 109px;
     margin-left: 0px;
+    height: 35px;
+    line-height: 35px;
+  }
+
+body.CampSensado .gBoton {
+    height: 40px;
+    width: 120px;
+    font-size: 13px;
+    margin-left: 0 !important;
+    line-height: 40px;
+    float: none !important;
+    display: inline-block;
+    margin-right: 30px;
 }
-
-
-
 
 .agregar {
     float: right;
@@ -121,6 +131,7 @@ body.CampSensado .gBoton {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    margin-right: 30px;
 }
 
 .agregar.especie {
