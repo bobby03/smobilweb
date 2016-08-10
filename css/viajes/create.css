@@ -150,14 +150,9 @@ div.tab[data-tab="1"] div.formContainer1 {
     float: left;
 }
 
-.siguiente.uno {
-    margin-right: 108px;
-    margin-top: 20px;
-}
+.siguiente.uno {}
 
-.siguiente.dos {
-    margin-right: 10px;
-}
+.siguiente.dos {}
 
 div.form div.tab div.row input,
 div.form div.tab div.row .css-select {
@@ -170,16 +165,6 @@ div.form div.tab div.row {
     margin-bottom: 10px;
 }
 
-div.form div.tab div.row.buttons {
-    float: right;
-    margin-top: 50px;
-    width: 100px;
-    margin-right: 167px;
-    /* --- 
-    position: fixed;
-    top:230px;
-    right: 0; */
-}
 
 .floating {
     float: right;
@@ -398,4 +383,43 @@ div.chosen-container.error > ul {
 
 #vcont {
     width: 70% !important;
+}
+
+
+/* Wrapper para Botones */
+
+.botonesWrapper {
+    margin-top: 20px;
+    display: block;
+    padding-right: 100px;
+    text-align: right;
+}
+
+.botonesWrapper.update {
+    padding-right:0px;
+}
+
+.botonesWrapper2 {
+    margin-top: 20px;
+    display: block;
+    padding-right: 0px;
+    text-align: right;
+}
+
+
+div.form div.tab div.row.buttons {
+    float: right;
+    margin-top: 50px;
+    margin-right: 167px;
+    display: block;
+}
+
+
+body.viajes-update form input[type="submit"] {
+    position: relative;
+    width: 107px;
+    margin-left: 0px;
+    height: 40px;
+    font-size: 14px !important;
+    width:120px !important;
 }
