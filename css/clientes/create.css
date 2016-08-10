@@ -316,3 +316,7 @@ margin-bottom:10px;
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+div.form div.row.dom div.data
+{
+    width: 100%;
+}
