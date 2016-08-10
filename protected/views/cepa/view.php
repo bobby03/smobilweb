@@ -12,6 +12,7 @@ $this->breadcrumbs=array(
 
 
     $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/cepa/create.css');
     $cs->registerCssFile($baseUrl.'/css/cepa/create.css?='.rand());
 
 	$form=$this->beginWidget('CActiveForm', array(

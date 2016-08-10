@@ -51,7 +51,6 @@ $this->breadcrumbs=array(
             }"
         ));
     ?>
-    
 </div>
 <!--Inactivos-->
 <div class="tabContent hide" data-tan="2"> 
@@ -69,6 +68,8 @@ $this->breadcrumbs=array(
         'columns'=>$model->adminSearchBorrados(),
     )); ?>
 </div>
+    <div class='gBoton bBoton'>Regresar</div>
+
 
 </div>
 
