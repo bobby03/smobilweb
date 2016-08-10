@@ -119,7 +119,6 @@
 									 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 									 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 									 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
-									 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)),
 
 									 ),	));
 							}else{	// Muestra secciones de acuerdo a los roles asignados
@@ -144,7 +143,6 @@
 							 array('label'=>'Empleados', 'url'=>array('/personal'),'itemOptions'=>array('id' => 'personal','active'=>$this->id=='personal'?true:false)),
 							 array('label'=>'Roles', 'url'=>array('/roles'),'itemOptions'=>array('id' => 'roles','active'=>$this->id=='roles'?true:false)),
 							 array('label'=>'Especies', 'url'=>array('/especie'),'itemOptions'=>array('id' => 'especie','active'=>$this->id=='especie'?true:false)),
-							 array('label'=>'Usuarios', 'url'=>array('/usuarios'),'itemOptions'=>array('id' => 'usuarios','active'=>$this->id=='usuarios'?true:false)),
 
 							 ),	));
 						break;

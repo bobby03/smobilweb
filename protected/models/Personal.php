@@ -84,7 +84,7 @@ class Personal extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Usuario',
 			'nombre' => 'Nombre(s)',
 			'apellido' => 'Apellido(s)',
 			'domicilio' => 'Domicilio',
@@ -182,6 +182,13 @@ class Personal extends CActiveRecord
             $personal = Personal::model()->findByPk($id);
             return $personal['id_rol'];
         }
+
+         public function getUserName($id){
+        	$usrName = Usuarios::model()->findAll("tipo_usr = 2 and id_usr = $id");
+
+        	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"Sin usuario";
+
+        }
         public function adminSearch()
         {
             return array
@@ -201,6 +208,7 @@ class Personal extends CActiveRecord
                 'correo',
                 'rfc',
                 'tel',
+                 array('name'=>'id', 'value'=>'Personal::model()->getUserName($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',

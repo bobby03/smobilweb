@@ -107,7 +107,9 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    			$i=1;
 	  			    			foreach($estaciones as $est):?>
 	  			    				<div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
-	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div><label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
+	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div>
+	  			    					<label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
+	  			    					<label class='resp'> <a href="monitoreo/<?php echo $est['idest'];?>">Ver Historial</a> </label>
 	  			    				</div>
 	  			    			<?php
 	  			    			$i++;
@@ -168,18 +170,17 @@ $this->redirect(Yii::app()->homeUrl);
   			    	<?php 
 	  			    $us++;
 	  			    endforeach;?>
+	  			    <!--
+	  			    Barra de 'timeline' de siembras de sensado...
   			    	<div class="progressbar">
 
   			    		<div class="container-est">
 						<div class="sepest"></div>
  						<div class="containerEst"><div class="containerE1"></div></div>
  						<div class="sepest2"></div>		
-						</div>
-
-
-						
+						</div>						
   			    	</div>
-
+-->
   			    	<div class="info">
   			    		<?php 
   			    		$id=$est['id_estacion'];
