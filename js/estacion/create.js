@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+   
     var total = 0;
     function contar()
     {
@@ -9,6 +10,7 @@ $(document).ready(function()
         });
     }
     contar();
+
     $('.addTanque').click(function()
     {
         console.log(total);
@@ -59,5 +61,9 @@ $(document).ready(function()
             $(this).parent().siblings('.act').children('.activo').attr('disabled',false);
         }
      });
+     $('.btncanc').click(function()
+     {
+        window.location.href = "../../";
+    });
 });
 
