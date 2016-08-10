@@ -19,15 +19,17 @@
     </div>
 
 
- <div class="search-form">
+ 
+
+    <div class="tabContent" data-tan="1"> <!--Activos-->
+    <div class="search-form"><!-- search-form -->
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-    
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/especie/create">
+                <div class="agregar especie"></div>
+            </a>
     </div><!-- search-form -->
-
-    <div class="tabContent" data-tan="1"> <!--Activos-->
-
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid',
