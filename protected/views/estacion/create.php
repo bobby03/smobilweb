@@ -8,6 +8,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Crear estaci&oacute;n</h1>
+<h1>Crear cami&oacute;n</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
