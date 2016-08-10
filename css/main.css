@@ -232,7 +232,6 @@ body
   #mainmenu ul li#campsensado a{
     background-image: url('./../images/menu/siembra.svg');
     background-size: 19px;
-    font-size: 12px;
     padding-top: 12px;
     background-repeat: no-repeat;
     background-position: 15px 9px;
@@ -244,6 +243,14 @@ body
     
     text-decoration:none;
 }
+#mainmenu ul li.menu-vacio {
+    height: 35px;
+    background-image: none;
+}
+#mainmenu ul li.menu-vacio:hover {
+    background-color: #0077bc;
+}
+
 
 div.flash-error, div.flash-notice, div.flash-success
 {

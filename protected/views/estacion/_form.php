@@ -29,7 +29,7 @@
 <div class="form-containerWraper">
     <div class="form-cLeftContainer">
         <div class="form-cLeft">
-                <div class="row">
+                <div class="row hide">
                     <label class= "letreros">Tipo</label>
                     <div class="form-cLarge">
                         <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo', $model->getAllTipo(), array('empty'=>'Seleccionar','class'=>'css-select','disabled'=>'disabled')); ?></span>

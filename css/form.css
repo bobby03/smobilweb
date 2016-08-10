@@ -5,8 +5,8 @@ div.form
 }
 div.search-form div.wide.form
 {
-    width: 250px;
-    /* width: 525px; */
+    /*width: 250px;*/
+     width: 750px;
     margin: 0;
     float: left;
 }
@@ -14,12 +14,13 @@ div.search-form div.row
 {
     clear: none !important;
     float: left;
-    width: 250px;
+    width: 470px;
     margin: 0;
 }
 div.search-form #searchDropDown
 {
     width: 250px;
+    height: 30px;
     margin-right: 25px;
     float: left;
 }

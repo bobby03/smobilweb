@@ -159,7 +159,7 @@ class SolicitudesController extends Controller
         public function getViajes()
         {
             $estaciones = Estacion::model()->findAll('tipo = 1 AND activo = 1');
-            $viajes = Viajes::model()->findAll('status = 1 AND activo = 1');
+            $viajes = Viajes::model()->findAll('status = 1');
             $todosViajes = array();
             foreach($estaciones as $data)
             {
@@ -216,7 +216,7 @@ eof;
             $model->hora_estimada = date('H:i', strtotime($model->hora_estimada));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-            $pedidos = Pedidos::model()->findAll("id_solicitud =".(int)$id." AND activo = 1"); 
+            $pedidos = Pedidos::model()->findAll("id_solicitud =".(int)$id); 
             $direccion = new ClientesDomicilio();
             $especies = new Especie();
             $cepa = new Cepa();
