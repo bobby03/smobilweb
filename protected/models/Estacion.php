@@ -64,13 +64,13 @@ class Estacion extends CActiveRecord
                 'length',
                 'max'=>150,
                 'tooLong'=>'El tamaño maximo es de 150 caracteres'),
-
+            array('marca','CRegularExpressionValidator', 'pattern'=>'/^[a-zA-Z ]{1,}$/','message'=>"Solo se aceptan letras"),
             array('color','required','message'=>'Este campo es obligatorio'),
             array(
                 'color',
                 'length',
                 'max'=>50),
-
+            array('color','CRegularExpressionValidator', 'pattern'=>'/^[a-zA-Z ]{1,}$/','message'=>"Solo se aceptan letras"),
             array('ubicacion','required','message'=>'Este campo es obligatorio'),
             array(
                 'ubicacion',
