@@ -62,7 +62,8 @@ class Estacion extends CActiveRecord
             array(
                 'marca',
                 'length',
-                'max'=>50),
+                'max'=>150,
+                'tooLong'=>'El tamaño maximo es de 150 caracteres'),
 
             array('color','required','message'=>'Este campo es obligatorio'),
             array(
@@ -155,6 +156,7 @@ class Estacion extends CActiveRecord
 		$criteria->compare('disponible',$this->disponible);
 		$criteria->compare('activo',$this->activo);
                 $criteria->addCondition("activo=1");
+                $criteria->order = 'identificador ASC';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
                     'pagination'=>array(
@@ -170,14 +172,13 @@ class Estacion extends CActiveRecord
 		$criteria->compare('id_granja',$this->id_granja);
 		$criteria->compare('tipo',$this->tipo);
 		$criteria->compare('identificador',$this->identificador,true);
-		$criteria->compare('no_personal',$this->no_personal);
 		$criteria->compare('marca',$this->marca,true);
-		$criteria->compare('color',$this->color,true);
 		$criteria->compare('ubicacion',$this->ubicacion,true);
 		$criteria->compare('disponible',$this->disponible);
 		$criteria->compare('activo',$this->activo);
                 $criteria->addCondition("activo=$flag");
                 $criteria->addCondition("id_granja=$id");
+                $criteria->order = 'identificador ASC';
 		return new CActiveDataProvider($this, array
                 (
                     'criteria'=>$criteria,
@@ -327,7 +328,7 @@ class Estacion extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'template'=>'<div class="buttonsWraper">{update} {delete} {tanque}</div>',
                     'buttons' => array
                     (
                         'tanque' => array
@@ -345,9 +346,7 @@ class Estacion extends CActiveRecord
             return array
             (
                 'identificador',
-                'no_personal',
-                'marca',
-                'color',
+                array('name'=>'Descripcion','value'=>'$data->marca'),
                 'ubicacion',
                 array
                 (
@@ -365,6 +364,10 @@ class Estacion extends CActiveRecord
                         'delete' => array
                         (
                             'url' => 'Yii::app()->createUrl("estacion/delete", array("id"=>$data->id))',
+                        ),
+                        'update' => array
+                        (
+                            'url' => 'Yii::app()->createUrl("granjas/editarPlanta", array("id"=>$data->id))',
                         )
                     )
 		)
@@ -375,9 +378,7 @@ class Estacion extends CActiveRecord
             return array
             (
                 'identificador',
-                'no_personal',
-                'marca',
-                'color',
+                array('name'=>'Descripcion','value'=>'$data->marca'),
                 'ubicacion',
                 array
                 (

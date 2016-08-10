@@ -100,8 +100,11 @@ class TanqueController extends Controller
                         $update->save();
                     }
                 }
-                $this->redirect(array('/estacion'));
-//                print_r($_POST);
+                $estacion = Estacion::model()->findByPk($id);
+                if($estacion->id_granja == null)
+                    $this->redirect(array('/estacion'));
+                else
+                    $this->redirect(array('/granjas/plantaProduccion/'.$estacion->id_granja));
             }
             $this->render('create',array(
                     'model'=>$model,

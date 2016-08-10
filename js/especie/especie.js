@@ -57,8 +57,8 @@ $(document).ready(function()
         evt.preventDefault();
         var href = window.location.href;
         var hrefId = $(this).parent().attr('href');
-        var index1 = (hrefId.lastIndexOf('/'));
-        var index2 = hrefId.length;
+//        var index1 = (hrefId.lastIndexOf('/'));
+//        var index2 = hrefId.length;
         var urlSplit = hrefId.split( '/' );
         var id = urlSplit[ urlSplit.length - 1 ]; 
         var miHtml = '';

@@ -149,6 +149,23 @@ class GranjasController extends Controller
                     'model'=>$model,
             ));
         }
+        public function actionEditarPlanta($id)
+        {
+            $model = Estacion::model()->findByPk($id);
+		// Uncomment the following line if AJAX validation is needed
+//            $this->performAjaxValidation($model);
+            if(isset($_POST['Estacion']))
+            {
+                $model->attributes=$_POST['Estacion'];
+                if($model->save())
+                {
+                    $this->redirect(array('granjas/plantaProduccion/'.$model->id_granja));
+                }
+            }
+            $this->render('editarPlanta',array(
+                    'model'=>$model,
+            ));
+        }
         
 	public function actionCreate()
 	{

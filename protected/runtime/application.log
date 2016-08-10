@@ -3124,3 +3124,410 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
 HTTP_REFERER=http://localhost/SmobilWeb/clientes/index
 ---
+2016/08/10 11:49:53 [error] [exception.CException] CException: Property "CRegularExpressionValidator.color" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\validators\CValidator.php(177): CComponent->__set('color', 'Color solo pued...')
+#1 C:\xampp\htdocs\yii\framework\base\CModel.php(287): CValidator::createValidator('color', Object(Estacion), Array, Array)
+#2 C:\xampp\htdocs\yii\framework\base\CModel.php(260): CModel->createValidators()
+#3 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2435): CModel->getValidators('no_personal')
+#4 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): CHtml::activeInputField('text', Object(Estacion), 'no_personal', Array)
+#5 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Estacion), 'no_personal', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\_search.php(28): CActiveForm->textField(Object(Estacion), 'no_personal')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\index.php(27): CController->renderPartial('_search', Array)
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#15 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(192): CController->render('index', Array)
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#29 {main}
+REQUEST_URI=/SmobilWeb/estacion
+HTTP_REFERER=http://localhost/SmobilWeb/especie
+---
+2016/08/10 11:50:17 [error] [exception.CException] CException: Property "CRegularExpressionValidator.color" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\validators\CValidator.php(177): CComponent->__set('color', 'Color solo pued...')
+#1 C:\xampp\htdocs\yii\framework\base\CModel.php(287): CValidator::createValidator('color', Object(Estacion), Array, Array)
+#2 C:\xampp\htdocs\yii\framework\base\CModel.php(260): CModel->createValidators()
+#3 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2435): CModel->getValidators('no_personal')
+#4 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): CHtml::activeInputField('text', Object(Estacion), 'no_personal', Array)
+#5 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Estacion), 'no_personal', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\_search.php(28): CActiveForm->textField(Object(Estacion), 'no_personal')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\index.php(27): CController->renderPartial('_search', Array)
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#15 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(192): CController->render('index', Array)
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#29 {main}
+REQUEST_URI=/SmobilWeb/estacion
+HTTP_REFERER=http://localhost/SmobilWeb/especie
+---
+2016/08/10 11:52:16 [error] [exception.CException] CException: Property "CRegularExpressionValidator.color" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\validators\CValidator.php(177): CComponent->__set('color', 'Color solo pued...')
+#1 C:\xampp\htdocs\yii\framework\base\CModel.php(287): CValidator::createValidator('color', Object(Estacion), Array, Array)
+#2 C:\xampp\htdocs\yii\framework\base\CModel.php(260): CModel->createValidators()
+#3 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2435): CModel->getValidators('no_personal')
+#4 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1533): CHtml::activeInputField('text', Object(Estacion), 'no_personal', Array)
+#5 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Estacion), 'no_personal', Array)
+#6 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\_search.php(28): CActiveForm->textField(Object(Estacion), 'no_personal')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\SmobilWeb\protected\views\estacion\index.php(27): CController->renderPartial('_search', Array)
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#15 C:\xampp\htdocs\SmobilWeb\protected\controllers\EstacionController.php(192): CController->render('index', Array)
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EstacionController->actionIndex()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estacion')
+#27 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#29 {main}
+REQUEST_URI=/SmobilWeb/estacion
+HTTP_REFERER=http://localhost/SmobilWeb/especie
+---
+2016/08/10 13:02:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:02:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:02:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:02:29 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:03:32 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:03:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:03:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:03:33 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:03:48 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:11:36 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/10 13:17:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:17:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:17:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:17:17 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:17:17 [error] [exception.CException] CException: Property "Tanque.id_granja" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('id_granja')
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(103): CActiveRecord->__get('id_granja')
+#2 [internal function]: TanqueController->actionCreate('17')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TanqueController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TanqueController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tanque/create')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/tanque/create/17
+HTTP_REFERER=http://localhost/SmobilWeb/tanque/create/17
+---
+2016/08/10 13:19:05 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:05 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:05 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:05 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:05 [error] [exception.CException] CException: Estacion and its behaviors do not have a method or closure named "finfByPk". in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('finfByPk', Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php(103): CActiveRecord->__call('finfByPk', Array)
+#2 [internal function]: TanqueController->actionCreate('17')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TanqueController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TanqueController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tanque/create')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/tanque/create/17
+HTTP_REFERER=http://localhost/SmobilWeb/tanque/create/17
+---
+2016/08/10 13:19:11 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:11 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:11 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:11 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:53 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:53 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:53 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:19:53 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:14 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:14 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:14 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:14 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:20:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:21:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (88)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/10 13:37:02 [error] [exception.CHttpException.404] CHttpException: The requested page does not exist. in C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php:269
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php(179): GranjasController->loadModel('26')
+#1 [internal function]: GranjasController->actionUpdate('26')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(GranjasController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GranjasController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('granjas/update')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#16 {main}
+REQUEST_URI=/SmobilWeb/granjas/update/26
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/plantaProduccion/3
+---
+2016/08/10 13:48:17 [error] [exception.CHttpException.404] CHttpException: The requested page does not exist. in C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php:286
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php(154): GranjasController->loadModel('16')
+#1 [internal function]: GranjasController->actionEditarPlanta('16')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(GranjasController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GranjasController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('editarPlanta')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('granjas/editarP...')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#16 {main}
+REQUEST_URI=/SmobilWeb/granjas/editarPlanta/16
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/plantaProduccion/1
+---
+2016/08/10 13:49:05 [error] [exception.CHttpException.404] CHttpException: The requested page does not exist. in C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php:286
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php(154): GranjasController->loadModel('16')
+#1 [internal function]: GranjasController->actionEditarPlanta('16')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(GranjasController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GranjasController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('editarPlanta')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('granjas/editarP...')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#16 {main}
+REQUEST_URI=/SmobilWeb/granjas/editarPlanta/16
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/plantaProduccion/1
+---
+2016/08/10 13:53:53 [error] [exception.CException] CException: Property "CStringValidator.maxLength" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\validators\CValidator.php(177): CComponent->__set('maxLength', 'El tama\xC3\xB1o maxi...')
+#1 C:\xampp\htdocs\yii\framework\base\CModel.php(287): CValidator::createValidator('maxLength', Object(Estacion), Array, Array)
+#2 C:\xampp\htdocs\yii\framework\base\CModel.php(260): CModel->createValidators()
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(547): CModel->getValidators()
+#4 C:\xampp\htdocs\yii\framework\base\CModel.php(468): CModel->getSafeAttributeNames()
+#5 C:\xampp\htdocs\yii\framework\base\CComponent.php(152): CModel->setAttributes(Array)
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('attributes', Array)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php(159): CActiveRecord->__set('attributes', Array)
+#8 [internal function]: GranjasController->actionEditarPlanta('16')
+#9 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(GranjasController), Array)
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GranjasController), Object(ReflectionMethod), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('editarPlanta')
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('granjas/editarP...')
+#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#23 {main}
+REQUEST_URI=/SmobilWeb/granjas/editarPlanta/16
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/editarPlanta/16
+---
+2016/08/10 13:54:28 [error] [exception.CException] CException: Property "CStringValidator.tooBig" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\validators\CValidator.php(177): CComponent->__set('tooBig', 'El tama\xC3\xB1o maxi...')
+#1 C:\xampp\htdocs\yii\framework\base\CModel.php(287): CValidator::createValidator('tooBig', Object(Estacion), Array, Array)
+#2 C:\xampp\htdocs\yii\framework\base\CModel.php(260): CModel->createValidators()
+#3 C:\xampp\htdocs\yii\framework\base\CModel.php(547): CModel->getValidators()
+#4 C:\xampp\htdocs\yii\framework\base\CModel.php(468): CModel->getSafeAttributeNames()
+#5 C:\xampp\htdocs\yii\framework\base\CComponent.php(152): CModel->setAttributes(Array)
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('attributes', Array)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\GranjasController.php(159): CActiveRecord->__set('attributes', Array)
+#8 [internal function]: GranjasController->actionEditarPlanta('16')
+#9 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(GranjasController), Array)
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GranjasController), Object(ReflectionMethod), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('editarPlanta')
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('granjas/editarP...')
+#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#23 {main}
+REQUEST_URI=/SmobilWeb/granjas/editarPlanta/16
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/editarPlanta/16
+---

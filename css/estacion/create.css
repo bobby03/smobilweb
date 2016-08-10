@@ -51,6 +51,21 @@ div.tanque
     /*overflow: hidden;*/
     padding: 20px;
     margin-bottom: 50px;
+    position: relative;
+}
+div.tacha
+{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    text-align: center;
+    cursor: pointer;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    border: 2px solid #0077B0;
+    color: #0077B0;
+    font-family: 'Roboto-Bold';
 }
 .form-container1{
 float:left;
