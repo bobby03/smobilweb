@@ -88,7 +88,7 @@ class Viajes extends CActiveRecord
 			'id' => 'ID',
 			'id_solicitudes' => 'Cliente',
 			'id_responsable' => 'Responsable',
-			'id_estacion' => 'Estación',
+			'id_estacion' => 'Camión',
 			'status' => 'Status',
 			'fecha_salida' => 'Fecha estimada de salída',
 			'hora_salida' => 'Hora estimada de salída',

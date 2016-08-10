@@ -124,8 +124,8 @@ class Clientes extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre_empresa' => 'Nombre de la empresa',
-			'nombre_contacto' => 'Nombre de contacto',
-			'apellido_contacto' => 'Apellido de contacto',
+			'nombre_contacto' => 'Nombre(s) de contacto',
+			'apellido_contacto' => 'Apellido(s) de contacto',
 			'correo' => 'Correo',
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',

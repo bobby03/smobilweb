@@ -154,7 +154,7 @@ class ClientesController extends Controller
 	public function actionUpdate($id)
 	{
             $model=$this->loadModel($id);
-            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id} AND activo = 1");
+            $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id} ");
             $array = array();
             $direccion = new ClientesDomicilio;
             $i = 1;

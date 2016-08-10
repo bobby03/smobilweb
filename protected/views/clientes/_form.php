@@ -39,7 +39,7 @@
          <span class="containerBox">
             <div class="form-cLeft">
                     <div class="row">
-                        <label class="letreros">Nombre de Empresa</label>
+                        <label class="letreros">Nombre de empresa</label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
                             <?php echo $form->error($model,'nombre_empresa'); ?>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros">Nombre(s) de Contacto</label>
+                        <label class="letreros">Nombre(s) de contacto</label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'nombre_contacto'); ?>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros"> Apellido(s) de Contacto </label>
+                        <label class="letreros"> Apellido(s) de contacto </label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'apellido_contacto'); ?>

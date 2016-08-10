@@ -85,8 +85,8 @@ class Personal extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre' => 'Nombre',
-			'apellido' => 'Apellido',
+			'nombre' => 'Nombre(s)',
+			'apellido' => 'Apellido(s)',
 			'domicilio' => 'Domicilio',
 			'id_rol' => 'Rol',
 			'puesto' => 'Puesto',

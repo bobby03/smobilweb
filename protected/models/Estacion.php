@@ -118,7 +118,7 @@ class Estacion extends CActiveRecord
     public function getSearchEstaciones(){
             return array(//'1'=>'Tipo',
                          '1'=>'Identificador',
-                         '2'=>'No. Personal',
+                         '2'=>'Capacidad',
                          '3'=>'Marca'
                          /*'5'=>'Color',
                          '6'=>'Ubicación',
