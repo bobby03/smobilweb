@@ -81,14 +81,15 @@ class ViajesController extends Controller
                         $tot++;
                     }
                 }
-         
+             
 
-            $this->layout=false;
-            header('Content-type: application/json');
-            $data = array();
-            $data['html'] = $html;
-            $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
-            echo json_encode($data);
+                $this->layout=false;
+                header('Content-type: application/json');
+                $data = array();
+                $data['html'] = $html;
+                $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
+                echo json_encode($data);
+            
             Yii::app()->end(); 
 
         }
@@ -183,6 +184,8 @@ class ViajesController extends Controller
                
                 if($o==1){
                     $html.= '<input type="submit" name="yt0" value="Finalizar" />';
+                    $html.= '<div class="bDos fBoton floatingbutton" >Regresar</div>';
+                    $html.= '<div class="fBoton floatingbutton" >Cancelar?</div>';
                 }
                $html .=" </div>
             

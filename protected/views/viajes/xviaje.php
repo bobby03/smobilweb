@@ -2,7 +2,7 @@
             <div id="contV3">
                 
                 <div id="vt1">
-                    <div class="headerT">Cliente</div>
+                    <div class="headerT"></div>
                 </div>
                 <div id="vc1" class="vbox">
                     <div class="left">
@@ -54,6 +54,7 @@
             </div>
             
             <div class='row buttons floating'>
+
             <?php 
             if($o==1){
                 echo CHtml::submitButton('Finalizar');

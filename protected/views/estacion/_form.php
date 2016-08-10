@@ -25,7 +25,6 @@
         ),
     )); 
 
-
 ?>
 <div class="form-containerWraper">
     <div class="form-cLeftContainer">
@@ -84,7 +83,7 @@
 
                     <div class="row buttons">
                         <a class="gBoton bBoton" >Cancelar</a>
-                        <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+                        <div class='fCreate'><?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?></div>
 
                     </div>
                     
@@ -97,10 +96,3 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-<!-- 
-<div class="row buttons">
-        <div class="inner-third-wrapper"></div>
-        <div class="row buttons floating">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
-        </div>
-    </div> -->

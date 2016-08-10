@@ -183,7 +183,7 @@
         ?>
     </div>-->
         <div class  = 'row buttons'>
-            <div class="gBoton bBoton" >Cancelar</div>
+            <div class="fBoton bUno" >Cancelar</div>
             <div class="siguiente dos">Siguiente</div>
         </div>
 
@@ -338,7 +338,7 @@
                     <?php echo $form->error($model,'hora_salida'); ?>
                 </div>
                 <div class  = 'row'>
-                    <div class="gBoton fBoton" >Cancelar</div>
+                    <div class="bBoton fBoton" >Cancelar</div>
                     <div class="siguiente uno fBoton">Siguiente</div>
                 </div>
         </div>
@@ -346,15 +346,17 @@
          <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="2">
             <div class="pedidosWraper"></div> 
             <div class  = 'row'>
-                    <div class="gBoton fBoton bUno" >Cancelar</div>
-                    <div class="siguiente uno fBoton">Siguiente</div>
+                    <div class="fBoton bUno" >Regresar</div>
+                    <div class="siguiente dos fBoton">Siguiente</div>
                 </div>  
             <!-- <div class="siguiente fBoton bBoton" >Regresar</div>
             <div class="siguiente dos">Siguiente</div> -->
         </div>
 
          <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="3">
-            <div class="inner-third-wrapper"></div>
+            <div class="inner-third-wrapper">
+                <div class="siguiente fBoton bBoton" >Regresar</div>
+            </div>
          </div>
 <?php
     $this->endWidget();

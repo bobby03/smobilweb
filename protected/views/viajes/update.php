@@ -98,7 +98,8 @@ $this->breadcrumbs=array(
             </div>
 	</div>
 
-	<div class="row buttons">
+	<div class="row buttons ">
+        <div class="bBoton fBoton update" >Regresar</div>
 		<?php echo CHtml::submitButton('Guardar'); ?>
 	</div>
     </div>
