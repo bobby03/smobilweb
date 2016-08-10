@@ -109,7 +109,7 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    				<div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
 	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div>
 	  			    					<label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
-	  			    					<label class='resp'> <a href="monitoreo/<?php echo $est['idest'];?>">Ver Historial</a> </label>
+	  			    					<label class='resp'> <a href="monitoreo/<?php echo $est['idest'];?>"><div class='botonIrViaje'><label class = 'titulov'>Ver Historial</label></div></a> </label>
 	  			    				</div>
 	  			    			<?php
 	  			    			$i++;
