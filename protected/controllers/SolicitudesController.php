@@ -273,20 +273,24 @@ eof;
             $model = Solicitudes::model()->findByPk($id);
 //            fb($model->attributes);
             if($model->status == 0)
+            {
+                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
                 $model->delete();
+            }
             elseif($model->status == 1)
             {
                 $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
                 $tanques = SolicitudTanques::model()->findAll("id_solicitud = $model->id");
-//                fb($tanques);
+                fb($tanques);
                 foreach ($tanques as $data)
                 {
-//                    fb($data);
+                    fb($data);
                     $tanque = Tanque::model()->findByPk($data['id_tanque']);
                     $tanque->status = 1;
                     if($tanque->save())
                         $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
                 }
+                $model->delete();
             }
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	/*	if(!isset($_GET['ajax']))

@@ -47,7 +47,7 @@
 	<div class="row">
             <div class="nombreSeccion">Cepas</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[1][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[1][seccion]',array('value'=>1)); ?>
                 <div><div class="botonTodos" data-id="1">Marcar</div></div>
                 <div class="cb1"><?php echo $form->checkBox($acciones,'seccion[1][alta]', array('class'=>'altaBox')); ?></div>   
                 <div class="cb1"><?php echo $form->checkBox($acciones,'seccion[1][baja]', array('class'=>'bajaBox')); ?></div>
@@ -58,7 +58,7 @@
 	<div class="row">
             <div class="nombreSeccion">Clientes</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[2][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[2][seccion]',array('value'=>2)); ?>
                 <div><div class="botonTodos" data-id="2">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[2][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[2][baja]', array('class'=>'bajaBox')); ?></div>
@@ -69,7 +69,7 @@
 	<div class="row">
             <div class="nombreSeccion">Especie</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[3][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[3][seccion]',array('value'=>3)); ?>
                 <div><div class="botonTodos" data-id="3">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[3][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[3][baja]', array('class'=>'bajaBox')); ?></div>
@@ -80,7 +80,7 @@
 	<div class="row">
             <div class="nombreSeccion">Estación</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[4][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[4][seccion]',array('value'=>4)); ?>
                 <div><div class="botonTodos" data-id="4">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[4][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[4][baja]', array('class'=>'bajaBox')); ?></div>
@@ -91,7 +91,7 @@
 	<div class="row">
             <div class="nombreSeccion">Personal</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[5][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[5][seccion]',array('value'=>5)); ?>
                 <div><div class="botonTodos" data-id="5">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[5][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[5][baja]', array('class'=>'bajaBox')); ?></div>
@@ -102,7 +102,7 @@
 	<div class="row">
             <div class="nombreSeccion">Roles</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[6][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[6][seccion]',array('value'=>6)); ?>
                 <div><div class="botonTodos" data-id="6">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[6][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[6][baja]', array('class'=>'bajaBox')); ?></div>
@@ -113,7 +113,7 @@
 	<div class="row">
             <div class="nombreSeccion">Solicitudes</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[7][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[7][seccion]',array('value'=>7)); ?>
                 <div><div class="botonTodos" data-id="7">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[7][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[7][baja]', array('class'=>'bajaBox')); ?></div>
@@ -124,7 +124,7 @@
 	<div class="row">
             <div class="nombreSeccion">Usuarios</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[8][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[8][seccion]',array('value'=>8)); ?>
                 <div><div class="botonTodos" data-id="8">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[8][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[8][baja]', array('class'=>'bajaBox')); ?></div>
@@ -135,7 +135,7 @@
 	<div class="row">
             <div class="nombreSeccion">Viajes</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[9][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[9][seccion]',array('value'=>9)); ?>
                 <div><div class="botonTodos" data-id="9">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[9][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[9][baja]', array('class'=>'bajaBox')); ?></div>
@@ -146,7 +146,7 @@
 	<div class="row">
             <div class="nombreSeccion">Granjas</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[10][seccion]'); ?>
+                <?php echo $form->hiddenField($acciones,'seccion[10][seccion]',array('value'=>10)); ?>
                 <div><div class="botonTodos" data-id="10">Marcar</div></div>
                 <div><?php echo $form->checkBox($acciones,'seccion[10][alta]', array('class'=>'altaBox')); ?></div>   
                 <div><?php echo $form->checkBox($acciones,'seccion[10][baja]', array('class'=>'bajaBox')); ?></div>
@@ -157,12 +157,12 @@
 	<div class="row">
             <div class="nombreSeccion">Siembras</div>
             <div class="separador">
-                <?php echo $form->hiddenField($acciones,'seccion[11][seccion]'); ?>
-                <div><div class="botonTodos" data-id="10">Marcar</div></div>
-                <div><?php echo $form->checkBox($acciones,'seccion[10][alta]', array('class'=>'altaBox')); ?></div>   
-                <div><?php echo $form->checkBox($acciones,'seccion[10][baja]', array('class'=>'bajaBox')); ?></div>
-                <div><?php echo $form->checkBox($acciones,'seccion[10][consulta]', array('class'=>'consultaBox')); ?></div>
-                <div><?php echo $form->checkBox($acciones,'seccion[10][edicion]', array('class'=>'editBox')); ?></div>
+                <?php echo $form->hiddenField($acciones,'seccion[11][seccion]',array('value'=>11)); ?>
+                <div><div class="botonTodos" data-id="11">Marcar</div></div>
+                <div><?php echo $form->checkBox($acciones,'seccion[11][alta]', array('class'=>'altaBox')); ?></div>   
+                <div><?php echo $form->checkBox($acciones,'seccion[11][baja]', array('class'=>'bajaBox')); ?></div>
+                <div><?php echo $form->checkBox($acciones,'seccion[11][consulta]', array('class'=>'consultaBox')); ?></div>
+                <div><?php echo $form->checkBox($acciones,'seccion[11][edicion]', array('class'=>'editBox')); ?></div>
             </div>
 	</div>
     </div>
