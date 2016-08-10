@@ -112,7 +112,7 @@
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
 									 array('label'=>'Camiones', 'url'=>array('/estacion'),'itemOptions'=>array('id' => 'estacion','active'=>$this->id=='estacion'?true:false)),
 									 array('label'=>'','itemOptions'=>array('class'=>"menu-vacio")),
-									 array('label'=>'Siembras', 'url'=>array('/campsensado'),'itemOptions'=>array('id' => 'campsensado','active'=>$this->id=='campsensado'?true:false)),
+									 array('label'=>'Siembras', 'url'=>array('/CampSensado'),'itemOptions'=>array('id' => 'campsensado','active'=>$this->id=='campsensado'?true:false)),
 									 array('label'=>'Granjas', 'url'=>array('/granjas'),'itemOptions'=>array('id' => 'granjas','active'=>$this->id=='granjas'?true:false)),
 									 array('label'=>'','itemOptions'=>array('class'=>"menu-vacio")),
 									 array('label'=>'Clientes', 'url'=>array('/clientes'),'itemOptions'=>array('id' => 'clientes','active'=>$this->id=='clientes'?true:false)),
