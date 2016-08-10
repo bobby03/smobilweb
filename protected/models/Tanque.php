@@ -67,7 +67,7 @@ class Tanque extends SMActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_estacion' => 'Estacion',
-			'capacidad' => 'Capacidad(Litros)',
+			'capacidad' => 'Capacidad (Litros)',
 			'nombre' => 'Nombre',
 			'status' => 'Status',
 			'activo' => 'Activo'

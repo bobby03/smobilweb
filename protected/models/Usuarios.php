@@ -116,7 +116,7 @@ class Usuarios extends CActiveRecord
             return array
             (
                 '1' => 'Cliente',
-                '2' => 'Personal'
+                '2' => 'Empleado'
             );
         }
         public function getSearchUsuarios(){
@@ -128,7 +128,7 @@ class Usuarios extends CActiveRecord
             switch ($id)
             {
                 case 1 : return 'Cliente'; break;
-                case 2 : return 'Personal'; break;
+                case 2 : return 'Empleado'; break;
             }
         }
         public function getUsuario($flag, $id)

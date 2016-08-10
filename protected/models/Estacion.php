@@ -118,7 +118,7 @@ class Estacion extends CActiveRecord
     public function getSearchEstaciones(){
             return array(//'1'=>'Tipo',
                          '1'=>'Identificador',
-                         '2'=>'No. Personal',
+                         '2'=>'Capacidad',
                          '3'=>'Marca'
                          /*'5'=>'Color',
                          '6'=>'Ubicación',
@@ -277,7 +277,7 @@ class Estacion extends CActiveRecord
         }
         public function getAllEstacionMovil()
         {
-            $estacion = Estacion::model()->findAll('tipo = 1');
+            $estacion = Estacion::model()->findAll('tipo = 1 AND activo = 1');
             $return = array();
             foreach($estacion as $data)
                 $return[$data->id] = $data->identificador;
@@ -285,7 +285,7 @@ class Estacion extends CActiveRecord
         }
         public function getAllEstacionFija()
         {
-            $estacion = Estacion::model()->findAll('tipo = 2');
+            $estacion = Estacion::model()->findAll('tipo = 2 AND activo = 1');
             $return = array();
             foreach($estacion as $data)
                 $return[$data->id] = $data->identificador;
@@ -293,7 +293,7 @@ class Estacion extends CActiveRecord
         }
         public function getAllEstacion()
         {
-            $estacion = Estacion::model()->findAll();
+            $estacion = Estacion::model()->findAll('activo = 1');
             $return = array();
             foreach($estacion as $data)
                 $return[$data->id] = $data->identificador;
@@ -306,7 +306,7 @@ class Estacion extends CActiveRecord
         }
         public function getEstacionSolicitud()
         {
-            $estacion = Estacion::model()->findAll('tipo = 1 and disponible = 1');
+            $estacion = Estacion::model()->findAll('tipo = 1 AND disponible = 1 AND activo = 1');
             $return = array();
             foreach($estacion as $data)
             {

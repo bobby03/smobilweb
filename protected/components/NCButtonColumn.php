@@ -67,9 +67,14 @@ class NCButtonColumn extends CButtonColumn
 
                 evt.preventDefault();
                 var href = $(this).attr('href');
-                var index1 = (href.lastIndexOf('/'))+1;
-                var index2 = href.length;
-                var id = href.substring(index1, index2);
+                console.log(href);
+
+                var check = $(this).attr('href');
+                var urlSplit = check.split( '/' );
+                console.log(urlSplit)
+                var id = urlSplit[ urlSplit.length - 1 ]; 
+
+
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
@@ -115,29 +120,7 @@ class NCButtonColumn extends CButtonColumn
                                     $('#cboxClose').click();
                                 },
                                 error: function(a, b, c)
-                                {
-                                  /* console.log(a, b, c);
-                                   
-                                    $.ajax(
-                                    {
-                                        type: 'GET',
-                                        url: href,
-                                        dataType: 'JSON', 
-                                        data:
-                                        {
-                                            id: id
-                                        },
-                                        success: function(data)
-                                        {
-                                            $.fn.yiiGridView.update(header);
-                                            $('#cboxClose').click();
-                                        },
-                                        error: function(a, b, c)
-                                        {
-                                            console.log(a, b, c);
-                                        }
-                                    });*/
-                                }
+                                {  }
                             });
                         });
 
@@ -154,9 +137,11 @@ EOD;
 
                 evt.preventDefault();
                 var href = $(this).attr('href');
-                var index1 = (href.lastIndexOf('/'))+1;
-                var index2 = href.length;
-                var id = href.substring(index1, index2);
+           
+                var check = $(this).attr('href');
+                var urlSplit = check.split( '/' );
+                var id = urlSplit[ urlSplit.length - 1 ]; 
+
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
@@ -203,27 +188,7 @@ EOD;
                                 },
                                 error: function(a, b, c)
                                 {
-                                  /* console.log(a, b, c);
-                                   
-                                    $.ajax(
-                                    {
-                                        type: 'GET',
-                                        url: href,
-                                        dataType: 'JSON', 
-                                        data:
-                                        {
-                                            id: id
-                                        },
-                                        success: function(data)
-                                        {
-                                            $.fn.yiiGridView.update(header);
-                                            $('#cboxClose').click();
-                                        },
-                                        error: function(a, b, c)
-                                        {
-                                            console.log(a, b, c);
-                                        }
-                                    });*/
+                                
                                 }
                             });
                         });

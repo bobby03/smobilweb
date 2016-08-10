@@ -71,7 +71,7 @@ class Granjas extends SMActiveRecord
         }
         public function getnombregranja()
         {
-            $personal = Granjas::model()->findAll();
+            $personal = Granjas::model()->findAll('activo = 1');
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre;

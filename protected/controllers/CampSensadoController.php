@@ -104,7 +104,7 @@ class CampSensadoController extends Controller
 	public function actionCreate()
 	{
 		$model=new CampSensado;
-		$granjas = Granjas::model()->findAll();
+		$granjas = Granjas::model()->findAll('activo = 1');
 		$personal = new SolicitudesViaje;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -165,7 +165,7 @@ class CampSensadoController extends Controller
                                     <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='CampSensado[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
                             			<div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
                                     </div>              
-                                    <div>Cantidad: <span> <input name='CampSensado[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
+                                    <div>Cantidad: <span> <input class='cant-peces cantt{tot} 'name='CampSensado[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
                                    
                                
                             $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        
@@ -184,6 +184,26 @@ class CampSensadoController extends Controller
 		foreach($cepas as $data ) {
 			$return['cepas'] .= "<option value='{$data->id}'>{$data->nombre_cepa}</option>"; 
 		}
+
+		echo json_encode($return);
+	}
+	public function actionGetInfoCepa($id) {
+		$cepa = Cepa::model()->findByPk((int)$id);
+		$return = array();
+		$return['nombre'] = $cepa->nombre_cepa;
+		$return['temp_min'] = $cepa->temp_min;
+		$return['temp_max'] = $cepa->temp_max;
+		$return['ph_min'] = $cepa->ph_min;
+		$return['ph_max'] = $cepa->ph_max;
+		$return['ox_min'] = $cepa->ox_min;
+		$return['ox_max'] = $cepa->ox_max;
+
+		echo json_encode($return);
+	}
+	public function actionGetNombreEspecie($id) {
+		$cepa = Especie::model()->findByPk((int)$id);
+		$return = array();
+		$return['nombre'] = $cepa->nombre;
 
 		echo json_encode($return);
 	}
@@ -223,7 +243,7 @@ class CampSensadoController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		//if(!isset($_GET['ajax']))
 		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-            $model = $this->loadModel($id);
+            $model = CampSensado::model()->findByPk($id);
             $model->activo = 0;
             $update = Yii::app()->db->createCommand()
                     ->update('camp_sensado',$model->attributes,"id = ".(int)$id."");

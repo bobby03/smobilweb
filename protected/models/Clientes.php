@@ -124,8 +124,8 @@ class Clientes extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre_empresa' => 'Nombre de la empresa',
-			'nombre_contacto' => 'Nombre de contacto',
-			'apellido_contacto' => 'Apellido de contacto',
+			'nombre_contacto' => 'Nombre(s) de contacto',
+			'apellido_contacto' => 'Apellido(s) de contacto',
 			'correo' => 'Correo',
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',
@@ -178,7 +178,7 @@ class Clientes extends CActiveRecord
 	}
         public function getAllClientes()
         {
-            $clientes = Clientes::model()->findAll();
+            $clientes = Clientes::model()->findAll('activo = 1');
             $return = array();
             foreach($clientes as $data)
                 $return[$data->id] = $data->nombre_empresa;
@@ -186,7 +186,7 @@ class Clientes extends CActiveRecord
         }
         public function getAllClientesViajes()
         {
-            $clientes = Clientes::model()->findAll();
+            $clientes = Clientes::model()->findAll('activo = 1');
             $solicitudes = Solicitudes::model()->findAllBySql('SELECT DISTINCT id, id_clientes, codigo FROM solicitudes');
             $return = array();
             foreach($solicitudes as $info)

@@ -32,7 +32,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
 <div class="form">
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
-            'nullDisplay'=>'No hay datos disponibles',
+            'nullDisplay'=>'No se ha asignado a un viaje',
             'attributes'=>array
             (
                 'id_clientes',
@@ -62,7 +62,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                     <div class="pedidoWraper gris">
                         <div>Especie: <span><?php echo Especie::model()->getEspecie($data['id_especie']);?></span></div>
                         <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['id_cepa']);?></span></div>
-                        <div>Cantidad: <span><?php echo $data['cantidad'];?></span></div>
+                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
                         <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['id_direccion']);?></span></div>
                     </div>
                 </div>

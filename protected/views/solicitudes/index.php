@@ -32,7 +32,13 @@
         (
             'class' => 'PagerSA',
             'header'=>'',
-        )
+        ),
+        'afterAjaxUpdate' => "function(id,data)
+        {
+            $.fn.yiiGridView.update('viaje2');
+            $.fn.yiiGridView.update('viaje3');
+            $.fn.yiiGridView.update('viaje4');
+        }"
     //    'filter'=>$model,
     )); 
     ?>
@@ -45,6 +51,7 @@
         'dataProvider'=>$model->searchStatus(1),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
+        'ajaxUpdate'=>true,
     //    'filter'=>$model,
         'columns'=>$model->adminSearch2(),
         'pager' => array
@@ -63,6 +70,7 @@
         'dataProvider'=>$model->searchStatus(2),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
+        'ajaxUpdate'=>true,
     //    'filter'=>$model,
         'columns'=>$model->adminSearch3(),
         'pager' => array
@@ -76,10 +84,11 @@
     <div class="tabContent hide" data-tan="4">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje3',
+        'id'=>'viaje4',
         'dataProvider'=>$model->searchStatus(3),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'template' => "{items}{summary}{pager}",
+        'ajaxUpdate'=>true,
     //    'filter'=>$model,
         'columns'=>$model->adminSearch4(),
         'pager' => array

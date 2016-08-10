@@ -122,7 +122,10 @@
     <div class="tab hide" data-tab="3">
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <div class="inner-third-wrapper"></div>
+        <div class="row buttons floating">
+			<?php echo CHtml::submitButton('Finalizar'); ?>
+		</div>
 	</div>
 
     </div>

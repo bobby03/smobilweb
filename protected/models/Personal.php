@@ -85,8 +85,8 @@ class Personal extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre' => 'Nombre',
-			'apellido' => 'Apellido',
+			'nombre' => 'Nombre(s)',
+			'apellido' => 'Apellido(s)',
 			'domicilio' => 'Domicilio',
 			'id_rol' => 'Rol',
 			'puesto' => 'Puesto',
@@ -155,7 +155,7 @@ class Personal extends CActiveRecord
 	}
         public function getAllPersonal()
         {
-            $personal = Personal::model()->findAll();
+            $personal = Personal::model()->findAll('activo = 1');
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;

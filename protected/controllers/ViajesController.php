@@ -43,8 +43,8 @@ class ViajesController extends Controller
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
-            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 1 AND activo = 1");
-            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 1 AND activo = 1");
+            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 0 AND activo = 1");
+            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 0 AND activo = 1");
             $total_tanques = count($tanquesDesocupados) + count($tanquesOcupados);
 
              $tot = 1;
@@ -158,7 +158,7 @@ class ViajesController extends Controller
                         }
                         
                         $html.=$total;
-                        $html.="></p>
+                        $html.="</p>
                         <table id='vcont'>
                             <tr class='pf'>
                                 <th class='pc'></th><th>Mínima</th><th>Máxima</th>
