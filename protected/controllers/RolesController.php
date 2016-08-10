@@ -116,6 +116,7 @@ class RolesController extends Controller
                     {
                         $i = 1;
                         $auth = Yii::app()->authManager;
+                        print_r($_POST['RolesPermisos']['seccion']);
                         foreach($_POST['RolesPermisos']['seccion'] as $data)
                         {
                             $acciones2 = new RolesPermisos;
@@ -127,7 +128,7 @@ class RolesController extends Controller
                             $acciones2->edicion = $data['edicion'];
                             $acciones2->save();
                             $roles = new Roles();
-                            $nombreSeccion = $roles->getSeccion($data['seccion']);
+                            $nombreSeccion = $roles->getSeccion($i);
                             $seccion = '';
                             if($data['alta'] == 1)
                             {
@@ -169,7 +170,7 @@ class RolesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-                $query = RolesPermisos::model()->findAllBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND activo = 1");
+                $query = RolesPermisos::model()->findAllBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id}");
                 $array = array();
                 $acciones = new RolesPermisos;
                 foreach($query as $data)
