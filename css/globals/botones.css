@@ -12,6 +12,21 @@
     text-decoration: none;
     width: 185px;
 }
+.fBoton{
+    background-color: #0077b0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 15px;
+    height: 39px;
+    line-height: 40px;
+    margin-left: 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 120px;
+    margin-right: 5px;  
+}
 .agregar
 {
     float: right;
