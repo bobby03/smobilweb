@@ -18,7 +18,10 @@
         <div class="tab" data-id="2"><span>Inactivos</span></div>
     </div>
 
-
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
+        <div class="agregar campsensado"></div>
+    </a>
+    
  <div class="search-form">
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
