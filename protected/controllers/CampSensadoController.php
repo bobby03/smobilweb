@@ -119,12 +119,13 @@ class CampSensadoController extends Controller
 				$id = Yii::app()->db->getLastInsertID();
 				foreach($_POST['camp_tanques'] as $data) {
 					$camptanque = new CampTanque;
+					if($data['id_tanque'] !='' && $data['id_cepa'] != "" && $data['cantidad'] !="")
 					$camptanque->id_tanque = $data['id_tanque'];
 					$camptanque->id_camp_sensado = $id;
 					$camptanque->id_cepa = $data['id_cepa'];
 					$camptanque->cantidad = $data['cantidad'];
 					if($camptanque->save()) {
-						
+
 					}
 
 				}
@@ -160,7 +161,7 @@ class CampSensadoController extends Controller
 	}
 	public function actionGetTanquesFromEstacion($id) {
 		$tanques_libres   = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
-		$tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
+		// $tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
 		$return = array();
 
 		$tot = 1;
