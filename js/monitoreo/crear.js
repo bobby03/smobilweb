@@ -104,13 +104,13 @@ $(document).ready(function(){
 						                                '<th class="pc"></th><th>Mínima</th><th>Máxima</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">Temperatura (Temp)</th><th>'+data.temp_min+'</th><th>'+data.temp_max+'</th>'+
+						                                '<th class="pc">Temperatura (Temp)</th><th>'+data.temp_min+' °C</th><th>'+data.temp_max+' °C</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
 						                                '<th class="pc">PH (ph)</th><th>'+data.ph_min+'</th><th>'+data.ph_min+'</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">Oxígeno (O)</th><th> '+data.ox_min+'</th><th>'+data.ox_min+'</th>'+
+						                                '<th class="pc">Oxígeno (O)</th><th> '+data.ox_min+' mg/l</th><th>'+data.ox_min+' mg/l </th>'+
 						                            '</tr>'+
 						                        '</tbody></table>'+
 						                    '</div>'+

@@ -328,7 +328,7 @@ div.chosen-container.error > ul {
 
 #vc1,
 #vc2 {
-    height: 190px;
+    height: 205px;
     margin-left: 30px;
 }
 
@@ -352,12 +352,17 @@ div.chosen-container.error > ul {
 
 .row.buttons.floating a.gBoton {
     margin: 0;
-    width: 100%;
+    width: 100px;
     margin-bottom: 20px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+    font-size: 15px;
 }
 
 .row.buttons.floating input[type="submit"] {
     font-size: 15px;
+    margin: 0;
 }
 #vtitulo {
     color: #0077b0;
