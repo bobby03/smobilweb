@@ -16,6 +16,15 @@ class WebUser extends CWebUser
         	}
         
         }
+        public function getID(){
+            if(Yii::app()->user->name =='smobiladmin'){
+                return 0;
+            } else {
+            $usuario = Usuarios::model()->find('usuario=?', array(Yii::app()->user->name));
+            return $usuario->id;  
+            }
+        
+        }
 
         public function getIdUsuario(){
 
