@@ -58,7 +58,7 @@
 				?>
 				<label for="Granjas_nombre" class="required">Granja: <span class="required">*</span></label>
 		        <span class="css-select-moz">
-		            <?php echo $form->dropDownList($grn,'id', $grn->getnombregranja(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$grn->id));?>
+		            <?php echo $form->dropDownList($grn,'id', $grn->getNombreGranjasConPlantas(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$grn->id));?>
 		            <?php echo $form->error($model,'id_responsable'); ?>
 		        </span>
 			</div>
@@ -66,8 +66,9 @@
 				<?php
 					$est = new Estacion;
 				?>
-	             <span class="css-select-moz">
+	           
 					<?php echo $form->labelEx($model,'id_estacion'); ?>
+				<span class="css-select-moz">
 		            <?php echo $form->dropDownList($model,'id_estacion', array(), array('empty'=>'Seleccionar', 'disabled'=>'disabled'));?>
 		            <?php echo $form->error($model,'id_responsable'); ?>
 		        </span>
@@ -130,8 +131,8 @@
     </div>
     <div class="tab hide" data-tab="3">
 
+    <div class="inner-third-wrapper"></div>
 	<div class="row buttons">
-        <div class="inner-third-wrapper"></div>
         <div class="row buttons floating">
          	<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
 			<?php echo CHtml::submitButton('Finalizar'); ?>

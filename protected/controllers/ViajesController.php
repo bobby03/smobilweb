@@ -123,14 +123,15 @@ eof;
                         $tot++;
                     }
                 }
-         
+             
 
-            $this->layout=false;
-            header('Content-type: application/json');
-            $data = array();
-            $data['html'] = $html;
-            $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
-            echo json_encode($data);
+                $this->layout=false;
+                header('Content-type: application/json');
+                $data = array();
+                $data['html'] = $html;
+                $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
+                echo json_encode($data);
+            
             Yii::app()->end(); 
 
         }
@@ -226,6 +227,8 @@ eof;
                
                 if($o==1){
                     $html.= '<input type="submit" name="yt0" value="Finalizar" />';
+                    $html.= '<div class="bDos fBoton floatingbutton" >Regresar</div>';
+                    $html.= '<div class="fBoton floatingbutton" >Cancelar?</div>';
                 }
                $html .=" </div>
             
@@ -252,7 +255,7 @@ eof;
 	public function accessRules()
         {
             $return = array();
-            if(Yii::app()->user->checkAccess('createViajes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('createViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',
@@ -266,7 +269,8 @@ eof;
                     'actions'   => array('create'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('readViajes') || Yii::app()->user->id == 'smobiladmin')
+
+            if(Yii::app()->user->checkAccess('readViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',
@@ -280,7 +284,7 @@ eof;
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editViajes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('editViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',
@@ -294,7 +298,7 @@ eof;
                     'actions'   => array('update'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('deleteViajes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('deleteViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',

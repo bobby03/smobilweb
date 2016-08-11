@@ -98,9 +98,13 @@ $this->breadcrumbs=array(
             </div>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Guardar'); ?>
-	</div>
+
+
+
+         <div class="botonesWrapper update row buttons">
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+                <?php echo CHtml::submitButton('Guardar'); ?>
+            </div>
     </div>
 
 <?php $this->endWidget(); ?>

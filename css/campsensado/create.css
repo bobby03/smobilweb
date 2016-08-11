@@ -323,16 +323,19 @@ div.chosen-container.error > ul {
     border-radius: 7px 7px 0px 0px;
     -moz-border-radius: 7px 7px 0px 0px;
     -webkit-border-radius: 7px 7px 0px 0px;
-}
 
-#vt2 {}
+}
 
 #vc1,
 #vc2 {
-    height: 200px;
+    height: 205px;
     margin-left: 30px;
 }
 
+#vc1 {
+    height: 70px;
+    margin-top: 30px;
+}
 #vc1 p {
     margin-bottom: 1em;
 }
@@ -347,6 +350,20 @@ div.chosen-container.error > ul {
     color: #0077b0;
 }
 
+.row.buttons.floating a.gBoton {
+    margin: 0;
+    width: 100px;
+    margin-bottom: 20px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+    font-size: 15px;
+}
+
+.row.buttons.floating input[type="submit"] {
+    font-size: 15px;
+    margin: 0;
+}
 #vtitulo {
     color: #0077b0;
     margin-top: 20px;
@@ -377,7 +394,6 @@ div.chosen-container.error > ul {
 .left .content {}
 
 .right {
-    margin-top: 50px;
     float: right;
     width: 40%;
 }

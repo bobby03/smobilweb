@@ -3,7 +3,7 @@
 /* @var $model CampSensado */
 
 $this->breadcrumbs=array(
-	'Camp Sensados'=>array('index'),
+	'Siembra'=>array('index'),
 	$model->id,
 );
 

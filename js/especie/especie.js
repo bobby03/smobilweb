@@ -69,8 +69,9 @@ $(document).ready(function()
                 <div class="title-content">Editar especie '+'</div>\n\
                 <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
-                <input id="ingesp" value="'+nombre+'" class="ingesp" type="text">\n\
+                <input name="ingesp" id="ingesp" value="'+nombre+'" class="ingesp" type="text">\n\
                 <div class="botones-content">\n\
+                    <a class="gBoton" href="">Cancelar</a> \n\
                     <div class="btnadd btnUpdate">Aceptar</div>\n\
                 </div>\n\
                 <script>UpperCaseInput();</script>\n\
@@ -82,6 +83,7 @@ $(document).ready(function()
             height:'200px',
             onComplete: function()
             {        
+               
                 $('.btnUpdate').click(function()
                 {
        

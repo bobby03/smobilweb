@@ -129,9 +129,9 @@ class GranjasController extends Controller
                 (
                     'id_granja' => $id,
                     'identificador' => $_POST['Estacion']['identificador'],
-                    'no_personal' => $_POST['Estacion']['no_personal'],
-                    'marca' => $_POST['Estacion']['marca'],
-                    'color' => $_POST['Estacion']['color'],
+                    'no_personal' => isset($_POST['Estacion']['no_personal'])?$_POST['Estacion']['no_personal']:0,
+                    'marca' => isset($_POST['Estacion']['marca'])?$_POST['Estacion']['marca']:"na",
+                    'color' => isset($_POST['Estacion']['color'])?$_POST['Estacion']['color']:"na",
                     'ubicacion' => $_POST['Estacion']['ubicacion'],
                     'activo' => 1,
                     'disponible' => 1,
@@ -156,15 +156,15 @@ class GranjasController extends Controller
 //            $this->performAjaxValidation($model);
             if(isset($_POST['Estacion']))
             {
+                print_r($_POST['Estacion']);
                 $model->attributes=$_POST['Estacion'];
-                if($model->save())
+                if($model->save(false))
                 {
                     $this->redirect(array('granjas/plantaProduccion/'.$model->id_granja));
                 }
             }
-            $this->render('editarPlanta',array(
-                    'model'=>$model,
-            ));
+            // $this->redirect(array('granjas/plantaProduccion/'.$model->id_granja));
+            $this->render('editarPlanta',array('model'=>$model, ));
         }
         
 	public function actionCreate()

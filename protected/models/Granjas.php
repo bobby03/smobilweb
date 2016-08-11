@@ -77,6 +77,20 @@ class Granjas extends SMActiveRecord
                 $return[$data->id] = $data->nombre;
             return $return; 
         }
+        public function getNombreGranjasConPlantas()
+        {
+            $personal = Granjas::model()->findAll('activo = 1');
+            $return = array();
+            foreach($personal as $data) {      
+            	$crit = new CDbCriteria;
+	            $crit->condition = "id_granja = '{$data->id}' AND disponible = 1";
+	            $plantasDisponibles = Estacion::model()->findAll($crit);
+	            $numero = count($plantasDisponibles);
+                $return[$data->id] = $data->nombre." -  ".$numero." plantas disponibles";
+            }
+            return $return; 
+        }
+        
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

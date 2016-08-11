@@ -24,7 +24,6 @@
         ),
     )); 
 
-
 ?>
 <div class="form-containerWraper">
     <div class="form-cLeftContainer">
@@ -81,6 +80,7 @@
             <?php endif;?>
             <div class="containerbutton">
                     <div class="row buttons">
+
                             <div class="btncanc">Cancelar</div>
                             <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
                     </div>
@@ -93,3 +93,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
