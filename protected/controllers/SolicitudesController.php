@@ -158,23 +158,7 @@ class SolicitudesController extends Controller
 	 */
         public function getViajes()
         {
-            $estaciones = Estacion::model()->findAll('tipo = 1 AND activo = 1');
             $viajes = Viajes::model()->findAll('status = 1');
-            $todosViajes = array();
-            foreach($estaciones as $data)
-            {
-                $tanques = Tanque::model()->findAll("id_estacion = $data->id and status = 1");
-                $i = 0;
-                $i = count($tanques);
-                if($i > 0)
-                {
-                    $todosViajes[$data->id] = array
-                    (
-                        'cantidad' => $i,
-                        'camion' => $data->identificador
-                    );
-                }
-            }
             $imprimir  = '  <div class="subtitulos">
                                 <div>Camión</div>
                                 <div>Tanques disponibles</div>
@@ -182,21 +166,25 @@ class SolicitudesController extends Controller
                             <div class="tablaViajes">';
             foreach($viajes as $data)
             {
-                if(isset($todosViajes[$data->id_estacion]))
-                {
+                $estacion = Estacion::model()->findByPk($data['id_estacion']);
+                $tanques = Tanque::model()->findAll("id_estacion = $estacion->id and activo = 1");
+                $solicitudes = Yii::app()->db->createCommand()
+                    ->selectDistinct('solT.id_tanque, solV.id_solicitud')
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->where('solV.id_viaje = '.$data['id'])
+                    ->queryAll();
+                $i = count($tanques);
+                $i = $i - count($solicitudes);
+                if($i > 0)
                     $imprimir = $imprimir.<<<eof
                         <div class="renglon">
-                            <div>
-                                {$todosViajes[$data->id_estacion]['camion']}
-                            </div>
-                            <div data-tanque="{$todosViajes[$data->id_estacion]['cantidad']}">
-                                {$todosViajes[$data->id_estacion]['cantidad']}
-                            </div>
+                            <div>{$estacion->identificador}</div>
+                            <div data-tanque="$i">$i</div>
                             <div class="viajeLoc" data-viaje="{$data->id}"></div>
                             <div class="viajeSel" data-viaje="{$data->id}"></div>
                         </div>
 eof;
-                }
             }
             $imprimir = $imprimir.'</div>';
             echo $imprimir;
@@ -271,7 +259,6 @@ eof;
 	public function actionDelete($id)
 	{
             $model = Solicitudes::model()->findByPk($id);
-//            fb($model->attributes);
             if($model->status == 0)
             {
                 $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
@@ -281,10 +268,8 @@ eof;
             {
                 $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
                 $tanques = SolicitudTanques::model()->findAll("id_solicitud = $model->id");
-                fb($tanques);
                 foreach ($tanques as $data)
                 {
-                    fb($data);
                     $tanque = Tanque::model()->findByPk($data['id_tanque']);
                     $tanque->status = 1;
                     if($tanque->save())

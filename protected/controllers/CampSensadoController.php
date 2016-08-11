@@ -113,8 +113,23 @@ class CampSensadoController extends Controller
 		if(isset($_POST['CampSensado']))
 		{
 			$model->attributes=$_POST['CampSensado'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->status = 1;
+			$model->activo = 1;
+			if($model->save()){
+				$id = Yii::app()->db->getLastInsertID();
+				foreach($_POST['camp_tanques'] as $data) {
+					$camptanque = new CampTanque;
+					$camptanque->id_tanque = $data['id_tanque'];
+					$camptanque->id_camp_sensado = $id;
+					$camptanque->id_cepa = $data['id_cepa'];
+					$camptanque->cantidad = $data['cantidad'];
+					if($camptanque->save()) {
+						
+					}
+
+				}
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -127,10 +142,15 @@ class CampSensadoController extends Controller
 		$estaciones = Estacion::model()->findAll('id_granja = '.(int)$id.' AND activo = 1 AND disponible = 1');
 		$return = array();
 
+
 		$return['html'] = "<option value=''>Seleccionar</option>";
 		if(count($estaciones>0)){
 			foreach ($estaciones as $data ) {
-				$return['html'] .= "<option value='{$data->id}'>{$data->identificador}</option>";
+				$cr = new CDbCriteria;
+				$cr->condition = "id_estacion = {$data->id} AND status = 1 AND activo = 1";
+				$tanquesfromestaciones = Tanque::model()->findAll($cr);
+				$numero = count($tanquesfromestaciones);
+				$return['html'] .= "<option value='{$data->id}'>{$data->identificador} - {$numero} tanques disponibles</option>";
 			} 
 		}
 		else {
@@ -148,11 +168,11 @@ class CampSensadoController extends Controller
 		foreach($tanques_libres as $data) {
 			$especies = Especie::model()->findAll('activo = 1');
 			$return['libres'] .= "<div class='pedido'>
-								<input name='Solicitudes[codigo][{$tot}][id_tanque' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
+								<input name='camp_tanques[{$tot}][id_tanque]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
                                 <div class='tituloEspecie'>Tanque: $data->nombre</div>
                                 <div class='pedidoWraper' style='height: 178px;'>
                                     <div><label>Seleccionar especie: </label>
-                                    	<select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='CampSensado[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+                                    	<select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
                                         <option>Seleccionar</option>";
                                         foreach($especies as $dt) {
                                         	$return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
@@ -162,10 +182,10 @@ class CampSensadoController extends Controller
                                     $return['libres'].="</select>
                                     	<div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
                                     </div>
-                                    <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='CampSensado[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
+                                    <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
                             			<div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
                                     </div>              
-                                    <div>Cantidad: <span> <input class='cant-peces cantt{tot} 'name='CampSensado[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
+                                    <div>Cantidad: <span> <input class='cant-peces cantt{tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
                                    
                                
                             $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        

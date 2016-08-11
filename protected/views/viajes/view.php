@@ -33,11 +33,11 @@
         <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
             'attributes'=>array(
-                array(
-                    'name'=>'id_solicitudes',
-                    'value'=> Viajes::model()->getAllClientesViajes($model->id, $model->id_solicitudes),
-                    'type'=>'raw'
-                ),
+//                array(
+//                    'name'=>'id_solicitudes',
+//                    'value'=> Viajes::model()->getAllClientesViajes($model->id, $model->id_solicitudes),
+//                    'type'=>'raw'
+//                ),
                 array(
                     'name'=>'status',
                     'value'=> Viajes::model()->getStatus($model->status)
@@ -69,23 +69,25 @@
             ),
         )); ?>
         <div>
-            <?php $tot = 1;?>
+        <?php $tot = 1;?>
         <?php foreach($pedidos['pedido'] as $data):?>
             <?php for($i = 1; $i <= $data['tanques']; $i++):?>
                 <div class="pedido">
-                    <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
+                    <!--<div class="tituloEspecie">Pedido <?php echo $tot;?></div>-->
+                    <div class="tituloEspecie"><?php echo Tanque::model()->getTanque($data['id_tanque']);?></div>
                     <?php if(isset($data['id_tanque'])):?>
                     <div class="pedidoWraper gris">
+                        <div>Cliente: <span><?php echo Solicitudes::model()->getCliente($data['id_solicitud']);?></span></div>
                         <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
                         <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                        <div>Cantidad: <span><?php echo $data['cantidad'];?></span></div>
+                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
                         <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                        <div class="selectTanque">
+<!--                        <div class="selectTanque">
                             <label>Tanque</label>
                             <div style="color: #000000">
                                 <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <?php else:?>
                     <div class="pedidoWraper">

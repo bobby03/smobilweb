@@ -3,8 +3,8 @@
 /* @var $model CampSensado */
 
 $this->breadcrumbs=array(
-	'Camp Sensados'=>array('index'),
-	'Create',
+	'Siembra'=>array('index'),
+	'Nueva',
 );
 
 ?>

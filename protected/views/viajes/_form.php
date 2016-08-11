@@ -148,7 +148,7 @@
                         <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
                         <div class="selectTanque">
                             <label>Tanque</label>
-                            <div style="color: #000000">
+                            <div class="tanqueNombre" style="color: #000000" data-tanque="<?php echo $data['id_tanque'];?>">
                                 <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
                             </div>
                         </div>
@@ -292,25 +292,21 @@
                 <div class="row">
                     <label>Solicitudes sin asignar</label>
                     <span class="css-select-moz">
-                        <?php
-                                $sol = new Solicitudes();
-                                 echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getClientesEnEspera(),
+                        <?php echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getClientesEnEspera(),
                                     array
                                     (
-                                        'empty'=>'Seleccionar',
-    //                                        'disabled'=>'disabled',
                                         'class'=>'css-select',
-                                         'value'=>$sol->id
+                                        'multiple'=>'true'
                                     ));
                          ?>
                         <?php echo $form->error($model,'id_solicitudes[1]'); ?>
 
                     </span>
-                     <span class"hidden-input">
+<!--                     <span class="hidden-input">
                         <input  class="hiden-input" name='Solicitudes[id_clientes]' id='Solicitudes_id_clientes' type='hidden' autocomplete='off'>
                         <input  class="hiden-input-id" name='Solicitudes[id]' id='Solicitudes_id' type='hidden' autocomplete='off'>
                         <input  class="hiden-input-notas" name='Solicitudes[notas]' id='Solicitudes_notas' type='hidden' autocomplete='off'>
-                    </span>
+                    </span>-->
                 </div>
                 <div class="row">
                     <?php echo $form->labelEx($model,'id_estacion'); ?>

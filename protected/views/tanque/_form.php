@@ -37,23 +37,23 @@
 	</div>
         <div class="allTanques">
             <?php $i = 1;?>
-            <?php if(count($model->status)>0):?>
-            <?php foreach($model->status as $data):?>
+            <?php if(count($model->activo)>0):?>
+            <?php foreach($model->activo as $data):?>
                 <div class="tanque" data-id="<?php echo $i;?>">
-                    <?php echo $form->hiddenField($model,"status[$i][id]");?>
+                    <?php echo $form->hiddenField($model,"activo[$i][id]");?>
                     <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
-                            <?php echo $form->textField($model,"status[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,"activo[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
                             <?php echo $form->error($model,'nombre'); ?>
                     </div>
                     <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad (Litros)'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]",array('class'=>'ttan','placeholder'=>'500')); ?>
+                            <?php echo $form->textField($model,"activo[$i][capacidad]",array('class'=>'ttan','placeholder'=>'500')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                     <div class="row act">
                             <?php echo $form->labelEx($model,'activo'); ?>
-                            <?php echo $form->dropDownList($model,"status[$i][activo]", Tanque::model()->getAllActivo(), array('empty'=>'Seleccionar', 'class'=>'css-select activo')); ?>
+                            <?php echo $form->dropDownList($model,"activo[$i][activo]", Tanque::model()->getAllActivo(), array('empty'=>'Seleccionar', 'class'=>'css-select activo')); ?>
                             <?php echo $form->error($model,'activo'); ?>
                     </div>
                     <?php $i++;?>
@@ -64,12 +64,12 @@
                     <div class="tacha">X</div>
                     <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
-                            <?php echo $form->textField($model,"status[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
+                            <?php echo $form->textField($model,"activo[$i][nombre]", array('size'=>50,'maxlength'=>50)); ?>
                             <?php echo $form->error($model,'nombre'); ?>
                     </div>
                     <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"status[$i][capacidad]",array('placeholder'=>'500')); ?>
+                            <?php echo $form->textField($model,"activo[$i][capacidad]",array('placeholder'=>'500')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                 </div>

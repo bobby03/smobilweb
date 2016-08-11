@@ -72,11 +72,10 @@ class TanqueController extends Controller
                 $array[$i]['id_estacion'] = $data->id_estacion;
                 $array[$i]['capacidad'] = $data->capacidad;
                 $array[$i]['nombre'] = $data->nombre;
-                $array[$i]['status'] = $data->status;
                 $array[$i]['activo'] = $data->activo;
                 $i++;
             }
-            $model->status = $array;
+            $model->activo = $array;
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 
@@ -95,7 +94,6 @@ class TanqueController extends Controller
                     else
                     {
                         $update->id_estacion = $id;
-                        $update->status = 1;
                         $update->activo = 1;
                         $update->save();
                     }
