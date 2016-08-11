@@ -52,7 +52,6 @@ class SiteController extends Controller
 					(SELECT count(t.id) 
 						FROM tanque as t 
 						WHERE t.id_estacion = v.id_estacion 
-						AND t.status = 1 
 						AND t.activo = 1) as "disponibles", 
 					(SELECT DISTINCT cd.domicilio 
 						FROM solicitudes_viaje as sv 

@@ -20,26 +20,68 @@ class ViajesController extends Controller
 		);
 	}
 
-    public function actionGetIdCliente($s) {
+    public function actionGetIdCliente($s) 
+    {
         $solicitud = Solicitudes::model()->findByPk((int) $s);
-        $html = $solicitud->id_clientes;
-        if($solicitud->notas !='' && $solicitud->notas != NULL) {
-            $nota = $solicitud->notas;
-        }
-        else {
-            $nota = "no hay notas";
-        }
-
-        $this->layout=false;
-        header('Content-type: application/json');
-        $data = array();
-
-        $data['html'] = $html;
-        $data['nota'] = $nota;
-        echo json_encode($data);
-        Yii::app()->end(); 
+        $pedidos = Pedidos::model()->findAll("id_solicitud = $solicitud->id");
+        $return = array();
+        foreach($pedidos as $data)
+            $return[] = $data->attributes;
+//        $html = $solicitud->id_clientes;
+//        if($solicitud->notas !='' && $solicitud->notas != NULL) {
+//            $nota = $solicitud->notas;
+//        }
+//        else {
+//            $nota = "no hay notas";
+//        }
+//
+//        $this->layout=false;
+//        header('Content-type: application/json');
+//        $data = array();
+//
+//        $data['html'] = $html;
+//        $data['nota'] = $nota;
+        echo json_encode($return);
+//        Yii::app()->end(); 
     }
-
+    public function actionGetCamionesDisponibles($total, $fecha)
+    {
+        $opciones = '';
+        if($fecha != '')
+        {
+            $fecha = date('Y-m-d', strtotime($fecha));
+            $Viajes = Yii::app()->db->createCommand()
+            ->from('viajes')
+            ->where('status = 1')
+            ->andWhere("fecha_salida > '$fecha'")
+            ->queryAll();
+        }
+        if(isset($Viajes))
+        {
+            foreach($Viajes as $data)
+            {
+                $estacion = Estacion::model()->findByPk($data['id_estacion']);
+                $tanques = Tanque::model()->findAll("id_estacion = $estacion->id and activo = 1");
+                $i = count($tanques);
+                if($i >= $total)
+                    $opciones = $opciones.<<<eof
+                        <option value="$estacion->id">$estacion->identificador ($i Tanque(s))</option>
+eof;
+            }
+        }
+        $estacion = Estacion::model()->findAll('disponible = 1 and activo = 1 and tipo = 1');
+        foreach ($estacion  as $data)
+        {
+            $tanques = Tanque::model()->findAll("id_estacion = $data->id and activo = 1");
+            $i = count($tanques);
+            if($i >= $total)
+                $opciones = $opciones.<<<eof
+                    <option value="$data->id">$data->identificador ($i Tanque(s))</option>
+eof;
+        }
+//        echo json_encode($opciones, JSON_UNESCAPED_SLASHES);
+        echo json_encode($opciones);
+    }
     public function actionGetTanquesConSolicitud($solicitud, $camion) {
 
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
@@ -93,7 +135,8 @@ class ViajesController extends Controller
             Yii::app()->end(); 
 
         }
-        public function actionGetResumenViaje($solicitud, $camion) {
+        public function actionGetResumenViaje($solicitud, $camion) 
+        {
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
             $id_cliente = Solicitudes::model()->findByPk((int)$solicitud);
             $cliente = Clientes::model()->findByPk($id_cliente->id_clientes);
@@ -194,8 +237,6 @@ class ViajesController extends Controller
                     $o++;
                 }
             }
-            // fb($html);
-
             $this->layout=false;
             header('Content-type: application/json');
             $data = array();
@@ -295,6 +336,7 @@ class ViajesController extends Controller
                     'cantidad'=>$data->cantidad_cepas,
                     'destino'=>$data->id_domicilio,
                     'tanques'=>1,
+                    'id_solicitud'=>$data->id_solicitud,
                     'id_tanque'=>$data->id_tanque
                 );
                 $pedidos['pedido'][$i] = $pedido;
@@ -432,12 +474,13 @@ class ViajesController extends Controller
                             $nuevo->id_domicilio = $data['destino'];
                             $nuevo->id_cepas = $data['cepa'];
                             $nuevo->cantidad_cepas = $data['cantidad'];
-                            if($nuevo->save())
-                            {
-                                $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
-                                $tanque->status = 2;
-                                $tanque->save();
-                            }
+                            $nuevo->save();
+//                            if($nuevo->save())
+//                            {
+//                                $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
+//                                $tanque->status = 2;
+//                                $tanque->save();
+//                            }
                         }
                         $estacion = Estacion::model()->findByPk($model->id_estacion);
                         $estacion->disponible = 2;
@@ -459,12 +502,13 @@ class ViajesController extends Controller
                         $nuevo->id_domicilio = $data['destino'];
                         $nuevo->id_cepas = $data['cepa'];
                         $nuevo->cantidad_cepas = $data['cantidad'];
-                        if($nuevo->save())
-                        {
-                            $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
-                            $tanque->status = 2;
-                            $tanque->save();
-                        }
+                        $nuevo->save();
+//                        if($nuevo->save())
+//                        {
+//                            $tanque = Tanque::model()->findByPk($nuevo->id_tanque);
+//                            $tanque->status = 2;
+//                            $tanque->save();
+//                        }
                     }
                 }
                 $this->redirect(array('index'));
@@ -714,7 +758,7 @@ class ViajesController extends Controller
         
         public function actionGetTanques($id)
         {
-            $tanques = Tanque::model()->findAll("id_estacion = $id AND status = 1 AND activo = 1");
+            $tanques = Tanque::model()->findAll("id_estacion = $id AND activo = 1");
             $return = '';
             foreach($tanques as $data)
                 $return = $return.<<<eof
