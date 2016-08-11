@@ -167,7 +167,10 @@ public function getSearchSolicitud(){
             $criteria->addcondition("status = $id");
 
             return new CActiveDataProvider($this, array(
-                    'criteria'=>$criteria,
+			'criteria'=>$criteria,
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
             ));
 
 	}
@@ -205,6 +208,12 @@ public function getSearchSolicitud(){
             $id_clientes[$data->id] = $nombre_Cliente[0]->nombre_empresa;
         }
         return $id_clientes;  
+    }
+    public function getCliente($id)
+    {
+        $solicitud = Solicitudes::model()->findByPk($id);
+        $cliente = Clientes::model()->findByPk($solicitud->id_clientes);
+        return $cliente->nombre_empresa;
     }
     public function adminSearch1()
     {

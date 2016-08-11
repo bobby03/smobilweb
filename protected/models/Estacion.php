@@ -207,7 +207,10 @@ class Estacion extends CActiveRecord
         $criteria->addCondition("activo=$act");
         $criteria->addCondition("tipo=$tipo");
         return new CActiveDataProvider($this, array(
-            'criteria'=>$criteria,
+			'criteria'=>$criteria,
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
         ));
     }
     public function search2($id)

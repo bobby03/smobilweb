@@ -35,12 +35,15 @@ class Tanque extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_estacion, capacidad, nombre, status', 'required'),
-			array('id_estacion, capacidad, status, activo', 'numerical', 'integerOnly'=>true),
+//			array('id_estacion, capacidad, nombre, status', 'required'),
+			array('id_estacion, capacidad, nombre', 'required'),
+//			array('id_estacion, capacidad, status, activo', 'numerical', 'integerOnly'=>true),
+			array('id_estacion, capacidad, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_estacion, capacidad, nombre, status, activo', 'safe', 'on'=>'search'),
+//			array('id, id_estacion, capacidad, nombre, status, activo', 'safe', 'on'=>'search'),
+			array('id, id_estacion, capacidad, nombre, activo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,7 +72,7 @@ class Tanque extends SMActiveRecord
 			'id_estacion' => 'Estacion',
 			'capacidad' => 'Capacidad (Litros)',
 			'nombre' => 'Nombre',
-			'status' => 'Status',
+//			'status' => 'Status',
 			'activo' => 'Activo'
 		);
 	}
@@ -96,7 +99,7 @@ class Tanque extends SMActiveRecord
 		$criteria->compare('id_estacion',$this->id_estacion);
 		$criteria->compare('capacidad',$this->capacidad);
 		$criteria->compare('nombre',$this->nombre,true);
-		$criteria->compare('status',$this->status);
+//		$criteria->compare('status',$this->status);
 		$criteria->compare('activo',$this->activo);
 
 		return new CActiveDataProvider($this, array(
@@ -114,23 +117,23 @@ class Tanque extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
-        public function getAllStatus()
-        {
-            $return = array
-            (
-                '1' => 'Disponible',
-                '2' => 'Ocupado'
-            );
-            return $return;
-        }
-        public function getStatus($id)
-        {
-            switch ($id)
-            {
-                case 1: return 'Disponible'; break;
-                case 2: return 'Ocupado'; break;
-            }
-        }
+//        public function getAllStatus()
+//        {
+//            $return = array
+//            (
+//                '1' => 'Disponible',
+//                '2' => 'Ocupado'
+//            );
+//            return $return;
+//        }
+//        public function getStatus($id)
+//        {
+//            switch ($id)
+//            {
+//                case 1: return 'Disponible'; break;
+//                case 2: return 'Ocupado'; break;
+//            }
+//        }
         public function getAllActivo()
         {
             $return = array

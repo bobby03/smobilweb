@@ -5,6 +5,7 @@ $(document).ready(function()
     $('.bBoton').click(function(){ window.history.back();  });
     $('#SolicitudesViaje_id_personal_1_chofer').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#SolicitudesViaje_id_personal_1_tecnico').chosen({placeholder_text_multiple: 'Seleccionar'});
+    $('#Viajes_id_solicitudes').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#Viajes_id_estacion').on('change', function()
     {
         var id = $(this).val();
@@ -25,6 +26,12 @@ $(document).ready(function()
                     $('[data-tan] option').remove();
                     $('[data-tan]').append('<option>Seleccionar</option>');
                     $('[data-tan]').append(data);
+                    $('.tanqueNombre').each(function()
+                    {
+                        var id = $(this).attr('data-tanque');
+                        console.log(id);
+                        $('div.pedido select option[value="'+id+'"]').remove();
+                    });
                     $('[data-tan]').on('change', function()
                     {
                         var num = $(this).val();
