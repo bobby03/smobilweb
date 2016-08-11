@@ -127,10 +127,15 @@ class CampSensadoController extends Controller
 		$estaciones = Estacion::model()->findAll('id_granja = '.(int)$id.' AND activo = 1 AND disponible = 1');
 		$return = array();
 
+
 		$return['html'] = "<option value=''>Seleccionar</option>";
 		if(count($estaciones>0)){
 			foreach ($estaciones as $data ) {
-				$return['html'] .= "<option value='{$data->id}'>{$data->identificador}</option>";
+				$cr = new CDbCriteria;
+				$cr->condition = "id_estacion = {$data->id} AND status = 1 AND activo = 1";
+				$tanquesfromestaciones = Tanque::model()->findAll($cr);
+				$numero = count($tanquesfromestaciones);
+				$return['html'] .= "<option value='{$data->id}'>{$data->identificador} - {$numero} tanques disponibles</option>";
 			} 
 		}
 		else {

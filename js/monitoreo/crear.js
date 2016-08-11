@@ -62,47 +62,72 @@ $(document).ready(function(){
         	var hora_inicio = $('#CampSensado_hora_inicio').val();
         	var fecha_fin = $('#CampSensado_fecha_fin').val();
         	var hora_fin = $('#CampSensado_hora_fin').val();
-        	NombreEspecie(id_especie);
         	InfoCepa(id_cepa);
-    		var app = '<div class="boxCont">'+
-                    '<div id="contV3">'+
-                        '<div id="vt1">'+
-                        	'<div class="headerT">'+tanque+'</div>'+
-                        '</div>'+
-                        '<div id="vc1" class="vbox">'+
-                            '<div class="left">'+
-		                        '<p><span class="vresalta">Fecha de inicio:</span> <span class="fsalida">'+fecha_inicio+' </span></p>'+
-		                        '<p><span class="vresalta">hora de inicio:</span> <span class="fsalida"> '+hora_inicio+' </span></p>'+
-		                    '</div>'+
-		                    '<div class="right">'+
-		                        '<p><span class="vresalta">Fecha de inicio:</span> <span class="fsalida">'+fecha_fin+' </span></p>'+
-		                        '<p><span class="vresalta">hora de inicio:</span> <span class="fsalida"> '+hora_fin+' </span></p>'+
-		                    '</div>'+
-                        '</div>'+
-	                    '<div id="vc2">'+
-	                        '<p><span class="vresalta">Especie:</span>'+especie+' </p>'+
-	                        '<p><span class="vresalta">No. Organismos:</span> '+cantidad+'</p>'+
-	                        '<table id="vcont">'+
-	                            '<tbody><tr class="pf">'+
-	                                '<th class="pc"></th><th>Mínima</th><th>Máxima</th>'+
-	                            '</tr>'+
-	                            '<tr>'+
-	                                '<th class="pc">Temperatura (Temp)</th><th>'+cepa.temp_min+'</th><th>'+cepa.temp_max+'</th>'+
-	                            '</tr>'+
-	                            '<tr>'+
-	                                '<th class="pc">PH (ph)</th><th>'+cepa.ph_min+'</th><th>'+cepa.ph_min+'</th>'+
-	                            '</tr>'+
-	                            '<tr>'+
-	                                '<th class="pc">Oxígeno (O)</th><th> '+cepa.ox_min+'</th><th>'+cepa.ox_min+'</th>'+
-	                            '</tr>'+
-	                        '</tbody></table>'+
-	                    '</div>'+
-	                '</div>'+
-	            '</div>';
-        	$('.inner-third-wrapper').append( app );
-
+			$.ajax({
+				type: 'GET',
+				url : 'GetNombreEspecie',
+				dataType : 'JSON',
+				data : {
+					id: id_especie
+				},
+				success : function(data) {
+					especie = data.nombre;
+						$.ajax({
+						type: 'GET',
+						url : 'GetInfoCepa',
+						dataType : 'JSON',
+						data : {
+							id: id_cepa
+						},
+						success : function(data) {
+							var app = '<div class="boxCont">'+
+					                    '<div id="contV3">'+
+					                        '<div id="vt1">'+
+					                        	'<div class="headerT">'+tanque+'</div>'+
+					                        '</div>'+
+					                        '<div id="vc1" class="vbox">'+
+					                            '<div class="left">'+
+							                        '<p><span class="vresalta">Fecha de inicio:</span> <span class="fsalida">'+fecha_inicio+' </span></p>'+
+							                        '<p><span class="vresalta">hora de inicio:</span> <span class="fsalida"> '+hora_inicio+' </span></p>'+
+							                    '</div>'+
+							                    '<div class="right">'+
+							                        '<p><span class="vresalta">Fecha de inicio:</span> <span class="fsalida">'+fecha_fin+' </span></p>'+
+							                        '<p><span class="vresalta">hora de inicio:</span> <span class="fsalida"> '+hora_fin+' </span></p>'+
+							                    '</div>'+
+					                        '</div>'+
+						                    '<div id="vc2">'+
+						                        '<p><span class="vresalta">Especie:</span>'+especie+' </p>'+
+						                        '<p><span class="vresalta">Cepa:</span>'+data.nombre+' </p>'+
+						                        '<p><span class="vresalta">No. Organismos:</span> '+cantidad+'</p>'+
+						                        '<table id="vcont">'+
+						                            '<tbody><tr class="pf">'+
+						                                '<th class="pc"></th><th>Mínima</th><th>Máxima</th>'+
+						                            '</tr>'+
+						                            '<tr>'+
+						                                '<th class="pc">Temperatura (Temp)</th><th>'+data.temp_min+'</th><th>'+data.temp_max+'</th>'+
+						                            '</tr>'+
+						                            '<tr>'+
+						                                '<th class="pc">PH (ph)</th><th>'+data.ph_min+'</th><th>'+data.ph_min+'</th>'+
+						                            '</tr>'+
+						                            '<tr>'+
+						                                '<th class="pc">Oxígeno (O)</th><th> '+data.ox_min+'</th><th>'+data.ox_min+'</th>'+
+						                            '</tr>'+
+						                        '</tbody></table>'+
+						                    '</div>'+
+						                '</div>'+
+						            '</div>';
+        					$('.inner-third-wrapper').append( app );
+						},
+						error : function(a, b, c) {
+							console.log(a, b, c);
+						}
+					});
+				},
+				error : function(a, b, c) {
+					console.log(a, b, c);
+				}
+			});
         });
-        
     });
 	function changeCepas() {
 		$('.css-select.especie').on('change', function() {
