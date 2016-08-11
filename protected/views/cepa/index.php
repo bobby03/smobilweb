@@ -68,7 +68,7 @@ $this->breadcrumbs=array(
         'columns'=>$model->adminSearchBorrados(),
     )); ?>
 </div>
-    <div class='gBoton bBoton'>Regresar</div>
+    <a href="<?php echo $baseUrl.'/especie'; ?>" ><div class="gBoton" " >Regresar</div></a>
 
 
 </div>

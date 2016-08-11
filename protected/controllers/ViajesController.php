@@ -214,7 +214,7 @@ class ViajesController extends Controller
 	public function accessRules()
         {
             $return = array();
-            if(Yii::app()->user->checkAccess('createViajes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('createViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',
@@ -228,7 +228,8 @@ class ViajesController extends Controller
                     'actions'   => array('create'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('readViajes') || Yii::app()->user->id == 'smobiladmin')
+
+            if(Yii::app()->user->checkAccess('readViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',
@@ -242,7 +243,7 @@ class ViajesController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editViajes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('editViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',
@@ -256,7 +257,7 @@ class ViajesController extends Controller
                     'actions'   => array('update'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('deleteViajes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('deleteViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
                 $return[] = array
                 (
                     'allow',

@@ -148,8 +148,27 @@ class Viajes extends CActiveRecord
 		$criteria->compare('hora_salida',$this->hora_salida,true);
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
-                $criteria->addCondition("status = $flag");
-		
+            $criteria->addCondition("status = $flag");
+		if(Yii::app()->user->getTipoUsuario()==1){
+            $c = new CDbCriteria();
+            $viajes=Viajes::model()->tablename();
+            $solicitudes_viajes=SolicitudesViaje::model()->tablename();
+            $clientes=Clientes::model()->tablename();
+            $solicitudes=Solicitudes::model()->tablename();
+            $c->join=
+            'join '.$solicitudes_viajes.' sv on sv.id_viaje = t.id '.
+            'join '.$solicitudes.' s on s.id = sv.id_solicitud '.
+            'join '.$clientes.' c on c.id = s.id_clientes '.
+            'where t.status=1 and c.id=1 '.
+            'group by t.id'
+            ;
+             return new CActiveDataProvider($this, array(
+           'criteria'=>$c,
+                                'pagination'=>array(
+                                    'pageSize'=>15,
+                            ),
+          ));
+        }
         return new CActiveDataProvider($this, array(
            'criteria'=>$criteria,
                                 'pagination'=>array(
