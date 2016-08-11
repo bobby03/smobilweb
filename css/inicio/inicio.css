@@ -109,6 +109,16 @@ label.tituloV2{
      font-size: 14px;
      color:#FFFFFF; 
 }
+label.titulov{
+  font-size: 10px;
+  color:#fff;
+  text-align: center;
+  padding-left: 20px;
+  line-height: 10px;
+}
+label.titulov:hover{
+  cursor: pointer;
+}
 label.estiloV1{
      
      font-size: 14px;
@@ -383,10 +393,11 @@ h2{
     float: left;
 }
 .botonIrViaje{
-    width: 57px;
+    width: 100px;
     height: 35px;
     background-color: #0077B0;
     border-radius: 6px 6px 6px 6px;
+    margin-top: 3px;
 }
 .botonIr{
     width: 57px;

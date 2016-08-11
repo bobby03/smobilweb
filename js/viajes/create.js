@@ -3,6 +3,33 @@ $(document).ready(function()
 {
     var valores = [];
     $('.bBoton').click(function(){ window.history.back();  });
+    $('.fBoton.bUno').click(function(){
+        console.log('Tab2 hide');
+        $('[data-tab="2"]').addClass('hide');
+        console.log('Tab1 show');
+        $('[data-tab="1"]').removeClass('hide');
+        $('.menuTabs div:nth-child(4)').removeClass('selected');
+        $('.menuTabs div:nth-child(5)').removeClass('selected');
+
+    });
+    $('.fBoton.bDos').click(function(){
+        console.log('Tab2 hide');
+        
+        console.log('Tab1 show');
+
+    });
+    $('div.bDos.fBoton.floatingbutton').click(function(){
+        $('[data-tab="3"]').addClass('hide');
+        console.log('Tab1 show');
+        $('[data-tab="2"]').removeClass('hide');
+        // $('.menuTabs div:nth-child(4)').removeClass('selected');
+        // $('.menuTabs div:nth-child(5)').removeClass('selected');
+        $('.menuTabs div:nth-child(6)').removeClass('selected');
+        $('.menuTabs div:nth-child(7)').removelass('selected');
+
+    });
+
+
     $('#SolicitudesViaje_id_personal_1_chofer').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#SolicitudesViaje_id_personal_1_tecnico').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#Viajes_id_estacion').on('change', function()

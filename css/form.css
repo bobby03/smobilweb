@@ -83,6 +83,8 @@ div.form input[type="submit"] {
     color: #FFFFFF;
     text-align: center;
     cursor: pointer;
+    float: right;
+    margin-right: 10px;
 }
 
 .css-select-moz {
