@@ -11,6 +11,6 @@ $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile($baseUrl.'/js/estacion/create.js');
 ?>
 
-<h1>Crear cami&oacute;n</h1>
+<h1>Nuevo cami&oacute;n</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
