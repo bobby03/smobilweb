@@ -147,7 +147,7 @@ class CampSensadoController extends Controller
 		if(count($estaciones>0)){
 			foreach ($estaciones as $data ) {
 				$cr = new CDbCriteria;
-				$cr->condition = "id_estacion = {$data->id} AND status = 1 AND activo = 1";
+				$cr->condition = "id_estacion = {$data->id} AND activo = 1";
 				$tanquesfromestaciones = Tanque::model()->findAll($cr);
 				$numero = count($tanquesfromestaciones);
 				$return['html'] .= "<option value='{$data->id}'>{$data->identificador} - {$numero} tanques disponibles</option>";
@@ -159,8 +159,8 @@ class CampSensadoController extends Controller
 		echo json_encode( $return );
 	}
 	public function actionGetTanquesFromEstacion($id) {
-		$tanques_libres   = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND status = 1 AND activo = 1');
-		$tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND status = 2 AND activo = 1');
+		$tanques_libres   = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
+		$tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
 		$return = array();
 
 		$tot = 1;

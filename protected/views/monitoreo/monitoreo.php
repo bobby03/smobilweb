@@ -212,5 +212,6 @@
         </div>
     <?php endif;?>
     </div>
+    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado">Cancelar</a>
 </div>
 <?php  $cs->registerCssFile($baseUrl.'/css/monitoreo/monitoreo.css');?>

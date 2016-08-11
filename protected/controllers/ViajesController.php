@@ -361,6 +361,7 @@ eof;
                         'cantidad'=>$data->cantidad_cepas,
                         'destino'=>$data->id_domicilio,
                         'tanques'=>1,
+                        'id_solicitud'=>$data->id_solicitud,
                         'id_tanque'=>$data->id_tanque
                     );
                     $pedidos['pedido'][$i] = $pedido;

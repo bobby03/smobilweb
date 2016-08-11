@@ -150,7 +150,7 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
 	  			    	<?php 
 	  			    	$o++;
 	  			    	endforeach;?>
-	  			    	<div class="reg3"></div>
+	  			    	<!-- div class="reg3"></div -->
 	  			    	</div>
 
 
