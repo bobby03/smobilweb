@@ -183,7 +183,7 @@ class ViajesController extends Controller
                 <div class='row buttons floating'>";
                
                 if($o==1){
-                    $html.= '<input type="submit" name="yt0" value="Finalizar" />';
+                    $html.= '<input type="submit" name="yt0" value="END" />';
                     $html.= '<div class="bDos fBoton floatingbutton" >Regresar</div>';
                     $html.= '<div class="fBoton floatingbutton" >Cancelar?</div>';
                 }

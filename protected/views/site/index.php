@@ -11,23 +11,17 @@ $cs->registerScriptFile($baseUrl.'/js/inicio/estaciones.js');
 $this->pageTitle=Yii::app()->name;
 
 // IF NOT LOGGED IN, GO TO LOGIN SCREEN
-if(Yii::app()->user->isGuest)
-{
-$this->redirect(Yii::app()->homeUrl);
-}
-
-
+if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
 
 ?>
-
-
-			<div class="principal index">
+<div class="principal index">
 				<h1 class="barraViajeGranja">
 				    <div class="tabs">
 			        	<div id="viaje" class="selected">Viajes</div>
 			       		<div id="granja" >Siembras</div>
-                                    </div>
-                                </h1>
+                    </div>
+                </h1>
+                <?php if($enruta != null) { ?>
 			    <div class="container-viaje">
 			    	<div class="container-box">
 			    			<div class="divBox1">
@@ -54,7 +48,6 @@ $this->redirect(Yii::app()->homeUrl);
   					    		</div>
   
   					    		<div class="container-line">
-
 									<h3 class="container-line2"></h3><h3 class="container-line1"></h3>
   								</div>
   							</div>
@@ -97,6 +90,9 @@ $this->redirect(Yii::app()->homeUrl);
   					</div>
   				</div>
   			  
+  				<?php } else echo "No hay viajes en ruta"; ?>
+  			  
+  			  <?php if($estaciones != null) { ?>
   			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
   			    	<div class="dash1">
 	  			    	<div class="estacion">
@@ -160,7 +156,7 @@ $this->redirect(Yii::app()->homeUrl);
 
   			    	</div>
   			    	<?php 
-  			    	$id=$est['id_estacion'];
+  			    	$id=isset($est['id_estacion'])?$est['id_estacion']:0;
 	  			   	$datos=$this->actionGetTanques2($id);
   			    	$us=1;
   			    	foreach($estaciones as $est):?>
@@ -183,7 +179,7 @@ $this->redirect(Yii::app()->homeUrl);
 -->
   			    	<div class="info">
   			    		<?php 
-  			    		$id=$est['id_estacion'];
+  			    		$id=isset($est['id_estacion'])?$est['id_estacion']:0;
 	  			    	$datos=$this->actionGetTanques2($id);
   			    		$u=1;
   			    		foreach($estaciones as $est):?>
@@ -207,8 +203,7 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    	endforeach;?>
   			    		
   			    	</div>
-
-  			    	
-
   			    </div>
+  			    <?php } else echo "No hay estaciones"; ?>
+  			    
 			</div>

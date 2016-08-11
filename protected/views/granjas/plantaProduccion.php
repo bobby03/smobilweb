@@ -65,5 +65,6 @@ div.tabContent
             ),
         )); 
     ?>
-    </div>
+
+    </div><a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas">Regresar</a> 
 </div>

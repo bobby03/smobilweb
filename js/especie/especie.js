@@ -24,7 +24,7 @@ $(document).ready(function()
             height:'200px',
             onComplete: function()
             {
-                
+
                 $('.btnadd').click(function()
                 {
                     var especie = $('#ingesp').val();
@@ -83,7 +83,7 @@ $(document).ready(function()
             height:'200px',
             onComplete: function()
             {        
-               
+            
                 $('.btnUpdate').click(function()
                 {
        
