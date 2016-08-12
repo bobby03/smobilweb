@@ -27,6 +27,7 @@ class Especie extends CActiveRecord
 		return array(
 			array('nombre', 'required','message'=>'Campo obligatorio'),
 			array('nombre', 'length', 'max'=>100),
+			array('nombre', 'unique', 'message'=>'Ya existe un Rol con ese nombre'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre', 'safe', 'on'=>'search'),
