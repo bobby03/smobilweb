@@ -95,8 +95,11 @@ class Usuarios extends CActiveRecord
                                 "%')");
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+            'criteria'=>$criteria,
+                'pagination'=>array(
+                    'pageSize'=>15,
+            ),
+        ));
 	}
 
 
@@ -166,7 +169,7 @@ class Usuarios extends CActiveRecord
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                'template'=>'<div class="buttonsWraper">{update} {delete}</div>'
             )
         );
     }
