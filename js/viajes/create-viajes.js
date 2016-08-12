@@ -44,13 +44,11 @@ $(document).ready(function()
 //                    },
 //                    success: function(data) 
 //                    {
-//    //                    console.log(data);
 //                        if(data != null)
 //                        {
 ////                            for(var j = 0; j< data.length; j++)
 ////                            {
 ////                                totalTanque = totalTanque + parseInt(data[j].tanques);
-////                                console.log(totalTanque);
 ////                                pedidos[pedidos.length] = data[j];
 //                                dataAjax = data;
 ////                            }
@@ -61,7 +59,6 @@ $(document).ready(function()
 //                    },
 //                    error: function(a,b,c) 
 //                    {    
-//                        console.log(a, b, c);
 //                    }
 //                });
                 for(var j = 0; j< dataAjax.length; j++)
@@ -88,61 +85,67 @@ $(document).ready(function()
                 },
                 error: function(a,b,c)
                 {
-                    console.log(a,b,c);
                 }
             });
         }
-//        console.log(pedidos.length);
     });
     $('.siguiente.uno').on('click', function()
     {
         var solicitud = $('#Viajes_id_solicitudes').val();
         var camion = $('#Viajes_id_estacion').val();
-
-        $.ajax(
+        $('.pedidosWraper').empty();
+        var contador;
+        for(var i =0; i < solicitud.length; i++)
         {
-            type:'GET',
-            url: 'GetTanquesConSolicitud',
-            dataType: 'JSON',
-            data: 
+            if(i == 0)
+                contador = 1;
+            else
+                contador = dataAjax.total;
+            var id = solicitud[i];
+            dataAjax = $.parseJSON($.ajax(
             {
-                solicitud: solicitud,
-                camion: camion
-            },
-            success: function(data) 
-            {
-                $('.pedidosWraper').empty();
-                $('.pedidosWraper').append(data.html);
-                validateChangesTanque();
-            },
-            error: function(a,b,c) 
-            {	
-                console.log(a, b, c);
-            }
-        });
-
+                type:'GET',
+                url: 'GetTanquesConSolicitud',
+                dataType: 'JSON',
+                data: 
+                {
+                    solicitud: id,
+                    camion: camion,
+                    i: contador
+                },
+                async: false
+            }).responseText);
+            $('.pedidosWraper').append(dataAjax.html);
+            validateChangesTanque();
+        }
     });
     $('.siguiente.dos').on('click', function() 
     {
         var solicitud = $('#Viajes_id_solicitudes').val();
         var camion = $('#Viajes_id_estacion').val();
         $('.inner-third-wrapper').empty();
-        $.ajax(
+//        var contador;
+        for(var i =0; i < solicitud.length; i++)
         {
-            type: 'GET',
-            url: 'GetResumenViaje',
-            dataType: 'JSON',
-            data: {
-                solicitud: solicitud,
-                camion: camion
-            },
-            success: function(data) {
-                $('.inner-third-wrapper').append(data.html);
-            },
-            error: function(a,b,c) {
-                console.log(a, b, c);
-            }
-        });
+            var id = solicitud[i];
+            $.ajax(
+            {
+                type:'GET',
+                url: 'GetResumenViaje',
+                dataType: 'JSON',
+                data: 
+                {
+                    solicitud: id,
+                    camion: camion
+//                    i: contador
+                },
+                async: false,
+                success: function(dataAjax)
+                {
+                    $('.inner-third-wrapper').append(dataAjax.html);
+                }
+            });
+        }
     });
 
 	function validateChangesTanque(){
@@ -151,7 +154,6 @@ $(document).ready(function()
             var id = $(this).attr('id');
             var ide = $(this).attr('data-tan');
             if(num != 'Seleccionar') {
-             console.log(valores);
                 var nuevo = valores[ide];
                 $('[data-tan] option[value="'+nuevo+'"]').removeAttr('disabled');
                 valores[ide] = num;

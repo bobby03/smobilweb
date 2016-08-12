@@ -287,6 +287,11 @@
                         </span>
                     </div>
                 <?php endif;?>
+                <div class="row">
+                    <?php echo $form->labelEx($model,'fecha_salida'); ?>
+                    <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
+                     <?php echo $form->error($model,'fecha_salida'); ?>
+                </div>
             </div>
             <div class="formContainer1"> 
                 <div class="row">
@@ -327,11 +332,6 @@
                               echo $form->error($model,'id_estacion');
                         ?>
                     </span>
-                </div>
-                <div class="row">
-                    <?php echo $form->labelEx($model,'fecha_salida'); ?>
-                    <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
-                     <?php echo $form->error($model,'fecha_salida'); ?>
                 </div>
                 <div class="row">
                     <?php echo $form->labelEx($model,'hora_salida'); ?>
