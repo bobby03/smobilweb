@@ -12,8 +12,10 @@ $this->breadcrumbs=array(
 
 
     $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
     $cs->registerCssFile($baseUrl.'/css/cepa/create.css');
     $cs->registerCssFile($baseUrl.'/css/cepa/create.css?='.rand());
+    $cs->registerCssFile($baseUrl.'/css/cepa/view.css');
 
 	$form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cepa-form',
@@ -23,15 +25,35 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>Ver Cepa <?php echo $model->nombre_cepa; ?></h1>
-
-<div class="form cepa view-cepa">
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array
+        (
+		'nombre_cepa',
+                array(
+                    'name' => 'id_especie',
+                    'value' => Especie::model()->getEspecie($model->id)
+                ),
+		'temp_min',
+		'temp_max',
+		'ph_min',
+		'ph_max',
+		'ox_min',
+		'ox_max',
+		'cond_min',
+		'cond_max',
+		'orp_min',
+		'orp_max',
+	),
+)); ?>
+<!--<div class="form cepa view-cepa">
 
 	<div class="form-containerWraper">
 			<span class="containerBox">
 
 
 			 	<div class="form-container1">
-			 	<!--NCEPA --> 
+			 	NCEPA  
 				        <div class="row">
 							<label class= "letreros">Nombre de Cepa</label>
 								<div class="form-cLarge">
@@ -43,7 +65,7 @@ $this->breadcrumbs=array(
 					</div>
 
 
-			<!--Especie-->  
+			Especie  
 					<div class="form-container1 last">
 						<div class="row">
 							<label class= "letreros">Especie</label>
@@ -56,14 +78,14 @@ $this->breadcrumbs=array(
 			</span>
 
 
-			<!--separador-->		
+			separador		
 			<span class="containerBox">
 					<label class="cLetreros">Rangos minimos y maximos</label>
 					<hr class="letrero-container"></hr>
 			</span>
 
 
-			<!--Temperatura-->
+			Temperatura
 			<span class="containerBox">
 				<div class="containertBoxLeft">
 					<div class="form-container11">
@@ -87,7 +109,7 @@ $this->breadcrumbs=array(
 						</div>
 					</div>
 
-			<!--Ph-->
+			Ph
 					<div class="form-container11">
 						<div class="row">
 							<label class= "letreros">pH</label>
@@ -105,7 +127,7 @@ $this->breadcrumbs=array(
 							</div>
 						</div>
 					</div>
-				<!--Oxigeno-->
+				Oxigeno
 					<div class="form-container11">
 						<div class="row">
 							<label class= "letreros">Oxigeno</label>
@@ -126,7 +148,7 @@ $this->breadcrumbs=array(
 				</div>
 
 
-				<!--Conductividad-->   
+				Conductividad   
 				<div class="containerBoxRight">
 						<div class="form-container11">
 							<div class="row">
@@ -146,7 +168,7 @@ $this->breadcrumbs=array(
 							</div>
 						</div>
 
-				<!-- ORP-->
+				 ORP
 					<div class="form-container11">
 						<div class="row">
 							<label class= "letreros">ORP</label>
@@ -171,4 +193,4 @@ $this->breadcrumbs=array(
 	  		</span>
 	</div>
 	<?php $this->endWidget(); ?>
-</div>
+</div>-->

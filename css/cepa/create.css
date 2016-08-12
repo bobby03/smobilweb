@@ -1,6 +1,6 @@
 div.form.cepa {
     width: 100%;
-    max-width: 670px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 div.form-containerWraper:after
@@ -14,7 +14,13 @@ div.containerbutton{
     width: 110px;
     float: right;
 }
-
+span.containerBox:first-child
+{
+    width: 620px;
+    margin: 0 auto;
+    float: none;
+    display: block;
+}
 div.form label {
     margin-bottom: 5px !important;
 }
@@ -29,7 +35,7 @@ label.letreros{
 
 .form-cSmall
 {
-    width:100px;
+    width: 100%;
     position: relative;
 }
 .form-cSmall span
@@ -63,7 +69,7 @@ label.letreros{
 
 .form-container11{
     float: left;
-    width: 100px;
+    width: 260px;
    
 }
 input[type="submit"]
@@ -74,22 +80,20 @@ input[type="submit"]
 }
 .form-container12{
     float: left;
-    width: 100px;
+    width: 260px;
     margin: 0px 0 2px 50px;
     padding-top: 21px;
 }
 /*****/
 
 .containerBoxRight{
-    width: 250px;
+    width: 570px;
     float: right;
-    margin-left: 9px;
-    margin-right: 70px;
 
 }
 .containertBoxLeft{
     float: left;
-    width: 275px;
+    width: 570px;
     margin-left: 60px;
 }
 
@@ -132,7 +136,7 @@ div.view-cepa input:disabled{
 
 body.cepa-create-especie .form-cSmall input,
 body.cepa-update .form-cSmall input{
-    width:100px;
+    width: 80%;
     font-size: 15px;
 }
 
