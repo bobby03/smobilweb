@@ -108,7 +108,7 @@ class CampSensadoController extends Controller
 		$personal = new SolicitudesViaje;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['CampSensado']))
 		{
@@ -228,17 +228,19 @@ class CampSensadoController extends Controller
 
 		echo json_encode($return);
 	}
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['CampSensado']))
 		{
