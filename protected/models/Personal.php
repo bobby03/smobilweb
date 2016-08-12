@@ -39,6 +39,8 @@ class Personal extends CActiveRecord
 			array('nombre, apellido, tel, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('correo','email','message'=>'No tiene formato de email'),
+            array('rfc', 'unique', 'message'=>'Ya existe un empleado con ese RFC'),
+            array('correo', 'unique', 'message'=>'Ya existe un empleado con ese correo'),
 			array('nombre, apellido', 'length', 'max'=>50),
 			
 			
