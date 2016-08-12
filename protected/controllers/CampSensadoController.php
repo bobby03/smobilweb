@@ -108,7 +108,7 @@ class CampSensadoController extends Controller
 		$personal = new SolicitudesViaje;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['CampSensado']))
 		{
@@ -119,12 +119,13 @@ class CampSensadoController extends Controller
 				$id = Yii::app()->db->getLastInsertID();
 				foreach($_POST['camp_tanques'] as $data) {
 					$camptanque = new CampTanque;
+					if($data['id_tanque'] !='' && $data['id_cepa'] != "" && $data['cantidad'] !="")
 					$camptanque->id_tanque = $data['id_tanque'];
 					$camptanque->id_camp_sensado = $id;
 					$camptanque->id_cepa = $data['id_cepa'];
 					$camptanque->cantidad = $data['cantidad'];
 					if($camptanque->save()) {
-						
+
 					}
 
 				}
@@ -159,8 +160,8 @@ class CampSensadoController extends Controller
 		echo json_encode( $return );
 	}
 	public function actionGetTanquesFromEstacion($id) {
-		$tanques_libres   = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND status = 1 AND activo = 1');
-		$tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND status = 2 AND activo = 1');
+		$tanques_libres   = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
+		// $tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
 		$return = array();
 
 		$tot = 1;
@@ -227,17 +228,19 @@ class CampSensadoController extends Controller
 
 		echo json_encode($return);
 	}
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['CampSensado']))
 		{

@@ -32,4 +32,48 @@ $(function() {
     node.val(node.val().replace(/[^[a-zA-ZáéíóúñÁÉÍÓÚÑ ]/g,'') ); }
   );
 
+
+
+
+
+$('.siguiente.uno').click(function() {
+
+    $('#CampSensado_fecha_salida').blur();
+    $('#CampSensado_hora_inicio').blur();
+  //  $('#Viajes_id_responsable').blur();
+ //   $('#Viajes_id_estacion').blur();
+
+    $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+        if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+            $(this).next('div.chosen-container').addClass("error");
+            $(this).closest('div').find('.errorMessage').show().html('Debe Seleccionar una persona');
+            $(this).next('div.chosen-container').removeClass("success");
+        } else {
+            $(this).closest('div').find('.errorMessage').hide().html('');
+            $(this).next('div.chosen-container').addClass("success");
+            $(this).next('div.chosen-container').removeClass("error");
+        }
+    });
+
+    var err = $('div').find('.error');
+
+    if (err.length > 0) {
+        return 0;
+
+    } else {
+        if (formSendViajes()) {
+            $('[data-tab="1"]').addClass('hide');
+            $('[data-tab="2"]').removeClass('hide');
+            $('.menuTabs div:nth-child(4)').addClass('selected');
+            $('.menuTabs div:nth-child(5)').addClass('selected');
+            $('.pedidoWraper').css('height', 'auto');
+        } else {
+            return 0;
+
+        }
+
+    }
+
+
+});
 });
