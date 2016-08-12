@@ -25,7 +25,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'viajes-form',
-//        'htmlOptions'=>array('name'=>'ViajesForm'),
+    //'htmlOptions'=>array('name'=>'ViajesForm'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -287,6 +287,11 @@
                         </span>
                     </div>
                 <?php endif;?>
+                <div class="row">
+                    <?php echo $form->labelEx($model,'fecha_salida'); ?>
+                    <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
+                     <?php echo $form->error($model,'fecha_salida'); ?>
+                </div>
             </div>
             <div class="formContainer1"> 
                 <div class="row">
@@ -327,11 +332,6 @@
                               echo $form->error($model,'id_estacion');
                         ?>
                     </span>
-                </div>
-                <div class="row">
-                    <?php echo $form->labelEx($model,'fecha_salida'); ?>
-                    <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
-                     <?php echo $form->error($model,'fecha_salida'); ?>
                 </div>
                 <div class="row">
                     <?php echo $form->labelEx($model,'hora_salida'); ?>

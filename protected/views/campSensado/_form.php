@@ -7,12 +7,25 @@
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
-    $cs->registerScriptFile($baseUrl.'/js/viajes/create.js');
+    $cs->registerScriptFile($baseUrl.'/js/campsensado/create.js');
     $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
-    $cs->registerScriptFile($baseUrl.'/js/viajes/validacion.js');
+    $cs->registerScriptFile($baseUrl.'/js/campsensado/validacion.js');
     $cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
-
+$form=$this->beginWidget('CActiveForm', array(
+	'id'=>'camp-sensado-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation'=>true,
+    'clientOptions' => array(
+        'validateOnSubmit' => true,
+        'validateOnChange' => true,
+        'validateOnType' => true,
+        //'afterValidate'=>'js:formSendViajes',
+        ),
+    ));
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
     (
         'name' => 'ViajesForm',
@@ -27,14 +40,7 @@
 ?>
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'camp-sensado-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+<?php  ?>
 
     <div class="menuTabs">
         <div class="bolaChica selected"></div>

@@ -159,7 +159,8 @@ class Viajes extends CActiveRecord
             'join '.$solicitudes_viajes.' sv on sv.id_viaje = t.id '.
             'join '.$solicitudes.' s on s.id = sv.id_solicitud '.
             'join '.$clientes.' c on c.id = s.id_clientes '.
-            'where t.status=1 and c.id=1 '.
+            'where t.status='.$flag.
+            ' and c.id=1 '.
             'group by t.id'
             ;
              return new CActiveDataProvider($this, array(

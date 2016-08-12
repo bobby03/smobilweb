@@ -82,17 +82,16 @@ eof;
 //        echo json_encode($opciones, JSON_UNESCAPED_SLASHES);
         echo json_encode($opciones);
     }
-    public function actionGetTanquesConSolicitud($solicitud, $camion) {
-
+    public function actionGetTanquesConSolicitud($solicitud, $camion, $i)
+    {
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
-            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 0 AND activo = 1");
-            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 0 AND activo = 1");
+            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND activo = 1");
+            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND activo = 1");
             $total_tanques = count($tanquesDesocupados) + count($tanquesOcupados);
-
-             $tot = 1;
-             $html = "";
-             foreach($pedidos as $data) {
-
+            $tot = $i;
+            $html = "";
+            foreach($pedidos as $data) 
+            {
                  for($i = 1; $i <= $data->tanques; $i++){
                     $cantidad = $data->cantidad/$data->tanques;
                       $html .="<div class='pedido'>
@@ -100,6 +99,7 @@ eof;
                                 <div class='pedidoWraper' style='height: 178px;>
                                     <div>Especie: <span>".Especie::model()->getEspecie($data->id_especie)."</span></div>
                                     <input value='{$data->id_especie}' name='Solicitudes[codigo][{$tot}][especie]' id='Solicitudes_codigo_{$tot}_especie' type='hidden' autocomplete='off'>                        
+                                    <input value='{$solicitud}' name='Solicitudes[codigo][{$tot}][id_solicitud]' id='Solicitudes_codigo_{$tot}_id_solicitud' type='hidden' autocomplete='off'>                        
                                     <div>Cepa: <span>".Cepa::model()->getCepa($data->id_cepa)."</span></div>
                                     <input value='{$data->id_cepa}' name='Solicitudes[codigo][{$tot}][cepa]'' id='Solicitudes_codigo_{$tot}_cepa' type='hidden' autocomplete='off'>                        
                                     <div>Cantidad: <span>{$cantidad}</span></div>
@@ -129,6 +129,7 @@ eof;
                 header('Content-type: application/json');
                 $data = array();
                 $data['html'] = $html;
+                $data['total'] = $tot;
                 $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
                 echo json_encode($data);
             
@@ -322,22 +323,52 @@ eof;
 	public function actionView($id)
 	{
             $model = Viajes::model()->findByPk((int)$id);
-            $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
+            //$prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
+            $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
+            JOIN solicitudes s ON s.id=sv.id_solicitud
+            JOIN clientes c ON c.id=s.id_clientes
+            WHERE id_viaje='.$model->id.'
+            AND id_personal=0')
+            ->queryAll();
             $guardar = array();
-            $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+            //$solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+            $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
+            JOIN solicitudes s ON st.id_solicitud=s.id
+            JOIN clientes c ON s.id_clientes=c.id
+            WHERE id_solicitud='.$model->id_solicitudes)
+                ->queryAll();
+
+            if(Yii::app()->user->getTipoUsuario()==1){
+                 $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
+                JOIN solicitudes s ON s.id=sv.id_solicitud
+                JOIN clientes c ON c.id=s.id_clientes
+                WHERE id_viaje='.$model->id.'
+                AND id_personal=0
+                AND c.id='.Yii::app()->user->getIDc())
+                ->queryAll();
+                $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
+                JOIN solicitudes s ON st.id_solicitud=s.id
+                JOIN clientes c ON s.id_clientes=c.id
+                WHERE id_solicitud='.$model->id_solicitudes.'
+                AND c.id='.Yii::app()->user->getIDc())
+                ->queryAll();
+            }
+
+            
             $i = 0;
             foreach($solicitudTanque as $data)
             {
-                $cepa = Cepa::model()->findByPk($data->id_cepas);
+                $cepa = Cepa::model()->findByPk($data['id_cepas']);
                 $pedido = array
                 (
                     'especie'=> $cepa->id_especie,
-                    'cepa'=>$data->id_cepas,
-                    'cantidad'=>$data->cantidad_cepas,
-                    'destino'=>$data->id_domicilio,
+                    'cepa'=>$data['id_cepas'],
+                    'cantidad'=>$data['cantidad_cepas'],
+                    'destino'=>$data['id_domicilio'],
                     'tanques'=>1,
-                    'id_solicitud'=>$data->id_solicitud,
-                    'id_tanque'=>$data->id_tanque
+                    'id_solicitud'=>$data['id_solicitud'],
+                    'id_tanque'=>$data['id_tanque'],
+                    'num'=>1
                 );
                 $pedidos['pedido'][$i] = $pedido;
                 $i++;
@@ -350,19 +381,25 @@ eof;
             foreach($prueba as $data2)
             {
                 $guardar = array();
-                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
+                //$solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = ".$data2['id_solicitud']);
+                $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
+                JOIN solicitudes s ON st.id_solicitud=s.id
+                JOIN clientes c ON s.id_clientes=c.id
+                WHERE id_solicitud='.$model->id_solicitudes)
+                ->queryAll();
                 foreach($solicitudTanque as $data)
                 {
-                    $cepa = Cepa::model()->findByPk($data->id_cepas);
+                    $cepa = Cepa::model()->findByPk($data['id_cepas']);
                     $pedido = array
                     (
                         'especie'=> $cepa->id_especie,
-                        'cepa'=>$data->id_cepas,
-                        'cantidad'=>$data->cantidad_cepas,
-                        'destino'=>$data->id_domicilio,
+                        'cepa'=>$data['id_cepas'],
+                        'cantidad'=>$data['cantidad_cepas'],
+                        'destino'=>$data['id_domicilio'],
                         'tanques'=>1,
-                        'id_solicitud'=>$data->id_solicitud,
-                        'id_tanque'=>$data->id_tanque
+                        'id_solicitud'=>$data['id_solicitud'],
+                        'id_tanque'=>$data['id_tanque'],
+                        'num'=>2
                     );
                     $pedidos['pedido'][$i] = $pedido;
                     $i++;
@@ -448,6 +485,11 @@ eof;
                     $isNewRecord = false;
                     $haypost =true;
                     $model->id_solicitudes = $solicitudes->id;
+                    if($model->id_solicitudes == '' || $model->id_solicitudes ==  null || $model->id_solicitudes == 0)
+                    {
+                        $model->id_solicitudes = $_POST['Viajes']['id_solicitudes'][0];
+                        $solicitudes->id = $_POST['Viajes']['id_solicitudes'][0];
+                    }
                     $model->status = 1;
                     if($model->save())
                     {
@@ -470,7 +512,10 @@ eof;
                         foreach($_POST['Solicitudes']['codigo'] as $data)
                         {
                             $nuevo = new SolicitudTanques();
-                            $nuevo->id_solicitud = $solicitudes->id;
+                            if(isset($data['id_solicitud']))
+                                $nuevo->id_solicitud = $data['id_solicitud'];
+                            else
+                                $nuevo->id_solicitud = $solicitudes->id;
                             $nuevo->id_tanque = $data['tanque'];
                             $nuevo->id_domicilio = $data['destino'];
                             $nuevo->id_cepas = $data['cepa'];
@@ -482,6 +527,34 @@ eof;
 //                                $tanque->status = 2;
 //                                $tanque->save();
 //                            }
+                        }
+                        if(isset($_POST['Viajes']['id_solicitudes']))
+                        {
+                            $i = 0;
+                            foreach($_POST['Viajes']['id_solicitudes'] as $data)
+                            {
+                                if($i > 0)
+                                {
+                                    $nuevo = new SolicitudesViaje();
+                                    $nuevo->id_personal = 0;
+                                    $nuevo->id_viaje = $model->id;
+                                    $nuevo->id_solicitud = $data;
+                                    $nuevo->save();
+                                }
+                                $solicitud = Solicitudes::model()->findByPk($data);
+                                $solicitud->status = 1;
+                                $solicitud->fecha_estimada = $model->fecha_salida;
+                                $solicitud->hora_estimada = $model->hora_salida;
+                                if($solicitud->save())
+                                {
+                                    $pedido = Pedidos::model()->findAll("id_solicitud = $solicitud->id");
+                                    foreach ($pedido as $data2)
+                                    {
+                                        $delete = Yii::app()->db->createCommand("DELETE from pedidos WHERE id = {$data2['id']}")->execute();
+                                    }
+                                }
+                                $i++;
+                            }
                         }
                         $estacion = Estacion::model()->findByPk($model->id_estacion);
                         $estacion->disponible = 2;
@@ -516,45 +589,21 @@ eof;
             }
             
         }
-        if(isset($_POST['ClientesDomicilio']))
-        {   
-            $haypost = true;
-            $pedidos = $_POST;
-//            print_r($_POST);
-            if($pedidos['ClientesDomicilio']['id_cliente'] > 0)
-            {
-                $model = $this->loadModel($pedidos['ClientesDomicilio']['id_cliente']);
-                $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
-//                print_r($prueba);
-                $guardar = array();
-                foreach ($pedidos['pedido'] as $data)
-                    $guardar[] = $data;
-                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
-                $i = 0;
-                foreach($solicitudTanque as $data)
+            if(isset($_POST['ClientesDomicilio']))
+            {   
+                $haypost = true;
+                $pedidos = $_POST;
+    //            print_r($_POST);
+                if($pedidos['ClientesDomicilio']['id_cliente'] > 0)
                 {
-                    $cepa = Cepa::model()->findByPk($data->id_cepas);
-                    $pedido = array
-                    (
-                        'especie'=> $cepa->id_especie,
-                        'cepa'=>$data->id_cepas,
-                        'cantidad'=>$data->cantidad_cepas,
-                        'destino'=>$data->id_domicilio,
-                        'tanques'=>1,
-                        'id_tanque'=>$data->id_tanque
-                    );
-                    $pedidos['pedido'][$i] = $pedido;
-                    $i++;
-                }
-                foreach($guardar as $data)
-                {
-                    $pedidos['pedido'][$i] = $data;
-                    $i++;
-                }
-                foreach($prueba as $data2)
-                {
+                    $model = $this->loadModel($pedidos['ClientesDomicilio']['id_cliente']);
+                    $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
+    //                print_r($prueba);
                     $guardar = array();
-                    $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
+                    foreach ($pedidos['pedido'] as $data)
+                        $guardar[] = $data;
+                    $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+                    $i = 0;
                     foreach($solicitudTanque as $data)
                     {
                         $cepa = Cepa::model()->findByPk($data->id_cepas);
@@ -575,25 +624,49 @@ eof;
                         $pedidos['pedido'][$i] = $data;
                         $i++;
                     }
+                    foreach($prueba as $data2)
+                    {
+                        $guardar = array();
+                        $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
+                        foreach($solicitudTanque as $data)
+                        {
+                            $cepa = Cepa::model()->findByPk($data->id_cepas);
+                            $pedido = array
+                            (
+                                'especie'=> $cepa->id_especie,
+                                'cepa'=>$data->id_cepas,
+                                'cantidad'=>$data->cantidad_cepas,
+                                'destino'=>$data->id_domicilio,
+                                'tanques'=>1,
+                                'id_tanque'=>$data->id_tanque
+                            );
+                            $pedidos['pedido'][$i] = $pedido;
+                            $i++;
+                        }
+                        foreach($guardar as $data)
+                        {
+                            $pedidos['pedido'][$i] = $data;
+                            $i++;
+                        }
+                    }
                 }
             }
-        }
-        if($haypost == false) {
-            $isNewRecord = true;
-            $solicitudes = Solicitudes::model()->findAll("status = 0");
-            $pedidos = array();
-            foreach($solicitudes as $data) {
-                $pedidos[] = Pedidos::model()->findByAttributes(array('id_solicitud'=>$data->id));
-            }
+            if($haypost == false) {
+                $isNewRecord = true;
+                $solicitudes = Solicitudes::model()->findAll("status = 0");
+                $pedidos = array();
+                foreach($solicitudes as $data) {
+                    $pedidos[] = Pedidos::model()->findByAttributes(array('id_solicitud'=>$data->id));
+                }
 
-        }
-        $this->render('create',array(
-            'nuevo' =>$isNewRecord,
-            'model' =>$model,
-            'pedidos'=>$pedidos,
-            'solicitudes'=>$solicitudes,
-            'personal'=>$personal,
-        ));
+            }
+            $this->render('create',array(
+                'nuevo' =>$isNewRecord,
+                'model' =>$model,
+                'pedidos'=>$pedidos,
+                'solicitudes'=>$solicitudes,
+                'personal'=>$personal,
+            ));
 	}
 
 	/**
