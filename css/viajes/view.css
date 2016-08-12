@@ -617,7 +617,8 @@ div.mapaPopup .titulo
 .menuTanques:after,
 .menuArriba:after,
 .entregasPopup:after,
-.direccion-wraper:after
+.direccion-wraper:after,
+.todosPedidosVer:after
 {
     display: block;
     clear: both;

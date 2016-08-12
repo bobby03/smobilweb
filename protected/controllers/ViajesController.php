@@ -155,7 +155,7 @@ eof;
             Yii::app()->end(); 
 
         }
-        public function actionGetResumenViaje($solicitud, $camion) 
+        public function actionGetResumenViaje($solicitud, $tanque) 
         {
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
             $id_cliente = Solicitudes::model()->findByPk((int)$solicitud);
@@ -164,11 +164,12 @@ eof;
             // var_dump($cliente);
             $o=1;
             $html ="";
-            foreach($pedidos as $data){
-                for($i=1;$i<=$data->tanques;$i++){
+            foreach($pedidos as $data)
+            {
+                for($i=1;$i<=$data->tanques;$i++)
+                {
                     $html.= "<div class='boxCont'>
                                 <div id='contV3'>
-                                    
                                     <div id='vt1'>
                                         <div class='headerT'>Cliente</div>
                                     </div>
@@ -177,19 +178,18 @@ eof;
                                             <p id='vtitulo'>";
                                             $nombreEmpresa = $cliente->nombre_empresa;
                             $html .=$nombreEmpresa;
-
                             $html.="
                         </p>
                         <p><span class='vresalta'>RFC:</span>";
                         $rf = $cliente->rfc;
                         $html.=$rf;
                         $html.="</p>
-                        <p><span class='vresalta'>Contacto:</span> ";
+                        <p><span class='vresalta'>Contacto: </span> ";
                         $nombrecontacto = $cliente->nombre_contacto." ".$cliente->apellido_contacto;
                         $html.=$nombrecontacto;
                         $html.="</p>
 
-                        <p><span class='vresalta'>Domicilio de entrega:</span></br>
+                        <p><span class='vresalta'>Domicilio de entrega: </span></br>
                         ";
                         $domicilio = ClientesDomicilio::model()->getDomicilio($data->id_direccion);
                         $html.=$domicilio;
@@ -198,9 +198,9 @@ eof;
 
                     
                     <div class='right'>
-                        <p><span class='vresalta'>Fecha de salida:</span> <span class='fsalida'> </span></p>
+                        <p><span class='vresalta'>Fecha de salida: </span> <span class='fsalida'></span></p>
                         
-                        <p><span class='vresalta'>Nombre de Tanque:</span><span class='ntan{$o}'></span></p>
+                        <p><span class='vresalta'>Nombre de Tanque: </span><span class='ntan{$o}'>".Tanque::model()->getTanque($tanque)."</span></p>
                     </div>
                    
 
@@ -209,7 +209,7 @@ eof;
                          <div class='headerT'>Datos de la especie</div>
                     </div>
                     <div id='vc2'>
-                        <p><span class='vresalta'>Especie:</span>";
+                        <p><span class='vresalta'>Especie: </span>";
                         $especie = Especie::model()->getEspecie($data->id_especie);
                         $html.=$especie;
                         $html.=" </p>
@@ -246,9 +246,9 @@ eof;
                 <div class='row buttons floating'>";
                
                 if($o==1){
-                    $html.= '<input type="submit" name="yt0" value="END" />';
-                    $html.= '<div class="bDos fBoton floatingbutton" >Regresar</div>';
-                    $html.= '<div class="fBoton floatingbutton" >Cancelar?</div>';
+                    $html.= '<input type="submit" name="yt0" value="Finalizar" />';
+//                    $html.= '<div class="bDos fBoton floatingbutton" >Regresar</div>';
+                    $html.= '<div class="fBoton floatingbutton" >Cancelar</div>';
                 }
                $html .=" </div>
             
@@ -342,23 +342,12 @@ eof;
 	public function actionView($id)
 	{
             $model = Viajes::model()->findByPk((int)$id);
-            //$prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
-            $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
-            JOIN solicitudes s ON s.id=sv.id_solicitud
-            JOIN clientes c ON c.id=s.id_clientes
-            WHERE id_viaje='.$model->id.'
-            AND id_personal=0')
-            ->queryAll();
+            $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
             $guardar = array();
-            //$solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
-            $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
-            JOIN solicitudes s ON st.id_solicitud=s.id
-            JOIN clientes c ON s.id_clientes=c.id
-            WHERE id_solicitud='.$model->id_solicitudes)
-                ->queryAll();
-
-            if(Yii::app()->user->getTipoUsuario()==1){
-                 $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
+            $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+            if(Yii::app()->user->getTipoUsuario()==1)
+            {
+                $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
                 JOIN solicitudes s ON s.id=sv.id_solicitud
                 JOIN clientes c ON c.id=s.id_clientes
                 WHERE id_viaje='.$model->id.'
@@ -372,22 +361,19 @@ eof;
                 AND c.id='.Yii::app()->user->getIDc())
                 ->queryAll();
             }
-
-            
             $i = 0;
             foreach($solicitudTanque as $data)
             {
-                $cepa = Cepa::model()->findByPk($data['id_cepas']);
+                $cepa = Cepa::model()->findByPk($data->id_cepas);
                 $pedido = array
                 (
                     'especie'=> $cepa->id_especie,
-                    'cepa'=>$data['id_cepas'],
-                    'cantidad'=>$data['cantidad_cepas'],
-                    'destino'=>$data['id_domicilio'],
+                    'cepa'=>$data->id_cepas,
+                    'cantidad'=>$data->cantidad_cepas,
+                    'destino'=>$data->id_domicilio,
                     'tanques'=>1,
-                    'id_solicitud'=>$data['id_solicitud'],
-                    'id_tanque'=>$data['id_tanque'],
-                    'num'=>1
+                    'id_solicitud'=>$data->id_solicitud,
+                    'id_tanque'=>$data->id_tanque
                 );
                 $pedidos['pedido'][$i] = $pedido;
                 $i++;
@@ -400,25 +386,19 @@ eof;
             foreach($prueba as $data2)
             {
                 $guardar = array();
-                //$solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = ".$data2['id_solicitud']);
-                $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
-                JOIN solicitudes s ON st.id_solicitud=s.id
-                JOIN clientes c ON s.id_clientes=c.id
-                WHERE id_solicitud='.$model->id_solicitudes)
-                ->queryAll();
+                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
                 foreach($solicitudTanque as $data)
                 {
-                    $cepa = Cepa::model()->findByPk($data['id_cepas']);
+                    $cepa = Cepa::model()->findByPk($data->id_cepas);
                     $pedido = array
                     (
                         'especie'=> $cepa->id_especie,
-                        'cepa'=>$data['id_cepas'],
-                        'cantidad'=>$data['cantidad_cepas'],
-                        'destino'=>$data['id_domicilio'],
+                        'cepa'=>$data->id_cepas,
+                        'cantidad'=>$data->cantidad_cepas,
+                        'destino'=>$data->id_domicilio,
                         'tanques'=>1,
-                        'id_solicitud'=>$data['id_solicitud'],
-                        'id_tanque'=>$data['id_tanque'],
-                        'num'=>2
+                        'id_solicitud'=>$data->id_solicitud,
+                        'id_tanque'=>$data->id_tanque
                     );
                     //$pedidos['pedido'][$i] = $pedido;
                     $o=0;

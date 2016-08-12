@@ -189,8 +189,8 @@ div.form div.tab div.row {
     margin-right: 167px;
     /* --- */
     position: fixed;
-    top: 230px;
-    right: 0;
+    top: 274px;
+    right: 15%;
 }
 
 div.contenedorClientes {
@@ -255,13 +255,17 @@ div.lineaGandre {
 .lineaGandre.selected {
     background-color: #0077B0;
 }
-
+body.viajes .gBoton
+{
+    margin-right: 66px !important;
+}
 .siguiente {
     float: right;
     color: #FFFFFF;
     background-color: #0077B0;
     border-radius: 5px;
     width: 120px;
+    font-size: 18px;
     line-height: 40px;
     text-align: center;
     cursor: pointer;
@@ -424,12 +428,25 @@ div.chosen-container.error > ul {
 
 
 div.form div.tab div.row.buttons {
-    float: right;
+/*    float: right;
     margin-top: 50px;
     margin-right: 167px;
-    display: block;
+    */display: block;
+    width: 300px;
 }
-
+div.form div.tab div.row.buttons input
+{
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+}
+.fBoton
+{
+    margin: 0 !important;
+    margin-right: 50px !important;
+    font-size: 18px !important;
+    height: 40px !important;
+}
 
 body.viajes-update form input[type="submit"] {
     position: relative;

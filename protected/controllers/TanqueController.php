@@ -81,7 +81,7 @@ class TanqueController extends Controller
 
             if(isset($_POST['Tanque']))
             {
-                foreach($_POST['Tanque']['status'] as $data)
+                foreach($_POST['Tanque']['activo'] as $data)
                 {
                     $update = new Tanque();
                     $update->attributes = $data;

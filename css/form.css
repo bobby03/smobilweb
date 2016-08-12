@@ -83,10 +83,14 @@ div.form input[type="submit"] {
     color: #FFFFFF;
     text-align: center;
     cursor: pointer;
+    font-size: 18px;
     /*float: right;
     margin-right: 10px;*/
 }
-
+div.form input[type="submit"]:hover
+{
+    background-color: #49dbd0;
+}
 .css-select-moz {
     position: relative;
     display: inline-block;
