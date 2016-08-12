@@ -36,6 +36,7 @@
                 'id'=>'granjas-grid',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
                 'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+                'emptyText'=>"No hay resistros",
                 'template' => "{items}{summary}{pager}",
                 'enableSorting'=>true,
                 'dataProvider'=>$model->search(1),
@@ -55,6 +56,7 @@
         <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'granjas-grid2',
                 'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+                'emptyText'=>"No hay resistros",
                 'template' => "{items}{summary}{pager}",
                 'enableSorting'=>true,
                 'ajaxUpdate'=>true,

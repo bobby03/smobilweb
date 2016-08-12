@@ -44,6 +44,7 @@ $this->breadcrumbs=array(
                 'header'=>'',
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay resistros",
             'template' => "{items}{summary}{pager}",
             'afterAjaxUpdate' => "function(id,data)
             {
@@ -68,6 +69,7 @@ $this->breadcrumbs=array(
                 'header'=>'',
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay resistros",
             'template' => "{items}{summary}{pager}",
         )); 
     ?>

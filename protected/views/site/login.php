@@ -20,7 +20,7 @@ if(Yii::app()->user->isGuest){
 
 <div class="form">
 
-	<img src="./../images/esmobil-logo.png" id="slogo" />
+	<img src="./../../images/esmobil-logo.png" id="slogo" />
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',

@@ -90,7 +90,13 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
   					</div>
   				</div>
   			  
-  				<?php } else echo "No hay viajes en ruta"; ?>
+  				<?php } 
+  					else 
+  					{ 
+  						echo "<div class='container-viaje center'>
+								<label class='center'>Agrega algunos viajes o siembras para acceder a tu dashboadr</label>
+							</div>"; 
+					} ?>
   			  
   			  <?php if($estaciones != null) { ?>
   			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
@@ -204,6 +210,9 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
   			    		
   			    	</div>
   			    </div>
-  			    <?php } else echo "No hay estaciones"; ?>
+  			    <?php }
+					else { echo "<div class='container-granja center none'>
+					<label class='center'>Agrega algunos viajes o siembras para acceder a tu dashboard</label></div>"; 
+				} ?>
   			    
 			</div>
