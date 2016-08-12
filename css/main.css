@@ -869,3 +869,15 @@ div.tabs:after {
     clear: both;
     content: '';
 }
+
+/********** Empty DB inicio ***********/
+.center{
+width: 797px;
+height: 280px;
+margin: 0 auto;
+margin-top:300px;
+background-image: url('../images/carrito.png'); 
+color:#0077b0;
+font-size:16px;
+text-align:center;
+}
