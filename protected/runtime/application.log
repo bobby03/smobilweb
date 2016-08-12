@@ -1,215 +1,285 @@
-2016/08/12 09:22:48 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=76&camion=1
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
----
-2016/08/12 09:24:10 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=79&camion=1
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
----
-2016/08/12 09:34:47 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=79&camion=1
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
----
-2016/08/12 09:35:37 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=76&camion=1
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
----
-2016/08/12 09:35:37 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=79&camion=1
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
----
-2016/08/12 09:36:05 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=76&camion=1
----
-2016/08/12 09:37:37 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetTanquesConSo...')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetTanqu...')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#12 {main}
-REQUEST_URI=/SmobilWeb/viajes/GetTanquesConSolicitud?solicitud=76&camion=1
----
-2016/08/12 09:52:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`viajes`, CONSTRAINT `viajes_ibfk_1` FOREIGN KEY (`id_solicitudes`) REFERENCES `solicitudes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `viajes` (`id_responsable`, `fecha_salida`, `id_solicitudes`, `id_estacion`, `hora_salida`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (452)
+2016/08/12 11:54:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida > '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (58)
 in C:\xampp\htdocs\SmobilWeb\index.php (18)
-2016/08/12 09:52:45 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`viajes`, CONSTRAINT `viajes_ibfk_1` FOREIGN KEY (`id_solicitudes`) REFERENCES `solicitudes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `viajes` (`id_responsable`, `fecha_salida`, `id_solicitudes`, `id_estacion`, `hora_salida`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+2016/08/12 11:54:54 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida > '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
-#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(452): CActiveRecord->save()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(58): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('2', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=2&fecha=12-08-2016
+HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
+---
+2016/08/12 11:54:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida > '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (58)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 11:54:56 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida > '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(58): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('3', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=3&fecha=12-08-2016
+HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
+---
+2016/08/12 11:55:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida > '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (58)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 11:55:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida > '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(58): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('2', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=2&fecha=12-08-2016
+---
+2016/08/12 11:55:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (64)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 11:55:10 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(64): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('2', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=2&fecha=12-08-2016
+---
+2016/08/12 11:55:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (64)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 11:55:15 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(64): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('2', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=2&fecha=12-08-2016
+---
+2016/08/12 11:55:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (64)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 11:55:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(64): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('2', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=2&fecha=12-08-2016
+---
+2016/08/12 11:55:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15').
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (64)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 11:55:38 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estacionn' in 'field list'. The SQL statement executed was: SELECT DISTINCT `id_estacionn`
+FROM `viajes`
+WHERE (status = 1) AND (fecha_salida <= '2016-08-15') in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(64): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetCamionesDisponibles('2', '2016-08-15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetCamionesDisp...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetCamio...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetCamionesDisponibles?total=2&fecha=12-08-2016
+---
+2016/08/12 11:59:32 [warning] [application] Failed to set unsafe attribute "status" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (199)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (80)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 12:11:23 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'GROUP BY idtan
+				ORDER BY idest' at line 14. The SQL statement executed was: SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
+				JOIN camp_sensado cs ON cs.id_estacion=e.id
+				JOIN personal p ON cs.id_responsable=p.id
+				JOIN tanque t ON t.id_estacion=e.id
+				JOIN registro_camp r ON t.id=r.id_tanque
+				WHERE e.activo=1 
+				AND e.tipo=2
+				AND cs.activo=1
+				AND t.activo=1
+				ORDER BY r.id DESC
+				LIMIT 3000
+				) consulta
+                WHERE idest =
+				GROUP BY idtan
+				ORDER BY idest
+				.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (412)
+in C:\xampp\htdocs\SmobilWeb\protected\views\site\index.php (164)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (74)
+2016/08/12 12:11:23 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'GROUP BY idtan
+				ORDER BY idest' at line 14. The SQL statement executed was: SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
+				JOIN camp_sensado cs ON cs.id_estacion=e.id
+				JOIN personal p ON cs.id_responsable=p.id
+				JOIN tanque t ON t.id_estacion=e.id
+				JOIN registro_camp r ON t.id=r.id_tanque
+				WHERE e.activo=1 
+				AND e.tipo=2
+				AND cs.activo=1
+				AND t.activo=1
+				ORDER BY r.id DESC
+				LIMIT 3000
+				) consulta
+                WHERE idest =
+				GROUP BY idtan
+				ORDER BY idest
+				 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(412): CDbCommand->queryRow()
+#2 C:\xampp\htdocs\SmobilWeb\protected\views\site\index.php(164): SiteController->actionGetTanques2(NULL)
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(74): CController->render('index', Array)
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
 #11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
 #14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
 #15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
 #16 {main}
-REQUEST_URI=/SmobilWeb/viajes/create
+REQUEST_URI=/SmobilWeb/
 HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
 ---
-2016/08/12 09:55:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`viajes`, CONSTRAINT `viajes_ibfk_1` FOREIGN KEY (`id_solicitudes`) REFERENCES `solicitudes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `viajes` (`id_responsable`, `fecha_salida`, `id_solicitudes`, `id_estacion`, `hora_salida`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (454)
-in C:\xampp\htdocs\SmobilWeb\index.php (18)
-2016/08/12 09:55:36 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`viajes`, CONSTRAINT `viajes_ibfk_1` FOREIGN KEY (`id_solicitudes`) REFERENCES `solicitudes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `viajes` (`id_responsable`, `fecha_salida`, `id_solicitudes`, `id_estacion`, `hora_salida`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+2016/08/12 12:12:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
-#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(454): CActiveRecord->save()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
-#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#16 {main}
-REQUEST_URI=/SmobilWeb/viajes/create
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
 ---
-2016/08/12 09:57:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`solicitudes_viaje`, CONSTRAINT `solicitudes_viaje_ibfk_3` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitudes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `solicitudes_viaje` (`id_personal`, `id_viaje`, `id_solicitud`) VALUES (:yp0, :yp1, :yp2).
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (462)
-in C:\xampp\htdocs\SmobilWeb\index.php (18)
-2016/08/12 09:57:43 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`movsens`.`solicitudes_viaje`, CONSTRAINT `solicitudes_viaje_ibfk_3` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitudes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `solicitudes_viaje` (`id_personal`, `id_viaje`, `id_solicitud`) VALUES (:yp0, :yp1, :yp2) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+2016/08/12 12:14:04 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
-#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(462): CActiveRecord->save()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ViajesController->actionCreate()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/create')
-#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
-#16 {main}
-REQUEST_URI=/SmobilWeb/viajes/create
-HTTP_REFERER=http://localhost/SmobilWeb/viajes/create
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
 ---
-2016/08/12 10:08:17 [error] [php] Object of class Solicitudes could not be converted to string (C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:512)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ViajesController->runAction()
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ViajesController->filterAccessControl()
-#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ViajesController->runActionWithFilters()
-#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ViajesController->run()
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
-REQUEST_URI=/SmobilWeb/viajes/create
-in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (512)
-in C:\xampp\htdocs\SmobilWeb\index.php (18)
