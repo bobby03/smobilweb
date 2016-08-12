@@ -20,6 +20,15 @@
         )
     ));
 ?>
+<style>
+    div.infoBolas
+    {
+        color: #0077b0;
+        width: 150px;
+        /* margin-right: 25px; */
+        text-align: left;
+    }
+</style>
 <?php if($nuevo == false): ?>
 <div class="form">
 
@@ -42,11 +51,11 @@
     <div class="menuTabs">
         <div class="bolaChica selected"></div>
         <div class="lineaChica selected"></div>
-        <div class="bolaGrande selected">1</div>
+        <div class="bolaGrande selected">1<div class="infoBolas">Datos del viaje</div></div>
         <div class="lineaGandre <?php if(!$model->isNewRecord) echo 'selected';?>"></div>
-        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2</div>
+        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2<div class="infoBolas">Asiganr tanques</div></div>
         <div class="lineaGandre"></div>
-        <div class="bolaGrande">3</div>
+        <div class="bolaGrande">3<div class="infoBolas">Finalizar</div></div>
         <div class="lineaChica"></div>
         <div class="bolaChica"></div>
     </div>
@@ -204,7 +213,6 @@
         $o=1;
         foreach($pedidos['pedido'] as $data)
         {
-            print_r($data);
             for($i=1;$i<=$data['tanques'];$i++)
             {
                 include 'xviaje.php';
@@ -246,11 +254,11 @@
     <div class="menuTabs <?php $nuevo?>">
         <div class="bolaChica selected"></div>
         <div class="lineaChica selected"></div>
-        <div class="bolaGrande selected">1</div>
+        <div class="bolaGrande selected">1<div class="infoBolas">Datos del viaje</div></div>
         <div class="lineaGandre <?php if(!$model->isNewRecord) echo 'selected';?>"></div>
-        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2</div>
+        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2<div class="infoBolas">Asiganr tanques</div></div>
         <div class="lineaGandre"></div>
-        <div class="bolaGrande">3</div>
+        <div class="bolaGrande">3<div class="infoBolas">Finalizar</div></div>
         <div class="lineaChica"></div>
         <div class="bolaChica"></div>
     </div>
