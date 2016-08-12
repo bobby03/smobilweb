@@ -99,9 +99,10 @@ $(document).ready(function()
             $('#Viajes_id_estacion').trigger('change');
         }
     }
-function ntanque(a){
+function ntanque(a)
+{
     console.log(a);
-    b=$('.ttan'+a+' option:selected').text();
+    var b = $('.ttan'+a+' option:selected').text();
     $(".ntan"+a).html(' '+b);
 }
 $('.siguiente.uno').click(function() {
@@ -146,15 +147,17 @@ $('.siguiente.uno').click(function() {
 });
 
 
-$('.siguiente.dos').click(function() {
+$('.siguiente.dos').click(function() 
+{
     var a=(numElem = $('.ttan').size());
-    for (i = 0; i<a; i++) { 
+    for (var i = 0; i<a; i++) { 
         console.log('pasdao a'+i);
         ntanque(i+1);
     }
     $('.fsalida').html($('#Viajes_fecha_salida').val());
     
-    if (formSendViajesTanque()) {
+    if (formSendViajesTanque()) 
+    {
         $('[data-tab="2"]').addClass('hide');
         $('[data-tab="3"]').removeClass('hide');
         $('.menuTabs div:nth-child(6)').addClass('selected');

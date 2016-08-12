@@ -126,6 +126,7 @@ $(document).ready(function()
                 type: 'GET',
                 url: url,
                 dataType: 'JSON', 
+                async: false,
                 data:
                 {
                     id: id2
@@ -151,7 +152,7 @@ $(document).ready(function()
         $('form#solicitudes-form').attr('action',baseUrl);
         $('#Solicitudes_id_clientes').removeAttr('disabled');
         $('#Solicitudes_id_clientes').trigger('chosen:update');
-        console.log('hola');
+//        console.log('hola');
         $('#solicitudes-form').submit();
     });
 
@@ -220,6 +221,28 @@ $(document).ready(function()
             else
                 $(this).removeClass('hide');
         });
+        checkViajes();
+    }
+    function checkViajes()
+    {
+        var total = 0;
+        var totalHide = 0;
+        $('div.tablaViajes').children().each(function()
+        {
+            if($(this).hasClass('hide'))
+                totalHide++;
+            total++;
+        });
+        if(totalHide == total)
+        {
+            $('div.siViaje').addClass('hide');
+            $('div.noViaje').removeClass('hide');
+        }
+        else
+        {
+            $('div.siViaje').removeClass('hide');
+            $('div.noViaje').addClass('hide');
+        }
     }
     $('#Solicitudes_id_clientes').change
     (

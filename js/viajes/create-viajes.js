@@ -122,9 +122,9 @@ $(document).ready(function()
     $('.siguiente.dos').on('click', function() 
     {
         var solicitud = $('#Viajes_id_solicitudes').val();
-        var camion = $('#Viajes_id_estacion').val();
-        $('.inner-third-wrapper').empty();
-//        var contador;
+//        var camion = $('#Viajes_id_estacion').val();
+        var fecha = $('#Viajes_fecha_salida').val();
+//        $('.inner-third-wrapper').empty();
         for(var i =0; i < solicitud.length; i++)
         {
             var id = solicitud[i];
@@ -136,13 +136,15 @@ $(document).ready(function()
                 data: 
                 {
                     solicitud: id,
-                    camion: camion
-//                    i: contador
+//                    camion: camion,
+                    tanque: valores[i+1]
+//                    fecha: fecha
                 },
                 async: false,
                 success: function(dataAjax)
                 {
                     $('.inner-third-wrapper').append(dataAjax.html);
+                    $('.fsalida').text(fecha);
                 }
             });
         }

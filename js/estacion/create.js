@@ -22,7 +22,7 @@ $(document).ready(function()
                             Nombre\n\
                             <span class="required">*</span>\n\
                         </label>\n\
-                        <input size="50" maxlength="50" name="Tanque[status]['+total+'][nombre]" id="Tanque_status_'+total+'_nombre" type="text" autocomplete="off">\n\
+                        <input size="50" maxlength="50" name="Tanque[activo]['+total+'][nombre]" id="Tanque_status_'+total+'_nombre" type="text" autocomplete="off">\n\
                         <div class="errorMessage" id="Tanque_nombre_em_" style="display:none"></div>\n\
                     </div>\n\
                     <div class="row cap">\n\
@@ -30,7 +30,7 @@ $(document).ready(function()
                             Capacidad (Litros)\n\
                             <span class="required">*</span>\n\
                     </label>\n\
-                    <input size="50" maxlength="50" name="Tanque[status]['+total+'][capacidad]" id="Tanque_status_'+total+'capacidad" type="text" autocomplete="off">\n\
+                    <input size="50" maxlength="50" name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'capacidad" type="text" autocomplete="off">\n\
                     <div class="errorMessage" id="Tanque_capacidad_em_" style="display:none"></div>\n\
                     </div>\n\
                 </div>';

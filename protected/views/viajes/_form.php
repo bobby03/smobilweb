@@ -202,13 +202,15 @@
         </div>-->
         <?php 
         $o=1;
-        foreach($pedidos['pedido'] as $data){
-        for($i=1;$i<=$data['tanques'];$i++){
-            
-            include 'xviaje.php';
-            $o++;
+        foreach($pedidos['pedido'] as $data)
+        {
+            print_r($data);
+            for($i=1;$i<=$data['tanques'];$i++)
+            {
+                include 'xviaje.php';
+                $o++;
+            }
         }
-    }
 
         ?>
 
@@ -357,7 +359,7 @@
 
          <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="3">
             <div class="inner-third-wrapper">
-                <div class="siguiente fBoton bBoton" >Regresar</div>
+                <!--<div class="siguiente fBoton bBoton" >Regresar</div>-->
             </div>
          </div>
 <?php
