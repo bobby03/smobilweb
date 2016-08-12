@@ -7,7 +7,7 @@
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
-    $cs->registerScriptFile($baseUrl.'/js/viajes/create.js');
+    $cs->registerScriptFile($baseUrl.'/js/campsensado/create.js');
     $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
     $cs->registerScriptFile($baseUrl.'/js/campsensado/validacion.js');

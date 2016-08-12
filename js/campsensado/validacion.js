@@ -36,14 +36,19 @@ $(function() {
 
 
 
-$('.siguiente.uno').click(function() {
+$('body.CampSensado-create .siguiente.uno').click(function() {
+    $('#Granjas_id').blur();
+    $('#CampSensado_id_estacion').blur();
+    $('#CampSensado_id_responsable').blur();
+    $('#CampSensado_nombre_camp').blur();
 
-    $('#CampSensado_fecha_salida').blur();
-    $('#CampSensado_hora_inicio').blur();
-  //  $('#Viajes_id_responsable').blur();
- //   $('#Viajes_id_estacion').blur();
+    $('#CampSensado_fecha_inicio').blur();
+    $('#CampSensado_fecha_fin').blur();
+    $('CampSensado_hora_inicio').blur();
+    $('CampSensado_hora_fin').blur();
 
-    $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+
+ /*   $('[data-tab="1"] select[multiple="multiple"]').each(function() {
         if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
             $(this).next('div.chosen-container').addClass("error");
             $(this).closest('div').find('.errorMessage').show().html('Debe Seleccionar una persona');
@@ -53,7 +58,7 @@ $('.siguiente.uno').click(function() {
             $(this).next('div.chosen-container').addClass("success");
             $(this).next('div.chosen-container').removeClass("error");
         }
-    });
+    });*/
 
     var err = $('div').find('.error');
 
