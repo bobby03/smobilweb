@@ -312,7 +312,6 @@ class WebServiceController extends Controller
             $vdTemp = array();
             // print_r($PlataformasViaje);
             foreach ($PlataformasViaje as $VDkey => $VDvalue) {
-                
                 //------------ SOLICITUDES--------------------------------------------
                 $sols = Yii::app()->db->createCommand()
                     ->selectDistinct('s.id, id_clientes, codigo, fecha_alta, fecha_estimada, notas')

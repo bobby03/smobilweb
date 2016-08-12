@@ -4,7 +4,7 @@ $(document).ready(function()
     $('.addDireccion').click(function()
     {
         var nuevoMapa = $('.allMapa[data-id="1"]').clone();
-        $('.row.mapa').append(nuevoMapa);
+        $('.row.mapa').prepend(nuevoMapa);
         noMap = parseInt(noMap) + 1;
         $('.row.mapa').children().last('allMapa').attr('data-id', noMap);
         $('.allMapa[data-id="'+noMap+'"]').children('#map').attr('data-map', noMap);
