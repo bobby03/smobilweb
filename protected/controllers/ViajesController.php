@@ -322,7 +322,14 @@ eof;
 	public function actionView($id)
 	{
             $model = Viajes::model()->findByPk((int)$id);
-            $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
+            //$prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
+            $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
+            JOIN solicitudes s ON s.id=sv.id_solicitud
+            JOIN clientes c ON c.id=s.id_clientes
+            WHERE id_viaje='.$model->id.'
+            AND id_personal=0
+            AND c.id='.Yii::app()->user->getIDc())
+            ->queryAll();
             $guardar = array();
             $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
             $i = 0;
@@ -337,7 +344,8 @@ eof;
                     'destino'=>$data->id_domicilio,
                     'tanques'=>1,
                     'id_solicitud'=>$data->id_solicitud,
-                    'id_tanque'=>$data->id_tanque
+                    'id_tanque'=>$data->id_tanque,
+                    'num'=>1
                 );
                 $pedidos['pedido'][$i] = $pedido;
                 $i++;
@@ -350,7 +358,7 @@ eof;
             foreach($prueba as $data2)
             {
                 $guardar = array();
-                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $data2->id_solicitud");
+                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = ".$data2['id_solicitud']);
                 foreach($solicitudTanque as $data)
                 {
                     $cepa = Cepa::model()->findByPk($data->id_cepas);
@@ -362,7 +370,8 @@ eof;
                         'destino'=>$data->id_domicilio,
                         'tanques'=>1,
                         'id_solicitud'=>$data->id_solicitud,
-                        'id_tanque'=>$data->id_tanque
+                        'id_tanque'=>$data->id_tanque,
+                        'num'=>2
                     );
                     $pedidos['pedido'][$i] = $pedido;
                     $i++;
