@@ -27,6 +27,8 @@ div.formContainer1 div.separador div div.botonTodos {
 
 div.form input[type="checkbox"] {
     min-height: 19px !important;
+    width: 19px;
+    margin-left: 89px;
 }
 
 .submitb {
