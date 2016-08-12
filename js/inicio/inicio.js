@@ -44,6 +44,7 @@ $(document).ready(function(){
 		function cargaTanques(id) {
  		var url = window.location.href;
  		var pos = url.lastIndexOf('php');
+    console.log('id: '+id);
  		if (pos > 0) {
  			url += '/site/DashboardTanques';
  		}

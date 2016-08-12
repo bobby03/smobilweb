@@ -49,12 +49,29 @@ class ViajesController extends Controller
         $opciones = '';
         if($fecha != '')
         {
-            $fecha = date('Y-m-d', strtotime($fecha));
+            $fecha = date('Y-m-d', strtotime($fecha.' + 3 days'));
             $Viajes = Yii::app()->db->createCommand()
-            ->from('viajes')
-            ->where('status = 1')
-            ->andWhere("fecha_salida > '$fecha'")
-            ->queryAll();
+                ->selectDistinct('id_estacion')
+                ->from('viajes')
+                ->where('status = 1')
+                ->andWhere("fecha_salida > '$fecha'")
+                ->queryAll();
+            $Viajes2 = Yii::app()->db->createCommand()
+                ->selectDistinct('id_estacion')
+                ->from('viajes')
+                ->where('status = 1')
+                ->andWhere("fecha_salida <= '$fecha'")
+                ->queryAll();
+            $index = 0;
+            foreach($Viajes as $data)
+            {
+                foreach($Viajes2 as $data2)
+                {
+                    if($data2['id_estacion'] == $data['id_estacion'])
+                        unset($Viajes[$index]);
+                }
+                $index++;
+            }
         }
         if(isset($Viajes))
         {
@@ -80,6 +97,8 @@ eof;
 eof;
         }
 //        echo json_encode($opciones, JSON_UNESCAPED_SLASHES);
+        if($opciones == '')
+            $opciones = "<option value>Sin camiones disponibles</option>";
         echo json_encode($opciones);
     }
     public function actionGetTanquesConSolicitud($solicitud, $camion, $i)
@@ -401,12 +420,25 @@ eof;
                         'id_tanque'=>$data['id_tanque'],
                         'num'=>2
                     );
-                    $pedidos['pedido'][$i] = $pedido;
+                    //$pedidos['pedido'][$i] = $pedido;
+                    $o=0;
+                    foreach ($pedidos as $revisar){
+                        if($pedidos['pedido'][$o]==$data){
+                            $pedidos['pedido'][$i] = $data;
+                        }
+                        $o++;
+                    }
                     $i++;
                 }
                 foreach($guardar as $data)
                 {
-                    $pedidos['pedido'][$i] = $data;
+                    $o=0;
+                    foreach ($pedidos as $revisar){
+                        if($pedidos['pedido'][$o]==$data){
+                            $pedidos['pedido'][$i] = $data;
+                        }
+                        $o++;
+                    }
                     $i++;
                 }
             }

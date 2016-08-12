@@ -38,15 +38,31 @@ class SiteController extends Controller
 		$criteria->join .= " JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id";
 		$criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
 		
-		$model = Yii::app()->db->createCommand()
-			->selectDistinct("t.*, est.identificador, p.nombre, p.apellido")
-			->from('viajes as t')
-			->join("estacion est","est.id = t.id_estacion")
-			->join("personal as p","p.id = t.id_responsable")
-			->join("solicitudes_viaje as sv","sv.id_viaje = t.id")
-			->where("t.status = 2")
+		$model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
+			FROM viajes as t
+			JOIN estacion est ON est.id = t.id_estacion
+			JOIN personal as p ON p.id = t.id_responsable
+			JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
+			JOIN solicitudes as s ON s.id=sv.id_solicitud
+            JOIN clientes as c ON c.id=s.id_clientes
+			WHERE t.status = 2')
 				->queryAll();
 
+
+		if(Yii::app()->user->getTipoUsuario()==1){		
+			$model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
+				FROM viajes as t
+				JOIN estacion est ON est.id = t.id_estacion
+				JOIN personal as p ON p.id = t.id_responsable
+				JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
+				JOIN solicitudes as s ON s.id=sv.id_solicitud
+	            JOIN clientes as c ON c.id=s.id_clientes
+				WHERE t.status = 2
+				AND c.id='.Yii::app()->user->getIDc())
+				->queryAll();
+			}
+
+				
 		$viajes_disponibles =  Yii::app()->db->createCommand(
 				'SELECT v.id as "id_viaje", est.identificador as "nombre", 
 					(SELECT count(t.id) 
@@ -191,19 +207,83 @@ class SiteController extends Controller
 	}
 	public function actionDashboardTanques($id) 
         {
+        	if(Yii::app()->user->getTipoUsuario()==2){
+        	$last=Yii::app()->db->createCommand("SELECT ut.*, id_viaje FROM uploadtemp as ut 
+			INNER JOIN (
+			    SELECT MAX(id) as id, id_viaje 
+			    FROM escalon_viaje_ubicacion 
+			    where id_viaje = ".$id.") 
+			    evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+				->queryAll();
+			}
+        	if(Yii::app()->user->getTipoUsuario()==1){//Cuando es cliente
+        		$solicitudes= Yii::app()->db->createCommand("SELECT * FROM solicitud_tanques st
+				JOIN solicitudes s ON s.id=st.id_solicitud
+				JOIN clientes c ON c.id=s.id_clientes
+				JOIN solicitudes_viaje sv ON sv.id_solicitud=s.id
+				WHERE c.id=".Yii::app()->user->getIDc()."
+				AND sv.id_viaje=".$id."
+				GROUP BY s.id")
+				->queryAll();
+				$las = Yii::app()->db->createCommand("SELECT ut.* 
+			FROM uploadtemp as ut 
+			INNER JOIN (
+				SELECT MAX(id) as id, id_viaje 
+				FROM escalon_viaje_ubicacion 
+				WHERE id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion
+				JOIN solicitud_tanques st ON st.id_tanque=ut.id_tanque")
+		->queryAll();
+		foreach($solicitudes as $soli){
+		
+		if(isset($las)){
+			$last[]=$las;
+		}
+		fb($last);
+		}
+        	}
+        
+
 		$return['result'] = 0 ;
 		$return['html'] = "";
-		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadtemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
-		->queryAll();
+		
 		$flag = true;
+		$u=0;
             if(count($last) > 0)
             {
+            	
+            	if(Yii::app()->user->getTipoUsuario()==1){
+            		
+            		foreach($last as $data)
+                {
+                   $return["html"] .= "
+                   	<div class='tanque'>
+                   			<div class='tanque-container-titulo'>
+                    		<span class='titulotanque'> Tanque ".($u+1)."</span></div>
+                     		<div class='variables-wrapper'> 
+                     			<div class='var-oz'>
+                     				<div class='icon-oz'></div>
+                    				<div class='txt'>{$data[$u]["ox"]}</div>
+                    			</div>
+                    			<div class='var-ph'>
+                    				<div class='icon-ph'></div>
+                    				<div class='txt'>{$data[$u]["ph"]}</div>
+                    			</div>
+                    			<div class='var-tm'>
+                    				<div class='icon-tm'></div>
+                    				<div class='txt'>{$data[$u]["temp"]}</div>
+                    			</div>
+                    		</div>
+                    	</div>";
+                    	$u++;
+                   }
+
+            	}else{
                 foreach($last as $data)
                 {
                    $return["html"] .= "
                    	<div class='tanque'>
                    			<div class='tanque-container-titulo'>
-                    		<span class='titulotanque'> Tanque {$data["ct"]}</span></div>
+                    		<span class='titulotanque'> Tanque ".($u+1)."</span></div>
                      		<div class='variables-wrapper'> 
                      			<div class='var-oz'>
                      				<div class='icon-oz'></div>
@@ -219,7 +299,10 @@ class SiteController extends Controller
                     			</div>
                     		</div>
                     	</div>";
+                    	$u++;
                    }
+               }
+
                  $return['result'] = 1;
                }
             else
