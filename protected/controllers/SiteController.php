@@ -207,19 +207,83 @@ class SiteController extends Controller
 	}
 	public function actionDashboardTanques($id) 
         {
+        	if(Yii::app()->user->getTipoUsuario()==2){
+        	$last=Yii::app()->db->createCommand("SELECT ut.*, id_viaje FROM uploadtemp as ut 
+			INNER JOIN (
+			    SELECT MAX(id) as id, id_viaje 
+			    FROM escalon_viaje_ubicacion 
+			    where id_viaje = ".$id.") 
+			    evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+				->queryAll();
+			}
+        	if(Yii::app()->user->getTipoUsuario()==1){//Cuando es cliente
+        		$solicitudes= Yii::app()->db->createCommand("SELECT * FROM solicitud_tanques st
+				JOIN solicitudes s ON s.id=st.id_solicitud
+				JOIN clientes c ON c.id=s.id_clientes
+				JOIN solicitudes_viaje sv ON sv.id_solicitud=s.id
+				WHERE c.id=".Yii::app()->user->getIDc()."
+				AND sv.id_viaje=".$id."
+				GROUP BY s.id")
+				->queryAll();
+				$las = Yii::app()->db->createCommand("SELECT ut.* 
+			FROM uploadtemp as ut 
+			INNER JOIN (
+				SELECT MAX(id) as id, id_viaje 
+				FROM escalon_viaje_ubicacion 
+				WHERE id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion
+				JOIN solicitud_tanques st ON st.id_tanque=ut.id_tanque")
+		->queryAll();
+		foreach($solicitudes as $soli){
+		
+		if(isset($las)){
+			$last[]=$las;
+		}
+		fb($last);
+		}
+        	}
+        
+
 		$return['result'] = 0 ;
 		$return['html'] = "";
-		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadtemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
-		->queryAll();
+		
 		$flag = true;
+		$u=0;
             if(count($last) > 0)
             {
+            	
+            	if(Yii::app()->user->getTipoUsuario()==1){
+            		
+            		foreach($last as $data)
+                {
+                   $return["html"] .= "
+                   	<div class='tanque'>
+                   			<div class='tanque-container-titulo'>
+                    		<span class='titulotanque'> Tanque ".($u+1)."</span></div>
+                     		<div class='variables-wrapper'> 
+                     			<div class='var-oz'>
+                     				<div class='icon-oz'></div>
+                    				<div class='txt'>{$data[$u]["ox"]}</div>
+                    			</div>
+                    			<div class='var-ph'>
+                    				<div class='icon-ph'></div>
+                    				<div class='txt'>{$data[$u]["ph"]}</div>
+                    			</div>
+                    			<div class='var-tm'>
+                    				<div class='icon-tm'></div>
+                    				<div class='txt'>{$data[$u]["temp"]}</div>
+                    			</div>
+                    		</div>
+                    	</div>";
+                    	$u++;
+                   }
+
+            	}else{
                 foreach($last as $data)
                 {
                    $return["html"] .= "
                    	<div class='tanque'>
                    			<div class='tanque-container-titulo'>
-                    		<span class='titulotanque'> Tanque {$data["ct"]}</span></div>
+                    		<span class='titulotanque'> Tanque ".($u+1)."</span></div>
                      		<div class='variables-wrapper'> 
                      			<div class='var-oz'>
                      				<div class='icon-oz'></div>
@@ -235,7 +299,10 @@ class SiteController extends Controller
                     			</div>
                     		</div>
                     	</div>";
+                    	$u++;
                    }
+               }
+
                  $return['result'] = 1;
                }
             else
