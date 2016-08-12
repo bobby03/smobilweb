@@ -38,6 +38,7 @@ $this->breadcrumbs=array(
             'dataProvider'=>$model->search($id,1),
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay resistros",
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearch(),
             'pager' => array
@@ -64,6 +65,7 @@ $this->breadcrumbs=array(
             'header'=>'',
         ),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'emptyText'=>"No hay resistros",
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearchBorrados(),
     )); ?>

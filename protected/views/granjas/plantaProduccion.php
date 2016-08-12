@@ -36,6 +36,7 @@ div.tabContent
             'summaryText'=>'',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->searchTanqueGranja($id,1),
+            'emptyText'=>"No hay resistros",
             'columns'=>$model->adminSearchPlanta(),
             'pager' => array
             (
@@ -58,6 +59,7 @@ div.tabContent
             'ajaxUpdate'=>true,
             'dataProvider'=>$model->searchTanqueGranja($id,0),
             'columns'=>$model->adminSearchPlantaVacio(),
+            'emptyText'=>"No hay resistros",
             'pager' => array
             (
                 'class' => 'PagerSA',
@@ -65,5 +67,6 @@ div.tabContent
             ),
         )); 
     ?>
-    </div>
+
+    </div><a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas">Regresar</a> 
 </div>

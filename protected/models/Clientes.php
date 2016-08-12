@@ -222,7 +222,7 @@ class Clientes extends CActiveRecord
         public function getUserName($id){
         	$usrName = Usuarios::model()->findAll("tipo_usr = 1 and id_usr = $id");
 
-        	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"Sin usuario";
+        	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"--------";
 
         }
         public function adminSearch()
@@ -232,16 +232,16 @@ class Clientes extends CActiveRecord
                 'nombre_empresa',
 		'nombre_contacto',
 		'apellido_contacto',
+		array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
 		'correo',
 		'rfc',
         'tel',
-        array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
-                array
-                (
-                    'class'=>'NCButtonColumn',
-                    'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-		)
+        array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+			)
             );
         }
         public function adminSearchVacios()

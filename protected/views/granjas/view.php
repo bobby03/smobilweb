@@ -22,4 +22,5 @@ $this->breadcrumbs=array(
                     'responsable',
             ),
     )); ?>
+    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
 </div>

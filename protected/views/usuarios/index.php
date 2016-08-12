@@ -34,6 +34,7 @@
         'dataProvider'=>$model->search(1),
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+        'emptyText'=>"No hay resistros",
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearch(),
         'pager' => array
@@ -54,6 +55,7 @@
             'id'=>'usuario-grid2',
             'dataProvider'=>$model->search(0),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay resistros",
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearchVacio(),
             'pager' => array
