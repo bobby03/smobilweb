@@ -42,7 +42,10 @@ class CampSensado extends CActiveRecord
 			array('id_responsable, id_estacion', 'required'),
 			array('id_responsable, id_estacion, status, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre_camp', 'length', 'max'=>45),
-			array('fecha_inicio,fecha_fin', 'safe'),
+			//array('fecha_inicio,fecha_fin', 'safe'),
+
+			array('fecha_inicio','required','message'=>'Debe especificar una fecha'),
+			array('fecha_fin','required','message'=>'Debe especificar una fecha'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_responsable, id_estacion, nombre_camp, fecha_inicio, , fecha_fin, status, activo', 'safe', 'on'=>'search'),
