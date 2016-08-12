@@ -82,17 +82,16 @@ eof;
 //        echo json_encode($opciones, JSON_UNESCAPED_SLASHES);
         echo json_encode($opciones);
     }
-    public function actionGetTanquesConSolicitud($solicitud, $camion) {
-
+    public function actionGetTanquesConSolicitud($solicitud, $camion, $i)
+    {
             $pedidos = Pedidos::model()->findAll("id_solicitud = {$solicitud}");
-            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND status != 0 AND activo = 1");
-            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND status = 0 AND activo = 1");
+            $tanquesOcupados = Tanque::model()->findAll("id_estacion = {$camion} AND activo = 1");
+            $tanquesDesocupados = Tanque::model()->findAll("id_estacion = {$camion} AND activo = 1");
             $total_tanques = count($tanquesDesocupados) + count($tanquesOcupados);
-
-             $tot = 1;
-             $html = "";
-             foreach($pedidos as $data) {
-
+            $tot = $i;
+            $html = "";
+            foreach($pedidos as $data) 
+            {
                  for($i = 1; $i <= $data->tanques; $i++){
                     $cantidad = $data->cantidad/$data->tanques;
                       $html .="<div class='pedido'>
@@ -129,6 +128,7 @@ eof;
                 header('Content-type: application/json');
                 $data = array();
                 $data['html'] = $html;
+                $data['total'] = $tot;
                 $data['pedidos'] = array_map(create_function('$m','return $m->getAttributes(array(\'id\',\'id_solicitud\',\'id_especie\',\'id_cepa\',\'id_direccion\',\'tanques\',\'cantidad\'));'),$pedidos);
                 echo json_encode($data);
             
@@ -361,6 +361,7 @@ eof;
                         'cantidad'=>$data->cantidad_cepas,
                         'destino'=>$data->id_domicilio,
                         'tanques'=>1,
+                        'id_solicitud'=>$data->id_solicitud,
                         'id_tanque'=>$data->id_tanque
                     );
                     $pedidos['pedido'][$i] = $pedido;
