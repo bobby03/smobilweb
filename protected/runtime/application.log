@@ -396,3 +396,39 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
 HTTP_REFERER=http://localhost/SmobilWeb/clientes/index
 ---
+2016/08/12 15:43:22 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:22 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:22 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:22 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:27 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:27 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:27 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:43:27 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:45:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:45:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:45:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/12 15:45:49 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)

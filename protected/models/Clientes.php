@@ -69,15 +69,15 @@ class Clientes extends CActiveRecord
 			array(
 				'correo',
 			  	'match',
-			    'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
+                                'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
 				'message'=>'El correo no es valido'),
 			
 
 			array('rfc','required','message'=>'RFC No Valido'),
 			array('rfc',
-				  	'match',
+                                'match',
 			    	'pattern'=>"/^(([A-Za-z]){3})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
-					'message'=>'RFC No Valido'),
+                                'message'=>'RFC No Valido'),
 
 			array('tel','required','message'=>'Este campo es obligatorio'),
 			array(
