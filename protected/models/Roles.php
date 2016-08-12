@@ -105,6 +105,9 @@ class Roles extends SMActiveRecord
                 $criteria->addCondition("activo=$act");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
 		));
 	}
 
