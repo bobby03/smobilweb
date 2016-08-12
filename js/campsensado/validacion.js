@@ -38,10 +38,11 @@ $(function() {
 
 $('.siguiente.uno').click(function() {
 
-    $('#CampSensado_fecha_salida').blur();
-    $('#CampSensado_hora_inicio').blur();
-  //  $('#Viajes_id_responsable').blur();
- //   $('#Viajes_id_estacion').blur();
+    $('#CampSensado_fecha_inicio').blur();
+    $('#CampSensado_fecha_fin').blur();
+    $('CampSensado_hora_inicio').blur();
+    $('CampSensado_hora_fin').blur();
+
 
     $('[data-tab="1"] select[multiple="multiple"]').each(function() {
         if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
