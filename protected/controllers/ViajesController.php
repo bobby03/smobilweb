@@ -328,24 +328,46 @@ eof;
             JOIN solicitudes s ON s.id=sv.id_solicitud
             JOIN clientes c ON c.id=s.id_clientes
             WHERE id_viaje='.$model->id.'
-            AND id_personal=0
-            AND c.id='.Yii::app()->user->getIDc())
+            AND id_personal=0')
             ->queryAll();
             $guardar = array();
-            $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+            //$solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
+            $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
+            JOIN solicitudes s ON st.id_solicitud=s.id
+            JOIN clientes c ON s.id_clientes=c.id
+            WHERE id_solicitud='.$model->id_solicitudes)
+                ->queryAll();
+
+            if(Yii::app()->user->getTipoUsuario()==1){
+                 $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
+                JOIN solicitudes s ON s.id=sv.id_solicitud
+                JOIN clientes c ON c.id=s.id_clientes
+                WHERE id_viaje='.$model->id.'
+                AND id_personal=0
+                AND c.id='.Yii::app()->user->getIDc())
+                ->queryAll();
+                $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
+                JOIN solicitudes s ON st.id_solicitud=s.id
+                JOIN clientes c ON s.id_clientes=c.id
+                WHERE id_solicitud='.$model->id_solicitudes.'
+                AND c.id='.Yii::app()->user->getIDc())
+                ->queryAll();
+            }
+
+            
             $i = 0;
             foreach($solicitudTanque as $data)
             {
-                $cepa = Cepa::model()->findByPk($data->id_cepas);
+                $cepa = Cepa::model()->findByPk($data['id_cepas']);
                 $pedido = array
                 (
                     'especie'=> $cepa->id_especie,
-                    'cepa'=>$data->id_cepas,
-                    'cantidad'=>$data->cantidad_cepas,
-                    'destino'=>$data->id_domicilio,
+                    'cepa'=>$data['id_cepas'],
+                    'cantidad'=>$data['cantidad_cepas'],
+                    'destino'=>$data['id_domicilio'],
                     'tanques'=>1,
-                    'id_solicitud'=>$data->id_solicitud,
-                    'id_tanque'=>$data->id_tanque,
+                    'id_solicitud'=>$data['id_solicitud'],
+                    'id_tanque'=>$data['id_tanque'],
                     'num'=>1
                 );
                 $pedidos['pedido'][$i] = $pedido;
@@ -359,19 +381,24 @@ eof;
             foreach($prueba as $data2)
             {
                 $guardar = array();
-                $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = ".$data2['id_solicitud']);
+                //$solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = ".$data2['id_solicitud']);
+                $solicitudTanque = Yii::app()->db->createCommand('SELECT st.*,c.id as idc FROM solicitud_tanques st
+                JOIN solicitudes s ON st.id_solicitud=s.id
+                JOIN clientes c ON s.id_clientes=c.id
+                WHERE id_solicitud='.$model->id_solicitudes)
+                ->queryAll();
                 foreach($solicitudTanque as $data)
                 {
-                    $cepa = Cepa::model()->findByPk($data->id_cepas);
+                    $cepa = Cepa::model()->findByPk($data['id_cepas']);
                     $pedido = array
                     (
                         'especie'=> $cepa->id_especie,
-                        'cepa'=>$data->id_cepas,
-                        'cantidad'=>$data->cantidad_cepas,
-                        'destino'=>$data->id_domicilio,
+                        'cepa'=>$data['id_cepas'],
+                        'cantidad'=>$data['cantidad_cepas'],
+                        'destino'=>$data['id_domicilio'],
                         'tanques'=>1,
-                        'id_solicitud'=>$data->id_solicitud,
-                        'id_tanque'=>$data->id_tanque,
+                        'id_solicitud'=>$data['id_solicitud'],
+                        'id_tanque'=>$data['id_tanque'],
                         'num'=>2
                     );
                     $pedidos['pedido'][$i] = $pedido;
