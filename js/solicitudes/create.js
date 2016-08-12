@@ -24,6 +24,7 @@ $(document).ready(function()
                     id: id,
                     flag: 1
                 },
+                async: false,
                 success: function(data)
                 {
                     $('.datosCliente').empty();
@@ -60,6 +61,7 @@ $(document).ready(function()
                 type: 'GET',
                 url: direccion+'GetCepas',
                 dataType: 'JSON', 
+                async: false,
                 data:
                 {
                     id: id

@@ -44,6 +44,7 @@ $(document).ready(function()
                     type: 'GET',
                     url: direccion+'GetDirecciones',
                     dataType: 'JSON', 
+                    async: false,
                     data:
                     {
                         id: id2
@@ -102,6 +103,7 @@ $(document).ready(function()
             else
                 $(this).removeClass('hide');
         });
+        checkViajes();
     }
     function borrarPedido()
     {
@@ -129,18 +131,36 @@ $(document).ready(function()
             $('#Cepa_id').trigger("change");
             $('#Cepa_id').trigger("chosen:updated");
             $('#Cepa_nombre_cepa_1_cantidad').val(cantidad);
+            $('#Cepa_nombre_cepa_1_cantidad').trigger("change");
             $('#tanquesNO').val(tanques);
             $('#ClientesDomicilio_domicilio').val(direccionID);
+            $('#ClientesDomicilio_domicilio').trigger("change");
             $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+//            $('.row.direcciones .row.buttons').removeClass('hide');
             $(this).closest('.pedidoViaje').remove();
-            changeCepa(cepaID);
         });
     }
-    function changeCepa(cepaID)
+    
+    function checkViajes()
     {
-        $('#Cepa_id').val(cepaID);
-        $('#Cepa_id').trigger("change");
-        $('#Cepa_id').trigger("chosen:updated");
+        var total = 0;
+        var totalHide = 0;
+        $('div.tablaViajes').children().each(function()
+        {
+            if($(this).hasClass('hide'))
+                totalHide++;
+            total++;
+        });
+        if(totalHide == total)
+        {
+            $('div.siViaje').addClass('hide');
+            $('div.noViaje').removeClass('hide');
+        }
+        else
+        {
+            $('div.siViaje').removeClass('hide');
+            $('div.noViaje').addClass('hide');
+        }
     }
 //    $('.row.pedido').removeClass('hide');
 //    $('.titulo').removeClass('hide');

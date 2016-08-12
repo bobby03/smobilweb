@@ -76,4 +76,5 @@ body.especie div.form input[type="submit"]{
 body.especie .btnadd{
     float:right;
       margin-right: 20px;
+      font-size: 18px;
 }

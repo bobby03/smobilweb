@@ -159,7 +159,8 @@ class SolicitudesController extends Controller
         public function getViajes()
         {
             $viajes = Viajes::model()->findAll('status = 1');
-            $imprimir  = '  <div class="subtitulos">
+            $imprimir  = '  <div class="siViaje"><h2>Viajes disponibles</h2>
+                            <div class="subtitulos">
                                 <div>Camión</div>
                                 <div>Tanques disponibles</div>
                             </div>
@@ -177,6 +178,7 @@ class SolicitudesController extends Controller
                 $i = count($tanques);
                 $i = $i - count($solicitudes);
                 if($i > 0)
+                {
                     $imprimir = $imprimir.<<<eof
                         <div class="renglon">
                             <div>{$estacion->identificador}</div>
@@ -185,8 +187,11 @@ class SolicitudesController extends Controller
                             <div class="viajeSel" data-viaje="{$data->id}"></div>
                         </div>
 eof;
+                }
+
             }
-            $imprimir = $imprimir.'</div>';
+            $imprimir = $imprimir.'</div><h2></h2></div>
+                    <div class="noViaje hide"><h2>No hay viajes disponibles</h2></div>';
             echo $imprimir;
         }
 //        public function actionViajesCreate()

@@ -195,9 +195,7 @@ eof;
         </div>
         <div class="row crearViaje hide">
             <div class="viajes">
-                <h2>Viajes disponibles</h2>
                 <?php $this->getViajes();?>
-                <h2></h2>
             </div>
             <?php 
                 $contenedores = Estacion::model()->findAll('disponible = 1 AND activo = 1 AND tipo = 1');
