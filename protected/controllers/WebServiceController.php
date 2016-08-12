@@ -285,6 +285,7 @@ class WebServiceController extends Controller
                 ->from('personal p')
                 ->where('id = :id',array(':id'=>$idResp) )
                 ->queryRow();
+            // print_r($userData);
             if($userData != false){
                 $udArray = array(
                    'Name'=>$userData['nombre']." ".$userData['apellido'] ,
@@ -297,16 +298,21 @@ class WebServiceController extends Controller
                     );
             //----------------------- /USER DATA  RESP-----------------------
                 //----------------------- Plataforma Viaje ----------------------------
+                $today = date('Y-m-d');
             $PlataformasViaje = Yii::app()->db->createCommand()
                 ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, E.ID AS ID_EST')
                 ->from('viajes  v')
                 ->join('estacion e','id_estacion = e.id')
                 ->join('solicitudes s','s.id = v.id_solicitudes')
                 ->where('id_responsable = :id',array(':id'=>$idResp))
-                ->order('id desc')
+                ->andWhere('fecha_salida = :today',array(':today'=>$today) )
+                ->order('id_solicitudes asc')
                 ->queryAll();
+
             $vdTemp = array();
+            // print_r($PlataformasViaje);
             foreach ($PlataformasViaje as $VDkey => $VDvalue) {
+                
                 //------------ SOLICITUDES--------------------------------------------
                 $sols = Yii::app()->db->createCommand()
                     ->selectDistinct('s.id, id_clientes, codigo, fecha_alta, fecha_estimada, notas')
@@ -314,8 +320,13 @@ class WebServiceController extends Controller
                     ->join('solicitudes_viaje sv','sv.id_solicitud = s.id')
                     ->where('sv.id_viaje = :id',array(':id'=>$VDvalue['id']))
                     ->queryAll();
+                // print_r($sols);
+                
                 $solTemp = null;
-                // foreach ($sols as $solsKey => $solsValue) { //
+                foreach ($sols as $Solskey => $Solsvalue) {
+                    
+                    // print_r($Solsvalue);
+                    // foreach ($sols as $solsKey => $solsValue) { //
                     // Solicitud_tanques
                     $tanks = Yii::app()->db->createCommand()
                     // tanque, Domicilio, cepa
@@ -326,26 +337,22 @@ class WebServiceController extends Controller
                         ->join('cepa c', 'st.id_cepas = c.id')
                         ->join('solicitudes_viaje sv','sv.id_solicitud = st.id_solicitud')
                         ->join('especie e','e.id = c.id_especie')
-                        ->where('st.id_solicitud =:idS',array(':idS'=>$VDvalue['id_solicitudes']))
+                        ->where('st.id_solicitud =:idS',array(':idS'=>$Solsvalue['id']))
                         ->queryAll();
-                    ;
+                    // print_r($tanks);
                     //-----End Solicitud_tanques
-                    $solTemp[] = array(
-                        'codigo'=>$sols[$VDkey]['codigo'],
-                        'fecha_alta'=>$sols[$VDkey]['fecha_alta'],
-                        'fecha_estimada'=>$sols[$VDkey]['fecha_estimada'],
-                        'notas'=>$sols[$VDkey]['notas'],
-                        'tanques'=>$tanks,
-                        );
-                    # code...
-                    // $solTemp[] = array(
-                    //     'codigo'=>$solsValue['codigo'],
-                    //     'fecha_alta'=>$solsValue['fecha_alta'],
-                    //     'fecha_estimada'=>$solsValue['fecha_estimada'],
-                    //     'notas'=>$solsValue['notas'],
-                    //     'tanques'=>$tanks,
-                    //     );
-                // } //
+                    // to check
+                  
+                  $solTemp[] = array(
+                            'codigo'=>$Solsvalue['codigo'],
+                            'fecha_alta'=>$Solsvalue['fecha_alta'],
+                            'fecha_estimada'=>$Solsvalue['fecha_estimada'],
+                            'notas'=>$Solsvalue['notas'],
+                            'tanques'=>$tanks,
+                            );
+
+                }
+    
                 //------------------------------Clientes--------------------------------
                 $clnt = Yii::app()->db->createCommand()
                     ->selectDistinct('id, nombre_empresa,  nombre_contacto, apellido_contacto, correo, rfc, tel')
@@ -439,7 +446,7 @@ class WebServiceController extends Controller
             $rx = array('Name'=>'USER NO VALID','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
         }
         
-        // echo json_encode($rx);
+        
         echo json_encode($rx);
     }
 
