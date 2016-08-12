@@ -44,6 +44,7 @@
                 'correo',
                 'rfc',
                 'tel',
+                array('name'=>'id', 'value'=>$model->getUserName($model->id))
             ),
     )); ?>
     <div class="row">

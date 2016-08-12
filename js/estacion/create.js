@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
-   
     var total = 0;
+    var flag = true;
     function contar()
     {
         $('.tanque').each(function()
@@ -85,6 +85,37 @@ $(document).ready(function()
      $('.btncanc').click(function()
      {
         window.location.href = "../../";
+    });
+    $('.row.nom input').keyup(function()
+    {
+        var nombre = $(this).val();
+        var div = $(this);
+        div.addClass('noCheck');
+        flag = true;
+        $('.row.nom input').each(function()
+        {
+            if(!$(this).hasClass('noCheck'))
+            {
+                var nombre2 = $(this).val();
+                if(nombre2 == nombre)
+                {
+                    div.addClass('error');
+                    div.siblings('.errorMessage').show().text('Ese nombre ya existe');
+                    flag = false;
+                }
+            }
+        });
+        div.removeClass('noCheck');
+        if(flag)
+        {
+            $('.row.nom input').removeClass('error');
+            div.siblings('.errorMessage').hide();
+        }
+    });
+    $('input[type="submit"]').click(function(evt)
+    {
+        if(flag == false)
+            evt.preventDefault();
     });
 });
 
