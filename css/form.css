@@ -74,6 +74,7 @@ div.form .chosen-container {
     border-left: 30px solid #0077b0;
     text-indent: 5px;
     width: 100%;
+    font-size: 14px;
 }
 
 div.form input[type="submit"] {
