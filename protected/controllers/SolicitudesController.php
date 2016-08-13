@@ -109,7 +109,7 @@ class SolicitudesController extends Controller
             $cepa = new Cepa();
             $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
+//		 $this->performAjaxValidation($model);
 
 		if(isset($_POST) && $_POST != '' && $_POST != null)
 		{

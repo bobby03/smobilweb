@@ -45,6 +45,18 @@ class Cepa extends CActiveRecord
 			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
 			array('nombre_cepa', 'length', 'max'=>50),
                     
+                        array('temp_max','compare','compareAttribute'=>'temp_min','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('ph_max','compare','compareAttribute'=>'ph_min','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('ox_max','compare','compareAttribute'=>'ox_min','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('cond_max','compare','compareAttribute'=>'cond_min','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('orp_max','compare','compareAttribute'=>'orp_min','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                    
+                        array('temp_min','compare','compareAttribute'=>'temp_max','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('ph_min','compare','compareAttribute'=>'ph_max','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('ox_min','compare','compareAttribute'=>'ox_max','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('cond_min','compare','compareAttribute'=>'cond_max','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                        array('orp_min','compare','compareAttribute'=>'orp_max','operator'=>'=','message'=>'Los valores no pueden ser iguales'),
+                    
                         array('temp_min','compare','compareAttribute'=>'temp_max','operator'=>'<','message'=>'El valor minimo no puede ser mayor que el maximo'),
                         array('ph_min','compare','compareAttribute'=>'ph_max','operator'=>'<','message'=>'El valor minimo no puede ser mayor que el maximo'),
                         array('ox_min','compare','compareAttribute'=>'ox_max','operator'=>'<','message'=>'El valor minimo no puede ser mayor que el maximo'),
@@ -56,6 +68,7 @@ class Cepa extends CActiveRecord
                         array('ox_max','compare','compareAttribute'=>'ox_min','operator'=>'>','message'=>'El valor maximo no puede ser menor que el minimo'),
                         array('cond_max','compare','compareAttribute'=>'cond_min','operator'=>'>','message'=>'El valor maximo no puede ser menor que el minimo'),
                         array('orp_max','compare','compareAttribute'=>'orp_min','operator'=>'>','message'=>'El valor maximo no puede ser menor que el minimo'),
+                    
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'safe', 'on'=>'search'),
