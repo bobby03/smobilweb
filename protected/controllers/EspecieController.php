@@ -106,7 +106,7 @@ class EspecieController extends Controller
 		$model=new Especie;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Especie']))
 		{

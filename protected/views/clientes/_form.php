@@ -25,10 +25,11 @@
     // There is a call to performAjaxValidation() commented in generated controller code.
     // See class documentation of CActiveForm for details on this.
     // 'enableAjaxValidation'=>true,
-    'clientOptions' => array(
-        'validateOnSubmit' => true,
-        'validateOnChange' => true,
-        'validateOnType' => true,
+    'enableAjaxValidation'=>TRUE,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+            'validateOnChange' => true,
+            'validateOnType' => true,
         ),
     )); 
 ?>

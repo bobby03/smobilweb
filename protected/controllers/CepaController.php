@@ -106,7 +106,7 @@ class CepaController extends Controller
 		$model=new Cepa;
                 $model->id_especie = $especie;
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Cepa']))
 		{

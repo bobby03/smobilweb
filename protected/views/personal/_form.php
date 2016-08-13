@@ -19,6 +19,11 @@ $baseUrl = Yii::app()->baseUrl;
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>TRUE,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+            'validateOnChange' => true,
+            'validateOnType' => true,
+        ),
 )); ?>
 
 
