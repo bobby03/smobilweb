@@ -1,264 +1,102 @@
 
 $(document).ready(function()
 {
-    var valores = [];
-    $('.bBoton').click(function(){ window.history.back();  });
-    $('.fBoton.bUno').click(function(){
-        console.log('Tab2 hide');
-        $('[data-tab="2"]').addClass('hide');
-        console.log('Tab1 show');
-        $('[data-tab="1"]').removeClass('hide');
-        $('.menuTabs div:nth-child(4)').removeClass('selected');
-        $('.menuTabs div:nth-child(5)').removeClass('selected');
 
-    });
-    $('.fBoton.bDos').click(function(){
-        console.log('Tab2 hide');
+  $('#CampSensado_hora_inicio').mask('00:00');
+  $('#CampSensado_hora_inicio').mask('HX:YZ', 
+    {
+      translation:  
+      {
+        'H': {pattern: /[0-2]/,optional: false},
+        'X': {pattern: /[0-9]/,optional: false},
+        'Y': {pattern: /[0-5]/,optional: false},
+        'Z': {pattern: /[0-9]/,optiona: false},
+      }});
+
+
+  $('#CampSensado_hora_fin').mask('00:00');
+  $('#CampSensado_hora_fin').mask('HX:YZ', 
+    {
+      translation:  
+      {
+        'H': {pattern: /[0-2]/,optional: false},
+        'X': {pattern: /[0-9]/,optional: false},
+        'Y': {pattern: /[0-5]/,optional: false},
+        'Z': {pattern: /[0-9]/,optiona: false},
+      }});
+
+
+      $('.ValidaAlpha').bind('keyup blur',function(){ 
+        var node = $(this);
+        node.val(node.val().replace(/[^[a-zA-ZáéíóúñÁÉÍÓÚÑ ]/g,'') ); }
+      );
+
+
+    $('.siguiente.uno').click(function() {
         
-        console.log('Tab1 show');
+        // Activa Validacion en Los inputs
+        $('#Granjas_id').blur();
+        $('#CampSensado_id_estacion').blur();
+        $('#CampSensado_id_responsable').blur();
+        $('#CampSensado_nombre_camp').blur();
+        $('#CampSensado_fecha_inicio').blur();
+        $('#CampSensado_fecha_fin').blur();
+        $('#CampSensado_hora_inicio').blur();
+        $('#CampSensado_hora_fin').blur();
+        validaGranjas();
 
-    });
-    $('div.bDos.fBoton.floatingbutton').click(function(){
-        $('[data-tab="3"]').addClass('hide');
-        console.log('Tab1 show');
-        $('[data-tab="2"]').removeClass('hide');
-        // $('.menuTabs div:nth-child(4)').removeClass('selected');
-        // $('.menuTabs div:nth-child(5)').removeClass('selected');
-        $('.menuTabs div:nth-child(6)').removeClass('selected');
-        $('.menuTabs div:nth-child(7)').removelass('selected');
-
-    });
-
-
-    $('#SolicitudesViaje_id_personal_1_chofer').chosen({placeholder_text_multiple: 'Seleccionar'});
-    $('#SolicitudesViaje_id_personal_1_tecnico').chosen({placeholder_text_multiple: 'Seleccionar'});
-    $('#Viajes_id_solicitudes').chosen({placeholder_text_multiple: 'Seleccionar'});
-    $('#Viajes_id_estacion').on('change', function()
-    {
-        var id = $(this).val();
-        if(id != '' && id != null)
-        {
-            $.ajax(
-            {
-                type: 'GET',
-                url: 'GetTanques',
-                dataType: 'JSON', 
-                data:
-                {
-                    id: id
-                },
-                success: function(data)
-                {
-                    $('.selectTanque').removeClass('hide');
-                    $('[data-tan] option').remove();
-                    $('[data-tan]').append('<option>Seleccionar</option>');
-                    $('[data-tan]').append(data);
-                    $('.tanqueNombre').each(function()
-                    {
-                        var id = $(this).attr('data-tanque');
-                        console.log(id);
-                        $('div.pedido select option[value="'+id+'"]').remove();
-                    });
-                    $('[data-tan]').on('change', function()
-                    {
-                        var num = $(this).val();
-                        var id = $(this).attr('id');
-                        var ide = $(this).attr('data-tan');
-                        if(num != 'Seleccionar')
-                        {
-                            var nuevo = valores[ide];
-                            $('[data-tan] option[value="'+nuevo+'"]').removeAttr('disabled');
-                            valores[ide] = num;
-                            $('[data-tan] option[value="'+num+'"]').attr('disabled','disabled');
-                            $('[id="'+id+'"] option[value="'+num+'"]').removeAttr('disabled');
-                        }
-                        else
-                        {
-                            var nuevo = valores[ide];
-                            $('[data-tan] option[value="'+nuevo+'"]').removeAttr('disabled');
-                            valores[ide] = '';
-                        }
-                    });
-                },
-                error: function(a, b, c)
-                {
-                    console.log(a, b, c);
-                }
-            });
-        }
-        else
-        {
-            $('.selectTanque').addClass('hide');
-        }
-    });
-    function checkInicio()
-    {
-        var id = $('#Viajes_id_estacion');
-        if(id != '' && id != null)
-        {
-            $('#Viajes_id_estacion').trigger('change');
-        }
-    }
-function ntanque(a){
-    console.log(a);
-    b=$('.ttan'+a+' option:selected').text();
-    $(".ntan"+a).html(' '+b);
-}
-$('.siguiente.uno').click(function() {
-
-    $('#Viajes_fecha_salida').blur();
-    $('#Viajes_hora_salida').blur();
-    $('#Viajes_id_responsable').blur();
- //   $('#Viajes_id_estacion').blur();
-
-    $('[data-tab="1"] select[multiple="multiple"]').each(function() {
-        if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
-            $(this).next('div.chosen-container').addClass("error");
-            $(this).closest('div').find('.errorMessage').show().html('Debe Seleccionar una persona');
-            $(this).next('div.chosen-container').removeClass("success");
-        } else {
-            $(this).closest('div').find('.errorMessage').hide().html('');
-            $(this).next('div.chosen-container').addClass("success");
-            $(this).next('div.chosen-container').removeClass("error");
-        }
-    });
-
-    var err = $('div').find('.error');
-
-    if (err.length > 0) {
-        return 0;
-
-    } else {
-        if (formSendViajes()) {
-            $('[data-tab="1"]').addClass('hide');
-            $('[data-tab="2"]').removeClass('hide');
-            $('.menuTabs div:nth-child(4)').addClass('selected');
-            $('.menuTabs div:nth-child(5)').addClass('selected');
-            $('.pedidoWraper').css('height', 'auto');
-        } else {
-            return 0;
-
-        }
-
-    }
-
-
-});
-
-
-$('.siguiente.dos').click(function() {
-    var a=(numElem = $('.ttan').size());
-    for (i = 0; i<a; i++) { 
-        console.log('pasdao a'+i);
-        ntanque(i+1);
-    }
-    $('.fsalida').html($('#Viajes_fecha_salida').val());
-    
-    if (formSendViajesTanque()) {
-        $('[data-tab="2"]').addClass('hide');
-        $('[data-tab="3"]').removeClass('hide');
-        $('.menuTabs div:nth-child(6)').addClass('selected');
-        $('.menuTabs div:nth-child(7)').addClass('selected');
-        $('.menuTabs div:nth-child(8)').addClass('selected');
-        $('.menuTabs div:nth-child(9)').addClass('selected');
-
-    } else {}
-
-});
-
-
-checkInicio();
-var h = 0;
-$('.pedidoWraper').each(function() {
-    var h2 = $(this).height();
-    if (h2 > h) {
-        h = h2;
-    }
-});
-$('.pedidoWraper').css('height', h + 14);
-});
-
-function formSendViajes(e) {
-
-
-    if ($("#Viajes_id_responsable option:selected").text() === "Seleccionar" || $("#Viajes_id_estacion option:selected").text() === "Seleccionar") {
-        return 0;
-    } else {
-        return 1;
-    }
-}
-
-
-
-
-
-function formSendViajesTanque(e) {
-
-
-    $('[data-tab="2"] select').each(function() {
-        if ($("option:selected", this).text() === "Seleccionar") {
-            $(this).parent().addClass("error");
-            $(this).parent().removeClass("success");
-        } else {
-            $(this).parent().addClass("success");
-            $(this).parent().removeClass("error");
-        }
-    });
-
-
-
-
-    var re = /Seleccionar/gi;
-    var str = $('.pedidosWraper').find('select option:selected').text();
-
-    if (str.search(re) == -1) {
-        return 1;
-    } else {
-        return 0;
-    }
-
-
-}
-
-
-
-function validaTanques() {
-    $(".selectTanque select").change(function() {
-
-        if ($("option:selected", this).text() === "Seleccionar") {
-            $(this).parent().addClass("error");
-            $(this).parent().removeClass("success");
-        } else {
-            $(this).parent().addClass("success");
-            $(this).parent().removeClass("error");
-        }
-
-    });
-}
-
-
-function validaTabUno() {
-
-    $('div.chosen-container').bind('DOMSubtreeModified', function(event) {
-        $('[data-tab="1"] select[multiple="multiple"]').each(function() {
-            if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
-                $(this).next('div.chosen-container').addClass("error");
-                $(this).closest('div').find('.errorMessage').show().html('Debe Seleccionar una persona');
-                $(this).next('div.chosen-container').removeClass("success");
-            } else {
-                $(this).closest('div').find('.errorMessage').hide().html('');
-                $(this).next('div.chosen-container').addClass("success");
-                $(this).next('div.chosen-container').removeClass("error");
-            }
+        //Listeners
+        $('select').on('change',function(){
+        validaGranjas();
         });
+
+        
+         
+        //Agrega un setTimeout de 0.5 segundos en espera de la respuesta de ajax
+        setTimeout(function(){ 
+             var err = $('div.formContainer1').find('.error');
+             console.log(err.length);
+               if (err.length > 0) {
+                return 0;
+            } else {
+                if (err.length == 0) {
+                    $('[data-tab="1"]').addClass('hide');
+                    $('[data-tab="2"]').removeClass('hide');
+                    $('.menuTabs div:nth-child(4)').addClass('selected');
+                    $('.menuTabs div:nth-child(5)').addClass('selected');
+                    $('.pedidoWraper').css('height', 'auto');
+                } else {
+                    return 0;
+
+                }
+
+            }
+
+         }, 500);
+
+
+
+      
+
+ 
+ 
+
     });
+
+
+
+
+});
+
+
+function validaGranjas(e) {
+    if ($("#Granjas_id option:selected").text() === "Seleccionar" || $("#Granjas_id option:selected").text() === "Seleccionar") {
+            $("#Granjas_id").parents('.row').addClass('error');
+
+    } else {
+          $("#Granjas_id").parents('.row').removeClass('error');
+    }
 }
 
-function launcher() {
-    validaTanques();
-    validaTabUno();
-}
 
 
-
-window.onload = launcher;

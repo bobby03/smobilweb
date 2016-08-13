@@ -4,14 +4,19 @@
 /* @var $form CActiveForm */
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+
+    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
+    $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
+
+   // $cs->registerScriptFile($baseUrl.'/js/campsensado/validacion.js');
+    $cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
+
+    // Javascript
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/plugins/chosen/assets2/js/chosen.jquery.min.js');
-    $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
-    $cs->registerScriptFile($baseUrl.'/js/campsensado/create.js');
-    $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
     $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
-    $cs->registerScriptFile($baseUrl.'/js/campsensado/validacion.js');
-    $cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
+    $cs->registerScriptFile($baseUrl.'/js/campsensado/create.js?='.rand());
+
 $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'camp-sensado-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -55,17 +60,17 @@ $form=$this->beginWidget('CActiveForm', array(
     </div>
     <div class="tab " data-tab="1">
 	     <div class="formContainer1">
-			<?php echo $form->errorSummary($model); ?>	
+		
 				<?php echo $form->hiddenField($model,'status', array('value' => '1')); ?>	
 
 			<div class="row">
 				<?php 
 					$grn = new Granjas;
+					echo $form->labelEx($model,'Granjas_nombre'); 
 				?>
-				<label for="Granjas_nombre" class="required">Granja: <span class="required">*</span></label>
 		        <span class="css-select-moz">
 		            <?php echo $form->dropDownList($grn,'id', $grn->getNombreGranjasConPlantas(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$grn->id));?>
-		            <?php echo $form->error($model,'id_responsable'); ?>
+		            <?php echo $form->error($model,'Granjas_nombre'); ?>
 		        </span>
 			</div>
 			<div class="row">
@@ -76,7 +81,7 @@ $form=$this->beginWidget('CActiveForm', array(
 					<?php echo $form->labelEx($model,'id_estacion'); ?>
 				<span class="css-select-moz">
 		            <?php echo $form->dropDownList($model,'id_estacion', array(), array('empty'=>'Seleccionar', 'disabled'=>'disabled'));?>
-		            <?php echo $form->error($model,'id_responsable'); ?>
+		            <?php echo $form->error($model,'id_estacion'); ?>
 		        </span>
 			</div>
 			<div class="row">
@@ -120,6 +125,7 @@ $form=$this->beginWidget('CActiveForm', array(
 			<div class="botonesWrapper">
 				<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
 	            <div class="siguiente uno">Siguiente</div>
+	           
             </div>
 
 		</div>
@@ -132,6 +138,7 @@ $form=$this->beginWidget('CActiveForm', array(
    		<div class="botonesWrapper2">
 	   		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
 	        <div class="siguiente dos">Siguiente</div>
+
         </div>
 
     </div>
