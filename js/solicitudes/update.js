@@ -122,22 +122,24 @@ $(document).ready(function()
             var cepaID      = parseInt($('[name="pedido['+id+'][cepa]"]').val());
             var cantidad    = parseInt($('[name="pedido['+id+'][cantidad]"]').val());
             var direccionID = parseInt($('[name="pedido['+id+'][destino]"]').val());
-            var tanques = parseInt($('[name="pedido['+id+'][tanques]"]').val());
-//            console.log(id, especieID, cepaID, cantidad, direccionID);
-            $('#Especie_id').val(especieID);
-            $('#Especie_id').trigger("change");
-            $('#Especie_id').trigger("chosen:updated");
-            $('#Cepa_id').val(cepaID);
-            $('#Cepa_id').trigger("change");
-            $('#Cepa_id').trigger("chosen:updated");
-            $('#Cepa_nombre_cepa_1_cantidad').val(cantidad);
-            $('#Cepa_nombre_cepa_1_cantidad').trigger("change");
-            $('#tanquesNO').val(tanques);
-            $('#ClientesDomicilio_domicilio').val(direccionID);
-            $('#ClientesDomicilio_domicilio').trigger("change");
-            $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-//            $('.row.direcciones .row.buttons').removeClass('hide');
-            $(this).closest('.pedidoViaje').remove();
+            var tanques     = parseInt($('[name="pedido['+id+'][tanques]"]').val());
+            if($.isNumeric(especieID))
+            {
+                $('#Especie_id').val(especieID);
+                $('#Especie_id').trigger("change");
+                $('#Especie_id').trigger("chosen:updated");
+                $('#Cepa_id').val(cepaID);
+                $('#Cepa_id').trigger("change");
+                $('#Cepa_id').trigger("chosen:updated");
+                $('#Cepa_nombre_cepa_1_cantidad').val(cantidad);
+                $('#Cepa_nombre_cepa_1_cantidad').trigger("change");
+                $('#tanquesNO').val(tanques);
+                $('#ClientesDomicilio_domicilio').val(direccionID);
+                $('#ClientesDomicilio_domicilio').trigger("change");
+                $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+    //            $('.row.direcciones .row.buttons').removeClass('hide');
+                $(this).closest('.pedidoViaje').remove();
+            }
         });
     }
     

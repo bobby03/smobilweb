@@ -169,25 +169,29 @@ $(document).ready(function()
         $('.editarPedido').click(function()
         {
             var id          = $(this).attr('data-id');
-            var especieID   = parseInt($('[name="especiePedido'+id+'"]').val());
-            var cepaID      = parseInt($('[name="cepaPedido'+id+'"]').val());
-            var cantidad    = parseInt($('[name="cantidadPedido'+id+'"]').val());
-            var direccionID = parseInt($('[name="destinoPedido'+id+'"]').val());
-            $('#Especie_id').val(especieID);
-            $('#Especie_id').trigger("change");
-            $('#Especie_id').trigger("chosen:updated");
-            $('#requerida input').val(cantidad);
-            $('#ClientesDomicilio_domicilio').val(direccionID);
-            $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-//            $(this).closest('.pedido').remove();
-            changeCepa(cepaID);
+            var especieID   = parseInt($('[name="pedido['+id+'][especie]"]').val());
+            var cepaID      = parseInt($('[name="pedido['+id+'][cepa]"]').val());
+            var cantidad    = parseInt($('[name="pedido['+id+'][cantidad]"]').val());
+            var direccionID = parseInt($('[name="pedido['+id+'][destino]"]').val());
+            var tanques     = parseInt($('[name="pedido['+id+'][tanques]"]').val());
+            if($.isNumeric(especieID))
+            {
+                $('#Especie_id').val(especieID);
+                $('#Especie_id').trigger("change");
+                $('#Especie_id').trigger("chosen:updated");
+                $('#Cepa_id').val(cepaID);
+                $('#Cepa_id').trigger("change");
+                $('#Cepa_id').trigger("chosen:updated");
+                $('#Cepa_nombre_cepa_1_cantidad').val(cantidad);
+                $('#Cepa_nombre_cepa_1_cantidad').trigger("change");
+                $('#tanquesNO').val(tanques);
+                $('#ClientesDomicilio_domicilio').val(direccionID);
+                $('#ClientesDomicilio_domicilio').trigger("change");
+                $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+    //            $('.row.direcciones .row.buttons').removeClass('hide');
+                $(this).closest('.pedidoViaje').remove();
+            }
         });
-    }
-    function changeCepa(cepaID)
-    {
-        $('#Cepa_id').val(cepaID);
-        $('#Cepa_id').trigger("change");
-        $('#Cepa_id').trigger("chosen:updated");
     }
     function countPedidos()
     {
