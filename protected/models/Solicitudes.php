@@ -71,13 +71,13 @@ class Solicitudes extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_clientes' => 'Cliente',
-			'codigo' => 'Codigo',
-			'fecha_alta' => 'Fecha Alta',
-			'hora_alta' => 'Hora Alta',
-			'fecha_estimada' => 'Fecha Estimada',
-			'hora_estimada' => 'Hora Estimada',
-			'fecha_entrega' => 'Fecha Entrega',
-			'hora_entrega' => 'Hora Entrega',
+			'codigo' => 'Código',
+			'fecha_alta' => 'Fecha alta',
+			'hora_alta' => 'Hora alta',
+			'fecha_estimada' => 'Fecha estimada',
+			'hora_estimada' => 'Hora estimada',
+			'fecha_entrega' => 'Fecha entrega',
+			'hora_entrega' => 'Hora entrega',
 			'notas' => 'Notas',
 		);
 	}
@@ -145,15 +145,19 @@ public function getSearchSolicitud(){
 		$criteria->compare('notas',$this->notas,true);*/
 		
   
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-
+        return new CActiveDataProvider($this, array(
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
+        ));
 	}
         public function searchStatus($id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
             $criteria=new CDbCriteria;
+            $criteria->compare('id', $this->id);
             $criteria->compare('id_clientes',$this->id_clientes);
             $criteria->compare('codigo',$this->codigo,true);
             $criteria->compare('fecha_alta',$this->fecha_alta,true);
@@ -221,6 +225,11 @@ public function getSearchSolicitud(){
         (
             array
             (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
+            array
+            (
                 'name'=>'id_clientes',
                 'value' => 'Clientes::model()->getCliente($data->id_clientes)',
                 'filter'=> Clientes::model()->getAllClientes()
@@ -269,6 +278,11 @@ public function getSearchSolicitud(){
     {
         return array
         (
+            array
+            (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
             array
             (
                 'name'=>'id_clientes',
@@ -321,6 +335,11 @@ public function getSearchSolicitud(){
         (
             array
             (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
+            array
+            (
                 'name'=>'id_clientes',
                 'value' => 'Clientes::model()->getCliente($data->id_clientes)',
                 'filter'=> Clientes::model()->getAllClientes()
@@ -369,6 +388,11 @@ public function getSearchSolicitud(){
     {
         return array
         (
+            array
+            (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
             array
             (
                 'name'=>'id_clientes',

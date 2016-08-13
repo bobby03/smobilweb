@@ -119,6 +119,11 @@ div.botonOtra
     text-align: center;
     width: 20%;
 }
+div.form {
+     margin-top: 0 !important;
+}
+
+
 div.form div.formContainer1 .row
 {
     margin-bottom: 20px;

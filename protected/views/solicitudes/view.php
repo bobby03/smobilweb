@@ -6,6 +6,7 @@
  $cs = Yii::app()->getClientScript();
  $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
  $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
+ $cs->registerCssFile($baseUrl.'/css/solicitudes/view.css');
 
 $this->breadcrumbs=array(
 	'Solicitudes'=>array('index'),
