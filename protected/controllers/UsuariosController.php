@@ -106,7 +106,7 @@ class UsuariosController extends Controller
 		$model=new Usuarios;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Usuarios']))
 		{
