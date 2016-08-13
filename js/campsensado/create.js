@@ -32,6 +32,23 @@ $(document).ready(function()
       );
 
 
+     $('.ValidaNum').bind('keyup blur',function(){ 
+        var node = $(this);
+        node.val(node.val().replace(/[^[0-9]/g,'') ); }
+      );
+
+
+
+
+
+
+
+
+
+    /*
+    * INICIA VALIDACION PASO 1
+    */
+
     $('.siguiente.uno').click(function() {
         
         // Activa Validacion en Los inputs
@@ -49,9 +66,7 @@ $(document).ready(function()
         $('select').on('change',function(){
         validaGranjas();
         });
-
         
-         
         //Agrega un setTimeout de 0.5 segundos en espera de la respuesta de ajax
         setTimeout(function(){ 
              var err = $('div.formContainer1').find('.error');
@@ -62,9 +77,9 @@ $(document).ready(function()
                 if (err.length == 0) {
                     $('[data-tab="1"]').addClass('hide');
                     $('[data-tab="2"]').removeClass('hide');
-                    $('.menuTabs div:nth-child(4)').addClass('selected');
+                   /* $('.menuTabs div:nth-child(4)').addClass('selected');
                     $('.menuTabs div:nth-child(5)').addClass('selected');
-                    $('.pedidoWraper').css('height', 'auto');
+                    $('.pedidoWraper').css('height', 'auto');*/
                 } else {
                     return 0;
 
@@ -73,30 +88,40 @@ $(document).ready(function()
             }
 
          }, 500);
-
-
-
-      
-
- 
- 
-
     });
+    /*
+    * TERMINA VALIDACION PASO 1
+    */
 
 
 
+
+    /*
+    *   INICIA VALIDACION PASO 2
+    *
+    *   Si el campo especie se encuentra seleccionado, valida el resto de los inputs
+    */
+
+    $("[data-tab='2']").bind("DOMSubtreeModified", function() {
+        $('[data-tab="2"] select.especie').each(function() {
+           if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+                 $(this).parents('.pedido').removeClass('valida');
+            } else { 
+                 $(this).parents('.pedido').addClass('valida');
+           }
+       });
+    });
 
 });
 
 
-function validaGranjas(e) {
-    if ($("#Granjas_id option:selected").text() === "Seleccionar" || $("#Granjas_id option:selected").text() === "Seleccionar") {
-            $("#Granjas_id").parents('.row').addClass('error');
 
+
+
+function validaGranjas(e) {
+    if ($("#Granjas_id option:selected").text() === "" || $("#Granjas_id option:selected").text() === "Seleccionar") {
+         $("#Granjas_id").parents('.row').addClass('error');
     } else {
           $("#Granjas_id").parents('.row').removeClass('error');
     }
 }
-
-
-

@@ -7,9 +7,7 @@
 
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
-
-   // $cs->registerScriptFile($baseUrl.'/js/campsensado/validacion.js');
-    $cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
+	$cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
 
     // Javascript
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
