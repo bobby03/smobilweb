@@ -5,7 +5,7 @@ div.tabs
 }
 div.tabs div.tab
 {
-    width: 125px;
+    width: 135px !important;
     float: left;
     padding: 5px 0;
     text-align: center;

@@ -1,9 +1,5 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
-?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
-<script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
-<?php
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js');
@@ -15,6 +11,11 @@
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/create.css');
+?>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
+<script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
+<?php
+    
     date_default_timezone_set("Pacific/Easter");
     $direcciones = new ClientesDomicilio();
     $this->widget('zii.widgets.jui.CJuiDatePicker',array

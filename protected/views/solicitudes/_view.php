@@ -1,6 +1,9 @@
 <?php
 /* @var $this SolicitudesController */
 /* @var $data Solicitudes */
+ $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/solicitudes/view.css');
 ?>
 
 <div class="view">

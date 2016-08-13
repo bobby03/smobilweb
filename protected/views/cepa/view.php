@@ -165,7 +165,7 @@ $this->breadcrumbs=array(
 						</div>
 					</div>
 						<div class="row buttons">
-							<a class="gBoton regresarCepa" href="<?php echo $baseUrl.'/especie';?>">Regresar</a> 
+							<a class="gBoton regresarCepa" href="<?php echo $baseUrl.'/cepa?id='.$model->id_especie;?>">Regresar</a> 
 						</div>
 				</div>
 	  		</span>
