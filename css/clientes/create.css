@@ -6,30 +6,32 @@
 div.form .row.buttons
 {
     width: 100%;
+    float:left;
 }
 
 a.cancelarDireccion {
     float: left;
     margin-left: 63px;
+    width: 135px;
+    font-size: 15px;
 }
 
 div.form input[type="submit"]
 {
-    float: right;
-    width: 185px !important;
-    font-size: 18px;
-    margin-right: 70px;
+    margin-left: 20px;
+    width: 135px !important;
+    font-size: 15px !important;
 }
 div.addDireccion 
 {
-    margin-left: 23%;
+    width: 135px;
+    font-size: 15px;
+    margin-left: 63px;
     float: left;
     background-color: #0077b0;
     border-radius: 5px;
     height: 35px;
     line-height: 35px;
-    font-size: 18px;
-    width: 185px;
     cursor: pointer;
     color: #FFFFFF;
     text-align: center;
