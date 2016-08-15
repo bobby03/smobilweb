@@ -107,17 +107,17 @@ body.roles .gBoton {
 }
 
 body.usuarios .gBoton {
-    width: 109px;
+    width: 135px;
     margin-left: 0px;
 }
 
 body.granjas .gBoton {
-    width: 109px;
+    width: 135px;
     margin-left: 0px;
 }
 
 body.estacion .gBoton {
-    width: 109px;
+    width: 135px;
     display: inline-block;
     height: 35px;
     right: 0px;
