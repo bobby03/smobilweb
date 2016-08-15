@@ -55,7 +55,9 @@ class Estacion extends CActiveRecord
                 'no_personal',
                 'numerical',
                 'integerOnly'=>true,
-                'message'=>'Solo se aceptan numeros'),
+                'message'=>'Solo se aceptan numeros',
+                'min'=>1,
+                'tooSmall'=> 'Esta campo debe ser una capacidad mayor a cero ( 0 )'),
 
 
             array('marca','required','message'=>'Este campo es obligatorio'),
