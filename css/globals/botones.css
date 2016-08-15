@@ -11,7 +11,7 @@
     margin-left: 63px;
     text-align: center;
     text-decoration: none;
-    width: 185px;
+    width: 135px;
 }
 .gBoton:hover
 {
@@ -100,7 +100,7 @@ body.personal .gBoton {
 }
 
 body.roles .gBoton {
-    width: 109px;
+    width: 135px;
     margin-left: 0px;
 }
 

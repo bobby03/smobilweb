@@ -41,13 +41,13 @@ div.formContainer1 div.separador div div.botonTodos {
 }
 
 body.roles div.row.buttons {
-    width: 250px;
+    width: 300px;
     text-align: right;
 }
 
 body.roles div.form input[type="submit"] {
     position: relative;
-    width: 107px;
+    width: 135px;
     margin-left: 20px;
     /*font-size: 15px !Important;*/
     height: 35px;

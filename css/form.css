@@ -203,12 +203,13 @@ div.formContainer1 div.separador > div {
 }
 
 div.formContainer1 div.separador div div.botonTodos {
-    height: 22px;
+    
     background-color: #1178AF;
     color: white;
     line-height: 22px;
     font-size: 14px;
-    width: 100px;
+    width: 135px;
+    height: 35px;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
