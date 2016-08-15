@@ -39,7 +39,7 @@ class CampSensado extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_responsable, id_estacion', 'required'),
+			array('id_responsable, id_estacion','required'),
 			array('id_responsable, id_estacion, status, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre_camp', 'length', 'max'=>45),
 			//array('fecha_inicio,fecha_fin', 'safe'),
@@ -48,6 +48,7 @@ class CampSensado extends CActiveRecord
 			array('fecha_fin','required','message'=>'Debe especificar una fecha'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
+
 			array('id, id_responsable, id_estacion, nombre_camp, fecha_inicio, , fecha_fin, status, activo', 'safe', 'on'=>'search'),
 
      		array('hora_fin','required','message'=>'Este campo es obligatorio'),
@@ -56,7 +57,7 @@ class CampSensado extends CActiveRecord
                 'match',
                 'pattern'=>"/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/",
                 'message'=>'Formato de Hora no valido'),
-    	 array('hora_inicio','required','message'=>'Este campo es obligatorio'),
+    		 array('hora_inicio','required','message'=>'Este campo es obligatorio'),
  			array(
                 'hora_inicio',
                 'match',

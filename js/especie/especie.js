@@ -13,7 +13,7 @@ $(document).ready(function()
                 <input id="ingesp" class="ingesp" type="text">\n\
                 <div class="botones-content">\n\
                     <a class="gBoton" href="">Cancelar</a> \n\
-                    <div class="btnadd">Agregar</div>\n\
+                    <div class="btnadd gBoton">Agregar</div>\n\
                 </div>\n\
                 <script>UpperCaseInput();</script>\n\
             </div>';

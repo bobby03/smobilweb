@@ -1138,3 +1138,21 @@ REQUEST_URI=/SmobilWeb/viajes/create
 in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\_form.php (148)
 in C:\xampp\htdocs\SmobilWeb\protected\views\viajes\create.php (19)
 in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (680)
+2016/08/15 07:42:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/clientes/cliente.css".' in C:\Users\LAB-DES-03\Documents\GitHub\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Users\LAB-DES-03\Documents\GitHub\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\Users\LAB-DES-03\Documents\GitHub\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\Users\LAB-DES-03\Documents\GitHub\smobilweb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/clientes/cliente.css
+HTTP_REFERER=http://smobileweb.local/clientes
+---
+2016/08/15 07:44:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/clientes/cliente.css".' in C:\Users\LAB-DES-03\Documents\GitHub\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Users\LAB-DES-03\Documents\GitHub\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\Users\LAB-DES-03\Documents\GitHub\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\Users\LAB-DES-03\Documents\GitHub\smobilweb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/clientes/cliente.css
+HTTP_REFERER=http://smobileweb.local/clientes
+---

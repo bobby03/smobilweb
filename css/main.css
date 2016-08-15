@@ -699,7 +699,7 @@ table.detail-view th {
     font-weight: bold;
     width: 50px;
     margin-left: 33px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .btnadd {
@@ -710,7 +710,7 @@ table.detail-view th {
     -webkit-border-radius: 5px 5px 5px 5px;
     background-color: #0077b0;
     color: white;
-    width: 100px;
+    width: 135px;
     height: 34px;
     border: 0px solid white;
     cursor: pointer;
