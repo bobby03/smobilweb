@@ -95,7 +95,9 @@ a.gBoton:hover {
 }
 
 body.personal .gBoton {
-    width: 109px;
+    width: 135px;
+    height: 35px
+    line-height:35px;
     margin-left: 0px;
 }
 
@@ -123,22 +125,22 @@ body.estacion .gBoton {
   }
 
 body.CampSensado .gBoton {
-    height: 40px;
-    width: 120px;
+    height: 35px;
+    width: 135px;
+    line-height: 35px;
     font-size: 13px;
     margin-left: 0 !important;
-    line-height: 40px;
     float: none !important;
     display: inline-block;
     margin-right: 30px;
 }
 
 body.viajes .gBoton {
-    height: 40px;
-    width: 120px;
+    height: 35px;
+    width: 135px;
+    line-height: 35px;
     font-size: 18px;
     margin-left: 0 !important;
-    line-height: 40px;
     float: none !important;
     display: inline-block;
     margin-right: 30px;
