@@ -168,7 +168,7 @@
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
                                 <span>min</span>
-								<?php echo $form->numberField($model,'orp_min',array('value'=>'0.00'));
+								<?php echo $form->numberField($model,'orp_min');
 								echo $form->error($model,'orp_min'); ?>
 
 							</div>	
@@ -178,7 +178,7 @@
 					<div class="row">
 						<div class="form-cSmall">
                                  <span>max</span>
-								<?php echo $form->numberField($model,'orp_max',array('value'=>'0.00'));
+								<?php echo $form->numberField($model,'orp_max');
 								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
