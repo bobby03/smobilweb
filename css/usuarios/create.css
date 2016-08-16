@@ -11,11 +11,12 @@ div.form-containerWraper:after
 div.containerbutton{
     margin-top: 20px;
     float: right;
+    width: 300px;
 }
 
 body.usuarios div.form input[type="submit"]{
     position: relative;
-    width: 107px;
+    width: 135px;
     margin-left: 20px;
     font-size: 15px !Important;
 }

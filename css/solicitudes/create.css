@@ -35,6 +35,7 @@ div.formContainer2 div.wraper
     padding: 10px;
     position: relative;
     width: 100%;
+    font-size: 15px;
 }
 div.fechaYora
 {
@@ -118,9 +119,6 @@ div.botonOtra
     line-height: 30px;
     text-align: center;
     width: 20%;
-}
-div.form {
-     margin-top: 0 !important;
 }
 
 

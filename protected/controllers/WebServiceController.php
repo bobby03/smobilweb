@@ -318,6 +318,7 @@ class WebServiceController extends Controller
                     ->from('solicitudes s')
                     ->join('solicitudes_viaje sv','sv.id_solicitud = s.id')
                     ->where('sv.id_viaje = :id',array(':id'=>$VDvalue['id']))
+                    ->andWhere('sv.id_solicitud = :idS',array(':idS'=>$VDvalue['id_solicitudes']))
                     ->queryAll();
                 // print_r($sols);
                 
@@ -337,18 +338,20 @@ class WebServiceController extends Controller
                         ->join('solicitudes_viaje sv','sv.id_solicitud = st.id_solicitud')
                         ->join('especie e','e.id = c.id_especie')
                         ->where('st.id_solicitud =:idS',array(':idS'=>$Solsvalue['id']))
+                        ->andWhere('sv.id_viaje = :idV',array(':idV'=>$VDvalue['id']))
                         ->queryAll();
-                    // print_r($tanks);
+
                     //-----End Solicitud_tanques
                     // to check
                   
                   $solTemp[] = array(
-                            'codigo'=>$Solsvalue['codigo'],
-                            'fecha_alta'=>$Solsvalue['fecha_alta'],
-                            'fecha_estimada'=>$Solsvalue['fecha_estimada'],
-                            'notas'=>$Solsvalue['notas'],
-                            'tanques'=>$tanks,
-                            );
+                        'IDSol'=>$VDvalue['id_solicitudes'],
+                        'codigo'=>$Solsvalue['codigo'],
+                        'fecha_alta'=>$Solsvalue['fecha_alta'],
+                        'fecha_estimada'=>$Solsvalue['fecha_estimada'],
+                        'notas'=>$Solsvalue['notas'],
+                        'tanques'=>$tanks,
+                    );
 
                 }
     

@@ -13,7 +13,7 @@ $(document).ready(function()
                 <input id="ingesp" class="ingesp" type="text">\n\
                 <div class="botones-content">\n\
                     <a class="gBoton" href="">Cancelar</a> \n\
-                    <div class="btnadd">Agregar</div>\n\
+                    <div class="btnadd gBoton">Agregar</div>\n\
                 </div>\n\
                 <script>UpperCaseInput();</script>\n\
             </div>';
@@ -27,6 +27,9 @@ $(document).ready(function()
 
                 $('.btnadd').click(function()
                 {
+
+
+                    if(validField()){
                     var especie = $('#ingesp').val();
                     $.ajax(
                     {
@@ -47,6 +50,7 @@ $(document).ready(function()
                             
                         }
                     });
+                }
                 });
             }
         });
@@ -84,14 +88,12 @@ $(document).ready(function()
             onComplete: function()
             {        
             
+
                 $('.btnUpdate').click(function()
                 {
        
+        if(validField()){
                     var val = $('#ingesp').val();
-                    val = val.toLowerCase().replace(/\b[a-z]/g, function(letter) 
-                    {
-                        return letter.toUpperCase();
-                    }); 
                     $('#ingesp').val(val);
                     var especie = $('#ingesp').val();
                     $.ajax(
@@ -114,6 +116,11 @@ $(document).ready(function()
                             
                         }
                     });
+}
+                   
+
+
+
                 });
             }
         });
@@ -126,11 +133,28 @@ $(document).ready(function()
 });
 
 function UpperCaseInput(){
-       $('#ingesp').on('keyup', function(event) {
-        $(this).val(function(i, v){
-            return v.replace(/[a-zA-z]/, function(c){
-               return c.toUpperCase();
-            })
-        })
+
+      $('#ingesp').bind('keyup',function(){ 
+        var node = $(this);
+        node.val(node.val().replace(/^\s+[a-zA-záéíóúñÁÉÍÓÚÑ ]/g,'') ); 
+        node.val(capitalizeFirstLetter(node.val()));
     });
+
 }
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function validField(){
+    var e=0;
+    if($('#ingesp').val()==''){
+        e=0;
+    }else {
+        e=1;
+    }
+return e;
+}
+
+

@@ -33,34 +33,6 @@ $(document).ready(function()
                     },
                     async: false
                 }).responseText);
-//                $.ajax(
-//                {
-//                    type:'GET',
-//                    url: 'GetIdCliente',
-//                    dataType: 'JSON',
-//                    data: 
-//                    {
-//                        s: sol[i]
-//                    },
-//                    success: function(data) 
-//                    {
-//                        if(data != null)
-//                        {
-////                            for(var j = 0; j< data.length; j++)
-////                            {
-////                                totalTanque = totalTanque + parseInt(data[j].tanques);
-////                                pedidos[pedidos.length] = data[j];
-//                                dataAjax = data;
-////                            }
-//        //                    $('.hiden-input').val(data.html);
-//        //                    $('.hiden-input-id').val(sol);
-//        //                    $('.hiden-input-notas').val(data.nota);
-//                        }
-//                    },
-//                    error: function(a,b,c) 
-//                    {    
-//                    }
-//                });
                 for(var j = 0; j< dataAjax.length; j++)
                 {
                     totalTanque = totalTanque + parseInt(dataAjax[j].tanques);
@@ -93,60 +65,66 @@ $(document).ready(function()
     {
         var solicitud = $('#Viajes_id_solicitudes').val();
         var camion = $('#Viajes_id_estacion').val();
+        var respuesta = {k:{}};
         $('.pedidosWraper').empty();
-        var contador;
         for(var i =0; i < solicitud.length; i++)
+            respuesta.k[i] = solicitud[i];
+        respuesta = JSON.stringify(respuesta);
+        $.ajax(
         {
-            if(i == 0)
-                contador = 1;
-            else
-                contador = dataAjax.total;
-            var id = solicitud[i];
-            dataAjax = $.parseJSON($.ajax(
+            type:'GET',
+            url: 'GetTanquesConSolicitud',
+            dataType: 'JSON',
+            data: 
             {
-                type:'GET',
-                url: 'GetTanquesConSolicitud',
-                dataType: 'JSON',
-                data: 
-                {
-                    solicitud: id,
-                    camion: camion,
-                    i: contador
-                },
-                async: false
-            }).responseText);
-            $('.pedidosWraper').append(dataAjax.html);
-            validateChangesTanque();
-        }
+                solicitud: respuesta,
+                camion: camion
+            },
+            success: function(data)
+            {
+                $('.pedidosWraper').append(data.html);
+                validateChangesTanque();
+            },
+            error: function(a,b,c)
+            {
+                console.log(a,b,c);
+            }
+        });
     });
     $('.siguiente.dos').on('click', function() 
     {
-        var solicitud = $('#Viajes_id_solicitudes').val();
-//        var camion = $('#Viajes_id_estacion').val();
-        var fecha = $('#Viajes_fecha_salida').val();
-//        $('.inner-third-wrapper').empty();
-        for(var i =0; i < solicitud.length; i++)
+//        var solicitud = $('#Viajes_id_solicitudes').val();
+        var total = 0;
+        $('.pedido').each(function()
         {
-            var id = solicitud[i];
-            $.ajax(
+            total++;
+        });
+        var fecha = $('#Viajes_fecha_salida').val();
+        for(var i =0; i < total; i++)
+        {
+            var tanque = $('[name="Solicitudes[codigo]['+(i+1)+'][id_tanque]"').val();
+            var seleccion = $('[name="Solicitudes[codigo]['+(i+1)+'][tanque]"').val();
+            if(seleccion != '')
             {
-                type:'GET',
-                url: 'GetResumenViaje',
-                dataType: 'JSON',
-                data: 
+                var solicit = seleccion.split(":",1);
+                $.ajax(
                 {
-                    solicitud: id,
-//                    camion: camion,
-                    tanque: valores[i+1]
-//                    fecha: fecha
-                },
-                async: false,
-                success: function(dataAjax)
-                {
-                    $('.inner-third-wrapper').append(dataAjax.html);
-                    $('.fsalida').text(fecha);
-                }
-            });
+                    type:'GET',
+                    url: 'GetResumenViaje',
+                    dataType: 'JSON',
+                    data: 
+                    {
+                        pedido: solicit[0],
+                        tanque: tanque
+                    },
+                    async: false,
+                    success: function(dataAjax)
+                    {
+                        $('.inner-third-wrapper').append(dataAjax.html);
+                        $('.fsalida').text(fecha);
+                    }
+                });
+            }
         }
     });
 

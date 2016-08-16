@@ -7,6 +7,8 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
+//$nombres=CepaController::getNombres($this->id_estacion);
+//print_r($nombres);
 ?>
 
 <h1>Crear  Cepa</h1>

@@ -34,7 +34,7 @@ $(document).ready(function()
                     <div class="errorMessage" id="Tanque_capacidad_em_" style="display:none"></div>\n\
                     </div>\n\
                 </div>';
-        $('.allTanques').append(campo);
+        $('.allTanques').prepend(campo);
 //        $('.allTanques').children().last().attr('data-id', total);
 //        $('.allTanques').children().last().children('input[type="hidden"]').remove();
 //        $('.allTanques').children().last().children('.row.cap').children('input')
@@ -50,6 +50,7 @@ $(document).ready(function()
 //        $('.allTanques').children().last().children('.row.sta').remove();
 //        $('.allTanques').children().last().children('.row.act').remove();
         borrarTanque();
+        validator();
     });
     $('.tab').click(function()
     {
@@ -86,32 +87,36 @@ $(document).ready(function()
      {
         window.location.href = "../../";
     });
-    $('.row.nom input').keyup(function()
+    function validator()
     {
-        var nombre = $(this).val();
-        var div = $(this);
-        div.addClass('noCheck');
-        flag = true;
-        $('.row.nom input').each(function()
+        $('.row.nom input').keyup(function()
         {
-            if(!$(this).hasClass('noCheck'))
+            var nombre = $(this).val();
+            var div = $(this);
+            div.addClass('noCheck');
+            flag = true;
+            $('.row.nom input').each(function()
             {
-                var nombre2 = $(this).val();
-                if(nombre2 == nombre)
+                if(!$(this).hasClass('noCheck'))
                 {
-                    div.addClass('error');
-                    div.siblings('.errorMessage').show().text('Ese nombre ya existe');
-                    flag = false;
+                    var nombre2 = $(this).val();
+                    if(nombre2 == nombre)
+                    {
+                        div.addClass('error');
+                        div.siblings('.errorMessage').show().text('Ese nombre ya existe');
+                        flag = false;
+                    }
                 }
+            });
+            div.removeClass('noCheck');
+            if(flag)
+            {
+                $('.row.nom input').removeClass('error');
+                div.siblings('.errorMessage').hide();
             }
         });
-        div.removeClass('noCheck');
-        if(flag)
-        {
-            $('.row.nom input').removeClass('error');
-            div.siblings('.errorMessage').hide();
-        }
-    });
+    }
+    validator();
     $('input[type="submit"]').click(function(evt)
     {
         if(flag == false)
