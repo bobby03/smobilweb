@@ -191,10 +191,10 @@ eof;
             </div>
         </div>
         <div class="botones hide">
-            <div class="continuar">Continuar</div>
+            <!--<div class="continuar">Continuar</div>-->
             <div class="guardar">Guardar</div>
         </div>
-        <div class="row crearViaje hide">
+<!--        <div class="row crearViaje hide">
             <div class="viajes">
                 <?php $this->getViajes();?>
             </div>
@@ -202,7 +202,7 @@ eof;
                 $contenedores = Estacion::model()->findAll('disponible = 1 AND activo = 1 AND tipo = 1');
                 if(count($contenedores)>0)
                     echo CHtml::submitButton($model->isNewRecord ? 'Crear nuevo viaje' : 'Crear nuevo viaje'); ?>
-        </div>
+        </div>-->
     </div>
 <?php $this->endWidget(); ?>
 

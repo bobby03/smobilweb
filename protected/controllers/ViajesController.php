@@ -2,13 +2,12 @@
 
 class ViajesController extends Controller
 {
-	/**
+    /**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
     public $layout='//layouts/column2';
-
-	/**
+    /**
 	 * @return array action filters
 	 */
     public function filters()
@@ -156,9 +155,9 @@ EOF;
         $Tanque = Tanque::model();
         $Domicilio = ClientesDomicilio::model();
         $Especie = Especie::model();
-        $Cepa = Cepa::model();
         $pedido = Pedidos::model()->findByPk($pedido);
         $solicitud = Solicitudes::model()->findByPk($pedido->id_solicitud);
+        $cepa = Cepa::model()->findByPk($pedido->id_cepa);
         $cliente = Clientes::model()->findByPk($solicitud->id_clientes);
         $data['id_cliente'] = $cliente->id;
         $html = <<<EOF
@@ -169,10 +168,10 @@ EOF;
                 </div>
                 <div id='vc1' class='vbox'>
                     <div class='left'>
-                        <p id='vtitulo'>$cliente->nombre_empresa</p>
-                        <p><span class='vresalta'>RFC: $cliente->rfc</span></p>
-                        <p><span class='vresalta'>Contacto: $cliente->nombre_contacto $cliente->apellido_contacto;</span></p>
-                        <p><span class='vresalta'>Domicilio de entrega: {$Domicilio->getDomicilio($data->id_direccion)}</span></br></p>
+                        <p id='vtitulo'>Cliente: <span style="color: #000000">$cliente->nombre_empresa</span></p>
+                        <p><span class='vresalta'>RFC: </span>$cliente->rfc</p>
+                        <p><span class='vresalta'>Contacto: </span>$cliente->nombre_contacto $cliente->apellido_contacto</p>
+                        <p><span class='vresalta'>Domicilio de entrega: </span></br>{$Domicilio->getDomicilio($pedido->id_direccion)}</p>
                     </div>
                     <div class='right'>
                         <p><span class='vresalta'>Fecha de salida: </span> <span class='fsalida'></span></p>
@@ -182,47 +181,25 @@ EOF;
                     <div class='headerT'>Datos de la especie</div>
                 </div>
                 <div id='vc2'>
-                    <p><span class='vresalta'>Especie: {$Especie->getEspecie($data->id_especie)}</span></p>
-                    <p><span class='vresalta'>No. Organismos:</span> ";
-            if($data->tanques >=1) {
-                $total = $data->cantidad/$data->tanques;
-            }
-            else {
-                $total = 'revisar tanques';
-            }
-
-            $html.=$total;
-            $html.="</p>
-            <table id='vcont'>
-                <tr class='pf'>
-                    <th class='pc'></th><th>Mínima</th><th>Máxima</th>
-                </tr>
-                <tr>";
-
-                $cepa=Cepa::model()->getCepa1($data->id_cepa);
-                $html .="
-                    <th class='pc'>Temperatura (Temp)</th><th> {$cepa->temp_min}</th><th>{$cepa->temp_max}</th>
-                </tr>
-                <tr>
-                    <th class='pc'>PH (ph)</th><th>{$cepa->ph_min}</th><th>{$cepa->ph_max}</th>
-                </tr>
-                <tr>
-                    <th class='pc'>Oxígeno (O)</th><th> {$cepa->ox_min}</th><th>{$cepa->ox_min}</th>
-                </tr>
-            </table>
+                    <p><span class='vresalta'>Especie: </span>{$Especie->getEspecie($pedido->id_especie)}</p>
+                    <p><span class='vresalta'>No. Organismos: </span>$pedido->cantidad</p>
+                <table id='vcont'>
+                    <tr class='pf'>
+                        <th class='pc'></th><th>Mínima</th><th>Máxima</th>
+                    </tr>
+                    <tr>
+                        <th class='pc'>Temperatura (Temp)</th><th> {$cepa->temp_min}</th><th>{$cepa->temp_max}</th>
+                    </tr>
+                    <tr>
+                        <th class='pc'>PH (ph)</th><th>{$cepa->ph_min}</th><th>{$cepa->ph_max}</th>
+                    </tr>
+                    <tr>
+                        <th class='pc'>Oxígeno (O)</th><th> {$cepa->ox_min}</th><th>{$cepa->ox_min}</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-
-    <div class='row buttons floating'>";
-
-    if($o==1)
-    {
-        $html.= '<input type="submit" name="yt0" value="Finalizar" />';
-//                    $html.= '<div class="bDos fBoton floatingbutton" >Regresar</div>';
-        $html.= '<div class="fBoton floatingbutton" >Cancelar</div>';
-    }
-    $html .=" </div>
-     </div>";
 EOF;
         $data = array();
         $data['cliente'] = $cliente;
@@ -411,29 +388,29 @@ EOF;
             $haypost = true;
             $model->attributes = $_POST['Viajes'];
             $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-//            if(isset($_POST['Solicitudes']['id_clientes']))
-//                if($_POST['Solicitudes']['id_clientes'] != '' && $_POST['Solicitudes']['id_clientes'] != null)
-//                    $solicitudes->id = $_POST['Solicitudes']['id'];
-//            $solicitudes->id_clientes = $_POST['Solicitudes']['id_clientes'];
-//            $solicitudes->notas = $_POST['Solicitudes']['notas'];
-//            $solicitudes->fecha_alta = date('Y-m-d');
-//            $solicitudes->hora_alta = date('h:i');
-//            $solicitudes->fecha_estimada = $model->fecha_salida;
-//            $solicitudes->hora_estimada = $model->hora_salida;
-//            $codigo = substr(Clientes::model()->getCliente($solicitudes->id_clientes),0,2);
-//            $codigo = $codigo.date('Ymdhi');
-//            $solicitudes->codigo = $codigo;
-//            $solicitudes->status = 1;
-//            if($solicitudes->id != '' && $solicitudes->id != null)
-//            {
-//                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $solicitudes->id")->execute();
-//                $update = Yii::app()->db->createCommand()->update('solicitudes',$solicitudes->attributes,"id = $solicitudes->id");
-//            }
-//            else
-//            {
-//                $solicitudes->save();
-//                $solicitudes->id = Yii::app()->db->getLastInsertID();
-//            }
+            if(isset($_POST['Solicitudes']['id_clientes']))
+                if($_POST['Solicitudes']['id_clientes'] != '' && $_POST['Solicitudes']['id_clientes'] != null)
+                    $solicitudes->id = $_POST['Solicitudes']['id'];
+            $solicitudes->id_clientes = $_POST['Solicitudes']['id_clientes'];
+            $solicitudes->notas = $_POST['Solicitudes']['notas'];
+            $solicitudes->fecha_alta = date('Y-m-d');
+            $solicitudes->hora_alta = date('h:i');
+            $solicitudes->fecha_estimada = $model->fecha_salida;
+            $solicitudes->hora_estimada = $model->hora_salida;
+            $codigo = substr(Clientes::model()->getCliente($solicitudes->id_clientes),0,2);
+            $codigo = $codigo.date('Ymdhi');
+            $solicitudes->codigo = $codigo;
+            $solicitudes->status = 1;
+            if($solicitudes->id != '' && $solicitudes->id != null)
+            {
+                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $solicitudes->id")->execute();
+                $update = Yii::app()->db->createCommand()->update('solicitudes',$solicitudes->attributes,"id = $solicitudes->id");
+            }
+            else
+            {
+                $solicitudes->save();
+                $solicitudes->id = Yii::app()->db->getLastInsertID();
+            }
             if(isset($_POST['NuevoRecord']))
             {
                 $isNewRecord = false;
@@ -620,7 +597,82 @@ EOF;
         $solicitudes = new Solicitudes();
         $personal = new SolicitudesViaje();
         if(isset($_POST['Viajes']))
-            print_r($_POST);
+        {
+            $model->attributes = $_POST['Viajes'];
+            $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+            $model->id_solicitudes = $_POST['Viajes']['id_solicitudes'][0];
+            $model->status = 1;
+            if($model->save())
+            {
+                foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
+                {
+                    $nuevo = new SolicitudesViaje();
+                    $nuevo->id_personal = $data;
+                    $nuevo->id_viaje = $model->id;
+                    $nuevo->id_solicitud = $model->id_solicitudes;
+                    $nuevo->save();
+                }
+                foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                {
+                    $nuevo = new SolicitudesViaje();
+                    $nuevo->id_personal = $data;
+                    $nuevo->id_viaje = $model->id;
+                    $nuevo->id_solicitud = $model->id_solicitudes;
+                    $nuevo->save();
+                }
+                foreach($_POST['Solicitudes']['codigo'] as $data)
+                {
+                    $nuevo = new SolicitudTanques();
+                    if(isset($data['tanque']) && $data['tanque'] != '')
+                    {
+                        $id = explode(':',$data['tanque']);
+                        $pedido = Pedidos:: model()->findByPk($id[0]);
+                        $nuevo->id_solicitud = $pedido->id_solicitud;
+                        $nuevo->id_tanque = $id[0];
+                        $nuevo->id_domicilio = $pedido->id_direccion;
+                        $nuevo->id_cepas = $pedido->id_cepa;
+                        if($pedido->tanques > 0)
+                            $nuevo->cantidad_cepas = $pedido->cantidad / $pedido->tanques;
+                        else
+                            $nuevo->cantidad_cepas = $pedido->cantidad;
+                        $nuevo->save();
+                    }
+                }
+                if(isset($_POST['Viajes']['id_solicitudes']))
+                {
+                    $i = 0;
+                    foreach($_POST['Viajes']['id_solicitudes'] as $data)
+                    {
+                        if($i > 0)
+                        {
+                            $nuevo = new SolicitudesViaje();
+                            $nuevo->id_personal = 0;
+                            $nuevo->id_viaje = $model->id;
+                            $nuevo->id_solicitud = $data;
+                            $nuevo->save();
+                        }
+                        $solicitud = Solicitudes::model()->findByPk($data);
+                        $solicitud->status = 1;
+                        $solicitud->fecha_estimada = $model->fecha_salida;
+                        $solicitud->hora_estimada = $model->hora_salida;
+                        if($solicitud->save())
+                        {
+                            $pedido = Pedidos::model()->findAll("id_solicitud = $solicitud->id");
+                            foreach ($pedido as $data2)
+                            {
+                                $delete = Yii::app()->db->createCommand("DELETE from pedidos WHERE id = {$data2['id']}")->execute();
+                            }
+                        }
+                        $i++;
+                    }
+                }
+                $estacion = Estacion::model()->findByPk($model->id_estacion);
+                $estacion->disponible = 2;
+                if($estacion->save())
+                    $this->redirect(array('index'));
+            }
+        }
+//            print_r($_POST);
         $this->render('crear',array
         (
             'model' =>$model,

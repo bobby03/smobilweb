@@ -204,7 +204,7 @@ class ClientesController extends Controller
                         }
                         $update->save();
                     }
-                    $this->redirect(array('index'));
+                    $this->redirect(array('clientes/index'));
                 }
                 else
                 {
