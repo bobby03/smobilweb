@@ -40,10 +40,10 @@ body.especie div.row.titulos{
 
 
 .ingesp{
-    height: 20px;
-    width: 260px;
+    height: 35px;
+    width: 335px;
     margin-left:33px;
-    margin-top: 10px;
+    margin-top: 15px;
     min-height: 30px;
     border: 2px solid #0077b0;
     border-radius: 5px;
@@ -54,10 +54,10 @@ body.especie div.row.titulos{
 }
 
 body.especie .botones-content .gBoton{
-        width: 100px;
+        width: 135px;
         padding: 2px;
-        height: 30px;
-        margin-left: 15px;
+        height: 35px;
+        margin-left: 33px;
         display: inline-block;
 }
 
@@ -73,6 +73,6 @@ body.especie div.form input[type="submit"]{
 
 body.especie .btnadd{
     float:right;
-      margin-right: 20px;
+      margin-right: 33px;
       font-size: 18px;
 }

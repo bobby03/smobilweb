@@ -257,10 +257,11 @@ div.lineaGandre {
     color: #FFFFFF;
     background-color: #0077B0;
     border-radius: 5px;
-    width: 120px;
-    line-height: 40px;
+    width: 135px;
+    line-height: 35px;
     text-align: center;
     cursor: pointer;
+    height: 35px;
 }
 
 div.pedidosWraper:after,
