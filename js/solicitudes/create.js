@@ -129,8 +129,6 @@ $(document).ready(function()
     /* Validación Números tanques */
     $('#tanquesNO').on('change', function()
     {
-        console.log('TanquesNO');
-        // $('.noTanques input').val('');
         $('.row.cantidad').removeClass('hide');
         $('.noTanques input').change(function()
         {

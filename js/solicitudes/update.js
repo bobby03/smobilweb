@@ -145,7 +145,6 @@ $(document).ready(function()
     /* Validación Números tanques */
     $('#tanquesNO').on('change', function()
     {
-        console.log('TanquesNO');
         // $('.noTanques input').val('');
         $('.row.cantidad').removeClass('hide');
         $('.noTanques input').change(function()
@@ -164,12 +163,11 @@ $(document).ready(function()
         {
             if(cantidad < 0){
                 $('#tanquesNO').val(1);
-
             }
             // $('.row.direcciones').removeClass('hide');
         }
-        // else
-        //     $('.row.direcciones').addClass('hide');
+        else
+            $('.row.direcciones').addClass('hide');
     }
     /* ----- */
     

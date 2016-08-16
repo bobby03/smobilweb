@@ -6,7 +6,7 @@ $(document).ready(function()
         var nuevoMapa = $('.allMapa[data-id="1"]').clone();
         $('.row.mapa').append(nuevoMapa);
         noMap = parseInt(noMap) + 1;
-        $('.row.mapa').children().last('allMapa').attr('data-id', noMap);
+        $('.row.mapa').children().first('allMapa').attr('data-id', noMap);
         $('.allMapa[data-id="'+noMap+'"]').children('#map').attr('data-map', noMap);
         $('.allMapa[data-id="'+noMap+'"]').children('#map').empty();
         $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][domicilio]');
