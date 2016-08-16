@@ -142,6 +142,36 @@ $(document).ready(function()
             }
         });
     }
+    /* Validación Números tanques */
+    $('#tanquesNO').on('change', function()
+    {
+        console.log('TanquesNO');
+        // $('.noTanques input').val('');
+        $('.row.cantidad').removeClass('hide');
+        $('.noTanques input').change(function()
+        {
+           validacionCantidadTanques();
+        });
+        $('.noTanques input').keyup(function()
+        {
+           validacionCantidadTanques();
+        });
+    });
+    function validacionCantidadTanques()
+    {
+        var cantidad = $('#tanquesNO').val();
+        if(cantidad != '' && cantidad != null)
+        {
+            if(cantidad < 0){
+                $('#tanquesNO').val(1);
+
+            }
+            // $('.row.direcciones').removeClass('hide');
+        }
+        // else
+        //     $('.row.direcciones').addClass('hide');
+    }
+    /* ----- */
     
     function checkViajes()
     {
