@@ -72,17 +72,15 @@ class NCButtonColumn extends CButtonColumn
                 var check = $(this).attr('href');
                 var urlSplit = check.split( '/' );
                 console.log(urlSplit);
-                
+               
                 var id = urlSplit[ urlSplit.length - 1 ]; 
-
-
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
                 var mensaje = '¿Está seguro que desea eliminar este registro?';
-                if(urlSplit[1]=='solicitudes'){
+                if(urlSplit[ urlSplit.length - 3 ]=='solicitudes'){
                     var a = '';
-                    $.ajax(
+                $.ajax(
                 {
                     type: 'POST',
                     url: 'solicitudes/GetViajeId',
@@ -102,7 +100,7 @@ class NCButtonColumn extends CButtonColumn
                     }
                 }); 
                 
-                    var mensaje = '¿Está seguro que desea eliminar este registro? Se eliminarán los viajes relacionados '+a;
+                     mensaje = '¿Está seguro que desea eliminar este registro? Se eliminarán los viajes relacionados '+a;
                 }
                 miHtml= miHtml +='<div class="sub-content">';
                 miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
