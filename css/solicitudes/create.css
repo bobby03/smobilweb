@@ -231,11 +231,12 @@ div.botones .continuar
     color: #FFFFFF;
     cursor: pointer;
     float: right;
-    height: 30px;
-    line-height: 30px;
+    height: 35px;
+    line-height: 35px;
     margin-left: 15px;
     text-align: center;
-    width: 25%;
+    width: 135px;
+    font-size: 18px;
 }
 div.subtitulos div
 {
