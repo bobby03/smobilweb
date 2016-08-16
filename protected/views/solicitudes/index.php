@@ -9,6 +9,9 @@
 ?>
 
 <h1>Solicitudes</h1>
+<?php
+//$a=SolicitudesViaje::model()->findByAttributes(array(74));
+?>
 <div class="principal">
     <div class="tabs">
         <div class="tab select" data-id="1"><span>Sin asignar</span></div>

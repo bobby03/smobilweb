@@ -329,6 +329,16 @@ public function getSearchSolicitud(){
             )
         );
     }
+    public function getViaje($id)
+    {
+        $sv= SolicitudesViaje::model()->findByAttributes(array('id_solicitud'=>$id));
+        //$idv = $sv->id_viaje;
+        if(isset($sv->id_viaje))
+            $idv=$sv->id_viaje;
+        else
+            $idv='---';
+        return $idv;
+    }
     public function adminSearch3()
     {
         return array
@@ -345,6 +355,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+            array
+            (
+                'name'=>'No Viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
             array
             (
                 'name'=>'fecha_alta',
@@ -400,6 +415,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+            array
+            (
+                'name'=>'No Viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
             array
             (
                 'name'=>'fecha_alta',
