@@ -129,6 +129,7 @@ class Clientes extends CActiveRecord
 			'correo' => 'Correo',
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',
+			'ext'=>'Extensi&oacute;n',
 		);
 	}
 
@@ -157,6 +158,7 @@ class Clientes extends CActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
+		$criteria->compare('ext',$this->ext,true);
 		$criteria->compare('id',$this->id, true);
         $criteria->addcondition('activo = '.$flag);
 		return new CActiveDataProvider($this, array(
@@ -230,30 +232,32 @@ class Clientes extends CActiveRecord
             return array
             (
                 'nombre_empresa',
-		'nombre_contacto',
-		'apellido_contacto',
-		array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
-		'correo',
-		'rfc',
-        'tel',
-        array
-            (
-                'class'=>'NCButtonColumn',
-                'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-			)
-            );
+				'nombre_contacto',
+				'apellido_contacto',
+				array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
+				'correo',
+				'rfc',
+		        'tel',
+		        'ext',
+		        array
+		            (
+		                'class'=>'NCButtonColumn',
+		                'header'=>'Acciones',
+		                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+					)
+		            );
         }
         public function adminSearchVacios()
         {
             return array
             (
                 'nombre_empresa',
-		'nombre_contacto',
-		'apellido_contacto',
-		'correo',
-		'rfc',
+				'nombre_contacto',
+				'apellido_contacto',
+				'correo',
+				'rfc',
                 'tel',
+                'ext',
                 array
                 (
                     'class'=>'NCButtonColumn',

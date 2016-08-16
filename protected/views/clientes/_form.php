@@ -85,6 +85,14 @@
                             <?php echo $form->error($model,'tel'); ?>
                            </div>
                     </div>
+                    <!-- Extensión -->
+                    <div class="row">
+                        <label class="letreros">Extensi&oacute;n</label>
+                            <div class="form-cLarge">
+                            <?php echo $form->textField($model,'ext',array('size'=>4,'minlength'=>3)); ?>
+                            <?php echo $form->error($model,'ext'); ?>
+                           </div>
+                    </div>
                 </div>
         </span>   
          <span class="containerBox">
