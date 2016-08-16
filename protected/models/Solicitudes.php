@@ -339,6 +339,16 @@ public function getSearchSolicitud(){
             $idv='---';
         return $idv;
     }
+    public function getViajeUrl($id)
+    {
+        $sv= SolicitudesViaje::model()->findByAttributes(array('id_solicitud'=>$id));
+        //$idv = $sv->id_viaje;
+        if(isset($sv->id_viaje))
+            $idv='viajes/'.$sv->id_viaje;
+        else
+            $idv='';
+        return $idv;
+    }
     public function adminSearch3()
     {
         return array
@@ -395,8 +405,16 @@ public function getSearchSolicitud(){
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view}</div>'
-            )
+                'template'=>'<div class="buttonsWraper">{view}</div>',
+                'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl(Solicitudes::model()->getViajeUrl($data->id))',
+                        ),
+                    )
+            ),
+             
         );
     }
     public function adminSearch4()
@@ -456,6 +474,13 @@ public function getSearchSolicitud(){
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view}</div>',
+                'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl(Solicitudes::model()->getViajeUrl($data->id))',
+                        ),
+                    )
             )
         );
     }
