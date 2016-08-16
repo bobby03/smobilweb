@@ -48,6 +48,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
             ),
     )); ?>
     <?php if(count($pedidos)>0):?>
+        <div class="row"><a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a></div>
         <div class="row">
             <h3>
                 <label class="cLetreros">Pedidos</label>
