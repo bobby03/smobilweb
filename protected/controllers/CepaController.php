@@ -127,12 +127,22 @@ class CepaController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	public function getNombres($id_especie){
+		 $nombres= Yii::app()->db->createCommand('SELECT nombre_cepa 
+		 	FROM cepa WHERE id_especie='.$id_especie)
+                ->queryAll();
+            foreach($nombres as $nom){
+            	$lista[]=$nom['nombre_cepa'];
+            }
+                return $lista;
+	}
+
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Cepa']))
 		{

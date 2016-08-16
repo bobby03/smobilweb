@@ -74,8 +74,8 @@ class Solicitudes extends CActiveRecord
 			'codigo' => 'Código',
 			'fecha_alta' => 'Fecha alta',
 			'hora_alta' => 'Hora alta',
-			'fecha_estimada' => 'Fecha estimada',
-			'hora_estimada' => 'Hora estimada',
+			'fecha_estimada' => 'Fecha estimada de entrega',
+			'hora_estimada' => 'Hora estimada de entrega',
 			'fecha_entrega' => 'Fecha entrega',
 			'hora_entrega' => 'Hora entrega',
 			'notas' => 'Notas',
@@ -329,6 +329,26 @@ public function getSearchSolicitud(){
             )
         );
     }
+    public function getViaje($id)
+    {
+        $sv= SolicitudesViaje::model()->findByAttributes(array('id_solicitud'=>$id));
+        //$idv = $sv->id_viaje;
+        if(isset($sv->id_viaje))
+            $idv=$sv->id_viaje;
+        else
+            $idv='---';
+        return $idv;
+    }
+    public function getViajeUrl($id)
+    {
+        $sv= SolicitudesViaje::model()->findByAttributes(array('id_solicitud'=>$id));
+        //$idv = $sv->id_viaje;
+        if(isset($sv->id_viaje))
+            $idv='viajes/'.$sv->id_viaje;
+        else
+            $idv='';
+        return $idv;
+    }
     public function adminSearch3()
     {
         return array
@@ -345,6 +365,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+            array
+            (
+                'name'=>'No Viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
             array
             (
                 'name'=>'fecha_alta',
@@ -380,8 +405,16 @@ public function getSearchSolicitud(){
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view}</div>'
-            )
+                'template'=>'<div class="buttonsWraper">{view}</div>',
+                'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl(Solicitudes::model()->getViajeUrl($data->id))',
+                        ),
+                    )
+            ),
+             
         );
     }
     public function adminSearch4()
@@ -400,6 +433,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+            array
+            (
+                'name'=>'No Viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
             array
             (
                 'name'=>'fecha_alta',
@@ -435,7 +473,14 @@ public function getSearchSolicitud(){
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view}</div>'
+                'template'=>'<div class="buttonsWraper">{view}</div>',
+                'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl(Solicitudes::model()->getViajeUrl($data->id))',
+                        ),
+                    )
             )
         );
     }

@@ -1,30 +1,27 @@
 <?php
-
 class ClientesController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
-
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			//'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
+    /**
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
+    public $layout='//layouts/column2';
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            //'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
         {
             $return = array();
             if(Yii::app()->user->checkAccess('createClientes') || Yii::app()->user->id == 'smobiladmin')
@@ -84,14 +81,13 @@ class ClientesController extends Controller
                     'users'     => array('*')
                 );
             return $return;
-	}
-
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
+    }
+    /**
+     * Displays a particular model.
+     * @param integer $id the ID of the model to be displayed
+     */
+    public function actionView($id)
+    {
             $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id}");
             $array = array();
             $direccion = new ClientesDomicilio;
@@ -109,19 +105,17 @@ class ClientesController extends Controller
                 'model'=>$this->loadModel($id),
                 'direccion' => $direccion
             ));
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
+    }
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreate()
+    {
             $model = new Clientes;
             $direccion = new ClientesDomicilio;
             // Uncomment the following line if AJAX validation is needed
              $this->performAjaxValidation($model);
-
             if(isset($_POST['Clientes']))
             {
                 $model->attributes=$_POST['Clientes'];
@@ -158,15 +152,16 @@ class ClientesController extends Controller
                     'model'=>$model,
                     'direccion'=>$direccion
             ));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
+    }
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionUpdate($id)
+    {
+        print_r($_POST);
+        
             $model=$this->loadModel($id);
             $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id} ");
             $array = array();
@@ -181,14 +176,19 @@ class ClientesController extends Controller
                 $i++;
             }
             $direccion->domicilio = $array;
+            print_r($model);
+            
             // Uncomment the following line if AJAX validation is needed
             // $this->performAjaxValidation($model);
-
             if(isset($_POST['Clientes']))
             {
+                print_r($_POST['Clientes']);
+                // $this->redirect(array('index'));
+                
                 $model->attributes=$_POST['Clientes'];
                 if($model->save())
                 {
+
                     foreach($_POST['ClientesDomicilio']['domicilio'] as $data)
                     {
                         if(isset($data['id']))
@@ -220,93 +220,88 @@ class ClientesController extends Controller
                     }
                     $direccion->domicilio = $array; 
                 }
-            }
+
+            }  
+            // $this->redirect(array('index'));
             $this->render('update',array(
                 'model'     =>$model,
                 'direccion' =>$direccion
             ));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
+    }
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete($id)
+    {
             $model = $this->loadModel($id);
             $model->activo = 0;
             $update = Yii::app()->db->createCommand()
                     ->update('clientes',$model->attributes,"id = ".(int)$id."");
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		//if(!isset($_GET['ajax']))
-		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	                echo json_encode('');
-	}
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        //if(!isset($_GET['ajax']))
+        //  $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+                    echo json_encode('');
+    }
         public function actionReactivar($id)
-	{
+    {
             $model = Clientes::model()->findByPk($id);
             $model->activo = 1;
             $update = Yii::app()->db->createCommand()
                 ->update('clientes',$model->attributes,"id = ".(int)$id."");
             echo json_encode('');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new Clientes('search');
-		$model->unsetAttributes(); 
-		if(isset($_GET['Clientes']))
-			$model->attributes=$_GET['Clientes'];
-		$this->render('index',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Clientes('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Clientes']))
-			$model->attributes=$_GET['Clientes'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return Clientes the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model=Clientes::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param Clientes $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='clientes-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+    }
+    /**
+     * Lists all models.
+     */
+    public function actionIndex()
+    {
+        $model=new Clientes('search');
+        $model->unsetAttributes(); 
+        if(isset($_GET['Clientes']))
+            $model->attributes=$_GET['Clientes'];
+        $this->render('index',array(
+            'model'=>$model,
+        ));
+    }
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin()
+    {
+        $model=new Clientes('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Clientes']))
+            $model->attributes=$_GET['Clientes'];
+        $this->render('admin',array(
+            'model'=>$model,
+        ));
+    }
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return Clientes the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model=Clientes::model()->findByPk($id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
+    /**
+     * Performs the AJAX validation.
+     * @param Clientes $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='clientes-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
 }

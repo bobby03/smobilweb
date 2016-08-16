@@ -30,9 +30,6 @@ label.letreros{
 	color: #0077B0;
 }
 
-
-
-
 .form-cSmall
 {
     width: 100%;
@@ -100,6 +97,7 @@ input[type="submit"]
 .containerBox{
   float:left;
   width: 100%;
+  min-width: 630px;
 }
 
 /*     *       */

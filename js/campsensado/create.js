@@ -28,20 +28,8 @@ $(document).ready(function()
 
       $('.ValidaAlpha').bind('keyup blur',function(){ 
         var node = $(this);
-        node.val(node.val().replace(/[^[a-zA-ZáéíóúñÁÉÍÓÚÑ ]/g,'') ); }
-      );
-
-
-     $('.ValidaNum').bind('keyup blur',function(){ 
-        var node = $(this);
-        node.val(node.val().replace(/[^[0-9]/g,'') ); }
-      );
-
-
-
-
-
-
+        node.val(node.val().replace(/[^[a-zA-ZáéíóúñÁÉÍÓÚÑ ]/g,'') ); 
+    });
 
 
 
@@ -50,6 +38,7 @@ $(document).ready(function()
     */
 
     $('.siguiente.uno').click(function() {
+
         
         // Activa Validacion en Los inputs
         $('#Granjas_id').blur();
@@ -77,15 +66,21 @@ $(document).ready(function()
                 if (err.length == 0) {
                     $('[data-tab="1"]').addClass('hide');
                     $('[data-tab="2"]').removeClass('hide');
-                   /* $('.menuTabs div:nth-child(4)').addClass('selected');
+                    $('.menuTabs div:nth-child(4)').addClass('selected');
                     $('.menuTabs div:nth-child(5)').addClass('selected');
-                    $('.pedidoWraper').css('height', 'auto');*/
+              
                 } else {
                     return 0;
 
                 }
 
             }
+
+
+            $('.ValidaNum').bind('keyup blur',function(){ 
+                var node = $(this);
+                node.val(node.val().replace(/[^[0-9]/g,'') ); 
+             });
 
          }, 500);
     });
@@ -103,6 +98,7 @@ $(document).ready(function()
     */
 
     $("[data-tab='2']").bind("DOMSubtreeModified", function() {
+
         $('[data-tab="2"] select.especie').each(function() {
            if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
                  $(this).parents('.pedido').removeClass('valida');
@@ -110,10 +106,32 @@ $(document).ready(function()
                  $(this).parents('.pedido').addClass('valida');
            }
        });
-    });
 
 });
 
+
+
+    $('.siguiente.dos').click(function() {
+
+         if (goStep()) {
+                    $('[data-tab="1"]').addClass('hide');
+                    $('[data-tab="2"]').addClass('hide');
+                    $('[data-tab="3"]').removeClass('hide');
+                    $('.menuTabs div:nth-child(4)').addClass('selected');
+                    $('.menuTabs div:nth-child(5)').addClass('selected');
+                    $('.menuTabs div:nth-child(6)').addClass('selected');
+                    $('.menuTabs div:nth-child(7)').addClass('selected');
+              
+                } else {
+                    return 0;
+
+                }
+    
+    });
+
+
+
+}); // jQuery
 
 
 
@@ -124,4 +142,55 @@ function validaGranjas(e) {
     } else {
           $("#Granjas_id").parents('.row').removeClass('error');
     }
+}
+
+function validaTanquesData(e){
+
+    var c=0;
+     $('div.pedido.valida').each(function() {
+                console.log(c++);
+                // Verifica que La cepa este seleccionada
+                if($(this).find('select.cepa option').size() > 1){
+                          
+                        if($('select.cepa option:selected',this).text() == "" || $('select.cepa option:selected',this).text() === "Seleccionar") {
+                            $('select.cepa',this).addClass('error');
+                        }else{
+                            $('select.cepa',this).removeClass('error');
+                        }
+                }
+
+               
+                if($(this).find('input.cant-peces').val()==""){
+                    $(this).find('input.cant-peces').addClass('error');
+                }else{
+                    $(this).find('input.cant-peces').removeClass('error');   
+                }
+
+
+                if($(this).find('.error').size() > 0){
+                    $(this).removeClass('ok');
+                }else{
+                            
+                    $(this).addClass('ok');
+                }
+        });
+
+
+
+
+}
+
+
+function goStep(e){
+    validaTanquesData();
+    var ok=0;
+    if($('div.pedido.valida').size() >0){
+            if ($('div.pedido.valida').size() === $('div.pedido.valida.ok').size()){
+              ok =1;
+            }else{
+              ok =0;
+            }
+
+    }
+    return ok;
 }

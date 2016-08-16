@@ -186,7 +186,7 @@ class CampSensadoController extends Controller
                                     <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
                             			<div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
                                     </div>              
-                                    <div>Cantidad: <span> <input class='cant-peces cantt{tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
+                                    <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
                                    
                                
                             $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        

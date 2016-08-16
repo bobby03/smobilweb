@@ -205,7 +205,7 @@ body {
     background-position: 15px 9px;
 }
 
-#mainmenu ul li#campsensado a {
+#mainmenu ul li#CampSensado a {
     background-image: url('./../images/menu/siembra.svg');
     background-size: 19px;
     padding-top: 12px;
@@ -778,7 +778,7 @@ div.tabs {
 }
 
 div.tabs div.tab {
-    width: 100px;
+    width: 135px;
     float: left;
     padding: 5px 0;
     text-align: center;

@@ -17,6 +17,7 @@ div.tabs div.tab
 div.tabContent
 {
     margin-top: 40px !important;
+    position: relative;
 }
 div.tab.select
 {
@@ -30,5 +31,8 @@ div.tabs:after
 }
 .agregar
 {
-    margin: 6px 0;
+    margin-right: 0 !important;
+    position: absolute;
+    right: 0;
+    top: -35px;
 }

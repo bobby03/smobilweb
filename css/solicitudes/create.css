@@ -35,6 +35,7 @@ div.formContainer2 div.wraper
     padding: 10px;
     position: relative;
     width: 100%;
+    font-size: 15px;
 }
 div.fechaYora
 {
@@ -50,7 +51,7 @@ div.datosContacto
 {
     margin-bottom: 5px;
 }
-div.titulo, div.titulo2
+div.titulo, div.titulo2, div.titulo3
 {
     color: #0077B0;
     font-size: 14px;
@@ -60,6 +61,10 @@ div.titulo, div.titulo2
 div.titulo2
 {
     padding-top: 25px;
+}
+div.titulo3{
+    width: 50%;
+    float:left;
 }
 div.datosCliente span
 {
@@ -82,6 +87,7 @@ div.form .agregar
 .pedidosWraper
 {
     max-height: 290px;
+    width: 100%;
     overflow-y: auto;
 }
 div.form div.formContainer1 .row.cantidad
@@ -118,9 +124,6 @@ div.botonOtra
     line-height: 30px;
     text-align: center;
     width: 20%;
-}
-div.form {
-     margin-top: 0 !important;
 }
 
 

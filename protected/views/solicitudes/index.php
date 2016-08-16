@@ -9,6 +9,9 @@
 ?>
 
 <h1>Solicitudes</h1>
+<?php
+//$a=SolicitudesViaje::model()->findByAttributes(array(74));
+?>
 <div class="principal">
     <div class="tabs">
         <div class="tab select" data-id="1"><span>Sin asignar</span></div>
@@ -16,10 +19,10 @@
         <div class="tab" data-id="3"><span>En ruta</span></div>
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
+    <div class="tabContent" data-tan="1">
     <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>
-    <div class="tabContent" data-tan="1">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'viaje1',
