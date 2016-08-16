@@ -11,8 +11,14 @@
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/create.css');
+
+    $mystring =  $this->classes;
+    $findme   = 'update';
+    $ButtonAddUpdate = strpos($mystring, $findme)===false?'Agregar pedido':'Actualizar pedido';
+
+
 ?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
 <script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
 <?php
     
@@ -81,6 +87,7 @@ eof;
                 <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom')); ?>
             </div>
             <div class="row buttons">
+
                 <div class="aceptarDireccion">Aceptar</div>
                 <div class="cancelarDireccion">Cancelar</div>
             </div>
@@ -133,7 +140,7 @@ eof;
                         <?php echo $form->labelEx($model,'notas'); ?>
                         <?php echo $form->textField($model,'notas',array('maxlength'=>100)); ?>
                     </div>
-                    <div class="agregar">Agregar pedido</div>
+                    <div class="agregar"><?php echo $ButtonAddUpdate; ?></div>
                 </div>
             </div>
         </div>
@@ -155,7 +162,10 @@ eof;
                 <div class="timeHoy"><?php echo date('g:i A');?></div>
             </div>
             <div class="pedidos <?php if($pedidos == '') echo 'hide';?>">
-                <div class="titulo2">Pedido</div>
+                <!-- <div class="titulo2"> -->
+                    <div class="titulo3">Pedido</div>
+                    <div class="titulo3">Especies</div>
+                <!-- </div> -->
                 <div class="pedidosWraper" id="scroll">
                     <?php if($pedidos != ''):?>
                     <?php $i = 1;?>
@@ -191,6 +201,7 @@ eof;
             </div>
         </div>
         <div class="botones hide">
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Cancelar</a>
             <div class="continuar">Continuar</div>
             <div class="guardar">Guardar</div>
         </div>
