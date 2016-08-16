@@ -456,7 +456,6 @@ public function getSearchSolicitud(){
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view}</div>',
-                // 'buttons'=>array('view' => array ('url'=>'Yii::app()->createUrl("index.php",array("viajes"=>$data->id))',),),
             )
         );
     }
