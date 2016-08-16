@@ -118,7 +118,9 @@ class SolicitudesController extends Controller
                     $model->hora_alta = date('H:i');
                     $model->fecha_entrega = null;
                     $model->fecha_estimada = null;
-                    $model->codigo = 'En proceso';
+                    $codigo = substr(Clientes::model()->getCliente($model->id_clientes),0,2);
+                    $codigo = $codigo.date('Ymdhi');
+                    $model->codigo = $codigo;
                     if($model->save())
                     {
                         $model->id = Yii::app()->db->getLastInsertId();

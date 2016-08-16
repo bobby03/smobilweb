@@ -272,7 +272,10 @@ body.viajes .gBoton
     height: 35px;
     /*margin-right: 120px;*/
 }
-
+.siguiente:hover
+{
+    background-color: #49DBD0;
+}
 div.pedidosWraper:after,
 div.tab:after,
 div.menuTabs:after,
