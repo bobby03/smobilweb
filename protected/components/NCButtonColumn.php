@@ -71,7 +71,8 @@ class NCButtonColumn extends CButtonColumn
 
                 var check = $(this).attr('href');
                 var urlSplit = check.split( '/' );
-                console.log(urlSplit)
+                console.log(urlSplit);
+                
                 var id = urlSplit[ urlSplit.length - 1 ]; 
 
 
@@ -79,11 +80,35 @@ class NCButtonColumn extends CButtonColumn
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
                 var mensaje = '¿Está seguro que desea eliminar este registro?';
+                if(urlSplit[1]=='solicitudes'){
+                    var a = '';
+                    $.ajax(
+                {
+                    type: 'POST',
+                    url: 'solicitudes/GetViajeId',
+                    dataType: 'JSON', 
+                    data:
+                    {
+                        nombre:nombre
+                    },
+
+                    success: function(data)
+                    {
+                    var a = data.id_viaje;   
+                    },
+                    error: function(a,b,c)
+                    {
+                    var a = '';
+                    }
+                }); 
                 
+                    var mensaje = '¿Está seguro que desea eliminar este registro? Se eliminarán los viajes relacionados '+a;
+                }
                 miHtml= miHtml +='<div class="sub-content">';
                 miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
                 miHtml= miHtml +='      <div class="separator-content"></div>';
                 miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
+                
                 miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
                 
                 miHtml= miHtml +='      <div class="botones-content">';
@@ -95,7 +120,7 @@ class NCButtonColumn extends CButtonColumn
                 {
                     html: miHtml,
                     width:'450px', 
-                    height:'190px',
+                    height:'210px',
                     onComplete: function()
                     {
                         $('.cancelar-boton').click(function()

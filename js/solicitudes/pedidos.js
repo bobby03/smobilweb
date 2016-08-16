@@ -84,14 +84,21 @@ $(document).ready(function()
                     </div>';
         $('.pedidosWraper').append(html);
 
-        $('#Especie_id_chosen .chosen-single span').empty(); 
+//        $('#Especie_id_chosen .chosen-single span').empty(); 
+        $('#Especie_id').val('');
+        $('#Especie_id').trigger("chosen:updated");
         $('#Cepa_id_chosen .chosen-single span').empty(); 
         $('#Cepa_nombre_cepa_1_cantidad').val(''); 
         $('#tanquesNO').val(''); 
-        $('#ClientesDomicilio_domicilio_chosen .chosen-single span').empty(); 
-        $('#Solicitudes_notas').val(''); 
-
+        $('#ClientesDomicilio_domicilio').val(''); 
+        $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+//        $('#Solicitudes_notas').val(''); 
+        
         $('#Solicitudes_id_clientes').attr('disabled',true).trigger("chosen:updated");
+        $('.row.cepa').addClass('hide');
+        $('.row.cantidad').addClass('hide');
+        $('.row.direcciones').addClass('hide');
+        $('.row.buttons').addClass('hide');
         $('.pedidos').removeClass('hide');
         borrarPedido();
         editarPedido();
