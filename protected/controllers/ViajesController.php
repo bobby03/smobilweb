@@ -113,11 +113,16 @@ eof;
             $select = $select.<<<EOF
                     <optgroup label="{$cliente->getCliente($solicitud->id_clientes)}($solicitud->codigo)">
 EOF;
+            $tempTtl = 0;
             foreach($pedido as $data2)
             {
                 for($i = 1; $i <= $data2['tanques']; $i++)
                 {
-                    $total = $data2['cantidad']/$data2['tanques'];
+                    if ( $i == $data2['tanques'] ) {
+                        $tempTtl = ceil($data2['cantidad'] / $data2['tanques']) - floor($data2['cantidad'] / $data2['tanques']) ;
+                    }
+
+                    $total = ceil($data2['cantidad']/$data2['tanques']) - $tempTtl;  //$data2['cantidad']/$data2['tanques'];
                     $select = $select.<<<EOF
                         <option value="{$data2['id']}:$i">{$cepa->getCepa($data2['id_cepa'])}($total)</option>
 EOF;
