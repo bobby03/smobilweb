@@ -60,9 +60,6 @@
                             <?php echo $form->error($model,'apellido_contacto'); ?>
                             </div>
                     </div>
-
-            </div>
-            <div class="form-cRight">
                     <div class="row">
                         <label class="letreros">E-mail</label>
                             <div class="form-cLarge">
@@ -70,6 +67,10 @@
                             <?php echo $form->error($model,'correo'); ?>
                            </div>
                     </div>
+
+            </div>
+            <div class="form-cRight">
+                    
                     <div class="row">
                         <label class="letreros">RFC</label>
                             <div class="form-cLarge">
@@ -93,6 +94,14 @@
                             <?php echo $form->error($model,'ext'); ?>
                            </div>
                     </div>
+                    <!-- Celular -->
+                    <div class="row">
+                        <label class="letreros">Teléfono celular</label>
+                            <div class="form-cLarge">
+                            <?php echo $form->textField($model,'cel',array('size'=>15,'minlength'=>13)); ?>
+                            <?php echo $form->error($model,'ext'); ?>
+                           </div>
+                    </div>
                 </div>
         </span>   
          <span class="containerBox">
@@ -100,7 +109,14 @@
                         <h3><label class="cLetreros">Direcciones</label><h2 class = "letrero-container"></h2></h3>
                    </div>
         </span>
-        <div class="addDireccion">Nueva dirección</div> 
+    <div class="containerbutton">
+        <div class="row buttons">
+            <div class="addDireccion">Nueva dirección</div> 
+            <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
+           <!--<div class="addDireccion">Nueva dirección</div> -->
+           <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+       </div>
+   </div>
         <span class= "containerBox">
             <div class="form-cLeft1">   
                 <div class="row mapa">
@@ -167,13 +183,6 @@
                 </div>
            </span>
     </div>
-    <div class="containerbutton">
-        <div class="row buttons">
-            <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
-           <!--<div class="addDireccion">Nueva dirección</div> -->
-           <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
-       </div>
-   </div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

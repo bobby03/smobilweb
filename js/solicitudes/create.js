@@ -122,7 +122,7 @@ $(document).ready(function()
         if(cantidad != '' && cantidad != null)
         {
             if(cantidad < 0)
-                $('#Cepa_nombre_cepa_1_cantidad').val(1);
+                //$('#Cepa_nombre_cepa_1_cantidad').val(1);
             $('.row.direcciones').removeClass('hide');
         }
         else
@@ -152,7 +152,7 @@ $(document).ready(function()
         if(cantidad != '' && cantidad != null)
         {
             if(cantidad < 0){
-                $('#tanquesNO').val(1);
+                //$('#tanquesNO').val(1);
             }
             $('.row.direcciones').removeClass('hide');
         }

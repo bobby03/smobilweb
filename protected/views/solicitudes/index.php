@@ -4,6 +4,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/index.css');
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
     $this->breadcrumbs=array('Solicitudes',);
     
 ?>
@@ -21,15 +22,16 @@
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
     <div class="tabContent" data-tan="1">
-    
+
+
+    <div class="search-form" ><!-- search-form -->
     <?php $this->renderPartial('_search',array(
             'model'=>$model,
     )); ?>
-
-
     <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>
+    </div><!-- search-form -->    
     </div>
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (

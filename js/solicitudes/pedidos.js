@@ -25,14 +25,14 @@ $(document).ready(function()
         //Validaciones campos
 
         var error=0;
-        if (isNaN(cantidad)||cantidad==0){
+        if (isNaN(cantidad)||cantidad==0||cantidad<0){
             console.error('cantidad');        
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#C00');
             error=1;}
         else{
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#0077B0');
             }
-        if (isNaN(tanques)||tanques==0){
+        if (isNaN(tanques)||tanques==0||tanques<0){
             console.error('tanques');
             $('#tanquesNO').css('border-color', '#C00');
             error=1;}
@@ -109,9 +109,6 @@ $(document).ready(function()
             contarTanques();
         }
     });
-
-
-
     $('div.continuar').click(function()
     {
         $('div.crearViaje').removeClass('hide');

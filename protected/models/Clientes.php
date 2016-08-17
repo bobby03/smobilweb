@@ -85,6 +85,18 @@ class Clientes extends CActiveRecord
 				'length',
 				'min'=>13,
 				'message'=>'El telefono no es valido'),
+			array('ext','required','message'=>'Este campo es obligatorio'),
+			array(
+				'ext',
+				'length',
+				'min'=>3,
+				'message'=>'La ext no es v&aacute;lida'),
+			array('cel','required','message'=>'Este campo es obligatorio'),
+			array(
+				'cel',
+				'length',
+				'min'=>17,
+				'message'=>'El tel&eacute;fono celular no es valido'),
 
 
 		/*	array('domicilio','required','message'=>'Este campo es obligatorio'),
@@ -130,6 +142,7 @@ class Clientes extends CActiveRecord
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',
 			'ext'=>'Extensi&oacute;n',
+			'cel'=>'Tel&eacute;fono celular',
 		);
 	}
 
@@ -159,6 +172,7 @@ class Clientes extends CActiveRecord
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
 		$criteria->compare('ext',$this->ext,true);
+		$criteria->compare('cel',$this->cel,true);
 		$criteria->compare('id',$this->id, true);
         $criteria->addcondition('activo = '.$flag);
 		return new CActiveDataProvider($this, array(
@@ -239,6 +253,7 @@ class Clientes extends CActiveRecord
 				'rfc',
 		        'tel',
 		        'ext',
+		        'cel',
 		        array
 		            (
 		                'class'=>'NCButtonColumn',
@@ -258,6 +273,7 @@ class Clientes extends CActiveRecord
 				'rfc',
                 'tel',
                 'ext',
+                'cel',
                 array
                 (
                     'class'=>'NCButtonColumn',
