@@ -21,47 +21,43 @@
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
     <div class="tabContent" data-tan="1">
-    <div class="search-form" >
-        <?php $this->renderPartial('_search',array(
-                'model'=>$model,
-        )); ?>
-        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes/create">
-            <div class="agregar clientes"></div>
+        <div class="search-form" >
+            <?php $this->renderPartial('_search',array(
+                    'model'=>$model,
+            )); ?>
+        </div><!-- search-form -->
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
+            <div class="agregar solicitudes"></div>
         </a>
-    </div><!-- search-form -->
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
-        <div class="agregar solicitudes"></div>
-    </a>
-    </div>
-    <?php $this->widget('zii.widgets.grid.CGridView', array
-    (
-        'id'=>'viaje1',
-        'dataProvider'=>$model->searchStatus(0),
-        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
-        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-        'emptyText'=>"No hay resistros",
-        'template' => "{items}{summary}{pager}",
-        'columns'=>$model->adminSearch1(),
-        'pager' => array
+        <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'class' => 'PagerSA',
-            'header'=>'',
-        ),
-        'afterAjaxUpdate' => "function(id,data)
-        {
-            $.fn.yiiGridView.update('viaje2');
-            $.fn.yiiGridView.update('viaje3');
-            $.fn.yiiGridView.update('viaje4');
-        }"
-    //    'filter'=>$model,
-    )); 
-    ?>
+            'id'=>'solicitudes-grid',
+            'dataProvider'=>$model->searchStatus(0),
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay resistros",
+            'template' => "{items}{summary}{pager}",
+            'columns'=>$model->adminSearch1(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('viaje2');
+                $.fn.yiiGridView.update('viaje3');
+                $.fn.yiiGridView.update('viaje4');
+            }"
+        //    'filter'=>$model,
+        )); 
+        ?>
     </div>
     
     <div class="tabContent hide" data-tan="2">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje2',
+        'id'=>'solicitudes-grid2',
         'dataProvider'=>$model->searchStatus(1),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'emptyText'=>"No hay resistros",
@@ -81,7 +77,7 @@
     <div class="tabContent hide" data-tan="3">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje3',
+        'id'=>'solicitudes-grid3',
         'dataProvider'=>$model->searchStatus(2),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'emptyText'=>"No hay resistros",
@@ -100,7 +96,7 @@
     <div class="tabContent hide" data-tan="4">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje4',
+        'id'=>'solicitudes-grid4',
         'dataProvider'=>$model->searchStatus(3),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'emptyText'=>"No hay resistros",
