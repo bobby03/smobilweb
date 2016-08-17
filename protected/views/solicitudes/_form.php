@@ -164,7 +164,7 @@ eof;
             <div class="pedidos <?php if($pedidos == '') echo 'hide';?>">
                 <!-- <div class="titulo2"> -->
                     <div class="titulo3">Pedido</div>
-                    <div class="titulo3">Especies</div>
+                    <div class="titulo3">Organismos</div>
                 <!-- </div> -->
                 <div class="pedidosWraper" id="scroll">
                     <?php if($pedidos != ''):?>

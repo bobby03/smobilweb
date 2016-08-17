@@ -176,7 +176,7 @@ class ClientesController extends Controller
                 $i++;
             }
             $direccion->domicilio = $array;
-            print_r($model);
+//            print_r($model);
             
             // Uncomment the following line if AJAX validation is needed
             // $this->performAjaxValidation($model);

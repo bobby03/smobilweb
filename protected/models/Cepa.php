@@ -249,12 +249,13 @@ eof;
     {
         $nombres=CepaController::getNombres($this->id_especie);
         if(!empty($nombres)){
-        foreach($nombres as $n){
-            if($this->nombre_cepa==$n){
-                $this->addError('nombre_cepa','Nombre ya utilizado');
-                break;
+            foreach($nombres as $n){
+                if($this->nombre_cepa==$n){
+                    $this->addError('nombre_cepa','Nombre ya utilizado');
+                    break;
+                }
             }
-        }}
+        }
     }
 
        public function adminSearchBorrados()

@@ -110,6 +110,6 @@ class SolicitudesViaje extends SMActiveRecord
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;
-            return $return; 
+            return isset($return)?$return:null; 
         }
 }

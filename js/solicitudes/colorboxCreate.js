@@ -1,5 +1,11 @@
 $(document).ready(function()
 {
+    var loc = window.location.href;
+    var index3 = loc.length;
+    var index2 = loc.indexOf('update');
+    var direccion = loc.substring(0,index2);
+    console.log(direccion);
+    // var id = loc.substring(index2+7,index3);
     $('.botonOtra').click(function()
     {
         var html = $('.domicilioForm').children().clone();
@@ -19,10 +25,17 @@ $(document).ready(function()
                     var descripcion = $('#colorbox #ClientesDomicilio_domicilio_1_descripcion').val();
                     if(domicilio != '' && coordenadas != '')
                     {
+                        console.log('URL: '+direccion);
+                        if( index2 != -1){
+                            var dir = direccion+'AddDireccion';
+                        }else{
+                            var dir = 'AddDireccion';
+                        }
+                        console.log('Dir: '+dir);
                         $.ajax(
                         {
                             type: 'GET',
-                            url: 'AddDireccion',
+                            url: dir , //'AddDireccion',
                             dataType: 'JSON', 
                             data:
                             {
@@ -45,7 +58,8 @@ $(document).ready(function()
                             },
                             error: function(a, b, c)
                             {
-                                console.log(a, b, c);
+
+                                // console.log(a, b, c);
                             }
                         });
                     }
