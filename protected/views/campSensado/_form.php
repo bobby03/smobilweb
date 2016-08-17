@@ -40,6 +40,7 @@ $form=$this->beginWidget('CActiveForm', array(
             'style'=>'display:none;'
         )
     ));
+
 ?>
 <div class="form">
 

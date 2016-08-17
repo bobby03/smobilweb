@@ -13,7 +13,6 @@
 //$a=SolicitudesViaje::model()->findByAttributes(array(74));
 ?>
 <div class="principal">
-    <input type='hidden' id='idviaje'>
     <div class="tabs">
         <div class="tab select" data-id="1"><span>Sin asignar</span></div>
         <div class="tab" data-id="2"><span>Asignadas</span></div>
@@ -113,4 +112,3 @@
     ?>
     </div>
 </div>
-
