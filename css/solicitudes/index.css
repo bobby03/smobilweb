@@ -29,10 +29,3 @@ div.tabs:after
     clear: both;
     content: '';
 }
-.agregar
-{
-    margin-right: 0 !important;
-    position: absolute;
-    right: 0;
-    top: -35px;
-}
