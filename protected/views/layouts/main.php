@@ -15,7 +15,7 @@
     <?php 
 		$baseUrl = Yii::app()->baseUrl;
 		$cs = Yii::app()->getClientScript();
-    $cs->registerScriptFile($baseUrl.'/js/main.js');
+    	$cs->registerScriptFile($baseUrl.'/js/main.js');
 		$cs->registerCssFile($baseUrl.'/css/main.css');
 		$cs->registerCssFile($baseUrl.'/css/form.css');
 	?>
@@ -26,9 +26,11 @@
 		$patterns = array();
 		$patterns[0] = 'index.php';
 		$patterns[1] = 'index.php-';
+		// $patterns[2] = 'site-';
 		$replace = array();
 		$replace[0] = '';
 		$replace[1] = '';
+		// $replace[2] = 'site';
 
 	?>
   <body class="<?php echo str_replace($patterns,$replace,$LoginClass) ?>">
@@ -49,7 +51,7 @@
         		<div class="seleccion-menu">
         			<span class="nombre"><?php echo Yii::app()->user->name?></span>
         			<span class="triangulo"></div>
-        			<span class="hidden-menu hide"><a href="<?php echo $baseUrl?>/site/logout">Cerrar Sesión</a> </span>
+        			<span class="hidden-menu hide"><a href="<?php echo $baseUrl?>/index.php/site/logout">Cerrar Sesión</a> </span>
         		</div>
         		
         </div>

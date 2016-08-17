@@ -60,9 +60,6 @@
                             <?php echo $form->error($model,'apellido_contacto'); ?>
                             </div>
                     </div>
-
-            </div>
-            <div class="form-cRight">
                     <div class="row">
                         <label class="letreros">E-mail</label>
                             <div class="form-cLarge">
@@ -70,6 +67,10 @@
                             <?php echo $form->error($model,'correo'); ?>
                            </div>
                     </div>
+
+            </div>
+            <div class="form-cRight">
+                    
                     <div class="row">
                         <label class="letreros">RFC</label>
                             <div class="form-cLarge">
@@ -90,6 +91,14 @@
                         <label class="letreros">Extensi&oacute;n</label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'ext',array('size'=>4,'minlength'=>3)); ?>
+                            <?php echo $form->error($model,'ext'); ?>
+                           </div>
+                    </div>
+                    <!-- Celular -->
+                    <div class="row">
+                        <label class="letreros">Teléfono celular</label>
+                            <div class="form-cLarge">
+                            <?php echo $form->textField($model,'cel',array('size'=>15,'minlength'=>13)); ?>
                             <?php echo $form->error($model,'ext'); ?>
                            </div>
                     </div>
