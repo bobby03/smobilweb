@@ -109,9 +109,6 @@ $(document).ready(function()
             contarTanques();
         }
     });
-
-
-
     $('div.continuar').click(function()
     {
         $('div.crearViaje').removeClass('hide');

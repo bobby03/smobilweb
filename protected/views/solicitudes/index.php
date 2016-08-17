@@ -20,6 +20,14 @@
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
     <div class="tabContent" data-tan="1">
+    <div class="search-form" >
+        <?php $this->renderPartial('_search',array(
+                'model'=>$model,
+        )); ?>
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes/create">
+            <div class="agregar clientes"></div>
+        </a>
+    </div><!-- search-form -->
     <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
         <div class="agregar solicitudes"></div>
     </a>

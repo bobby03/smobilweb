@@ -69,7 +69,7 @@ class Solicitudes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Id',
 			'id_clientes' => 'Cliente',
 			'codigo' => 'Código',
 			'fecha_alta' => 'Fecha alta',
@@ -83,8 +83,8 @@ class Solicitudes extends CActiveRecord
 	}
 public function getSearchSolicitud(){
             return array('1'=>'Cliente',
-                         '2'=>'Codigo'/*,
-                         '3'=>'Fecha Alta',
+                         '2'=>'Codigo',
+                         '3'=>'Id',/*
                          '4'=>'Hora Alta',
                          '5'=>'Fecha Estimada',
                          '6'=>'Hora fecha_estimada',

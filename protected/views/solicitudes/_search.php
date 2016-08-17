@@ -27,12 +27,12 @@
 
 
 
-  <!--	<div class="row hide" data-id='3'>
+  	<div class="row hide" data-id='3'>
 		
-		<?php echo $form->textField($model,'fecha_alta'); ?>
+		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
-	<div class="row hide" data-id='4'>
+<!--	<div class="row hide" data-id='4'>
 		
 		<?php echo $form->textField($model,'hora_alta'); ?>
 	</div>
