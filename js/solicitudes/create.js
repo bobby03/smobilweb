@@ -1,5 +1,12 @@
 $(document).ready(function()
 {
+
+
+         $('.ValidaNum').bind('keyup blur',function(){ 
+                var node = $(this);
+                node.val(node.val().replace(/[^[1-9]([0-9]{1,45}$)]/g,'') ); 
+             });
+
     $('#Cepa_id').chosen();
     $('#Solicitudes_id_clientes').chosen();
     $('#Especie_id').chosen();
