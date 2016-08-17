@@ -273,6 +273,7 @@ EOF;
         $model = Viajes::model()->findByPk((int)$id);
         $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
         $guardar = array();
+        $pedidos = array();
         $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
         if(Yii::app()->user->getTipoUsuario()==1)
         {
@@ -363,7 +364,6 @@ EOF;
                     ->where("solVi.id_viaje = :id",array(':id'=>(int)$id))
                     ->queryAll();
 //            }
-        // print_r($tanques);
 
             $this->render('view',array(
                 'model'=>$model,
@@ -628,7 +628,7 @@ EOF;
                         $id = explode(':',$data['tanque']);
                         $pedido = Pedidos:: model()->findByPk($id[0]);
                         $nuevo->id_solicitud = $pedido->id_solicitud;
-                        $nuevo->id_tanque = $id[0];
+                        $nuevo->id_tanque = $data['id_tanque'];
                         $nuevo->id_domicilio = $pedido->id_direccion;
                         $nuevo->id_cepas = $pedido->id_cepa;
                         if($pedido->tanques > 0)
@@ -636,6 +636,7 @@ EOF;
                         else
                             $nuevo->cantidad_cepas = $pedido->cantidad;
                         $nuevo->save();
+//                        $insert = Yii::app()->db->createCommand()->insert('solicitud_tanques',$nuevo->attributes);
                     }
                 }
                 if(isset($_POST['Viajes']['id_solicitudes']))
