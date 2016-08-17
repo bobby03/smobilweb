@@ -250,6 +250,7 @@ eof;
         $nombres=CepaController::getNombres($params['id_especie']);
         //$nombres=['Edwin','Pastel'];
         //print_r($attributes);
+        
         foreach($nombres as $n){
             if($this->nombre_cepa==$n){
                 $this->addError('nombre_cepa','Nombre ya utilizado');
