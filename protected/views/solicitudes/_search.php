@@ -25,8 +25,6 @@
 	</div>
 
 
-
-
   <!--	<div class="row hide" data-id='3'>
 		
 		<?php echo $form->textField($model,'fecha_alta'); ?>
