@@ -109,7 +109,14 @@
                         <h3><label class="cLetreros">Direcciones</label><h2 class = "letrero-container"></h2></h3>
                    </div>
         </span>
-        <div class="addDireccion">Nueva dirección</div> 
+    <div class="containerbutton">
+        <div class="row buttons">
+            <div class="addDireccion">Nueva dirección</div> 
+            <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
+           <!--<div class="addDireccion">Nueva dirección</div> -->
+           <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+       </div>
+   </div>
         <span class= "containerBox">
             <div class="form-cLeft1">   
                 <div class="row mapa">
@@ -176,13 +183,6 @@
                 </div>
            </span>
     </div>
-    <div class="containerbutton">
-        <div class="row buttons">
-            <a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Cancelar</a> 
-           <!--<div class="addDireccion">Nueva dirección</div> -->
-           <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
-       </div>
-   </div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
