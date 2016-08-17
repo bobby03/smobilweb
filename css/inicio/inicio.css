@@ -726,6 +726,7 @@ float:left;
     color:white;
     text-align: center;
     line-height: 15px;
+    left:-12px;
 }
 .textCircle.siHover2:hover .ctxtr
 {
