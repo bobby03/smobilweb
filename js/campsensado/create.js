@@ -150,14 +150,14 @@ function validaTanquesData(e){
      $('div.pedido.valida').each(function() {
                 console.log(c++);
                 // Verifica que La cepa este seleccionada
-                if($(this).find('select.cepa option').size() > 1){
+               // if($(this).find('select.cepa option').size() > 1){
                           
                         if($('select.cepa option:selected',this).text() == "" || $('select.cepa option:selected',this).text() === "Seleccionar") {
                             $('select.cepa',this).addClass('error');
                         }else{
                             $('select.cepa',this).removeClass('error');
                         }
-                }
+                //}
 
                
                 if($(this).find('input.cant-peces').val()==""){

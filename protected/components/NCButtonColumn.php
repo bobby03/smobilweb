@@ -94,7 +94,7 @@ class NCButtonColumn extends CButtonColumn
 
                     success: function(data)
                     {
-                    var a = data.id_viaje;   
+                    document.getElementById("idviaje").value = data.idviaje;
                     },
                     error: function(a,b,c)
                     {
@@ -102,7 +102,7 @@ class NCButtonColumn extends CButtonColumn
                     }
                 }); 
                 
-                    var mensaje = '¿Está seguro que desea eliminar este registro? Se eliminarán los viajes relacionados '+a;
+                    var mensaje = document.getElementById("idviaje").value;
                 }
                 miHtml= miHtml +='<div class="sub-content">';
                 miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
