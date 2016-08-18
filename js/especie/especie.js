@@ -11,6 +11,7 @@ $(document).ready(function()
                 <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
                 <input id="ingesp" class="ingesp" type="text">\n\
+                <p id="ierror"></p>\n\
                 <div class="botones-content">\n\
                     <a class="gBoton" href="">Cancelar</a> \n\
                     <div class="btnadd gBoton">Agregar</div>\n\
@@ -149,12 +150,44 @@ function capitalizeFirstLetter(string) {
 
 function validField(){
     var e=0;
-    if($('#ingesp').val()==''){
+    rep(function(result){
+        if($('#ingesp').val()==''){
         e=0;
-    }else {
+        document.getElementById('ierror').innerHTML='Campo requerido';
+    }else if(result==true){
+            e=0;
+             document.getElementById('ierror').innerHTML='Campo ya existe';
+        }else {
         e=1;
+        document.getElementById('ierror').innerHTML='';
     }
+    console.log('e: '+e+'  '+result);
+    });
 return e;
 }
 
-
+function rep(callback){
+    var href = window.location.href;
+    var nombre=$('#ingesp').val();
+    var result;
+    $.ajax(
+                    {
+                        type: 'POST',
+                        url: href+'/Rep',
+                        dataType: 'JSON', 
+                        data:
+                        {
+                            nombre:nombre
+                        },
+                        success: function(response){
+                            callback(response);
+                        },
+                        error: function(a, b, c)
+                        {
+                            result='false';
+                        }
+                    });
+}
+function callback(result){
+    console.log('si se hizo'+result);
+}
