@@ -1,92 +1,105 @@
 /*
  * FORM ICONS
  */
-#Viajes_id_responsable{
-  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
-  background-position: 8px 5px,left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  border-left:0;
-}
 
-
-.row.error #Viajes_id_responsable{
-  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
-  border:2px solid #c00;
-}
-
-
-
-
-#SolicitudesViaje_id_personal_1_tecnico{
-  background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
-  background-position: 8px 5px,left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  border-left:0;
-}
-
-
-
-
-
-.row.error #Viajes_fecha_salida,
-.row.error #Viajes_hora_salida
-{
-  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
-  border:2px solid #c00;
-}
-
-
-.row.error #Viajes_id_estacion{
-  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_error.png');
-  border:2px solid #c00;
-}
-
-
-
-#Viajes_id_estacion{
-  background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
-  background-position: 8px 5px,left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  border-left:0;
-}
-
-#Viajes_fecha_salida, #Viajes_hora_salida{
-  background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
-  background-position: 8px 5px,left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  border-left:0;
-}
-
-
-div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen,
-div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen
-{
-    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/usuarios/bg.png');
-    background-position: 8px 5px,left;
+#Viajes_id_responsable {
+    background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px, left;
     background-repeat: no-repeat;
     padding-left: 30px;
-    border-left:0;
+    border-left: 0;
 }
 
+.error #Viajes_id_responsable {
+    background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
+    border: 2px solid #c00;
+}
+
+#Viajes_id_responsable.error {
+    background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
+    border: 2px solid #c00;
+}
+
+#SolicitudesViaje_id_personal_1_tecnico {
+    background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+
+#Viajes_fecha_salida,
+#Viajes_hora_salida {
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+
+.error #Viajes_fecha_salida,
+.error #Viajes_hora_salida {
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
+    border: 2px solid #c00;
+}
+
+#Viajes_fecha_salida.error,
+#Viajes_hora_salida.error {
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
+    border: 2px solid #c00;
+}
+
+#Viajes_id_estacion {
+    background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+
+div.form .chosen-container#Viajes_id_solicitudes_chosen.error
+{
+    background-image: url('../../images/viajes/iconoSolicitudesFormulario.png'), url('../../images/form/bg_error.png');
+    background-position: 7px 7px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+div.form .chosen-container#Viajes_id_solicitudes_chosen,
+#Viajes_id_solicitudes {
+    background-image: url('../../images/viajes/iconoSolicitudesFormulario.png'), url('../../images/form/bg.png');
+    background-position: 7px 7px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+.error #Viajes_id_estacion {
+    background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_error.png');
+    border: 2px solid #c00;
+}
+
+#Viajes_id_estacion.error {
+    background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_error.png');
+    border: 2px solid #c00;
+}
+
+div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen,
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen {
+    background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/usuarios/bg.png');
+    background-position: 8px 5px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
 
 div.form .chosen-container#SolicitudesViaje_id_personal_1_tecnico_chosen.error,
-div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error
-{
+div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error {
     background-image: url('../../images/viajes/nv_iconoChofer.png'), url('../../images/form/bg_error.png');
-    background-position: 8px 5px,left;
+    background-position: 8px 5px, left;
     background-repeat: no-repeat;
-
 }
 
-
-
-
-div.pedido
-{
+div.pedido {
     float: left;
     width: 250px;
     box-sizing: border-box;
@@ -95,109 +108,104 @@ div.pedido
     border-radius: 5px;
     overflow: hidden;
 }
-div.form
-{
+
+div.form {
     margin-top: 60px !important;
 }
-div.tituloEspecie
-{
+
+div.tituloEspecie {
     background-color: #0077B0;
     text-align: center;
     color: #FFFFFF;
     line-height: 25px;
 }
-div.menuTabs
-{
+
+div.menuTabs {
     margin-bottom: 70px;
     position: relative;
 }
-div.nombreTabs
-{
+
+div.nombreTabs {
     position: absolute;
     color: #0077B0;
 }
-div.nombreTabs.uno
-{
-    
-}
-div.nombreTabs.dos
-{
-    
-}
-div.nombreTabs.tres
-{
-    
-}
-div.tab
-{
+
+div.nombreTabs.uno {}
+
+div.nombreTabs.dos {}
+
+div.nombreTabs.tres {}
+
+div.tab {
     width: 1080px;
     margin: 0 auto;
 }
-div.pedidoWraper
-{
+
+div.pedidoWraper {
     padding: 10px;
 }
-div.pedidoWraper.gris
-{
+
+div.pedidoWraper.gris {
     background-color: #E6E7E8;
     height: auto;
 }
-div.pedidoWraper > div
-{
-    padding-bottom: 10px; 
+
+div.pedidoWraper > div {
+    padding-bottom: 10px;
     color: #0077B0;
     font-family: 'Roboto-Bold';
 }
-div.pedidoWraper div span
-{
+
+div.pedidoWraper div span {
     color: #000000;
     font-family: 'Roboto-Regular';
 }
-div.tab[data-tab="1"] div.formContainer1
-{
+
+div.tab[data-tab="1"] div.formContainer1 {
     width: 47%;
     float: left;
 }
-.siguiente.uno
-{
-    margin-right: 108px;
-    margin-top: 20px;
-}
-.siguiente.dos
-{
-    margin-right: 10px;
-}
+
+.siguiente.uno {}
+
+.siguiente.dos {}
+
 div.form div.tab div.row input,
-div.form div.tab div.row .css-select
-{
+div.form div.tab div.row .css-select {
     width: 100%;
 }
-div.form div.tab div.row
-{
+
+div.form div.tab div.row {
     width: 60%;
     margin: 0 auto;
     margin-bottom: 10px;
 }
-div.form div.tab div.row.buttons
-{
-    float: left;
+
+
+.floating {
+    float: right;
     margin-top: 50px;
     width: 100px;
+    margin-right: 167px;
+    /* --- */
+    position: fixed;
+    top: 274px;
+    right: 15%;
 }
-div.contenedorClientes
-{
+
+div.contenedorClientes {
     float: left;
     width: 880px;
     margin: 50px;
     box-sizing: border-box;
 }
-div.contenedorCliente
-{
+
+div.contenedorCliente {
     border: 2px solid #09B7C9;
     border-radius: 5px;
 }
-div.bolaChica
-{
+
+div.bolaChica {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -205,23 +213,23 @@ div.bolaChica
     background-color: #09B7C9;
     margin-top: 13px;
 }
+
 .bolaChica.selected,
 .bolaChica.selected,
 .bolaChica.selected,
-.bolaChica.selected
-{
+.bolaChica.selected {
     background-color: #0077B0;
 }
-div.lineaChica
-{
+
+div.lineaChica {
     float: left;
     width: 140px;
     height: 5px;
     margin-top: 21px;
     background-color: #09B7C9;
 }
-div.bolaGrande
-{
+
+div.bolaGrande {
     float: left;
     width: 50px;
     height: 50px;
@@ -232,110 +240,128 @@ div.bolaGrande
     background-color: #09B7C9;
     cursor: default;
 }
-div.lineaGandre
-{
+
+div.lineaGandre {
     float: left;
     width: 365px;
     height: 5px;
     margin-top: 21px;
     background-color: #09B7C9;
 }
+
 .bolaChica.selected,
 .lineaChica.selected,
 .bolaGrande.selected,
-.lineaGandre.selected
-{
+.lineaGandre.selected {
     background-color: #0077B0;
 }
-.siguiente
+body.viajes .gBoton
 {
+    margin-right: 35px !important;
+}
+.siguiente {
     float: right;
     color: #FFFFFF;
     background-color: #0077B0;
     border-radius: 5px;
-    width: 120px;
-    line-height: 40px;
+    width: 135px;
+    font-size: 18px;
+    line-height: 35px;
     text-align: center;
     cursor: pointer;
+    height: 35px;
     /*margin-right: 120px;*/
+}
+.siguiente:hover
+{
+    background-color: #49DBD0;
 }
 div.pedidosWraper:after,
 div.tab:after,
 div.menuTabs:after,
-div.tab:after
-{
+div.tab:after {
     content: '';
     clear: both;
     display: block;
 }
 
-div.chosen-container.error{
-        border: 2px solid #c00 !important;
-      /*border-left: 30px solid #c00 !important;*/
-        background-color: #FEE !important;
+div.chosen-container.error {
+    border: 2px solid #c00 !important;
+    /*border-left: 30px solid #c00 !important;*/
+    background-color: #FEE !important;
 }
 
-div.chosen-container.error > ul{
-        background-color: #FEE !important;
+div.chosen-container.error > ul {
+    background-color: #FEE !important;
 }
 
-
-
-#contV3{
+#contV3 {
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
     border: 3px solid #49DBD0;
-    margin:auto;
-    width:60%;
+    margin: auto;
+    width: 60%;
     font-family: 'Roboto-Regular';
-    color:black;
+    color: black;
     font-weight: bold;
     float: left;
 }
-.izq{
+
+.izq {
     float: right;
     width: 10%;
     position: relative;
-    left:50px;
-    top:-45px;
+    left: 50px;
+    top: -45px;
 }
-#vt1,#vt2{
+
+#vt1,
+#vt2 {
     font-family: 'Roboto-Regular';
     line-height: 45px;
     background-color: #0077b0;
-    border:0px solid white;
+    border: 0px solid white;
     height: 45px;
     color: white;
-    padding:0px;
-    margin:0px;
+    padding: 0px;
+    margin: 0px;
     font-family: 'Roboto-Regular';
     font-size: 20px;
-    padding-left:30px;
+    padding-left: 30px;
     vertical-align: middle;
 }
-#vt1{
+
+#vt1 {
     border-radius: 7px 7px 0px 0px;
--moz-border-radius: 7px 7px 0px 0px;
--webkit-border-radius: 7px 7px 0px 0px;
+    -moz-border-radius: 7px 7px 0px 0px;
+    -webkit-border-radius: 7px 7px 0px 0px;
 }
-#vt2{
-}
-#vc1,#vc2{
-    height:200px;
+
+#vt2 {}
+
+#vc1,
+#vc2 {
+    height: 200px;
     margin-left: 30px;
 }
-#vc1 p{margin-bottom: 1em;}
+
+#vc1 p {
+    margin-bottom: 1em;
+}
+
 #vc2 {
     margin-bottom: 1em;
     margin-top: 20px;
 }
-.vresalta{
+
+.vresalta {
     font-size: 14px;
-    color:#0077b0;
+    color: #0077b0;
 }
-#vtitulo{
-    color:#0077b0;
+
+#vtitulo {
+    color: #0077b0;
     margin-top: 20px;
     font-size: 18px;
 }
@@ -343,15 +369,15 @@ div.chosen-container.error > ul{
 .vbox {
     overflow: hidden;
 }
+
 .boxCont {
     overflow: hidden;
     width: 100%;
-    margin-left:20%;
+    margin-left: 20%;
     margin-bottom: 30px;
 }
 
 .content {
-
     padding: 0 20px;
     text-align: justify;
 }
@@ -361,21 +387,76 @@ div.chosen-container.error > ul{
     width: 40%;
 }
 
-.left .content {
-}
+.left .content {}
 
 .right {
     margin-top: 50px;
     float: right;
     width: 40%;
 }
-#vcont th{
-    width:20%;
-}
-.pc, .pf{
+
+#vcont th {
     width: 20%;
-    color:#0077b0;
 }
-#vcont{
+
+.pc,
+.pf {
+    width: 20%;
+    color: #0077b0;
+}
+
+#vcont {
     width: 70% !important;
+}
+
+
+/* Wrapper para Botones */
+
+.botonesWrapper {
+    margin-top: 20px;
+    display: block;
+    padding-right: 100px;
+    text-align: right;
+}
+
+.botonesWrapper.update {
+    padding-right:0px;
+}
+
+.botonesWrapper2 {
+    margin-top: 20px;
+    display: block;
+    padding-right: 0px;
+    text-align: right;
+}
+
+
+div.form div.tab div.row.buttons {
+/*    float: right;
+    margin-top: 50px;
+    margin-right: 167px;
+    */display: block;
+    width: 300px;
+}
+div.form div.tab div.row.buttons input
+{
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+}
+.fBoton
+{
+    margin: 0 !important;
+    margin-right: 50px !important;
+    font-size: 18px !important;
+    height: 40px !important;
+}
+
+body.viajes-update form input[type="submit"] {
+    position: relative;
+    width: 107px;
+    margin-left: 0px;
+    height: 40px;
+    font-size: 14px !important;
+    width:120px !important;
 }

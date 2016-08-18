@@ -1,7 +1,6 @@
-
 div.form.cepa {
     width: 100%;
-    max-width: 670px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 div.form-containerWraper:after
@@ -15,7 +14,13 @@ div.containerbutton{
     width: 110px;
     float: right;
 }
-
+span.containerBox:first-child
+{
+    width: 620px;
+    margin: 0 auto;
+    float: none;
+    display: block;
+}
 div.form label {
     margin-bottom: 5px !important;
 }
@@ -25,12 +30,9 @@ label.letreros{
 	color: #0077B0;
 }
 
-/*      ************          */
-
-
 .form-cSmall
 {
-    width:100px;
+    width: 100%;
     position: relative;
 }
 .form-cSmall span
@@ -64,34 +66,38 @@ label.letreros{
 
 .form-container11{
     float: left;
-    width: 100px;
+    width: 260px;
    
 }
-
+input[type="submit"]
+{
+    width: 150px !important;
+    float: right;
+    margin-top: 31px;
+}
 .form-container12{
     float: left;
-    width: 100px;
+    width: 260px;
     margin: 0px 0 2px 50px;
     padding-top: 21px;
 }
 /*****/
 
 .containerBoxRight{
-    width: 250px;
+    width: 570px;
     float: right;
-    margin-left: 9px;
-    margin-right: 70px;
 
 }
 .containertBoxLeft{
     float: left;
-    width: 275px;
+    width: 570px;
     margin-left: 60px;
 }
 
 .containerBox{
   float:left;
   width: 100%;
+  min-width: 630px;
 }
 
 /*     *       */
@@ -109,4 +115,55 @@ label.letreros{
    height: 4px;
    margin: 0 auto;
    width: 90%;
+}
+
+
+/* VIEW CEPA*/
+
+div.view-cepa input:disabled{
+    background-color: #FFF !important;
+    background: #FFF !important;
+}
+
+.regresarCepa{
+    margin-top: 30px;
+}
+
+
+/* Formulario Cepa*/
+
+body.cepa-create-especie .form-cSmall input,
+body.cepa-update .form-cSmall input{
+    width: 80%;
+    font-size: 15px;
+}
+
+
+body.cepa-create-especie #cepa-form .form-containerWraper .rangosCepa,
+body.cepa-update #cepa-form .form-containerWraper .rangosCepa{
+    margin-bottom: 20px;
+}
+
+body.cepa-create-especie #contentWrapper div.form.cepa,
+body.cepa-update #contentWrapper div.form.cepa{
+    margin-top: 50px;
+
+}
+.agregar
+{
+    float: right;
+    width: 51px;
+    height: 29px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.agregar.especie
+{
+    background-image: url('./../images/crear/boton_nueva_especie.svg');
+}
+.agregar.cepa
+{
+    background-image: url('./../images/crear/boton_nueva_sepa.svg');
 }

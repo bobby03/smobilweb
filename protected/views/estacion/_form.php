@@ -24,79 +24,73 @@
         ),
     )); 
 
-
 ?>
-
-
 <div class="form-containerWraper">
     <div class="form-cLeftContainer">
-		<div class="form-cLeft">
-			<div class="row">
-				<label class= "letreros">Especie</label>
-					<div class="form-cLarge">
-						<span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo', $model->getAllTipo(), array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
-						<?php echo $form->error($model,'tipo'); ?>
-				
-					</div>
-			</div>
-
-			<div class="row">
-				<label class= "letreros">Identificador</label>
-					<div class="form-cLarge">
-					<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
-					<?php echo $form->error($model,'identificador'); ?>
-				</div>
-			</div>
-
-			<div class="row">
-				<label class= "letreros">No. Personal</label>
-				<div class="form-cLarge">
-					<?php echo $form->textField($model,'no_personal'); ?>
-					<?php echo $form->error($model,'no_personal'); ?>
-				</div>
-			</div>
-
-			<div class="row">
-				<label class= "letreros">Marca</label>
-					<div class="form-cLarge">	
-					<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
-					<?php echo $form->error($model,'marca'); ?>
-					</div>
-			</div>
-		</div>
-
-		<div class="form-cLeft">
-			<div class="row">
-				<label class= "letreros">Color</label>
-				<div class="form-cLarge"><?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?></div>
-				<?php echo $form->error($model,'color'); ?>
-			</div>
-
-			<div class="row">
-				<label class= "letreros">Ubicación</label>
-				<div class="form-cXLarge"><?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?></div>
-				<?php echo $form->error($model,'ubicacion'); ?>
-				
-			</div>
-		        <?php if ($model->isNewRecord):?>
-		        <?php else:?>
-<!--			<div class="row">
-                            <?php echo $form->labelEx($model,'disponible'); ?>
-                            <span class="css-select-moz"><?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
-                            <?php echo $form->error($model,'disponile'); ?>
-
-                        </div>-->
+        <div class="form-cLeft">
+                <div class="row hide">
+                    <label class= "letreros">Tipo</label>
+                    <div class="form-cLarge">
+                        <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo', $model->getAllTipo(), array('empty'=>'Seleccionar','class'=>'css-select','disabled'=>'disabled')); ?></span>
+                        <?php echo $form->error($model,'tipo'); ?>
                     </div>
                 </div>
-		<?php endif;?>
+                <div class="row">
+                    <label class= "letreros">Identificador</label>
+                    <div class="form-cLarge">
+                        <?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
+                        <?php echo $form->error($model,'identificador'); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class= "letreros">Capacidad de pasajeros</label>
+                    <div class="form-cLarge">
+                        <?php echo $form->textField($model,'no_personal'); ?>
+                        <?php echo $form->error($model,'no_personal'); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class= "letreros">Marca</label>
+                    <div class="form-cLarge">	
+                    <?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
+                    <?php echo $form->error($model,'marca'); ?>
+                    </div>
+                </div>
+        </div>
+        <div class="form-cLeft">
+            <div class="row">
+                <label class= "letreros">Color</label>
+                <div class="form-cLarge"><?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?></div>
+                <?php echo $form->error($model,'color'); ?>
+            </div>
 
-		    <div class="containerbutton">
-				<div class="row buttons">
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
-				</div>
-		</div>
+            <div class="row">
+                <label class= "letreros">Ubicación</label>
+                <div class="form-cLarge"><?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?></div>
+                <?php echo $form->error($model,'ubicacion'); ?>
+            </div>
+            <?php if ($model->isNewRecord):?>
+            <?php else:?>
+<!--            <div class="row">
+                <?php echo $form->labelEx($model,'disponible'); ?>
+                <span class="css-select-moz"><?php echo $form->dropDownList($model,'disponible', $model->getAllDisponible(),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
+                <?php echo $form->error($model,'disponile'); ?>
+
+            </div>-->
+            <?php endif;?>
+            <div class="containerbutton">
+                    <div class="row buttons">
+
+                            <div class="btncanc">Cancelar</div>
+                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+                    </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+

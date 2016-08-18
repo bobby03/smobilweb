@@ -13,8 +13,7 @@
 
 
 	<div class="row">
-		<label>Buscar:</label>
-		<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?>
+            <?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?>
 	</div>
 
 

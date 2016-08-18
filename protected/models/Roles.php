@@ -93,7 +93,7 @@ class Roles extends SMActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($act)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -102,9 +102,12 @@ class Roles extends SMActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre_rol',$this->nombre_rol,true);
 		$criteria->compare('activo',$this->activo);
-                $criteria->addCondition("activo=1");
+                $criteria->addCondition("activo=$act");
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
 		));
 	}
 
@@ -144,6 +147,8 @@ class Roles extends SMActiveRecord
                 case 7: return 'Solicitudes'; break;
                 case 8: return 'Usuarios'; break;
                 case 9: return 'Viajes'; break;
+                case 10: return 'Granja'; break;
+                case 11: return 'Siembra'; break;
             }
         }
         
@@ -156,8 +161,30 @@ class Roles extends SMActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{update} {delete}</div>'
 		)
+            );
+        }
+        public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre_rol',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("roles/reactivar", array("id"=>$data->id))',
+                        )
+                    )
+                )
             );
         }
 }

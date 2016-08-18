@@ -2,7 +2,7 @@
             <div id="contV3">
                 
                 <div id="vt1">
-                    <div class="headerT">Cliente</div>
+                    <div class="headerT"></div>
                 </div>
                 <div id="vc1" class="vbox">
                     <div class="left">
@@ -23,14 +23,10 @@
                     
                     <div class="right">
                         <p><span class="vresalta">Fecha de salida:</span> <span class="fsalida"> </span></p>
-                        <p><span class="vresalta">No. Remision:</span> 7</p>
-                        <p><span class="vresalta">No. Tanque:</span> <?php echo $o;?></p>
+                        
+                        <p><span class="vresalta">Nombre de Tanque:</span><span class="ntan<?php echo $o?>"></span></p>
                     </div>
-                    <script type="text/javascript">
-//                    document.write(document.getElementById('Viajes_fecha_salida'));
-
-                    
-                    </script>
+                   
 
                  </div>
                 <div id="vt2">
@@ -38,7 +34,7 @@
                 </div>
                 <div id="vc2">
                     <p><span class="vresalta">Especie:</span> <?php echo Especie::model()->getEspecie($data['especie']);?> </p>
-                    <p><span class="vresalta">No. Organismos:</span> <?php echo $data['cantidad'];?></p>
+                    <p><span class="vresalta">No. Organismos:</span> <?php echo $data['tanques']>=1?$data['cantidad']/ $data['tanques']:'revisar tanques';?></p>
                     <table id="vcont">
                         <tr class="pf">
                             <th class="pc"></th><th>Mínima</th><th>Máxima</th>
@@ -57,9 +53,10 @@
                 </div>
             </div>
             
-            <div class='row buttons izq'>
+            <div class='row buttons floating'>
+
             <?php 
-            if($i==1){
+            if($o==1){
                 echo CHtml::submitButton('Finalizar');
             }
             ?>

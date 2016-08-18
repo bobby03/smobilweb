@@ -8,8 +8,9 @@ $baseUrl = Yii::app()->baseUrl;
 <div class="form">
 <?php 
     $cs = Yii::app()->getClientScript();  
-    $cs->registerCssFile($baseUrl.'/css/personal/create.css');
-    $cs->registerScriptFile($baseUrl.'/js/clientes/googleMap.js');
+    $cs->registerCssFile($baseUrl.'/css/personal/create.css?I='.rand());
+    $cs->registerScriptFile($baseUrl.'/js/jquery.mask.min.js');
+    $cs->registerScriptFile($baseUrl.'/js/personal/validacion.js?i='.rand());
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'personal-form',
@@ -17,69 +18,76 @@ $baseUrl = Yii::app()->baseUrl;
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>TRUE,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+            'validateOnChange' => true,
+            'validateOnType' => true,
+        ),
 )); ?>
 
 
 <div class="form-containerWraper">
 <div class="form-cLeft">
 	<div class="row">
-		<label class="letreros">Nombre</label>
-		<div class="form-cLarge"><?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50)); ?></div>
-		<!--<?php echo $form->error($model,'nombre'); ?>-->
+		<label class="letreros">Nombre(s)</label>
+		<div class="form-cLarge"><?php echo $form->textField($model,'nombre',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?></div>
+		<?php echo $form->error($model,'nombre'); ?>
 	</div>
 
 	<div class="row">
-		<label class="letreros">Apellido</label>
-		<div class="form-cLarge"><?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50)); ?></div>
-		<!--<?php echo $form->error($model,'apellido'); ?>-->
+		<label class="letreros">Apellido(s)</label>
+		<div class="form-cLarge"><?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?></div>
+		<?php echo $form->error($model,'apellido'); ?>
 	</div>
 
 	<div class="row">
 		<label class="letreros">Teléfono</label>
-		<div class="form-cMedium"><?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?></div>
-		<!--<?php echo $form->error($model,'tel'); ?>-->
+		<div class="form-cMedium"><?php echo $form->textField($model,'tel',array('size'=>14,'maxlength'=>14)); ?></div>
+		<?php echo $form->error($model,'tel'); ?>
 	</div>
 
 	
 	<div class="row">
 		<label class="letreros">RFC</label>
-		<div class="form-cMedium"><?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?></div>
-	<!--	<?php echo $form->error($model,'rfc'); ?>-->
+		<div class="form-cMedium"><?php echo $form->textField($model,'rfc',array('size'=>13,'maxlength'=>13)); ?></div>
+		<?php echo $form->error($model,'rfc'); ?>
 	</div>
 </div>
+
 <div class="form-cRight">
-	<div class="row">
-		<label class="letreros">Domicilio</label>
-		<div class="form-cXLarge"><?php echo $form->textField($model,'domicilio',array('size'=>60,'maxlength'=>150)); ?>
-	<!--	<?php echo $form->error($model,'domicilio'); ?>-->
-	</div>
+
+
 
 	<div class="row">
 	<label class="letreros">Rol</label>
 	<div class="form-cMedium"><span class='css-select-moz'>
-                    <?php echo $form->dropDownList($model,'id_rol', Roles::model()->getAllRoles(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                <?php echo $form->dropDownList($model,'id_rol', Roles::model()->getAllRoles(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
                 </span></div>
-	<!--	<?php echo $form->error($model,'id_rol'); ?>-->
+		<?php echo $form->error($model,'id_rol'); ?>
 	</div>
 
 	<div class="row">
 		<label class="letreros">E-mail</label>
 		<div class="form-cXLarge"><?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?></div>
-	<!--	<?php echo $form->error($model,'correo'); ?>-->
+		<?php echo $form->error($model,'correo'); ?>
 	</div>
 
 	<div class="row">
 		<label class="letreros">Puesto</label>
-		<div class="form-cMedium"><?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100)); ?></div>
-	<!--	<?php echo $form->error($model,'puesto'); ?>-->
+		<div class="form-cMedium"><?php echo $form->textField($model,'puesto',array('size'=>60,'maxlength'=>100,'class'=>'ValidaAlpha')); ?></div>
+		<?php echo $form->error($model,'puesto'); ?>
 	</div>
-</div>
-<div class="containerbutton">
+	<div class="containerbutton">
 	<div class="row buttons">
+		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/personal">Cancelar</a> 
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
 	</div>
 </div>	
+</div>
+
+
+
 </div>
 <?php $this->endWidget(); ?>
 

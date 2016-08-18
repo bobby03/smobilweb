@@ -69,24 +69,34 @@ class Clientes extends CActiveRecord
 			array(
 				'correo',
 			  	'match',
-			    'pattern'=>"/^[A-z0-9_\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
+                                'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
 				'message'=>'El correo no es valido'),
-			
+			array('correo', 'unique', 'message'=>'Ya existe ese correo registrado'),
 
-			array('rfc','required','message'=>'Este campo es obligatorio'),
-			array(
-				'rfc',
-				'length',
-				'is'=>13,
-				'message'=>'RFC No valido'),
-
-
+			array('rfc','required','message'=>'RFC No Valido'),
+			array('rfc',
+                                'match',
+			    	'pattern'=>"/^(([A-Za-z]){3})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
+                                'message'=>'RFC No Valido'),
+                        array('rfc', 'unique', 'message'=>'Ya existe ese RFC'),
 			array('tel','required','message'=>'Este campo es obligatorio'),
 			array(
 				'tel',
 				'length',
-				'max'=>12,
-				'message'=>'Maximo 12 Caracteres'),
+				'min'=>13,
+				'message'=>'El telefono no es valido'),
+			array('ext','required','message'=>'Este campo es obligatorio'),
+			array(
+				'ext',
+				'length',
+				'min'=>3,
+				'message'=>'La ext no es v&aacute;lida'),
+			array('cel','required','message'=>'Este campo es obligatorio'),
+			array(
+				'cel',
+				'length',
+				'min'=>17,
+				'message'=>'El tel&eacute;fono celular no es valido'),
 
 
 		/*	array('domicilio','required','message'=>'Este campo es obligatorio'),
@@ -124,13 +134,15 @@ class Clientes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'nombre_empresa' => 'Nombre Empresa',
-			'nombre_contacto' => 'Nombre Contacto',
-			'apellido_contacto' => 'Apellido Contacto',
+			'id' => 'Usuario',
+			'nombre_empresa' => 'Nombre de la empresa',
+			'nombre_contacto' => 'Nombre(s) de contacto',
+			'apellido_contacto' => 'Apellido(s) de contacto',
 			'correo' => 'Correo',
 			'rfc' => 'RFC',
 			'tel' => 'Teléfono',
+			'ext'=>'Extensi&oacute;n',
+			'cel'=>'Tel&eacute;fono celular',
 		);
 	}
 
@@ -146,7 +158,7 @@ class Clientes extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -159,8 +171,15 @@ class Clientes extends CActiveRecord
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('rfc',$this->rfc,true);
 		$criteria->compare('tel',$this->tel,true);
+		$criteria->compare('ext',$this->ext,true);
+		$criteria->compare('cel',$this->cel,true);
+		$criteria->compare('id',$this->id, true);
+        $criteria->addcondition('activo = '.$flag);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
 		));
 	}
 
@@ -176,7 +195,7 @@ class Clientes extends CActiveRecord
 	}
         public function getAllClientes()
         {
-            $clientes = Clientes::model()->findAll();
+            $clientes = Clientes::model()->findAll('activo = 1');
             $return = array();
             foreach($clientes as $data)
                 $return[$data->id] = $data->nombre_empresa;
@@ -184,7 +203,7 @@ class Clientes extends CActiveRecord
         }
         public function getAllClientesViajes()
         {
-            $clientes = Clientes::model()->findAll();
+            $clientes = Clientes::model()->findAll('activo = 1');
             $solicitudes = Solicitudes::model()->findAllBySql('SELECT DISTINCT id, id_clientes, codigo FROM solicitudes');
             $return = array();
             foreach($solicitudes as $info)
@@ -216,22 +235,60 @@ class Clientes extends CActiveRecord
             $cliente = Clientes::model()->findByPk($id);
             return $cliente->nombre_empresa;
         }
+        public function getUserName($id){
+        	$usrName = Usuarios::model()->findAll("tipo_usr = 1 and id_usr = $id");
+
+        	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"--------";
+
+        }
         public function adminSearch()
         {
             return array
             (
                 'nombre_empresa',
-		'nombre_contacto',
-		'apellido_contacto',
-		'correo',
-		'rfc',
+				'nombre_contacto',
+				'apellido_contacto',
+				array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
+				'correo',
+				'rfc',
+		        'tel',
+		        'ext',
+		        'cel',
+		        array
+		            (
+		                'class'=>'NCButtonColumn',
+		                'header'=>'Acciones',
+		                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+					)
+		            );
+        }
+        public function adminSearchVacios()
+        {
+            return array
+            (
+                'nombre_empresa',
+				'nombre_contacto',
+				'apellido_contacto',
+				'correo',
+				'rfc',
                 'tel',
+                'ext',
+                'cel',
                 array
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-		)
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("clientes/reactivar", array("id"=>$data->id))',
+                        )
+                    )
+                )
             );
         }
 }

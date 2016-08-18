@@ -1,9 +1,5 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
-?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
-<script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
-<?php
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js');
@@ -15,6 +11,17 @@
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/create.css');
+
+    $mystring =  $this->classes;
+    $findme   = 'update';
+    $ButtonAddUpdate = strpos($mystring, $findme)===false?'Agregar pedido':'Actualizar pedido';
+
+
+?>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
+<script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
+<?php
+    
     date_default_timezone_set("Pacific/Easter");
     $direcciones = new ClientesDomicilio();
     $this->widget('zii.widgets.jui.CJuiDatePicker',array
@@ -59,7 +66,7 @@ eof;
             // controller action is handling ajax validation correctly.
             // There is a call to performAjaxValidation() commented in generated controller code.
             // See class documentation of CActiveForm for details on this.
-            'enableAjaxValidation'=>false
+            'enableAjaxValidation'=>false,
     )); ?>
 	<!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
         <?php echo $form->hiddenField($model, 'id');?>
@@ -73,14 +80,14 @@ eof;
             </div>
             <div id="map" data-map="1"></div>
             <div class="row ubi">
-                <?php echo $form->labelEx($direccion,'ubicacion_mapa'); ?>
-                <?php echo $form->textField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
+                <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
             </div>
             <div class="row des">
                 <?php echo $form->labelEx($direccion,'descripcion'); ?>
                 <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom')); ?>
             </div>
             <div class="row buttons">
+
                 <div class="aceptarDireccion">Aceptar</div>
                 <div class="cancelarDireccion">Cancelar</div>
             </div>
@@ -133,7 +140,7 @@ eof;
                         <?php echo $form->labelEx($model,'notas'); ?>
                         <?php echo $form->textField($model,'notas',array('maxlength'=>100)); ?>
                     </div>
-                    <div class="agregar">Agregar pedido</div>
+                    <div class="agregar"><?php echo $ButtonAddUpdate; ?></div>
                 </div>
             </div>
         </div>
@@ -155,7 +162,10 @@ eof;
                 <div class="timeHoy"><?php echo date('g:i A');?></div>
             </div>
             <div class="pedidos <?php if($pedidos == '') echo 'hide';?>">
-                <div class="titulo2">Pedido</div>
+                <!-- <div class="titulo2"> -->
+                    <div class="titulo3">Pedido</div>
+                    <div class="titulo3">Organismos</div>
+                <!-- </div> -->
                 <div class="pedidosWraper" id="scroll">
                     <?php if($pedidos != ''):?>
                     <?php $i = 1;?>
@@ -191,20 +201,19 @@ eof;
             </div>
         </div>
         <div class="botones hide">
-            <div class="continuar">Continuar</div>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Cancelar</a>
+            <!--<div class="continuar">Continuar</div>-->
             <div class="guardar">Guardar</div>
         </div>
-        <div class="row crearViaje hide">
+<!--        <div class="row crearViaje hide">
             <div class="viajes">
-                <h2>Viajes disponibles</h2>
                 <?php $this->getViajes();?>
-                <h2></h2>
             </div>
             <?php 
                 $contenedores = Estacion::model()->findAll('disponible = 1 AND activo = 1 AND tipo = 1');
                 if(count($contenedores)>0)
                     echo CHtml::submitButton($model->isNewRecord ? 'Crear nuevo viaje' : 'Crear nuevo viaje'); ?>
-        </div>
+        </div>-->
     </div>
 <?php $this->endWidget(); ?>
 

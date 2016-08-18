@@ -39,13 +39,13 @@ class Solicitudes extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_clientes', 'required'),
-			array('id, id_clientes', 'numerical', 'integerOnly'=>true),
-                        array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
+			array('id, id_clientes, status', 'numerical', 'integerOnly'=>true),
+                        //array('codigo','unique','message'=>'Ya hay una solicitud con ese codigo'),
 			array('codigo', 'length', 'max'=>50),
 			array('notas', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'safe', 'on'=>'search'),
+			array('id, status, id_clientes, codigo, fecha_alta, hora_alta, fecha_estimada, hora_estimada, fecha_entrega, hora_entrega, notas', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,22 +69,22 @@ class Solicitudes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Id',
 			'id_clientes' => 'Cliente',
-			'codigo' => 'Codigo',
-			'fecha_alta' => 'Fecha Alta',
-			'hora_alta' => 'Hora Alta',
-			'fecha_estimada' => 'Fecha Estimada',
-			'hora_estimada' => 'Hora Estimada',
-			'fecha_entrega' => 'Fecha Entrega',
-			'hora_entrega' => 'Hora Entrega',
+			'codigo' => 'Código',
+			'fecha_alta' => 'Fecha alta',
+			'hora_alta' => 'Hora alta',
+			'fecha_estimada' => 'Fecha estimada de entrega',
+			'hora_estimada' => 'Hora estimada de entrega',
+			'fecha_entrega' => 'Fecha entrega',
+			'hora_entrega' => 'Hora entrega',
 			'notas' => 'Notas',
 		);
 	}
 public function getSearchSolicitud(){
             return array('1'=>'Cliente',
-                         '2'=>'Codigo'/*,
-                         '3'=>'Fecha Alta',
+                         '2'=>'Codigo',
+                         '3'=>'Id',/*
                          '4'=>'Hora Alta',
                          '5'=>'Fecha Estimada',
                          '6'=>'Hora fecha_estimada',
@@ -145,9 +145,37 @@ public function getSearchSolicitud(){
 		$criteria->compare('notas',$this->notas,true);*/
 		
   
-		return new CActiveDataProvider($this, array(
+        return new CActiveDataProvider($this, array(
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
+        ));
+	}
+        public function searchStatus($id)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+            $criteria=new CDbCriteria;
+            $criteria->compare('id', $this->id);
+            $criteria->compare('id_clientes',$this->id_clientes);
+            $criteria->compare('codigo',$this->codigo,true);
+            $criteria->compare('fecha_alta',$this->fecha_alta,true);
+            $criteria->compare('hora_alta',$this->hora_alta,true);
+            $criteria->compare('fecha_estimada',$this->fecha_estimada,true);
+            $criteria->compare('hora_estimada',$this->hora_estimada,true);
+            $criteria->compare('fecha_entrega',$this->fecha_entrega,true);
+            $criteria->compare('hora_entrega',$this->hora_entrega,true);
+            $criteria->compare('notas',$this->notas,true);
+            $criteria->compare('status',$this->status,true);
+            $criteria->addcondition("status = $id");
+
+            return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-		));
+                        'pagination'=>array(
+                            'pageSize'=>15,
+                    ),
+            ));
 
 	}
 
@@ -161,10 +189,45 @@ public function getSearchSolicitud(){
 	{
 		return parent::model($className);
 	}
-    public function adminSearch()
+    public function getFechaTabla($date)
+    {
+        if($date == null)
+            return 'Sin fecha';
+        else
+            return date("d-m-Y", strtotime($date));
+    }
+    public function getHoraTabla($date)
+    {
+        if($date == null)
+            return 'Sin hora';
+        else
+            return date("H:i", strtotime($date));
+    } 
+    public function getClientesEnEspera() {
+        $cr = new CDbCriteria();
+        $foreach = Solicitudes::model()->findAll('status = 0');
+        $id_clientes = array();
+        foreach ($foreach as $data) {
+            $nombre_Cliente = Clientes::model()->findall("id = $data->id_clientes");
+            $id_clientes[$data->id] = $nombre_Cliente[0]->nombre_empresa;
+        }
+        return $id_clientes;  
+    }
+    public function getCliente($id)
+    {
+        $solicitud = Solicitudes::model()->findByPk($id);
+        $cliente = Clientes::model()->findByPk($solicitud->id_clientes);
+        return $cliente->nombre_empresa;
+    }
+    public function adminSearch1()
     {
         return array
         (
+            array
+            (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
             array
             (
                 'name'=>'id_clientes',
@@ -185,12 +248,12 @@ public function getSearchSolicitud(){
             array
             (
                 'name'=>'fecha_estimada',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_estimada))'
+                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
             ),
             array
             (
                 'name'=>'hora_estimada',
-                'value' => 'date("H:i", strtotime($data->hora_estimada))'
+                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
             ),
 //            array
 //            (
@@ -208,6 +271,216 @@ public function getSearchSolicitud(){
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
+    public function adminSearch2()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+            array
+            (
+                'name'=>'fecha_estimada',
+                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+            ),
+            array
+            (
+                'name'=>'hora_estimada',
+                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+            )
+        );
+    }
+    public function getViaje($id)
+    {
+        $sv= SolicitudesViaje::model()->findByAttributes(array('id_solicitud'=>$id));
+        //$idv = $sv->id_viaje;
+        if(isset($sv->id_viaje))
+            $idv=$sv->id_viaje;
+        else
+            $idv='---';
+        return $idv;
+    }
+    public function getViajeUrl($id)
+    {
+        $sv= SolicitudesViaje::model()->findByAttributes(array('id_solicitud'=>$id));
+        //$idv = $sv->id_viaje;
+        if(isset($sv->id_viaje))
+            $idv='viajes/'.$sv->id_viaje;
+        else
+            $idv='';
+        return $idv;
+    }
+    public function adminSearch3()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'No Viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+            array
+            (
+                'name'=>'fecha_estimada',
+                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+            ),
+            array
+            (
+                'name'=>'hora_estimada',
+                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_entrega',
+//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_entrega',
+//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+//            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view}</div>',
+                'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl(Solicitudes::model()->getViajeUrl($data->id))',
+                        ),
+                    )
+            ),
+             
+        );
+    }
+    public function adminSearch4()
+    {
+        return array
+        (
+            array
+            (
+                'name'=>'id',
+                'value' => '$data->id',
+            ),
+            array
+            (
+                'name'=>'id_clientes',
+                'value' => 'Clientes::model()->getCliente($data->id_clientes)',
+                'filter'=> Clientes::model()->getAllClientes()
+            ),
+            'codigo',
+            array
+            (
+                'name'=>'No Viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
+            array
+            (
+                'name'=>'fecha_alta',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
+            ),
+            array
+            (
+                'name'=>'hora_alta',
+                'value' => 'date("H:i", strtotime($data->hora_alta))'
+            ),
+//            array
+//            (
+//                'name'=>'fecha_estimada',
+//                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_estimada',
+//                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+//            ),
+            array
+            (
+                'name'=>'fecha_entrega',
+                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
+            ),
+            array
+            (
+                'name'=>'hora_entrega',
+                'value' => 'date("H:i", strtotime($data->hora_entrega))'
+            ),
+//            'notas',
+            array
+            (
+                'class'=>'NCButtonColumn',
+                'header'=>'Acciones',
+                'template'=>'<div class="buttonsWraper">{view}</div>',
+                'buttons' => array
+                    (
+                       'view'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl(Solicitudes::model()->getViajeUrl($data->id))',
+                        ),
+                    )
             )
         );
     }

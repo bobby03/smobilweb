@@ -27,7 +27,7 @@ class Monitoreo extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'uploadTemp';
+		return 'uploadtemp';
 	}
 
 	/**
@@ -115,7 +115,7 @@ class Monitoreo extends CActiveRecord
 	}
 
 	public function estaciones(){
-		$datos = Yii::app()->db->createCommand('SELECT id,tipo,identificador,no_personal,marca,color,ubicacion,disponible,activo FROM estacion WHERE tipo=2')->queryAll();
+		$datos = Yii::app()->db->createCommand('SELECT id,tipo,identificador,no_personal,marca,color,ubicacion,disponible,activo FROM estacion WHERE tipo=2 AND activo = 1')->queryAll();
 		return new CActiveDataProvider($datos);
 	}
 

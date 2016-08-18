@@ -106,7 +106,7 @@ class UsuariosController extends Controller
 		$model=new Usuarios;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Usuarios']))
 		{
@@ -159,14 +159,24 @@ class UsuariosController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('usuarios',$model->attributes,"id = ".(int)$id."");
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		//if(!isset($_GET['ajax']))
 		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	                echo json_encode('');	
 	}
-
+        public function actionReactivar($id)
+	{
+            $model = Usuarios::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('usuarios',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
 	/**
 	 * Lists all models.
 	 */

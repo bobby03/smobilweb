@@ -17,8 +17,12 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+//            'validateOnChange' => true,
+//            'validateOnType' => true,
+        ),
 )); ?>
-
 	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 		<span class="containerBox">
@@ -49,7 +53,7 @@
 
 
 <!--separador-->		
-		<span class="containerBox">
+		<span class="containerBox rangosCepa">
 			
 				<label class="cLetreros">Rangos minimos y maximos</label>
 				<hr class="letrero-container"></hr>
@@ -60,6 +64,7 @@
 		<!--Temperatura-->
 		<span class="containerBox">
 			<div class="containertBoxLeft">
+                            <div class="row">
 				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">Temperatura</label>
@@ -83,8 +88,10 @@
 						</div>
 					</div>
 				</div>
+				</div>
 
 		<!--Ph-->
+                            <div class="row">
 				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">pH</label>
@@ -104,7 +111,9 @@
 						</div>
 					</div>
 				</div>
+                            </div>
 			<!--Oxigeno-->
+                        <div class="row">
 				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">Oxigeno</label>
@@ -124,16 +133,18 @@
 						</div>
 					</div>
 				</div>
+                            </div>
 			</div>
 
 
 			<!--Conductividad-->   
 			<div class="containerBoxRight">
+                            <div class="row">
 					<div class="form-container11">
 						<div class="row">
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
-                                                                    <span>min</span>
+                                     <span>min</span>
 									<?php echo $form->numberField($model,'cond_min');
 									echo $form->error($model,'cond_min'); ?>
 								</div>
@@ -142,19 +153,21 @@
 					<div class="form-container12">
 						<div class="row">
 							<div class="form-cSmall">
-                                                            <span>max</span>
+                                <span>max</span>
 								<?php echo $form->numberField($model,'cond_max');
 								echo $form->error($model,'cond_max'); ?>
 							</div>
 						</div>
 					</div>
+					</div>
 
 			<!-- ORP-->
+                        <div class="row">
 				<div class="form-container11">
 					<div class="row">
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
-                                                            <span>min</span>
+                                <span>min</span>
 								<?php echo $form->numberField($model,'orp_min');
 								echo $form->error($model,'orp_min'); ?>
 
@@ -164,12 +177,13 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-                                                    <span>max</span>
+                                 <span>max</span>
 								<?php echo $form->numberField($model,'orp_max');
 								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
 				</div>
+                            </div>
 					<div class="row buttons">
 						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 					</div>

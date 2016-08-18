@@ -17,13 +17,14 @@ $(document).ready(function()
             $.ajax(
             {
                 type: 'GET',
-                url: 'GetCliente',
+                url: direccion+'GetCliente',
                 dataType: 'JSON', 
                 data:
                 {
                     id: id,
                     flag: 1
                 },
+                async: false,
                 success: function(data)
                 {
                     $('.datosCliente').empty();
@@ -34,35 +35,9 @@ $(document).ready(function()
                     $('.row.pedido').removeClass('hide');
                     $('.titulo').removeClass('hide');
                 },
-                error: function(a, b, c)
+                error: function()
                 {
-//                    console.log(a, b, c);
-                    var url = direccion+'GetCliente';
-                    $.ajax(
-                    {
-                        type: 'GET',
-                        url: url,
-                        dataType: 'JSON', 
-                        data:
-                        {
-                            id: id,
-                            flag: 1
-                        },
-                        success: function(data)
-                        {
-                            $('.datosCliente').empty();
-                            $('.datosCliente').append(data.cliente);
-                            $('#ClientesDomicilio_domicilio option:gt(0)').remove();
-                            $('#ClientesDomicilio_domicilio').append(data.domicilio);
-                            $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-                            $('.row.pedido').removeClass('hide');
-                            $('.titulo').removeClass('hide');
-                        },
-                        error: function(a, b, c)
-                        {
-                            console.log(a, b, c);
-                        }
-                    });
+                    
                 }
             });
         }
@@ -84,8 +59,9 @@ $(document).ready(function()
             $.ajax(
             {
                 type: 'GET',
-                url: 'GetCepas',
+                url: direccion+'GetCepas',
                 dataType: 'JSON', 
+                async: false,
                 data:
                 {
                     id: id
@@ -98,31 +74,9 @@ $(document).ready(function()
                     $('.row.cepa').removeClass('hide');
                     $('.requerida input').val('');
                 },
-                error: function(a, b, c)
+                error: function()
                 {
-                    var url = direccion+'GetCepas';
-                    $.ajax(
-                    {
-                        type: 'GET',
-                        url: url,
-                        dataType: 'JSON', 
-                        data:
-                        {
-                            id: id
-                        },
-                        success: function(data)
-                        {
-                            $('#Cepa_id option:gt(0)').remove();
-                            $('#Cepa_id').append(data);
-                            $('#Cepa_id').trigger("chosen:updated");
-                            $('.row.cepa').removeClass('hide');
-                            $('.requerida input').val('');
-                        },
-                        error: function(a, b, c)
-                        {
-                            console.log(a, b, c);
-                        }
-                    });
+                    
                 }
             });
         }
@@ -172,4 +126,31 @@ $(document).ready(function()
         $('#Solicitudes_id_clientes').removeAttr('disabled');
         $('#Solicitudes_id_clientes').trigger('chosen:update');
     });
+    /* Validación Números tanques */
+    $('#tanquesNO').on('change', function()
+    {
+        $('.row.cantidad').removeClass('hide');
+        $('.noTanques input').change(function()
+        {
+           validacionCantidadTanques();
+        });
+        $('.noTanques input').keyup(function()
+        {
+           validacionCantidadTanques();
+        });
+    });
+    function validacionCantidadTanques()
+    {
+        var cantidad = $('#tanquesNO').val();
+        if(cantidad != '' && cantidad != null)
+        {
+            if(cantidad < 0){
+                $('#tanquesNO').val(1);
+            }
+            $('.row.direcciones').removeClass('hide');
+        }
+        else
+            $('.row.direcciones').addClass('hide');
+    }
+    /* ----- */
 });

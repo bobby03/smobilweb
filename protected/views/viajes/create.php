@@ -15,5 +15,6 @@ $this->breadcrumbs=array(
     'model'=>$model,
     'pedidos'=>$pedidos,
     'solicitudes'=>$solicitudes,
-    'personal'=>$personal
+    'personal'=>$personal,
+    'nuevo' => $nuevo
 )); ?>

@@ -16,7 +16,6 @@ $this->menu=array(
 <h1>Nuevo Cliente</h1>
 
 <?php 
-    $direccion = ClientesDomicilio::model();
     $this->renderPartial('_form', array
         (
             'model' => $model,

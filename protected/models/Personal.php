@@ -36,14 +36,31 @@ class Personal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
+			array('nombre, apellido, tel, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('correo','email','message'=>'No tiene formato de email'),
+            array('rfc', 'unique', 'message'=>'Ya existe un empleado con ese RFC'),
+            array('correo', 'unique', 'message'=>'Ya existe un empleado con ese correo'),
 			array('nombre, apellido', 'length', 'max'=>50),
-			array('tel', 'length', 'max'=>12),
-			array('rfc', 'length', 'max'=>15),
-			array('domicilio', 'length', 'max'=>150),
+			
+			
+			
+		/*	array('domicilio', 'length', 'max'=>150),*/
 			array('correo, puesto', 'length', 'max'=>100),
+
+			array('rfc','required','message'=>'RFC No Valido'),
+			array('rfc',
+				  	'match',
+			    	'pattern'=>"/^(([A-Za-z]){4})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
+					'message'=>'RFC No Valido'),
+
+
+			array('tel','required','message'=>'Teléfono no Valido'),
+			array('tel',
+				  'length',
+				   'is'=>14,
+				   'message'=>'Teléfono no Valido'),
+
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre, apellido, tel, rfc, domicilio, id_rol, correo, puesto', 'safe', 'on'=>'search'),
@@ -70,8 +87,8 @@ class Personal extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre' => 'Nombre',
-			'apellido' => 'Apellido',
+			'nombre' => 'Nombre(s)',
+			'apellido' => 'Apellido(s)',
 			'domicilio' => 'Domicilio',
 			'id_rol' => 'Rol',
 			'puesto' => 'Puesto',
@@ -93,7 +110,7 @@ class Personal extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -108,17 +125,13 @@ class Personal extends CActiveRecord
 		$criteria->compare('id_rol',$this->id_rol);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('puesto',$this->puesto,true);
-		/*$criteria->addcondition("(nombre LIKE '%".$this->nombre."%' OR apellido LIKE '%".$this->nombre.
-                                "%' OR tel LIKE '%".$this->nombre.
-                                "%' OR rfc LIKE '%".$this->nombre.
-                                "%' OR domicilio LIKE '%".$this->nombre.
-                                "%' OR id_rol LIKE '%".$this->nombre.
-                                "%' OR correo LIKE '%".$this->nombre.
-                                "%' OR puesto LIKE '%".$this->nombre."%')");*/
-
-
+		$criteria->addcondition("activo = $flag");
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
 		));
 	}
 	 public function getSearchPersonal(){
@@ -144,7 +157,7 @@ class Personal extends CActiveRecord
 	}
         public function getAllPersonal()
         {
-            $personal = Personal::model()->findAll();
+            $personal = Personal::model()->findAll('activo = 1');
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;
@@ -169,9 +182,50 @@ class Personal extends CActiveRecord
         public function getRolPersonal($id)
         {
             $personal = Personal::model()->findByPk($id);
-            return $personal->id_rol;
+            return $personal['id_rol'];
+        }
+        public function getUser($id)
+        {
+                    $user = Usuarios::model()->findByAttributes(array('tipo_usr'=>2,'id_usr'=>$id));
+                    if(!isset($user->usuario)){
+                    	return '--------';
+                    }else{
+                    return $user->usuario;
+                }
         }
         public function adminSearch()
+        {
+            return array
+            (
+                'nombre',
+                'apellido',
+                
+                
+               // 'domicilio',
+                array
+                (
+                   'name' => 'Usuario',
+                	'value' => 'Personal::model()->getUser($data->id)',
+                ),
+                array
+                (
+                    'name' => 'id_rol',
+                    'value' => 'Roles::model()->getRol($data->id_rol)',
+                    'filter' => Roles::model()->getAllRoles()
+                ),
+                'puesto', 
+                'correo',
+                'rfc',
+                'tel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Operaciones',
+                    'template'=>'<div class="buttonsWraper">{update} {delete}</div>'
+		)
+            );
+        }
+        public function adminSearchVacios()
         {
             return array
             (
@@ -194,7 +248,16 @@ class Personal extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Operaciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("personal/reactivar", array("id"=>$data->id))',
+                        )
+                    )
 		)
             );
         }

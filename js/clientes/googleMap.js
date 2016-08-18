@@ -1,24 +1,23 @@
 $(document).ready(function()
 {
-    var noMap = 1;
+    var noMap = parseInt(1);
     $('.addDireccion').click(function()
     {
         var nuevoMapa = $('.allMapa[data-id="1"]').clone();
-//        $('.row.mapa').append('<div class="allMapa"><?php echo $noDirrecion;?></div>');
         $('.row.mapa').append(nuevoMapa);
-        noMap = noMap + 1;
-        $('.row.mapa').children().last('allMapa').attr('data-id', noMap);
-        $('.row.mapa').children().last('allMapa').children('#map').attr('data-map', noMap);
-        $('.row.mapa').children().last('allMapa').children('#map').empty();
-        $('.row.mapa').children().last('allMapa').children('.row.dom').children('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][domicilio]');
-        $('.row.mapa').children().last('allMapa').children('.row.dom').children('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_domicilio');
-        $('.row.mapa').children().last('allMapa').children('.row.dom').children('input').val('');
-        $('.row.mapa').children().last('allMapa').children('.row.ubi').children('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][ubicacion_mapa]');
-        $('.row.mapa').children().last('allMapa').children('.row.ubi').children('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_ubicacion_mapa');
-        $('.row.mapa').children().last('allMapa').children('.row.ubi').children('input').val('');
-        $('.row.mapa').children().last('allMapa').children('.row.des').children('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][descripcion]');
-        $('.row.mapa').children().last('allMapa').children('.row.des').children('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_descripcion');
-        $('.row.mapa').children().last('allMapa').children('.row.des').children('input').val('');
+        noMap = parseInt(noMap) + 1;
+        $('.row.mapa').children().first('allMapa').attr('data-id', noMap);
+        $('.allMapa[data-id="'+noMap+'"]').children('#map').attr('data-map', noMap);
+        $('.allMapa[data-id="'+noMap+'"]').children('#map').empty();
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][domicilio]');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_domicilio');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.dom').find('input').val('');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.ubi').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][ubicacion_mapa]');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.ubi').find('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_ubicacion_mapa');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.ubi').find('input').val('');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.des').find('input').attr('name','ClientesDomicilio[domicilio]['+noMap+'][descripcion]');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.des').find('input').attr('id','ClientesDomicilio_domicilio_'+noMap+'_descripcion');
+        $('.allMapa[data-id="'+noMap+'"]').children('.row.des').find('input').val('');
         initMap();
     });
     function initMap()
@@ -52,6 +51,9 @@ $(document).ready(function()
             markers = [];
             markers.push(marker);
             $('#ClientesDomicilio_domicilio_'+map.id+'_ubicacion_mapa').val(event.latLng);
+            var div = $('#ClientesDomicilio_domicilio_'+map.id+'_domicilio');
+            var direccion = $('#ClientesDomicilio_domicilio_'+map.id+'_ubicacion_mapa').val();
+            reverseGeocoding(direccion,div);
         });
     }
     function runAllMaps()
@@ -97,8 +99,47 @@ $(document).ready(function()
                 markers = [];
                 markers.push(marker);
                 $('#ClientesDomicilio_domicilio_'+map.id+'_ubicacion_mapa').val(event.latLng);
+                var div = $('#ClientesDomicilio_domicilio_'+map.id+'_domicilio');
+                var direccion = $('#ClientesDomicilio_domicilio_'+map.id+'_ubicacion_mapa').val();
+                reverseGeocoding(direccion,div);
             });
         });
     }
     runAllMaps();
+    function reverseGeocoding(direccion, div)
+    {
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+        var lng = direccion.length;
+        var input = direccion.substring(1,lng-1);
+        var latlngStr = input.split(',', 2);
+        var lt = latlngStr[0].substring(0,10);
+        var ln = latlngStr[1].substring(0,10);
+        console.log("Lat: "+lt);
+        console.log("Lng: "+ln);
+        var latlng = {lat: parseFloat(lt), lng: parseFloat(ln)};
+        geocoder.geocode({'location': latlng}, function(results, status) 
+        {
+            if (status === google.maps.GeocoderStatus.OK) 
+            {
+                if (results[1]) 
+                {
+                    infowindow.setContent(results[1].formatted_address);
+                        $('.datosWraper > div:last-child span').text(infowindow.content);
+                        div.val(infowindow.content);
+                } 
+                else 
+                {
+                    window.alert('No se encontraron resultados');
+                    div.val('');
+                }
+              
+            } 
+            else
+            {
+//                reverseGeocoding(direccion, flag, div);
+                window.alert('Falló la geolocalización debido a: ' + status);
+            }
+        });
+    }
 });

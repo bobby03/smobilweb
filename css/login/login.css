@@ -4,8 +4,15 @@
 */
 
 body.site-login{
-	overflow-x: hidden !important;
-    padding-top: 120px;
+    overflow-x: hidden !important;
+  /*adding-top: 120px;*/
+}
+
+
+body.site-login #contentWrapper
+{
+    margin-top: 0px;
+    width: 100% !important;
 }
 
 body.site-login #headerSmobil{
@@ -19,21 +26,20 @@ body.site-login img#slogo{
 }
 
 body.site-login #page{
-	margin:0 auto;
+    margin:0 auto;
 }
 
 body.site-login #contentWrapper{
-	margin:0 !important;
+/*  margin:0 !important;*/
 
 }
 body.site-login #contentWrapper #content{
-	margin:0 auto !important;
-    width: 400px;
-   /* margin-top: 220px !important;*/
+    /*margin:0 auto !important;*/
+    margin-top: 10% !important;
 }
 
 body.site-login #contentWrapper #content div.form{
-	width: 240px; 
+    width: 350px; 
 }
 
 body.site-login #contentWrapper #content div.form form input[type="text"],
@@ -48,14 +54,20 @@ body.site-login #contentWrapper #content div.form form input[type="password"]{
       
 }
 
+body.site-login form#login-form{
+    width: 350px;
+    text-align: center;
+}
+
 body.site-login form#login-form .rememberMe{
     width: 100% !important;  
+    text-align: center;
     
 }
 
 body.site-login form#login-form .rememberMe label{
-    vertical-align: 13px !Important;  
-      font-size: 12px;
+    vertical-align: 2px;  
+    font-size: 12px;
 }
 
 body.site-login form#login-form label{
@@ -64,17 +76,17 @@ body.site-login form#login-form label{
 }
     
 body.site-login form#login-form .checkboxcolor{
-	display: none;
+    display: none;
 }
 
 body.site-login form #LoginForm_rememberMe{
-	width: 15px !Important;
+    width: 15px !Important;
     height: 15px !Important;
 }
 
 body.site-login form .errorMessage{
-	height: 15px;
-	display: inline-block;
+    height: 15px;
+    display: inline-block;
 }
 
 
@@ -100,8 +112,8 @@ body.site-login #footer{
     background-color: #0077b0 !important;
     padding: 25px !important;
     position: absolute;
-	bottom: 0;
-	width: 100%;
+    bottom: 0;
+    width: 100%;
 
 }
 

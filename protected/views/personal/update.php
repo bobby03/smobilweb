@@ -9,6 +9,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Editar Personal <?php echo $model->id; ?></h1>
+<h1>Editar empleado <?php echo $model->nombre.' '.$model->apellido; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

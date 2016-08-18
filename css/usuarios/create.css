@@ -10,10 +10,17 @@ div.form-containerWraper:after
 }
 div.containerbutton{
     margin-top: 20px;
-    
-    width: 110px;
     float: right;
+    width: 300px;
 }
+
+body.usuarios div.form input[type="submit"]{
+    position: relative;
+    width: 135px;
+    margin-left: 20px;
+    font-size: 15px !Important;
+}
+
 
 div.form label {
     margin-bottom: 5px !important;
@@ -41,7 +48,6 @@ label.letreros{
   width: 250px;
   float:left;
   padding-top: 1px;
-
 }
 .form-cLeft{
 float:left;
@@ -52,9 +58,8 @@ width: 300px;
 width:135px;
 height:6px;
 float:left;
-
-
 }
+
 .form-container2{
  width:135px;
  padding-top:20px;

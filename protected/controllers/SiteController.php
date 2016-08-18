@@ -39,6 +39,7 @@ class SiteController extends Controller
 		$criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
 		
 
+
 		/*Tanques*/
 		$model = Yii::app()->db->createCommand()
 			->selectDistinct("t.*, est.identificador, p.nombre, p.apellido")
@@ -50,12 +51,38 @@ class SiteController extends Controller
 				->queryAll();
 
 				/*Viajes Disponibles*/
+
+		$model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
+			FROM viajes as t
+			JOIN estacion est ON est.id = t.id_estacion
+			JOIN personal as p ON p.id = t.id_responsable
+			JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
+			JOIN solicitudes as s ON s.id=sv.id_solicitud
+            JOIN clientes as c ON c.id=s.id_clientes
+			WHERE t.status = 2')
+				->queryAll();
+
+
+		if(Yii::app()->user->getTipoUsuario()==1){		
+			$model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
+				FROM viajes as t
+				JOIN estacion est ON est.id = t.id_estacion
+				JOIN personal as p ON p.id = t.id_responsable
+				JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
+				JOIN solicitudes as s ON s.id=sv.id_solicitud
+	            JOIN clientes as c ON c.id=s.id_clientes
+				WHERE t.status = 2
+				AND c.id='.Yii::app()->user->getIDc())
+				->queryAll();
+			}
+
+				
+
 		$viajes_disponibles =  Yii::app()->db->createCommand(
 				'SELECT v.id as "id_viaje", est.identificador as "nombre", 
 					(SELECT count(t.id) 
 						FROM tanque as t 
 						WHERE t.id_estacion = v.id_estacion 
-						AND t.status = 1 
 						AND t.activo = 1) as "disponibles", 
 					(SELECT DISTINCT cd.domicilio 
 						FROM solicitudes_viaje as sv 
@@ -193,20 +220,85 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
-	public function actionDashboardTanques($id) {
+	public function actionDashboardTanques($id) 
+        {
+        	if(Yii::app()->user->getTipoUsuario()==2){
+        	$last=Yii::app()->db->createCommand("SELECT ut.*, id_viaje FROM uploadtemp as ut 
+			INNER JOIN (
+			    SELECT MAX(id) as id, id_viaje 
+			    FROM escalon_viaje_ubicacion 
+			    where id_viaje = ".$id.") 
+			    evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+				->queryAll();
+			}
+        	if(Yii::app()->user->getTipoUsuario()==1){//Cuando es cliente
+        		$solicitudes= Yii::app()->db->createCommand("SELECT * FROM solicitud_tanques st
+				JOIN solicitudes s ON s.id=st.id_solicitud
+				JOIN clientes c ON c.id=s.id_clientes
+				JOIN solicitudes_viaje sv ON sv.id_solicitud=s.id
+				WHERE c.id=".Yii::app()->user->getIDc()."
+				AND sv.id_viaje=".$id."
+				GROUP BY s.id")
+				->queryAll();
+				$las = Yii::app()->db->createCommand("SELECT ut.* 
+			FROM uploadtemp as ut 
+			INNER JOIN (
+				SELECT MAX(id) as id, id_viaje 
+				FROM escalon_viaje_ubicacion 
+				WHERE id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion
+				JOIN solicitud_tanques st ON st.id_tanque=ut.id_tanque")
+		->queryAll();
+		foreach($solicitudes as $soli){
+		
+		if(isset($las)){
+			$last[]=$las;
+		}
+		fb($last);
+		}
+        	}
+        
+
 		$return['result'] = 0 ;
 		$return['html'] = "";
-		$last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
-		->queryAll();
+		
 		$flag = true;
+		$u=0;
             if(count($last) > 0)
             {
+            	
+            	if(Yii::app()->user->getTipoUsuario()==1){
+            		
+            		foreach($last as $data)
+                {
+                   $return["html"] .= "
+                   	<div class='tanque'>
+                   			<div class='tanque-container-titulo'>
+                    		<span class='titulotanque'> Tanque ".($u+1)."</span></div>
+                     		<div class='variables-wrapper'> 
+                     			<div class='var-oz'>
+                     				<div class='icon-oz'></div>
+                    				<div class='txt'>{$data[$u]["ox"]}</div>
+                    			</div>
+                    			<div class='var-ph'>
+                    				<div class='icon-ph'></div>
+                    				<div class='txt'>{$data[$u]["ph"]}</div>
+                    			</div>
+                    			<div class='var-tm'>
+                    				<div class='icon-tm'></div>
+                    				<div class='txt'>{$data[$u]["temp"]}</div>
+                    			</div>
+                    		</div>
+                    	</div>";
+                    	$u++;
+                   }
+
+            	}else{
                 foreach($last as $data)
                 {
                    $return["html"] .= "
                    	<div class='tanque'>
                    			<div class='tanque-container-titulo'>
-                    		<span class='titulotanque'> Tanque {$data["ct"]}</span></div>
+                    		<span class='titulotanque'> Tanque ".($u+1)."</span></div>
                      		<div class='variables-wrapper'> 
                      			<div class='var-oz'>
                      				<div class='icon-oz'></div>
@@ -222,7 +314,10 @@ class SiteController extends Controller
                     			</div>
                     		</div>
                     	</div>";
+                    	$u++;
                    }
+               }
+
                  $return['result'] = 1;
                }
             else
@@ -234,7 +329,8 @@ class SiteController extends Controller
          $return['linea'] = $this->GetDistancia($id, $flag);
           echo json_encode($return);
   	}
-  		public function actionPrueba($id) {
+        public function actionPrueba($id) 
+        {
  			$return['result'] = 0 ;
  		    $return['html'] = "";
           	$last =  Yii::app()->db->createCommand("SELECT v.id,est.identificador FROM viajes as v JOIN estacion as est ON est.id = v.id_estacion where v.id = {$id}")
@@ -249,123 +345,121 @@ class SiteController extends Controller
          echo json_encode($return);
  	}
  	public function rad($x)
-  {
+        {
         return $x * pi() / 180;
    }
  /*
  			function dashbboard	
  */  
- public function GetDistancia($id, $bandera)
- { 
- 	$recorrido = Yii::app()->db->createCommand()
-     	->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio,v.fecha_salida, s.fecha_entrega')
-        ->from('clientes_domicilio as cd')
-        ->join('solicitud_tanques as st','st.id_domicilio = cd.id')
-        ->join('solicitudes_viaje as sv','sv.id_solicitud = st.id_solicitud')
-        ->join('solicitudes as s','s.id = sv.id_solicitud')
-        ->join('viajes as v','v.id = sv.id_viaje')
-        ->where("sv.id_viaje = $id")
-        ->queryAll();
-    $arreglo = array();
-    $arreglo2= array();
-    $d = 0;
-    $p1 = $p2 = array();
-    foreach($recorrido as $data)
-    {
-            $p1[0] = Yii::app()->params['locationLat'];
-            $p1[1] = Yii::app()->params['locationLon'];
-        
-        $hay = strlen($data['ubicacion_mapa']);
-        $coord = substr($data['ubicacion_mapa'], 1, $hay-1);
-        $p2 = explode(",", $coord);
-        $R = 6378137; // Earth’s mean radius in meter
-        $dLat = $this->rad($p2[0] - $p1[0]);
-        $dLong = $this->rad($p2[1] - $p1[1]);
-        $a = sin($dLat / 2) * sin($dLat / 2) +
-          cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
-          sin($dLong / 2) * sin($dLong / 2);
-		$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        public function GetDistancia($id, $bandera)
+        { 
+            $recorrido = Yii::app()->db->createCommand()
+                ->selectDistinct('sv.id_solicitud,cd.ubicacion_mapa,cd.domicilio,v.fecha_salida, s.fecha_entrega')
+                ->from('clientes_domicilio as cd')
+                ->join('solicitud_tanques as st','st.id_domicilio = cd.id')
+                ->join('solicitudes_viaje as sv','sv.id_solicitud = st.id_solicitud')
+                ->join('solicitudes as s','s.id = sv.id_solicitud')
+                ->join('viajes as v','v.id = sv.id_viaje')
+                ->where("sv.id_viaje = $id")
+                ->queryAll();
+            $arreglo = array();
+            $arreglo2= array();
+            $d = 0;
+            $p1 = $p2 = array();
+            foreach($recorrido as $data)
+            {
+                $p1[0] = Yii::app()->params['locationLat'];
+                $p1[1] = Yii::app()->params['locationLon'];
+                $hay = strlen($data['ubicacion_mapa']);
+                $coord = substr($data['ubicacion_mapa'], 1, $hay-1);
+                $p2 = explode(",", $coord);
+                $R = 6378137; // Earth’s mean radius in meter
+                $dLat = $this->rad($p2[0] - $p1[0]);
+                $dLong = $this->rad($p2[1] - $p1[1]);
+                $a = sin($dLat / 2) * sin($dLat / 2) +
+                    cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
+                    sin($dLong / 2) * sin($dLong / 2);
+                       $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                $fecha = strtotime($data['fecha_entrega']);
 
-		$fecha = strtotime($data['fecha_entrega']);
+                 if($fecha == null){ 
+                               $entregado = 'no_entregado';		
+                       }
 
-          if($fecha == null){ 
-			$entregado = 'no_entregado';		
-		}
+                       else{
+                               $entregado = 'entregado';
+                               }	
+                               //var_dump($data["fecha_entrega"]);
 
-		else{
-			$entregado = 'entregado';
-			}	
-			//var_dump($data["fecha_entrega"]);
-			
-		$arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio'], 'entregado' => $entregado, 'salida' => $data['fecha_salida']);
-	}
-	$total = count($arreglo);
- 	for($i=0;$i<$total; $i++)
- 	{
-		for($j=$i+1;$j<$total;$j++)
-		{
-		    if( $arreglo[$i]['distancia']>$arreglo[$j]['distancia'])
-		    {
-	    	    $aux =$arreglo[$i];
-	    		$arreglo[$i]=$arreglo[$j];
-	    		$arreglo[$j] =$aux;
-		    }
-		}
-	}
-	$viaje = Viajes::model()->findByPk($id);
-	$html = '';
-	$total++;
+                       $arreglo[] = array('distancia' => $R * $c,'idLocacion' =>  $data['domicilio'], 'entregado' => $entregado, 'salida' => $data['fecha_salida']);
+               }
+               $total = count($arreglo);
+               for($i=0;$i<$total; $i++)
+               {
+                       for($j=$i+1;$j<$total;$j++)
+                       {
+                           if( $arreglo[$i]['distancia']>$arreglo[$j]['distancia'])
+                           {
+                           $aux =$arreglo[$i];
+                               $arreglo[$i]=$arreglo[$j];
+                               $arreglo[$j] =$aux;
+                           }
+                       }
+               }
+               $viaje = Viajes::model()->findByPk($id);
+               $html = '';
+               $total++;
 
-		if($bandera == true){
-				$width = 'style="width: ' . (100)/$total.'%"';
-				$html = $html. '
-					<div class="containerBoxR" '.$width.'>
-					
-						<div>	
-									<div class="textCircle">
-									<div class="circle entregado"></div>
-									<div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
-									</div>
-							<div class="containerLinea">
-								<div class="drawLine2 entregado"></div>
-							</div>
-						</div>
-					</div>';/*crear la parte del cajon*/
-				$mar = 0;
-			   	foreach ($arreglo as $data) 
-			   	{
-					$html = $html.'
-					<div class="containerBoxR" '.$width.'>
-				   		 
-				   		 	<div>	
-				   		 		';
-				   		 		if($mar == $total-1)
-									$html = $html.'	<div class="textCircle">';
-								else
-									$html = $html.'	<div class="textCircle siHover">';
-					$html = $html.'	
-									<div class="circle '.$data['entregado'].'"></div>
-									<div class="ctxtr"> <div class="bubbleC"><label class="txtRuta">'.$data["idLocacion"].'</label></div></div>
-								</div>
-								<div class="containerLinea">
-									<div class="drawLine2 '.$data['entregado'].'"></div>
-								</div>
-							</div>
-					   	</div>';
-					   	$mar = $mar + 1 ;
-				 
-   				
-   			}
-   		}
-   			
-   		else{
-   					$html=$html .'<div class="containerBoxR">
-   									<div class="letreroError">Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
-   				
-   			}	
-   	
-	return $html;
- } 
+                       if($bandera == true){
+                                       $width = 'style="width: ' . (100)/$total.'%"';
+                                       $html = $html. '
+                                               <div class="containerBoxR" '.$width.'>
+
+                                                       <div>	
+                                                                               <div class="textCircle">
+                                                                               <div class="circle entregado"></div>
+                                                                               <div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
+                                                                               </div>
+                                                               <div class="containerLinea">
+                                                                       <div class="drawLine2 entregado"></div>
+                                                               </div>
+                                                       </div>
+                                               </div>';/*crear la parte del cajon*/
+                                       $mar = 0;
+                                       foreach ($arreglo as $data) 
+                                       {
+                                               $html = $html.'
+                                               <div class="containerBoxR" '.$width.'>
+
+                                                               <div>	
+                                                                       ';
+                                                                       if($mar == $total-1)
+                                                                               $html = $html.'	<div class="textCircle">';
+                                                                       else
+                                                                               $html = $html.'	<div class="textCircle siHover">';
+                                               $html = $html.'	
+                                                                               <div class="circle '.$data['entregado'].'"></div>
+                                                                               <div class="ctxtr"> <div class="bubbleC"><label class="txtRuta">'.$data["idLocacion"].'</label></div></div>
+                                                                       </div>
+                                                                       <div class="containerLinea">
+                                                                               <div class="drawLine2 '.$data['entregado'].'"></div>
+                                                                       </div>
+                                                               </div>
+                                                       </div>';
+                                                       $mar = $mar + 1 ;
+
+
+                               }
+                       }
+
+                       else{
+                                               $html=$html .'<div class="containerBoxR">
+                                                                               <div class="letreroError">Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
+
+                               }	
+
+               return $html;
+        } 
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
@@ -456,10 +550,26 @@ WHERE cs.id_estacion='.$id)
 	$conteo=count($a);
 	$hoy=date('Y-m-d');
 	$indice=array_search($hoy, $a);
-	//$bandera=false;
+	$ss=0;
+	if ($indice==null){
+		if($hoy>$a[0]){
+			$ss=1;
+			$indice=$conteo-1;
+		}else{
+			$ss=2;
+		}
+
+	}
+	/*$fi='2008-1-15';
+	$ff='2009-10-15';
+	if($fi<$ff){
+		echo 'hola';
+	}else{
+		echo 'deshola';
+	}*/
 
 	
-	$fi=substr($fecha_i,-2).'-'.substr($fecha_i, 5,2).'-'.substr($fecha_i, 0,4);
+	$fi=substr($fecha_i,-2).'/'.substr($fecha_i, 5,2).'/'.substr($fecha_i, 0,4);
 
 		if($bandera == true){
 				$width = 'style="width: ' . (100)/($conteo+1).'%"';
@@ -479,7 +589,7 @@ WHERE cs.id_estacion='.$id)
 				$mar = 1;
 			   	for ($i=0;$i<($conteo);$i++) 
 			   	{
-			   		$f=substr($a[$i],-2).'-'.substr($a[$i], 5,2).'-'.substr($a[$i], 0,4);
+			   		$f=substr($a[$i],-2).'/'.substr($a[$i], 5,2).'/'.substr($a[$i], 0,4);
 			   		if($i<$indice){
 			   			$ent='entregado';
 			   			$ent1='entregado';
@@ -503,8 +613,13 @@ WHERE cs.id_estacion='.$id)
 			   			$clase="";
 			   		}
 			   		if($i==($conteo-1)){
-			   			$fin='<label class="txtR4">'.'Fin monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
+			   			$fin='<label class="txtR4">'.'Terminó monitoreo'.'<br><span class="ldate">'.$f.'</span></label>';
 			   			$clase="cotro";
+			   		}
+			   		if($ss==2){
+			   			$ent='no_entregado';
+			   			$txt='';
+			   			$hov='siHover';
 			   		}
 			   		
 
@@ -514,7 +629,7 @@ WHERE cs.id_estacion='.$id)
 				   		 	<div>	
 				   		 		';
 				   		 		if($mar == $conteo)
-									$html = $html.'	<div class="textCircle">';
+									$html = $html.'	<div class="textCircle '.$hov.'">';
 								else
 									$html = $html.'	<div class="textCircle '.$hov.'">';
 					$html = $html.'	
@@ -523,7 +638,7 @@ WHERE cs.id_estacion='.$id)
 									 '.$fin.'  </div></div>
 								</div>
 								<div class="containerLinea">
-									<div class="drawLine2 '.$ent1.'"></div>
+									<div class="drawLine2 '.$ent.'"></div>
 								</div>
 							</div>
 					   	</div>';

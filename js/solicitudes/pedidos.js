@@ -1,6 +1,9 @@
 $(document).ready(function()
 {
     var tot = 1;
+    var loc = window.location.href;
+    var index2 = loc.indexOf('update');
+    var direccion = loc.substring(0,index2);
     if(!$('.pedidos').hasClass('hide'))
     {
         $('.pedidoViaje').each(function()
@@ -81,14 +84,21 @@ $(document).ready(function()
                     </div>';
         $('.pedidosWraper').append(html);
 
-        $('#Especie_id_chosen .chosen-single span').empty(); 
+//        $('#Especie_id_chosen .chosen-single span').empty(); 
+        $('#Especie_id').val('');
+        $('#Especie_id').trigger("chosen:updated");
         $('#Cepa_id_chosen .chosen-single span').empty(); 
         $('#Cepa_nombre_cepa_1_cantidad').val(''); 
         $('#tanquesNO').val(''); 
-        $('#ClientesDomicilio_domicilio_chosen .chosen-single span').empty(); 
-        $('#Solicitudes_notas').val(''); 
-
+        $('#ClientesDomicilio_domicilio').val(''); 
+        $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+//        $('#Solicitudes_notas').val(''); 
+        
         $('#Solicitudes_id_clientes').attr('disabled',true).trigger("chosen:updated");
+        $('.row.cepa').addClass('hide');
+        $('.row.cantidad').addClass('hide');
+        $('.row.direcciones').addClass('hide');
+        $('.row.buttons').addClass('hide');
         $('.pedidos').removeClass('hide');
         borrarPedido();
         editarPedido();
@@ -99,9 +109,6 @@ $(document).ready(function()
             contarTanques();
         }
     });
-
-
-
     $('div.continuar').click(function()
     {
         $('div.crearViaje').removeClass('hide');
@@ -114,6 +121,33 @@ $(document).ready(function()
             $('#Solicitudes_id_clientes').trigger('chosen:update');
             $('#solicitudes-form').submit();
         });
+        $('.viajeLoc').click(function()
+        {
+            var id2 = $(this).data('viaje');
+            var url = direccion+'GetDirecciones';
+            $.ajax(
+            {
+                type: 'GET',
+                url: url,
+                dataType: 'JSON', 
+                async: false,
+                data:
+                {
+                    id: id2
+                },
+                success:function(data)
+                {
+                    $.colorbox(
+                    {
+                        html: data
+                    });
+                },
+                error:function(a,b,c)
+                {
+                    console.log(a,b,c);
+                }
+            });
+        });
     });
 
     $('div.guardar').click(function()
@@ -122,8 +156,8 @@ $(document).ready(function()
         $('form#solicitudes-form').attr('action',baseUrl);
         $('#Solicitudes_id_clientes').removeAttr('disabled');
         $('#Solicitudes_id_clientes').trigger('chosen:update');
-        console.log('hola');
-        //$('#solicitudes-form').submit();
+//        console.log('hola');
+        $('#solicitudes-form').submit();
     });
 
     function borrarPedido()
@@ -139,25 +173,29 @@ $(document).ready(function()
         $('.editarPedido').click(function()
         {
             var id          = $(this).attr('data-id');
-            var especieID   = parseInt($('[name="especiePedido'+id+'"]').val());
-            var cepaID      = parseInt($('[name="cepaPedido'+id+'"]').val());
-            var cantidad    = parseInt($('[name="cantidadPedido'+id+'"]').val());
-            var direccionID = parseInt($('[name="destinoPedido'+id+'"]').val());
-            $('#Especie_id').val(especieID);
-            $('#Especie_id').trigger("change");
-            $('#Especie_id').trigger("chosen:updated");
-            $('#requerida input').val(cantidad);
-            $('#ClientesDomicilio_domicilio').val(direccionID);
-            $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-//            $(this).closest('.pedido').remove();
-            changeCepa(cepaID);
+            var especieID   = parseInt($('[name="pedido['+id+'][especie]"]').val());
+            var cepaID      = parseInt($('[name="pedido['+id+'][cepa]"]').val());
+            var cantidad    = parseInt($('[name="pedido['+id+'][cantidad]"]').val());
+            var direccionID = parseInt($('[name="pedido['+id+'][destino]"]').val());
+            var tanques     = parseInt($('[name="pedido['+id+'][tanques]"]').val());
+            if($.isNumeric(especieID))
+            {
+                $('#Especie_id').val(especieID);
+                $('#Especie_id').trigger("change");
+                $('#Especie_id').trigger("chosen:updated");
+                $('#Cepa_id').val(cepaID);
+                $('#Cepa_id').trigger("change");
+                $('#Cepa_id').trigger("chosen:updated");
+                $('#Cepa_nombre_cepa_1_cantidad').val(cantidad);
+                $('#Cepa_nombre_cepa_1_cantidad').trigger("change");
+                $('#tanquesNO').val(tanques);
+                $('#ClientesDomicilio_domicilio').val(direccionID);
+                $('#ClientesDomicilio_domicilio').trigger("change");
+                $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+    //            $('.row.direcciones .row.buttons').removeClass('hide');
+                $(this).closest('.pedidoViaje').remove();
+            }
         });
-    }
-    function changeCepa(cepaID)
-    {
-        $('#Cepa_id').val(cepaID);
-        $('#Cepa_id').trigger("change");
-        $('#Cepa_id').trigger("chosen:updated");
     }
     function countPedidos()
     {
@@ -191,8 +229,31 @@ $(document).ready(function()
             else
                 $(this).removeClass('hide');
         });
+        checkViajes();
     }
-    $('#Solicitudes_id_clientes').change(
+    function checkViajes()
+    {
+        var total = 0;
+        var totalHide = 0;
+        $('div.tablaViajes').children().each(function()
+        {
+            if($(this).hasClass('hide'))
+                totalHide++;
+            total++;
+        });
+        if(totalHide == total)
+        {
+            $('div.siViaje').addClass('hide');
+            $('div.noViaje').removeClass('hide');
+        }
+        else
+        {
+            $('div.siViaje').removeClass('hide');
+            $('div.noViaje').addClass('hide');
+        }
+    }
+    $('#Solicitudes_id_clientes').change
+    (
         function(){
            var sc = $('#Solicitudes_id_clientes').val();
             if (sc== "") {
@@ -203,7 +264,8 @@ $(document).ready(function()
             }
         }
         );
- $('#Especie_id').change(
+    $('#Especie_id').change
+    (
         function(){
            var eid = $('#Especie_id').val();
             if (eid== "") {
@@ -214,7 +276,8 @@ $(document).ready(function()
             }
         }
         );
- $('#Cepa_id').change(
+    $('#Cepa_id').change
+    (
         function(){
            var cepaID = $('#Cepa_id').val();
             if (cepaID== "") {
@@ -226,7 +289,8 @@ $(document).ready(function()
         }
         );
 
- $('#ClientesDomicilio_domicilio').change(
+    $('#ClientesDomicilio_domicilio').change
+    (
         function(){
            var direccionID = $('#ClientesDomicilio_domicilio').val();
            console.log(direccionID);
@@ -237,5 +301,5 @@ $(document).ready(function()
                 $('#ClientesDomicilio_domicilio_chosen').css('border-color', '#0077B0');
             }
         }
-        );
+    );
 });

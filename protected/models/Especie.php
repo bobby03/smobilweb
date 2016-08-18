@@ -27,6 +27,7 @@ class Especie extends CActiveRecord
 		return array(
 			array('nombre', 'required','message'=>'Campo obligatorio'),
 			array('nombre', 'length', 'max'=>100),
+            array('nombre', 'unique', 'message'=>'Ya existe una especie con ese nombre'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre', 'safe', 'on'=>'search'),
@@ -67,7 +68,7 @@ class Especie extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -75,9 +76,13 @@ class Especie extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('nombre',$this->nombre,true);
-
+                $criteria->addCondition("activo=$flag");
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
 		));
 	}
 
@@ -91,10 +96,14 @@ class Especie extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+
         public function getAllEspeciesSolicitud()
         {
-            $especies = $this->findAll();
-            $cepa = Cepa::model()->findAll();
+        	
+            $especies = $this->findAll('activo = 1');
+            $cepa = Cepa::model()->findAll('activo = 1');
             $return = array();
             foreach($especies as $data)
             {
@@ -109,19 +118,28 @@ class Especie extends CActiveRecord
             }
             return $return;
         }
+
+
+
+
         public function getAllEspecies()
         {
-            $especies = Especie::model()->findAll();
+            $especies =Especie::model()->findAllBySql('SELECT * FROM especie WHERE activo = 1');
             $return = array();
             foreach($especies as $data)
                 $return[$data->id] = $data->nombre;
             return $return;
         }
+
+
         public function getEspecie($id)
         {
             $especie = Especie::model()->findByPk($id);
             return $especie->nombre;
         }
+
+
+
         public function adminSearch()
         {
             return array
@@ -131,7 +149,7 @@ class Especie extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {cepa}</div>',
+                    'template'=>'<div class="buttonsWraper">{update} {delete} {cepa}</div>',
                     'buttons' => array
                     (
                         'cepa' => array
@@ -142,6 +160,28 @@ class Especie extends CActiveRecord
                         )
                     )
 		)
+            );
+        }
+        public function adminSearchBorrados()
+        {
+            return array
+            (
+                'nombre',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'buttons' => array
+                    (
+                        'reactivar' => array
+                        (
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("especie/reactivar", array("id"=>$data->id))',
+                        )
+                    )
+                )
             );
         }
 }

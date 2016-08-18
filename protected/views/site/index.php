@@ -11,23 +11,17 @@ $cs->registerScriptFile($baseUrl.'/js/inicio/estaciones.js');
 $this->pageTitle=Yii::app()->name;
 
 // IF NOT LOGGED IN, GO TO LOGIN SCREEN
-if(Yii::app()->user->isGuest)
-{
-$this->redirect(Yii::app()->homeUrl);
-}
-
-
+if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
 
 ?>
-
-
-			<div class="principal index">
+<div class="principal index">
 				<h1 class="barraViajeGranja">
 				    <div class="tabs">
 			        	<div id="viaje" class="selected">Viajes</div>
-			       		<div id="granja" >Estaciones</div>
-			    	</div>
-			    </h1>
+			       		<div id="granja" >Siembras</div>
+                    </div>
+                </h1>
+                <?php if($enruta != null) { ?>
 			    <div class="container-viaje">
 			    	<div class="container-box">
 			    			<div class="divBox1">
@@ -54,7 +48,6 @@ $this->redirect(Yii::app()->homeUrl);
   					    		</div>
   
   					    		<div class="container-line">
-
 									<h3 class="container-line2"></h3><h3 class="container-line1"></h3>
   								</div>
   							</div>
@@ -84,7 +77,7 @@ $this->redirect(Yii::app()->homeUrl);
  										    			echo "<div class='divCamion1'><div class='divIcon2'><div class='iconCamion1'></div></div><div class='divText2'><label class='titulo3'>Camión</label><br><label class='estilov2'>".$data['nombre']."</lablel></div></div>";
  										    			echo "<div class='divTanque1'><div class='divIcon2'><div class='iconTanque1'></div></div><div class='divText3'><label class='titulo3'>Tanques disponibles</label><br><label class='estilov2'>".$data['disponibles']."</lablel></div></div>";
  										    			echo "<div class='divUbicacion1'><div class='divIcon2'><div class='iconGPS1'></div></div><div class='divText2'><label class='titulo3'>Último destino</label><br><label class='estilov2'>".$data['ultimo']."</lablel></div></div>";
- 										    			echo "<div class='divTdBoton'><div class='botonIrViaje'><a href='".$baseUrl."/viajes/".$data['id_viaje']."'><div class='botonIr'><label class='titulo2'>Ir</label></div></a></div></div>";
+ 										    			echo "<div class='divTdBoton'><a href='".$baseUrl."/index.php/viajes/".$data['id_viaje']."'><div class='botonIr'><label class='titulo2'>Ir</label></div></a></div>";
   										    			echo '<br>';
 										    	echo "</div>";
 								    		}
@@ -97,6 +90,15 @@ $this->redirect(Yii::app()->homeUrl);
   					</div>
   				</div>
   			  
+  				<?php } 
+  					else 
+  					{ 
+  						echo "<div class='container-viaje center'>
+								<label class='center'>Agrega algunos viajes o siembras para acceder a tu dashboadr</label>
+							</div>"; 
+					} ?>
+  			  
+  			  <?php if($estaciones != null) { ?>
   			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
   			    	<div class="dash1">
 	  			    	<div class="estacion">
@@ -107,7 +109,9 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    			$i=1;
 	  			    			foreach($estaciones as $est):?>
 	  			    				<div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
-	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div><label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
+	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div>
+	  			    					<label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
+	  			    					<label class='resp'> <a href="monitoreo/<?php echo $est['idest'];?>"><div class='botonIrViaje'><label class = 'titulov'>Ver Historial</label></div></a> </label>
 	  			    				</div>
 	  			    			<?php
 	  			    			$i++;
@@ -152,13 +156,13 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    	<?php 
 	  			    	$o++;
 	  			    	endforeach;?>
-	  			    	<div class="reg3"></div>
+	  			    	<!-- div class="reg3"></div -->
 	  			    	</div>
 
 
   			    	</div>
   			    	<?php 
-  			    	$id=$est['id_estacion'];
+  			    	$id=isset($est['id_estacion'])?$est['id_estacion']:0;
 	  			   	$datos=$this->actionGetTanques2($id);
   			    	$us=1;
   			    	foreach($estaciones as $est):?>
@@ -168,21 +172,20 @@ $this->redirect(Yii::app()->homeUrl);
   			    	<?php 
 	  			    $us++;
 	  			    endforeach;?>
+	  			    <!--
+	  			    Barra de 'timeline' de siembras de sensado...
   			    	<div class="progressbar">
 
   			    		<div class="container-est">
 						<div class="sepest"></div>
  						<div class="containerEst"><div class="containerE1"></div></div>
  						<div class="sepest2"></div>		
-						</div>
-
-
-						
+						</div>						
   			    	</div>
-
+-->
   			    	<div class="info">
   			    		<?php 
-  			    		$id=$est['id_estacion'];
+  			    		$id=isset($est['id_estacion'])?$est['id_estacion']:0;
 	  			    	$datos=$this->actionGetTanques2($id);
   			    		$u=1;
   			    		foreach($estaciones as $est):?>
@@ -206,8 +209,10 @@ $this->redirect(Yii::app()->homeUrl);
 	  			    	endforeach;?>
   			    		
   			    	</div>
-
-  			    	
-
   			    </div>
+  			    <?php }
+					else { echo "<div class='container-granja center none'>
+					<label class='center'>Agrega algunos viajes o siembras para acceder a tu dashboard</label></div>"; 
+				} ?>
+  			    
 			</div>

@@ -1,17 +1,18 @@
 div.principal.index{
-    width: 1190px;
-    margin-left: 71px;
+    width: 1200px;
+    margin: 0 auto;
 }
 .barraViajeGranja{
     background-color: #0077B0;
-    height: 51px;
+    height: 40px;
     width: 100%;
     max-width: 1190px;
     border: 0;
-	margin-bottom: 0;
+    margin-bottom: 0;
+    position: initial;
 }
 .tabs {
-    height: 51px;
+    height: 40px;
     margin-top: 90px;
 }
 .tabs > div {
@@ -22,7 +23,7 @@ div.principal.index{
     text-indent: initial;
     cursor: pointer;
     height: 100%;
-    line-height: 53px;
+    line-height: 43px;
 }
 .tabs > div:hover ,
 .tabs > div.selected {
@@ -98,18 +99,28 @@ div.principal.index{
 /* Tipo de titulos */
   
  label.tituloV1{
-     font-family: 'CenturyGothic';
+     
      font-size: 19px;
      color:#0077b0; 
      margin-left: 12px;   
 }
 label.tituloV2{
-     font-family: 'CenturyGothic'; 
+     
      font-size: 14px;
      color:#FFFFFF; 
 }
+label.titulov{
+  font-family: 'Roboto-Regular' !important;
+  font-size: 15px;
+  color:#fff;
+  text-align: center;
+  line-height: 10px;
+}
+label.titulov:hover{
+  cursor: pointer;
+}
 label.estiloV1{
-     font-family:'MyriadPro-Regular';
+     
      font-size: 14px;
 }
 .txt{
@@ -124,7 +135,7 @@ label.estiloV1{
     color:#2C87B7; 
 }
 .estilov2{
-    font-family: 'MyriadPro-Regular';   
+    
     font-size: 16px;
     color:#414042;
 }
@@ -164,7 +175,7 @@ div.iconPersonal{
       background-image: url("../../images/dashboard/iconoPersonalBlanco.png");
 }
 .icon-oz{
-    background-image: url("../../images/dashboard/iconoOxigeno.png");
+    background-image: url("../../images/dashboard/IconoOxigeno.png");
     background-repeat: no-repeat;
     background-position: center;
     width: 20px;
@@ -315,7 +326,7 @@ h2{
 .divThead{
     height: 30px;
     background-color: #1178AF;
-    border-bottom: 14px solid #21B7C7;
+    /*border-bottom: 14px solid #21B7C7;*/
     line-height: 33px;
     text-align: left;
     padding-left: 13px;
@@ -327,9 +338,12 @@ h2{
 }
 .divTr{
     
-    height: 23px;
-    border-bottom: 3px dashed #EAEAEA;
+    /*height: 23px;*/
+    border-bottom: 1.5px dashed #aaa;
     padding-top: 14px;
+    display: inline-block;
+    margin-top: -3px;
+    width: 100%;
 }
 .divTd{
     width: 33%;
@@ -350,7 +364,7 @@ h2{
 .divThead2{
     height: 33px;
     background-color: #1178AF;
-    border-bottom: 16px solid #21B7C7;
+    /*border-bottom: 16px solid #21B7C7;*/
     line-height: 35px;
     text-align: left;
     padding-left: 13px;
@@ -362,7 +376,7 @@ h2{
 }
 .divTr2{
   
-    height: 31px;
+    height: 45px;
     border-bottom: 3px dashed #EAEAEA;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -379,10 +393,13 @@ h2{
     float: left;
 }
 .botonIrViaje{
-    width: 57px;
+    width: 135px;
     height: 35px;
     background-color: #0077B0;
     border-radius: 6px 6px 6px 6px;
+    margin-top: 3px;
+    text-align: center;
+    
 }
 .botonIr{
     width: 57px;
@@ -482,7 +499,6 @@ h2{
      height: 19px;
 }
 .tituloV3{
-    font-family: 'CenturyGothic';
     font-size: 19px;
     color: #0077b0;
     margin-left: 12px;
@@ -568,7 +584,7 @@ float:left;
     visibility: visible;
 }
 .containerRuta{
-    width: 100%;
+    width: 1174px;
     height:170px;
     display: block;
 
@@ -590,7 +606,7 @@ float:left;
 .containerBoxR:last-child .circle
 {
     
-     left:89%;
+     left:94%;
 }
 .containerBoxR:last-child .containerLinea
 {
@@ -652,7 +668,7 @@ float:left;
     position: absolute;
     width: 0;
     height: 0;
-    left: -7px;
+    left: -8px;
     top: 34px;
     border: 12px solid;
     border-color: #09b7c9 transparent transparent #09b7c9;
@@ -690,7 +706,7 @@ float:left;
 
 }
 .txtR2{
-    font-family: 'AllerDisplay';
+  
     font-size:17px;
     color:#000000;
 
@@ -767,4 +783,11 @@ float:left;
 .textCircle.siHover:hover .ctxtr2
 {
     visibility: visible;
+}
+
+.container-viaje:after
+{
+    display: block;
+    clear: both;
+    content: '';
 }

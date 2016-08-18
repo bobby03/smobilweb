@@ -41,7 +41,16 @@ class Viajes extends CActiveRecord
 			array('id_responsable','required','message'=>'Debe seleccionar un responsable'),
 			array('id_estacion','required','message'=>'Debe seleccionar una estacion'),
 			array('fecha_salida','required','message'=>'Debe especificar una fecha'),
-			array('hora_salida','required','message'=>'Debe especificar una hora'),
+
+
+
+            array('hora_salida','required','message'=>'Este campo es obligatorio'),
+            array(
+                'hora_salida',
+                'match',
+                'pattern'=>"/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/",
+                'message'=>'Formato de Hora no valido'),
+
 	
 			array('id_solicitudes, status', 'required'),
 			array('id, id_solicitudes, id_responsable, id_estacion, status', 'numerical', 'integerOnly'=>true),
@@ -49,6 +58,9 @@ class Viajes extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_solicitudes, id_responsable, id_estacion, status, fecha_salida, hora_salida, fecha_entrega, hora_entrega', 'safe', 'on'=>'search'),
+
+
+            //([01]?[0-9]|2[0-3]):[0-5][0-9]
 		);
 	}
 
@@ -76,7 +88,7 @@ class Viajes extends CActiveRecord
 			'id' => 'ID',
 			'id_solicitudes' => 'Cliente',
 			'id_responsable' => 'Responsable',
-			'id_estacion' => 'Estación',
+			'id_estacion' => 'Camión',
 			'status' => 'Status',
 			'fecha_salida' => 'Fecha estimada de salída',
 			'hora_salida' => 'Hora estimada de salída',
@@ -113,9 +125,13 @@ class Viajes extends CActiveRecord
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+        return new CActiveDataProvider($this, array(
+           'criteria'=>$criteria,
+                                'pagination'=>array(
+                                    'pageSize'=>15,
+                            ),
+          ));
+
 	}
         public function searchStatus1($flag)
 	{
@@ -132,10 +148,34 @@ class Viajes extends CActiveRecord
 		$criteria->compare('hora_salida',$this->hora_salida,true);
 		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
 		$criteria->compare('hora_entrega',$this->hora_entrega,true);
-                $criteria->addCondition("status = $flag");
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+            $criteria->addCondition("status = $flag");
+		if(Yii::app()->user->getTipoUsuario()==1){
+            $c = new CDbCriteria();
+            $viajes=Viajes::model()->tablename();
+            $solicitudes_viajes=SolicitudesViaje::model()->tablename();
+            $clientes=Clientes::model()->tablename();
+            $solicitudes=Solicitudes::model()->tablename();
+            $c->join=
+            'join '.$solicitudes_viajes.' sv on sv.id_viaje = t.id '.
+            'join '.$solicitudes.' s on s.id = sv.id_solicitud '.
+            'join '.$clientes.' c on c.id = s.id_clientes '.
+            'where t.status='.$flag.
+            ' and c.id=1 '.
+            'group by t.id'
+            ;
+             return new CActiveDataProvider($this, array(
+           'criteria'=>$c,
+                                'pagination'=>array(
+                                    'pageSize'=>15,
+                            ),
+          ));
+        }
+        return new CActiveDataProvider($this, array(
+           'criteria'=>$criteria,
+                                'pagination'=>array(
+                                    'pageSize'=>15,
+                            ),
+          ));
 	}
 	/**
 	 * Returns the static model of the specified AR class.
@@ -201,12 +241,6 @@ class Viajes extends CActiveRecord
         (
             array
             (
-                'name' => 'status',
-                'value' => 'Viajes::model()->getStatus($data->status)',
-                'filter' => Viajes::model()->getAllStatus()
-            ),
-            array
-            (
                 'name' => 'id_solicitudes',
                 'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
                 'filter' => Clientes::model()->getAllClientesViajes(),
@@ -256,12 +290,6 @@ class Viajes extends CActiveRecord
     {
         return array
         (
-            array
-            (
-                'name' => 'status',
-                'value' => 'Viajes::model()->getStatus($data->status)',
-                'filter' => Viajes::model()->getAllStatus()
-            ),
 
             array
             (
@@ -282,7 +310,7 @@ class Viajes extends CActiveRecord
             array
             (
                 'name' => 'id_estacion',
-                //'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                 'filter' => Estacion::model()->getAllEstacionMovil()
             ),
 
@@ -323,12 +351,6 @@ class Viajes extends CActiveRecord
     {
         return array
         (
-            array
-            (
-                'name' => 'status',
-                'value' => 'Viajes::model()->getStatus($data->status)',
-                'filter' => Viajes::model()->getAllStatus()
-            ),
             array
             (
                 'name' => 'id_solicitudes',

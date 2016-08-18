@@ -104,19 +104,20 @@ $(document).ready(function()
     borrarBotones();
     function borrarBotones()
     {
-        $('.items tbody tr').each(function()
+        $('.si-busqueda .items tbody tr').each(function()
         {
-            var check = $(this).find('a.view').attr('href');
-            var index = check.lastIndexOf('/');
-            var id = parseInt(check.substring(index+1));
+     
+      
+        var hrefId = $(this).find('a.delete').attr('href');
+        console.log(hrefId);
+        var urlSplit = hrefId.split( '/' );
+        var id = urlSplit[ urlSplit.length - 1 ]; 
+        console.log(id);
+        //    var id = parseInt(check.substring(index+1));
             if(id == 1 || id == 2 || id == 3)
                 $(this).find('a').remove();
-            else
-                $(this).find('a.view').remove();
         });
     }
-
-
     function activaConsulta()
     {
 

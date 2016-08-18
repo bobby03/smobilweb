@@ -103,13 +103,13 @@ class SolicitudesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		  $model = new Solicitudes();
-          $estacion = new Estacion();
-          $especies = new Especie();
-          $cepa = new Cepa();
-          $direccion = new ClientesDomicilio();
+            $model = new Solicitudes();
+            $estacion = new Estacion();
+            $especies = new Especie();
+            $cepa = new Cepa();
+            $direccion = new ClientesDomicilio();
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+//		 $this->performAjaxValidation($model);
 
 		if(isset($_POST) && $_POST != '' && $_POST != null)
 		{
@@ -118,38 +118,28 @@ class SolicitudesController extends Controller
                     $model->hora_alta = date('H:i');
                     $model->fecha_entrega = null;
                     $model->fecha_estimada = null;
-                    $model->codigo = 'En proceso';
-                    if($model->id != '')
-                    {
-                        $model2 = Solicitudes::model()->findByPk($model->id);
-                        $model2->update();
-                        $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
-                        foreach($_POST['pedido'] as $data)
-                        {
-                            $pedido = new Pedidos();
-                            $pedido->id_cepa = $data['cepa'];
-                            $pedido->id_especie = $data['especie'];
-                            $pedido->id_solicitud = $model->id;
-                            $pedido->id_direccion = $data['destino'];
-                            $pedido->tanques = $data['tanques'];
-                            $pedido->cantidad = $data['cantidad'];
-                            $pedido->save();
-                        }
-                        $this->redirect(array('index'));
-                    }
-                    elseif($model->save())
+                    $codigo = substr(Clientes::model()->getCliente($model->id_clientes),0,2);
+                    $codigo = $codigo.date('Ymdhi');
+                    $model->codigo = $codigo;
+                    if($model->save())
                     {
                         $model->id = Yii::app()->db->getLastInsertId();
-                        foreach($_POST['pedido'] as $data)
+                        if(isset($_POST['pedido']))
                         {
-                            $pedido = new Pedidos();
-                            $pedido->id_cepa = $data['cepa'];
-                            $pedido->id_especie = $data['especie'];
-                            $pedido->id_solicitud = $model->id;
-                            $pedido->id_direccion = $data['destino'];
-                            $pedido->tanques = $data['tanques'];
-                            $pedido->cantidad = $data['cantidad'];
-                            $pedido->save();
+                            if(count($_POST['pedido']) > 0)
+                            {
+                                foreach($_POST['pedido'] as $data)
+                                {
+                                    $pedido = new Pedidos();
+                                    $pedido->id_cepa = $data['cepa'];
+                                    $pedido->id_especie = $data['especie'];
+                                    $pedido->id_solicitud = $model->id;
+                                    $pedido->id_direccion = $data['destino'];
+                                    $pedido->tanques = $data['tanques'];
+                                    $pedido->cantidad = $data['cantidad'];
+                                    $pedido->save();
+                                }
+                            }
                         }
                         $this->redirect(array('index'));
                     }
@@ -170,47 +160,40 @@ class SolicitudesController extends Controller
 	 */
         public function getViajes()
         {
-            $estaciones = Estacion::model()->findAll('tipo = 1');
             $viajes = Viajes::model()->findAll('status = 1');
-            $todosViajes = array();
-            foreach($estaciones as $data)
-            {
-                $tanques = Tanque::model()->findAll("id_estacion = $data->id and status = 1");
-                $i = 0;
-                $i = count($tanques);
-                if($i > 0)
-                {
-                    $todosViajes[$data->id] = array
-                    (
-                        'cantidad' => $i,
-                        'camion' => $data->identificador
-                    );
-                }
-            }
-            $imprimir  = '  <div class="subtitulos">
+            $imprimir  = '  <div class="siViaje"><h2>Viajes disponibles</h2>
+                            <div class="subtitulos">
                                 <div>Camión</div>
                                 <div>Tanques disponibles</div>
                             </div>
                             <div class="tablaViajes">';
             foreach($viajes as $data)
             {
-                if(isset($todosViajes[$data->id_estacion]))
+                $estacion = Estacion::model()->findByPk($data['id_estacion']);
+                $tanques = Tanque::model()->findAll("id_estacion = $estacion->id and activo = 1");
+                $solicitudes = Yii::app()->db->createCommand()
+                    ->selectDistinct('solT.id_tanque, solV.id_solicitud')
+                    ->from('solicitudes_viaje as solV')
+                    ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                    ->where('solV.id_viaje = '.$data['id'])
+                    ->queryAll();
+                $i = count($tanques);
+                $i = $i - count($solicitudes);
+                if($i > 0)
                 {
                     $imprimir = $imprimir.<<<eof
                         <div class="renglon">
-                            <div>
-                                {$todosViajes[$data->id_estacion]['camion']}
-                            </div>
-                            <div data-tanque="{$todosViajes[$data->id_estacion]['cantidad']}">
-                                {$todosViajes[$data->id_estacion]['cantidad']}
-                            </div>
+                            <div>{$estacion->identificador}</div>
+                            <div data-tanque="$i">$i</div>
                             <div class="viajeLoc" data-viaje="{$data->id}"></div>
                             <div class="viajeSel" data-viaje="{$data->id}"></div>
                         </div>
 eof;
                 }
+
             }
-            $imprimir = $imprimir.'</div>';
+            $imprimir = $imprimir.'</div><h2></h2></div>
+                    <div class="noViaje hide"><h2>No hay viajes disponibles</h2></div>';
             echo $imprimir;
         }
 //        public function actionViajesCreate()
@@ -240,7 +223,29 @@ eof;
                     $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
                     $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
                     if($model->save())
-                            $this->redirect(array('index'));
+                    {
+                        $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
+                        if(isset($_POST['pedido']))
+                        {
+                            if(count($_POST['pedido']) > 0)
+                            {
+                                foreach($_POST['pedido'] as $data)
+                                {
+                                    $pedido = new Pedidos();
+                                    $pedido->id_cepa = $data['cepa'];
+                                    $pedido->id_especie = $data['especie'];
+                                    $pedido->id_solicitud = $model->id;
+                                    $pedido->id_direccion = $data['destino'];
+                                    $pedido->tanques = $data['tanques'];
+                                    $pedido->cantidad = $data['cantidad'];
+                                    $pedido->save();
+                                }
+                            }
+                        }
+                        else
+                            $model->delete();
+                        $this->redirect(array('index'));
+                    }
             }
 
             $this->render('update',array(
@@ -260,13 +265,29 @@ eof;
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $id")->execute();
-
+            $model = Solicitudes::model()->findByPk($id);
+            if($model->status == 0)
+            {
+                $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
+                $model->delete();
+            }
+            elseif($model->status == 1)
+            {
+                $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
+                $tanques = SolicitudTanques::model()->findAll("id_solicitud = $model->id");
+                foreach ($tanques as $data)
+                {
+                    $tanque = Tanque::model()->findByPk($data['id_tanque']);
+                    $tanque->status = 1;
+                    if($tanque->save())
+                        $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
+                }
+                $model->delete();
+            }
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	/*	if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
-		                echo json_encode('');	
+            echo json_encode('');	
 	}
 
 	/**
@@ -349,6 +370,7 @@ eof;
             $return = Cepa::model()->getCepasEspecie($id);
             echo json_encode($return);
         }
+
         public function actionAddDireccion($id, $dom, $coord, $desc)
         {
             $model = new ClientesDomicilio();
@@ -363,6 +385,45 @@ eof;
             else
                 $return = array('boolean' => false);
             echo json_encode ($return);
+        }
+        public function actionGetDirecciones($id)
+        {
+            $direcciones = Yii::app()->db->createCommand()
+                ->selectDistinct('cliD.domicilio, cli.nombre_empresa')
+                ->from('solicitudes_viaje as solV')
+                ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+                ->join('clientes_domicilio as cliD','cliD.id = solT.id_domicilio')
+                ->join('clientes as cli', 'cli.id = cliD.id_cliente')
+                ->where("solV.id_viaje = $id")
+                ->queryAll();
+            $return =<<<eof
+                    <div class="direccionesContainer">
+                        <div class="titulo">Direcciones</div>
+                        <div class="direccionesTabla">
+eof;
+            foreach($direcciones as $data)
+            {
+                $return =$return.<<<eof
+                            <div class="direccion-wraper">
+                                <div class="direccionIcono"></div>
+                                <div class="direccion">{$data['domicilio']}</div>
+                            </div>
+eof;
+            }
+            $return =$return.<<<eof
+                            
+                        </div>
+                    </div>
+eof;
+            echo json_encode($return);
+        }
+         public function actionGetViajeId()
+        {
+            $viaje= Yii::app()->db->createCommand('SELECT id_viaje FROM solicitudes_viaje 
+            WHERE id_solicitud='.$_POST['nombre'])
+                ->queryRow();
+            echo json_encode($viaje);
+            
         }
 	protected function performAjaxValidation($model)
 	{

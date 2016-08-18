@@ -14,6 +14,11 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+        // 'clientOptions' => array(
+        //     'validateOnSubmit' => true,
+        //     'validateOnChange' => true,
+        //     'validateOnType' => true,
+        // ),
 )); ?>
 
 	
@@ -80,7 +85,8 @@
 				
 			<div class="containerbutton">
 				<div class="row buttons">
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+					<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/usuarios">Cancelar</a> 
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 				</div>
 			</div>
 		</div>

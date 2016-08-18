@@ -106,14 +106,15 @@ class CepaController extends Controller
 		$model=new Cepa;
                 $model->id_especie = $especie;
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Cepa']))
 		{
                     $model->attributes=$_POST['Cepa'];
                     $model->id_especie = $especie;
-                    if($model->save())
-                        $this->redirect(array('index'));
+                    if($model->save()){
+                        $this->redirect(array('?id='.$model->id_especie));
+                    }
 		}
 
 		$this->render('create',array(
@@ -126,18 +127,33 @@ class CepaController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	public function getNombres($id_especie){
+		$lista= array();
+		 $nombres= Yii::app()->db->createCommand('SELECT nombre_cepa 
+		 	FROM cepa WHERE id_especie='.$id_especie)
+                ->queryAll();
+            foreach($nombres as $nom){
+            	$lista[]=$nom['nombre_cepa'];
+            }
+            fb($lista);
+                return $lista;
+	}
+
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Cepa']))
 		{
 			$model->attributes=$_POST['Cepa'];
-			if($model->save())
-				$this->redirect(array('index'));
+				  if($model->save()){
+                        $this->redirect(array('?id='.$model->id_especie));
+                    }
+				
+			
 		}
 
 		$this->render('update',array(
@@ -152,15 +168,31 @@ class CepaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('cepa',$model->attributes,"id = ".(int)$id."");
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	
-	*/                echo json_encode('');
+		*/   
+		echo json_encode('true');
 
 		}
+
+
+
+	public function actionReactivar($id)
+	{
+            $model = Cepa::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('cepa',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('true');
+	}
+
+
 
 	/**
 	 * Lists all models.
@@ -169,11 +201,13 @@ class CepaController extends Controller
 	{
             $model=new Cepa("search($id)");
             $model->unsetAttributes(); 
+            $nombre = Especie::model()->findByPk($id);
             if(isset($_GET['Cepa']))
                     $model->attributes=$_GET['Cepa'];
             $this->render('index',array(
-                    'model'=>$model,
-                    'id' => $id
+                    'model'     =>$model,
+                    'id'        => $id,
+                    'especie'   =>$nombre
             ));
 	}
 

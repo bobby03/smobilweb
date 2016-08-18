@@ -47,8 +47,16 @@ return array(
 		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+			/*
+				** IMPORTANTE **
+				NO CAMBIAR EL VALOR DE ShowScriptName a TRUE
+				Conservar en False.
+
+				Al modificar este valor se cambian los Body Class afectando el Diseño del CSS
+				y las peticiones en AJAX que ya se adaptaron.
+			*/
 			'showScriptName'=>false,
-     		'caseSensitive'=>false,  
+     		'caseSensitive'=>true,  
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -73,7 +81,7 @@ return array(
         'clientScript'=>array(
 			'packages'=>array(
 				'jquery'=>array(
-					'baseUrl'=>'http://code.jquery.com/',
+					'baseUrl'=>'https://code.jquery.com/',
 					'js'=>array(
 						'jquery-1.11.2.min.js',
 						'jquery-migrate-1.1.0.min.js'
@@ -89,11 +97,19 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
+
 				
 			array(
 					'class'=>'CWebLogRoute',
 				),
 			
+
+
+				// array(
+				// 	'class'=>'CWebLogRoute',
+				// ),
+
+
 			),
 		),
 	),

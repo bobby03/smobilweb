@@ -116,6 +116,7 @@ class RolesController extends Controller
                     {
                         $i = 1;
                         $auth = Yii::app()->authManager;
+//                        print_r($_POST['RolesPermisos']['seccion']);
                         foreach($_POST['RolesPermisos']['seccion'] as $data)
                         {
                             $acciones2 = new RolesPermisos;
@@ -127,7 +128,7 @@ class RolesController extends Controller
                             $acciones2->edicion = $data['edicion'];
                             $acciones2->save();
                             $roles = new Roles();
-                            $nombreSeccion = $roles->getSeccion($data['seccion']);
+                            $nombreSeccion = $roles->getSeccion($i);
                             $seccion = '';
                             if($data['alta'] == 1)
                             {
@@ -183,7 +184,7 @@ class RolesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
         
-        $acciones->seccion = $array;
+                $acciones->seccion = $array;
 		if(isset($_POST['Roles']))
 		{
                     $oldRol = Roles::model()->findByPk($model->id);
@@ -243,15 +244,25 @@ class RolesController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+            $this->loadModel($id);
+            $model = $this->loadModel($id);
+            $model->activo = 0;
+            $update = Yii::app()->db->createCommand()
+                    ->update('roles',$model->attributes,"id = ".(int)$id."");
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	*/                 echo json_encode('');
 
 		}
-
+        public function actionReactivar($id)
+	{
+            $model = Roles::model()->findByPk($id);
+            $model->activo = 1;
+            $update = Yii::app()->db->createCommand()
+                ->update('roles',$model->attributes,"id = ".(int)$id."");
+            echo json_encode('');
+	}
 	/**
 	 * Lists all models.
 	 */

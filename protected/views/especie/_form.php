@@ -18,11 +18,15 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>TRUE,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+            'validateOnChange' => true,
+            'validateOnType' => true,
+        ),
 )); ?>
 
 
-	<?php //echo $form->errorSummary($model); ?>
 <div class="form-containerWraper">
 	<div class="form-cRight">
 			<div class="row">
@@ -37,7 +41,8 @@
     <div class="form-cRight">
 			<div class="containerbutton">
 				<div class="row buttons">
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Save'); ?>
+				
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 				</div>
 			</div>
 	</div>

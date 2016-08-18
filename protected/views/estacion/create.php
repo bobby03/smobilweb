@@ -6,13 +6,11 @@ $this->breadcrumbs=array(
 	'Estacions'=>array('index'),
 	'Create',
 );
-
-$this->menu=array(
-	array('label'=>'List Estacion', 'url'=>array('index')),
-	array('label'=>'Manage Estacion', 'url'=>array('admin')),
-);
+$baseUrl = Yii::app()->baseUrl;
+$cs = Yii::app()->getClientScript();
+$cs->registerScriptFile($baseUrl.'/js/estacion/create.js');
 ?>
 
-<h1>Create Estacion</h1>
+<h1>Nuevo cami&oacute;n</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

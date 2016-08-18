@@ -67,19 +67,117 @@ class NCButtonColumn extends CButtonColumn
 
                 evt.preventDefault();
                 var href = $(this).attr('href');
-                var index1 = (href.lastIndexOf('/'))+1;
-                var index2 = href.length;
-                var id = href.substring(index1, index2);
+                console.log(href);
+
+                var check = $(this).attr('href');
+                var urlSplit = check.split( '/' );
+                console.log(urlSplit);
+                
+                var id = urlSplit[ urlSplit.length - 1 ]; 
+
+
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
-                var mensaje = '¿Está seguro que desea eliminar el registro '+nombre+'?';
+                var mensaje = '¿Está seguro que desea eliminar este registro?';
+                if(urlSplit[1]=='solicitudes'){
+                    var a = '';
+                    $.ajax(
+                {
+                    type: 'POST',
+                    url: 'solicitudes/GetViajeId',
+                    dataType: 'JSON', 
+                    data:
+                    {
+                        nombre:nombre
+                    },
+
+                    success: function(data)
+                    {
+                    document.getElementById("idviaje").value = data.idviaje;
+                    },
+                    error: function(a,b,c)
+                    {
+                    var a = '';
+                    }
+                }); 
                 
+                    var mensaje = document.getElementById("idviaje").value;
+                }
                 miHtml= miHtml +='<div class="sub-content">';
-                miHtml= miHtml +='  <div class="title-content">Eliminar '+header+'</div>';
-                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
                 miHtml= miHtml +='      <div class="separator-content"></div>';
                 miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
+                
+                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                
+                miHtml= miHtml +='      <div class="botones-content">';
+                miHtml= miHtml +='          <div class="aceptar-boton">Aceptar</div>';
+                miHtml= miHtml +='          <div class="cancelar-boton">Cancelar</div>';
+                miHtml= miHtml +='      </div>';
+                miHtml= miHtml +='</div>';
+                $.colorbox(
+                {
+                    html: miHtml,
+                    width:'450px', 
+                    height:'210px',
+                    onComplete: function()
+                    {
+                        $('.cancelar-boton').click(function()
+                        {
+                            $('#cboxClose').click();
+                        });
+                        $('.aceptar-boton').click(function()
+                        {
+                            console.log(href);
+                            $.ajax(
+                            {
+                                type: 'GET',
+                                url: href,
+                                dataType: 'JSON', 
+                                data:
+                                {
+                                    id: id
+                                },
+                                success: function(data)
+                                {
+                                    $.fn.yiiGridView.update(header);
+                                    $('#cboxClose').click();
+                                },
+                                error: function(a, b, c)
+                                {  }
+                            });
+                        });
+
+                       
+                      
+                    }
+                });
+            }
+EOD;
+            $this->buttons['reactivar']['click']=<<<EOD
+            function(evt)
+            {
+
+
+                evt.preventDefault();
+                var href = $(this).attr('href');
+           
+                var check = $(this).attr('href');
+                var urlSplit = check.split( '/' );
+                var id = urlSplit[ urlSplit.length - 1 ]; 
+
+                var miHtml = '';
+                var header = $('.grid-view').attr('id');
+                var nombre = $(this).parents('tr').eq(0).find('td').html();
+                var mensaje = '¿Está seguro que desea reactivar este registro?';
+                
+                miHtml= miHtml +='<div class="sub-content">';
+                miHtml= miHtml +='  <div class="title-content">Reactivar</div>';
+                miHtml= miHtml +='      <div class="separator-content"></div>';
+                miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
+                miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
+                
                 miHtml= miHtml +='      <div class="botones-content">';
                 miHtml= miHtml +='          <div class="aceptar-boton">Aceptar</div>';
                 miHtml= miHtml +='          <div class="cancelar-boton">Cancelar</div>';
@@ -98,15 +196,7 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            
-                            var urlSplit = href.split( '/' );
-                            var controller = urlSplit[ urlSplit.length - 3 ]; 
-                            
-                            controller = controller.toLowerCase().replace(/\b[a-z]/g, function(letter) 
-                            {
-                                return letter.toUpperCase();
-                            });
-                            href = 'delete';
+                            console.log(href);
                             $.ajax(
                             {
                                 type: 'GET',
@@ -123,27 +213,7 @@ class NCButtonColumn extends CButtonColumn
                                 },
                                 error: function(a, b, c)
                                 {
-                                    console.log(a, b, c);
-                                    href = controller+'/delete';
-                                    $.ajax(
-                                    {
-                                        type: 'GET',
-                                        url: href,
-                                        dataType: 'JSON', 
-                                        data:
-                                        {
-                                            id: id
-                                        },
-                                        success: function(data)
-                                        {
-                                            $.fn.yiiGridView.update(header);
-                                            $('#cboxClose').click();
-                                        },
-                                        error: function(a, b, c)
-                                        {
-                                            console.log(a, b, c);
-                                        }
-                                    });
+                                
                                 }
                             });
                         });

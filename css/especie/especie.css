@@ -1,7 +1,78 @@
-.grid-view table {
-    width: 30% !important;
-}
+
 td.button-column
 {
     width: 80px !important;
+}
+
+body.especie div.tabs{
+    background-color: #0077B0;
+    margin-top: 50px; 
+}
+
+body.especie div.tabs div.tab{
+    width: 100px;
+    float: left;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    line-height: 25px;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+body.especie div.tabContent{
+    margin-top: 30px;
+}
+
+body.especie div.tab.select{
+    background-color: #09B7C9;
+}
+
+body.especie div.tabs:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+
+body.especie div.row.titulos{
+	text-align: center;
+}
+
+
+.ingesp{
+    height: 35px;
+    width: 335px;
+    margin-left:33px;
+    margin-top: 15px;
+    min-height: 30px;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    box-sizing: border-box;
+    display: block;
+}
+
+body.especie .botones-content .gBoton{
+        width: 135px;
+        padding: 2px;
+        height: 35px;
+        margin-left: 33px;
+        display: inline-block;
+}
+
+
+body.especie div.form input[type="submit"]{
+    position: relative;
+    width: 107px;
+    display: inline-block;
+    font-size: 15px !Important;
+  
+}
+
+
+body.especie .btnadd{
+    float:right;
+      margin-right: 33px;
+      font-size: 18px;
 }
