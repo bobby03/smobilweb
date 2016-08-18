@@ -514,3 +514,38 @@ input.OtroDom{
     clear: both;
     content: '';
 }
+.msgError{
+    font-family: 'Roboto-Regular';
+    font-size: 13pt;
+    color: #0077b0;
+    font-weight: lighter;
+    width: 80%;
+    margin-left: 33px;
+    margin-top: 10px;
+}
+.btndel{
+    font-size: 16px !important;
+}
+.cBoton{
+    line-height: 34px;
+    font-size: 16px;
+    float: left;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background-color: #0077b0;
+    color: white;
+    width: 135px;
+    height: 34px;
+    border: 0px solid white;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 30px;
+}
+.cBoton:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+.cBoton:hover {
+    background-color: #49dbd0;
+}
