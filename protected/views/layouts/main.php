@@ -26,11 +26,11 @@
 		$patterns = array();
 		$patterns[0] = 'index.php';
 		$patterns[1] = 'index.php-';
-		// $patterns[2] = 'site-';
+		$patterns[2] = '-site';
 		$replace = array();
 		$replace[0] = '';
 		$replace[1] = '';
-		// $replace[2] = 'site';
+		$replace[2] = 'site';
 
 	?>
   <body class="<?php echo str_replace($patterns,$replace,$LoginClass) ?>">
