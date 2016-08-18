@@ -663,11 +663,11 @@ EOF;
                         $solicitud->hora_estimada = $model->hora_salida;
                         if($solicitud->save())
                         {
-                            $pedido = Pedidos::model()->findAll("id_solicitud = $solicitud->id");
-                            foreach ($pedido as $data2)
-                            {
-                                $delete = Yii::app()->db->createCommand("DELETE from pedidos WHERE id = {$data2['id']}")->execute();
-                            }
+//                            $pedido = Pedidos::model()->findAll("id_solicitud = $solicitud->id");
+//                            foreach ($pedido as $data2)
+//                            {
+//                                $delete = Yii::app()->db->createCommand("DELETE from pedidos WHERE id = {$data2['id']}")->execute();
+//                            }
                         }
                         $i++;
                     }
