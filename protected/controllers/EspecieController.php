@@ -257,5 +257,26 @@ class EspecieController extends Controller
 			Yii::app()->end();
 		}
 	}
+	public function actionRep(){
+		$lista= array();
+		$nombre=$_POST['nombre'];
+		 $nombres= Yii::app()->db->createCommand('SELECT nombre 
+		 	FROM especie')
+            ->queryAll();
+            foreach($nombres as $nom){
+            	$lista[]=$nom['nombre'];
+            }
+            foreach($lista as $nom){
+            	if($nom==$nombre){
+            		$resp=true;
+            		echo json_encode($resp);
+            		return true;}
+            }
+            fb($lista);
+            fb($nombre);
+            $resp=false;
+            echo json_encode($resp);
+             	return false;
+	}
 
 }

@@ -1,5 +1,12 @@
 $(document).ready(function()
 {
+
+
+         $('.ValidaNum').bind('keyup blur',function(){ 
+                var node = $(this);
+                node.val(node.val().replace(/[^[1-9]([0-9]{1,45}$)]/g,'') ); 
+             });
+
     $('#Cepa_id').chosen();
     $('#Solicitudes_id_clientes').chosen();
     $('#Especie_id').chosen();
@@ -115,7 +122,7 @@ $(document).ready(function()
         if(cantidad != '' && cantidad != null)
         {
             if(cantidad < 0)
-                $('#Cepa_nombre_cepa_1_cantidad').val(1);
+                //$('#Cepa_nombre_cepa_1_cantidad').val(1);
             $('.row.direcciones').removeClass('hide');
         }
         else
@@ -145,7 +152,7 @@ $(document).ready(function()
         if(cantidad != '' && cantidad != null)
         {
             if(cantidad < 0){
-                $('#tanquesNO').val(1);
+                //$('#tanquesNO').val(1);
             }
             $('.row.direcciones').removeClass('hide');
         }
