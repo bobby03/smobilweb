@@ -267,15 +267,13 @@ class EspecieController extends Controller
             	$lista[]=$nom['nombre'];
             }
             foreach($lista as $nom){
-            	if($nom==$nombre){
-            		$resp=true;
-            		echo json_encode($resp);
-            		return true;}
+            	if($nom==$nombre)
+            		echo json_encode('true');
+            		return true;
             }
             fb($lista);
             fb($nombre);
-            $resp=false;
-            echo json_encode($resp);
+            echo json_encode('false');
              	return false;
 	}
 

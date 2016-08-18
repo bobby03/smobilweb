@@ -26,32 +26,36 @@ $(document).ready(function()
 
         var error=0;
         if (isNaN(cantidad)||cantidad==0||cantidad<0){
-            console.error('cantidad');        
+            
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#C00');
+            document.getElementById('errorCan').innerHTML='Cantidad requerida';
             error=1;}
         else{
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#0077B0');
+            document.getElementById('errorCan').innerHTML='';
             }
         if (isNaN(tanques)||tanques==0||tanques<0){
-            console.error('tanques');
+            
             $('#tanquesNO').css('border-color', '#C00');
+            document.getElementById('errorTan').innerHTML='Cantidad requerida';
             error=1;}
         else{
             $('#tanquesNO').css('border-color', '#0077B0');
+            document.getElementById('errorTan').innerHTML='';
             }
 
         //validaciones dropdown
 
         if(cepaID==""){
-            console.error('Cepa');
+            
             error=1;
         }
         if(especieID==""){
-            console.error('Cepa');
+            
             error=1;
         }
         if(error==1){
-            console.error('error');
+            
             return 0;
         }
 
