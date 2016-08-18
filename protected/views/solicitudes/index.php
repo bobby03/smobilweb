@@ -22,20 +22,17 @@
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
     <div class="tabContent" data-tan="1">
-
-
-    <div class="search-form" ><!-- search-form -->
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
-        <div class="agregar solicitudes"></div>
-    </a>
-    </div><!-- search-form -->    
-    </div>
+        <div class="search-form" ><!-- search-form -->
+            <?php $this->renderPartial('_search',array(
+                    'model'=>$model,
+            )); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
+                <div class="agregar solicitudes"></div>
+            </a>
+        </div><!-- search-form -->    
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje1',
+        'id'=>'viaje-grid',
         'dataProvider'=>$model->searchStatus(0),
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
