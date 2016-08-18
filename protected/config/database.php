@@ -11,10 +11,10 @@ return array(
 //	'password' => 'm0b1l3',
 	 'connectionString' => 'mysql:host=localhost;dbname=movsens',
 	 'emulatePrepare' => true,
-//	 'username' => 'root',
-//	 'password' => 'hola',
 	 'username' => 'root',
-	 'password' => '',
+	 'password' => 'hola',
+//	 'username' => 'root',
+//	 'password' => '',
 	'charset' => 'utf8',
 	
 );
