@@ -76,3 +76,7 @@ body.especie .btnadd{
       margin-right: 33px;
       font-size: 18px;
 }
+#ierror{
+  color:#c00;
+  margin-left: 70px;
+}

@@ -161,9 +161,9 @@ $(document).ready(function()
         var cantidad = $('#tanquesNO').val();
         if(cantidad != '' && cantidad != null)
         {
-            if(cantidad < 0){
-                $('#tanquesNO').val(1);
-            }
+            //if(cantidad < 0){
+                //$('#tanquesNO').val(1);
+            //}
             // $('.row.direcciones').removeClass('hide');
         }
         else

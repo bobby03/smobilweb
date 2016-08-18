@@ -2,7 +2,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
-    $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js');
+    $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js?r='.rand());
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/colorboxCreate.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/googleMap.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/pedidos.js');
@@ -120,11 +120,11 @@ eof;
             <div class="row cantidad hide">
                 <div class="requerida">
                     <label>Cantidad requerida</label>
-                    <?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1)); ?>
+                    <?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1,'class'=>'ValidaNum')); ?>
                 </div>
                 <div class="noTanques">
                     <label>Tanques requeridos</label>
-                    <input id="tanquesNO" type="number" name="noTanques" min="1" max="8">
+                    <input id="tanquesNO" type="number" name="noTanques" min="1" max="8" class="ValidaNum">
                 </div>
             </div>
             <div class="row direcciones hide">
