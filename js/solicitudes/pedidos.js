@@ -168,7 +168,8 @@ $(document).ready(function()
         
         $('.borrarPedido').click(function()
         {
-            var href = window.location.href;
+        var href = window.location.href;
+        var elemento=$(this);
         var miHtml= '\
             <div class="sub-content">\n\
                 <div class="title-content">Eliminar pedido</div>\n\
@@ -188,16 +189,14 @@ $(document).ready(function()
             {
               $('.btndel').click(function(e)
                 {
-                $(this).closest('.pedidoViaje').remove(); //Eliminar
+                elemento.closest('.pedidoViaje').remove(); //Eliminar
                 countPedidos();
-                $('#cboxClose').click();
-                console.log('hsadaasasdad');
+                $.colorbox.close();
                 e.preventDefault();
                 });  
               $('#cancelar').click(function(e)
                 {
-                $('#cboxClose').click();
-                console.log('hsada');
+                $.colorbox.close();
                 e.preventDefault();
                 }); 
             }
