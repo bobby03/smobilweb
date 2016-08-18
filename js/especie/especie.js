@@ -30,7 +30,7 @@ $(document).ready(function()
                 {
                
                 var nombre=$('#ingesp').val();
-r=validField(nombre, mCallback);
+                r=validField(nombre, mCallback);
 
 
                     if(r == 1){  }else{
@@ -166,14 +166,14 @@ function mCallback(res){
 
 function validField(nombre,mCallback){
     
-    var e=false;
+     var resp =false;
     if($('#ingesp').val()==''){
-        e=false;
+        resp=false;
         $('#ierror').html('Campo requerido');
     }else{
 
 
-    var resp;
+   
     resp = $.ajax(
             {
                 type: 'POST',
