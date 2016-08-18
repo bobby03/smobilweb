@@ -257,5 +257,12 @@ class EspecieController extends Controller
 			Yii::app()->end();
 		}
 	}
+	public function actionRep(){
+
+		$nombre=$_POST['nombre'];
+		 $resp= Yii::app()->db->createCommand('SELECT nombre FROM especie where nombre ="'.$nombre.'"')
+            ->query();
+            echo json_encode($resp->rowCount);
+	}
 
 }

@@ -12,28 +12,35 @@ class WebUser extends CWebUser
         		return 2;
         	} else {
         	$usuario = Usuarios::model()->find('usuario=?', array(Yii::app()->user->name));
-        	return $usuario->tipo_usr;	
+            return $usuario->tipo_usr;
+            //return isset($usuario->tipo_usr)?$usuario->tipo_usr:0;	
         	}
         
         }
-        public function getID(){
+        
+       /* public function getID(){
             if(Yii::app()->user->name =='smobiladmin'){
                 return 0;
             } else {
             $usuario = Usuarios::model()->find('usuario=?', array(Yii::app()->user->name));
-            return $usuario->id;  
+            return $usuario;  
             }
         
-        }
-        public function getIDc(){
+        }*/
+
+      public function getIDc(){
             if(Yii::app()->user->name =='smobiladmin'){
                 return 0;
             } else {
             $usuario = Usuarios::model()->find('usuario=?', array(Yii::app()->user->name));
+            fb($usuario);
+            fb('-----');
+            fb($usuario->id_usr);
+
             return $usuario->id_usr;  
             }
-        
         }
+
 
         public function getIdUsuario(){
 

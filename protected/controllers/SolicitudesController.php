@@ -118,7 +118,9 @@ class SolicitudesController extends Controller
                     $model->hora_alta = date('H:i');
                     $model->fecha_entrega = null;
                     $model->fecha_estimada = null;
-                    $model->codigo = 'En proceso';
+                    $codigo = substr(Clientes::model()->getCliente($model->id_clientes),0,2);
+                    $codigo = $codigo.date('Ymdhi');
+                    $model->codigo = $codigo;
                     if($model->save())
                     {
                         $model->id = Yii::app()->db->getLastInsertId();
@@ -368,6 +370,7 @@ eof;
             $return = Cepa::model()->getCepasEspecie($id);
             echo json_encode($return);
         }
+
         public function actionAddDireccion($id, $dom, $coord, $desc)
         {
             $model = new ClientesDomicilio();
@@ -413,6 +416,14 @@ eof;
                     </div>
 eof;
             echo json_encode($return);
+        }
+         public function actionGetViajeId()
+        {
+            $viaje= Yii::app()->db->createCommand('SELECT id_viaje FROM solicitudes_viaje 
+            WHERE id_solicitud='.$_POST['nombre'])
+                ->queryRow();
+            echo json_encode($viaje);
+            
         }
 	protected function performAjaxValidation($model)
 	{

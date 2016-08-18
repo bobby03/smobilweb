@@ -25,33 +25,37 @@ $(document).ready(function()
         //Validaciones campos
 
         var error=0;
-        if (isNaN(cantidad)||cantidad==0){
-            console.error('cantidad');        
+        if (isNaN(cantidad)||cantidad==0||cantidad<0){
+            
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#C00');
+            document.getElementById('errorCan').innerHTML='Cantidad requerida';
             error=1;}
         else{
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#0077B0');
+            document.getElementById('errorCan').innerHTML='';
             }
-        if (isNaN(tanques)||tanques==0){
-            console.error('tanques');
+        if (isNaN(tanques)||tanques==0||tanques<0){
+            
             $('#tanquesNO').css('border-color', '#C00');
+            document.getElementById('errorTan').innerHTML='Cantidad requerida';
             error=1;}
         else{
             $('#tanquesNO').css('border-color', '#0077B0');
+            document.getElementById('errorTan').innerHTML='';
             }
 
         //validaciones dropdown
 
         if(cepaID==""){
-            console.error('Cepa');
+            
             error=1;
         }
         if(especieID==""){
-            console.error('Cepa');
+            
             error=1;
         }
         if(error==1){
-            console.error('error');
+            
             return 0;
         }
 
@@ -84,14 +88,21 @@ $(document).ready(function()
                     </div>';
         $('.pedidosWraper').append(html);
 
-        $('#Especie_id_chosen .chosen-single span').empty(); 
+//        $('#Especie_id_chosen .chosen-single span').empty(); 
+        $('#Especie_id').val('');
+        $('#Especie_id').trigger("chosen:updated");
         $('#Cepa_id_chosen .chosen-single span').empty(); 
         $('#Cepa_nombre_cepa_1_cantidad').val(''); 
         $('#tanquesNO').val(''); 
-        $('#ClientesDomicilio_domicilio_chosen .chosen-single span').empty(); 
-        $('#Solicitudes_notas').val(''); 
-
+        $('#ClientesDomicilio_domicilio').val(''); 
+        $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
+//        $('#Solicitudes_notas').val(''); 
+        
         $('#Solicitudes_id_clientes').attr('disabled',true).trigger("chosen:updated");
+        $('.row.cepa').addClass('hide');
+        $('.row.cantidad').addClass('hide');
+        $('.row.direcciones').addClass('hide');
+        $('.row.buttons').addClass('hide');
         $('.pedidos').removeClass('hide');
         borrarPedido();
         editarPedido();
@@ -102,9 +113,6 @@ $(document).ready(function()
             contarTanques();
         }
     });
-
-
-
     $('div.continuar').click(function()
     {
         $('div.crearViaje').removeClass('hide');

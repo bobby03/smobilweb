@@ -36,14 +36,14 @@
     $form = $this->beginWidget('CActiveForm', array
     (
         'id'=>'viajes-form',
-        'enableAjaxValidation'=>true,
-        'clientOptions' => array
-        (
-            'validateOnSubmit' => true,
-            'validateOnChange' => true,
-            'validateOnType' => true,
-            //'afterValidate'=>'js:formSendViajes',
-        ),
+        'enableAjaxValidation'=>false
+//        'clientOptions' => array
+//        (
+//            'validateOnSubmit' => true,
+//            'validateOnChange' => true,
+//            'validateOnType' => true,
+//            //'afterValidate'=>'js:formSendViajes',
+//        ),
     )); 
 ?>
     <div class="menuTabs <?php $nuevo?>">
@@ -144,14 +144,18 @@
     </div>
     <div class="tab hide" data-tab="2">
        <div class="pedidosWraper"></div>   
-          <div class="botonesWrapper2">
-       <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
-       <div class="siguiente dos">Siguiente</div>
-   </div>
-   </div>
+            <div class="botonesWrapper2">
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+            <div class="siguiente dos">Siguiente</div>
+        </div>
+    </div>
     <div class="tab hide" data-tab="3">
        <div class="inner-third-wrapper">
-           <!--<div class="siguiente fBoton bBoton" >Regresar</div>-->
+            <div class='row buttons floating'>
+                <?php echo CHtml::submitButton($model->isNewRecord ? 'Finalizar' : 'Finalizar'); ?>
+                <div class="bDos fBoton floatingbutton hide">Regresar</div>
+                <div class="fBoton floatingbutton" >Cancelar</div>
+            </div>
        </div>
     </div>
 <?php

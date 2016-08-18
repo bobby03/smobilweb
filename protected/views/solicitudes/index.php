@@ -4,12 +4,17 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/index.css');
+    $cs->registerScriptFile($baseUrl.'/js/search.js');
     $this->breadcrumbs=array('Solicitudes',);
     
 ?>
 
 <h1>Solicitudes</h1>
+<?php
+//$a=SolicitudesViaje::model()->findByAttributes(array(74));
+?>
 <div class="principal">
+    <input type='hidden' id='idviaje'>
     <div class="tabs">
         <div class="tab select" data-id="1"><span>Sin asignar</span></div>
         <div class="tab" data-id="2"><span>Asignadas</span></div>
@@ -17,12 +22,17 @@
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
     <div class="tabContent" data-tan="1">
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
-        <div class="agregar solicitudes"></div>
-    </a>
+        <div class="search-form" ><!-- search-form -->
+            <?php $this->renderPartial('_search',array(
+                    'model'=>$model,
+            )); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
+                <div class="agregar solicitudes"></div>
+            </a>
+        </div><!-- search-form -->    
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje1',
+        'id'=>'viaje-grid',
         'dataProvider'=>$model->searchStatus(0),
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',

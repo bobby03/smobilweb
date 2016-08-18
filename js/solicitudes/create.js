@@ -1,5 +1,12 @@
 $(document).ready(function()
 {
+
+
+         $('.ValidaNum').bind('keyup blur',function(){ 
+                var node = $(this);
+                node.val(node.val().replace(/[^[1-9]([0-9]{1,45}$)]/g,'') ); 
+             });
+
     $('#Cepa_id').chosen();
     $('#Solicitudes_id_clientes').chosen();
     $('#Especie_id').chosen();
@@ -114,16 +121,39 @@ $(document).ready(function()
         var cantidad = $('#Cepa_nombre_cepa_1_cantidad').val();
         if(cantidad != '' && cantidad != null)
         {
-            if(cantidad < 0)
-                $('#Cepa_nombre_cepa_1_cantidad').val(1);
             $('.row.direcciones').removeClass('hide');
         }
         else
             $('.row.direcciones').addClass('hide');
     }
+
     $('[name="yt0"]').click(function()
     {
         $('#Solicitudes_id_clientes').removeAttr('disabled');
         $('#Solicitudes_id_clientes').trigger('chosen:update');
     });
+    /* Validación Números tanques */
+    $('#tanquesNO').on('change', function()
+    {
+        $('.row.cantidad').removeClass('hide');
+        $('.noTanques input').change(function()
+        {
+           validacionCantidadTanques();
+        });
+        $('.noTanques input').keyup(function()
+        {
+           validacionCantidadTanques();
+        });
+    });
+    function validacionCantidadTanques()
+    {
+        var cantidad = $('#tanquesNO').val();
+        if(cantidad != '' && cantidad != null)
+        {
+            $('.row.direcciones').removeClass('hide');
+        }
+        else
+            $('.row.direcciones').addClass('hide');
+    }
+    /* ----- */
 });

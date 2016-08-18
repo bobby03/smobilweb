@@ -48,6 +48,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
             ),
     )); ?>
     <?php if(count($pedidos)>0):?>
+        <div class="row"><a class="cancelarDireccion gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a></div>
         <div class="row">
             <h3>
                 <label class="cLetreros">Pedidos</label>
@@ -55,15 +56,20 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
             <h2 class="letrero-container"></h2>
         </div>
         <div class="form-cLeft1">
-        <?php $tot = 1;?>
-        <?php foreach($pedidos as $data):?>
+        <?php $tot = 1; $tempTtl = 0;?>
+        <?php foreach($pedidos as $data):?> 
             <?php for($i = 1; $i <= $data['tanques']; $i++):?>
+                <?php 
+                    if ( $i == $data['tanques'] ) {
+                        $tempTtl = ceil($data['cantidad'] / $data['tanques']) - floor($data['cantidad'] / $data['tanques']) ;
+                    }
+                ?>
                 <div class="pedido">
                     <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
                     <div class="pedidoWraper gris">
                         <div>Especie: <span><?php echo Especie::model()->getEspecie($data['id_especie']);?></span></div>
                         <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['id_cepa']);?></span></div>
-                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
+                        <div>Cantidad: <span><?php echo ceil($data['cantidad']/$data['tanques']) - $tempTtl; ?></span></div>
                         <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['id_direccion']);?></span></div>
                     </div>
                 </div>

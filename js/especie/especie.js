@@ -1,9 +1,9 @@
 $(document).ready(function()
 {
 
-    $('div.agregar.especie').click(function(evt)
+    $('div.agregar.especie').click(function(e)
     {
-        evt.preventDefault();
+        
         var href = window.location.href;
         var miHtml= '\
             <div class="sub-content">\n\
@@ -11,6 +11,7 @@ $(document).ready(function()
                 <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
                 <input id="ingesp" class="ingesp" type="text">\n\
+                <p id="ierror"></p>\n\
                 <div class="botones-content">\n\
                     <a class="gBoton" href="">Cancelar</a> \n\
                     <div class="btnadd gBoton">Agregar</div>\n\
@@ -25,11 +26,15 @@ $(document).ready(function()
             onComplete: function()
             {
 
-                $('.btnadd').click(function()
+                $('.btnadd').click(function(e)
                 {
+               
+                var nombre=$('#ingesp').val();
+                r=validField(nombre, mCallback);
 
 
-                    if(validField()){
+                    if(r == 1){  }else{
+                       
                     var especie = $('#ingesp').val();
                     $.ajax(
                     {
@@ -51,9 +56,11 @@ $(document).ready(function()
                         }
                     });
                 }
+                e.preventDefault();
                 });
             }
         });
+        e.preventDefault();
     });
 
     $('a.update img').click(function(evt)
@@ -91,8 +98,11 @@ $(document).ready(function()
 
                 $('.btnUpdate').click(function()
                 {
-       
-        if(validField()){
+                var nombre=$('#ingesp').val();
+                r=validField(nombre, mCallback);
+
+
+                    if(r == 1){  }else{
                     var val = $('#ingesp').val();
                     $('#ingesp').val(val);
                     var especie = $('#ingesp').val();
@@ -147,14 +157,51 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function validField(){
-    var e=0;
-    if($('#ingesp').val()==''){
-        e=0;
-    }else {
-        e=1;
-    }
-return e;
+
+
+function mCallback(res){
+   // console.log('funcion mCallback:' +res);
+     return res;
 }
 
+function validField(nombre,mCallback){
+    
+     var resp =false;
+    if($('#ingesp').val()==''){
+        $('#ierror').html('Campo requerido');
+        e.preventDefault();
+        return false;
+       
+    }else{
 
+
+   
+    resp = $.ajax(
+            {
+                type: 'POST',
+                url: window.location.href+'/Rep',
+                dataType: 'JSON', 
+                data:
+                        {
+                            nombre:nombre
+                        },
+                success: function(result) {
+                    if(result == true){
+                                 $('#ierror').html('Campo ya existe');
+                                 e = true;
+                            }else{
+                                $('#ierror').html('');
+                                e = false;
+                            }
+                         ajax_result =  mCallback(result); 
+                      //  console.log(ajax_result);
+                 },
+                 error: function(result) {},
+                 async: false }).responseText;
+
+  
+    }
+
+  return resp;
+
+}

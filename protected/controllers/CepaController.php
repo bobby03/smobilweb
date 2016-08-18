@@ -128,12 +128,14 @@ class CepaController extends Controller
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function getNombres($id_especie){
+		$lista= array();
 		 $nombres= Yii::app()->db->createCommand('SELECT nombre_cepa 
 		 	FROM cepa WHERE id_especie='.$id_especie)
                 ->queryAll();
             foreach($nombres as $nom){
             	$lista[]=$nom['nombre_cepa'];
             }
+            fb($lista);
                 return $lista;
 	}
 

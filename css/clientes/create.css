@@ -11,14 +11,14 @@ div.form .row.buttons
 
 a.cancelarDireccion {
     float: left;
-    margin-left: 63px;
+    margin-left: 46px;
     width: 135px;
     font-size: 15px;
 }
 
 div.form input[type="submit"]
 {
-    margin-left: 20px;
+    margin-left: 46px;
     width: 135px !important;
     font-size: 15px !important;
 }
@@ -68,16 +68,10 @@ div.form input, div.form textarea, div.form select, div.form .chosen-container
     width: 100% !important;
 }
 
-div.form-containerWraper:after
-{
-    content: '';
-    display: block;
-    clear: both;
-}
-
 /*   *    */
 
-div.form-containerWraper:after
+div.form-containerWraper:after,
+div.containerbutton:after
 {
     content: '';
     display:block;
