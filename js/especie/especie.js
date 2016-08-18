@@ -168,8 +168,10 @@ function validField(nombre,mCallback){
     
      var resp =false;
     if($('#ingesp').val()==''){
-        resp=false;
         $('#ierror').html('Campo requerido');
+        e.preventDefault();
+        return false;
+       
     }else{
 
 
