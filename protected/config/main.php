@@ -97,26 +97,12 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-
-<<<<<<< HEAD
-			/*	 array(
-				 	'class'=>'CWebLogRoute',
-				 ),
-*/
-=======
-				
-			array(
+			
+		/*	array(
 					'class'=>'CWebLogRoute',
 				),
+		*/
 			
-
-
-				// array(
-				// 	'class'=>'CWebLogRoute',
-				// ),
-
-
->>>>>>> e8f4b81fee29ed0f2eff9ff437d7f91ef68c008d
 			),
 		),
 	),
