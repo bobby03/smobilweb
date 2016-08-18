@@ -12,7 +12,7 @@ return array(
 	 'connectionString' => 'mysql:host=localhost;dbname=movsens',
 	 'emulatePrepare' => true,
 	 'username' => 'root',
-	 'password' => 'hola',
+	 'password' => '',
 //	 'username' => 'root',
 //	 'password' => '',
 	'charset' => 'utf8',
