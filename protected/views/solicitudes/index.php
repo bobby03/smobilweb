@@ -24,10 +24,10 @@
             <?php $this->renderPartial('_search',array(
                     'model'=>$model,
             )); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
+                <div class="agregar solicitudes"></div>
+            </a>
         </div><!-- search-form -->
-        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/create">
-            <div class="agregar solicitudes"></div>
-        </a>
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'solicitudes-grid',
