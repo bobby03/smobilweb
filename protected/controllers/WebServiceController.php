@@ -135,6 +135,7 @@ class WebServiceController extends Controller
                 ->select('id_usr, tipo_usr, usuario, pwd')
                 ->from('usuarios')
                 ->where('usuario = :usr',array(':usr'=>$driver) )
+                ->andWhere('pwd = :pd',array(':pd'=>$pass))
                 ->andWhere('tipo_usr = 2')
                 ->queryRow();
                 // var_dump($ac);
