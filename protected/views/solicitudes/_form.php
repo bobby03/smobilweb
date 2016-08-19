@@ -284,7 +284,7 @@ eof;
             </div>
         </div>
         <div class="botones hide">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Cancelar</a>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes<?php echo ($update) ? '/#asignadas' : '' ?>">Cancelar</a>
             <!--<div class="continuar">Continuar</div>-->
             <div class="guardar">Guardar</div>
         </div>

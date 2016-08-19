@@ -85,7 +85,7 @@ class Viajes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'ID de viaje',
 			'id_solicitudes' => 'Cliente',
 			'id_responsable' => 'Responsable',
 			'id_estacion' => 'Camión',
@@ -241,6 +241,12 @@ class Viajes extends CActiveRecord
         (
             array
             (
+                'name' => 'id',
+                'value' => '$data->id',
+
+            ),
+            array
+            (
                 'name' => 'id_solicitudes',
                 'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
                 'filter' => Clientes::model()->getAllClientesViajes(),
@@ -290,6 +296,12 @@ class Viajes extends CActiveRecord
     {
         return array
         (
+            array
+            (
+                'name' => 'id',
+                'value' => '$data->id',
+
+            ),
 
             array
             (
@@ -351,6 +363,12 @@ class Viajes extends CActiveRecord
     {
         return array
         (
+            array
+            (
+                'name' => 'id',
+                'value' => '$data->id',
+
+            ),
             array
             (
                 'name' => 'id_solicitudes',

@@ -56,7 +56,7 @@
         )); 
     ?>
     </div>
-    <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
+    <div class="tabContent hide" id="asignadas" data-tan="2"> <!--Inactivos-->
  
 
     <?php $this->widget('zii.widgets.grid.CGridView', array

@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Siembra'=>array('index'),
 	'Nueva',
 );
-
+ $update = false
 ?>
 
 <h1>Nueva siembra</h1>
