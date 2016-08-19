@@ -29,12 +29,6 @@ class SiteController extends Controller
     // renders the view file 'protected/views/site/index.php'
     // using the default layout 'protected/views/layouts/main.php'
     $criteria = new CDbCriteria();
-    /*$criteria->select = "t.*, est.identificador, p.nombre, p.apellido";
-    $criteria->from = 'viajes as t';
-    $criteria->join = "JOIN estacion est ON est.id = t.id_estacion";
-    $criteria->join .= " JOIN personal as p ON p.id = t.id_responsable";
-    $criteria->join .= " JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id";
-    $criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
     
     $model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
       FROM viajes as t
@@ -148,35 +142,38 @@ class SiteController extends Controller
       $model->attributes=$_POST['LoginForm'];
       // validate user input and redirect to the previous page if valid
       if($model->validate() && $model->login())
-                        {
-                           $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
-                           print_r($usuario);
-                           $usuario = null;
-                            /*
-                             
-                             Evita el error 500 al momento de hacer el login valiando 
-                             que el usuario y contraseña sea smobiladmin.
-                             */
-              if(isset($usuario)){}else{
-                if(($_POST['LoginForm']['username']==='smobiladmin') && ($_POST['LoginForm']['password']==='smobiladmin'))
-                {
-                  $this->redirect(Yii::app()->user->returnUrl);
-                }
-              }
-                            if($usuario->tipo_usr == 1)
-                            {
-                                Yii::app()->user->id = 'Cliente';
-                            }
-                            elseif($usuario->tipo_usr == 2)
-                            {
-                               $personal = Personal::model()->findByPk($usuario->id_usr);
-                               $rol = Roles::model()->findByPk($personal->id_rol);
-                               Yii::app()->user->id = $rol->nombre_rol;
-                     
-                            }
-                        
-                            $this->redirect(Yii::app()->user->returnUrl);
-                        }
+      {
+         $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
+         print_r($usuario);
+         // $usuario = null;
+          /*
+           
+           Evita el error 500 al momento de hacer el login valiando 
+           que el usuario y contraseña sea smobiladmin.
+          */
+        if(isset($usuario)){
+          //????????????????
+        }
+        else {
+          if(($_POST['LoginForm']['username']==='smobiladmin') && ($_POST['LoginForm']['password']==='smobiladmin'))
+          {
+            $this->redirect(Yii::app()->user->returnUrl);
+          }
+        }
+          if($usuario->tipo_usr == 1)
+          {
+              Yii::app()->user->id = 'Cliente';
+          }
+          elseif($usuario->tipo_usr == 2)
+          {
+             $personal = Personal::model()->findByPk($usuario->id_usr);
+             $rol = Roles::model()->findByPk($personal->id_rol);
+             Yii::app()->user->id = $rol->nombre_rol;
+   
+          }
+      
+          $this->redirect(Yii::app()->user->returnUrl);
+      }
     }
     // display the login form
     $this->render('login',array('model'=>$model));
