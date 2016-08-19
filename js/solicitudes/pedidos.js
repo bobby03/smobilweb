@@ -166,7 +166,7 @@ $(document).ready(function()
                 <div class="separator-content"></div>\n\
                 <div class="botones-content">\n\
                     <div id="cancelar" class="cBoton" href="">Cancelar</div> \n\
-                    <div class="btndel gBoton">Agregar</div>\n\
+                    <div class="btndel gBoton">Aceptar</div>\n\
                 </div>\n\
             </div>';
             $.colorbox(

@@ -14,8 +14,8 @@
 
 <div class="principal">
     <div class="tabs">
-        <div class="tab select" data-id="1"><span>Activos</span></div>
-        <div class="tab" data-id="2"><span>Inactivos</span></div>
+        <div class="tab select" data-id="1"><span>En proceso</span></div>
+        <div class="tab" data-id="2"><span>Finalizado</span></div>
     </div>
 
 
@@ -64,7 +64,7 @@
             'id'=>'campsensado-grid2',
             'summaryText'=>'',
             'ajaxUpdate'=>true,
-            'dataProvider'=>$model->search(0),
+            'dataProvider'=>$model->search(2),
             'columns'=>$model->adminSearchBorrados(),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'emptyText'=>"No hay resistros",

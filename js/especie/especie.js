@@ -63,6 +63,10 @@ $(document).ready(function()
         e.preventDefault();
     });
 
+
+
+
+
     $('a.update img').click(function(evt)
     {
         evt.preventDefault();
@@ -81,6 +85,7 @@ $(document).ready(function()
                 <div class="esp">Especie</div>\n\
                 <div class="separator-content"></div>\n\
                 <input name="ingesp" id="ingesp" value="'+nombre+'" class="ingesp" type="text">\n\
+                 <p id="ierror"></p>\n\
                 <div class="botones-content">\n\
                     <a class="gBoton" href="">Cancelar</a> \n\
                     <div class="btnadd btnUpdate">Aceptar</div>\n\
