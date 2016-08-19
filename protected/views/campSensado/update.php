@@ -18,4 +18,4 @@ $this->breadcrumbs=array(
 
 <h1>Update CampSensado <?php echo $model->id; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'personal'=>$personal)); ?>
