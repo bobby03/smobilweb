@@ -203,13 +203,31 @@ public function getSearchSolicitud(){
         else
             return date("H:i", strtotime($date));
     } 
-    public function getClientesEnEspera() {
+    public function getClientesEnEspera() 
+    {
         $cr = new CDbCriteria();
         $foreach = Solicitudes::model()->findAll('status = 0');
         $id_clientes = array();
         foreach ($foreach as $data) {
             $nombre_Cliente = Clientes::model()->findall("id = $data->id_clientes");
             $id_clientes[$data->id] = $nombre_Cliente[0]->nombre_empresa;
+        }
+        return $id_clientes;  
+    }
+    public function getClientesEnEsperaId($id) 
+    {
+        $solicitud = SolicitudesViaje::model()->findAllBySql("SELECT DISTINCT id_solicitud from solicitudes_viaje WHERE id_viaje = $id");
+        $foreach = Solicitudes::model()->findAll('status = 0');
+        $id_clientes = array();
+        foreach ($foreach as $data) {
+            $nombre_Cliente = Clientes::model()->findall("id = $data->id_clientes");
+            $id_clientes[$data->id] = $nombre_Cliente[0]->nombre_empresa;
+        }
+        foreach ($solicitud as $data) 
+        {
+            $sol = Solicitudes::model()->findByPk($data->id_solicitud);
+            $nombre_Cliente = Clientes::model()->findall("id = $sol->id_clientes");
+            $id_clientes[$data->id_solicitud] = $nombre_Cliente[0]->nombre_empresa;
         }
         return $id_clientes;  
     }

@@ -48,7 +48,8 @@ $(document).ready(function()
                 data:
                 {
                     total: totalTanque,
-                    fecha: fecha
+                    fecha: fecha,
+                    idCamion: null
                 },
                 success: function(data)
                 {

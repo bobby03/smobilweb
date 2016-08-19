@@ -152,17 +152,6 @@ $(document).ready(function()
             });
         });
     });
-
-    $('div.guardar').click(function()
-    {
-        var baseUrl = window.location.href;
-        $('form#solicitudes-form').attr('action',baseUrl);
-        $('#Solicitudes_id_clientes').removeAttr('disabled');
-        $('#Solicitudes_id_clientes').trigger('chosen:update');
-//        console.log('hola');
-        $('#solicitudes-form').submit();
-    });
-
     function borrarPedido()
     {
         

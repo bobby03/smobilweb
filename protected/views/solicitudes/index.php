@@ -32,7 +32,7 @@
         </div><!-- search-form -->    
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje-grid',
+        'id'=>'solicitudes-grid',
         'dataProvider'=>$model->searchStatus(0),
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
@@ -58,7 +58,7 @@
     <div class="tabContent hide" data-tan="2">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje2',
+        'id'=>'solicitudes-grid2',
         'dataProvider'=>$model->searchStatus(1),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'emptyText'=>"No hay resistros",
@@ -78,7 +78,7 @@
     <div class="tabContent hide" data-tan="3">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje3',
+        'id'=>'solicitudes-grid3',
         'dataProvider'=>$model->searchStatus(2),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'emptyText'=>"No hay resistros",
@@ -97,7 +97,7 @@
     <div class="tabContent hide" data-tan="4">
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
-        'id'=>'viaje4',
+        'id'=>'solicitudes-grid4',
         'dataProvider'=>$model->searchStatus(3),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
         'emptyText'=>"No hay resistros",
