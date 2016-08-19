@@ -27,17 +27,13 @@
 <h1>Historico del viaje</h1>
 <?php endif;?>
 <div class="principal">
+    <!--EN ESPERA-->
     <?php if($model->status == 1):?>
     <?php $cs->registerCssFile($baseUrl.'/css/viajes/create.css');?>
     <div class="form">
         <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
             'attributes'=>array(
-//                array(
-//                    'name'=>'id_solicitudes',
-//                    'value'=> Viajes::model()->getAllClientesViajes($model->id, $model->id_solicitudes),
-//                    'type'=>'raw'
-//                ),
                 array(
                     'name'=>'status',
                     'value'=> Viajes::model()->getStatus($model->status)
@@ -115,6 +111,7 @@
         </div>
     </div>
     <?php endif;?>
+    <!--EN RUTA-->
     <?php if($model->status == 2):?>
     <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); ?>
     <div class="detallesViaje">
