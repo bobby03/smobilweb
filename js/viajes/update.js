@@ -96,6 +96,11 @@ $(document).ready(function()
                 console.log(a,b,c);
             }
         });
+        $('[data-tab="1"]').addClass('hide');
+        $('[data-tab="2"]').removeClass('hide');
+        $('.menuTabs div:nth-child(4)').addClass('selected');
+        $('.menuTabs div:nth-child(5)').addClass('selected');
+        $('.pedidoWraper').css('height', 'auto');
     });
     $('.siguiente.dos').on('click', function() 
     {
@@ -130,6 +135,12 @@ $(document).ready(function()
                         $('.fsalida').text(fecha);
                     }
                 });
+                $('[data-tab="2"]').addClass('hide');
+                $('[data-tab="3"]').removeClass('hide');
+                $('.menuTabs div:nth-child(6)').addClass('selected');
+                $('.menuTabs div:nth-child(7)').addClass('selected');
+                $('.menuTabs div:nth-child(8)').addClass('selected');
+                $('.menuTabs div:nth-child(9)').addClass('selected');
             }
         }
     });

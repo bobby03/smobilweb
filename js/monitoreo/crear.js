@@ -1,6 +1,11 @@
 $(document).ready(function(){
 	var cepa;
 	var especie;
+        var n = window.location.href.lastIndexOf('update');
+        var isupdate = 0;
+        if (n >=0) {
+            isupdate = 1;
+        }
 	$('#Granjas_id').on('change', function(){
 		var id = $(this).val();
 		if(id == '') {
@@ -9,9 +14,13 @@ $(document).ready(function(){
 			$('#CampSensado_id_estacion').prop('disabled', 'disabled');
 		}
 		else {
+                    var url="getEstacionesFromGranja";
+                    if(isupdate!=0){
+                        url = "../getEstacionesFromGranja";
+                    }
 			$.ajax({
 				type: 'GET',
-				url: 'GetEstacionesFromGranja',
+				url: url,
 				dataType: 'JSON',
 				data: {
 					id: id
@@ -31,13 +40,25 @@ $(document).ready(function(){
 	});
 	$('.siguiente.uno').on('click', function() {
 		var id = $('#CampSensado_id_estacion').val();
-		if( id!= '') {
+                var fecha_inicio = $('#CampSensado_fecha_inicio').val();
+                var fecha_final = $('#CampSensado_fecha_fin').val();
+		if( id!== '') {
+                    var url="GetTanquesFromEstacion";
+                    var idSiembra = 0;
+                    if(isupdate!=0){
+                        url = "../GetTanquesFromEstacion";
+                        idSiembra = $('#CampSensado_id').val();
+                    }
 			$.ajax({
 				type : 'GET',
-				url  : 'GetTanquesFromEstacion',
+				url  : url,
 				dataType : 'JSON',
 				data: {
-					id: id
+					id: id,
+                                        update: isupdate,
+                                        fecha_inicial: fecha_inicio,
+                                        fecha_final: fecha_final,
+                                        id_siembra: idSiembra
 				},
 				success: function(data) {
 					$('.pedidosWraper').empty();
@@ -62,19 +83,28 @@ $(document).ready(function(){
         	var hora_inicio = $('#CampSensado_hora_inicio').val();
         	var fecha_fin = $('#CampSensado_fecha_fin').val();
         	var hora_fin = $('#CampSensado_hora_fin').val();
-        	InfoCepa(id_cepa);
+                if(id_especie != "Seleccionar") {
+                    var url="GetNombreEspecie";
+                    if(isupdate!=0){
+                        url = "../GetNombreEspecie";
+                    }
 			$.ajax({
 				type: 'GET',
-				url : 'GetNombreEspecie',
+				url : url,
 				dataType : 'JSON',
 				data : {
-					id: id_especie
+					id: id_especie,
+                                        update: isupdate
 				},
 				success : function(data) {
 					especie = data.nombre;
+                                            var url2="GetInfoCepa";
+                                            if(isupdate!=0){
+                                                url2 = "../GetInfoCepa";
+                                            }
 						$.ajax({
 						type: 'GET',
-						url : 'GetInfoCepa',
+						url : url2,
 						dataType : 'JSON',
 						data : {
 							id: id_cepa
@@ -127,6 +157,7 @@ $(document).ready(function(){
 					console.log(a, b, c);
 				}
 			});
+                }
         });
     });
 	function changeCepas() {
@@ -134,9 +165,13 @@ $(document).ready(function(){
 			var id = $(this).val();
 			var selector_change = $(this).closest('.pedidoWraper').find('.css-select.cepa');
 			if($(this).val()!="") { 
+                            var url="GetCepasFromEspecie";
+                            if(isupdate!=0){
+                                url = "../GetCepasFromEspecie";
+                            }
 				$.ajax({
 					type : 'GET',
-					url  : 'GetCepasFromEspecie',
+					url  : url,
 					dataType : 'JSON',
 					data: {
 						id: id
@@ -155,38 +190,6 @@ $(document).ready(function(){
 				selector_change.empty();
 				selector_change.html('<option>Seleccionar</option>');
 				selector_change.prop('disabled', 'disabled');
-			}
-		});
-	}
-	function NombreEspecie(id) {
-		$.ajax({
-			type: 'GET',
-			url : 'GetNombreEspecie',
-			dataType : 'JSON',
-			data : {
-				id: id
-			},
-			success : function(data) {
-				especie = data.nombre;
-			},
-			error : function(a, b, c) {
-				console.log(a, b, c);
-			}
-		});
-	}
-	function InfoCepa(id) {
-		$.ajax({
-			type: 'GET',
-			url : 'GetInfoCepa',
-			dataType : 'JSON',
-			data : {
-				id: id
-			},
-			success : function(data) {
-				cepa = data;
-			},
-			error : function(a, b, c) {
-				console.log(a, b, c);
 			}
 		});
 	}

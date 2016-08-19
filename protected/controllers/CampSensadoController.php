@@ -106,28 +106,35 @@ class CampSensadoController extends Controller
 		$model=new CampSensado;
 		$granjas = Granjas::model()->findAll('activo = 1');
 		$personal = new SolicitudesViaje;
-
+                $update = false;
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['CampSensado']))
 		{
+//                    print_r($_POST);
 			$model->attributes=$_POST['CampSensado'];
 			$model->status = 1;
 			$model->activo = 1;
+                        $model->fecha_fin = date('Y-m-d', strtotime($model->fecha_fin));
+                        $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
+                        $model->hora_fin = date('h:i', strtotime($model->hora_fin));
+                        $model->hora_inicio = date('h:i', strtotime($model->hora_inicio));
 			if($model->save()){
 				$id = Yii::app()->db->getLastInsertID();
 				foreach($_POST['camp_tanques'] as $data) {
 					$camptanque = new CampTanque;
-					if($data['id_tanque'] !='' && $data['id_cepa'] != "" && $data['cantidad'] !="")
-					$camptanque->id_tanque = $data['id_tanque'];
-					$camptanque->id_camp_sensado = $id;
-					$camptanque->id_cepa = $data['id_cepa'];
-					$camptanque->cantidad = $data['cantidad'];
-					if($camptanque->save()) {
+					if(isset($data['id_tanque']) && $data['id_tanque'] !='' && 
+                                           isset($data['id_cepa']) && $data['id_cepa'] != "" && 
+                                           isset($data['cantidad']) && $data['cantidad'] !="") {
+                                            $camptanque->id_tanque = $data['id_tanque'];
+                                            $camptanque->id_camp_sensado = $id;
+                                            $camptanque->id_cepa = $data['id_cepa'];
+                                            $camptanque->cantidad = $data['cantidad'];
+                                            if($camptanque->save()) {
 
-					}
-
+                                            }
+                                        }
 				}
 				$this->redirect(array('index'));
 			}
@@ -136,7 +143,8 @@ class CampSensadoController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 			'granjas' => $granjas,
-			'personal' => $personal
+			'personal' => $personal,
+			'update' => $update
 		));
 	}
 	public function actionGetEstacionesFromGranja($id) {
@@ -159,43 +167,150 @@ class CampSensadoController extends Controller
 		}
 		echo json_encode( $return );
 	}
-	public function actionGetTanquesFromEstacion($id) {
-		$tanques_libres   = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
-		// $tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
-		$return = array();
+	public function actionGetTanquesFromEstacion($id, $update, $fecha_inicial, $fecha_final, $id_siembra) {
+            $tlc = new CDbCriteria;
+            $fi = date('Y-m-d', strtotime($fecha_inicial));
+            $ff = date('Y-m-d', strtotime($fecha_final));
+            $tlc->condition="id_estacion = {$id} AND activo = 1 ";
+            
+            $tanques_libres   = Tanque::model()->findAll($tlc);
+            // $tanques_ocupados = Tanque::model()->findAll('id_estacion = '.(int)$id.' AND activo = 1');
+            $return = array();
 
-		$tot = 1;
-		$return['libres'] = "";
-		foreach($tanques_libres as $data) {
-			$especies = Especie::model()->findAll('activo = 1');
-			$return['libres'] .= "<div class='pedido'>
-								<input name='camp_tanques[{$tot}][id_tanque]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
-                                <div class='tituloEspecie'>Tanque: $data->nombre</div>
-                                <div class='pedidoWraper' style='height: 178px;'>
-                                    <div><label>Seleccionar especie: </label>
-                                    	<select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+            $tot = 1;
+            $return['libres'] = "";
+            if($update == 0) {
+                foreach($tanques_libres as $data) {
+                    $especies = Especie::model()->findAll('activo = 1');
+                    $return['libres'] .= "<div class='pedido'>
+                        <input name='camp_tanques[{$tot}][id_tanque]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
+                        <div class='tituloEspecie'>Tanque: $data->nombre</div>
+                        <div class='pedidoWraper' style='height: 178px;'>
+                            <div><label>Seleccionar especie: </label>
+                            <select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+                            <option>Seleccionar</option>";
+                            foreach($especies as $dt) {
+                                $return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
+                            }
+                            $return['libres'].="</select>
+                                <div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
+                            </div>
+                            <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
+                                <div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
+                            </div>              
+                            <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
+                        $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        
+                        </div>                     
+                        </div>
+                    </div>"   ;
+                    $tot++;
+                }
+            }
+            else {
+                foreach($tanques_libres as $data) {
+                    $camp_tanques = CampTanque::model()->findByAttributes('id_camp_sensado = '.$id_siembra);
+                    $especies = Especie::model()->findAll('activo = 1');
+                    if(isset($camp_tanques->id) ) {
+                        $camp_sensado = CampSensado::model()->findByPk($camp_tanques->id_camp_sensado);  
+                        fb($camp_sensado->attributes);
+                        if($camp_sensado->status < 2){
+                            if($camp_sensado->fecha_inicio > $fi || $camp_sensado->fecha_final < $ff) {
+                               $return['libres'] .= "<div class='pedido'>
+                                    <input name='camp_tanques[{$tot}][id_tanque]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
+                                    <div class='tituloEspecie'>Tanque: $data->nombre</div>
+                                    <div class='pedidoWraper' style='height: 178px;'>
+                                        <div><label>Seleccionar especie: </label>
+                                        <select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
                                         <option>Seleccionar</option>";
                                         foreach($especies as $dt) {
-                                        	$return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
+                                            $return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
                                         }
-
-
-                                    $return['libres'].="</select>
-                                    	<div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
+                                        $return['libres'].="</select>
+                                            <div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
+                                        </div>
+                                        <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
+                                            <div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
+                                        </div>              
+                                        <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
+                                    $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        
+                                    </div>                     
                                     </div>
-                                    <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
-                            			<div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
-                                    </div>              
-                                    <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
-                                   
-                               
+                                </div>"   ;
+                                $tot++; 
+                            }
+                            elseif ($camp_sensado->fecha_inicio == $fi && $camp_sensado->fecha_final == $ff) {
+                                $id_cepa = Cepa::model()->findByPk($camp_tanques->id_cepa);
+                                $especie = Especie::model()->findByPk($id_cepa->id_especie);
+                                $cepasDEspecie = Cepa::model()->findAll('id_especie= '.(int)$especie->id);
+                                $return['libres'] .= "<div class='pedido'>
+                                    <input name='camp_tanques[{$tot}][id_tanque]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
+                                    <div class='tituloEspecie'>Tanque: $data->nombre</div>
+                                    <div class='pedidoWraper' style='height: 178px;'>
+                                        <div><label>Seleccionar especie: </label>
+                                        <select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+                                        <option>Seleccionar</option>";
+                                        foreach($especies as $dt) {
+                                            if($especie->id == $dt->id){
+                                                $return['libres'] .= "<option value='{$dt->id}' selected='selected'>{$dt->nombre}</option>";
+                                            }
+                                            else {
+                                                $return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
+                                                
+                                            }
+                                        }
+                                        $return['libres'].="</select>
+                                            <div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
+                                        </div>
+                                        <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}'>
+                                            <option>Seleccionar</option></select></span>";
+                                        foreach($cepasDEspecie as $dt) {
+                                            if($camp_tanques->id_cepa == $dt->id){
+                                                $return['libres'] .= "<option value='{$dt->id}' selected='selected'>{$dt->nombre_cepa}</option>";
+                                            }
+                                            else {
+                                                $return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre_cepa}</option>";
+                                                
+                                            }
+                                        }
+                                         $return['libres'].="<div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
+                                        </div>              
+                                        <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' value='{$camp_tanques->cantidad}' autocomplete='off'></span></div>";
+                                    $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        
+                                    </div>                     
+                                    </div>
+                                </div>"   ;
+                                $tot++; 
+                            }
+                            
+                        }
+                    }
+                    else {
+                        $return['libres'] .= "<div class='pedido'>
+                            <input name='camp_tanques[{$tot}][id_tanque]' id='Solicitudes_codigo_{$tot}_cantidad' type='hidden' value='$data->id' autocomplete='off'>
+                            <div class='tituloEspecie'>Tanque: $data->nombre</div>
+                            <div class='pedidoWraper' style='height: 178px;'>
+                                <div><label>Seleccionar especie: </label>
+                                <select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+                                <option>Seleccionar</option>";
+                                foreach($especies as $dt) {
+                                    $return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
+                                }
+                                $return['libres'].="</select>
+                                    <div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
+                                </div>
+                                <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
+                                    <div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
+                                </div>              
+                                <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
                             $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        
                             </div>                     
                             </div>
                         </div>"   ;
                         $tot++;
-		}
-		echo json_encode( $return );
+                    }
+                }
+            }
+            echo json_encode( $return );
 	}
 	public function actionGetCepasFromEspecie($id) {
 
@@ -237,12 +352,15 @@ class CampSensadoController extends Controller
 
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel((int)$id);
+                $tanques = CampTanque::model()->findAll('id_camp_sensado ='.(int)$id);
 		$personal = new SolicitudesViaje;
+                $granjas = new Granjas();
+                $update = true;
 
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
-
+                 
 		if(isset($_POST['CampSensado']))
 		{
 			$model->attributes=$_POST['CampSensado'];
@@ -252,7 +370,9 @@ class CampSensadoController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-			'personal'=>$personal
+                        'personal'=>$personal,
+                        'granjas'=>$granjas,
+                        'update'=>$update,
 		));
 	}
 

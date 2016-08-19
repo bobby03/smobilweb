@@ -436,6 +436,7 @@ h1 {
 div.principal {
     width: 1200px;
     margin: 0 auto;
+    padding-left: 15px;
 }
 
 div.principal:after {
