@@ -203,12 +203,6 @@ eof;
         public function actionUpdate($id)
 	{
             $model=$this->loadModel($id);
-            $model->fecha_alta = date('d-m-Y', strtotime($model->fecha_alta));
-            $model->hora_alta = date('H:i', strtotime($model->hora_alta));
-            $model->fecha_entrega = date('d-m-Y', strtotime($model->fecha_entrega));
-            $model->hora_entrega = date('H:i', strtotime($model->hora_entrega));
-            $model->fecha_estimada = date('d-m-Y', strtotime($model->fecha_estimada));
-            $model->hora_estimada = date('H:i', strtotime($model->hora_estimada));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
             $pedidos = Pedidos::model()->findAll("id_solicitud =".(int)$id); 
@@ -219,9 +213,6 @@ eof;
             if(isset($_POST['Solicitudes']))
             {
                     $model->attributes=$_POST['Solicitudes'];
-                    $model->fecha_alta = date('Y-m-d', strtotime($model->fecha_alta));
-                    $model->fecha_entrega = date('Y-m-d', strtotime($model->fecha_entrega));
-                    $model->fecha_estimada = date('Y-m-d', strtotime($model->fecha_estimada));
                     if($model->save())
                     {
                         $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
@@ -244,6 +235,46 @@ eof;
                         }
                         else
                             $model->delete();
+                        if($model->status == 1)
+                        {
+                            $viajes = Viajes::model()->findAll("id_solicitudes = $model->id");
+                            if(count($viajes)>0)
+                            {
+                                $solVia = SolicitudesViaje::model()->findAll("id_viaje = {$viajes[0]->id} AND id_personal = 0");
+                                if(count($solVia)>0)
+                                {
+                                    $solVia2 = SolicitudesViaje::model()->findAll("id_viaje = {$viajes[0]->id} AND id_solicitud = $model->id");
+                                    $id = $solVia[0]->id_solicitud;
+                                    foreach($solVia2 as $data)
+                                    {
+                                        $data['id_solicitud'] = $id;
+                                        $update = Yii::app()->db->createCommand()->update("solicitudes_viaje",$data,"id = {$data['id']}");
+                                    }
+                                    $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $id AND id_personal = 0")->execute();
+                                    $viajes[0]->id_solicitudes = $id;
+                                    $update = Yii::app()->db->createCommand()->update("viajes",$viajes[0],"id = {$viajes[0]->id}");
+                                }
+                                else
+                                {
+                                    $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
+                                    $delete4 = Yii::app()->db->createCommand("DELETE FROM viajes WHERE id = {$viajes[0]->id}")->execute();
+                                    $camion = Estacion::model()->findByPk($viajes[0]->id_estacion);
+                                    $camion->disponible = 1;
+                                    $camion->save();                                    
+                                }
+                            }
+                            else
+                            {
+                                $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
+                            }
+                            $delete3 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id")->execute();
+                            $model->status = 0;
+                            $model->fecha_estimada = null;
+                            $model->hora_estimada = null;
+                            $model->fecha_entrega = null;
+                            $model->hora_entrega = null;
+                            $model->save();
+                        }
                         $this->redirect(array('index'));
                     }
             }

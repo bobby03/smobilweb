@@ -147,9 +147,9 @@ body.viajes .gBoton {
 }
 
 
-body.viajes-update .gBoton {
+/*body.viajes-update .gBoton {
   font-size: 14px !important;
-}
+}*/
 
 .agregar {
     float: right;

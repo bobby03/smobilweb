@@ -92,6 +92,7 @@ $form=$this->beginWidget('CActiveForm', array(
 				<?php $prs = new Personal;  echo $form->labelEx($model,'id_responsable'); ?>
 		        <span class="css-select-moz">
 		            <?php echo $form->dropDownList($model,'id_responsable', $prs->getBiologos(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
+
 		            <?php echo $form->error($model,'id_responsable'); ?>
 		        </span>
 			</div>

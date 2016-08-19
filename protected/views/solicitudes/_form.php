@@ -36,6 +36,85 @@
         ),
 ));
 ?>
+<?php if($model->status == 1):?>
+    <style>
+        .save
+        {
+            border-radius: 5px;
+            color: #FFFFFF;
+            cursor: pointer;
+            float: right;
+            height: 35px;
+            line-height: 35px;
+            margin-right: 35px;
+            text-align: center;
+            width: 135px;
+            font-size: 18px;
+            background-color: #09b7c9
+        }
+        div.mensaje-content
+        {
+            font-size: 18px !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function()
+        {
+            $('.guardar').click(function(evt)
+            {
+                evt.preventDefault();
+                var html = '\n\
+                    <div class="sub-content">\n\
+                        <div class="title-content">Confirmación</div>\n\
+                        <div class="separador-content"></div>\n\
+                        <div class="mensaje-content">\n\
+                            Si modifica esta solicitud se eliminará\n\
+                            del viaje al que está asignada y se pasará a\n\
+                            solicitudes sin asignar.\n\
+                        </div>\n\
+                        <div class="botones-content">\n\
+                            <div class="gBoton cancel" style="margin-left: 35px">Cancelar</div>\n\
+                            <div class="save">Continuar</div>\n\
+                        </div>\n\
+                    </div>';
+                $.colorbox(
+                {
+                    html: html,
+                    width: 400,
+                    height: 200,
+                    onComplete: function()
+                    {
+                        $('.save').click(function()
+                        {
+                            var baseUrl = window.location.href;
+                            $('form#solicitudes-form').attr('action',baseUrl);
+                            $('#solicitudes-form').submit();
+                        });
+                        $('.cancel').click(function()
+                        {
+                            $.colorbox.close();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<?php else:?>
+    <script>
+        $(document).ready(function()
+    {
+        $('div.guardar').click(function()
+        {
+            var baseUrl = window.location.href;
+            $('form#solicitudes-form').attr('action',baseUrl);
+            $('#Solicitudes_id_clientes').removeAttr('disabled');
+            $('#Solicitudes_id_clientes').trigger('chosen:update');
+    //        console.log('hola');
+            $('#solicitudes-form').submit();
+        });
+    })
+    </script>
+<?php endif;?>
 <?php 
     $flag = false;
     if($pedidos != '')

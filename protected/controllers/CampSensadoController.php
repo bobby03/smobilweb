@@ -357,6 +357,7 @@ class CampSensadoController extends Controller
 		$personal = new SolicitudesViaje;
                 $granjas = new Granjas();
                 $update = true;
+
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
                  

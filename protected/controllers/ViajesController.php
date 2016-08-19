@@ -42,7 +42,7 @@ class ViajesController extends Controller
         echo json_encode($return);
 //        Yii::app()->end(); 
     }
-    public function actionGetCamionesDisponibles($total, $fecha)
+    public function actionGetCamionesDisponibles($total, $fecha, $idCamion)
     {
         $opciones = '';
         if($fecha != '')
@@ -71,6 +71,8 @@ class ViajesController extends Controller
                 $index++;
             }
         }
+        if($idCamion != null)
+            $Viajes[] = array('id_estacion' => $idCamion);
         if(isset($Viajes))
         {
             foreach($Viajes as $data)
@@ -296,7 +298,6 @@ EOF;
             AND c.id='.Yii::app()->user->getIDc())
             ->queryAll();
         }
-        $i = 0;
         foreach($solicitudTanque as $data)
         {
             $cepa = Cepa::model()->findByPk($data->id_cepas);
@@ -310,13 +311,7 @@ EOF;
                 'id_solicitud'=>$data->id_solicitud,
                 'id_tanque'=>$data->id_tanque
             );
-            $pedidos['pedido'][$i] = $pedido;
-            $i++;
-        }
-        foreach($guardar as $data)
-        {
-            $pedidos['pedido'][$i] = $data;
-            $i++;
+            $pedidos['pedido'][] = $pedido;
         }
         foreach($prueba as $data2)
         {
@@ -335,26 +330,7 @@ EOF;
                     'id_solicitud'=>$data->id_solicitud,
                     'id_tanque'=>$data->id_tanque
                 );
-                //$pedidos['pedido'][$i] = $pedido;
-                $o=0;
-                foreach ($pedidos as $revisar){
-                    if($pedidos['pedido'][$o]==$data){
-                        $pedidos['pedido'][$i] = $data;
-                    }
-                    $o++;
-                }
-                $i++;
-            }
-            foreach($guardar as $data)
-            {
-                $o=0;
-                foreach ($pedidos as $revisar){
-                    if($pedidos['pedido'][$o]==$data){
-                        $pedidos['pedido'][$i] = $data;
-                    }
-                    $o++;
-                }
-                $i++;
+                $pedidos['pedido'][] = $pedido;
             }
         }
 //            if($model->status != 1)
@@ -627,9 +603,9 @@ EOF;
                 }
                 foreach($_POST['Solicitudes']['codigo'] as $data)
                 {
-                    $nuevo = new SolicitudTanques();
                     if(isset($data['tanque']) && $data['tanque'] != '')
                     {
+                        $nuevo = new SolicitudTanques();
                         $id = explode(':',$data['tanque']);
                         $pedido = Pedidos:: model()->findByPk($id[0]);
                         $nuevo->id_solicitud = $pedido->id_solicitud;
@@ -675,7 +651,8 @@ EOF;
                 $estacion = Estacion::model()->findByPk($model->id_estacion);
                 $estacion->disponible = 2;
                 if($estacion->save())
-                    $this->redirect(array('index'));
+//                    $this->redirect(array('index'));
+                    $A;
             }
         }
 //            print_r($_POST);
@@ -691,6 +668,7 @@ EOF;
     {
             $model=$this->loadModel((int)$id);
             $personal = SolicitudesViaje::model()->findAll("id_viaje =".(int)$id);
+            $solVia = SolicitudesViaje::model()->findAll("id_viaje =".(int)$id);
             $personalModel = new SolicitudesViaje();
             $model->fecha_salida = date('d-m-Y', strtotime($model->fecha_salida));
             $model->hora_salida = date('H:i', strtotime($model->hora_salida));
@@ -698,33 +676,91 @@ EOF;
             $this->performAjaxValidation($model);
             if(isset($_POST['Viajes']))
             {
-                    $model->attributes=$_POST['Viajes'];
-                    $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
-                    $personal = SolicitudesViaje::model()->findAll("id_viaje = ".(int)$id." AND id_solicitud = $model->id_solicitudes");
-                    if($model->save())
+                $estacion = Estacion::model()->findByPk($model->id_estacion);
+                $estacion->disponible = 1;
+                $estacion->save();
+                $tanques = Tanque::model()->findAll("id_estacion = $model->id_estacion");
+                $solTan = SolicitudTanques::model()->findAll();
+                foreach($tanques as $data)
+                    foreach($solTan as $data2)
+                        if($data2->id_tanque == $data->id)
+                                $data2->delete();
+                $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_viaje = $model->id")->execute();
+                $solicitudes = SolicitudesViaje::model()->findAll("id_viaje = $model->id");
+                foreach($solicitudes as $data)
+                {
+                    $sol = Solicitudes::model()->findByPk($data->id_solicitud);
+                    $sol->status = 0;
+                    $sol->fecha_estimada = null;
+                    $sol->hora_estimada = null;
+                    $sol->save();
+                }
+                $model->attributes=$_POST['Viajes'];
+                $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                if($model->save())
+                {
+                    foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
                     {
-                        foreach($personal as $data)
-                            $data->delete();
-                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)
-                        {
-                            $nuevo = new SolicitudesViaje();
-                            $nuevo->id_personal = $data;
-                            $nuevo->id_solicitud = $model->id_solicitudes;
-                            $nuevo->id_viaje = (int)$id;
-                            $nuevo->save();
-                        }
-                        foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
-                        {
-                            $nuevo = new SolicitudesViaje();
-                            $nuevo->id_personal = $data;
-                            $nuevo->id_solicitud = $model->id_solicitudes;
-                            $nuevo->id_viaje = (int)$id;
-                            $nuevo->save();
-                        }
-                        $this->redirect(array('index'));
+                        $nuevo = new SolicitudesViaje();
+                        $nuevo->id_personal = $data;
+                        $nuevo->id_viaje = $model->id;
+                        $nuevo->id_solicitud = $model->id_solicitudes;
+                        $nuevo->save();
                     }
+                    foreach($_POST['SolicitudesViaje']['id_personal']['1']['chofer'] as $data)
+                    {
+                        $nuevo = new SolicitudesViaje();
+                        $nuevo->id_personal = $data;
+                        $nuevo->id_viaje = $model->id;
+                        $nuevo->id_solicitud = $model->id_solicitudes;
+                        $nuevo->save();
+                    }
+                    foreach($_POST['Solicitudes']['codigo'] as $data)
+                    {
+                        if(isset($data['tanque']) && $data['tanque'] != '')
+                        {
+                            $nuevo = new SolicitudTanques();
+                            $id = explode(':',$data['tanque']);
+                            $pedido = Pedidos:: model()->findByPk($id[0]);
+                            $nuevo->id_solicitud = $pedido->id_solicitud;
+                            $nuevo->id_tanque = $data['id_tanque'];
+                            $nuevo->id_domicilio = $pedido->id_direccion;
+                            $nuevo->id_cepas = $pedido->id_cepa;
+                            if($pedido->tanques > 0)
+                                $nuevo->cantidad_cepas = $pedido->cantidad / $pedido->tanques;
+                            else
+                                $nuevo->cantidad_cepas = $pedido->cantidad;
+                            $nuevo->save();
+                        }
+                    }
+                    if(isset($_POST['Viajes']['id_solicitudes']))
+                    {
+                        $i = 0;
+                        foreach($_POST['Viajes']['id_solicitudes'] as $data)
+                        {
+                            if($i > 0)
+                            {
+                                $nuevo = new SolicitudesViaje();
+                                $nuevo->id_personal = 0;
+                                $nuevo->id_viaje = $model->id;
+                                $nuevo->id_solicitud = $data;
+                                $nuevo->save();
+                            }
+                            $solicitud = Solicitudes::model()->findByPk($data);
+                            $solicitud->status = 1;
+                            $solicitud->fecha_estimada = $model->fecha_salida;
+                            $solicitud->hora_estimada = $model->hora_salida;
+                            $solicitud->save();
+                            $i++;
+                        }
+                    }
+                    $estacion = Estacion::model()->findByPk($model->id_estacion);
+                    $estacion->disponible = 2;
+                    if($estacion->save())
+                        $this->redirect(array('index'));
+                }
             }
-            $roles = array('chofer'=>array(),'tecnico'=>array());
+            $roles = array('chofer'=>array(),'tecnico'=>array(), 'solicitudes'=>array());
             foreach($personal as $data)
             {
                 $rol = Personal::model()->getRolPersonal($data->id_personal);
@@ -733,10 +769,15 @@ EOF;
                 if($rol == 2)
                     $roles['tecnico'][$data->id_personal] = array('selected' => 'selected');
             }
-            $this->render('update',array(
-                        'model'     => $model,
-            'personal'  => $personalModel,
-            'roles'     => $roles
+            foreach($solVia as $data)
+            {
+                $roles['solicitudes'][$data->id_solicitud] = array('selected' => 'selected');
+            }
+            $this->render('update',array
+            (
+                'model'     => $model,
+                'personal'  => $personalModel,
+                'roles'     => $roles
             ));
     }
     public function actionDelete($id)

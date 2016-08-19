@@ -11,7 +11,6 @@ $(document).ready(function()
             tot++;
         });
     }
-
     $('.agregar').click(function()
     {
         var especieID = $('#Especie_id').val();
@@ -153,23 +152,46 @@ $(document).ready(function()
             });
         });
     });
-
-    $('div.guardar').click(function()
-    {
-        var baseUrl = window.location.href;
-        $('form#solicitudes-form').attr('action',baseUrl);
-        $('#Solicitudes_id_clientes').removeAttr('disabled');
-        $('#Solicitudes_id_clientes').trigger('chosen:update');
-//        console.log('hola');
-        $('#solicitudes-form').submit();
-    });
-
     function borrarPedido()
     {
+        
         $('.borrarPedido').click(function()
         {
-            $(this).closest('.pedidoViaje').remove();
-            countPedidos();
+        var href = window.location.href;
+        var elemento=$(this);
+        var miHtml= '\
+            <div class="sub-content">\n\
+                <div class="title-content">Eliminar pedido</div>\n\
+                <div class="msgError">¿Seguro que quieres eliminar el pedido?</div>\n\
+                <div class="separator-content"></div>\n\
+                <div class="botones-content">\n\
+                    <div id="cancelar" class="cBoton" href="">Cancelar</div> \n\
+                    <div class="btndel gBoton">Aceptar</div>\n\
+                </div>\n\
+            </div>';
+            $.colorbox(
+        {
+            html: miHtml,
+            width:'400px', 
+            height:'150px',
+            onComplete: function()
+            {
+              $('.btndel').click(function(e)
+                {
+                elemento.closest('.pedidoViaje').remove(); //Eliminar
+                countPedidos();
+                $.colorbox.close();
+                e.preventDefault();
+                });  
+              $('#cancelar').click(function(e)
+                {
+                $.colorbox.close();
+                e.preventDefault();
+                }); 
+            }
+        });
+
+            
         });
     }
     function editarPedido()

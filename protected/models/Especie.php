@@ -135,7 +135,7 @@ class Especie extends CActiveRecord
         public function getEspecie($id)
         {
             $especie = Especie::model()->findByPk($id);
-            return $especie->nombre;
+            return $especie['nombre'];
         }
 
 
