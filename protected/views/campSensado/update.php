@@ -8,12 +8,12 @@ $this->breadcrumbs=array(
 	'Actualizar',
 );
 
-$this->menu=array(
-	array('label'=>'List CampSensado', 'url'=>array('index')),
-	array('label'=>'Create CampSensado', 'url'=>array('create')),
-	array('label'=>'View CampSensado', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage CampSensado', 'url'=>array('admin')),
-);
+// $this->menu=array(
+// 	array('label'=>'List CampSensado', 'url'=>array('index')),
+// 	array('label'=>'Create CampSensado', 'url'=>array('create')),
+// 	array('label'=>'View CampSensado', 'url'=>array('view', 'id'=>$model->id)),
+// 	array('label'=>'Manage CampSensado', 'url'=>array('admin')),
+// );
 ?>
 
 <h1>Update CampSensado <?php echo $model->id; ?></h1>
