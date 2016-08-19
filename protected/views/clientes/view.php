@@ -55,6 +55,7 @@
         <h3><label class="cLetreros">Direcciones</label></h3><h2 class="letrero-container"></h2>
     </div>
     <div class="form-cLeft1">
+
         <div class="table-view">
             <?php $i = 1;?>
             <?php if(count($direccion['domicilio'])>0):?>

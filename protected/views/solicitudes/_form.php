@@ -153,11 +153,12 @@ eof;
 
         <div class="domicilioForm hide"> 
             <div class="Odom">
+            <div id="map" data-map="1"></div>
             <div class="row dom">
                 <?php echo $form->labelEx($direccion,'domicilio'); ?>
                 <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom inputDom')); ?>
             </div>
-            <div id="map" data-map="1"></div>
+            
             <div class="row ubi">
                 <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
             </div>
