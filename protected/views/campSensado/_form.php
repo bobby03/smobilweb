@@ -7,7 +7,7 @@
 
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/monitoreo/crear.js');
-	$cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
+    $cs->registerCssFile($baseUrl.'/css/campsensado/create.css');
 
     // Javascript
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
@@ -50,26 +50,31 @@ $form=$this->beginWidget('CActiveForm', array(
         <div class="bolaChica selected"></div>
         <div class="lineaChica selected"></div>
         <div class="bolaGrande selected">1</div>
-        <div class="lineaGandre <?php if(!$model->isNewRecord) echo 'selected';?>"></div>
-        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2</div>
+        <div class="lineaGandre "></div>
+        <div class="bolaGrande ">2</div>
         <div class="lineaGandre"></div>
         <div class="bolaGrande">3</div>
         <div class="lineaChica"></div>
         <div class="bolaChica"></div>
     </div>
+    <?php print_r($model->attributes)?>
     <div class="tab " data-tab="1">
 	     <div class="formContainer1">
 		
-				<?php echo $form->hiddenField($model,'status', array('value' => '1')); ?>	
+				<?php echo $form->hiddenField($model,'status', array('value' => '1')); ?>
+                                <?php 
+                                    if(!$model->isNewRecord)
+                                    echo $form->hiddenField($model,'id', array('value' => $model->id)); 
+                                ?>
 
 			<div class="row">
 				<?php 
-					$grn = new Granjas;
+                                        $granja = new Granjas;
 					echo $form->labelEx($model,'Granjas_nombre'); 
 				?>
 		        <span class="css-select-moz">
-		            <?php echo $form->dropDownList($grn,'id', $grn->getNombreGranjasConPlantas(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$grn->id));?>
-		            <?php echo $form->error($model,'Granjas_nombre'); ?>
+		            <?php echo $form->dropDownList($granja,'id', ($model->isNewRecord) ? $granja->getNombreGranjasConPlantas() : $granja->getGranjaFromPlanta($model->id_estacion) ,($model->isNewRecord) ? array('empty'=>'Seleccionar','class'=>'css-select') : array('disabled'=>'disabled', 'value'=>$granja->getGranjaId($model->id_estacion)));?>
+		            <?php echo $form->error($granja,'id'); ?>
 		        </span>
 			</div>
 			<div class="row">
@@ -79,14 +84,14 @@ $form=$this->beginWidget('CActiveForm', array(
 	           
 					<?php echo $form->labelEx($model,'id_estacion'); ?>
 				<span class="css-select-moz">
-		            <?php echo $form->dropDownList($model,'id_estacion', array(), array('empty'=>'Seleccionar', 'disabled'=>'disabled'));?>
+		            <?php echo $form->dropDownList($model,'id_estacion', ($model->isNewRecord) ? array() : $granjas->getPlantasofGranjaFromPlanta($model->id_estacion) , ($model->isNewRecord) ? array('empty'=>'Seleccionar', 'disabled'=>'disabled') : array('empty'=>'Seleccionar', 'disabled'=>'disabled'));?>
 		            <?php echo $form->error($model,'id_estacion'); ?>
 		        </span>
 			</div>
 			<div class="row">
-				<?php echo $form->labelEx($model,'id_responsable'); ?>
+				<?php $prs = new Personal;  echo $form->labelEx($model,'id_responsable'); ?>
 		        <span class="css-select-moz">
-		            <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
+		            <?php echo $form->dropDownList($model,'id_responsable', $prs->getBiologos(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
 		            <?php echo $form->error($model,'id_responsable'); ?>
 		        </span>
 			</div>

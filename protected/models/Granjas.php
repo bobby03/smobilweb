@@ -77,20 +77,52 @@ class Granjas extends SMActiveRecord
                 $return[$data->id] = $data->nombre;
             return $return; 
         }
-        public function getNombreGranjasConPlantas()
+        public function getNombreGranjasConPlantas($id="")
         {
-            $personal = Granjas::model()->findAll('activo = 1');
+            
             $return = array();
-            foreach($personal as $data) {      
-            	$crit = new CDbCriteria;
-	            $crit->condition = "id_granja = '{$data->id}' AND disponible = 1";
-	            $plantasDisponibles = Estacion::model()->findAll($crit);
-	            $numero = count($plantasDisponibles);
-                $return[$data->id] = $data->nombre." -  ".$numero." plantas disponibles";
+            if($id == "") {
+                $personal = Granjas::model()->findAll('activo = 1');
+                foreach($personal as $data) {      
+                    $crit = new CDbCriteria;
+                        $crit->condition = "id_granja = '{$data->id}' AND disponible = 1";
+                        $plantasDisponibles = Estacion::model()->findAll($crit);
+                        $numero = count($plantasDisponibles);
+                    $return[$data->id] = $data->nombre." -  ".$numero." plantas disponibles";
+                }
+            }
+            else {
+                  $personal = Granjas::model()->findByPk($id);  
+                    $crit = new CDbCriteria;
+                    $crit->condition = "id_granja = '{$personal->id}' AND disponible = 1";
+                    $plantasDisponibles = Estacion::model()->findAll($crit);
+                    $numero = count($plantasDisponibles);
+                    $return[$personal->id] = $personal->nombre." -  ".$numero." plantas disponibles";
             }
             return $return; 
         }
         
+        public function getGranjaFromPlanta($id_estacion) {
+            $granja = Estacion::model()->findByPk($id_estacion);
+            $estacion = $this->findByPk($granja->id_granja);
+            $return = array();
+            $return[$estacion->id] = $estacion->nombre;
+            return $return;
+        }
+        public function getPlantasofGranjaFromPlanta($id_estacion) {
+            $granja = Estacion::model()->findByPk($id_estacion);
+            $plantas = Estacion::model()->findAll("id_granja = '{$granja->id_granja}'");
+            $return = array();
+            foreach($plantas as $data) {
+                $return[$data->id] = $data->identificador;
+            }
+            return $return;
+        }public function getGranjaId($id_estacion) {
+            $granja = Estacion::model()->findByPk($id_estacion);
+           
+
+            return $granja->id_granja;
+        }                
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

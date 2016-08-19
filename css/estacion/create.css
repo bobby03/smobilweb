@@ -223,7 +223,7 @@ div.form-cLeftContainer:after {
     clear: both;
 }
 
-<<<<<<< HEAD body.estacion div.form input[type="submit"] {
+body.estacion div.form input[type="submit"] {
     position: relative;
     width: 107px;
     display: inline-block;
@@ -232,6 +232,3 @@ div.form-cLeftContainer:after {
     margin-right: 0 !important;
 }
 
-
-}
-=======>>>>>>> b23abac885509dc82eb41bd14696757580e4f774

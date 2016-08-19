@@ -14,5 +14,7 @@ $this->breadcrumbs=array(
 <?php $this->renderPartial('_form', array(
 		'model'=>$model, 
 		'granjas' => $granjas,
-		'personal' => $personal
-		)); ?>
+		'personal' => $personal,
+                'update' => $update
+		)); 
+?>
