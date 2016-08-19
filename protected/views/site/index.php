@@ -18,7 +18,10 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
 				<h1 class="barraViajeGranja">
 				    <div class="tabs">
 			        	<div id="viaje" class="selected">Viajes</div>
-			       		<div id="granja" >Siembras</div>
+			       		<?php 
+			       		  if(Yii::app()->user->getTipoUsuario()!=1):?>   
+			       			<div id="granja" >Siembras</div>
+			       		<?php endif;?>
                     </div>
                 </h1>
                 <?php if($enruta != null) { ?>
@@ -93,12 +96,16 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
   				<?php } 
   					else 
   					{ 
-  						echo "<div class='container-viaje center'>
-								<label class='center'>Agrega algunos viajes o siembras para acceder a tu dashboadr</label>
-							</div>"; 
+  						echo " <div id='no-viajes'>
+  									<div class='container-viaje center'>
+									</div>
+							   </div>"
+									; 
 					} ?>
   			  
   			  <?php if($estaciones != null) { ?>
+  			  <?php   if(Yii::app()->user->getTipoUsuario()!=1):?>
+
   			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
   			    	<div class="dash1">
 	  			    	<div class="estacion">
@@ -149,8 +156,7 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
 		  			    					<div class="tempico"></div><label class="clab"><?php echo intval($dato['temp']); ?>°C</label>
 	  			    				</div>
 	  			    			<?php
-	  			    			endforeach;
-	  			    			?>
+	  			    			endforeach;?>
 	  			    			</div>
 	  			    		</div> <!-- Fin de div contenido-->
 	  			    	<?php 
@@ -210,9 +216,10 @@ if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
   			    		
   			    	</div>
   			    </div>
+  			<?php endif;?>
   			    <?php }
-					else { echo "<div class='container-granja center none'>
-					<label class='center'>Agrega algunos viajes o siembras para acceder a tu dashboard</label></div>"; 
+					else { echo "<div class='container-granja none'>
+					"; 
 				} ?>
   			    
 			</div>
