@@ -150,8 +150,8 @@ class SiteController extends Controller
       if($model->validate() && $model->login())
                         {
                            $usuario = Usuarios::model()->findBySql("SELECT id_usr, tipo_usr FROM usuarios WHERE usuario = '".Yii::app()->user->id."'");
-                           print_r($usuario);
-                           $usuario = null;
+                           // print_r($usuario);
+                           // $usuario = null;
                             /*
                              
                              Evita el error 500 al momento de hacer el login valiando 

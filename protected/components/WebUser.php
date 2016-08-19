@@ -12,8 +12,8 @@ class WebUser extends CWebUser
         		return 2;
         	} else {
         	$usuario = Usuarios::model()->find('usuario=?', array(Yii::app()->user->name));
-            return $usuario->tipo_usr;
-            //return isset($usuario->tipo_usr)?$usuario->tipo_usr:0;	
+            // return $usuario->tipo_usr;
+            return isset($usuario->tipo_usr)?$usuario->tipo_usr:0;	
         	}
         
         }

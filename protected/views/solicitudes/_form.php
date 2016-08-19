@@ -180,8 +180,8 @@ eof;
                                 <input form="solicitudes-form" type="hidden" name="pedido[<?php echo $i;?>][cantidad]" value="<?php echo $data->cantidad;?>" readonly>
                                 <input form="solicitudes-form" type="hidden" name="pedido[<?php echo $i;?>][destino]" readonly value="<?php echo $data->id_direccion;?>">
                                 <input form="solicitudes-form" type="hidden" name="pedido[<?php echo $i;?>][tanques]" readonly value="<?php echo $data->tanques;?>">
-                                <div class="pedidoInfo"><?php echo Especie::model()->findByPk($data->id_especie)->nombre; ?></div>
-                                <div class="pedidoInfo"><?php echo Cepa::model()->findByPk($data->id_cepa)->nombre_cepa;?></div>
+                                <div class="pedidoInfo"><?php echo isset(Especie::model()->findByPk($data->id_especie)->nombre)?Especie::model()->findByPk($data->id_especie)->nombre:'<b>No hay data</b>'; ?></div>
+                                <div class="pedidoInfo"><?php echo isset(Cepa::model()->findByPk($data->id_cepa)->nombre_cepa)?Cepa::model()->findByPk($data->id_cepa)->nombre_cepa:'<b>No hay data</b>';?></div>
                                 <div class="pedidoInfo"><?php echo $data->cantidad;?></div>
                                 <?php 
                                     if($data->tanques > 1)
