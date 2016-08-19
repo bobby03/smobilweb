@@ -180,7 +180,7 @@ eof;
         public function getCepa($id)
         {
             $cepa = Cepa::model()->findByPk($id);
-            return $cepa->nombre_cepa;
+            return $cepa['nombre_cepa'];
         }
         public function getCepa1($id)
         {

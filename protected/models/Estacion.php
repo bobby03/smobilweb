@@ -358,7 +358,7 @@ class Estacion extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {tanque}</div>',
+                    'template'=>'<div class="buttonsWraper"> {update} {delete} {tanque}</div>',
                     'buttons' => array
                     (
                         'tanque' => array
