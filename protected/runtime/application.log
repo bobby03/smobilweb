@@ -1,0 +1,85 @@
+2016/08/19 08:20:49 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1045] Access denied for user 'smobile_user'@'localhost' (using password: YES) in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
+#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
+#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(219): CWebUser->checkAccess('createViajes')
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/update')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#18 {main}
+REQUEST_URI=/SmobilWeb/viajes/update/3
+---
+2016/08/19 08:23:03 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
+#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
+#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(219): CWebUser->checkAccess('createViajes')
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/update')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#18 {main}
+REQUEST_URI=/SmobilWeb/viajes/update/3
+---
+2016/08/19 08:23:20 [error] [exception.CHttpException.404] CHttpException: The requested page does not exist. in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php:870
+Stack trace:
+#0 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(694): ViajesController->loadModel(3)
+#1 [internal function]: ViajesController->actionUpdate('3')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/update')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#16 {main}
+REQUEST_URI=/SmobilWeb/viajes/update/3
+---
+2016/08/19 10:12:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/19 10:12:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/19 10:12:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/19 10:12:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/19 10:12:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/19 10:12:00 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\TanqueController.php (87)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)

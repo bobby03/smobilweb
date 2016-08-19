@@ -138,17 +138,17 @@ class Roles extends SMActiveRecord
         {
             switch($id)
             {
-                case 1: return 'Cepa'; break;
-                case 2: return 'Clientes'; break;
-                case 3: return 'Especie'; break;
-                case 4: return 'Estacion'; break;
-                case 5: return 'Personal'; break;
-                case 6: return 'Roles'; break;
-                case 7: return 'Solicitudes'; break;
-                case 8: return 'Usuarios'; break;
-                case 9: return 'Viajes'; break;
-                case 10: return 'Granja'; break;
-                case 11: return 'Siembra'; break;
+                case 1: return 'Solicitudes'; break;
+                case 2: return 'Viajes'; break;
+                case 3: return 'Estacion'; break;
+                case 4: return 'Siembra'; break;
+                case 5: return 'Granja'; break;
+                case 6: return 'Clientes'; break;
+                case 7: return 'Usuarios'; break;
+                case 8: return 'Personal'; break;
+                case 9: return 'Roles'; break;
+                case 10: return 'Especie'; break;
+                case 11: return 'Cepa'; break;
             }
         }
         

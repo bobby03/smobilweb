@@ -298,7 +298,6 @@ EOF;
             AND c.id='.Yii::app()->user->getIDc())
             ->queryAll();
         }
-        $i = 0;
         foreach($solicitudTanque as $data)
         {
             $cepa = Cepa::model()->findByPk($data->id_cepas);
@@ -312,13 +311,7 @@ EOF;
                 'id_solicitud'=>$data->id_solicitud,
                 'id_tanque'=>$data->id_tanque
             );
-            $pedidos['pedido'][$i] = $pedido;
-            $i++;
-        }
-        foreach($guardar as $data)
-        {
-            $pedidos['pedido'][$i] = $data;
-            $i++;
+            $pedidos['pedido'][] = $pedido;
         }
         foreach($prueba as $data2)
         {
@@ -337,26 +330,7 @@ EOF;
                     'id_solicitud'=>$data->id_solicitud,
                     'id_tanque'=>$data->id_tanque
                 );
-                //$pedidos['pedido'][$i] = $pedido;
-                $o=0;
-                foreach ($pedidos as $revisar){
-                    if($pedidos['pedido'][$o]==$data){
-                        $pedidos['pedido'][$i] = $data;
-                    }
-                    $o++;
-                }
-                $i++;
-            }
-            foreach($guardar as $data)
-            {
-                $o=0;
-                foreach ($pedidos as $revisar){
-                    if($pedidos['pedido'][$o]==$data){
-                        $pedidos['pedido'][$i] = $data;
-                    }
-                    $o++;
-                }
-                $i++;
+                $pedidos['pedido'][] = $pedido;
             }
         }
 //            if($model->status != 1)
@@ -629,9 +603,9 @@ EOF;
                 }
                 foreach($_POST['Solicitudes']['codigo'] as $data)
                 {
-                    $nuevo = new SolicitudTanques();
                     if(isset($data['tanque']) && $data['tanque'] != '')
                     {
+                        $nuevo = new SolicitudTanques();
                         $id = explode(':',$data['tanque']);
                         $pedido = Pedidos:: model()->findByPk($id[0]);
                         $nuevo->id_solicitud = $pedido->id_solicitud;
@@ -677,7 +651,8 @@ EOF;
                 $estacion = Estacion::model()->findByPk($model->id_estacion);
                 $estacion->disponible = 2;
                 if($estacion->save())
-                    $this->redirect(array('index'));
+//                    $this->redirect(array('index'));
+                    $A;
             }
         }
 //            print_r($_POST);
@@ -742,9 +717,9 @@ EOF;
                     }
                     foreach($_POST['Solicitudes']['codigo'] as $data)
                     {
-                        $nuevo = new SolicitudTanques();
                         if(isset($data['tanque']) && $data['tanque'] != '')
                         {
+                            $nuevo = new SolicitudTanques();
                             $id = explode(':',$data['tanque']);
                             $pedido = Pedidos:: model()->findByPk($id[0]);
                             $nuevo->id_solicitud = $pedido->id_solicitud;

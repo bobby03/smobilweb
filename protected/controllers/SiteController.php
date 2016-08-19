@@ -29,12 +29,6 @@ class SiteController extends Controller
     // renders the view file 'protected/views/site/index.php'
     // using the default layout 'protected/views/layouts/main.php'
     $criteria = new CDbCriteria();
-    /*$criteria->select = "t.*, est.identificador, p.nombre, p.apellido";
-    $criteria->from = 'viajes as t';
-    $criteria->join = "JOIN estacion est ON est.id = t.id_estacion";
-    $criteria->join .= " JOIN personal as p ON p.id = t.id_responsable";
-    $criteria->join .= " JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id";
-    $criteria->condition = "t.status = '2'"; //statis = 2 --> viajes en ruta*/
     
     $model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
       FROM viajes as t

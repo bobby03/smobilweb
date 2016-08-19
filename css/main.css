@@ -881,3 +881,7 @@ color:#0077b0;
 font-size:16px;
 text-align:center;
 }
+
+div#content.vacio {
+    background-image: none;
+}

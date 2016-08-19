@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+  var hijos  =  $('.principal.index').children('#no-viajes').length;
+  console.log(hijos);
+  if(hijos > 0) {
+    $('#content').addClass('vacio');
+  }
+  
+
 	$('#viaje').on( 'click', function(){
 		if(!$(this).hasClass('selected')){
 			$('.container-viaje').toggleClass('none');
