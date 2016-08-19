@@ -33,5 +33,13 @@
 	<?php echo CHtml::encode($data->tel); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ext')); ?>:</b>
+	<?php echo CHtml::encode($data->ext); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('cel')); ?>:</b>
+	<?php echo CHtml::encode($data->cel); ?>
+	<br />
+
 
 </div>

@@ -138,7 +138,7 @@ class Personal extends CActiveRecord
             return array('1'=>'Nombre',
                          '2'=>'Apellido',
                         /* '3'=>'Teléfono',*/
-                         '4'=>'RFC'
+                         '3'=>'RFC'
                         /* '5'=>'Domicilio',
                          '6'=>'Rol',
                          '7'=>'Correo',
@@ -178,6 +178,14 @@ class Personal extends CActiveRecord
         		->andWhere("per.id_rol = 1")
         		->queryRow();
     		return $chofer['nombre'].' '.$chofer['apellido'];
+        }
+        public function getBiologos(){
+            $personal  = Personal::model()->findAll('id_rol = 2 AND activo = 1');
+            $return = array();
+            foreach($personal as $data) {
+                $return[$data->id] = $data->nombre.' '.$data->apellido;
+            }
+            return $return;
         }
         public function getRolPersonal($id)
         {

@@ -192,7 +192,7 @@ function validField(nombre,mCallback){
                         },
                 success: function(result) {
                     if(result == true){
-                                 $('#ierror').html('Campo ya existe');
+                                 $('#ierror').html('Especie ya existe');
                                  e = true;
                             }else{
                                 $('#ierror').html('');

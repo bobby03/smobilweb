@@ -25,7 +25,7 @@
     // There is a call to performAjaxValidation() commented in generated controller code.
     // See class documentation of CActiveForm for details on this.
     // 'enableAjaxValidation'=>true,
-    'enableAjaxValidation'=>TRUE,
+    'enableAjaxValidation'=>true,
         'clientOptions' => array(
             'validateOnSubmit' => true,
             'validateOnChange' => true,
@@ -90,7 +90,7 @@
                     <div class="row">
                         <label class="letreros">Extensi&oacute;n</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'ext',array('size'=>4,'minlength'=>3)); ?>
+                            <?php echo $form->textField($model,'ext',array('size'=>3,'minlength'=>3)); ?>
                             <?php echo $form->error($model,'ext'); ?>
                            </div>
                     </div>
@@ -98,7 +98,7 @@
                     <div class="row">
                         <label class="letreros">Teléfono celular</label>
                             <div class="form-cLarge">
-                            <?php echo $form->textField($model,'cel',array('size'=>15,'minlength'=>13)); ?>
+                            <?php echo $form->textField($model,'cel',array('size'=>14,'minlength'=>14)); ?>
                             <?php echo $form->error($model,'ext'); ?>
                            </div>
                     </div>

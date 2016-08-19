@@ -160,8 +160,6 @@ class ClientesController extends Controller
      */
     public function actionUpdate($id)
     {
-        print_r($_POST);
-        
             $model=$this->loadModel($id);
             $query = ClientesDomicilio::model()->findAllBySql("SELECT * FROM clientes_domicilio WHERE id_cliente = {$id} ");
             $array = array();
@@ -176,10 +174,9 @@ class ClientesController extends Controller
                 $i++;
             }
             $direccion->domicilio = $array;
-//            print_r($model);
             
             // Uncomment the following line if AJAX validation is needed
-            // $this->performAjaxValidation($model);
+            $this->performAjaxValidation($model);
             if(isset($_POST['Clientes']))
             {
                 print_r($_POST['Clientes']);
