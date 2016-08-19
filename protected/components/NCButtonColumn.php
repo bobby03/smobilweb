@@ -79,7 +79,7 @@ class NCButtonColumn extends CButtonColumn
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
-                var mensaje = '¿Está seguro que desea eliminar este registro?';
+                var mensaje = '¿Está seguro que desea desactivar este registro?';
                 if(urlSplit[1]=='solicitudes'){
                     var a = '';
                     $.ajax(
@@ -105,7 +105,7 @@ class NCButtonColumn extends CButtonColumn
                     var mensaje = document.getElementById("idviaje").value;
                 }
                 miHtml= miHtml +='<div class="sub-content">';
-                miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
+                miHtml= miHtml +='  <div class="title-content">Desactivar</div>';
                 miHtml= miHtml +='      <div class="separator-content"></div>';
                 miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
                 

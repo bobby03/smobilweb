@@ -39,14 +39,18 @@
             'attributes'=>array
             (
                 'nombre_empresa',
-                'nombre_contacto',
-                'apellido_contacto',
-                'correo',
                 'rfc',
+                'nombre_contacto',
+                'correo',
+                'apellido_contacto',
                 'tel',
-                array('name'=>'id', 'value'=>$model->getUserName($model->id))
+                array('name'=>'id', 'value'=>$model->getUserName($model->id) ),
+                'ext', 
+                'cel',                 
             ),
-    )); ?>
+    )); 
+    ?>
+    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Regresar</a>
     <div class="row">
         <h3><label class="cLetreros">Direcciones</label></h3><h2 class="letrero-container"></h2>
     </div>
