@@ -183,7 +183,7 @@ eof;
                 <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
             </span>
 	</div>
-        <div class="row pedido hide">
+        <div class="row pedido hide"><!--hide-->
             <h2>Pedido</h2>
             <div class="row">
                 <label>Especie</label>
@@ -196,15 +196,18 @@ eof;
                <span class="css-select-moz"><?php echo $form->dropDownList($cepa,'id', array('1'=>'1'),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
                 <?php echo $form->error($cepa,'id'); ?>
             </div>
-            <div class="row cantidad hide">
+            <div class="row cantidad hide"> <!--hide-->
                 <div class="requerida">
                     <label>Cantidad requerida</label>
-                    <?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1,'class'=>'ValidaNum')); ?>
+                    <div id="inputC"><?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1,'class'=>'ValidaNum')); ?></div>
+                    <p class="ierror" id="errorCan"></p>
                 </div>
                 <div class="noTanques">
                     <label>Tanques requeridos</label>
-                    <input id="tanquesNO" type="number" name="noTanques" min="1" max="8" class="ValidaNum">
+                    <div id="inputC"><input id="tanquesNO" type="number" name="noTanques" min="1" max="8" class="ValidaNum"></div>
+                    <p class="ierror" id="errorTan"></p>
                 </div>
+
             </div>
             <div class="row direcciones hide">
                 <label>Dirección</label>

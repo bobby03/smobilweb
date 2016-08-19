@@ -1,9 +1,9 @@
 $(document).ready(function()
 {
 
-    $('div.agregar.especie').click(function(evt)
+    $('div.agregar.especie').click(function(e)
     {
-        evt.preventDefault();
+        
         var href = window.location.href;
         var miHtml= '\
             <div class="sub-content">\n\
@@ -26,11 +26,15 @@ $(document).ready(function()
             onComplete: function()
             {
 
-                $('.btnadd').click(function()
+                $('.btnadd').click(function(e)
                 {
+               
+                var nombre=$('#ingesp').val();
+                r=validField(nombre, mCallback);
 
 
-                    if(validField()){
+                    if(r == 1){  }else{
+                       
                     var especie = $('#ingesp').val();
                     $.ajax(
                     {
@@ -52,9 +56,11 @@ $(document).ready(function()
                         }
                     });
                 }
+                e.preventDefault();
                 });
             }
         });
+        e.preventDefault();
     });
 
     $('a.update img').click(function(evt)
@@ -92,8 +98,11 @@ $(document).ready(function()
 
                 $('.btnUpdate').click(function()
                 {
-       
-        if(validField()){
+                var nombre=$('#ingesp').val();
+                r=validField(nombre, mCallback);
+
+
+                    if(r == 1){  }else{
                     var val = $('#ingesp').val();
                     $('#ingesp').val(val);
                     var especie = $('#ingesp').val();
@@ -148,46 +157,51 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function validField(){
-    var e=0;
-    rep(function(result){
-        if($('#ingesp').val()==''){
-        e=0;
-        document.getElementById('ierror').innerHTML='Campo requerido';
-    }else if(result==true){
-            e=0;
-             document.getElementById('ierror').innerHTML='Campo ya existe';
-        }else {
-        e=1;
-        document.getElementById('ierror').innerHTML='';
-    }
-    console.log('e: '+e+'  '+result);
-    });
-return e;
+
+
+function mCallback(res){
+   // console.log('funcion mCallback:' +res);
+     return res;
 }
 
-function rep(callback){
-    var href = window.location.href;
-    var nombre=$('#ingesp').val();
-    var result;
-    $.ajax(
-                    {
-                        type: 'POST',
-                        url: href+'/Rep',
-                        dataType: 'JSON', 
-                        data:
+function validField(nombre,mCallback){
+    
+     var resp =false;
+    if($('#ingesp').val()==''){
+        $('#ierror').html('Campo requerido');
+        e.preventDefault();
+        return false;
+       
+    }else{
+
+
+   
+    resp = $.ajax(
+            {
+                type: 'POST',
+                url: window.location.href+'/Rep',
+                dataType: 'JSON', 
+                data:
                         {
                             nombre:nombre
                         },
-                        success: function(response){
-                            callback(response);
-                        },
-                        error: function(a, b, c)
-                        {
-                            result='false';
-                        }
-                    });
-}
-function callback(result){
-    console.log('si se hizo'+result);
+                success: function(result) {
+                    if(result == true){
+                                 $('#ierror').html('Campo ya existe');
+                                 e = true;
+                            }else{
+                                $('#ierror').html('');
+                                e = false;
+                            }
+                         ajax_result =  mCallback(result); 
+                      //  console.log(ajax_result);
+                 },
+                 error: function(result) {},
+                 async: false }).responseText;
+
+  
+    }
+
+  return resp;
+
 }

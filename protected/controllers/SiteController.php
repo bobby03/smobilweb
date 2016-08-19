@@ -93,7 +93,7 @@ class SiteController extends Controller
       if(Yii::app()->request->isAjaxRequest){
         echo $error['message'];
       }else{
-                switch($error['code'])
+                      switch($error['code'])
                 {
                         case 403:
                                 $this->render('error403', array('error' => $error));

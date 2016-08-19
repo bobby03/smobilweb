@@ -101,12 +101,24 @@ div.row.cantidad div
 }
 div.row.cantidad div.noTanques input
 {
-    float: right;
-    width: 50%;
+    float: left;
+    width: 70%;
+}
+div.row.cantidad div.noTanques input
+{
+    width: 70%;
+    float:left;
 }
 div.row.cantidad div:nth-child(2)
 {
     float: right;
+}
+#inputC{
+    width: 100%;
+}
+.ierror{
+    color:#C00;
+
 }
 div.row.direcciones span.css-select-moz
 {
@@ -501,4 +513,39 @@ input.OtroDom{
     display: block;
     clear: both;
     content: '';
+}
+.msgError{
+    font-family: 'Roboto-Regular';
+    font-size: 13pt;
+    color: #0077b0;
+    font-weight: lighter;
+    width: 80%;
+    margin-left: 33px;
+    margin-top: 10px;
+}
+.btndel{
+    font-size: 16px !important;
+}
+.cBoton{
+    line-height: 34px;
+    font-size: 16px;
+    float: left;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background-color: #0077b0;
+    color: white;
+    width: 135px;
+    height: 34px;
+    border: 0px solid white;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 30px;
+}
+.cBoton:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+.cBoton:hover {
+    background-color: #49dbd0;
 }
