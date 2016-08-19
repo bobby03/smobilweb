@@ -36,6 +36,85 @@
         ),
 ));
 ?>
+<?php if($model->status == 1):?>
+    <style>
+        .save
+        {
+            border-radius: 5px;
+            color: #FFFFFF;
+            cursor: pointer;
+            float: right;
+            height: 35px;
+            line-height: 35px;
+            margin-right: 35px;
+            text-align: center;
+            width: 135px;
+            font-size: 18px;
+            background-color: #09b7c9
+        }
+        div.mensaje-content
+        {
+            font-size: 18px !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function()
+        {
+            $('.guardar').click(function(evt)
+            {
+                evt.preventDefault();
+                var html = '\n\
+                    <div class="sub-content">\n\
+                        <div class="title-content">Confirmación</div>\n\
+                        <div class="separador-content"></div>\n\
+                        <div class="mensaje-content">\n\
+                            Si modifica esta solicitud se eliminará\n\
+                            del viaje al que está asignada y se pasará a\n\
+                            solicitudes sin asignar.\n\
+                        </div>\n\
+                        <div class="botones-content">\n\
+                            <div class="gBoton cancel" style="margin-left: 35px">Cancelar</div>\n\
+                            <div class="save">Continuar</div>\n\
+                        </div>\n\
+                    </div>';
+                $.colorbox(
+                {
+                    html: html,
+                    width: 400,
+                    height: 200,
+                    onComplete: function()
+                    {
+                        $('.save').click(function()
+                        {
+                            var baseUrl = window.location.href;
+                            $('form#solicitudes-form').attr('action',baseUrl);
+                            $('#solicitudes-form').submit();
+                        });
+                        $('.cancel').click(function()
+                        {
+                            $.colorbox.close();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<?php else:?>
+    <script>
+        $(document).ready(function()
+    {
+        $('div.guardar').click(function()
+        {
+            var baseUrl = window.location.href;
+            $('form#solicitudes-form').attr('action',baseUrl);
+            $('#Solicitudes_id_clientes').removeAttr('disabled');
+            $('#Solicitudes_id_clientes').trigger('chosen:update');
+    //        console.log('hola');
+            $('#solicitudes-form').submit();
+        });
+    })
+    </script>
+<?php endif;?>
 <?php 
     $flag = false;
     if($pedidos != '')
@@ -104,7 +183,7 @@ eof;
                 <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
             </span>
 	</div>
-        <div class="row pedido hide">
+        <div class="row pedido hide"><!--hide-->
             <h2>Pedido</h2>
             <div class="row">
                 <label>Especie</label>
@@ -117,15 +196,18 @@ eof;
                <span class="css-select-moz"><?php echo $form->dropDownList($cepa,'id', array('1'=>'1'),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
                 <?php echo $form->error($cepa,'id'); ?>
             </div>
-            <div class="row cantidad hide">
+            <div class="row cantidad hide"> <!--hide-->
                 <div class="requerida">
                     <label>Cantidad requerida</label>
-                    <?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1,'class'=>'ValidaNum')); ?>
+                    <div id="inputC"><?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1,'class'=>'ValidaNum')); ?></div>
+                    <p class="ierror" id="errorCan"></p>
                 </div>
                 <div class="noTanques">
                     <label>Tanques requeridos</label>
-                    <input id="tanquesNO" type="number" name="noTanques" min="1" max="8" class="ValidaNum">
+                    <div id="inputC"><input id="tanquesNO" type="number" name="noTanques" min="1" max="8" class="ValidaNum"></div>
+                    <p class="ierror" id="errorTan"></p>
                 </div>
+
             </div>
             <div class="row direcciones hide">
                 <label>Dirección</label>

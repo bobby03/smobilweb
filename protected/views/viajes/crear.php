@@ -46,12 +46,12 @@
 //        ),
     )); 
 ?>
-    <div class="menuTabs <?php $nuevo?>">
+    <div class="menuTabs">
         <div class="bolaChica selected"></div>
         <div class="lineaChica selected"></div>
         <div class="bolaGrande selected">1<div class="infoBolas">Datos del viaje</div></div>
-        <div class="lineaGandre <?php if(!$model->isNewRecord) echo 'selected';?>"></div>
-        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2<div class="infoBolas">Asignar tanques</div></div>
+        <div class="lineaGandre"></div>
+        <div class="bolaGrande">2<div class="infoBolas">Asignar tanques</div></div>
         <div class="lineaGandre"></div>
         <div class="bolaGrande">3<div class="infoBolas">Finalizar</div></div>
         <div class="lineaChica"></div>
@@ -59,15 +59,7 @@
     </div>
     <div class="tab" data-tab="1">
         <div class="formContainer1">
-            <?php if($model->isNewRecord):?>
-            <input type="hidden" name="NuevoRecord" value="0" form="viajes-form">
-            <?php else:?>
-            <input type="hidden" name="NuevoRecord" value="1" form="viajes-form">
-            <?php endif;?>
             <div class="row">
-                <?php if(!$model->isNewRecord):?> 
-                    <input type="hidden" name="viajeId" value="<?php echo $model->id;?>" form="viajes-form">
-                <?php endif;?>
                 <?php echo $form->labelEx($model,'id_responsable'); ?>
                 <span class="css-select-moz">
                     <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>

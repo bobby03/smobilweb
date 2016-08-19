@@ -121,13 +121,12 @@ $(document).ready(function()
         var cantidad = $('#Cepa_nombre_cepa_1_cantidad').val();
         if(cantidad != '' && cantidad != null)
         {
-            if(cantidad < 0)
-                //$('#Cepa_nombre_cepa_1_cantidad').val(1);
             $('.row.direcciones').removeClass('hide');
         }
         else
             $('.row.direcciones').addClass('hide');
     }
+
     $('[name="yt0"]').click(function()
     {
         $('#Solicitudes_id_clientes').removeAttr('disabled');
@@ -151,9 +150,6 @@ $(document).ready(function()
         var cantidad = $('#tanquesNO').val();
         if(cantidad != '' && cantidad != null)
         {
-            if(cantidad < 0){
-                //$('#tanquesNO').val(1);
-            }
             $('.row.direcciones').removeClass('hide');
         }
         else
