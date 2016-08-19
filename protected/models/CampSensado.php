@@ -127,7 +127,8 @@ class CampSensado extends CActiveRecord
 		$criteria->compare('hora_fin',$this->hora_fin,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('activo',$this->activo);
-		$criteria->addCondition("activo=$flag");
+		$criteria->addCondition("status=$flag");
+		$criteria->addCondition("activo=1");
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
