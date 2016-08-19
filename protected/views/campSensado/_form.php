@@ -86,7 +86,7 @@ $form=$this->beginWidget('CActiveForm', array(
 			<div class="row">
 				<?php echo $form->labelEx($model,'id_responsable'); ?>
 		        <span class="css-select-moz">
-		            <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
+		            <?php echo $form->dropDownList($model,'id_responsable', $personal->getPersonal(3), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
 		            <?php echo $form->error($model,'id_responsable'); ?>
 		        </span>
 			</div>
