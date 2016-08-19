@@ -100,9 +100,9 @@ return array(
 
 
 				
-		//	array(
-		//			'class'=>'CWebLogRoute',
-		//		),
+			array(
+				'class'=>'CWebLogRoute',
+				),
 			
 			),
 		),

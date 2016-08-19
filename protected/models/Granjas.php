@@ -144,7 +144,7 @@ class Granjas extends SMActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{view} {update} {delete} {iglu}</div>',
+                    'template'=>'<div class="buttonsWraper">{update} {delete} {iglu}</div>',
                     'buttons' => array
                     (
                         'iglu' => array
