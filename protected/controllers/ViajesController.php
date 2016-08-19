@@ -651,8 +651,7 @@ EOF;
                 $estacion = Estacion::model()->findByPk($model->id_estacion);
                 $estacion->disponible = 2;
                 if($estacion->save())
-//                    $this->redirect(array('index'));
-                    $A;
+                    $this->redirect(array('index'));
             }
         }
 //            print_r($_POST);
