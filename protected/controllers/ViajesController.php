@@ -629,9 +629,9 @@ EOF;
                 }
                 foreach($_POST['Solicitudes']['codigo'] as $data)
                 {
-                    $nuevo = new SolicitudTanques();
                     if(isset($data['tanque']) && $data['tanque'] != '')
                     {
+                        $nuevo = new SolicitudTanques();
                         $id = explode(':',$data['tanque']);
                         $pedido = Pedidos:: model()->findByPk($id[0]);
                         $nuevo->id_solicitud = $pedido->id_solicitud;
@@ -677,7 +677,8 @@ EOF;
                 $estacion = Estacion::model()->findByPk($model->id_estacion);
                 $estacion->disponible = 2;
                 if($estacion->save())
-                    $this->redirect(array('index'));
+//                    $this->redirect(array('index'));
+                    $A;
             }
         }
 //            print_r($_POST);
@@ -742,9 +743,9 @@ EOF;
                     }
                     foreach($_POST['Solicitudes']['codigo'] as $data)
                     {
-                        $nuevo = new SolicitudTanques();
                         if(isset($data['tanque']) && $data['tanque'] != '')
                         {
+                            $nuevo = new SolicitudTanques();
                             $id = explode(':',$data['tanque']);
                             $pedido = Pedidos:: model()->findByPk($id[0]);
                             $nuevo->id_solicitud = $pedido->id_solicitud;
