@@ -400,6 +400,26 @@ div.search-form3 #searchDropDown3 {
     float: left;
     width: 250px !important;
 }
+div.search-form4 div.wide.form {
+    /*width: 250px;*/
+    width: 750px;
+    margin: 0;
+    float: left;
+}
+
+div.search-form4 div.row {
+    clear: none !important;
+    float: left;
+    width: 470px;
+    margin: 0;
+}
+
+div.search-form4 #searchDropDown4 {
+    width: 250px !important;
+    height: 30px;
+    margin-right: 25px;
+    float: left;
+}
 div.search-form2:after {
     clear: both;
     content: '';
@@ -410,12 +430,20 @@ div.search-form3:after {
     content: '';
     display: block;
 }
-
+div.search-form4:after {
+    clear: both;
+    content: '';
+    display: block;
+}
 div.search-form2 {
     margin-top: 50px;
     margin-bottom: 20px;
 }
 div.search-form3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+div.search-form4 {
     margin-top: 50px;
     margin-bottom: 20px;
 }

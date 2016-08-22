@@ -309,7 +309,7 @@ eof;
                 foreach ($tanques as $data)
                 {
                     $tanque = Tanque::model()->findByPk($data['id_tanque']);
-                    $tanque->status = 1;
+                    // $tanque->status = 1;
                     if($tanque->save())
                         $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
                 }

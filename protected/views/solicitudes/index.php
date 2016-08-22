@@ -18,7 +18,7 @@
     <input type='hidden' id='idviaje'>
     <div class="tabs">
         <div class="tab select" data-id="1"><span>Sin asignar</span></div>
-        <div class="tab" data-id="2"><span>Asignadas</span></div>
+        <div id="asignadas" class="tab" data-id="2"><span>Asignadas</span></div>
         <div class="tab" data-id="3"><span>En ruta</span></div>
         <div class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
@@ -107,6 +107,11 @@
     ?>
     </div>
     <div class="tabContent hide" data-tan="4">
+        <div class="search-form4" ><!-- search-form -->
+            <?php $this->renderPartial('_search4',array(
+                    'model'=>$model,
+            )); ?>
+        </div><!-- search-form --> 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'solicitudes-grid4',
