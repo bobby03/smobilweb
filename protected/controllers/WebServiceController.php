@@ -56,7 +56,7 @@ class WebServiceController extends Controller
         $date = date('Y-m-d');
         switch ($type) {
             case 1:
-            $table = 'id_escalon_viaje_ubicacion';
+                $table = 'escalon_viaje_ubicacion';
                 $columns = array('ubicacion'=>$LatLng, 'id_viaje'=>$codeViaje, 'fecha'=>$date, 'hora'=>$time);
                 $conditions = "id_viaje = :idViaje";
                 $params = array(":idViaje"=>$codeViaje);
@@ -74,8 +74,8 @@ class WebServiceController extends Controller
                             'alerta'=>$wl,
                             'ox'=>$ox,
                             'ph'=>$ph,
-                            't2'=>$t2,
-                            'ec'=>$ec,
+                            'temp'=>$t2,
+                            'cond'=>$ec,
                             'orp'=>$od)
                         );
                     if($sql){
@@ -515,9 +515,17 @@ class WebServiceController extends Controller
         $idViaje = isset($_GET['id'])?$_GET['id']:0;
         $status = isset($_GET['status'])?$_GET['status']:0;
         $table = 'viajes';
-        $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
+        $column;
+        if($status == 3){
+            $column = array('disponible'=>'1','status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
+        }
+        else{
+            $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
+
+        }
         $conditions = "id = :idViaje";
         $params = array(":idViaje"=>$idViaje);
+
 
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
         $aResult = null;
