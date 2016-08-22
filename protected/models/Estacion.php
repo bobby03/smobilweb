@@ -326,6 +326,7 @@ class Estacion extends CActiveRecord
             (
                 'identificador',
                 'no_personal',
+                array('name'=>'Número de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 'marca',
                 'color',
                 'ubicacion',
@@ -359,7 +360,7 @@ class Estacion extends CActiveRecord
                 'identificador',
                 array('name'=>'Descripcion','value'=>'$data->marca'),
                 'ubicacion',
-                array('name'=>'Total de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
+                array('name'=>'Número de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',
@@ -392,7 +393,7 @@ class Estacion extends CActiveRecord
                 'identificador',
                 array('name'=>'Descripcion','value'=>'$data->marca'),
                 'ubicacion',
-                array('name'=>'Total de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
+                array('name'=>'Número de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',
@@ -416,6 +417,7 @@ class Estacion extends CActiveRecord
             (
                 'identificador',
                 'no_personal',
+                array('name'=>'Número de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 'marca',
                 'color',
                 'ubicacion',
@@ -447,6 +449,7 @@ class Estacion extends CActiveRecord
             (
                 'identificador',
                 'no_personal',
+                array('name'=>'Número de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 'marca',
                 'color',
                 'ubicacion',
