@@ -107,6 +107,11 @@
     ?>
     </div>
     <div class="tabContent hide" data-tan="4">
+        <div class="search-form4" ><!-- search-form -->
+            <?php $this->renderPartial('_search4',array(
+                    'model'=>$model,
+            )); ?>
+        </div><!-- search-form --> 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'solicitudes-grid4',
