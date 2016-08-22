@@ -100,9 +100,9 @@ return array(
 
 
 				
-			array(
+		/*	array(
 				'class'=>'CWebLogRoute',
-				),
+				),*/
 			
 			),
 		),
