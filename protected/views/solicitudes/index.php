@@ -46,9 +46,9 @@
         ),
         'afterAjaxUpdate' => "function(id,data)
         {
-            $.fn.yiiGridView.update('viaje2');
-            $.fn.yiiGridView.update('viaje3');
-            $.fn.yiiGridView.update('viaje4');
+            $.fn.yiiGridView.update('solicitudes-grid2');
+            $.fn.yiiGridView.update('solicitudes-grid3');
+            $.fn.yiiGridView.update('solicitudes-grid4');
         }"
     //    'filter'=>$model,
     )); 

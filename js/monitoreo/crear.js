@@ -1,4 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function()
+{
+    var url = window.location.href;
+    var index = url.lastIndexOf('update');
 	var cepa;
 	var especie;
         var n = window.location.href.lastIndexOf('update');
@@ -49,6 +52,8 @@ $(document).ready(function(){
                         url = "../GetTanquesFromEstacion";
                         idSiembra = $('#CampSensado_id').val();
                     }
+                    if(isupdate == 0)
+                    {
 			$.ajax({
 				type : 'GET',
 				url  : url,
@@ -71,6 +76,7 @@ $(document).ready(function(){
 
 
 			});
+                    }
 		}
 	});
     $('.siguiente.dos').on('click', function() {
@@ -193,5 +199,5 @@ $(document).ready(function(){
 			}
 		});
 	}
-
+    changeCepas();
 });

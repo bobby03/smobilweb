@@ -256,12 +256,17 @@ div.lineaGandre {
     display: inline-block;
     color: #FFFFFF;
     background-color: #0077B0;
+    font-size: 18px;
     border-radius: 5px;
     width: 135px;
     line-height: 35px;
     text-align: center;
     cursor: pointer;
     height: 35px;
+}
+.siguiente:hover
+{
+    background-color: #21B7C7;
 }
 
 div.pedidosWraper:after,
@@ -355,14 +360,11 @@ div.chosen-container.error > ul {
     margin: 0;
     width: 100px;
     margin-bottom: 20px;
-    height: 30px;
-    line-height: 30px;
     margin-left: 0;
-    font-size: 15px;
 }
 
 .row.buttons.floating input[type="submit"] {
-    font-size: 15px;
+
     margin: 0;
 }
 #vtitulo {

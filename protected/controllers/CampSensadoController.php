@@ -103,69 +103,199 @@ class CampSensadoController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new CampSensado;
-		$granjas = Granjas::model()->findAll('activo = 1');
-		$personal = new SolicitudesViaje;
-                $update = false;
-		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
+            $model=new CampSensado;
+            $granjas = Granjas::model()->findAll('activo = 1');
+            $personal = new SolicitudesViaje;
+            $update = false;
+            // Uncomment the following line if AJAX validation is needed
+             $this->performAjaxValidation($model);
 
-		if(isset($_POST['CampSensado']))
-		{
+            if(isset($_POST['CampSensado']))
+            {
 //                    print_r($_POST);
-			$model->attributes=$_POST['CampSensado'];
-			$model->status = 1;
-			$model->activo = 1;
-                        $model->fecha_fin = date('Y-m-d', strtotime($model->fecha_fin));
-                        $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
-                        $model->hora_fin = date('h:i', strtotime($model->hora_fin));
-                        $model->hora_inicio = date('h:i', strtotime($model->hora_inicio));
-			if($model->save()){
-				$id = Yii::app()->db->getLastInsertID();
-				foreach($_POST['camp_tanques'] as $data) {
-					$camptanque = new CampTanque;
-					if(isset($data['id_tanque']) && $data['id_tanque'] !='' && 
-                                           isset($data['id_cepa']) && $data['id_cepa'] != "" && 
-                                           isset($data['cantidad']) && $data['cantidad'] !="") {
-                                            $camptanque->id_tanque = $data['id_tanque'];
-                                            $camptanque->id_camp_sensado = $id;
-                                            $camptanque->id_cepa = $data['id_cepa'];
-                                            $camptanque->cantidad = $data['cantidad'];
-                                            if($camptanque->save()) {
+                $model->attributes=$_POST['CampSensado'];
+                $model->status = 1;
+                $model->activo = 1;
+                $model->fecha_fin = date('Y-m-d', strtotime($model->fecha_fin));
+                $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
+                $model->hora_fin = date('h:i', strtotime($model->hora_fin));
+                $model->hora_inicio = date('h:i', strtotime($model->hora_inicio));
+                if($model->save())
+                {
+                    $id = Yii::app()->db->getLastInsertID();
+                    foreach($_POST['camp_tanques'] as $data) 
+                    {
+                        $camptanque = new CampTanque;
+                        if(isset($data['id_tanque']) && $data['id_tanque'] !='' && 
+                           isset($data['id_cepa']) && $data['id_cepa'] != "" && 
+                           isset($data['cantidad']) && $data['cantidad'] !="") 
+                        {
+                            $camptanque->id_tanque = $data['id_tanque'];
+                            $camptanque->id_camp_sensado = $id;
+                            $camptanque->id_cepa = $data['id_cepa'];
+                            $camptanque->cantidad = $data['cantidad'];
+                            $camptanque->save();
+                        }
+                    }
+                    $this->redirect(array('index'));
+                }
+            }
 
-                                            }
-                                        }
-				}
-				$this->redirect(array('index'));
-			}
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-			'granjas' => $granjas,
-			'personal' => $personal,
-			'update' => $update
-		));
+            $this->render('create',array(
+                    'model'=>$model,
+                    'granjas' => $granjas,
+                    'personal' => $personal,
+                    'update' => $update
+            ));
 	}
-	public function actionGetEstacionesFromGranja($id) {
-		$estaciones = Estacion::model()->findAll('id_granja = '.(int)$id.' AND activo = 1 AND disponible = 1');
-		$return = array();
+        public function actionUpdate($id)
+	{
+            $model=$this->loadModel((int)$id);
+            $AllTanque = Tanque::model()->findAll("id_estacion = $model->id_estacion");
+            $tanques = CampTanque::model()->findAll('id_camp_sensado ='.(int)$id);
+            $personal = new SolicitudesViaje;
+            $granjas = new Granjas();
+            $update = true;
+            $return = '';
+            $this->performAjaxValidation($model);
+            $i = 1;
+            $especie = Especie::model()->findAll('activo = 1');
+            foreach($AllTanque as $data)
+            {
+                $flag = null;
+                $id_especie = null;
+                $cepaId = -1;
+                $cantidad = '';
+                foreach($tanques as $data2)
+                {
+                    if($data2->id_tanque == $data->id)
+                    {
+                        $flag = Cepa::model()->findByPk($data2->id_cepa);
+                        $cepaId = $data2->id_cepa;
+                        $cantidad = $data2->cantidad;
+                    }
+                }
+                $especieTexto = "<option>Seleccionar</option>";
+                foreach($especie as $data3)
+                {
+                    if(isset($flag->id_especie))
+                    {
+                        if($flag->id_especie == $data3->id)
+                        {
+                            $especieTexto = $especieTexto.'<option value="'.$data3->id.'" selected>'.$data3->nombre.'</option>';
+                            $id_especie = $data3->id;
+                        }
+                        else
+                            $especieTexto = $especieTexto.'<option value="'.$data3->id.'">'.$data3->nombre.'</option>';
+                    }
+                    else
+                        $especieTexto = $especieTexto.'<option value="'.$data3->id.'">'.$data3->nombre.'</option>';
+                }
+                $cepaTexto = '<option>Seleccionar</option>';
+                if($id_especie != null)
+                {
+                    $cepaFlag = null;
+                    $cepa = Cepa::model()->findAll("id_especie = $id_especie AND activo = 1");
+                    foreach($cepa as $data4)
+                    {
+                        if($data4->id == $cepaId)
+                            $cepaTexto = $cepaTexto.'<option value="'.$data4->id.'" selected>'.$data4->nombre_cepa.'</option>';
+                        else
+                            $cepaTexto = $cepaTexto.'<option value="'.$data4->id.'">'.$data4->nombre_cepa.'</option>';
+                    }
+                }
+                else
+                    $cepaFlag = 'disabled';
+                $return = $return.<<<eof
+                    <div class="pedido">
+                        <input name="camp_tanques[$i][id_tanque]" id="Solicitudes_codigo_{$i}_cantidad" type="hidden" value="{$data->id}">
+                        <div class="tituloEspecie">Tanque: {$data->nombre}</div>
+                        <div class="pedidoWraper">
+                            <div>
+                                <label>Seleccionar especie:</label>
+                                <select class="css-select especie ttan$i" data-esp="$i" name="especies[$i][id_especie]" id="CampSensado_id_especie_$i">
+                                    $especieTexto
+                                </select>
+                                <div class="errorMessage" id="CampSensado_{$i}_id_especie_em_" style="display:none"></div>
+                            </div>
+                            <div>
+                                <label>Seleccionar cepa:</label>
+                                <span>
+                                    <select class="css-select cepa ttan$i" data-esp="$i" name="camp_tanques[$i][id_cepa]" id="CampSensado_id_cepa_$i" $cepaFlag>
+                                        $cepaTexto
+                                    </select>
+                                </span>
+                                <div class="errorMessage" id="CampSensado_{$i}_id_cepa_em_" style="display:none"></div>
+                            </div>
+                            <div>
+                                <label>Seleccionar :</label>
+                                <span>
+                                    <input class="cant-peces ValidaNum cantt$i " name="camp_tanques[$i][cantidad]" id="CampSensado_{$i}_cantidad" type="text" value="$cantidad" autocomplete="off">
+                                </span>
+                                <div class="errorMessage" id="CampSensado_{$i}_tanque_em_" style="display:none"></div>
+                            </div>
+                        </div>
+                    </div>    
+                        
+eof;
+                $i++;
+            }
+            if(isset($_POST['CampSensado']))
+            {
+                $model->attributes=$_POST['CampSensado'];
+                $model->fecha_fin = date('Y-m-d', strtotime($model->fecha_fin));
+                $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
+                $model->hora_fin = date('h:i', strtotime($model->hora_fin));
+                $model->hora_inicio = date('h:i', strtotime($model->hora_inicio));
+                if($model->save())
+                {
+                    $delete = Yii::app()->db->createCommand("DELETE FROM camp_tanque WHERE id_camp_sensado = $model->id")->execute();
+                    foreach($_POST['camp_tanques'] as $data) 
+                    {
+                        $camptanque = new CampTanque;
+                        if(isset($data['id_tanque']) && $data['id_tanque'] !='' && 
+                           isset($data['id_cepa']) && $data['id_cepa'] != "" && 
+                           isset($data['cantidad']) && $data['cantidad'] !="") 
+                        {
+                            $camptanque->id_tanque = $data['id_tanque'];
+                            $camptanque->id_camp_sensado = $model->id;
+                            $camptanque->id_cepa = $data['id_cepa'];
+                            $camptanque->cantidad = $data['cantidad'];
+                            $camptanque->save();
+                        }
+                    }
+                    $this->redirect(array('index'));
+                }
+            }
+            $this->render('update',array(
+                    'model'     =>$model,
+                    'personal'  =>$personal,
+                    'granjas'   =>$granjas,
+                    'update'    =>$update,
+                    'tanques'   =>$return
+            ));
+	}
+	public function actionGetEstacionesFromGranja($id) 
+        {
+            $estaciones = Estacion::model()->findAll('id_granja = '.(int)$id.' AND activo = 1 AND disponible = 1');
+            $return = array();
 
 
-		$return['html'] = "<option value=''>Seleccionar</option>";
-		if(count($estaciones>0)){
-			foreach ($estaciones as $data ) {
-				$cr = new CDbCriteria;
-				$cr->condition = "id_estacion = {$data->id} AND activo = 1";
-				$tanquesfromestaciones = Tanque::model()->findAll($cr);
-				$numero = count($tanquesfromestaciones);
-				$return['html'] .= "<option value='{$data->id}'>{$data->identificador} - {$numero} tanques disponibles</option>";
-			} 
-		}
-		else {
-			$return['html'] = "<option value=''>No hay Plantas de producción disponibles</option>";
-		}
-		echo json_encode( $return );
+            $return['html'] = "<option value=''>Seleccionar</option>";
+            if(count($estaciones>0)){
+                foreach ($estaciones as $data ) 
+                {
+                        $cr = new CDbCriteria;
+                        $cr->condition = "id_estacion = {$data->id} AND activo = 1";
+                        $tanquesfromestaciones = Tanque::model()->findAll($cr);
+                        $numero = count($tanquesfromestaciones);
+                        $return['html'] .= "<option value='{$data->id}'>{$data->identificador} - {$numero} tanques disponibles</option>";
+                } 
+            }
+            else {
+                    $return['html'] = "<option value=''>No hay Plantas de producción disponibles</option>";
+            }
+            echo json_encode( $return );
 	}
 	public function actionGetTanquesFromEstacion($id, $update, $fecha_inicial, $fecha_final, $id_siembra) {
             $tlc = new CDbCriteria;
@@ -350,31 +480,7 @@ class CampSensadoController extends Controller
 	 * @param integer $id the ID of the model to be updated
 	 */
 
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel((int)$id);
-                $tanques = CampTanque::model()->findAll('id_camp_sensado ='.(int)$id);
-		$personal = new SolicitudesViaje;
-                $granjas = new Granjas();
-                $update = true;
-
-		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
-                 
-		if(isset($_POST['CampSensado']))
-		{
-			$model->attributes=$_POST['CampSensado'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-                        'personal'=>$personal,
-                        'granjas'=>$granjas,
-                        'update'=>$update,
-		));
-	}
+	
 
 	/**
 	 * Deletes a particular model.

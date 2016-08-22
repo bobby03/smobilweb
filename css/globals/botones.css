@@ -15,7 +15,7 @@
 }
 .gBoton:hover
 {
-    background-color: #49dbd0;
+    background-color: #21B7C7;
 }
 .fBoton{
     background-color: #0077b0;
@@ -128,7 +128,7 @@ body.CampSensado .gBoton {
     height: 35px;
     width: 135px;
     line-height: 35px;
-    font-size: 13px;
+    font-size: 18px;
     margin-left: 0 !important;
     float: none !important;
     display: inline-block;
