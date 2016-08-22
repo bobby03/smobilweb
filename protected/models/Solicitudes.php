@@ -311,7 +311,7 @@ public function getSearchSolicitud(){
             'codigo',
              array
             (
-                'name'=>'# Tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -371,7 +371,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'# Tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -456,7 +456,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'# Tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -529,7 +529,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'# Tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
