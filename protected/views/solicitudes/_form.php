@@ -153,11 +153,12 @@ eof;
 
         <div class="domicilioForm hide"> 
             <div class="Odom">
+            <div id="map" data-map="1"></div>
             <div class="row dom">
                 <?php echo $form->labelEx($direccion,'domicilio'); ?>
                 <?php echo $form->textField($direccion,"domicilio[1][domicilio]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom inputDom')); ?>
             </div>
-            <div id="map" data-map="1"></div>
+            
             <div class="row ubi">
                 <?php echo $form->hiddenField($direccion,"domicilio[1][ubicacion_mapa]",array('size'=>60,'maxlength'=>250,'readonly'=>'readonly','class'=>'OtroDom readOnly')); ?>
             </div>
@@ -259,8 +260,8 @@ eof;
                                 <input form="solicitudes-form" type="hidden" name="pedido[<?php echo $i;?>][cantidad]" value="<?php echo $data->cantidad;?>" readonly>
                                 <input form="solicitudes-form" type="hidden" name="pedido[<?php echo $i;?>][destino]" readonly value="<?php echo $data->id_direccion;?>">
                                 <input form="solicitudes-form" type="hidden" name="pedido[<?php echo $i;?>][tanques]" readonly value="<?php echo $data->tanques;?>">
-                                <div class="pedidoInfo"><?php echo Especie::model()->findByPk($data->id_especie)->nombre; ?></div>
-                                <div class="pedidoInfo"><?php echo Cepa::model()->findByPk($data->id_cepa)->nombre_cepa;?></div>
+                                <div class="pedidoInfo"><?php echo isset(Especie::model()->findByPk($data->id_especie)->nombre)?Especie::model()->findByPk($data->id_especie)->nombre:'<b>No hay data</b>'; ?></div>
+                                <div class="pedidoInfo"><?php echo isset(Cepa::model()->findByPk($data->id_cepa)->nombre_cepa)?Cepa::model()->findByPk($data->id_cepa)->nombre_cepa:'<b>No hay data</b>';?></div>
                                 <div class="pedidoInfo"><?php echo $data->cantidad;?></div>
                                 <?php 
                                     if($data->tanques > 1)
@@ -283,7 +284,7 @@ eof;
             </div>
         </div>
         <div class="botones hide">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Cancelar</a>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes<?php echo ($update) ? '/#asignadas' : '' ?>">Cancelar</a>
             <!--<div class="continuar">Continuar</div>-->
             <div class="guardar">Guardar</div>
         </div>

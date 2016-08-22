@@ -21,7 +21,7 @@
 }
 
 #SolicitudesViaje_id_personal_1_tecnico {
-    background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+    background-image: url('../../imaegs/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
     background-position: 8px 5px, left;
     background-repeat: no-repeat;
     padding-left: 30px;
@@ -441,15 +441,15 @@ div.form div.tab div.row.buttons {
 div.form div.tab div.row.buttons input
 {
     width: 125px;
-    height: 40px;
-    line-height: 40px;
+    height: 35px;
+    line-height: 35px;
 }
 .fBoton
 {
     margin: 0 !important;
     margin-right: 50px !important;
     font-size: 18px !important;
-    height: 40px !important;
+    /*height: 40px !important;*/
 }
 
 body.viajes-update form input[type="submit"] {

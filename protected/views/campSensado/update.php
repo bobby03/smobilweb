@@ -7,15 +7,8 @@ $this->breadcrumbs=array(
 	$model->id=>array('view','id'=>$model->id),
 	'Actualizar',
 );
-
-$this->menu=array(
-	array('label'=>'List CampSensado', 'url'=>array('index')),
-	array('label'=>'Create CampSensado', 'url'=>array('create')),
-	array('label'=>'View CampSensado', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage CampSensado', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Update CampSensado <?php echo $model->id; ?></h1>
+<h1>Actualizar siembra <?php echo $model->nombre_camp; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'personal'=>$personal, 'granjas'=>$granjas, 'update'=>$update)); ?>

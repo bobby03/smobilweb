@@ -2,6 +2,7 @@ $(function() {
     
 
 $('#Clientes_tel').mask('(000) 000-0000', {placeholder: "(000) 000-0000"});
+$('#Clientes_cel').mask('(000) 000-0000', {placeholder: "(000) 000-0000"});
 
     /* Validacion de RFC para empresas */
 

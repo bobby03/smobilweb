@@ -61,7 +61,7 @@ class SolicitudesViaje extends SMActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_personal' => 'Id Personal',
-			'id_viaje' => 'Id Viaje',
+			'id_viaje' => 'ID de viaje',
 			'id_solicitud' => 'Id Solicitud',
 		);
 	}

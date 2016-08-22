@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Siembra'=>array('index'),
 	'Nueva',
 );
-
+ $update = false
 ?>
 
 <h1>Nueva siembra</h1>
@@ -14,5 +14,7 @@ $this->breadcrumbs=array(
 <?php $this->renderPartial('_form', array(
 		'model'=>$model, 
 		'granjas' => $granjas,
-		'personal' => $personal
-		)); ?>
+		'personal' => $personal,
+                'update' => $update
+		)); 
+?>

@@ -651,8 +651,7 @@ EOF;
                 $estacion = Estacion::model()->findByPk($model->id_estacion);
                 $estacion->disponible = 2;
                 if($estacion->save())
-//                    $this->redirect(array('index'));
-                    $A;
+                    $this->redirect(array('index'));
             }
         }
 //            print_r($_POST);
@@ -689,14 +688,17 @@ EOF;
                 $solicitudes = SolicitudesViaje::model()->findAll("id_viaje = $model->id");
                 foreach($solicitudes as $data)
                 {
-                    $sol = Solicitudes::model()->findByPk($data->id_solicitud);
-                    $sol->status = 0;
-                    $sol->fecha_estimada = null;
-                    $sol->hora_estimada = null;
-                    $sol->save();
+                    $columnas = array
+                    (
+                        'status' => 0,
+                        'fecha_estimada' =>  null,
+                        'hora_estimada' =>  null
+                    );
+                    $update = Yii::app()->db->createCommand()->update('solicitudes',$columnas,"id = $data->id_solicitud");
                 }
                 $model->attributes=$_POST['Viajes'];
                 $model->fecha_salida = date('Y-m-d', strtotime($model->fecha_salida));
+                $model->id_solicitudes = $_POST['Viajes']['id_solicitudes'][0];
                 if($model->save())
                 {
                     foreach($_POST['SolicitudesViaje']['id_personal']['1']['tecnico'] as $data)

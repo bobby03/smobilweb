@@ -359,6 +359,11 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
+                'name'=>'ID de viaje',
+                'value' => 'Solicitudes::model()->getViaje($data->id)',
+            ),
+            array
+            (
                 'name'=>'fecha_alta',
                 'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
             ),
@@ -434,7 +439,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'No Viaje',
+                'name'=>'ID de Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
             array
