@@ -7,12 +7,12 @@ return array(
 	
 	'connectionString' => 'mysql:host=localhost;dbname=movsens',
 	 // 'connectionString' => 'mysql:host=localhost;dbname=movsens',
-        'username' => 'smobile_user',
- 	'password' => 'm0b1l3',
+//        'username' => 'smobile_user',
+// 	'password' => 'm0b1l3',
 //	 'username' => 'root',
 //	 'password' => 'hola',
-	 // 'username' => 'root',
-	 // 'password' => '',
+	  'username' => 'root',
+	  'password' => '',
 	 'emulatePrepare' => true,
 	'charset' => 'utf8',
 	
