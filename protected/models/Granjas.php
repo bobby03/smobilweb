@@ -193,6 +193,21 @@ class Granjas extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        public function getNumofPlantas($id){
+            $plantas = Estacion::model()->findAll("id_granja = '{$id}'");
+            return count($plantas);
+        }
+        public function getTotalTanques($id){
+            $plantas = Estacion::model()->findAll("id_granja = '{$id}'");
+            $tot = 0;
+            foreach($plantas as $data)
+            {
+                $tanques = Tanque::model()->findAll('id_estacion = '.$data->id);
+                $tot += count($tanques);
+            }
+            return $tot;
+        }
         public function adminSearch()
         {
             return array
@@ -200,6 +215,8 @@ class Granjas extends SMActiveRecord
                 'nombre',
                 'direccion',
                 'responsable',
+                array('name'=>'Total de Plantas de producción', 'value'=>'Granjas::model()->getNumofPlantas($data->id)'),
+                array('name'=>'Total de Tanques ', 'value'=>'Granjas::model()->getTotalTanques($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',
@@ -224,6 +241,8 @@ class Granjas extends SMActiveRecord
                 'nombre',
                 'direccion',
                 'responsable',
+                array('name'=>'Total de Plantas de producción', 'value'=>'Granjas::model()->getNumofPlantas($data->id)'),
+                array('name'=>'Total de Tanques ', 'value'=>'Granjas::model()->getTotalTanques($data->id)'),
                 array
                 (
                     'class'=>'NCButtonColumn',
