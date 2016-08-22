@@ -143,6 +143,15 @@ div.search-form input {
     text-indent: 5px;
     width: 100%;
 }
+div.search-form2 input {
+    min-height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #0077b0;
+    border-radius: 5px;
+    border-left: 30px solid #0077b0;
+    text-indent: 5px;
+    width: 100%;
+}
 
 .chosen-container-active .chosen-single {
     border: 0;
@@ -339,6 +348,7 @@ div.search-form:after {
     display: block;
 }
 
+
 #Roles_nombre_rol {
     width: 300px;
 }
@@ -349,3 +359,63 @@ div.search-form:after {
 }
 
 .cb1 {}
+div.search-form2 div.wide.form {
+    /*width: 250px;*/
+    width: 750px;
+    margin: 0;
+    float: left;
+}
+
+div.search-form2 div.row {
+    clear: none !important;
+    float: left;
+    width: 470px;
+    margin: 0;
+}
+
+div.search-form2 #searchDropDown2 {
+    width: 250px !important;
+    height: 30px;
+    margin-right: 25px;
+    float: left;
+}
+div.search-form3 div.wide.form {
+    /*width: 250px;*/
+    width: 750px;
+    margin: 0;
+    float: left;
+}
+
+div.search-form3 div.row {
+    clear: none !important;
+    float: left;
+    width: 470px;
+    margin: 0;
+}
+
+div.search-form3 #searchDropDown3 {
+    
+    height: 30px;
+    margin-right: 25px;
+    float: left;
+    width: 250px !important;
+}
+div.search-form2:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+div.search-form3:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+div.search-form2 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+div.search-form3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}

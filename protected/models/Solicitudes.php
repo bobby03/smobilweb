@@ -153,6 +153,55 @@ public function getSearchSolicitud(){
                     )
         ));
 	}
+    public function search2()
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
+
+        $criteria=new CDbCriteria;
+
+        $criteria->select = '*';
+        $criteria->condition = false;
+
+        if($this->id_clientes!=''){
+            $criteria->select = '*';
+            $criteria->condition = "id_clientes = '".$this->id_clientes."'";
+            
+        }
+        
+        if($this->codigo!=''){  
+            $criteria->select = '*';
+            $criteria->condition = "codigo LIKE '%".$this->codigo."%'";
+        }
+
+        /*
+        OR fecha_alta LIKE '%".$this->codigo.
+                                "%' OR hora_alta LIKE '%".$this->codigo.
+                                "%' OR fecha_estimada LIKE '%".$this->codigo.
+                                "%' OR hora_estimada LIKE '%".$this->codigo.
+                                "%' OR fecha_entrega LIKE '%".$this->codigo.
+                                "%' OR hora_entrega LIKE '%".$this->codigo.
+                                "%' OR notas LIKE '%".$this->codigo."%'*/
+
+
+        /*$criteria->compare('id_clientes',$this->id_clientes);
+        $criteria->compare('codigo',$this->codigo,true);
+        $criteria->compare('fecha_alta',$this->fecha_alta,true);
+        $criteria->compare('hora_alta',$this->hora_alta,true);
+        $criteria->compare('fecha_estimada',$this->fecha_estimada,true);
+        $criteria->compare('hora_estimada',$this->hora_estimada,true);
+        $criteria->compare('fecha_entrega',$this->fecha_entrega,true);
+        $criteria->compare('hora_entrega',$this->hora_entrega,true);
+        $criteria->compare('notas',$this->notas,true);*/
+        
+  
+        return new CActiveDataProvider($this, array(
+                    'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    )
+        ));
+    }
         public function searchStatus($id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
