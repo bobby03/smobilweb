@@ -286,6 +286,13 @@ public function getSearchSolicitud(){
         $cliente = Clientes::model()->findByPk($solicitud->id_clientes);
         return $cliente->nombre_empresa;
     }
+    public function getTanques($id)
+    {
+         $prueba=Yii::app()->db->createCommand('SELECT sum(tanques) as cuenta from pedidos
+        WHERE id_solicitud='.$id)
+        ->queryRow();
+        return $prueba['cuenta'];
+    }
     public function adminSearch1()
     {
         return array
@@ -302,6 +309,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+             array
+            (
+                'name'=>'# Tanques',
+                'value' => 'Solicitudes::model()->getTanques($data->id)'
+            ),
             array
             (
                 'name'=>'fecha_alta',
@@ -357,6 +369,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+            array
+            (
+                'name'=>'# Tanques',
+                'value' => 'Solicitudes::model()->getTanques($data->id)'
+            ),
             array
             (
                 'name'=>'ID de viaje',
@@ -439,6 +456,11 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
+                'name'=>'# Tanques',
+                'value' => 'Solicitudes::model()->getTanques($data->id)'
+            ),
+            array
+            (
                 'name'=>'ID de Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
@@ -505,6 +527,11 @@ public function getSearchSolicitud(){
                 'filter'=> Clientes::model()->getAllClientes()
             ),
             'codigo',
+            array
+            (
+                'name'=>'# Tanques',
+                'value' => 'Solicitudes::model()->getTanques($data->id)'
+            ),
             array
             (
                 'name'=>'No Viaje',
