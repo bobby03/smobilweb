@@ -69,16 +69,16 @@ class Clientes extends CActiveRecord
 			array(
 				'correo',
 			  	'match',
-                                'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
+                'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
 				'message'=>'El correo no es valido'),
 			array('correo', 'unique', 'message'=>'Ya existe ese correo registrado'),
 
 			array('rfc','required','message'=>'RFC No Valido'),
 			array('rfc',
-                                'match',
+                  	'match',
 			    	'pattern'=>"/^(([A-Za-z]){3})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
-                                'message'=>'RFC No Valido'),
-                        array('rfc', 'unique', 'message'=>'Ya existe ese RFC'),
+                    'message'=>'RFC No Valido'),
+            array('rfc', 'unique', 'message'=>'Ya existe ese RFC'),
 			array('tel','required','message'=>'Este campo es obligatorio'),
 			array(
 				'tel',
@@ -89,15 +89,15 @@ class Clientes extends CActiveRecord
 			array(
 				'ext',
 				'length',
-				'min'=>3,
+				'max'=>3,
 				'message'=>'La ext no es v&aacute;lida'),
 			array('cel','required','message'=>'Este campo es obligatorio'),
 			array(
 				'cel',
 				'length',
-				'min'=>17,
-				'message'=>'El tel&eacute;fono celular no es valido'),
-
+				'min'=>10,
+				'tooShort'=>'Minimo 10 números',
+				'message'=>'El telefono celular no es valido'),
 
 		/*	array('domicilio','required','message'=>'Este campo es obligatorio'),
 			array(
@@ -106,7 +106,8 @@ class Clientes extends CActiveRecord
 				'max'=>250,
 				'message'=>'Maximo 250 Caracteres'),*/
 
-			array('id', 'numerical', 'integerOnly'=>true),
+			array('id, ext', 'numerical', 'integerOnly'=>true, 'message'=> 'Solo se aceptan números'),
+			
 		
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

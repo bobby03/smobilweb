@@ -138,7 +138,7 @@ class Personal extends CActiveRecord
             return array('1'=>'Nombre',
                          '2'=>'Apellido',
                         /* '3'=>'Teléfono',*/
-                         '4'=>'RFC'
+                         '3'=>'RFC'
                         /* '5'=>'Domicilio',
                          '6'=>'Rol',
                          '7'=>'Correo',

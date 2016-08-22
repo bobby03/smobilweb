@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 	'Solicitudes'=>array('index'),
 	'Create',
 );
+ $update = false;
 ?>
 
 <h1>Nueva solicitud</h1>
@@ -17,6 +18,7 @@ $this->breadcrumbs=array(
         'especies'=>$especies,
         'cepa'=>$cepa,
         'direccion'=>$direccion,
-        'pedidos'=>''
+        'pedidos'=>'',
+        'update'=> $update
     )); ?>
 

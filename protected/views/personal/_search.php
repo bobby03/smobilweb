@@ -21,6 +21,10 @@
 		
 		<?php echo $form->textField($model,'apellido',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
+	<div class="row hide" data-id='3'>
+		
+		<?php echo $form->textField($model,'rfc',array('size'=>50,'maxlength'=>50)); ?>
+	</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->

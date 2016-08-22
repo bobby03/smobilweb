@@ -7,6 +7,7 @@ $this->breadcrumbs=array(
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
+ $update = true;
 ?>
 
 <h1>Continuar solicitud #<?php echo $model->id; ?></h1>
@@ -19,4 +20,5 @@ $this->breadcrumbs=array(
         'especies'=>$especies,
         'cepa'=>$cepa,
         'estacion'=>$estacion,
+        'update'=>$update
     )); ?>
