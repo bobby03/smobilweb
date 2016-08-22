@@ -182,6 +182,7 @@ eof;
 	<div class="row">
             <span class='css-select-moz'>
                 <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
+                <p class="ierrorD" id="errorCli"></p>
             </span>
 	</div>
         <div class="row pedido hide"><!--hide-->
@@ -189,13 +190,13 @@ eof;
             <div class="row">
                 <label>Especie</label>
                 <span class="css-select-moz"><?php echo $form->dropDownList($especies,'id', $especies->getAllEspeciesSolicitud(), array('class'=>'css-select','empty'=>'Seleccionar')); ?></span>
-                <?php echo $form->error($especies,'id'); ?>
+                <p class="ierrorD" id="errorEsp"></p>
             </div>
 
             <div class="row cepa hide">
                 <label>Cepa</label>
                <span class="css-select-moz"><?php echo $form->dropDownList($cepa,'id', array('1'=>'1'),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
-                <?php echo $form->error($cepa,'id'); ?>
+                <p class="ierrorD" id="errorCepa"></p>
             </div>
             <div class="row cantidad hide"> <!--hide-->
                 <div class="requerida">

@@ -523,6 +523,11 @@ input.OtroDom{
     margin-left: 33px;
     margin-top: 10px;
 }
+.ierrorD{
+    color:#C00;
+    margin-left: 40px;
+
+}
 .btndel{
     font-size: 16px !important;
 }
