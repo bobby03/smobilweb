@@ -42,6 +42,9 @@ $form=$this->beginWidget('CActiveForm', array(
     ));
 
 ?>
+<?php if(!$model->isNewRecord):?>
+    
+<?php endif;?>
 <div class="form">
 
 <?php  ?>
@@ -57,16 +60,9 @@ $form=$this->beginWidget('CActiveForm', array(
         <div class="lineaChica"></div>
         <div class="bolaChica"></div>
     </div>
-    <?php print_r($model->attributes)?>
     <div class="tab " data-tab="1">
 	     <div class="formContainer1">
-		
 				<?php echo $form->hiddenField($model,'status', array('value' => '1')); ?>
-                                <?php 
-                                    if(!$model->isNewRecord)
-                                    echo $form->hiddenField($model,'id', array('value' => $model->id)); 
-                                ?>
-
 			<div class="row">
 				<?php 
                                         $granja = new Granjas;
@@ -138,14 +134,16 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 
     <div class="tab hide" data-tab="2">
-   		<div class="pedidosWraper"></div>
-
-   		<div class="botonesWrapper2">
-	   		<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
-	        <div class="siguiente dos">Siguiente</div>
-
+        <div class="pedidosWraper">
+            <?php 
+                if($tanques != null)
+                    echo $tanques;
+            ?>
         </div>
-
+        <div class="botonesWrapper2">
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
+            <div class="siguiente dos">Siguiente</div>
+        </div>
     </div>
     <div class="tab hide" data-tab="3">
 

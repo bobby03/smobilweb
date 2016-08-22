@@ -27,9 +27,37 @@ class Granjas extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('direccion, responsable, nombre', 'required'),
+
+            array('direccion','required','message'=>'Este campo es obligatorio'),
+            array(
+                'direccion',
+                'length',
+                'min'=>5,
+                'tooShort'=>'Minimo 5 caracteres',
+                'max'=>100,
+                'tooLong'=>'Maximo 100 caracteres'),
+
+            array('responsable','required','message'=>'Este campo es obligatorio'),
+            array(
+                'responsable',
+                'length',
+                'min'=>5,
+                'tooShort'=>'Minimo 5 caracteres',
+                'max'=>100,
+                'tooLong'=>'Maximo 100 caracteres'),  
+
+
+            array('nombre','required','message'=>'Este campo es obligatorio'),
+            array(
+                'nombre',
+                'length',
+                'min'=>5,
+                'tooShort'=>'Minimo 5 caracteres',
+                'max'=>100,
+                'tooLong'=>'Maximo 100 caracteres'),
+
 			array('activo', 'numerical', 'integerOnly'=>true),
-			array('direccion, responsable, nombre', 'length', 'max'=>100),
+
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre, direccion, responsable, activo', 'safe', 'on'=>'search'),

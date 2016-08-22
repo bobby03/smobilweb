@@ -11,4 +11,4 @@ $this->breadcrumbs=array(
 
 <h1>Actualizar siembra <?php echo $model->nombre_camp; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model, 'personal'=>$personal, 'granjas'=>$granjas, 'update'=>$update)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'personal'=>$personal, 'granjas'=>$granjas, 'update'=>$update, 'tanques'=>$tanques)); ?>

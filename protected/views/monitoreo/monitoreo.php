@@ -13,62 +13,52 @@
     $cs->registerScriptFile($baseUrl.'/js/monitoreo/monitoreo.js');
    
 ?>
-<h1>Monitoreo fijo </h1>
+<h1>Siembra</h1>
 <?php $id=$fijas['id'];?>
 
 <div class="container">
     <div id="datosMon">
         <div class="divTit">
-            <div id='titLeft'><h2>Datos del monitoreo</h2></div>
+            <div id='titLeft'><h2>Datos de siembra</h2></div>
             <div id='titRight'><p>Ultima actualización</p></div>
         </div>
-
         <p class="tit">Id de granja</p>
-
-
         <div id="esp">
             <div id="esp1">
                 <p class="subtit">Estación fija:</p>      
                 <p><?php echo $fijas['identificador']?></p>
-            </div>
-
-            <div id="esp2">
-                 <p class="subtit">Marca:</p>  
-               <p><?php echo $fijas['marca']?></p>
+                <br>
                 <p class="subtit">Color:</p>  
                 <p><?php echo $fijas['color']?></p>
             </div>
-
+            <div id="esp2">
+                <p class="subtit">Descripci&oacute;n:</p>  
+                <p><?php echo $fijas['marca']?></p>
+            </div>
             <div id="esp3">
-               <p class="subtit">Número de personal:</p>    
+                <p class="subtit">Número de personal:</p>    
                 <p><?php echo $fijas['no_personal']?></p>
+                <br>
                 <p class="subtit">Disponibilidad:</p>    
                 <?php 
-                if($fijas['disponible']==1){$disp="Disponible";}else{$disp="No disponible";}
-                if($fijas['activo']==1){$act="Activo";}else{$act="Inactivo";}
+                    if($fijas['disponible']==1){$disp="Disponible";}else{$disp="No disponible";}
+//                    if($fijas['activo']==1){$act="Activo";}else{$act="Inactivo";}
                 ?>
                 <p><?php echo $disp?></p>
-                 <p class="subtit">Actividad:</p> 
-                 <p><?php echo $act?></p>
+<!--                <p class="subtit">Actividad:</p> 
+                <p><?php echo $act?></p>-->
             </div>
-
-
             <div id="esp4">
                 <p class="subtit">Ubicación:</p>    
                 <p><?php echo $fijas['ubicacion']?></p>
             </div>
         </div>
-
     </div>
-
 <?php
         $emsg=0;
-        if($cantTanques['cTan']==0){
+        if($cantTanques['cTan']==0)
             $emsg=1;
-        }
-        if(empty($tanques)):
-                
-                ?>
+        if(empty($tanques)):?>
             <div id="detallesMon">
                 <?php 
                 if($emsg==1){
@@ -79,9 +69,7 @@
             ?>
                 
             </div>
-            <?php
-            else:
-        ?>
+            <?php else:?>
     <div id="detallesMon">
         <div class="divTit">
             <div id='enLeft'><h2>Detalles del monitoreo</h2></div>

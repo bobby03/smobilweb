@@ -3,6 +3,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
+    $cs->registerScriptFile($baseUrl.'/js/solicitudes/search.js');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/index.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $this->breadcrumbs=array('Solicitudes',);
@@ -46,9 +47,9 @@
         ),
         'afterAjaxUpdate' => "function(id,data)
         {
-            $.fn.yiiGridView.update('viaje2');
-            $.fn.yiiGridView.update('viaje3');
-            $.fn.yiiGridView.update('viaje4');
+            $.fn.yiiGridView.update('solicitudes-grid2');
+            $.fn.yiiGridView.update('solicitudes-grid3');
+            $.fn.yiiGridView.update('solicitudes-grid4');
         }"
     //    'filter'=>$model,
     )); 
@@ -56,6 +57,12 @@
     </div>
     
     <div class="tabContent hide" data-tan="2">
+        <div class="search-form2" ><!-- search-form -->
+            <?php $this->renderPartial('_search2',array(
+                    'model'=>$model,
+            )); ?>
+            
+        </div><!-- search-form --> 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'solicitudes-grid2',
@@ -76,6 +83,11 @@
     </div>
 
     <div class="tabContent hide" data-tan="3">
+        <div class="search-form3" ><!-- search-form -->
+            <?php $this->renderPartial('_search3',array(
+                    'model'=>$model,
+            )); ?>
+        </div><!-- search-form --> 
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'solicitudes-grid3',

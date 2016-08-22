@@ -15,6 +15,7 @@ $this->breadcrumbs=array(
 		'model'=>$model, 
 		'granjas' => $granjas,
 		'personal' => $personal,
-                'update' => $update
+                'update' => $update,
+                'tanques'   => null
 		)); 
 ?>
