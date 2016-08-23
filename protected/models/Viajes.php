@@ -182,6 +182,16 @@ class Viajes extends CActiveRecord
         else
             return 'N/A'; 
     }
+    public function getSearchViajes()
+    {
+        return array
+        (
+            '1' => 'ID',
+            '2' => 'Cliente',
+            '3' => 'Responsable',
+            '4' => 'Camion'
+        );
+    }
     public function getAllStatus()
     {
         return array
