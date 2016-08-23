@@ -153,6 +153,15 @@ public function getSearchSolicitud(){
                     )
         ));
 	}
+        public function getSolicitudes($id)
+        {
+            $solicitudes = Solicitudes::model()->findAll("status = $id");
+            $return = array();
+            $cliente = Clientes::model();
+            foreach ($solicitudes as $data)
+                $return[$data->id] = "{$cliente->getCliente($data->id_clientes)} ($data->codigo)";
+            return $return;
+        }
     public function search2()
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
@@ -414,7 +423,14 @@ public function getSearchSolicitud(){
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                'buttons' => array
+                    (
+                       'delete'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl("solicitudes/delete/$data->id")',
+                        ) 
+                    )
             )
         );
     }

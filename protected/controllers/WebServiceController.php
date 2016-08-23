@@ -563,8 +563,8 @@ class WebServiceController extends Controller
     public function actionUpdateEstacion(){
         $code = isset($_GET['id'])?$_GET['id']:0;
         $table = 'estacion';
-        $column = array('disponbile'=>"1");
-        $conditions = "codigo = :code";
+        $column = array('disponible'=>"1");
+        $conditions = "id = :code";
         $params = array(":code"=>$code);
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
         if($update > 0)
