@@ -236,8 +236,46 @@ function validaTanques() {
 
 
 function validaTabUno() {
-
-    $('div.chosen-container').bind('DOMSubtreeModified', function(event) {
+    $('#SolicitudesViaje_id_personal_1_tecnico_chosen').bind('DOMSubtreeModified', function(event) {
+        $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+            if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+                $(this).next('#SolicitudesViaje_id_personal_1_tecnico_chosen').addClass("error");
+                $(this).closest('#SolicitudesViaje_id_personal_1_tecnico_chosen').find('.errorMessage').show().html('Debe Seleccionar una persona');
+                $(this).next('#SolicitudesViaje_id_personal_1_tecnico_chosen').removeClass("success");
+            } else {
+                $(this).closest('#SolicitudesViaje_id_personal_1_tecnico_chosen').find('.errorMessage').hide().html('');
+                $(this).next('#SolicitudesViaje_id_personal_1_tecnico_chosen').addClass("success");
+                $(this).next('#SolicitudesViaje_id_personal_1_tecnico_chosen').removeClass("error");
+            }
+        });
+    });
+    $('#SolicitudesViaje_id_personal_1_chofer_chosen').bind('DOMSubtreeModified', function(event) {
+        $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+            if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+                $(this).next('#SolicitudesViaje_id_personal_1_chofer_chosen').addClass("error");
+                $(this).closest('#SolicitudesViaje_id_personal_1_chofer_chosen').find('.errorMessage').show().html('Debe Seleccionar una persona');
+                $(this).next('#SolicitudesViaje_id_personal_1_chofer_chosen').removeClass("success");
+            } else {
+                $(this).closest('#SolicitudesViaje_id_personal_1_chofer_chosen').find('.errorMessage').hide().html('');
+                $(this).next('#SolicitudesViaje_id_personal_1_chofer_chosen').addClass("success");
+                $(this).next('#SolicitudesViaje_id_personal_1_chofer_chosen').removeClass("error");
+            }
+        });
+    });
+    $('#Viajes_id_solicitudes_chosen').bind('DOMSubtreeModified', function(event) {
+        $('[data-tab="1"] select[multiple="multiple"]').each(function() {
+            if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
+                $(this).next('#Viajes_id_solicitudes_chosen').addClass("error");
+                $(this).closest('#Viajes_id_solicitudes_chosen').find('.errorMessage').show().html('Debe Seleccionar una persona');
+                $(this).next('#Viajes_id_solicitudes_chosen').removeClass("success");
+            } else {
+                $(this).closest('#Viajes_id_solicitudes_chosen').find('.errorMessage').hide().html('');
+                $(this).next('#Viajes_id_solicitudes_chosen').addClass("success");
+                $(this).next('#Viajes_id_solicitudes_chosen').removeClass("error");
+            }
+        });
+    });
+    /*$('div.chosen-container').bind('DOMSubtreeModified', function(event) {
         $('[data-tab="1"] select[multiple="multiple"]').each(function() {
             if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
                 $(this).next('div.chosen-container').addClass("error");
@@ -249,7 +287,7 @@ function validaTabUno() {
                 $(this).next('div.chosen-container').removeClass("error");
             }
         });
-    });
+    });*/
 }
 
 function launcher() {

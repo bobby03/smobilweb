@@ -832,7 +832,7 @@ EOF;
     }
     public function actionIndex()
     {
-            $model=new Viajes('search');
+            $model=new Viajes();
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Viajes']))
                     $model->attributes=$_GET['Viajes'];

@@ -281,6 +281,14 @@ class Estacion extends CActiveRecord
                 $return[$data->id] = $data->identificador;
             return $return;
         }
+        public function getEstacionesOcupadas()
+        {
+            $estacion = Estacion::model()->findAll("tipo = 1 AND disponible = 2 AND activo = 1");
+            $return = array();
+            foreach($estacion as $data)
+                $return[$data->id] = $data->identificador;
+            return $return;
+        }
         public function getAllEstacionMovil()
         {
             $estacion = Estacion::model()->findAll('tipo = 1 AND activo = 1');

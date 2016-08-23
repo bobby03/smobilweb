@@ -153,6 +153,15 @@ public function getSearchSolicitud(){
                     )
         ));
 	}
+        public function getSolicitudes($id)
+        {
+            $solicitudes = Solicitudes::model()->findAll("status = $id");
+            $return = array();
+            $cliente = Clientes::model();
+            foreach ($solicitudes as $data)
+                $return[$data->id] = "{$cliente->getCliente($data->id_clientes)} ($data->codigo)";
+            return $return;
+        }
     public function search2()
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
