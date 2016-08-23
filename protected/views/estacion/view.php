@@ -20,7 +20,7 @@ $this->breadcrumbs=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
         'nullDisplay'=>'No hay datos disponibles',
-	'attributes'=>array(
+		'attributes'=>array(
 		'tipo',
 		'identificador',
 		'no_personal',
