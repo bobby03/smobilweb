@@ -10,15 +10,21 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-	<div class="row" data-id="1">
+    <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchClientes(),array('empty' =>'Selecciona Búsqueda')); ?>
+	<div class="row hide" data-id="1">
+		<?php echo $form->textField($model,'id'); ?>
+	</div>
+	<div class="row hide" data-id="2">
 		<?php echo $form->textField($model,'id_solicitudes'); ?>
 	</div>
-
-	<div class="row" data-id="2">
+	<div class="row hide" data-id="3">
 		<?php echo $form->textField($model,'id_responsable'); ?>
 	</div>
-
-	<div class="row" data-id="3">
+	<div class="row hide" data-id="4">
+		<?php echo $form->textField($model,'id_estacion'); ?>
+	</div>
+<!--
+	<div class="row hide" data-id="3">
 		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
@@ -40,7 +46,8 @@
 
 	<div class="row buttons hide">
 		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
+	</div>-->
+
 
 <?php $this->endWidget(); ?>
 
