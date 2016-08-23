@@ -423,7 +423,14 @@ public function getSearchSolicitud(){
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                'buttons' => array
+                    (
+                       'delete'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl("solicitudes/delete/$data->id")',
+                        ) 
+                    )
             )
         );
     }
