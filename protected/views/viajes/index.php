@@ -16,13 +16,13 @@
         <div class="tab" data-id="2"><span>En ruta</span></div>
         <div class="tab" data-id="3"><span>Finalizado</span></div>
     </div>
-     <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes/crear">
+    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes/crear">
         <div class="agregar viaje"></div>
     </a>
-      <div class="search-form" style="display:none;">
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
+    <div class="search-form">
+        <?php // $this->renderPartial('_search',array(
+//                'model'=>$model,
+//        )); ?>
 
     </div><!-- search-form -->
     <div class="tabContent" data-tan="1">

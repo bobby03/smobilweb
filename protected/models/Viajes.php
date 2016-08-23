@@ -96,7 +96,16 @@ class Viajes extends CActiveRecord
 			'hora_entrega' => 'Hora Entrega',
 		);
 	}
-
+        public function getSearchClientes()
+        {
+            return array
+            (
+                '1'=>'ID',
+                '2'=>'Solicitud',
+                '3'=>'Responsable',
+                '4'=>'Estación'
+            );
+        }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -136,46 +145,41 @@ class Viajes extends CActiveRecord
         public function searchStatus1($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('id_solicitudes',$this->id_solicitudes);
-		$criteria->compare('id_responsable',$this->id_responsable);
-		$criteria->compare('id_estacion',$this->id_estacion);
-		$criteria->compare('status',$this->status,true);
-		$criteria->compare('fecha_salida',$this->fecha_salida,true);
-		$criteria->compare('hora_salida',$this->hora_salida,true);
-		$criteria->compare('fecha_entrega',$this->fecha_entrega,true);
-		$criteria->compare('hora_entrega',$this->hora_entrega,true);
+            $criteria=new CDbCriteria;
+            $criteria->compare('id',$this->id);
+            $criteria->compare('id_solicitudes',$this->id_solicitudes);
+            $criteria->compare('id_responsable',$this->id_responsable);
+            $criteria->compare('id_estacion',$this->id_estacion);
+            $criteria->compare('status',$this->status,true);
+            $criteria->compare('fecha_salida',$this->fecha_salida,true);
+            $criteria->compare('hora_salida',$this->hora_salida,true);
+            $criteria->compare('fecha_entrega',$this->fecha_entrega,true);
+            $criteria->compare('hora_entrega',$this->hora_entrega,true);
             $criteria->addCondition("status = $flag");
-		if(Yii::app()->user->getTipoUsuario()==1){
-            $c = new CDbCriteria();
-            $viajes=Viajes::model()->tablename();
-            $solicitudes_viajes=SolicitudesViaje::model()->tablename();
-            $clientes=Clientes::model()->tablename();
-            $solicitudes=Solicitudes::model()->tablename();
-            $c->join=
-            'join '.$solicitudes_viajes.' sv on sv.id_viaje = t.id '.
-            'join '.$solicitudes.' s on s.id = sv.id_solicitud '.
-            'join '.$clientes.' c on c.id = s.id_clientes '.
-            'where t.status='.$flag.
-            ' and c.id=1 '.
-            'group by t.id'
-            ;
-             return new CActiveDataProvider($this, array(
-           'criteria'=>$c,
-                                'pagination'=>array(
-                                    'pageSize'=>15,
-                            ),
-          ));
-        }
-        return new CActiveDataProvider($this, array(
-           'criteria'=>$criteria,
-                                'pagination'=>array(
-                                    'pageSize'=>15,
-                            ),
-          ));
+            if(Yii::app()->user->getTipoUsuario()==1)
+            {
+                $c = new CDbCriteria();
+                $viajes=Viajes::model()->tablename();
+                $solicitudes_viajes=SolicitudesViaje::model()->tablename();
+                $clientes=Clientes::model()->tablename();
+                $solicitudes=Solicitudes::model()->tablename();
+                $c->join=
+                'join '.$solicitudes_viajes.' sv on sv.id_viaje = t.id '.
+                'join '.$solicitudes.' s on s.id = sv.id_solicitud '.
+                'join '.$clientes.' c on c.id = s.id_clientes '.
+                'where t.status='.$flag.
+                ' and c.id=1 '.
+                'group by t.id'
+                ;
+                return new CActiveDataProvider($this, array
+                (
+                    'criteria'=>$c,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    ),
+                ));
+            }
 	}
 	/**
 	 * Returns the static model of the specified AR class.

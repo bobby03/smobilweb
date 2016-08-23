@@ -88,7 +88,7 @@ class CampSensado extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Granja',
 			'id_responsable' => 'Responsable',
 			'id_estacion' => 'Planta de producción',
 			'nombre_camp' => 'Nombre de la siembra',
@@ -143,33 +143,45 @@ class CampSensado extends CActiveRecord
 	 */
 	public static function model($className=__CLASS__)
 	{
-		return parent::model($className);
+            return parent::model($className);
 	}
 	public function getResp($id)
         {
-                    $resp = Personal::model()->findByPk($id);
-                    return $resp->nombre.' '.$resp->apellido;
+            $resp = Personal::model()->findByPk($id);
+            return $resp->nombre.' '.$resp->apellido;
         }
         public function getEstacion($id)
         {
-                    $nombre = Estacion::model()->findByPk($id);
-                    return $nombre->identificador;
+            $nombre = Estacion::model()->findByPk($id);
+            return $nombre->identificador;
+        }
+        public function getGranja($id)
+        {
+            $camp = CampSensado::model()->findByPk($id);
+            $estacion = Estacion::model()->findByPk($camp->id_estacion);
+            $granja = Granjas::model()->findByPk($estacion->id_granja);
+            return $granja->nombre;
         }
 	public function adminSearch()
         {
             return array
             (
+                array
+                (
+                    'name' => 'id',
+                    'value' => 'CampSensado::model()->getGranja($data->id)',
+                ),
                 'nombre_camp',
                 array
-	            (
-	               'name' => 'id_estacion',
-                	'value' => 'CampSensado::model()->getEstacion($data->id_estacion)',
-	            ),
-	            array
-	            (
-	               'name' => 'id_responsable',
-                	'value' => 'CampSensado::model()->getResp($data->id_responsable)',
-	            ),
+                (
+                   'name' => 'id_estacion',
+                    'value' => 'CampSensado::model()->getEstacion($data->id_estacion)',
+                ),
+                array
+                (
+                   'name' => 'id_responsable',
+                    'value' => 'CampSensado::model()->getResp($data->id_responsable)',
+                ),
                 'fecha_inicio',
                 'hora_inicio',
                 'fecha_fin',
