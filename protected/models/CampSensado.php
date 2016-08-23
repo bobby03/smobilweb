@@ -93,9 +93,9 @@ class CampSensado extends CActiveRecord
 			'id_estacion' => 'Planta de producción',
 			'nombre_camp' => 'Nombre de la siembra',
 			'fecha_inicio' => 'Fecha de inicio',
-			'hora_inicio' => 'Hora de inicio',
+			'hora_inicio' => 'Hora de inicio (24 horas)',
 			'fecha_fin' => 'Fecha de terminación',
-			'hora_fin' => 'Hora de terminación',
+			'hora_fin' => 'Hora de terminación (24 horas)',
 		);
 	}
 

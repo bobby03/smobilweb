@@ -190,7 +190,7 @@ div.form div.tab div.row {
     /* --- */
     position: fixed;
     top: 274px;
-    right: 15%;
+    right: 26%;
 }
 
 div.contenedorClientes {
@@ -373,7 +373,7 @@ div.chosen-container.error > ul {
 .boxCont {
     overflow: hidden;
     width: 100%;
-    margin-left: 20%;
+    margin-left: -50px;
     margin-bottom: 30px;
 }
 
