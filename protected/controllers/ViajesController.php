@@ -157,7 +157,7 @@ EOF;
             $return['html'] = $html;
             echo json_encode($return);
         }
-    public function actionGetResumenViaje($pedido, $tanque) 
+    public function actionGetResumenViaje($pedido, $tanque, $pos) 
     {
         $Tanque = Tanque::model();
         $Domicilio = ClientesDomicilio::model();
@@ -167,20 +167,26 @@ EOF;
         $cepa = Cepa::model()->findByPk($pedido->id_cepa);
         $cliente = Clientes::model()->findByPk($solicitud->id_clientes);
         $data['id_cliente'] = $cliente->id;
+        if($pos == $pedido->tanques) {
+            $cant = ceil($pedido->cantidad/$pedido->tanques);
+        }
+        else {
+            $cant = floor($pedido->cantidad/$pedido->tanques);
+        }
         $html = <<<EOF
         <div class='boxCont'>
             <div id='contV3'>
                 <div id='vt1'>
-                    <div class='headerT'>{$Tanque->getTanque($tanque)}</div>
+                    <div class='headerT'>Tanque: {$Tanque->getTanque($tanque)}</div>
                 </div>
                 <div id='vc1' class='vbox'>
-                    <div class='left'>
-                        <p id='vtitulo'>Cliente: <span style="color: #000000">$cliente->nombre_empresa</span></p>
-                        <p><span class='vresalta'>RFC: </span>$cliente->rfc</p>
-                        <p><span class='vresalta'>Contacto: </span>$cliente->nombre_contacto $cliente->apellido_contacto</p>
-                        <p><span class='vresalta'>Domicilio de entrega: </span></br>{$Domicilio->getDomicilio($pedido->id_direccion)}</p>
+                    <div class=''>
+                        <p id='vtitulo'><span style="color: #000000">$cliente->nombre_empresa</span></br>
+                       <span>$cliente->rfc</span></br>
+                        <span>$cliente->nombre_contacto $cliente->apellido_contacto</span></br>
+                        <span>{$Domicilio->getDomicilio($pedido->id_direccion)}</span></p>
                     </div>
-                    <div class='right'>
+                    <div class=''>
                         <p><span class='vresalta'>Fecha de salida: </span> <span class='fsalida'></span></p>
                     </div>
                 </div>
@@ -189,19 +195,20 @@ EOF;
                 </div>
                 <div id='vc2'>
                     <p><span class='vresalta'>Especie: </span>{$Especie->getEspecie($pedido->id_especie)}</p>
-                    <p><span class='vresalta'>No. Organismos: </span>$pedido->cantidad</p>
+                    <p><span class='vresalta'>Cepa: </span>{$cepa->getcepa($pedido->id_cepa)}</p>
+                    <p><span class='vresalta'>No. Organismos: </span>{$cant}</p>
                 <table id='vcont'>
                     <tr class='pf'>
                         <th class='pc'></th><th>Mínima</th><th>Máxima</th>
                     </tr>
                     <tr>
-                        <th class='pc'>Temperatura (Temp)</th><th> {$cepa->temp_min}</th><th>{$cepa->temp_max}</th>
+                        <th class='pc'>Temperatura</th><th> {$cepa->temp_min}</th><th>{$cepa->temp_max}</th>
                     </tr>
                     <tr>
-                        <th class='pc'>PH (ph)</th><th>{$cepa->ph_min}</th><th>{$cepa->ph_max}</th>
+                        <th class='pc'>PH</th><th>{$cepa->ph_min}</th><th>{$cepa->ph_max}</th>
                     </tr>
                     <tr>
-                        <th class='pc'>Oxígeno (O)</th><th> {$cepa->ox_min}</th><th>{$cepa->ox_min}</th>
+                        <th class='pc'>Oxígeno</th><th> {$cepa->ox_min}</th><th>{$cepa->ox_min}</th>
                     </tr>
                 </table>
             </div>
@@ -211,6 +218,7 @@ EOF;
         $data = array();
         $data['cliente'] = $cliente;
         $data['html'] = $html;
+        $data['pos'] = $pos;
         echo json_encode($data);
     }
     public function accessRules()

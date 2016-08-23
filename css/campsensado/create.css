@@ -170,12 +170,9 @@ div.form div.tab div.row {
 div.form div.tab div.row.buttons {
     float: right;
     margin-top: 50px;
-    width: 100px;
-    margin-right: 167px;
-    /* --- 
-    position: fixed;
-    top:230px;
-    right: 0; */
+    width: 270px;
+    right: 190px;
+    top: 228px;
 }
 
 .floating {
@@ -294,11 +291,9 @@ div.chosen-container.error > ul {
     -webkit-border-radius: 10px 10px 10px 10px;
     border: 3px solid #49DBD0;
     margin: auto;
-    width: 60%;
     font-family: 'Roboto-Regular';
     color: black;
     font-weight: bold;
-    float: left;
 }
 
 .izq {
@@ -321,7 +316,7 @@ div.chosen-container.error > ul {
     margin: 0px;
     font-family: 'Roboto-Regular';
     font-size: 20px;
-    padding-left: 30px;
+    text-align: center; 
     vertical-align: middle;
 }
 
@@ -332,27 +327,25 @@ div.chosen-container.error > ul {
 
 }
 
-#vc1,
-#vc2 {
-    height: 205px;
-    margin-left: 30px;
-}
 
+#vc1, #vc2 {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
 #vc1 {
-    height: 70px;
-    margin-top: 30px;
 }
 #vc1 p {
     margin-bottom: 1em;
 }
 
 #vc2 {
-    margin-bottom: 1em;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .vresalta {
-    font-size: 14px;
+    font-size: 15px;
     color: #0077b0;
 }
 
@@ -364,8 +357,11 @@ div.chosen-container.error > ul {
 }
 
 .row.buttons.floating input[type="submit"] {
-
     margin: 0;
+    padding: 0;
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
 }
 #vtitulo {
     color: #0077b0;
@@ -379,9 +375,10 @@ div.chosen-container.error > ul {
 
 .boxCont {
     overflow: hidden;
-    width: 100%;
-    margin-left: 20%;
+    width: 420px;
     margin-bottom: 30px;
+    float: left;
+    margin: 0 17.5px 35px;
 }
 
 .content {
@@ -391,14 +388,14 @@ div.chosen-container.error > ul {
 
 .left {
     float: left;
-    width: 40%;
+    width: 50%;
 }
 
 .left .content {}
 
 .right {
     float: right;
-    width: 40%;
+    width: 50%;
 }
 
 #vcont th {
@@ -412,7 +409,7 @@ div.chosen-container.error > ul {
 }
 
 #vcont {
-    width: 70% !important;
+    width: 100%;
 }
 
 
@@ -432,4 +429,8 @@ div.chosen-container.error > ul {
     display: block;
     padding-right: 0px;
     text-align: right;
+}
+body.CampSensado .gBoton {
+    width: 120px !important;
+    margin-right: 10px !important;
 }

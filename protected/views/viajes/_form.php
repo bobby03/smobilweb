@@ -203,7 +203,7 @@
 
 </div>
     <!-- - - - - - - - - - - - - - - - -  TAB 3 - - - - - - - - - - - - - - - - - - - - - - -->
-    <div class="tab hide" data-tab="3"> 
+    <div class="tab hide" data-tab="3"> esaqui
         <!--
          <div class="contenedorClientes">
             <?php // print_r($pedidos);?>
@@ -366,7 +366,7 @@
         </div>
 
          <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="3">
-            <div class="inner-third-wrapper">
+            <div class="inner-third-wrapper"> es en el else
                 <!--<div class="siguiente fBoton bBoton" >Regresar</div>-->
             </div>
          </div>
