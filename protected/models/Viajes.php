@@ -278,16 +278,6 @@ class Viajes extends CActiveRecord
                 'name'=>'hora_salida',
                 'value' => 'date("H:i", strtotime($data->hora_salida))'
             ),
-//            array
-//            (
-//                'name'=>'fecha_entrega',
-//                'value' => 'Viajes::model()->getFecha($data->fecha_entrega)'
-//            ),
-//            array
-//            (
-//                'name'=>'hora_entrega',
-//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
-//            ),
             array
             (
                 'class'=>'NCButtonColumn',
