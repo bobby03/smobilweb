@@ -313,7 +313,7 @@ eof;
                     if($tanque->save())
                         $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
                 }
-                $model->delete();
+               $update = Yii::app()->db->createCommand("UPDATE solicitudes SET status=0 WHERE id = $model->id")->execute();
             }
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 	/*	if(!isset($_GET['ajax']))
