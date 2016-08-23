@@ -141,7 +141,7 @@
             <div class="siguiente dos">Siguiente</div>
         </div>
     </div>
-    <div class="tab hide" data-tab="3">
+    <div class="tab last hide" data-tab="3">
         <div class="inner-third-wrapper">
         </div>
         <div class='row buttons floating'>
