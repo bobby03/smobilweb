@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
  $baseUrl = Yii::app()->baseUrl;
  $cs = Yii::app()->getClientScript();
  $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
+ $cs->registerScriptFile($baseUrl.'/js/estacion/create.js');
  $model->disponible = Estacion::model()->getDisponible($model->disponible);
  $model->tipo = Estacion::model()->getTipo($model->tipo);
 ?>
