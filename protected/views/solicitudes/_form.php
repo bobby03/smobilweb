@@ -180,10 +180,8 @@ eof;
 
         <h2>Clientes</h2>
 	<div class="row">
-            <span class='css-select-moz'>
-                <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
-                <p class="ierrorD" id="errorCli"></p>
-            </span>
+            <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
+            <p class="ierrorD" id="errorCli"></p>
 	</div>
         <div class="row pedido hide"><!--hide-->
             <h2>Pedido</h2>
