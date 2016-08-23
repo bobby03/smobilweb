@@ -2,45 +2,51 @@ $(document).ready(function()
 {
     var url = window.location.href;
     var index = url.lastIndexOf('update');
-	var cepa;
-	var especie;
-        var n = window.location.href.lastIndexOf('update');
-        var isupdate = 0;
-        if (n >=0) {
-            isupdate = 1;
+    var cepa;
+    var especie;
+    var n = window.location.href.lastIndexOf('update');
+    var isupdate = 0;
+    if (n >=0) {
+        isupdate = 1;
+    }
+    $('#Granjas_id').on('change', function(){
+        var id = $(this).val();
+        if(id == '') {
+                $('#CampSensado_id_estacion').empty();
+                $('#CampSensado_id_estacion').append('<option value="">Seleccionar</option>');
+                $('#CampSensado_id_estacion').prop('disabled', 'disabled');
         }
-	$('#Granjas_id').on('change', function(){
-		var id = $(this).val();
-		if(id == '') {
-			$('#CampSensado_id_estacion').empty();
-			$('#CampSensado_id_estacion').append('<option value="">Seleccionar</option>');
-			$('#CampSensado_id_estacion').prop('disabled', 'disabled');
-		}
-		else {
-                    var url="getEstacionesFromGranja";
-                    if(isupdate!=0){
-                        url = "../getEstacionesFromGranja";
-                    }
-			$.ajax({
-				type: 'GET',
-				url: url,
-				dataType: 'JSON',
-				data: {
-					id: id
-				},
-				success: function(data) {
-					$('#CampSensado_id_estacion').empty();
-					$('#CampSensado_id_estacion').append(data.html);
-					$('#CampSensado_id_estacion').removeAttr("disabled")	;
-				},
-				error: function(a, b, c ) {
-					console.log(a, b, c);
-				}
-			});
+        else {
+            var url="getEstacionesFromGranja";
+            if(isupdate!=0){
+                url = "../getEstacionesFromGranja";
+            }
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'JSON',
+                data: {
+                        id: id
+                },
+                success: function(data) {
+                        $('#CampSensado_id_estacion').empty();
+                        $('#CampSensado_id_estacion').append(data.html);
+                        $('#CampSensado_id_estacion').removeAttr("disabled")	;
+                },
+                error: function(a, b, c ) {
+                        console.log(a, b, c);
+                }
+            });
 
-		}
+        }
 
-	});
+    });
+    $('.gBoton.regresar.uno').on('click', function() {
+        $('.tab[data-tab="2"]').addClass('hide');
+        $('.tab[data-tab="1"]').removeClass('hide');
+        $('.menuTabs div:nth-child(4)').removeClass('selected');
+        $('.menuTabs div:nth-child(5)').removeClass('selected');
+    });
 	$('.siguiente.uno').on('click', function() {
 		var id = $('#CampSensado_id_estacion').val();
                 var fecha_inicio = $('#CampSensado_fecha_inicio').val();
@@ -79,7 +85,14 @@ $(document).ready(function()
                     }
 		}
 	});
+    $('.gBoton.regresar.dos').on('click', function() {
+        $('.tab[data-tab="3"]').addClass('hide');
+        $('.tab[data-tab="2"]').removeClass('hide');
+        $('.menuTabs div:nth-child(6)').removeClass('selected');
+        $('.menuTabs div:nth-child(7)').removeClass('selected');
+    });
     $('.siguiente.dos').on('click', function() {
+        $('.inner-third-wrapper').empty();
         $('.pedido').each(function() {
         	var tanque   = $(this).find('.tituloEspecie').html();
         	var id_especie  = $(this).find('.css-select.especie').val();
@@ -123,30 +136,30 @@ $(document).ready(function()
 					                        '</div>'+
 					                        '<div id="vc1" class="vbox">'+
 					                            '<div class="left">'+
-							                        '<p><span class="vresalta">Fecha de inicio:</span> <span class="fsalida">'+fecha_inicio+' </span></p>'+
-							                        '<p><span class="vresalta">hora de inicio:</span> <span class="fsalida"> '+hora_inicio+' </span></p>'+
+							                        '<p><span class="vresalta">Fecha de inicio: </span> <span class="fsalida">'+fecha_inicio+' </span></p>'+
+							                        '<p><span class="vresalta">Hora de inicio: </span> <span class="fsalida"> '+hora_inicio+' </span></p>'+
 							                    '</div>'+
 							                    '<div class="right">'+
-							                        '<p><span class="vresalta">Fecha de inicio:</span> <span class="fsalida">'+fecha_fin+' </span></p>'+
-							                        '<p><span class="vresalta">hora de inicio:</span> <span class="fsalida"> '+hora_fin+' </span></p>'+
+							                        '<p><span class="vresalta">Fecha de inicio: </span> <span class="fsalida">'+fecha_fin+' </span></p>'+
+							                        '<p><span class="vresalta">Hora de inicio: </span> <span class="fsalida"> '+hora_fin+' </span></p>'+
 							                    '</div>'+
 					                        '</div>'+
 						                    '<div id="vc2">'+
-						                        '<p><span class="vresalta">Especie:</span>'+especie+' </p>'+
-						                        '<p><span class="vresalta">Cepa:</span>'+data.nombre+' </p>'+
-						                        '<p><span class="vresalta">No. Organismos:</span> '+cantidad+'</p>'+
+						                        '<p><span class="vresalta">Especie: </span>'+especie+' </p>'+
+						                        '<p><span class="vresalta">Cepa: </span>'+data.nombre+' </p>'+
+						                        '<p><span class="vresalta">No. Organismos: </span> '+cantidad+'</p>'+
 						                        '<table id="vcont">'+
 						                            '<tbody><tr class="pf">'+
 						                                '<th class="pc"></th><th>Mínima</th><th>Máxima</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">Temperatura (Temp)</th><th>'+data.temp_min+' °C</th><th>'+data.temp_max+' °C</th>'+
+						                                '<th class="pc">Temperatura </th><th>'+data.temp_min+' °C</th><th>'+data.temp_max+' °C</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">PH (ph)</th><th>'+data.ph_min+'</th><th>'+data.ph_min+'</th>'+
+						                                '<th class="pc">PH </th><th>'+data.ph_min+'</th><th>'+data.ph_min+'</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">Oxígeno (O)</th><th> '+data.ox_min+' mg/l</th><th>'+data.ox_min+' mg/l </th>'+
+						                                '<th class="pc">Oxígeno </th><th> '+data.ox_min+' mg/l</th><th>'+data.ox_min+' mg/l </th>'+
 						                            '</tr>'+
 						                        '</tbody></table>'+
 						                    '</div>'+

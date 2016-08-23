@@ -50,9 +50,8 @@
             ),
     )); 
     ?>
-    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Regresar</a>
     <div class="row">
-        <h3><label class="cLetreros">Direcciones</label></h3><h2 class="letrero-container"></h2>
+        <h3><label class="cLetreros">Direcciones</label></h3><h2 class="letrero-container"></h2><a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/clientes">Regresar</a>
     </div>
     <div class="form-cLeft1">
 
