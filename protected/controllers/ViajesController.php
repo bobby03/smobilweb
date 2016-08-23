@@ -174,13 +174,13 @@ EOF;
                     <div class='headerT'>{$Tanque->getTanque($tanque)}</div>
                 </div>
                 <div id='vc1' class='vbox'>
-                    <div class='left'>
-                        <p id='vtitulo'>Cliente: <span style="color: #000000">$cliente->nombre_empresa</span></p>
-                        <p><span class='vresalta'>RFC: </span>$cliente->rfc</p>
-                        <p><span class='vresalta'>Contacto: </span>$cliente->nombre_contacto $cliente->apellido_contacto</p>
-                        <p><span class='vresalta'>Domicilio de entrega: </span></br>{$Domicilio->getDomicilio($pedido->id_direccion)}</p>
+                    <div class=''>
+                        <p id='vtitulo'><span style="color: #000000">$cliente->nombre_empresa</span></br>
+                       $cliente->rfc</br>
+                        $cliente->nombre_contacto $cliente->apellido_contacto</br>
+                        {$Domicilio->getDomicilio($pedido->id_direccion)}</p>
                     </div>
-                    <div class='right'>
+                    <div class=''>
                         <p><span class='vresalta'>Fecha de salida: </span> <span class='fsalida'></span></p>
                     </div>
                 </div>

@@ -101,6 +101,7 @@ $(document).ready(function()
             total++;
         });
         var fecha = $('#Viajes_fecha_salida').val();
+        $('.inner-third-wrapper').empty();
         for(var i =0; i < total; i++)
         {
             var tanque = $('[name="Solicitudes[codigo]['+(i+1)+'][id_tanque]"').val();
@@ -128,7 +129,6 @@ $(document).ready(function()
             }
         }
     });
-
 	function validateChangesTanque(){
 		$('[data-tan]').on('change', function() {
             var num = $(this).val();

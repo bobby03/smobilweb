@@ -25,7 +25,9 @@ $(document).ready(function()
         // $('.menuTabs div:nth-child(4)').removeClass('selected');
         // $('.menuTabs div:nth-child(5)').removeClass('selected');
         $('.menuTabs div:nth-child(6)').removeClass('selected');
-        $('.menuTabs div:nth-child(7)').removelass('selected');
+        $('.menuTabs div:nth-child(7)').removeClass('selected');
+        $('.menuTabs div:nth-child(8)').removeClass('selected');
+        $('.menuTabs div:nth-child(9)').removeClass('selected');
 
     });
 
