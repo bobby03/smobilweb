@@ -483,3 +483,6 @@ div.tab.last div.floating {
 .bDos.fBoton.floatingbutton.regresar {
     margin-right: 15px !important;
 }
+.bUno.fBoton.regresar {
+    float: right;
+}
