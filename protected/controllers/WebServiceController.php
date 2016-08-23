@@ -515,17 +515,9 @@ class WebServiceController extends Controller
         $idViaje = isset($_GET['id'])?$_GET['id']:0;
         $status = isset($_GET['status'])?$_GET['status']:0;
         $table = 'viajes';
-        $column;
-        if($status == 3){
-            $column = array('disponible'=>'1','status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
-        }
-        else{
-            $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
-
-        }
+        $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
         $conditions = "id = :idViaje";
         $params = array(":idViaje"=>$idViaje);
-
 
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
         $aResult = null;
@@ -556,6 +548,22 @@ class WebServiceController extends Controller
         $code = isset($_GET['code'])?$_GET['code']:0;
         $table = 'solicitudes';
         $column = array('status'=>"3",'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
+        $conditions = "codigo = :code";
+        $params = array(":code"=>$code);
+        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+        if($update > 0)
+            $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+        else
+            $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+        
+        echo json_encode($aResult);
+
+    }
+
+    public function actionUpdateEstacion(){
+        $code = isset($_GET['id'])?$_GET['id']:0;
+        $table = 'estacion';
+        $column = array('disponbile'=>"1");
         $conditions = "codigo = :code";
         $params = array(":code"=>$code);
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
