@@ -11,18 +11,22 @@ $(document).ready(function()
     var mapDiv = $('#map')[0];
     var total = 1;
     var delay = 250;
+    // console.log('MyDir:'+myDir);
     var map = new google.maps.Map(mapDiv, 
     {
         center: myDir,
-        zoom: 15,
+        zoom: 11,
         disableDefaultUI: true,
         draggable: false,
         zoomControl: false,
         scrollwheel: false,
-        disableDoubleClickZoom: true
+        disableDoubleClickZoom: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+    
     graficarPorTanque();
     graficarPorParametro();
+
     $('[data-id="1"] .boton.adve').click(function()
     {
         // console.log('paramretro graph');
@@ -180,7 +184,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                console.log(data);
+                // console.log(data);
                 $.colorbox(
                 {
                     html: data.codigo,
@@ -319,6 +323,7 @@ $(document).ready(function()
                     },
                     success: function(data2)
                     {
+                        // console.log('V:'+viaje+'ID:'+id+'F:'+flag+'F2:'+flag2);
                         var ctx = $('[data-tanque="'+id+'"] #graf'+i+'');
                         if(data2 != '' && data2 != null)
                             var myChart = new Chart(ctx, data2.grafica);
@@ -328,11 +333,14 @@ $(document).ready(function()
                             var tiempo = data2.tiempo;
                             var datos = data2.viaje;
                             ubi = datos.ubicacion;
+                            // console.log('LOCATION: '+ubi);
                             var index = ubi.indexOf(',');
                             var lat = parseFloat(ubi.substring(1,index));
                             var index2 = ubi.length;
-                            var lng = parseFloat(ubi.substring(index+2,index2-1));
+                            var lng = parseFloat(ubi.substring(index-1,index2-1));
                             ubi = {lat:lat, lng:lng};
+                            // console.log('LOCATION: '+ubi['lat']);
+                            // console.log('LOCATION: '+ubi['lng']);
                             var marker = new google.maps.Marker(
                             {        
                                 position: ubi,
@@ -344,7 +352,7 @@ $(document).ready(function()
                            // console.log(data2);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
-                            reverseGeocoding(datos.ubicacion, 1, false);
+                            if(firstTime) reverseGeocoding(datos.ubicacion, 1, false);
                             $('.datosWraper span.distancia').text(data2.distancia);
                             flag2 = false;
                         }
@@ -408,37 +416,37 @@ $(document).ready(function()
         console.log("Lat: "+lt);
         console.log("Lng: "+ln);
         var latlng = {lat: parseFloat(lt), lng: parseFloat(ln)};
-        if(firstTime){
-            geocoder.geocode({'location': latlng}, function(results, status) 
+        
+        geocoder.geocode({'location': latlng}, function(results, status) 
+        {
+            if (status === google.maps.GeocoderStatus.OK) 
             {
-                if (status === google.maps.GeocoderStatus.OK) 
+                if (results[1]) 
                 {
-                    if (results[1]) 
+                    infowindow.setContent(results[1].formatted_address);
+                    if(flag == 1)
+                        $('.datosWraper > div:last-child span').text(infowindow.content);
+                    if(flag == 2)
                     {
-                        infowindow.setContent(results[1].formatted_address);
-                        if(flag == 1)
-                            $('.datosWraper > div:last-child span').text(infowindow.content);
-                        if(flag == 2)
-                        {
-                            div.text(infowindow.content);
-                            var h = div.height();
-                            var height = (50-h)/2;
-                            div.css('padding',height+'px 0'); 
-                        } 
+                        div.text(infowindow.content);
+                        var h = div.height();
+                        var height = (50-h)/2;
+                        div.css('padding',height+'px 0'); 
                     } 
-                    else 
-                        window.alert('No results found');
-                  
                 } 
-    //             else
-    //             {
-    //                 // reverseGeocoding(direccion, flag, div);
-    // //                window.alert('Geocoder failed due to: ' + status);
-    //             }
-            });
-            firstTime = false;
+                else 
+                    window.alert('No results found');
+              
+            } 
+//             else
+//             {
+//                 // reverseGeocoding(direccion, flag, div);
+// //                window.alert('Geocoder failed due to: ' + status);
+//             }
+        });
+        firstTime = false;
 
-        }
+        
         
     }
     $('#map').click(function()

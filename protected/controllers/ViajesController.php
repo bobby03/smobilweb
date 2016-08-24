@@ -2173,7 +2173,7 @@ eof;
             ->select("esc.hora, upT.$id, upT.id_tanque, upT.id")
             ->order('upT.id DESC')
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->queryAll();
         $count = count($total);
