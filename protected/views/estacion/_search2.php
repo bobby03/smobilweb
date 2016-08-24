@@ -12,23 +12,16 @@
 )); ?>
 
  	<?php echo CHtml::dropDownList('searchDropDown2', 'id', $model->getSearchEstaciones(),array('empty' =>'Selecciona campo a buscar')); ?>
-
-
 	<div class="row hide" data-id='1'>
-	    
 		<?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
-
 	<div class="row hide" data-id='2'>
-		
 		<?php echo $form->textField($model,'no_personal'); ?>
 	</div>
-
 	<div class="row hide" data-id='3'>
 		
 		<?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
-
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->

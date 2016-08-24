@@ -38,6 +38,7 @@ $this->breadcrumbs=array(
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search1(1,1),
             'columns'=>$model->adminSearch(),
+            'ajaxUpdate'=>true,
             'pager' => array
             (
                 'class' => 'PagerSA',
@@ -55,14 +56,10 @@ $this->breadcrumbs=array(
     </div>
     <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
         <div class="search-form2" >
-            <?php $this->renderPartial('_search2',array(
-                    'model'=>$model,
-            )); ?>
-            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/estacion/create/tipo/1">
-                <div class="agregar estacion"></div>
-            </a>
+        <?php $this->renderPartial('_search2',array(
+                'model'=>$model,
+        )); ?>
         </div><!-- search-form -->
-
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'estacion-grid2',

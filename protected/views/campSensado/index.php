@@ -4,6 +4,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/campsensado/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $cs->registerScriptFile($baseUrl.'/js/siembras/search.js');
     $this->breadcrumbs=array(

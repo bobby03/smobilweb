@@ -5,6 +5,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/clientes/cliente.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/clientes/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $cs->registerScriptFile($baseUrl.'/js/clientes/search.js');
 

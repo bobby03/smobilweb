@@ -47,6 +47,7 @@
                 'template' => "{items}{summary}{pager}",
                 'dataProvider'=>$model->search(1),
                 'columns'=>$model->adminSearch(),
+                'ajaxUpdate'=>true,
                 'pager' => array
                 (
                     'class' => 'PagerSA',
