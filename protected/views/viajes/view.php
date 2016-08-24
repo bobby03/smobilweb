@@ -248,39 +248,7 @@
     <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); 
     ?>
     <div class="detallesViaje">
-
-        <div class="datosViaje" style="width:1200px; height:180px;">
-            <div class="titulo">Datos del viaje</div>
-            <div class="datosWraper finalizado">
-                <div>
-                    <div class="subtitulo">Viaje #<?php echo $model->id;?></div>
-                    <div class="txtA">Fecha salida:<span><?php echo $model->fecha_salida;?></span></div>
-<!--                     <div class="txtA ultimo">Último destino:<span></span></div>
- -->                </div>
-                <div>
-                    <div class="txtA">Tiempo de viaje:</div>
-                    <?php 
-                        $datetime1 = new DateTime($model->fecha_salida);
-                        $datetime2 = new DateTime($model->fecha_entrega);
-                        $interval = $datetime1->diff($datetime2);
-                        
-                        echo "<span>".$interval->format('%m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos')."</span>";
-                        // echo "<span>".$interval->format('%R%a d&iacute;as %d %H:%M horas')."</span>";
-                    ?>
-                    <span class="tiempo"></span>
-                </div>
-                <div>
-                 <div class="txtA ultimo">Distancia recorrida:</div>
-                    <span class="distancia"><?php echo number_format(intval($this->getDistanciaKm($model->id)), 2, '.', ' '),' Km'; ?></span>
-                </div>
-                <div>
-                    <div class="txtA">Fecha entrega:</div><span><? echo $model->fecha_entrega; ?></span>
-                </div>
-
-            </div>
-        </div>
-
-       <!--  <div class="datosViaje" style="width:1080px">
+         <div class="datosViaje" >
             <div class="titulo">Datos del viaje<span>Ultima actualización:</span></div>
             <div class="datosWraper">
                 <div>
@@ -289,7 +257,7 @@
                     <div class="txtA ultimo">Último destino:<span></span></div>
                 </div>
                 <div>
-                    <div class="txtA">Tiempo de viaje:</div>
+                     <div class="txtA">Tiempo de viaje:</div>
                     <span class="tiempo"></span>
                     <div class="txtA ultimo">Distancia recorrida:</div>
                     <span class="distancia"></span>
@@ -299,10 +267,10 @@
                     <span></span>
                 </div>
             </div>
-        </div> -->
-        <div class="mapaWraper" style="display:none;width:0;height:0">
+        </div> 
+        <div class="mapaWraper" >
             <div class="titulo">Mapa</div>
-            <div id="map" style="display:none"></div>
+            <div id="map" ></div>
         </div>
     </div>
     <div class="tanquesViajes">
@@ -322,14 +290,14 @@
                             <div class="boton adve" data-ale="<?php echo $data['id'];?>"></div>
                         </div>
                     </div>
-                    <!--h3>Variables de monitoreo</h3>
+                    <h3>Variables de monitoreo</h3>
                     <div class="grafica" data-tanque="<?php echo $data['id'];?>">
                         <div data-num="1"><canvas id="graf1" width="100" height="190"></canvas></div>
                         <div data-num="2"><canvas id="graf2" width="96.39" height="190"></canvas></div>
                         <div data-num="3"><canvas id="graf3" width="96.39" height="190"></canvas></div>
                         <div data-num="4"><canvas id="graf4" width="96.39" height="190"></canvas></div>
                         <div data-num="5"><canvas id="graf5" width="96.39" height="190"></canvas></div>
-                    </div -->
+                    </div>
                     <div> </div>
                 </div>
             <?php endforeach;?>
@@ -345,9 +313,9 @@
                         <div class="boton adve" data-ale="ox"></div>
                     </div>
                 </div>
-                <!--div class="grafica">
+                <div class="grafica">
                     <canvas id="grafP1" width="447" height="190"></canvas>
-                </div -->
+                </div>
             </div>
             <div class="tanque" data-para="2">
                 <div class="titulosWraper">
@@ -359,9 +327,9 @@
                         <div class="boton adve" data-ale="temp"></div>
                     </div>
                 </div>
-                <!-- div class="grafica">
+                <div class="grafica">
                     <canvas id="grafP2" width="447" height="190"></canvas>
-                </div -->
+                </div>
             </div>
             <div class="tanque" data-para="3">
                 <div class="titulosWraper">
@@ -373,9 +341,9 @@
                         <div class="boton adve" data-ale="ph"></div>
                     </div>
                 </div>
-                <!-- div class="grafica">
+                <div class="grafica">
                     <canvas id="grafP3" width="447" height="190"></canvas>
-                </div -->
+                </div>
             </div>
             <div class="tanque" data-para="4">
                 <div class="titulosWraper">
@@ -387,9 +355,9 @@
                         <div class="boton adve" data-ale="cond"></div>
                     </div>
                 </div>
-                <!-- div class="grafica">
+                <div class="grafica">
                     <canvas id="grafP4" width="447" height="190"></canvas>
-                </div -->
+                </div>
             </div>
             <div class="tanque" data-para="5">
                 <div class="titulosWraper">
@@ -401,9 +369,9 @@
                         <div class="boton adve" data-ale="orp"></div>
                     </div>
                 </div>
-                <!-- div class="grafica">
+                <div class="grafica">
                     <canvas id="grafP5" width="447" height="190"></canvas>
-                </div -->
+                </div>
             </div>
         </div>
     </div>

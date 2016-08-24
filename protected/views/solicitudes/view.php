@@ -40,6 +40,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'codigo',
                 'fecha_alta',
                 'hora_alta',
+                'hora_alta', 
                 'fecha_estimada',
                 'hora_estimada',
                 'fecha_entrega',

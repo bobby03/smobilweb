@@ -33,7 +33,7 @@ class Roles extends SMActiveRecord
 
 
 
-         array('nombre_rol','required','message'=>'Debe especificar un nombre de Rol'),
+         array('nombre_rol','required','message'=>'Debe especificar un nombre de rol'),
 
          array(
                 'nombre_rol',

@@ -107,7 +107,7 @@ $form=$this->beginWidget('CActiveForm', array(
 			</div>
 			<div class="row">
 				<?php echo $form->labelEx($model,'hora_inicio'); ?>
-				<?php echo $form->textField($model,'hora_inicio', array('placeholder'=>'hh:mm')); ?>
+				<?php echo $form->textField($model,'hora_inicio', array('placeholder'=>'hh:mm (24 horas)')); ?>
 				<?php echo $form->error($model,'hora_inicio'); ?>
 			</div>
 
@@ -119,7 +119,7 @@ $form=$this->beginWidget('CActiveForm', array(
 
 			<div class="row">
 				<?php echo $form->labelEx($model,'hora_fin'); ?>
-				<?php echo $form->textField($model,'hora_fin', array('placeholder'=>'hh:mm')); ?>
+				<?php echo $form->textField($model,'hora_fin', array('placeholder'=>'hh:mm (24 horas)')); ?>
 				<?php echo $form->error($model,'hora_fin'); ?>
 			</div>
 
@@ -141,7 +141,7 @@ $form=$this->beginWidget('CActiveForm', array(
             ?>
         </div>
         <div class="botonesWrapper2">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
+            <div class="gBoton regresar uno" >Regresar</div>
             <div class="siguiente dos">Siguiente</div>
         </div>
     </div>
@@ -150,7 +150,7 @@ $form=$this->beginWidget('CActiveForm', array(
     <div class="inner-third-wrapper"></div>
 	<div class="row buttons">
         <div class="row buttons floating">
-         	<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
+         	<div class="gBoton regresar dos" >Regresar</div>
 			<?php echo CHtml::submitButton('Finalizar'); ?>
 		</div>
 	</div>

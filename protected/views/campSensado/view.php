@@ -22,6 +22,7 @@ $this->breadcrumbs=array(
 		'nombre_camp',
 		'fecha_inicio',
 		'hora_inicio',
+		'hora_inicio',
 		'fecha_fin',
 		'hora_fin',
 		'activo',

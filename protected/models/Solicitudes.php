@@ -69,7 +69,7 @@ class Solicitudes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Id',
+			'id' => 'Solicitud',
 			'id_clientes' => 'Cliente',
 			'codigo' => 'Código',
 			'fecha_alta' => 'Fecha alta',
@@ -83,7 +83,7 @@ class Solicitudes extends CActiveRecord
 	}
 public function getSearchSolicitud(){
             return array('1'=>'Cliente',
-                         '2'=>'Codigo',
+                         '2'=>'Código',
                          '3'=>'Id',/*
                          '4'=>'Hora Alta',
                          '5'=>'Fecha Estimada',
@@ -320,7 +320,7 @@ public function getSearchSolicitud(){
             'codigo',
              array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'# tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -333,16 +333,16 @@ public function getSearchSolicitud(){
                 'name'=>'hora_alta',
                 'value' => 'date("H:i", strtotime($data->hora_alta))'
             ),
-            array
-            (
-                'name'=>'fecha_estimada',
-                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
-            ),
-            array
-            (
-                'name'=>'hora_estimada',
-                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
-            ),
+//            array
+//            (
+//                'name'=>'fecha_estimada',
+//                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
+//            ),
+//            array
+//            (
+//                'name'=>'hora_estimada',
+//                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
+//            ),
 //            array
 //            (
 //                'name'=>'fecha_entrega',
@@ -380,12 +380,12 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'# tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
             (
-                'name'=>'ID de viaje',
+                'name'=>'Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
             array
@@ -423,7 +423,14 @@ public function getSearchSolicitud(){
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                'buttons' => array
+                    (
+                       'delete'=> array 
+                       (
+                        'url' => 'Yii::app()->createUrl("solicitudes/delete/$data->id")',
+                        ) 
+                    )
             )
         );
     }
@@ -465,12 +472,12 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'# tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
             (
-                'name'=>'ID de Viaje',
+                'name'=>'Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
             array
@@ -538,12 +545,12 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'# tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
             (
-                'name'=>'No Viaje',
+                'name'=>' Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
             array

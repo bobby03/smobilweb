@@ -301,7 +301,7 @@ class WebServiceController extends Controller
                 //----------------------- Plataforma Viaje ----------------------------
                 $today = date('Y-m-d');
             $PlataformasViaje = Yii::app()->db->createCommand()
-                ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, E.ID AS ID_EST')
+                ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, e.id AS ID_EST')
                 ->from('viajes  v')
                 ->join('estacion e','id_estacion = e.id')
                 ->join('solicitudes s','s.id = v.id_solicitudes')
@@ -563,8 +563,8 @@ class WebServiceController extends Controller
     public function actionUpdateEstacion(){
         $code = isset($_GET['id'])?$_GET['id']:0;
         $table = 'estacion';
-        $column = array('disponbile'=>"1");
-        $conditions = "codigo = :code";
+        $column = array('disponible'=>"1");
+        $conditions = "id = :code";
         $params = array(":code"=>$code);
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
         if($update > 0)

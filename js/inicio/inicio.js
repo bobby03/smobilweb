@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var hijos  =  $('.principal.index').children('#no-viajes').length;
-  console.log(hijos);
+  // console.log(hijos);
   if(hijos > 0) {
     $('#content').addClass('vacio');
   }
