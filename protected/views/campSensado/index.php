@@ -4,6 +4,7 @@
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/campsensado/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $this->breadcrumbs=array(
 	'Siembra',
@@ -57,7 +58,11 @@
     ?>
     </div>
     <div class="tabContent hide" id="asignadas" data-tan="2"> <!--Inactivos-->
- 
+    <div class="search-form2"><!-- search-form -->
+    <?php $this->renderPartial('_search',array(
+            'model'=>$model,
+    )); ?>
+    </div>
 
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
