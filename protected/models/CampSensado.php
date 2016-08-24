@@ -39,7 +39,7 @@ class CampSensado extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_responsable, id_estacion','required'),
+			array('id_responsable, id_estacion','required','message'=>'Este campo es obligatorio'),
 			array('id_responsable, id_estacion, status, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre_camp', 'length', 'max'=>45),
 			//array('fecha_inicio,fecha_fin', 'safe'),

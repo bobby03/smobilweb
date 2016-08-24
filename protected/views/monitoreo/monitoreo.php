@@ -46,7 +46,7 @@
                 ?>
                 <p><?php echo $disp?></p>
 <!--                <p class="subtit">Actividad:</p> 
-                <p><?php echo $act?></p>-->
+                <p><?php// echo $act;?></p>-->
             </div>
             <div id="esp4">
                 <p class="subtit">Ubicación:</p>    

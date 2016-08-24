@@ -83,7 +83,7 @@ class Solicitudes extends CActiveRecord
 	}
 public function getSearchSolicitud(){
             return array('1'=>'Cliente',
-                         '2'=>'Codigo',
+                         '2'=>'Código',
                          '3'=>'Id',/*
                          '4'=>'Hora Alta',
                          '5'=>'Fecha Estimada',
