@@ -6,6 +6,7 @@
     $cs->registerCssFile($baseUrl.'/css/clientes/cliente.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
+    $cs->registerScriptFile($baseUrl.'/js/clientes/search.js');
 
 
 $this->breadcrumbs=array(
@@ -49,6 +50,11 @@ $this->breadcrumbs=array(
     )); ?>
 </div>
     <div class="tabContent hide" data-tan="2">
+        <div class="search-form2" >
+    <?php $this->renderPartial('_search2',array(
+            'model'=>$model,
+    )); ?>
+    </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array(
             'id'=>'clientes-grid2',
             'dataProvider'=>$model->search(0),

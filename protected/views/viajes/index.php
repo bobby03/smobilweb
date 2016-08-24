@@ -15,14 +15,14 @@
         <div class="tab" data-id="2"><span>En ruta</span></div>
         <div class="tab" data-id="3"><span>Finalizado</span></div>
     </div>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes/crear">
-        <div class="agregar viaje"></div>
-    </a>
     <div class="tabContent" data-tan="1">
         <div class="search-form">
             <?php $this->renderPartial('_search',array(
                     'model'=>$model,
             )); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes/crear">
+                <div class="agregar viaje"></div>
+            </a>
         </div><!-- search-form -->
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (

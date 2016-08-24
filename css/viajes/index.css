@@ -26,7 +26,7 @@ div.tab.select
 
 .agregar.viaje{
     background-image: url('../../images/viajes/iconoNuevoCamion.svg');
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 
 div.tabs:after,
