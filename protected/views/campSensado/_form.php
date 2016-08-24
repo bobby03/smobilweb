@@ -107,7 +107,7 @@ $form=$this->beginWidget('CActiveForm', array(
 			</div>
 			<div class="row">
 				<?php echo $form->labelEx($model,'hora_inicio'); ?>
-				<?php echo $form->textField($model,'hora_inicio', array('placeholder'=>'hh:mm')); ?>
+				<?php echo $form->textField($model,'hora_inicio', array('placeholder'=>'hh:mm (24 horas)')); ?>
 				<?php echo $form->error($model,'hora_inicio'); ?>
 			</div>
 
@@ -119,7 +119,7 @@ $form=$this->beginWidget('CActiveForm', array(
 
 			<div class="row">
 				<?php echo $form->labelEx($model,'hora_fin'); ?>
-				<?php echo $form->textField($model,'hora_fin', array('placeholder'=>'hh:mm')); ?>
+				<?php echo $form->textField($model,'hora_fin', array('placeholder'=>'hh:mm (24 horas)')); ?>
 				<?php echo $form->error($model,'hora_fin'); ?>
 			</div>
 

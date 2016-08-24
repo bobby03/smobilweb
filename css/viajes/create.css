@@ -190,7 +190,7 @@ div.form div.tab div.row {
     /* --- */
     position: fixed;
     top: 274px;
-    right: 15%;
+    right: 26%;
 }
 
 div.contenedorClientes {
@@ -294,23 +294,18 @@ div.chosen-container.error {
 div.chosen-container.error > ul {
     background-color: #FEE !important;
 }
-.headerT {
-    text-align: center;
-}
 
-#contV3 #vt1 {
-    padding: 0;
-}
 #contV3 {
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
     border: 3px solid #49DBD0;
     margin: auto;
+    width: 60%;
     font-family: 'Roboto-Regular';
     color: black;
     font-weight: bold;
-    font-size: 15px;
+    float: left;
 }
 
 .izq {
@@ -321,7 +316,8 @@ div.chosen-container.error > ul {
     top: -45px;
 }
 
-#vt1, #vt2 {
+#vt1,
+#vt2 {
     font-family: 'Roboto-Regular';
     line-height: 45px;
     background-color: #0077b0;
@@ -332,6 +328,7 @@ div.chosen-container.error > ul {
     margin: 0px;
     font-family: 'Roboto-Regular';
     font-size: 20px;
+    padding-left: 30px;
     vertical-align: middle;
 }
 
@@ -340,47 +337,35 @@ div.chosen-container.error > ul {
     -moz-border-radius: 7px 7px 0px 0px;
     -webkit-border-radius: 7px 7px 0px 0px;
 }
-#vt2 {
-    background-color: #F2F2F2;
-    height: 30px;    
-    line-height: 30px;
-}
-#vt2 .headerT {
-    background-color: #F2F2F2;
-    color: #000;
-    font-size: 18px;
-    height: 30px;
-}
+
+#vt2 {}
 
 #vc1,
 #vc2 {
+    height: 200px;
+    margin-left: 30px;
 }
 
 #vc1 p {
     margin-bottom: 1em;
-    text-align: center;
 }
 
 #vc2 {
     margin-bottom: 1em;
     margin-top: 20px;
 }
-#vc1 div:last-child {
-    
-}
+
 .vresalta {
     font-size: 14px;
     color: #0077b0;
 }
 
 #vtitulo {
+    color: #0077b0;
     margin-top: 20px;
-    font-size: 15px;
-    text-align: center;
-}
-#vtitulo span:first-child{
     font-size: 18px;
 }
+
 .vbox {
     overflow: hidden;
 }
@@ -388,9 +373,8 @@ div.chosen-container.error > ul {
 .boxCont {
     overflow: hidden;
     width: 100%;
-    max-width: 420px;
-    float: left;
-    margin: 0 17.5px 32.5px;
+    margin-left: -50px;
+    margin-bottom: 30px;
 }
 
 .content {
@@ -411,19 +395,20 @@ div.chosen-container.error > ul {
     width: 40%;
 }
 
+#vcont th {
+    width: 20%;
+}
 
 .pc,
 .pf {
+    width: 20%;
     color: #0077b0;
 }
 
-#vc2 > * {
-    width: 280px;
-    margin: 0 auto;
+#vcont {
+    width: 70% !important;
 }
-#vc2 > p {
-    margin-bottom: 15px;
-}
+
 
 /* Wrapper para Botones */
 
@@ -447,9 +432,11 @@ div.chosen-container.error > ul {
 
 
 div.form div.tab div.row.buttons {
-
-    display: block;
-    width: 270px;
+/*    float: right;
+    margin-top: 50px;
+    margin-right: 167px;
+    */display: block;
+    width: 300px;
 }
 div.form div.tab div.row.buttons input
 {
@@ -473,6 +460,7 @@ body.viajes-update form input[type="submit"] {
     font-size: 14px !important;
     width:120px !important;
 }
+
 div.tab.last div.row.buttons.floating input {
     padding: 0;
 }
