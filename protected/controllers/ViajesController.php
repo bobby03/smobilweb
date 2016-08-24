@@ -2276,7 +2276,7 @@ eof;
         $return['total'] = $i;
         $return['codigo'] = <<<eof
             <div class="historial parametro">
-                <div class="titulo">Historial de parámetro</div>
+                <div class="titulo">Historial de parámetro ($nombre)</div>
                 <div class="subtitulo">$nombre</div>
                 <div class="historialGraficasWraper">
                 <div class="menuTanques">

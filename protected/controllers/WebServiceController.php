@@ -28,6 +28,48 @@ class WebServiceController extends Controller
 		$this->render('index', array('data'=>$data) );
 	}
 
+    public function actionUpdateEstacionEscalon(){
+        $lat        = isset($_GET['lat'])?$_GET['lat']:"0";
+        $lng        = isset($_GET['lng'])?$_GET['lng']:"0";
+        $type       = isset($_GET['type'])?$_GET['type']:null;
+        $resp       = isset($_GET['resp'])?$_GET['resp']:null;
+        $est       = isset($_GET['EST'])?$_GET['EST']:null;
+        //Campaing data---------------------------------------------------------
+        $LatLng = "(".$lat.",".$lng.")";  // ( Lat,-Lng )
+        $codeViaje  = isset($_GET['id_viaje'])?$_GET['id_viaje']:"0"; // id Viaje
+        $time = date('H:m:s');
+        $date = date('Y-m-d');
+
+        switch ($type) {
+            case 1:
+                $table = 'escalon_viaje_ubicacion';
+                $columns = array('ubicacion'=>$LatLng, 'id_viaje'=>$codeViaje, 'fecha'=>$date, 'hora'=>$time);
+                $conditions = "id_viaje = :idViaje";
+                $params = array(":idViaje"=>$codeViaje);
+                // var_dump($table);
+                // var_dump($columns);
+                if(Yii::app()->db->createCommand()->insert($table,$columns) )
+                    $Campaing = array("lastID"=>Yii::app()->db->getLastInsertID(),"Code"=>200,'SCode'=>"OK");
+                else
+                    $Campaing = array('code'=>303);
+            break;
+                //***********************************************************************************************
+            case 2:
+            $table = 'camp_sensado';
+                $columns = array('id_responsable'=>$resp, 'id_viaje'=>$codeViaje, 'id_estacion'=>$est, 'fecha_inicio'=>$date, 'hora_inicio'=>$time);
+                $conditions = "id_viaje = :idViaje";
+                $params = array(":idViaje"=>$codeViaje);
+               
+                if(Yii::app()->db->createCommand()->insert($table,$columns) )
+                    $Campaing[] = array("lastID"=>Yii::app()->db->getLastInsertID(),"Code"=>200,'SCode'=>"OK");
+                else
+                    $Campaing[] = array('code'=>303);
+            break;
+        }
+        echo json_encode($Campaing);
+
+    }
+
     public function actionUpload(){
         //upload?lat=31.8710559&lng=-116.6669508&id_viaje=30&idTank=28&CT=1&OX=n%2Fa&PH=4.215&T2=22.50&EC=n%2Fa&OD=115.01
         $Campaing = array();
@@ -35,7 +77,7 @@ class WebServiceController extends Controller
         //Sense campaing data
         $lat        = isset($_GET['lat'])?$_GET['lat']:"0";
         $lng        = isset($_GET['lng'])?$_GET['lng']:"0";
-        $type       = isset($_GET['type'])?$_GET['type']:null;
+        $lastID       = isset($_GET['lastID'])?$_GET['lastID']:0;
         $resp       = isset($_GET['resp'])?$_GET['resp']:null;
         $est       = isset($_GET['EST'])?$_GET['EST']:null;
         //Campaing data---------------------------------------------------------
@@ -54,72 +96,39 @@ class WebServiceController extends Controller
         $wl = isset($_GET['WL'])?$_GET['WL']:"0";
         $time = date('H:m:s');
         $date = date('Y-m-d');
-        switch ($type) {
-            case 1:
-                $table = 'escalon_viaje_ubicacion';
-                $columns = array('ubicacion'=>$LatLng, 'id_viaje'=>$codeViaje, 'fecha'=>$date, 'hora'=>$time);
-                $conditions = "id_viaje = :idViaje";
-                $params = array(":idViaje"=>$codeViaje);
-                // var_dump($table);
-                // var_dump($columns);
-                $sqlViaje = Yii::app()->db->createCommand()->insert($table,$columns);
-                if($sqlViaje){
-                    $lastInsert = Yii::app()->db->getLastInsertID();
-                    $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
-                    $sql = Yii::app()->db->createCommand()
-                        ->insert('uploadTemp',array(
-                            'ct'=>$ct,
-                            'id_tanque'=>$codeIdTank,
-                            'id_escalon_viaje_ubicacion'=>$lastInsert,
-                            'alerta'=>$wl,
-                            'ox'=>$ox,
-                            'ph'=>$ph,
-                            'temp'=>$t2,
-                            'cond'=>$ec,
-                            'orp'=>$od)
-                        );
-                    if($sql){
-                        $Campaing[] = array("Ubicacion"=>$campaingTemp,"Code"=>200,'SCode'=>"OK","Validation"=>$sql);
-                    }else{
-                        $Campaing[] = $campaingTemp;
-                    }
-                }else{
-                    $campaingTemp[] = array('Viaje'=> "4BD", 'code'=>400, 'TTL'=>$sqlViaje);
-                }
-                break;
-                //***********************************************************************************************
-            case 2:
-            $table = 'camp_sensado';
-                $columns = array('id_responsable'=>$resp, 'id_viaje'=>$codeViaje, 'id_estacion'=>$est, 'fecha_inicio'=>$date, 'hora_inicio'=>$time);
-                $conditions = "id_viaje = :idViaje";
-                $params = array(":idViaje"=>$codeViaje);
-               
-                $sqlViaje = Yii::app()->db->createCommand()->insert($table,$columns);
-            
-                $lastInsert = Yii::app()->db->getLastInsertID();
-                $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
-                $sql = Yii::app()->db->createCommand()
-                    ->insert('registro_camp',array(
-                        'ct'=>$ct,
-                        'id_tanque'=>$codeIdTank,
-                        'id_estacion'=>$est,
-                        'id_camp_sensado'=>$lastInsert,
-                        'alerta'=>$wl,
-                        'hora'=>$time,
-                        'ox'=>$ox,
-                        'ph'=>$ph,
-                        'temp'=>$t2,
-                        'cond'=>$ec,
-                        'orp'=>$od)
-                    );
-                if($sql){
-                    $Campaing[] = array("Ubicacion"=>$campaingTemp,"Code"=>200,'SCode'=>"OK","Validation"=>$sql);
-                }else{
-                    $Campaing[] = $campaingTemp;
-                }
+        
+        $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
 
-                break;
-        }
+        $table = 'uploadtemp';
+        $columns = array('ct'=>$ct,
+                'id_tanque'=>$codeIdTank,
+                'id_escalon_viaje_ubicacion'=>$lastID,
+                'alerta'=>$wl,
+                'ox'=>$ox,
+                'ph'=>$ph,
+                'temp'=>$t2,
+                'cond'=>$ec,
+                'orp'=>$od);
+
+        // var_dump($columns);
+        
+        $sql = Yii::app()->db->createCommand()
+            ->insert('uploadtemp',array(
+                'ct'=>$ct,
+                'id_tanque'=>$codeIdTank,
+                'id_escalon_viaje_ubicacion'=>$lastID,
+                'alerta'=>$wl,
+                'ox'=>$ox,
+                'ph'=>$ph,
+                'temp'=>$t2,
+                'cond'=>$ec,
+                'orp'=>$od)
+            );
+        if($sql)
+            $Campaing[] = array("Code"=>200,'SCode'=>"OK","Validation"=>$sql);
+        else
+            $Campaing[] = array('error'=>100);
+
        
         echo json_encode($Campaing);
     }
@@ -562,10 +571,20 @@ class WebServiceController extends Controller
 
     public function actionUpdateEstacion(){
         $code = isset($_GET['id'])?$_GET['id']:0;
+        $table = 'viajes';
+        $column = 'id_estacion';
+        $conditions = "id = :id";
+        $params = array(':id'=>$code);
+        $idEstacion = Yii::app()->db->createCommand()
+            ->select('id_estacion')
+            ->from('viajes')
+            ->where($conditions,$params)
+            ->queryRow();
+
         $table = 'estacion';
         $column = array('disponible'=>"1");
         $conditions = "id = :code";
-        $params = array(":code"=>$code);
+        $params = array(":code"=>$idEstacion['id_estacion']);
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
         if($update > 0)
             $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
