@@ -33,18 +33,18 @@ class Granjas extends SMActiveRecord
                 'direccion',
                 'length',
                 'min'=>5,
-                'tooShort'=>'Minimo 5 caracteres',
+                'tooShort'=>'M&iacutenimo 5 caracteres',
                 'max'=>100,
-                'tooLong'=>'Maximo 100 caracteres'),
+                'tooLong'=>'M&aacuteximo 100 caracteres'),
 
             array('responsable','required','message'=>'Este campo es obligatorio'),
             array(
                 'responsable',
                 'length',
                 'min'=>5,
-                'tooShort'=>'Minimo 5 caracteres',
+                'tooShort'=>'M&iacutenimo 5 caracteres',
                 'max'=>100,
-                'tooLong'=>'Maximo 100 caracteres'),  
+                'tooLong'=>'M&aacuteximo 100 caracteres'),  
 
 
             array('nombre','required','message'=>'Este campo es obligatorio'),
@@ -52,9 +52,9 @@ class Granjas extends SMActiveRecord
                 'nombre',
                 'length',
                 'min'=>5,
-                'tooShort'=>'Minimo 5 caracteres',
+                'tooShort'=>'M&iacutenimo 5 caracteres',
                 'max'=>100,
-                'tooLong'=>'Maximo 100 caracteres'),
+                'tooLong'=>'M&aacuteximo 100 caracteres'),
 
 			array('activo', 'numerical', 'integerOnly'=>true),
 
@@ -213,9 +213,9 @@ class Granjas extends SMActiveRecord
             return array
             (
                 'nombre',
-                'direccion',
+                array('name'=>'Direcci&oacuten', 'value'=>'$data->direccion'),
                 'responsable',
-                array('name'=>'Total de Plantas de producción', 'value'=>'Granjas::model()->getNumofPlantas($data->id)'),
+                array('name'=>'Total de Plantas de producci&oacuten', 'value'=>'Granjas::model()->getNumofPlantas($data->id)'),
                 array('name'=>'Total de Tanques ', 'value'=>'Granjas::model()->getTotalTanques($data->id)'),
                 array
                 (
@@ -239,9 +239,9 @@ class Granjas extends SMActiveRecord
             return array
             (
                 'nombre',
-                'direccion',
+                array('name'=>'Direcci&oacuten', 'value'=>'$data->direccion'),
                 'responsable',
-                array('name'=>'Total de Plantas de producción', 'value'=>'Granjas::model()->getNumofPlantas($data->id)'),
+                array('name'=>'Total de Plantas de producci&oacuten', 'value'=>'Granjas::model()->getNumofPlantas($data->id)'),
                 array('name'=>'Total de Tanques ', 'value'=>'Granjas::model()->getTotalTanques($data->id)'),
                 array
                 (

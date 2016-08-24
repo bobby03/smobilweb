@@ -27,7 +27,10 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hora_alta')); ?>:</b>
 	<?php echo CHtml::encode($data->hora_alta); ?>
 	<br />
-
+        
+        <b><?php echo CHtml::encode($data->getAttributeLabel('hora_alta')); ?>:</b>
+	<?php echo CHtml::encode($data->hora_alta); ?>
+	<br />
 	<b><?php echo CHtml::encode($data->getAttributeLabel('fecha_estimada')); ?>:</b>
 	<?php echo CHtml::encode($data->fecha_estimada); ?>
 	<br />
