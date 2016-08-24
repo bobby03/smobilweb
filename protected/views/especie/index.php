@@ -4,6 +4,7 @@
     $cs->registerCssFile($baseUrl.'/css/especie/especie.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
+    $cs->registerScriptFile($baseUrl.'/js/especie/search.js');
     $cs->registerScriptFile($baseUrl.'/js/especie/especie.js?C='.rand());
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
 
@@ -52,6 +53,12 @@
 
     <!--Inactivos-->
     <div class="tabContent hide" data-tan="2"> 
+        <div class="search-form2" ><!-- search-form -->
+            <?php $this->renderPartial('_search2',array(
+                    'model'=>$model,
+            )); ?>
+            
+        </div><!-- search-form -->
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'especies-grid2',
