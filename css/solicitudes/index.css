@@ -14,11 +14,6 @@ div.tabs div.tab
     font-size: 18px;
     color: #FFFFFF;
 }
-div.tabContent
-{
-    margin-top: 40px !important;
-    position: relative;
-}
 div.tab.select
 {
     background-color: #09B7C9;
