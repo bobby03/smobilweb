@@ -18,7 +18,10 @@ div.search-form div.row {
     margin: 0;
 }
 
-div.search-form #searchDropDown {
+div.search-form #searchDropDown, 
+div.search-form #searchDropDown2, 
+div.search-form #searchDropDown3 
+{
     width: 250px;
     height: 30px;
     margin-right: 25px;
