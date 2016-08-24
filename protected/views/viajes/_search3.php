@@ -9,9 +9,9 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
-        'htmlOptions'=>array('data-form'=>1)
+        'htmlOptions'=>array('data-form'=>3)
 )); ?>
-    <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona Búsqueda','data-s'=>1)); ?>
+    <?php echo CHtml::dropDownList('searchDropDown3', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona Búsqueda','data-s'=>3)); ?>
 	<div class="row hide" data-id="1">
             <?php echo $form->textField($model,'id'); ?>
 	</div>
@@ -24,32 +24,6 @@
 	<div class="row hide" data-id="4">
             <?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesOcupadas(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
-<!--
-	<div class="row hide" data-id="3">
-		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
-	</div>
-
-	<div class="row" data-id="4">
-		<?php echo $form->textField($model,'fecha_salida'); ?>
-	</div>
-
-	<div class="row" data-id="5">
-		<?php echo $form->textField($model,'hora_salida'); ?>
-	</div>
-
-	<div class="row" data-id="6">
-		<?php echo $form->textField($model,'fecha_entrega'); ?>
-	</div>
-
-	<div class="row" data-id="7">
-		<?php echo $form->textField($model,'hora_entrega'); ?>
-	</div>
-
-	<div class="row buttons hide">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>-->
-
-
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->
