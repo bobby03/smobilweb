@@ -948,8 +948,20 @@ EOF;
             $viajes = Viajes::model()->findByPk($viaje);
             $empieza = new DateTime($viajes->fecha_salida.' '.$viajes->hora_salida);
             $termina = new DateTime($datos['fecha'].' '.$datos['hora']);
-            $diferencia = $termina->diff($empieza);
-            $return['tiempo'] = $diferencia->format('%d dias %h horas, %I minutos y %S segundos');
+            $interval = $termina->diff($empieza);
+            if($interval->y > 0)                        
+                $return['tiempo'] = $interval->format('%y Años %m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos');
+            elseif($interval->m > 0)
+                $return['tiempo'] = $interval->format('%m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos');
+            elseif($interval->d > 0)
+                $return['tiempo'] = $interval->format('%d D&iacute;as %h Horas %i Minutos %s Segundos');
+            elseif($interval->h >= 2 )
+                $return['tiempo'] = $interval->format('%h Horas %i Minutos %s Segundos');
+            elseif($interval->h == 1 )
+                $return['tiempo'] = $interval->format('%h Hora %i Minutos %s Segundos');
+            elseif ($interval->m > 0) 
+                $return['tiempo'] = $interval->format('%i Minutos %s Segundos');
+            // $return['tiempo'] = $diferencia->format('%d dias %h horas, %I minutos y %S segundos');
             $return['ultimo'] = $this->GetDistancia($viaje);
         }
         $return['viaje'] = $datos;

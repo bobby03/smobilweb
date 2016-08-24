@@ -301,7 +301,7 @@ class WebServiceController extends Controller
                 //----------------------- Plataforma Viaje ----------------------------
                 $today = date('Y-m-d');
             $PlataformasViaje = Yii::app()->db->createCommand()
-                ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, E.ID AS ID_EST')
+                ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, e.id AS ID_EST')
                 ->from('viajes  v')
                 ->join('estacion e','id_estacion = e.id')
                 ->join('solicitudes s','s.id = v.id_solicitudes')

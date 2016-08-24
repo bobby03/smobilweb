@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    var firstTime = true;
     var flag2 = true;
     var markers = [];
     var loc = window.location.href;
@@ -340,7 +341,7 @@ $(document).ready(function()
                             markers.push(marker);
                             map.setCenter(ubi);
                             $('.txtA.ultimo span').text(data2.ultimo);
-                           console.log(data2);
+                           // console.log(data2);
                             $('.datosWraper span.tiempo').text(tiempo);
                             $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
                             reverseGeocoding(datos.ubicacion, 1, false);
@@ -407,33 +408,38 @@ $(document).ready(function()
         console.log("Lat: "+lt);
         console.log("Lng: "+ln);
         var latlng = {lat: parseFloat(lt), lng: parseFloat(ln)};
-        geocoder.geocode({'location': latlng}, function(results, status) 
-        {
-            if (status === google.maps.GeocoderStatus.OK) 
+        if(firstTime){
+            geocoder.geocode({'location': latlng}, function(results, status) 
             {
-                if (results[1]) 
+                if (status === google.maps.GeocoderStatus.OK) 
                 {
-                    infowindow.setContent(results[1].formatted_address);
-                    if(flag == 1)
-                        $('.datosWraper > div:last-child span').text(infowindow.content);
-                    if(flag == 2)
+                    if (results[1]) 
                     {
-                        div.text(infowindow.content);
-                        var h = div.height();
-                        var height = (50-h)/2;
-                        div.css('padding',height+'px 0'); 
+                        infowindow.setContent(results[1].formatted_address);
+                        if(flag == 1)
+                            $('.datosWraper > div:last-child span').text(infowindow.content);
+                        if(flag == 2)
+                        {
+                            div.text(infowindow.content);
+                            var h = div.height();
+                            var height = (50-h)/2;
+                            div.css('padding',height+'px 0'); 
+                        } 
                     } 
+                    else 
+                        window.alert('No results found');
+                  
                 } 
-                else 
-                    window.alert('No results found');
-              
-            } 
-            else
-            {
-                reverseGeocoding(direccion, flag, div);
-//                window.alert('Geocoder failed due to: ' + status);
-            }
-        });
+    //             else
+    //             {
+    //                 // reverseGeocoding(direccion, flag, div);
+    // //                window.alert('Geocoder failed due to: ' + status);
+    //             }
+            });
+            firstTime = false;
+
+        }
+        
     }
     $('#map').click(function()
     {
