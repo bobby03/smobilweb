@@ -14,9 +14,6 @@ div.tabs div.tab {
     color: #FFFFFF;
 }
 
-div.tabContent {
-    margin-top: 50px !important;
-}
 
 div.tab.select {
     background-color: #09B7C9;

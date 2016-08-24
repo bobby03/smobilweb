@@ -28,28 +28,30 @@
         <div class="tab select" data-id="1"><span>Activos</span></div>
         <div class="tab" data-id="2"><span>Inactivos</span></div>
     </div>
-    <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas/create">
+    
+    <div class="tabContent" data-tan="1">
+        <div class="search-form" >
+        <?php $this->renderPartial('_search',array(
+                'model'=>$model,
+        )); ?>
+       <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas/create">
         <div class="agregar granjas"></div>
     </a>
-    <div class="tabContent" data-tan="1">
+        </div><!-- search-form -->
         <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'granjas-grid',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
                 'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
                 'emptyText'=>"No hay resistros",
                 'template' => "{items}{summary}{pager}",
-                'enableSorting'=>true,
                 'dataProvider'=>$model->search(1),
                 'columns'=>$model->adminSearch(),
+                'ajaxUpdate'=>true,
                 'pager' => array
                 (
                     'class' => 'PagerSA',
                     'header'=>'',
-                ),
-            'afterAjaxUpdate' => "function(id,data)
-            {
-                $.fn.yiiGridView.update('granjas-grid2');
-            }"
+                )
         )); ?>
     </div>
     <div class="tabContent hide" data-tan="2">
