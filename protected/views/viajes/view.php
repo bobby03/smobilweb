@@ -274,7 +274,7 @@
                     <span class="distancia"><?php echo number_format(intval($this->getDistanciaKm($model->id)), 2, '.', ' '),' Km'; ?></span>
                 </div>
                 <div>
-                    <div class="txtA">Fecha entrega:</div><span><? echo $model->fecha_entrega; ?></span>
+                    <div class="txtA">Fecha entrega:</div><span><?php echo $model->fecha_entrega; ?></span>
                 </div>
 
             </div>

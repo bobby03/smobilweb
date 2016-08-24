@@ -460,3 +460,17 @@ body.viajes-update form input[type="submit"] {
     font-size: 14px !important;
     width:120px !important;
 }
+
+div.tab.last div.row.buttons.floating input {
+    padding: 0;
+}
+div.tab.last div.floating {
+    right : 195px;
+    top   : 275px;
+}
+.bDos.fBoton.floatingbutton.regresar {
+    margin-right: 15px !important;
+}
+.bUno.fBoton.regresar {
+    float: right;
+}

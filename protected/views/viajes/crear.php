@@ -137,8 +137,9 @@
     <div class="tab hide" data-tab="2">
        <div class="pedidosWraper"></div>   
         <div class="botonesWrapper2">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+            <!--<a class="gBoton" href="<?php // echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>-->
             <div class="siguiente dos">Siguiente</div>
+            <div class="bUno fBoton regresar">Regresar</div>
         </div>
     </div>
     <div class="tab last hide" data-tab="3">

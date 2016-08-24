@@ -53,7 +53,7 @@
         <div class="lineaChica selected"></div>
         <div class="bolaGrande selected">1<div class="infoBolas">Datos del viaje</div></div>
         <div class="lineaGandre <?php if(!$model->isNewRecord) echo 'selected';?>"></div>
-        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2<div class="infoBolas">Asiganr tanques</div></div>
+        <div class="bolaGrande <?php if(!$model->isNewRecord) echo 'selected';?>">2<div class="infoBolas">Asignar tanques</div></div>
         <div class="lineaGandre"></div>
         <div class="bolaGrande">3<div class="infoBolas">Finalizar</div></div>
         <div class="lineaChica"></div>
@@ -197,7 +197,7 @@
         ?>
     </div>-->
         <div class="botonesWrapper2">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes">Cancelar</a>
             <div class="siguiente dos">Siguiente</div>
         </div>
 
@@ -351,7 +351,7 @@
 
 
             <div class="botonesWrapper">
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes">Cancelar</a>
                 <div class="siguiente uno">Siguiente</div>
             </div>
         </div>
@@ -359,7 +359,7 @@
          <div class="tab <?php if($model->isNewRecord) echo 'hide';?>" data-tab="2">
             <div class="pedidosWraper"></div>   
                <div class="botonesWrapper2">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes">Cancelar</a>
             <div class="siguiente dos">Siguiente</div>
 
         </div>
