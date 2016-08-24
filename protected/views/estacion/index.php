@@ -5,6 +5,7 @@ $baseUrl = Yii::app()->baseUrl;
 $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/estacion/estacion.css');
 $cs->registerScriptFile($baseUrl.'/js/estacion/create.js');
+$cs->registerScriptFile($baseUrl.'/js/estacion/search.js');
 $cs->registerScriptFile($baseUrl.'/js/search.js');
 $this->breadcrumbs=array(
 	'Estaciones',
@@ -55,7 +56,11 @@ $this->breadcrumbs=array(
     </div>
     <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
  
-
+        <div class="search-form2" >
+        <?php $this->renderPartial('_search2',array(
+                'model'=>$model,
+        )); ?>
+        </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'estacion-grid2',

@@ -286,7 +286,7 @@ div.breadcrumbs span {
 }
 
 div.search-form {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     margin-bottom: 20px;
 }
 
@@ -790,7 +790,7 @@ div.tabs div.tab {
 }
 
 div.tabContent {
-    margin-top: 45px;
+    margin-top: 20px;
 }
 
 div.tab.select {
