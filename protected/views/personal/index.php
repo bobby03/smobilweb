@@ -3,6 +3,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerCssFile($baseUrl.'/css/personal/index.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/personal/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $this->breadcrumbs=array(
         'Personals',
@@ -40,28 +41,29 @@
         'header'=>'',
     ),
     'dataProvider'=>$model->search(1),
-    'columns'=>$model->adminSearch(),
-    'afterAjaxUpdate' => "function(id,data)
-    {
-        $.fn.yiiGridView.update('personal-grid2');
-    }"
+    'columns'=>$model->adminSearch()
 )); 
 ?>
     </div>
     <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
+        <div class="search-form2" >
+            <?php $this->renderPartial('_search2',array(
+                    'model'=>$model,
+            )); ?>
+        </div><!-- search-form -->
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'personal-grid2',
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'emptyText'=>"No hay resistros",
             'template' => "{items}{summary}{pager}",
-            'ajaxUpdate'=>true,
+            'dataProvider'=> $model->search(0),
             'pager' => array
             (
                 'class' => 'PagerSA',
                 'header'=>'',
             ),
-            'dataProvider'=>  Personal::model()->search(0),
             'columns'=>$model->adminSearchVacios()
         )); 
 ?>

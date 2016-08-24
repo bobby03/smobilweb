@@ -2334,6 +2334,7 @@ eof;
         $return['codigo'] = $return['codigo'].'
                 </div>
             </div>';
+            
         echo json_encode($return);
     }
     protected function performAjaxValidation($model)
