@@ -5,6 +5,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $cs->registerScriptFile($baseUrl.'/js/usuarios/index.js');
+    $cs->registerScriptFile($baseUrl.'/js/usuarios/search.js');
     $this->breadcrumbs=array(
 	'Usuarioses',
     );
@@ -49,11 +50,16 @@
     )); ?>
     </div>
     <div class="tabContent hide" data-tan="2">
-
+        <div class="search-form2" >
+        <?php $this->renderPartial('_search2',array(
+                'model'=>$model,
+        )); ?>
+    </div>
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'usuario-grid2',
             'dataProvider'=>$model->search(0),
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'emptyText'=>"No hay resistros",
             'template' => "{items}{summary}{pager}",
