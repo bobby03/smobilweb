@@ -4,6 +4,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerCssFile($baseUrl.'/css/roles/roles.css');
     $cs->registerScriptFile($baseUrl.'/js/roles/roles.js');
+    $cs->registerScriptFile($baseUrl.'/js/roles/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $this->breadcrumbs=array(
 	'Roles',
@@ -61,7 +62,11 @@
 </div>
 
 <div class="tabContent hide" data-tan="2"> <!--Inactivos-->
-
+    <div class="search-form2">
+    <?php $this->renderPartial('_search2',array(
+            'model'=>$model,
+    )); ?>
+    </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'rol-grid2',
