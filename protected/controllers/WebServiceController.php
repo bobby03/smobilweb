@@ -37,7 +37,7 @@ class WebServiceController extends Controller
         //Campaing data---------------------------------------------------------
         $LatLng = "(".$lat.",".$lng.")";  // ( Lat,-Lng )
         $codeViaje  = isset($_GET['id_viaje'])?$_GET['id_viaje']:"0"; // id Viaje
-        $time = date('H:m:s');
+        $time = date('H:i');
         $date = date('Y-m-d');
 
         switch ($type) {
@@ -94,7 +94,7 @@ class WebServiceController extends Controller
         $od = isset($_GET['OD'])?$_GET['OD']:"0";
         $od = isset($_GET['ORP'])?$_GET['ORP']:"0";
         $wl = isset($_GET['WL'])?$_GET['WL']:"0";
-        $time = date('H:m:s');
+        $time = date('H:i');
         $date = date('Y-m-d');
         
         $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
@@ -524,7 +524,7 @@ class WebServiceController extends Controller
         $idViaje = isset($_GET['id'])?$_GET['id']:0;
         $status = isset($_GET['status'])?$_GET['status']:0;
         $table = 'viajes';
-        $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
+        $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:i:s'));
         $conditions = "id = :idViaje";
         $params = array(":idViaje"=>$idViaje);
 
