@@ -79,6 +79,7 @@ class Solicitudes extends CActiveRecord
 			'fecha_entrega' => 'Fecha entrega',
 			'hora_entrega' => 'Hora entrega',
 			'notas' => 'Notas',
+			'id_viaje' => 'Viaje número',
 		);
 	}
 public function getSearchSolicitud(){

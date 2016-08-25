@@ -30,6 +30,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
 }
 </style>
 <h1>Ver solicitud #<?php echo $model->id; ?></h1>
+<?php if($model->status == 1) : ?>
 <div class="form">
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
@@ -40,7 +41,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'codigo',
                 'fecha_alta',
                 'hora_alta',
-                'hora_alta', 
+                 array('name'=>'id_viaje', 'value'=>Solicitudes::model()->getViaje($model->id)), 
                 'fecha_estimada',
                 'hora_estimada',
                 'fecha_entrega',
@@ -48,6 +49,25 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'notas',
             ),
     )); ?>
+    <?php else: ?>
+     <?php $this->widget('zii.widgets.CDetailView', array(
+            'data'=>$model,
+            'nullDisplay'=>'No se ha asignado a un viaje',
+            'attributes'=>array
+            (
+                'id_clientes',
+                'codigo',
+                'fecha_alta',
+                'hora_alta',
+                'fecha_estimada',
+                'hora_estimada',
+                'fecha_entrega',
+                'hora_entrega',
+                'notas',
+            ),
+    )); ?>   
+    
+    <?php endif?>
     <?php if(count($pedidos)>0):?>
         <div class="row">
             <h3>
