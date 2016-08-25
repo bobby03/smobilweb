@@ -87,11 +87,11 @@ class WebServiceController extends Controller
         $codeIdTank  = isset($_GET['idTank'])?$_GET['idTank']:"0"; // id Tanque
         $ct = isset($_GET['CT'])?$_GET['CT']:"0";
         $codeCT = isset($_GET['CodeCT'])?$_GET['CodeCT']:"0";
-        $ox = isset($_GET['OX'])?$_GET['OX']:"0";
-        $ph = isset($_GET['PH'])?$_GET['PH']:"0";
-        $t2 = isset($_GET['T2'])?$_GET['T2']:"0";
-        $ec = isset($_GET['EC'])?$_GET['EC']:"0";
-        $orp = isset($_GET['ORP'])?$_GET['ORP']:"0";
+        $ox = isset($_GET['OX'])?$_GET['OX']:null;
+        $ph = isset($_GET['PH'])?$_GET['PH']:null;
+        $t2 = isset($_GET['T2'])?$_GET['T2']:null;
+        $ec = isset($_GET['EC'])?$_GET['EC']:null;
+        $orp = isset($_GET['ORP'])?$_GET['ORP']:null;
         $wl = isset($_GET['WL'])?$_GET['WL']:"0";
         $time = date('H:i');
         $date = date('Y-m-d');
