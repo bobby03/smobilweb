@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
-    $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/granjas/search.js');
     $cs->registerCssFile($baseUrl.'/css/granjas/index.css');
     $this->breadcrumbs=array(
             'Granjas',
@@ -30,7 +30,7 @@
     </div>
     
     <div class="tabContent" data-tan="1">
-        <div class="search-form" >
+        <div class="search-form2" >
         <?php $this->renderPartial('_search',array(
                 'model'=>$model,
         )); ?>
@@ -40,7 +40,7 @@
         </div><!-- search-form -->
         <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'granjas-grid',
-            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+                'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
                 'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
                 'emptyText'=>"No hay resistros",
                 'template' => "{items}{summary}{pager}",
