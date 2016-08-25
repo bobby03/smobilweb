@@ -50,7 +50,7 @@
                 <div class="row">
                     <label class= "letreros">Descripcion</label>
                     <div class="form-cLarge">	
-                    <?php echo $form->textArea($model,'marca',array('size'=>150,'maxlength'=>150)); ?>
+                    <?php echo $form->textField($model,'marca',array('size'=>150,'maxlength'=>150)); ?>
                     <?php echo $form->error($model,'marca'); ?>
                     </div>
                 </div>

@@ -272,9 +272,14 @@ body.viajes .gBoton
     height: 35px;
     /*margin-right: 120px;*/
 }
+.bDos.fBoton.regresar:hover,
+.bUno.fBoton.regresar:hover,
 .siguiente:hover
 {
     background-color: #49DBD0;
+}
+a:hover {
+    text-decoration: none;
 }
 div.pedidosWraper:after,
 div.tab:after,
@@ -295,17 +300,20 @@ div.chosen-container.error > ul {
     background-color: #FEE !important;
 }
 
+.headerT {
+     text-align: center;
+ }
+
 #contV3 {
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
     border: 3px solid #49DBD0;
     margin: auto;
-    width: 60%;
     font-family: 'Roboto-Regular';
     color: black;
     font-weight: bold;
-    float: left;
+    font-size: 15px;
 }
 
 .izq {
@@ -328,7 +336,6 @@ div.chosen-container.error > ul {
     margin: 0px;
     font-family: 'Roboto-Regular';
     font-size: 20px;
-    padding-left: 30px;
     vertical-align: middle;
 }
 
@@ -338,16 +345,25 @@ div.chosen-container.error > ul {
     -webkit-border-radius: 7px 7px 0px 0px;
 }
 
-#vt2 {}
-
+ #vt2 {
+    background-color: #F2F2F2;
+    height: 30px;    
+    line-height: 30px;
+}
+ #vt2 .headerT {
+    background-color: #F2F2F2;
+    color: #000;
+    font-size: 18px;
+    height: 30px;
+}
 #vc1,
 #vc2 {
-    height: 200px;
-    margin-left: 30px;
+
 }
 
 #vc1 p {
     margin-bottom: 1em;
+    text-align: center;
 }
 
 #vc2 {
@@ -361,9 +377,9 @@ div.chosen-container.error > ul {
 }
 
 #vtitulo {
-    color: #0077b0;
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 15px;
+    text-align: center;
 }
 
 .vbox {
@@ -373,8 +389,9 @@ div.chosen-container.error > ul {
 .boxCont {
     overflow: hidden;
     width: 100%;
-    margin-left: -50px;
-    margin-bottom: 30px;
+    max-width: 420px;
+    float: left;
+    margin: 0 17.5px 32.5px;
 }
 
 .content {
@@ -387,7 +404,6 @@ div.chosen-container.error > ul {
     width: 40%;
 }
 
-.left .content {}
 
 .right {
     margin-top: 50px;
@@ -395,19 +411,20 @@ div.chosen-container.error > ul {
     width: 40%;
 }
 
-#vcont th {
-    width: 20%;
-}
 
 .pc,
 .pf {
-    width: 20%;
     color: #0077b0;
 }
 
-#vcont {
-    width: 70% !important;
+
+#vc2 > * {
+    width: 280px;
+    margin: 0 auto;
 }
+#vc2 > p {
+    margin-bottom: 15px;
+  }
 
 
 /* Wrapper para Botones */
@@ -432,11 +449,9 @@ div.chosen-container.error > ul {
 
 
 div.form div.tab div.row.buttons {
-/*    float: right;
-    margin-top: 50px;
-    margin-right: 167px;
-    */display: block;
-    width: 300px;
+
+    display: block;
+    width: 270px;
 }
 div.form div.tab div.row.buttons input
 {
@@ -457,7 +472,7 @@ body.viajes-update form input[type="submit"] {
     width: 107px;
     margin-left: 0px;
     height: 40px;
-    font-size: 14px !important;
+    font-size: 18px;
     width:120px !important;
 }
 
@@ -465,12 +480,17 @@ div.tab.last div.row.buttons.floating input {
     padding: 0;
 }
 div.tab.last div.floating {
-    right : 195px;
+    right : 120px;
     top   : 275px;
 }
 .bDos.fBoton.floatingbutton.regresar {
     margin-right: 15px !important;
 }
+.gBoton.regresar.uno,
 .bUno.fBoton.regresar {
     float: right;
+}
+div.tab.last {
+    width: 1180px;
+    position: relative;
 }

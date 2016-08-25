@@ -15,6 +15,29 @@ $(document).ready(function()
     $('#SolicitudesViaje_id_personal_1_chofer').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#SolicitudesViaje_id_personal_1_tecnico').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#Viajes_id_solicitudes').chosen({placeholder_text_multiple: 'Seleccionar'});
+    
+    
+    $('.fBoton.bUno').click(function(){
+        console.log('Tab2 hide');
+        $('[data-tab="2"]').addClass('hide');
+        console.log('Tab1 show');
+        $('[data-tab="1"]').removeClass('hide');
+        $('.menuTabs div:nth-child(4)').removeClass('selected');
+        $('.menuTabs div:nth-child(5)').removeClass('selected');
+
+    });
+    $('div.bDos.fBoton.floatingbutton').click(function(){
+        $('[data-tab="3"]').addClass('hide');
+        console.log('Tab1 show');
+        $('[data-tab="2"]').removeClass('hide');
+        // $('.menuTabs div:nth-child(4)').removeClass('selected');
+        // $('.menuTabs div:nth-child(5)').removeClass('selected');
+        $('.menuTabs div:nth-child(6)').removeClass('selected');
+        $('.menuTabs div:nth-child(7)').removeClass('selected');
+        $('.menuTabs div:nth-child(8)').removeClass('selected');
+        $('.menuTabs div:nth-child(9)').removeClass('selected');
+
+    });
     if(index == -1) 
         new_url = new_url+'/index.php/';
     $('#Viajes_id_solicitudes').on('change', function()
