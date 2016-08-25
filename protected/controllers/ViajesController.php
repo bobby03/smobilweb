@@ -1484,17 +1484,18 @@ EOF;
     public function actionGetAlertasTanque($viaje, $id)
     {
         $uploads = Yii::app()->db->createCommand()
-                ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                ->selectDistinct('evu.id as idTabla, cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
                 ->from('solicitudes_viaje as solV')
                 ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                 ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
                 ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
-                ->join('uploadTemp as upt','upt.id_tanque = tan.id')
                 ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                ->join('uploadTemp as upt','upt.id_escalon_viaje_ubicacion = evu.id')
                 ->where("solV.id_viaje = $viaje")
                 ->andWhere("tan.id = $id")
                 ->andWhere("upt.alerta > 1")
                 ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
+                ->order("idTabla ASC")
                 ->queryAll();
         if(count($uploads) > 0)
         {
@@ -1506,63 +1507,77 @@ EOF;
                             <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
                         </div>
                         <div class="tablaWraper">';
-
             foreach($uploads as $data)
             {
-                if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                if(isset($data['temp']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['temp'] > $data['temp_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Temperatura</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['temp'] > $data['temp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Temperatura</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                if(isset($data['ox']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['ox'] > $data['ox_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Oxígeno</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ox'] > $data['ox_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Oxígeno</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                if(isset($data['ph']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['ph'] > $data['ph_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>PH</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ph'] > $data['ph_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>PH</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                if(isset($data['cond']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['cond'] > $data['cond_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Conductividad</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['cond'] > $data['cond_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Conductividad</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                if(isset($data['orp']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['orp'] > $data['orp_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Potencial óxido reducción</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['orp'] > $data['orp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Potencial óxido reducción</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
             }
             $return = $return.'</div>

@@ -2071,3 +2071,325 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
 HTTP_REFERER=http://localhost/SmobilWeb/clientes
 ---
+2016/08/24 16:17:58 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/24 16:17:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/25 08:39:19 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/25 08:39:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/clientes/cliente.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/clientes/cl...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/css/clientes/cliente.css
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/08/25 08:57:55 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.alerts_temp' doesn't exist. The SQL statement executed was: DELETE FROM `alerts_temp`.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1597)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 08:57:55 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.alerts_temp' doesn't exist. The SQL statement executed was: DELETE FROM `alerts_temp` in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1330): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1597): CDbCommand->delete('alerts_temp')
+#2 [internal function]: ViajesController->actionGetAlertaParametroModel('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertaParame...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertaParametroModel?viaje=12&id=15
+HTTP_REFERER=http://localhost/SmobilWeb/viajes/12
+---
+2016/08/25 08:57:59 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.alerts_temp' doesn't exist. The SQL statement executed was: DELETE FROM `alerts_temp`.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1597)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 08:57:59 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.alerts_temp' doesn't exist. The SQL statement executed was: DELETE FROM `alerts_temp` in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1330): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1597): CDbCommand->delete('alerts_temp')
+#2 [internal function]: ViajesController->actionGetAlertaParametroModel('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertaParame...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertaParametroModel?viaje=12&id=15
+HTTP_REFERER=http://localhost/SmobilWeb/viajes/12
+---
+2016/08/25 10:01:15 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#12 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+HTTP_REFERER=http://localhost/SmobilWeb/viajes/12
+---
+2016/08/25 10:01:19 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#12 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+---
+2016/08/25 11:05:11 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `uploadTemp` `upt` ON upt.id_tanque = tan.id
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id).
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1497)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 11:05:11 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `uploadTemp` `upt` ON upt.id_tanque = tan.id
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1497): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetAlertasTanque('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+---
+2016/08/25 11:05:43 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `uploadTemp` `upt` ON upt.id_tanque = tan.id
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id).
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1497)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 11:05:43 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `uploadTemp` `upt` ON upt.id_tanque = tan.id
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1497): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetAlertasTanque('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+---
+2016/08/25 11:22:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+JOIN `uploadTemp` `upt` ON upt.id_escalon_viaje_ubicacion = evu.id
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id).
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1497)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 11:22:54 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+JOIN `uploadTemp` `upt` ON upt.id_escalon_viaje_ubicacion = evu.id
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1497): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetAlertasTanque('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+---
+2016/08/25 11:23:29 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `evu`.`id` AS `idTabla`, `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+JOIN `uploadTemp` `upt` ON upt.id_escalon_viaje_ubicacion = evu.id
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id)
+ORDER BY `idTabla` ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1498)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 11:23:29 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `evu`.`id` AS `idTabla`, `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+JOIN `uploadTemp` `upt` ON upt.id_escalon_viaje_ubicacion = evu.id
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id)
+ORDER BY `idTabla` ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1498): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetAlertasTanque('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+---
+2016/08/25 11:26:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `evu`.`id` AS `idTabla`, `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+JOIN `uploadTemp` `upt` ON upt.id_escalon_viaje_ubicacion = evu.id
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id)
+ORDER BY `idTabla` ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php (1498)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/08/25 11:26:23 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tan.ida' in 'field list'. The SQL statement executed was: SELECT DISTINCT `evu`.`id` AS `idTabla`, `cep`.*, `tan`.`ida` AS `idTanque`, `upt`.`temp`, `upt`.`ox`, `upt`.`ph`, `upt`.`cond`, `upt`.`orp`, `evu`.`hora`, `evu`.`fecha`, `evu`.`ubicacion`
+FROM `solicitudes_viaje` `solV`
+JOIN `solicitud_tanques` `solT` ON solT.id_solicitud = solV.id_solicitud
+LEFT JOIN `tanque` `tan` ON tan.id = solT.id_tanque
+RIGHT JOIN `cepa` `cep` ON cep.id = solT.id_cepas
+JOIN `escalon_viaje_ubicacion` `evu` ON evu.id_viaje = 12
+JOIN `uploadTemp` `upt` ON upt.id_escalon_viaje_ubicacion = evu.id
+WHERE (((solV.id_viaje = 12) AND (tan.id = 15)) AND (upt.alerta > 1)) AND (upt.id_escalon_viaje_ubicacion = evu.id)
+ORDER BY `idTabla` ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(1498): CDbCommand->queryAll()
+#2 [internal function]: ViajesController->actionGetAlertasTanque('12', '15')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ViajesController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ViajesController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetAlertasTanqu...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes/GetAlert...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/viajes/GetAlertasTanque?viaje=12&id=15
+---
