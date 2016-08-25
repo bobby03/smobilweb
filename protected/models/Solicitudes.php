@@ -86,6 +86,8 @@ public function getSearchSolicitud(){
                          '2'=>'Código',
                          '3'=>'Id',
                          '5'=>'Fecha',
+                         '7'=>'Fecha Entrega',
+                         '8'=>'Hora Entrega',
                          /*
                          '4'=>'Hora Alta',
                          

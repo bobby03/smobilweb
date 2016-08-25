@@ -24,15 +24,26 @@
 		<?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
+	<div class="row hide" data-id='3'>
+		
+		<?php echo $form->textField($model,'id'); ?>
+	</div>
+
 	<div class="row hide" data-id='5'>
 		
 		<?php echo $form->textField($model,'fecha_estimada'); ?>
 	</div>
 
-  <!--	<div class="row hide" data-id='3'>
+	<div class="row hide" data-id='7'>
 		
-		<?php echo $form->textField($model,'fecha_alta'); ?>
+		<?php echo $form->textField($model,'fecha_entrega'); ?>
 	</div>
+
+	<div class="row hide" data-id='8'>
+		
+		<?php echo $form->textField($model,'hora_entrega'); ?>
+	</div>
+  <!--	
 
 	<div class="row hide" data-id='4'>
 		
@@ -46,15 +57,7 @@
 		<?php echo $form->textField($model,'hora_estimada'); ?>
 	</div>
 
-	<div class="row hide" data-id='7'>
-		
-		<?php echo $form->textField($model,'fecha_entrega'); ?>
-	</div>
-
-	<div class="row hide" data-id='8'>
-		
-		<?php echo $form->textField($model,'hora_entrega'); ?>
-	</div>
+	
 
 	<div class="row hide" data-id='9'>
 		

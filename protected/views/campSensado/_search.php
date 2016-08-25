@@ -37,8 +37,4 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- <div class="row">
-		<?php echo $form->label($model,'nombre_camp'); ?>
-		<?php echo $form->textField($model,'nombre_camp',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-	search-form -->
+</div>

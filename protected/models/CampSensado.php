@@ -167,7 +167,6 @@ class CampSensado extends CActiveRecord
         {
             return array
             (
-            	'id',
                 array
                 (
                     'name' => 'id',
