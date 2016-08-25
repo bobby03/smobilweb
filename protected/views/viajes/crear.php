@@ -148,7 +148,6 @@
         <div class='row buttons floating'>
             <?php echo CHtml::submitButton($model->isNewRecord ? 'Finalizar' : 'Finalizar'); ?>
             <div class="bDos fBoton floatingbutton regresar">Regresar</div>
-            <div class="fBoton floatingbutton hide" >Cancelar</div>
         </div>
     </div>
 <?php
