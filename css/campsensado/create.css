@@ -171,8 +171,8 @@ div.form div.tab div.row.buttons {
     float: right;
     margin-top: 50px;
     width: 270px;
-    right: 190px;
-    top: 228px;
+    right: 120px;
+    top: 275px;
 }
 
 .floating {
@@ -448,10 +448,6 @@ body.CampSensado .gBoton {
 }
 div.tab.last div.row.buttons.floating input {
     padding: 0;
-}
-div.tab.last div.floating {
-    right : 120px;
-    top   : 275px;
 }
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
