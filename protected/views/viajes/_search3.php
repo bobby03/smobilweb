@@ -24,6 +24,11 @@
 	<div class="row hide" data-id="4">
             <?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacionMovil(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
+	<div class="row hide" data-id='5'>
+		
+		<?php echo $form->textField($model,'fecha_salida'); ?>
+	</div>
+	
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->

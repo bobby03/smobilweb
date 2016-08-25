@@ -28,6 +28,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
     height: 4px;
     /* width: 80%; */
 }
+
 </style>
 <h1>Ver solicitud #<?php echo $model->id; ?></h1>
 <div class="form">
@@ -40,7 +41,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'codigo',
                 'fecha_alta',
                 'hora_alta',
-                'hora_alta', 
+                array('name'=>'Viaje', 'value'=>$model->getViaje($model->id) ),
                 'fecha_estimada',
                 'hora_estimada',
                 'fecha_entrega',

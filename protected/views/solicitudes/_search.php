@@ -34,12 +34,12 @@
 		
 		<?php echo $form->textField($model,'hora_alta'); ?>
 	</div>
-
+-->
 	<div class="row hide" data-id='5'>
 		
 		<?php echo $form->textField($model,'fecha_estimada'); ?>
 	</div>
-
+<!--
 	<div class="row hide" data-id='6'>
 		
 		<?php echo $form->textField($model,'hora_estimada'); ?>

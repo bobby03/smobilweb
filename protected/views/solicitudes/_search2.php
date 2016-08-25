@@ -24,6 +24,10 @@
 		<?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
+	<div class="row hide" data-id='5'>
+		
+		<?php echo $form->textField($model,'fecha_estimada'); ?>
+	</div>
 
   <!--	<div class="row hide" data-id='3'>
 		
@@ -35,10 +39,7 @@
 		<?php echo $form->textField($model,'hora_alta'); ?>
 	</div>
 
-	<div class="row hide" data-id='5'>
-		
-		<?php echo $form->textField($model,'fecha_estimada'); ?>
-	</div>
+	
 
 	<div class="row hide" data-id='6'>
 		
