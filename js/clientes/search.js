@@ -1,11 +1,5 @@
 $(document).ready(function()
 {
-    $('.search-button').click(function()
-    {
-        $('.search-form2').toggle();
-        return false;
-    });
-
     $('.search-form2 form').submit(function()
     {
         $('#clientes-grid2').yiiGridView('update', 
@@ -14,8 +8,6 @@ $(document).ready(function()
         });
         return false;
     });
-
-
     $('#searchDropDown2').on('change',function()
     {
         if($('#searchDropDown2 option:selected').val() ==''){
@@ -36,5 +28,4 @@ $(document).ready(function()
     $('.search-form2 input').on('keyup',function(){
          $('.search-form2 form').submit();
     });
-
 });

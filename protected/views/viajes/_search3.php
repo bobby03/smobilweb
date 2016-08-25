@@ -11,7 +11,7 @@
 	'method'=>'get',
         'htmlOptions'=>array('data-form'=>3)
 )); ?>
-    <?php echo CHtml::dropDownList('searchDropDown3', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona Búsqueda','data-s'=>3)); ?>
+    <?php echo CHtml::dropDownList('searchDropDown3', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>3)); ?>
 	<div class="row hide" data-id="1">
             <?php echo $form->textField($model,'id'); ?>
 	</div>

@@ -44,10 +44,6 @@
 		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
 	</div>-->
 
-     <div class="row buttons hide">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
-
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->

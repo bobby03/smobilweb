@@ -423,30 +423,34 @@ div.search-form4 #searchDropDown4 {
     margin-right: 25px;
     float: left;
 }
-div.search-form2:after {
-    clear: both;
-    content: '';
-    display: block;
-}
-div.search-form3:after {
-    clear: both;
-    content: '';
-    display: block;
-}
+div.search-form2:after,
+div.search-form3:after, 
 div.search-form4:after {
     clear: both;
     content: '';
     display: block;
 }
 div.search-form2 {
-    margin-top: 50px;
+<<<<<<< HEAD
+    /*margin-top: 50px;*/
     margin-bottom: 20px;
 }
 div.search-form3 {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     margin-bottom: 20px;
 }
 div.search-form4 {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
+=======
+    
+    margin-bottom: 20px;
+}
+div.search-form3 {
+    
+    margin-bottom: 20px;
+}
+div.search-form4 {
+    
+>>>>>>> b412a666db4f6bc404a924090d87af35c7300f51
     margin-bottom: 20px;
 }

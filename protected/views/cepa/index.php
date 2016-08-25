@@ -5,6 +5,7 @@
     $cs = Yii::app()->getClientScript();
     
     $cs->registerScriptFile($baseUrl.'/js/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/cepa/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
 
 
@@ -55,6 +56,11 @@ $this->breadcrumbs=array(
 </div>
 <!--Inactivos-->
 <div class="tabContent hide" data-tan="2"> 
+    <div class="search-form2" >
+    <?php $this->renderPartial('_search2',array(
+            'model'=>$model,
+    )); ?>
+    </div><!-- search-form -->
     <?php $this->widget('zii.widgets.grid.CGridView', array
     (
         'id'=>'cepa-grid2',
