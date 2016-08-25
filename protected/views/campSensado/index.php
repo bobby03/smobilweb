@@ -20,23 +20,14 @@
         <div class="tab" data-id="2"><span>Finalizado</span></div>
     </div>
 
-
- 
-
     <div class="tabContent" data-tan="1"> <!--Activos-->
-    <div class="search-form"><!-- search-form -->
-    <?php $this->renderPartial('_search',array(
-            'model'=>$model,
-    )); ?>
-
-
-        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
-            <div class="agregar campsensado"></div>
-        </a>
-    </div>
-
-    <!-- search-form -->
-    <?php $this->widget('zii.widgets.grid.CGridView', array
+        <div class="search-form"><!-- search-form -->
+            <?php $this->renderPartial('_search',array('model'=>$model,)); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
+                <div class="agregar campsensado"></div>
+            </a>
+        </div>
+        <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid',
             'summaryText'=>'',
@@ -58,14 +49,12 @@
         )); 
     ?>
     </div>
+    <!-- - - - - - - - - - - -  - - - - - - -->
     <div class="tabContent hide" id="asignadas" data-tan="2"> <!--Inactivos-->
         <div class="search-form2"><!-- search-form -->
-        <?php $this->renderPartial('_search2',array(
-                'model'=>$model,
-        )); ?>
+            <?php $this->renderPartial('_search2',array('model'=>$model,)); ?>
         </div>
-
-    <?php $this->widget('zii.widgets.grid.CGridView', array
+        <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid2',
             'summaryText'=>'',

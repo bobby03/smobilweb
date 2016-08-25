@@ -141,11 +141,11 @@ $form=$this->beginWidget('CActiveForm', array(
             ?>
         </div>
         <div class="botonesWrapper2">
-            <div class="gBoton regresar uno" >Regresar</div>
             <div class="siguiente dos">Siguiente</div>
+            <div class="gBoton regresar uno" >Regresar</div>
         </div>
     </div>
-    <div class="tab hide" data-tab="3">
+    <div class="tab hide last" data-tab="3">
 
     <div class="inner-third-wrapper"></div>
 	<div class="row buttons">

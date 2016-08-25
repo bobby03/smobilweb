@@ -287,7 +287,32 @@ margin-bottom:10px;
   background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
 
-
+#Clientes_ext{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_ext.error{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
+.error #Clientes_ext{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
+#Clientes_cel{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg.png');
+  background-position: 8px 5px,left;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border-left:0;
+}
+#Clientes_cel.error{
+ background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
+.error .#Clientes_cel{
+  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
+}
 
 
 

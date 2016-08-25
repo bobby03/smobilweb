@@ -1,7 +1,7 @@
 div.form {
     width: 1200px;
     margin: 0 auto;
-    /*padding-left: 15px;*/
+    padding-left: 15px;
 }
 
 div.search-form div.wide.form {
@@ -431,18 +431,6 @@ div.search-form4:after {
     display: block;
 }
 div.search-form2 {
-<<<<<<< HEAD
-    /*margin-top: 50px;*/
-    margin-bottom: 20px;
-}
-div.search-form3 {
-    /*margin-top: 50px;*/
-    margin-bottom: 20px;
-}
-div.search-form4 {
-    /*margin-top: 50px;*/
-=======
-    
     margin-bottom: 20px;
 }
 div.search-form3 {
@@ -450,7 +438,5 @@ div.search-form3 {
     margin-bottom: 20px;
 }
 div.search-form4 {
-    
->>>>>>> b412a666db4f6bc404a924090d87af35c7300f51
     margin-bottom: 20px;
 }

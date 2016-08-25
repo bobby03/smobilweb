@@ -127,6 +127,8 @@ div.view-cepa input:disabled{
 
 .regresarCepa{
     margin-top: 30px;
+    width: 150px !important;
+    
 }
 
 
