@@ -2,7 +2,7 @@ $(document).ready(function()
 {
     $('.search-form2 form').submit(function()
     {
-        $('#estacion-grid2').yiiGridView('update', 
+        $('#granjas-grid2').yiiGridView('update', 
         {
             data: $(this).serialize()
         });

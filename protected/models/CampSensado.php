@@ -210,6 +210,11 @@ class CampSensado extends CActiveRecord
         {
             return array
             (
+                array
+                (
+                    'name' => 'id',
+                    'value' => 'CampSensado::model()->getGranja($data->id)',
+                ),
                 'nombre_camp',
                 array
 	            (
@@ -229,7 +234,7 @@ class CampSensado extends CActiveRecord
                 (
                     'class'=>'NCButtonColumn',
                     'header'=>'Acciones',
-                    'template'=>'<div class="buttonsWraper">{reactivar}</div>',
+                    'template'=>'<div class="buttonsWraper">{view}</div>',
                     'buttons' => array
                     (
                         'reactivar' => array

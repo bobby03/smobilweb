@@ -53,9 +53,6 @@
 		<?php echo $form->textField($model,'activo'); ?>
 	</div>-->
 
-	<div class="row buttons hide">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
 
 <?php $this->endWidget(); ?>
 
