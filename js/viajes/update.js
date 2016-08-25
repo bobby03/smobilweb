@@ -117,7 +117,8 @@ $(document).ready(function()
             var seleccion = $('[name="Solicitudes[codigo]['+(i+1)+'][tanque]"').val();
             if(seleccion != '')
             {
-                var solicit = seleccion.split(":",1);
+                var solicit = seleccion.split(":");
+                var pos = parseInt(solicit[1]);
                 $.ajax(
                 {
                     type:'GET',
@@ -126,7 +127,8 @@ $(document).ready(function()
                     data: 
                     {
                         pedido: solicit[0],
-                        tanque: tanque
+                        tanque: tanque,
+                        pos: pos
                     },
                     async: false,
                     success: function(dataAjax)
