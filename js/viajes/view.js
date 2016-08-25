@@ -32,44 +32,8 @@ $(document).ready(function()
         // console.log('paramretro graph');
         var nombre = $(this).parent().siblings('.izquierda').children('div:first-child').text();
         var id = $(this).data('ale');
-        /*
-        $.ajax({
-            type:'GET',
-            url:'GetAlertaParametroModel',
-            data:{
-                viaje: viaje,
-                id: id
-            },
-            success: function(data){
-                $.colorbox({
-                    html:data,
-                    onComplete: function(){
-                        // $.colorbox.resize();
-                        $('#alertaGrid tbody tr td:last-child').each(function()
-                        {
-                            
-                                var texto = $(this).text();
-                                var div = $(this);
-                                console.log(texto);
-                                reverseGeocoding(texto, 2, div);
-                            //    total++;
-                            
-                        });
-
-                    }
-                });
-            },
-            error:function(a,b,c){
-                console.log(a,b,c);
-            }
-
-        }); 
-        */
-        // *
         $.ajax(
         {
-            //GetAlertaParametroModel
-            //GetAlertasTanque
             type: 'GET',
             url: 'GetAlertasTanque',
             dataType: 'JSON', 
@@ -80,7 +44,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
-
+                console.log(data);
                 $.colorbox(
                 {
                     html: data,
@@ -89,12 +53,12 @@ $(document).ready(function()
 //                        $.colorbox.resize();
                         $('.tituloAlerta').text('Alertas: '+nombre);
 //                        var total = 0;
-                        $('.tableRow > div:nth-child(5n)').each(function()
-                        {
-                            var texto = $(this).text();
-                            var div = $(this);
-                            reverseGeocoding(texto, 2, div);
-                        });
+//                        $('.tableRow > div:nth-child(5n)').each(function()
+//                        {
+//                            var texto = $(this).text();
+//                            var div = $(this);
+//                            reverseGeocoding(texto, 2, div);
+//                        });
                         $('.tableRow > div').each(function()
                         {
                             var h = $(this).height();
