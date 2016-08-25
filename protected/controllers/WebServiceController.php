@@ -91,8 +91,7 @@ class WebServiceController extends Controller
         $ph = isset($_GET['PH'])?$_GET['PH']:"0";
         $t2 = isset($_GET['T2'])?$_GET['T2']:"0";
         $ec = isset($_GET['EC'])?$_GET['EC']:"0";
-        $od = isset($_GET['OD'])?$_GET['OD']:"0";
-        $od = isset($_GET['ORP'])?$_GET['ORP']:"0";
+        $orp = isset($_GET['ORP'])?$_GET['ORP']:"0";
         $wl = isset($_GET['WL'])?$_GET['WL']:"0";
         $time = date('H:i');
         $date = date('Y-m-d');
@@ -108,7 +107,7 @@ class WebServiceController extends Controller
                 'ph'=>$ph,
                 'temp'=>$t2,
                 'cond'=>$ec,
-                'orp'=>$od);
+                'orp'=>$orp);
 
         // var_dump($columns);
         
@@ -122,7 +121,7 @@ class WebServiceController extends Controller
                 'ph'=>$ph,
                 'temp'=>$t2,
                 'cond'=>$ec,
-                'orp'=>$od)
+                'orp'=>$orp)
             );
         if($sql)
             $Campaing[] = array("Code"=>200,'SCode'=>"OK","Validation"=>$sql);
@@ -556,7 +555,7 @@ class WebServiceController extends Controller
     public function actionUpdatesolicitud(){
         $code = isset($_GET['code'])?$_GET['code']:0;
         $table = 'solicitudes';
-        $column = array('status'=>"3",'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:m:s'));
+        $column = array('status'=>"3",'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:i:s'));
         $conditions = "codigo = :code";
         $params = array(":code"=>$code);
         $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
