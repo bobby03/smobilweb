@@ -23,10 +23,8 @@ $(document).ready(function()
         disableDoubleClickZoom: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    
     graficarPorTanque();
     graficarPorParametro();
-
     $('[data-id="1"] .boton.adve').click(function()
     {
         // console.log('paramretro graph');
@@ -44,7 +42,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                console.log(data);
+//                console.log(data);
                 $.colorbox(
                 {
                     html: data,
@@ -139,7 +137,7 @@ $(document).ready(function()
         $.ajax(
         {
             type: 'GET',
-            url: 'GetHistorialTanque',
+            url: 'GetTotalCountHistorial',
             dataType: 'JSON', 
             data:
             {
@@ -148,32 +146,49 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                // console.log(data);
-                $.colorbox(
+                $.ajax(
                 {
-                    html: data.codigo,
-                    onComplete: function()
+                    type: 'GET',
+                    url: 'GetHistorialTanque',
+                    dataType: 'JSON', 
+                    data:
                     {
-                        $('.historial .titulo').text('Historial '+nombre);
-                        var ctx1 = $('#historialTanque1');
-                        var myChart1 = new Chart(ctx1, data.ox);
-                        var ctx2 = $('#historialTanque2');
-                        var myChart2 = new Chart(ctx2, data.temp);
-                        var ctx3 = $('#historialTanque3');
-                        var myChart3 = new Chart(ctx3, data.ph);
-                        var ctx4 = $('#historialTanque4');
-                        var myChart4 = new Chart(ctx4, data.cond);
-                        var ctx5 = $('#historialTanque5');
-                        var myChart5 = new Chart(ctx5, data.orp);
-                        $.colorbox.resize();
-                        $('[data-para]').click(function()
+                        viaje: viaje,
+                        id: id,
+                    },
+                    success: function(data)
+                    {
+                        $.colorbox(
                         {
-                            var id = $(this).data('para');
-                            $('[data-para]').removeClass('selected');
-                            $(this).addClass('selected');
-                            $('.grafScroll').addClass('hide');
-                            $('.grafScroll[data-rece="'+id+'"]').removeClass('hide');
+                            html: data.codigo,
+                            onComplete: function()
+                            {
+                                $('.historial .titulo').text('Historial '+nombre);
+                                var ctx1 = $('#historialTanque1');
+                                var myChart1 = new Chart(ctx1, data.ox);
+                                var ctx2 = $('#historialTanque2');
+                                var myChart2 = new Chart(ctx2, data.temp);
+                                var ctx3 = $('#historialTanque3');
+                                var myChart3 = new Chart(ctx3, data.ph);
+                                var ctx4 = $('#historialTanque4');
+                                var myChart4 = new Chart(ctx4, data.cond);
+                                var ctx5 = $('#historialTanque5');
+                                var myChart5 = new Chart(ctx5, data.orp);
+                                $.colorbox.resize();
+                                $('[data-para]').click(function()
+                                {
+                                    var id = $(this).data('para');
+                                    $('[data-para]').removeClass('selected');
+                                    $(this).addClass('selected');
+                                    $('.grafScroll').addClass('hide');
+                                    $('.grafScroll[data-rece="'+id+'"]').removeClass('hide');
+                                });
+                            }
                         });
+                    },
+                    error: function(a,b,c)
+                    {
+                        console.log(a, b, c);
                     }
                 });
             },
@@ -182,6 +197,7 @@ $(document).ready(function()
                 console.log(a, b, c);
             }
         });
+        
     });
     $('[data-id="2"] .boton.graf').click(function()
     {

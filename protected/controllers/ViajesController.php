@@ -1868,27 +1868,64 @@ eof;
             ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
-//                ->where("upT.id_tanque = 28")
             ->queryAll();
         $count = count($total);
-        if($count > 333)
-            $limit = $count - 333;
-        else
-            $limit = 0;
+        $rangos = array();
+        $index = 0;
+        $x = 0;
+        do
+        {
+            $x = $x + 300;
+            if( $x < $count )
+            {
+                $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                $index = $index + 1;
+            }
+            else
+            {
+                $x = $x - 300;
+                $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                $x = null;
+            }
+        }while($x != null);
         $datos = Yii::app()->db->createCommand()
             ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->from('escalon_viaje_ubicacion as esc')
             ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
-//                ->where("upT.id_tanque = 28")
-            ->limit(333,$limit)
+            ->limit(300,$rangos[0][0])
             ->order("esc.id ASC")
             ->queryAll();
+        $x = count($rangos) * 206.39;
         $return['codigo'] = <<<eof
             <div class="historial">
                 <div class="titulo"></div>
                 <div class="historialGraficasWraper">
+                    <div>rango de datos</div>
+                    <div class="rangos-wraper">
+                        <div class="rangosHistorial" style="width: {$x}px">
+eof;
+        $x = true;
+        foreach ($rangos as $data)
+        {
+            if($x)
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div class="selected">$data[0] - $data[1]</div>
+eof;
+                $x = false;
+            }
+            else
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div>$data[0] - $data[1]</div>
+eof;
+            }
+        }
+        $return['codigo'] = $return['codigo'].<<<eof
+                        </div>
+                    </div>
                     <div class="menuHistorial">
                         <div class="selected" data-para="1">Oxígeno disuelto</div>
                         <div data-para="2">Temperatura</div>
@@ -1908,7 +1945,7 @@ eof;
         $width = ($cont * 98)+40;
         if($width < 1032)
             $width = 1032;
-        $return['codigo'] =$return['codigo'].<<<eof
+        $return['codigo'] = $return['codigo'].<<<eof
                         <div class="grafScroll" data-rece="1">
                             <canvas id="historialTanque1" width="$width" height="405"></canvas>
                         </div>
@@ -2181,6 +2218,11 @@ eof;
                 </div>
             </div>';
         echo json_encode($return);
+    }
+    public function actionGetTotalCountHistorial($viaje, $id)
+    {
+        
+        echo json_encode($count);
     }
     public function actionGetHistorialParametro($viaje, $id)
     {

@@ -622,10 +622,10 @@ table.detail-view th {
     display: block;
 }
 
-#cboxOverlay {
+/*#cboxOverlay {
     background-color: #e6e6e6;
     opacity: .8 !important;
-}
+}*/
 
 #cboxWrapper {
     border-radius: 5px 5px 5px 5px;
