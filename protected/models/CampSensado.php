@@ -97,6 +97,7 @@ class CampSensado extends CActiveRecord
 			'hora_inicio' => 'Hora de inicio (24 horas)',
 			'fecha_fin' => 'Fecha de terminación',
 			'hora_fin' => 'Hora de terminación (24 horas)',
+                        'granja_nombre' => 'Granja'
 		);
 	}
 

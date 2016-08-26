@@ -72,30 +72,50 @@ class Solicitudes extends CActiveRecord
 			'id' => 'Solicitud',
 			'id_clientes' => 'Cliente',
 			'codigo' => 'Código',
-			'fecha_alta' => 'Fecha alta',
-			'hora_alta' => 'Hora alta',
+                        'fecha_alta' => 'Fecha de alta',
+			'hora_alta' => 'Hora de alta',
 			'fecha_estimada' => 'Fecha estimada de entrega',
 			'hora_estimada' => 'Hora estimada de entrega',
-			'fecha_entrega' => 'Fecha entrega',
-			'hora_entrega' => 'Hora entrega',
+			'fecha_entrega' => 'Fecha de entrega',
+			'hora_entrega' => 'Hora de entrega',
 			'notas' => 'Notas',
 			'id_viaje' => 'Viaje número',
+                        'no_tanques' => 'Número de tanques'
 		);
 	}
-public function getSearchSolicitud(){
-            return array('1'=>'Cliente',
-                         '2'=>'Código',
-                         '3'=>'Id',
-                         '5'=>'Fecha',
-                         '7'=>'Fecha Entrega',
-                         '8'=>'Hora Entrega',
-                         /*
-                         '4'=>'Hora Alta',
-                         
-                         '6'=>'Hora fecha_estimada',
-                         '7'=>'Fecha Entrega',
-                         '8'=>'Hora Entrega',
-                         '9'=>'Notas'*/);
+        public function getSearchSolicitud(){
+            return array(
+                '1'=>'Cliente',
+                '2'=>'Código',
+                '3'=>'Id',
+                '5'=>'Fecha',
+                '7'=>'Fecha Entrega',
+                '8'=>'Hora Entrega',
+                /*
+                '4'=>'Hora Alta',
+
+                '6'=>'Hora fecha_estimada',
+                '7'=>'Fecha Entrega',
+                '8'=>'Hora Entrega',
+                '9'=>'Notas'*/
+            );
+        }
+        public function getSearchSolicitudSinAsignar(){
+            return array(
+                '1'=>'Cliente',
+                '2'=>'Código',
+                '3'=>'Id',
+                '4'=>'Hora de alta',
+                '5'=>'Fecha de alta',
+               /* '8'=>'Hora Entrega',
+                
+                '4'=>'Hora Alta',
+
+                '6'=>'Hora fecha_estimada',
+                '7'=>'Fecha Entrega',
+                '8'=>'Hora Entrega',
+                '9'=>'Notas'*/
+            );
         }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -325,7 +345,7 @@ public function getSearchSolicitud(){
             'codigo',
              array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'no_tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -385,7 +405,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'no_tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -477,7 +497,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'no_tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -550,7 +570,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'N&uacutemero de tanques',
+                'name'=>'no_tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
