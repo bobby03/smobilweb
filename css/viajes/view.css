@@ -337,6 +337,7 @@ div.grafica > div
 .historialGraficasWraper
 {
     margin: 65px 60px;
+    margin-top: 18px;
 }
 .menuHistorial
 {
@@ -392,7 +393,7 @@ div.grafica > div
 }
 .grafScroll::-webkit-scrollbar 
 {
-    width: 5px;
+    height: 5px;
 }
 .grafScroll::-webkit-scrollbar-track 
 {
@@ -444,91 +445,6 @@ div.menuTodos
 {
     background-color: #09B7C9;
 }
-/*.menuSeccion div:first-child
-{
-    width: 0;
-    height: 0;
-    border: 6.5px solid transparent;
-    border-bottom-color: red;
-    position: relative;
-    top: -1px;
-    margin-right: 10px;
-}*/
-/*.menuSeccion div:first-child:after
-{
-    content: '';
-    position: absolute;
-    left: -6px;
-    top: 6px;
-    width: 0;
-    height: 0;
-    border: 6.5px solid transparent;
-    border-top-color: red;
-}
-.menuSeccion:nth-child(1) div:first-child
-{
-    border-bottom-color: #4363AE !important;
-}
-.menuSeccion:nth-child(1) div:first-child:after
-{
-    border-top-color: #4363AE;
-}
-.menuSeccion:nth-child(2) div:first-child
-{
-    border-bottom-color: #8DC63F !important;
-}
-.menuSeccion:nth-child(2) div:first-child:after
-{
-    border-top-color: #8DC63F;
-}
-.menuSeccion:nth-child(3) div:first-child
-{
-    border-bottom-color: #7F3F98 !important;
-}
-.menuSeccion:nth-child(3) div:first-child:after
-{
-    border-top-color: #7F3F98;
-}
-.menuSeccion:nth-child(4) div:first-child
-{
-    border-bottom-color: #FF5BB2 !important;
-}
-.menuSeccion:nth-child(4) div:first-child:after
-{
-    border-top-color: #FF5BB2;
-}
-.menuSeccion:nth-child(5) div:first-child
-{
-    border-bottom-color: #27AAE1 !important;
-}
-.menuSeccion:nth-child(5) div:first-child:after
-{
-    border-top-color: #27AAE1;
-}
-.menuSeccion:nth-child(6) div:first-child
-{
-    border-bottom-color: #ED1C24 !important;
-}
-.menuSeccion:nth-child(6) div:first-child:after
-{
-    border-top-color: #ED1C24;
-}
-.menuSeccion:nth-child(7) div:first-child
-{
-    border-bottom-color: #8B5E3C !important;
-}
-.menuSeccion:nth-child(7) div:first-child:after
-{
-    border-top-color: #8B5E3C;
-}
-.menuSeccion:nth-child(8) div:first-child
-{
-    border-bottom-color: #FF7236 !important;
-}
-.menuSeccion:nth-child(8) div:first-child:after
-{
-    border-top-color: #FF7236;
-}*/
 div.mapaPopup
 {
     width: 1184px;
@@ -601,9 +517,41 @@ div.mapaPopup .titulo
 {
     margin-right: 39px;
 }
-
-
-
+.rangos-wraper
+{
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+.rangosHistorial div
+{
+    width:20%; 
+    float:left;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+}
+.rangosHistorial div.selected
+{
+    background-color: #09B7C9;
+}
+.rangos-wraper::-webkit-scrollbar 
+{
+    height: 5px;
+}
+.rangos-wraper::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    background-color: #CEDCE4;
+    border-radius: 10px;
+}
+.rangos-wraper::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #939598;
+}
 .datosWraper:after,
 .detallesViaje:after,
 .allTanques:after,
@@ -618,10 +566,10 @@ div.mapaPopup .titulo
 .menuArriba:after,
 .entregasPopup:after,
 .direccion-wraper:after,
-.todosPedidosVer:after
+.todosPedidosVer:after,
+.rangosHistorial:after
 {
     display: block;
     clear: both;
     content: '';
 }
-
