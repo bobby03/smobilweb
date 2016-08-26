@@ -42,11 +42,15 @@ $(document).ready(function()
             $('#tanquesNO').css('border-color', '#0077B0');
             document.getElementById('errorTan').innerHTML='';
             }
-        if(tanques > cantidad){
-            $('#tanquesNO').css('border-color', '#C00');
-            document.getElementById('errorTan').innerHTML='Los tanques debe ser menor a la cantidad requerida';
-            error=1;
-        }
+
+        if (cantidad<tanques){
+           $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#C00');
+            document.getElementById('errorCan').innerHTML='Cantidad menor a cantidad de tanques';
+            error=1;}
+        else{
+            $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#0077B0');
+            document.getElementById('errorCan').innerHTML='';
+            }
 
         //validaciones dropdown
 

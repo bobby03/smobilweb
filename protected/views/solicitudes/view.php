@@ -103,11 +103,15 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
         </div>
 
         <div class="row">
-             <a class="cancelarDireccion gBoton" id="cBoton" style="margin-left: 10px;" href="#" enla="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a>
+                <?php if($model->status == 1) : ?>
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+                <?php else :?>        
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+                <?php endif; ?>
               <script type="text/javascript">                     
-               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
-               console.log(urlC);
-               $('#cBoton').attr('href',urlC);
+//               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+//               console.log(urlC);
+//               $('#cBoton').attr('href',urlC);
             </script>
         </div>
     <?php endif;?>
