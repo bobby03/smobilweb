@@ -86,6 +86,10 @@ a.gBoton.bBoton:hover
 {
     background-image: url('./../../images/crear/nuevoAlmacen.png');
 }
+.agregar.campsensado
+{
+    background-image: url('./../../images/crear/iconoNuevaSiembra.svg');
+}
 
 a.gBoton:hover {
     text-decoration: none;

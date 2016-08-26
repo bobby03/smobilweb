@@ -189,7 +189,8 @@ class Viajes extends CActiveRecord
             '1' => 'ID',
             '2' => 'Cliente',
             '3' => 'Responsable',
-            '4' => 'Camión'
+            '4' => 'Camión',
+            '5'=>'Fecha',
         );
     }
     public function getAllStatus()

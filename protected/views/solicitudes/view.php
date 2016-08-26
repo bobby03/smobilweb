@@ -28,6 +28,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
     height: 4px;
     /* width: 80%; */
 }
+
 </style>
 <h1>Ver solicitud #<?php echo $model->id; ?></h1>
 <?php if($model->status == 1) : ?>
@@ -42,6 +43,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'fecha_alta',
                 'hora_alta',
                  array('name'=>'id_viaje', 'value'=>Solicitudes::model()->getViaje($model->id)), 
+
                 'fecha_estimada',
                 'hora_estimada',
                 'fecha_entrega',

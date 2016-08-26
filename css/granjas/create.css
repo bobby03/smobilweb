@@ -38,4 +38,13 @@ body.granjas div.form input[type="submit"]{
     margin-left: 20px;
     
 }
-
+.form-cRight {
+    float: left;
+    width: 300px;
+    margin-left: 35px;
+}
+.form-cLeft {
+    float: left;
+    width: 300px;
+    margin-left: 35px;
+}

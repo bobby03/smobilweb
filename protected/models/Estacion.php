@@ -113,7 +113,7 @@ class Estacion extends CActiveRecord
 			'no_personal' => 'Capacidad de pasajeros',
 			'marca' => 'Marca',
 			'color' => 'Color',
-			'ubicacion' => 'Ubicacion',
+			'ubicacion' => 'Ubicaci&oacuten',
 			'disponible' => 'Disponible',
 			'activo' => 'Activo',
 		);
@@ -136,6 +136,10 @@ class Estacion extends CActiveRecord
                 '2'=>'Ubicación',
             );
         }
+     public function getNombreProduccion($id){
+        $Estacion = Estacion::model()->findByPk($id);
+        return $Estacion['identificador']; 
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -374,7 +378,7 @@ class Estacion extends CActiveRecord
             return array
             (
                 'identificador',
-                array('name'=>'Descripcion','value'=>'$data->marca'),
+                array('name'=>'Descripci&oacuten','value'=>'$data->marca'),
                 'ubicacion',
                 array('name'=>'N&uacutemero de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 array
@@ -407,7 +411,7 @@ class Estacion extends CActiveRecord
             return array
             (
                 'identificador',
-                array('name'=>'Descripcion','value'=>'$data->marca'),
+                array('name'=>'Descripci&oacuten','value'=>'$data->marca'),
                 'ubicacion',
                 array('name'=>'N&uacutemero de tanques', 'value'=>'Estacion::model()->getNumOfTanques($data->id)'),
                 array
