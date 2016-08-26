@@ -1,6 +1,7 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/js.cookie.js');
     $cs->registerScriptFile($baseUrl.'/js/calendario.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/create.js?r='.rand());
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/colorboxCreate.js');
@@ -15,6 +16,7 @@
     $mystring =  $this->classes;
     $findme   = 'update';
     $ButtonAddUpdate = strpos($mystring, $findme)===false?'Agregar pedido':'Actualizar pedido';
+
 
 
 ?>
@@ -283,19 +285,19 @@ eof;
             </div>
         </div>
         <div class="botones hide">
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes<?php echo ($update) ? '/#asignadas' : '' ?>">Cancelar</a>
-            <!--<div class="continuar">Continuar</div>-->
+
+
+
+            <a class="gBoton" id="cBoton" href="" enla="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+            <script type="text/javascript">                     
+               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+               console.log(urlC);
+               $('#cBoton').attr('href',urlC);
+            </script>
+
             <div class="guardar">Guardar</div>
         </div>
-<!--        <div class="row crearViaje hide">
-            <div class="viajes">
-                <?php $this->getViajes();?>
-            </div>
-            <?php 
-                $contenedores = Estacion::model()->findAll('disponible = 1 AND activo = 1 AND tipo = 1');
-                if(count($contenedores)>0)
-                    echo CHtml::submitButton($model->isNewRecord ? 'Crear nuevo viaje' : 'Crear nuevo viaje'); ?>
-        </div>-->
+
     </div>
 <?php $this->endWidget(); ?>
 
