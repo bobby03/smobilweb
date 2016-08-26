@@ -840,6 +840,7 @@ EOF;
     }
     public function actionIndex()
     {
+        // echo date('H:i');
             $model=new Viajes();
             $model->unsetAttributes();  // clear any default values
             if(isset($_GET['Viajes']))
@@ -1483,17 +1484,18 @@ EOF;
     public function actionGetAlertasTanque($viaje, $id)
     {
         $uploads = Yii::app()->db->createCommand()
-                ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
+                ->selectDistinct('evu.id as idTabla, cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
                 ->from('solicitudes_viaje as solV')
                 ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                 ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
                 ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
-                ->join('uploadTemp as upt','upt.id_tanque = tan.id')
                 ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                ->join('uploadTemp as upt','upt.id_escalon_viaje_ubicacion = evu.id')
                 ->where("solV.id_viaje = $viaje")
                 ->andWhere("tan.id = $id")
                 ->andWhere("upt.alerta > 1")
                 ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
+                ->order("idTabla ASC")
                 ->queryAll();
         if(count($uploads) > 0)
         {
@@ -1505,63 +1507,77 @@ EOF;
                             <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
                         </div>
                         <div class="tablaWraper">';
-
             foreach($uploads as $data)
             {
-                if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                if(isset($data['temp']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['temp'] > $data['temp_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Temperatura</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['temp'] > $data['temp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Temperatura</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                if(isset($data['ox']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['ox'] > $data['ox_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Oxígeno</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ox'] > $data['ox_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Oxígeno</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                if(isset($data['ph']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['ph'] > $data['ph_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>PH</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ph'] > $data['ph_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>PH</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                if(isset($data['cond']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['cond'] > $data['cond_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Conductividad</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['cond'] > $data['cond_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Conductividad</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                if(isset($data['orp']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['orp'] > $data['orp_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Potencial óxido reducción</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                    if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['orp'] > $data['orp_max'])
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Potencial óxido reducción</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
             }
             $return = $return.'</div>
@@ -1582,200 +1598,7 @@ eof;
         }
         echo json_encode($return);
     }
-    public function actionGetAlertaParametroModel($viaje,$id)
-    {
-        $t = 0; $p = 0; $o = 0; $c = 0; $tm=0; $ax = null; //ax 0 = down, ax 1 = up
-        $aDatosUT = array
-        (
-            0=>'temp',
-            1=>'ox',
-            2=>'ph',
-            3=>'cond',
-            4=>'orp'
-        );
-
-        Yii::app()->db->createCommand()->delete('alerts_temp');
-        $uploads = Yii::app()->db->createCommand()
-            ->selectDistinct('cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
-            ->from('solicitudes_viaje as solV')
-            ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
-            ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
-            ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
-            ->join('uploadTemp as upt','upt.id_tanque = tan.id')
-            ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
-            ->where("solV.id_viaje = $viaje")
-            ->andWhere("tan.id = $id")
-            ->andWhere("upt.alerta > 1")
-            ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
-            ->queryAll();
-        /*
-        $uploads = Yii::app()->db->createCommand()
-        ->select('v.id_solicitudes, st.id_tanque, st.id_cepas, ut.*, evu.*')
-        ->from('uploadtemp ut')
-        ->join('viajes v','v.id = :idS',array(':idS'=>$viaje))
-        ->join('solicitud_tanques st','st.id_tanque = :id',array(':id'=>$id))
-        ->join('escalon_viaje_ubicacion evu','evu.id_viaje = v.id')
-        ->join('cepa c','c.id = st.id_cepas')
-        ->where ('ut.id_tanque = st.id_tanque')
-        ->order(' ut.id desc')
-        ->queryAll();
-        */
-        // print_r($uploads);
-        foreach ($uploads as $key => $data) {
-        # code...
-        // $data = Yii::app()->db->createCommand()
-        //     ->select('*')
-        //     ->from('cepa ')
-        //     ->where('id = :idC',array(':idC'=>$value['id']))
-        //     ->queryRow();
-        //     // print_r($data);
-
-        // print_r($value);
-
-
-        if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
-            {
-                $alerta = new AlertsTemp();
-                if($data['temp'] > $data['temp_max']){
-                   $tm = $data['temp'] - $data['temp_max'];
-                   $alerta->flecha=0;
-                }
-                else{
-                    $tm = $data['temp_min'] - $data['temp'];
-                    $alerta->flecha=1;
-                }
-
-                $alerta->valor = $tm;
-                $alerta->origen= 'temp';
-                $alerta->flecha=$ax;
-                $alerta->hora=$data['hora'];
-                $alerta->fecha=$data['fecha'];
-                $alerta->ubicacion=$data['ubicacion'];
-                $alerta->save();
-
-            }
-
-            if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
-            {
-                $alerta = new AlertsTemp();
-                if($data['ox'] > $data['ox_max']){
-                   $tm = $data['temp'] - $data['ox_max'];
-                   $alerta->flecha=0;
-                }
-                else{
-                    $tm = $data['ox_min'] - $data['ox'];
-                    $alerta->flecha=1;
-                }
-
-               $alerta->valor = $tm;
-                $alerta->origen= 'Oxigeno';
-                $alerta->flecha=$ax;
-                $alerta->hora=$data['hora'];
-                $alerta->fecha=$data['fecha'];
-                $alerta->ubicacion=$data['ubicacion'];
-                $alerta->save();
-            }
-
-            if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
-            {
-                $alerta = new AlertsTemp();
-                 if($data['ph'] > $data['ph_max']){
-                   $tm = $data['temp'] - $data['ph_max'];
-                   $alerta->flecha=0;
-                }
-                else{
-                    $tm = $data['ph_min'] - $data['ph'];
-                    $alerta->flecha=1;
-                }
-
-               $alerta->valor = $tm;
-                $alerta->origen= 'Oxigeno';
-                $alerta->flecha=$ax;
-                $alerta->hora=$data['hora'];
-                $alerta->fecha=$data['fecha'];
-                $alerta->ubicacion=$data['ubicacion'];
-                $alerta->save();
-
-
-            }
-
-            if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
-            {
-                $alerta = new AlertsTemp();
-               if($data['cond'] > $data['cond_max']){
-                   $tm = $data['cond'] - $data['cond_max'];
-                   $alerta->flecha=0;
-                }
-                else{
-                    $tm = $data['cond_min'] - $data['cond'];
-                    $alerta->flecha=1;
-                }
-
-               $alerta->valor = $tm;
-                $alerta->origen= 'Conductividad';
-                $alerta->flecha=$ax;
-                $alerta->hora=$data['hora'];
-                $alerta->fecha=$data['fecha'];
-                $alerta->ubicacion=$data['ubicacion'];
-                $alerta->save();
-            }
-
-            if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
-            {
-                $alerta = new AlertsTemp();
-                if($data['orp'] > $data['orp_max']){
-                   $tm = $data['orp'] - $data['orp_max'];
-                   $alerta->flecha=0;
-                }
-                else{
-                    $tm = $data['orp_min'] - $data['orp'];
-                    $alerta->flecha=1;
-                }
-
-               $alerta->valor = $tm;
-                $alerta->origen= 'Oxido reducción Potencial';
-                $alerta->flecha=$ax;
-                $alerta->hora=$data['hora'];
-                $alerta->fecha=$data['fecha'];
-                $alerta->ubicacion=$data['ubicacion'];
-                $alerta->save();
-            }
-
-        }
-
-        // print_r($uploads);
-
-        // *
-        $model = new AlertsTemp();
-        /*
-        $tabla = '<div class="alertas" style="width: 500px; height: 300px;">
-                <div class="tituloAlerta" style="background-color:#0077B0">Sin alertas en </div>
-                <div class="tablaTitulos" style="font-size: 28px;">
-                    <div class="tablaAlertas">
-                        <span style="padding:15px;text-indent:0; width: 100%; border-bottom:0;">No existen alertas de este parametro hasta el momento.</span>
-                    </div>
-                </div>
-            </div>';
-            */
-        if(!isset($_GET['ajax']))
-        $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('viewParams'));
-
-        // $lll =  $this->widget('zii.widgets.grid.CGridView', array
-        //     (
-        //         'id'=>'alertaGrid',
-        //         'dataProvider'=>$model->search(),
-        //         'summaryText'=> 'Alertas del {start} al {end} de un total de {count} registros.',
-        //         'template' => "{items}{summary}{pager}",
-        //         'columns'=>$model->adminSearch(),
-        //         'pager' => array
-        //             (
-        //                 'class' => 'PagerSA',
-        //                 'header'=>'',
-        //             ),
-        //     )) ;
-
-        echo json_encode("ok");
-}
+   
     public function actionGetAlertasParametro($viaje, $id)
     {
         $nombre = " Name "  ;
@@ -2276,7 +2099,7 @@ eof;
         $return['total'] = $i;
         $return['codigo'] = <<<eof
             <div class="historial parametro">
-                <div class="titulo">Historial de parámetro</div>
+                <div class="titulo">Historial de parámetro ($nombre)</div>
                 <div class="subtitulo">$nombre</div>
                 <div class="historialGraficasWraper">
                 <div class="menuTanques">

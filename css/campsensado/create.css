@@ -171,8 +171,8 @@ div.form div.tab div.row.buttons {
     float: right;
     margin-top: 50px;
     width: 270px;
-    right: 190px;
-    top: 228px;
+    right: 120px;
+    top: 275px;
 }
 
 .floating {
@@ -430,7 +430,30 @@ div.chosen-container.error > ul {
     padding-right: 0px;
     text-align: right;
 }
+.gBoton.regresar.uno,
+.gBoton.regresar.dos{
+    margin: 0;
+    margin-right: 15px;
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+}
+.gBoton.regresar.uno,
+.botonesWrapper2 > * {
+    float: right;
+}
 body.CampSensado .gBoton {
     width: 120px !important;
     margin-right: 10px !important;
+}
+div.tab.last div.row.buttons.floating input {
+    padding: 0;
+}
+.gBoton.regresar.uno,
+.bUno.fBoton.regresar {
+    float: right;
+}
+div.tab.last {
+    width: 1180px;
+    position: relative;
 }

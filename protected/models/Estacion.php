@@ -128,6 +128,18 @@ class Estacion extends CActiveRecord
                          '7'=>'Disponible'*/);
         }
 
+        public function getSearchPlanta()
+        {
+            return array
+            (
+                '1'=>'Identificador',
+                '2'=>'Ubicación',
+            );
+        }
+     public function getNombreProduccion($id){
+        $Estacion = Estacion::model()->findByPk($id);
+        return $Estacion['identificador']; 
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

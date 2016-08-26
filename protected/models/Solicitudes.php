@@ -84,9 +84,13 @@ class Solicitudes extends CActiveRecord
 public function getSearchSolicitud(){
             return array('1'=>'Cliente',
                          '2'=>'Código',
-                         '3'=>'Id',/*
+                         '3'=>'Id',
+                         '5'=>'Fecha',
+                         '7'=>'Fecha Entrega',
+                         '8'=>'Hora Entrega',
+                         /*
                          '4'=>'Hora Alta',
-                         '5'=>'Fecha Estimada',
+                         
                          '6'=>'Hora fecha_estimada',
                          '7'=>'Fecha Entrega',
                          '8'=>'Hora Entrega',
@@ -320,7 +324,7 @@ public function getSearchSolicitud(){
             'codigo',
              array
             (
-                'name'=>'# tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -380,7 +384,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'# tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -472,7 +476,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'# tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array
@@ -545,7 +549,7 @@ public function getSearchSolicitud(){
             'codigo',
             array
             (
-                'name'=>'# tanques',
+                'name'=>'N&uacutemero de tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
             array

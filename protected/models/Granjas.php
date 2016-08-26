@@ -97,6 +97,19 @@ class Granjas extends SMActiveRecord
                 '3'=>'Responsable'
             );
         }
+    public function getNombreGranjas($id){
+        $granja = Yii::app()->db->createCommand()
+            ->select('nombre')
+            ->from('granjas g')
+            ->join('estacion e', 'e.id_granja = g.id')
+            ->where('e.id = :id',array(':id'=>$id))
+            ->queryRow();
+
+        // $granja = Granjas::model()->findByPk($id);
+        return $granja['nombre']; 
+    }
+
+   
         public function getnombregranja()
         {
             $personal = Granjas::model()->findAll('activo = 1');

@@ -147,6 +147,7 @@ class GranjasController extends Controller
 
             $this->render('nuevaPlanta',array(
                     'model'=>$model,
+                    'idPlanta'=>$id
             ));
         }
         public function actionEditarPlanta($id)

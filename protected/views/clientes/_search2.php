@@ -11,7 +11,7 @@
 	'method'=>'get',
 )); ?>
 
-     <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchClientes(),array('empty' =>'Selecciona Búsqueda')); ?>
+     <?php echo CHtml::dropDownList('searchDropDown2', 'id', $model->getSearchClientes(),array('empty' =>'Selecciona Búsqueda')); ?>
 
 
 	<div class="row hide" data-id='1'>
@@ -28,22 +28,6 @@
 		
 		<?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
-
-<!--	<div class="row hide" data-id='4'>
-		
-		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
-	</div>-->
-
-	<div class="row hide" data-id='4'>
-		
-		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
-	</div>
-
-<!--	<div class="row hide" data-id='6'>
-		
-		<?php echo $form->textField($model,'tel',array('size'=>12,'maxlength'=>12)); ?>
-	</div>-->
-
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->

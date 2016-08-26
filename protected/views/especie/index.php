@@ -54,7 +54,7 @@
     <!--Inactivos-->
     <div class="tabContent hide" data-tan="2"> 
         <div class="search-form2" ><!-- search-form -->
-            <?php $this->renderPartial('_search2',array(
+            <?php $this->renderPartial('_search',array(
                     'model'=>$model,
             )); ?>
             

@@ -11,7 +11,7 @@
 	'method'=>'get',
         'htmlOptions'=>array('data-form'=>1)
 )); ?>
-    <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona Búsqueda','data-s'=>1)); ?>
+    <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>1)); ?>
 	<div class="row hide" data-id="1">
             <?php echo $form->textField($model,'id'); ?>
 	</div>
@@ -23,6 +23,10 @@
 	</div>
 	<div class="row hide" data-id="4">
             <?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesOcupadas(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+	</div>
+	<div class="row hide" data-id='5'>
+		
+		<?php echo $form->textField($model,'fecha_salida'); ?>
 	</div>
 <!--
 	<div class="row hide" data-id="3">

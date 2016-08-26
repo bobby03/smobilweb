@@ -185,6 +185,7 @@
 				</div>
                             </div>
 					<div class="row buttons">
+						<a class="gBoton regresarCepa" href="<?php echo Yii::app()->getBaseUrl(true)."/cepa?id=".$model->id_especie?>">Cancelar</a> 
 						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 					</div>
 			</div>

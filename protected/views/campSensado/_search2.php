@@ -10,10 +10,9 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-
- <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>1)); ?>
+	<?php echo CHtml::dropDownList('searchDropDown2', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>1)); ?>
 	<div class="row hide" data-id="1">
-            <?php echo $form->dropDownList($model,'id', CampSensado::model()->getGranjasName(1), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+            <?php echo $form->dropDownList($model,'id', CampSensado::model()->getGranjasName(2), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
 	
 	<div class="row hide" data-id="2">
@@ -21,11 +20,11 @@
 	</div>
 
 	<div class="row hide" data-id="3">
-	 <?php echo $form->dropDownList($model,'id', CampSensado::model()->getProduccionName(1), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+	 <?php echo $form->dropDownList($model,'id', CampSensado::model()->getProduccionName(2), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
 	
 	<div class="row hide" data-id="4">
-	<?php echo $form->dropDownList($model,'id', CampSensado::model()->getResponsableName(1), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+	<?php echo $form->dropDownList($model,'id', CampSensado::model()->getResponsableName(2), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
            
 	</div>
 	
@@ -33,8 +32,6 @@
             <?php echo $form->textField($model,'fecha_inicio'); ?>
 	</div>
 	
-
-
 <?php $this->endWidget(); ?>
 
-</div>
+</div><!-- search-form -->

@@ -41,16 +41,18 @@
                 ?>
             </div>
 	</div>
-	<div class="row">
+	
+	</div>
+ 
+    <div class="form-cRight">
+        <div class="row">
                 <label class="letreros">Responsable</label>
                 <div class="form-cLarge">
                     <?php   echo $form->textField($model,'responsable',array('size'=>60,'maxlength'=>100));
                             echo $form->error($model,'responsable');
                     ?>
-	</div>
+    </div>
             </div>
-	</div>
-    <div class="form-cRight">
         <div class="containerbutton">
 	<div class="row buttons">
                     <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas">Cancelar</a> 

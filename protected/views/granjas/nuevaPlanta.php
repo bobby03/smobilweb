@@ -10,6 +10,7 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerCssFile($baseUrl.'/css/estacion/create.css');
+    // print_r($model);
    ?>
 <h1>Crear nueva planta de producci&oacute;n</h1>
 <div class="form">
@@ -50,7 +51,7 @@
                 <div class="row">
                     <label class= "letreros">Descripcion</label>
                     <div class="form-cLarge">	
-                    <?php echo $form->textArea($model,'marca',array('size'=>150,'maxlength'=>150)); ?>
+                    <?php echo $form->textField($model,'marca',array('size'=>150,'maxlength'=>150)); ?>
                     <?php echo $form->error($model,'marca'); ?>
                     </div>
                 </div>
@@ -63,7 +64,8 @@
             </div>
             <div class="containerbutton">
                 <div class="row buttons">
-                        <?php echo CHtml::submitButton('Guardar'); ?>
+                    <a class='gBoton' href= '<?php echo Yii::app()->getBaseUrl(true)."/granjas/plantaProduccion/".$idPlanta?>'>Regresar</a>
+                    <?php echo CHtml::submitButton('Guardar'); ?>
                 </div>
             </div>
         </div>

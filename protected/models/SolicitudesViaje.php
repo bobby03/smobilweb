@@ -104,7 +104,7 @@ class SolicitudesViaje extends SMActiveRecord
 	{
 		return parent::model($className);
 	}
-        public function getpersonal($rol)
+    public function getpersonal($rol)
         {
             $personal = Personal::model()->findAll("id_rol = $rol");
             $return = array();
