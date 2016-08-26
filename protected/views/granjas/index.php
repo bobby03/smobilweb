@@ -30,7 +30,7 @@
     </div>
     
     <div class="tabContent" data-tan="1">
-        <div class="search-form2" >
+        <div class="search-form" >
         <?php $this->renderPartial('_search',array(
                 'model'=>$model,
         )); ?>

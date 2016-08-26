@@ -42,6 +42,11 @@ $(document).ready(function()
             $('#tanquesNO').css('border-color', '#0077B0');
             document.getElementById('errorTan').innerHTML='';
             }
+        if(tanques > cantidad){
+            $('#tanquesNO').css('border-color', '#C00');
+            document.getElementById('errorTan').innerHTML='Los tanques debe ser menor a la cantidad requerida';
+            error=1;
+        }
 
         //validaciones dropdown
 
