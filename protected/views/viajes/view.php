@@ -66,6 +66,7 @@
         )); ?>
         <div class="todosPedidosVer">
         <?php $tot = 1;?>
+        <?php if(isset($pedidos['pedido'])):?>
         <?php foreach($pedidos['pedido'] as $data):?>
             <?php for($i = 1; $i <= $data['tanques']; $i++):?>
                 <div class="pedido">
@@ -105,6 +106,9 @@
                 <?php $tot++; ?>
             <?php endfor;?>
         <?php endforeach; ?>
+        <?php else: ?>
+            no hay pedidos
+        <?php endif;?>
         </div>
         <div style="width: 100%;">
             <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
