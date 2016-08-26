@@ -1,15 +1,21 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/js.cookie.js');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/index.js');
     $cs->registerScriptFile($baseUrl.'/js/solicitudes/search.js');
     $cs->registerCssFile($baseUrl.'/css/solicitudes/index.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
-    $this->breadcrumbs=array('Solicitudes',);
-    
-?>
 
+    $this->breadcrumbs=array('Solicitudes',);
+
+
+
+?>
+<script>
+
+</script>
 <h1>Solicitudes</h1>
 <?php
 //$a=SolicitudesViaje::model()->findByAttributes(array(74));
@@ -17,10 +23,10 @@
 <div class="principal">
     <input type='hidden' id='idviaje'>
     <div class="tabs">
-        <div class="tab select" data-id="1"><span>Sin asignar</span></div>
+        <div class="tab select" id="sinAsignar" data-id="1"><span>Sin asignar</span></div>
         <div id="asignadas" class="tab" data-id="2"><span>Asignadas</span></div>
-        <div class="tab" data-id="3"><span>En ruta</span></div>
-        <div class="tab" data-id="4"><span>Finalizado</span></div>
+        <div  id="enRuta" class="tab" data-id="3"><span>En ruta</span></div>
+        <div  id="finalizado" class="tab" data-id="4"><span>Finalizado</span></div>
     </div>
     <div class="tabContent" data-tan="1">
         <div class="search-form" ><!-- search-form -->
