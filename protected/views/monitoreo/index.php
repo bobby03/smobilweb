@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
         (
             'id'=>'estacion-grid',
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'enableSorting'=>true,
             'dataProvider'=>Estacion::model()->search1(2,1),
