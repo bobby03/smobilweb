@@ -4,6 +4,7 @@
 
  $baseUrl = Yii::app()->baseUrl;
  $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/js.cookie.js');
  $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
  $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
  $cs->registerCssFile($baseUrl.'/css/solicitudes/view.css');
@@ -14,6 +15,7 @@ $this->breadcrumbs=array(
 );
 $pedidos = Pedidos::model()->findAll("id_solicitud = $model->id");
 $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
+
 ?>
 <style>
 .cLetreros 
@@ -31,6 +33,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
 
 </style>
 <h1>Ver solicitud #<?php echo $model->id; ?></h1>
+<?php if($model->status == 1) : ?>
 <div class="form">
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
@@ -41,7 +44,8 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'codigo',
                 'fecha_alta',
                 'hora_alta',
-                array('name'=>'Viaje', 'value'=>$model->getViaje($model->id) ),
+                 array('name'=>'id_viaje', 'value'=>Solicitudes::model()->getViaje($model->id)), 
+
                 'fecha_estimada',
                 'hora_estimada',
                 'fecha_entrega',
@@ -49,6 +53,25 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'notas',
             ),
     )); ?>
+    <?php else: ?>
+     <?php $this->widget('zii.widgets.CDetailView', array(
+            'data'=>$model,
+            'nullDisplay'=>'No se ha asignado a un viaje',
+            'attributes'=>array
+            (
+                'id_clientes',
+                'codigo',
+                'fecha_alta',
+                'hora_alta',
+                'fecha_estimada',
+                'hora_estimada',
+                'fecha_entrega',
+                'hora_entrega',
+                'notas',
+            ),
+    )); ?>   
+    
+    <?php endif?>
     <?php if(count($pedidos)>0):?>
         <div class="row">
             <h3>
@@ -78,6 +101,19 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 <?php endfor;?>
             <?php endforeach; ?>
         </div>
-        <div class="row"><a class="cancelarDireccion gBoton" style="margin-left: 10px;" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a></div>
+
+        <div class="row">
+             <a class="cancelarDireccion gBoton" id="cBoton" style="margin-left: 10px;" href="#" enla="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a>
+              <script type="text/javascript">                     
+               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+               console.log(urlC);
+               $('#cBoton').attr('href',urlC);
+            </script>
+        </div>
     <?php endif;?>
 </div>
+
+
+
+          
+  

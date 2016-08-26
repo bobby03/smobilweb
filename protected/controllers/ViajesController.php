@@ -1597,7 +1597,6 @@ eof;
         }
         echo json_encode($return);
     }
-   
     public function actionGetAlertasParametro($viaje, $id)
     {
         $nombre = " Name "  ;
@@ -1675,27 +1674,64 @@ eof;
             ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
-//                ->where("upT.id_tanque = 28")
             ->queryAll();
         $count = count($total);
-        if($count > 333)
-            $limit = $count - 333;
-        else
-            $limit = 0;
+        $rangos = array();
+        $index = 0;
+        $x = 0;
+        do
+        {
+            $x = $x + 300;
+            if( $x < $count )
+            {
+                $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                $index = $index + 1;
+            }
+            else
+            {
+                $x = $x - 300;
+                $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                $x = null;
+            }
+        }while($x != null);
         $datos = Yii::app()->db->createCommand()
             ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->from('escalon_viaje_ubicacion as esc')
             ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
-//                ->where("upT.id_tanque = 28")
-            ->limit(333,$limit)
+            ->limit(300,$rangos[0][0])
             ->order("esc.id ASC")
             ->queryAll();
+        $x = count($rangos) * 206.39;
         $return['codigo'] = <<<eof
             <div class="historial">
                 <div class="titulo"></div>
                 <div class="historialGraficasWraper">
+                    <div>rango de datos</div>
+                    <div class="rangos-wraper">
+                        <div class="rangosHistorial" style="width: {$x}px">
+eof;
+        $x = true;
+        foreach ($rangos as $data)
+        {
+            if($x)
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div class="selected">$data[0] - $data[1]</div>
+eof;
+                $x = false;
+            }
+            else
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div data-range="$data[0]">$data[0] - $data[1]</div>
+eof;
+            }
+        }
+        $return['codigo'] = $return['codigo'].<<<eof
+                        </div>
+                    </div>
                     <div class="menuHistorial">
                         <div class="selected" data-para="1">Oxígeno disuelto</div>
                         <div data-para="2">Temperatura</div>
@@ -1715,7 +1751,7 @@ eof;
         $width = ($cont * 98)+40;
         if($width < 1032)
             $width = 1032;
-        $return['codigo'] =$return['codigo'].<<<eof
+        $return['codigo'] = $return['codigo'].<<<eof
                         <div class="grafScroll" data-rece="1">
                             <canvas id="historialTanque1" width="$width" height="405"></canvas>
                         </div>
@@ -1987,6 +2023,272 @@ eof;
                 '   </div>
                 </div>
             </div>';
+        echo json_encode($return);
+    }
+    public function actionGetGraficaTanqueRango($viaje, $id, $rango)
+    {
+        $datos = Yii::app()->db->createCommand()
+            ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
+            ->from('escalon_viaje_ubicacion as esc')
+            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->where("esc.id_viaje = $viaje")
+            ->andWhere("upT.id_tanque = $id")
+            ->limit(300,$rango)
+            ->order("esc.id ASC")
+            ->queryAll();
+        $cont = 0;
+        foreach($datos as $data)
+        {
+            $labels[] = $data['hora'];
+            $datasets[] = $data['ox'];
+            $cont++;
+        }
+        $width = ($cont * 98)+40;
+        if($width < 1032)
+            $width = 1032;
+        $return['ox'] =
+            array
+            (
+                'type' => 'line',
+                'data'=>array
+                (
+                    'labels'    => isset($labels)?$labels:"empty",
+                    'datasets'  => 
+                    [
+                        (object)
+                        [
+                            'label'                 => "Od",
+                            'fill'                  => false,
+                            'lineTension '          => 0,
+                            'borderColor'           => '#3E66AA',
+                            'pointBorderColor'      => "#3E66AA",
+                            'pointBackgroundColor'  => "#3E66AA",
+                            'pointBorderWidth'      => 5,
+                            'pointHoverRadius'      => 10,
+                            'data'                  => isset($datasets)?$datasets:"empty",
+                        ]
+                    ]
+                ),
+                'options' => array
+                (
+                    'animation'             => false,
+                    'responsive'            => false,
+//                        'maintainAspectRatio'   => true,
+                    'legend'                => array('display' => false),
+                    'scales'                => array
+                    (
+                        'yAxes' => 
+                        [array(
+                            'ticks' => array
+                            (
+                                'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                            )
+                        )]
+                    )
+                )
+            );
+        foreach($datos as $data)
+        {
+            $labels2[] = $data['hora'];
+            $datasets2[] = $data['temp'];
+            $cont++;
+        }
+        $return['temp'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => isset($labels2)?$labels2:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "Temp",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets2)?$datasets2:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels3[] = $data['hora'];
+            $datasets3[] = $data['ph'];
+            $cont++;
+        }
+        $return['ph'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    =>isset($labels3)?$labels3:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "PH",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets3)?$datasets3:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels4[] = $data['hora'];
+            $datasets4[] = $data['cond'];
+            $cont++;
+        }
+        $return['cond'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => isset($labels4)?$labels4:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "Cond",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets4)?$datasets4:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels5[] = $data['hora'];
+            $datasets5[] = $data['orp'];
+            $cont++;
+        }
+        $return['orp'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => isset($labels5)?$labels5:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "ORP",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets5)?$datasets5:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
         echo json_encode($return);
     }
     public function actionGetHistorialParametro($viaje, $id)

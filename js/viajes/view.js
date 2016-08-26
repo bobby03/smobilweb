@@ -23,10 +23,8 @@ $(document).ready(function()
         disableDoubleClickZoom: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    
     graficarPorTanque();
     graficarPorParametro();
-
     $('[data-id="1"] .boton.adve').click(function()
     {
         // console.log('paramretro graph');
@@ -44,7 +42,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                console.log(data);
+//                console.log(data);
                 $.colorbox(
                 {
                     html: data,
@@ -148,7 +146,6 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                // console.log(data);
                 $.colorbox(
                 {
                     html: data.codigo,
@@ -174,6 +171,40 @@ $(document).ready(function()
                             $('.grafScroll').addClass('hide');
                             $('.grafScroll[data-rece="'+id+'"]').removeClass('hide');
                         });
+                        $('.rangosHistorial div').click(function()
+                        {
+                            if(!$(this).hasClass('selected'))
+                            {
+                                $('.rangosHistorial div').removeClass('selected');
+                                $(this).addClass('selected');
+                                var range = $(this).attr('data-range');
+                                $.ajax(
+                                {
+                                    type: 'GET',
+                                    url: 'GetGraficaTanqueRango',
+                                    dataType: 'JSON', 
+                                    data:
+                                    {
+                                        viaje: viaje,
+                                        id: id,
+                                        rango: range
+                                    },
+                                    success: function(data)
+                                    {
+                                        var ctx1 = $('#historialTanque1');
+                                        var myChart1 = new Chart(ctx1, data.ox);
+                                        var ctx2 = $('#historialTanque2');
+                                        var myChart2 = new Chart(ctx2, data.temp);
+                                        var ctx3 = $('#historialTanque3');
+                                        var myChart3 = new Chart(ctx3, data.ph);
+                                        var ctx4 = $('#historialTanque4');
+                                        var myChart4 = new Chart(ctx4, data.cond);
+                                        var ctx5 = $('#historialTanque5');
+                                        var myChart5 = new Chart(ctx5, data.orp);
+                                    },
+                                });
+                            }
+                        });
                     }
                 });
             },
@@ -181,7 +212,7 @@ $(document).ready(function()
             {
                 console.log(a, b, c);
             }
-        });
+        });  
     });
     $('[data-id="2"] .boton.graf').click(function()
     {

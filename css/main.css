@@ -622,8 +622,9 @@ table.detail-view th {
     display: block;
 }
 
+
 #cboxOverlay {
-    background-color: #5c5c5c;
+    background-color: #0077B0;
     opacity: .8 !important;
 }
 
