@@ -33,7 +33,7 @@
     'id'=>'personal-grid',
     'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
     'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-    'emptyText'=>"No hay resistros",
+    'emptyText'=>"No hay registros",
     'template' => "{items}{summary}{pager}",
     'pager' => array
     (
@@ -56,7 +56,7 @@
             'id'=>'personal-grid2',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'dataProvider'=> $model->search(0),
             'pager' => array
