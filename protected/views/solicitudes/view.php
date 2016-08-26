@@ -4,6 +4,7 @@
 
  $baseUrl = Yii::app()->baseUrl;
  $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/js.cookie.js');
  $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
  $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
  $cs->registerCssFile($baseUrl.'/css/solicitudes/view.css');
@@ -14,6 +15,7 @@ $this->breadcrumbs=array(
 );
 $pedidos = Pedidos::model()->findAll("id_solicitud = $model->id");
 $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
+
 ?>
 <style>
 .cLetreros 
@@ -99,6 +101,23 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 <?php endfor;?>
             <?php endforeach; ?>
         </div>
-        <div class="row"><a class="cancelarDireccion gBoton" style="margin-left: 10px;" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a></div>
+
+        <div class="row">
+                <?php if($model->status == 1) : ?>
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+                <?php else :?>        
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+                <?php endif; ?>
+              <script type="text/javascript">                     
+//               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+//               console.log(urlC);
+//               $('#cBoton').attr('href',urlC);
+            </script>
+        </div>
     <?php endif;?>
 </div>
+
+
+
+          
+  

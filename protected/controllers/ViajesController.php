@@ -801,9 +801,9 @@ EOF;
         foreach($todoDatos as $data)
         {
             $solicitud = Solicitudes::model()->findByPk($data['id_solicitud']);
-            $solicitud->codigo = 'En proceso';
             $solicitud->fecha_estimada = null;
             $solicitud->hora_estimada = null;
+            $solicitud->status = 0;
             $solicitud->save();
             $pedido = new Pedidos();
             $pedido->id_cepa = $data['id_cepas'];
@@ -825,10 +825,12 @@ EOF;
         foreach($tanques as $data)
         {
             $save = Tanque::model()->findByPk($data['id']);
-            $save->status = 1;
+            // $save->status = 1;
             $save->save();
         }
         $estacion->save();
+        $viaje->delete();
+
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
     //	if(!isset($_GET['ajax']))
     //		$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

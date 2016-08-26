@@ -294,9 +294,11 @@ eof;
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
-	{
+
+    public function actionDelete($id)
+    {
             $model = Solicitudes::model()->findByPk($id);
+            $idEstaciones=null;
             if($model->status == 0)
             {
                 $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
@@ -309,17 +311,32 @@ eof;
                 foreach ($tanques as $data)
                 {
                     $tanque = Tanque::model()->findByPk($data['id_tanque']);
-                    // $tanque->status = 1;
+                   $idEstaciones = $tanque['id_estacion'];
                     if($tanque->save())
                         $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
                 }
                $update = Yii::app()->db->createCommand("UPDATE solicitudes SET status=0 WHERE id = $model->id")->execute();
+
+               $update = Yii::app()->db->createCommand("UPDATE estacion SET disponible=1 WHERE id = $idEstaciones")->execute();
+               
+               //checa si existen más solicitudes
+
+                $checkSolicitudes = Yii::app()->db->createCommand()
+                    ->selectDistinct('id_viaje')
+                    ->from('solicitudes_viaje')
+                    ->where('id_solicitud = :isol',array(':isol'=>$id))
+                    ->queryAll();
+
+                if(count($checkSolicitudes) == 1){
+                    //solo encontró una solicitude, eliminar viaje
+                    $delete3 = Yii::app()->db->createCommand()->delete('viajes','id=:idV',array(':idV'=>$checkSolicitudes[0]['id_viaje']))->execute();
+                }
+
             }
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-	/*	if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
-            echo json_encode('');	
-	}
+
+            echo json_encode('');   
+    }
+
 
 	/**
 	 * Lists all models.

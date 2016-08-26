@@ -55,7 +55,7 @@
 <!--separador-->		
 		<span class="containerBox rangosCepa">
 			
-				<label class="cLetreros">Rangos minimos y maximos</label>
+				<label class="cLetreros">Rangos m&iacutenimos y m&aacuteximos</label>
 				<hr class="letrero-container"></hr>
 			
 		</span>
@@ -116,9 +116,8 @@
                         <div class="row">
 				<div class="form-container11">
 					<div class="row">
-						<label class= "letreros">Oxigeno</label>
-							<div class="form-cSmall">
-                                                            <span>min</span>
+						<label class= "letreros">Ox&iacute;geno</label>
+							<div class="form-cSmall"><span>min</span>
 								<?php echo $form->numberField($model,'ox_min');
 								echo $form->error($model,'ox_min'); ?>
 							</div>
@@ -126,8 +125,7 @@
 				</div>
 				<div class="form-container12">
 					<div class="row">
-						<div class="form-cSmall">
-                                                    <span>max</span>
+						<div class="form-cSmall"><span>max</span>
 							<?php echo $form->numberField($model,'ox_max');
 							echo $form->error($model,'ox_max'); ?>
 						</div>

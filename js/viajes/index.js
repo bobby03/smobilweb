@@ -8,10 +8,6 @@ $(document).ready(function()
         $('.tabContent').addClass('hide');
         $('[data-tan="'+id+'"]').removeClass('hide');
     });
-    $('.items tbody tr').each(function()
-    {
-        $(this).find('a.delete').remove();
-    });
     
     //Busqueda para viajes En espera
     $('.search-form form[data-form="1"]').submit(function()
