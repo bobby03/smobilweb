@@ -40,7 +40,9 @@ $(document).ready(function()
     var pos = url.lastIndexOf('asignadas');
     
     if(pos > -1) {
-        $('#asignadas').trigger('click');
+        console.log(window.location.hash);
+        if(window.location.hash == '#asignadas') {
+            $('#asignadas').trigger('click');
+        }
     }
-    
 });
