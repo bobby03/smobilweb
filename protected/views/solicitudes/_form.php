@@ -287,12 +287,20 @@ eof;
         <div class="botones hide">
 
 
-
-            <a class="gBoton" id="cBoton" href="" enla="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
-            <script type="text/javascript">                     
-               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
-               console.log(urlC);
-               $('#cBoton').attr('href',urlC);
+            <?php if($update == true) : ?>
+                <?php if($model->status == 1) : ?>
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+                <?php else :?>        
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+                <?php endif; ?>
+            <?php else :?>        
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+            <?php endif; ?>
+            <!--<a class="gBoton" id="cBoton" href="" enla="<?php // echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>-->
+            <script type="text/javascript">//                     
+//               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+//               console.log(urlC);
+//               $('#cBoton').attr('href',urlC);
             </script>
 
             <div class="guardar">Guardar</div>

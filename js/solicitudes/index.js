@@ -21,19 +21,26 @@ $(document).ready(function()
     });
 
 
-    if(val=='asignadas'){
-    	$('#asignadas').click();
+//    if(val=='asignadas'){
+//    	$('#asignadas').click();
+//    }
+//
+//    if(val=='sinAsignar'){
+//      $('#sinAsignar').click();
+//    }
+//
+//    if(val=='enRuta'){
+//      $('#enRuta').click();
+//    }
+//
+//    if(val=='finalizado'){
+//      $('#finalizado').click();
+//    }
+    var url = window.location.href;
+    var pos = url.lastIndexOf('asignadas');
+    
+    if(pos > -1) {
+        $('#asignadas').trigger('click');
     }
-
-    if(val=='sinAsignar'){
-      $('#sinAsignar').click();
-    }
-
-    if(val=='enRuta'){
-      $('#enRuta').click();
-    }
-
-    if(val=='finalizado'){
-      $('#finalizado').click();
-    }
+    
 });
