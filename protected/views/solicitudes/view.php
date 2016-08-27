@@ -32,9 +32,10 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
 }
 
 </style>
-<h1>Ver solicitud #<?php echo $model->id; ?></h1>
-<?php if($model->status == 1) : ?>
+<h1>Ver solicitud #<?php echo $model->id; echo $model->status; ?></h1>
 <div class="form">
+<?php if($model->status == 1) : ?>
+
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
             'nullDisplay'=>'No se ha asignado a un viaje',
