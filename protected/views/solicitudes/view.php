@@ -72,13 +72,26 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
     )); ?>   
     
     <?php endif?>
-    <?php if(count($pedidos)>0):?>
-        <div class="row">
+    <div class="row">
             <h3>
                 <label class="cLetreros">Pedidos</label>
             </h3>
             <h2 class="letrero-container"></h2>
         </div>
+    <div class="row">
+            <?php if($model->status == 1) : ?>
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+            <?php else :?>        
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+            <?php endif; ?>
+          <script type="text/javascript">                     
+//               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+//               console.log(urlC);
+//               $('#cBoton').attr('href',urlC);
+        </script>
+    </div>
+    <?php if(count($pedidos)>0):?>
+        
         <div class="row">
             <?php $tot = 1; $tempTtl = 0;?>
             <?php foreach($pedidos as $data):?> 
@@ -102,18 +115,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
             <?php endforeach; ?>
         </div>
 
-        <div class="row">
-                <?php if($model->status == 1) : ?>
-                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
-                <?php else :?>        
-                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
-                <?php endif; ?>
-              <script type="text/javascript">                     
-//               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
-//               console.log(urlC);
-//               $('#cBoton').attr('href',urlC);
-            </script>
-        </div>
+        
     <?php endif;?>
 </div>
 

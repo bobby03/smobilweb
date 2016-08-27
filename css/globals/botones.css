@@ -5,10 +5,10 @@
     color: #FFFFFF;
     cursor: pointer;
     float: left;
-    font-size: 15px;
+    font-size: 18px;
     height: 35px;
     line-height: 35px;
-    margin-left: 63px;
+    /*margin-left: 63px;*/
     text-align: center;
     text-decoration: none;
     width: 135px;
@@ -23,7 +23,7 @@
     color: #FFFFFF;
     cursor: pointer;
     float: left;
-    font-size: 15px;
+    font-size: 18px;
     height: 35px;
     line-height: 35px;
     margin-left: 5px;

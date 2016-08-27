@@ -166,9 +166,9 @@ div.tab[data-tab="1"] div.formContainer1 {
     float: left;
 }
 
-.siguiente.uno {}
+/*.siguiente.uno {}
 
-.siguiente.dos {}
+.siguiente.dos {}*/
 
 div.form div.tab div.row input,
 div.form div.tab div.row .css-select {
@@ -431,9 +431,12 @@ div.chosen-container.error > ul {
 
 .botonesWrapper {
     margin-top: 20px;
+    margin-bottom:  10px;
     display: block;
     padding-right: 100px;
     text-align: right;
+    height: 45px;
+    width: 100%;
 }
 
 .botonesWrapper.update {
@@ -442,9 +445,16 @@ div.chosen-container.error > ul {
 
 .botonesWrapper2 {
     margin-top: 20px;
+    padding-right: 100px !important;
     display: block;
     padding-right: 0px;
     text-align: right;
+    height: 45px;
+}
+.botonesWrapper3{
+    width: 350px;
+    height: 35px;
+    float: right;
 }
 
 
@@ -489,6 +499,20 @@ div.tab.last div.floating {
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
     float: right;
+}
+.gBoton2{
+    background-color: #0077b0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: none;
+    font-size: 18px;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 63px;
+    text-align: center;
+    text-decoration: none;
+    width: 135px;
 }
 div.tab.last {
     width: 1180px;

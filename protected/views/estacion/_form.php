@@ -80,8 +80,8 @@
             <?php endif;?>
             <div class="containerbutton">
                     <div class="row buttons">
-                            <div class="btncanc">Cancelar</div>
-                            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+                        <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true);?>/estacion">Cancelar</a> 
+                        <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
                     </div>
             </div>
         </div>
