@@ -43,7 +43,6 @@ $form=$this->beginWidget('CActiveForm', array(
 
 ?>
 <?php if(!$model->isNewRecord):?>
-    
 <?php endif;?>
 <div class="form">
 
