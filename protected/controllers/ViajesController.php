@@ -900,11 +900,40 @@ EOF;
 EOF;
         echo json_encode($return);
     }
+    public function actionGetMapaPuntos($viaje)
+    {
+        $return = array();
+        $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
+        $arregloPosicion = new ArrayObject();
+        $i = 1;
+        $hay = strlen($recorrido[0]->ubicacion);
+        $coord = substr($recorrido[0]->ubicacion, 1, $hay-2);
+        $p2 = explode(",", $coord);
+        $arregloPosicion->append(array('lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]));
+        foreach($recorrido as $data)
+        {
+            if($i % 30 == 0)
+            {
+                $hay = strlen($data->ubicacion);
+                $coord = substr($data->ubicacion, 1, $hay-2);
+                $p2 = explode(",", $coord);
+                $arregloPosicion->append((array)['lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]]);
+            }
+            $i++;
+        }
+        $return['puntosMapa'] = $arregloPosicion;
+        $return['html'] ='
+            <div class="mapaPopup" style="height: auto !important;">
+                <div class="titulo">Ruta completa(escalones de 30 minutos)</div>
+                <div id="mapa2"></div>
+           </div>';
+        echo json_encode($return);
+    }
     public function rad($x)
     {
         return $x * pi() / 180;
     }
-    public function actionGetTanqueGrafica($viaje, $id, $flag, $flag2)
+    public function actionGetTanqueGrafica($viaje, $id, $flag, $flag2, $flag3)
     {
         $datos = Yii::app()->db->createCommand()
             ->select('esc.id, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
@@ -920,6 +949,27 @@ EOF;
         {
             $d = 0;
             $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
+            if($flag3)
+            {
+                $arregloPosicion = new ArrayObject();
+                $i = 1;
+                $hay = strlen($recorrido[0]->ubicacion);
+                $coord = substr($recorrido[0]->ubicacion, 1, $hay-2);
+                $p2 = explode(",", $coord);
+                $arregloPosicion->append(array('lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]));
+                foreach($recorrido as $data)
+                {
+                    if($i % 30 == 0)
+                    {
+                        $hay = strlen($data->ubicacion);
+                        $coord = substr($data->ubicacion, 1, $hay-2);
+                        $p2 = explode(",", $coord);
+                        $arregloPosicion->append((array)['lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]]);
+                    }
+                    $i++;
+                }
+                $return['puntosMapa'] = $arregloPosicion;
+            }
             $p1 = $p2 = array();
             foreach($recorrido as $data)
             {

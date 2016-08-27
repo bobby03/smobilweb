@@ -275,7 +275,7 @@
         </div> 
         <div class="mapaWraper" >
             <div class="titulo">Mapa</div>
-            <div id="map" ></div>
+            <div id="map2" ></div>
         </div>
     </div>
     <div class="tanquesViajes">
