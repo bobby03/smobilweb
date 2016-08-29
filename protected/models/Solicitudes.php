@@ -87,10 +87,10 @@ class Solicitudes extends CActiveRecord
             return array(
                 '1'=>'Cliente',
                 '2'=>'Código',
-                '3'=>'Id',
-                '5'=>'Fecha',
-                '7'=>'Fecha Entrega',
-                '8'=>'Hora Entrega',
+                '3'=>'Solicitud',
+                '5'=>'Fecha de alta',
+                '7'=>'Fecha de entrega',
+                '8'=>'Hora de entrega',
                 /*
                 '4'=>'Hora Alta',
 
@@ -104,7 +104,7 @@ class Solicitudes extends CActiveRecord
             return array(
                 '1'=>'Cliente',
                 '2'=>'Código',
-                '3'=>'Id',
+                '3'=>'Solicitud',
                 '4'=>'Hora de alta',
                 '5'=>'Fecha de alta',
                /* '8'=>'Hora Entrega',
