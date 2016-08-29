@@ -1595,10 +1595,9 @@ eof;
         }
         echo json_encode($return);
     }
-<<<<<<< HEAD
+
    
-=======
->>>>>>> f56eaf1f0bf64b9ee8022afe477b00008e2dcdac
+
     public function actionGetAlertasParametro($viaje, $id)
     {
         $nombre = " Name "  ;
