@@ -12,6 +12,7 @@
     $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/view.css');
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
+    $cs->registerScriptFile($baseUrl.'/js/viajes/back.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     
     $this->breadcrumbs=array(
@@ -19,7 +20,7 @@
             $model->id,
     );
 ?>
-<?php if($model->status == 1):?>
+<?php if($model->status == 1 ):?>
 <h1>Detalles de viaje #<?php echo $model->id; ?></h1>
 <?php elseif ($model->status == 2):?>
 <h1>Viaje en ruta</h1>
@@ -113,7 +114,10 @@
             no hay pedidos
         <?php endif;?>
         </div>
-        
+        <div style="width: 100%;">
+            <!--<a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>-->
+        </div>
+
     </div>
     <?php endif;?>
     <!--EN RUTA-->
@@ -249,7 +253,7 @@
     </div>
     <?php endif;?>
     <!--  FINALIZADO -->
-    <?php if($model->status == 3):?>
+    <?php if($model->status == 2):?>
     <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); 
     ?>
     <div class="detallesViaje">
@@ -381,4 +385,7 @@
         </div>
     </div>
     <?php endif;?>
+    <div class="row">
+        <a class="gBoton" id="cBoton">Cancelar</a>
+    </div>
 </div>

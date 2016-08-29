@@ -239,11 +239,11 @@ class CampSensado extends CActiveRecord
                     'template'=>'<div class="buttonsWraper">{view}</div>',
                     'buttons' => array
                     (
-                        'reactivar' => array
+                        'view' => array
                         (
-                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
-                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
-                            'url' => 'Yii::app()->createUrl("campsensado/reactivar/".$data->id)',
+//                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
+//                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
+                            'url' => 'Yii::app()->createUrl("monitoreo/".$data->id_estacion)',
                         )
                     )
                 )
