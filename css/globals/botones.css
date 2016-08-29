@@ -120,13 +120,15 @@ body.granjas .gBoton {
     margin-left: 0px;
 }
 
-body.estacion .gBoton {
+body.estacion .gBoton 
+{
     width: 135px;
     display: inline-block;
     height: 35px;
     right: 0px;
     line-height: 35px;
-  }
+    margin-left: 0;
+}
 
 body.CampSensado .gBoton {
     height: 35px;

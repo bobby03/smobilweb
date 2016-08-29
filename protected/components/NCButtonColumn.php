@@ -63,54 +63,56 @@ class NCButtonColumn extends CButtonColumn
             $this->buttons['delete']['click']=<<<EOD
             function(evt)
             {
-
-
                 evt.preventDefault();
                 var href = $(this).attr('href');
-                console.log(href);
-
                 var check = $(this).attr('href');
                 var urlSplit = check.split( '/' );
                 console.log(urlSplit);
-                
                 var id = urlSplit[ urlSplit.length - 1 ]; 
-
-
                 var miHtml = '';
                 var header = $('.grid-view').attr('id');
                 var nombre = $(this).parents('tr').eq(0).find('td').html();
                 var mensaje = '¿Está seguro que desea desactivar este registro?';
-                if(urlSplit[1]=='solicitudes'){
+                if(urlSplit[2]=='solicitudes')
+                {
                     var a = '';
                     $.ajax(
-                {
-                    type: 'POST',
-                    url: 'solicitudes/GetViajeId',
-                    dataType: 'JSON', 
-                    data:
                     {
-                        nombre:nombre
-                    },
+                        type: 'POST',
+                        url: 'solicitudes/GetViajeId',
+                        dataType: 'JSON', 
+                        async: false,
+                        data:
+                        {
+                            nombre: nombre,
+                            id: id
+                        },
 
-                    success: function(data)
-                    {
-                    document.getElementById("idviaje").value = data.idviaje;
-                    },
-                    error: function(a,b,c)
-                    {
-                    var a = '';
-                    }
-                }); 
-                
-                    var mensaje = document.getElementById("idviaje").value;
+                        success: function(data)
+                        {
+                            console.log(data);
+//                            document.getElementById("idviaje").value = data.idviaje;
+                            if(data.sol == 1)
+                                mensaje = 'Si elimina esta solicitud y el viaje al que pertenece no tiene más solicitudes, ese viaje se borrará.¿Seguro que desea continuar?';
+                        },
+                        error: function(a,b,c)
+                        {
+                            var a = '';
+                        }
+                    }); 
+                }
+                if(urlSplit[2]=='viajes')
+                {
+                    mensaje = 'Si elimina este viaje, las solicitudes asginadas se pasaran a solicitudes sin asignar.¿Seguro que desea continuar?';
                 }
                 miHtml= miHtml +='<div class="sub-content">';
-                miHtml= miHtml +='  <div class="title-content">Desactivar</div>';
+                if(urlSplit[2]=='viajes' || urlSplit[2]=='solicitudes')
+                    miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
+                else
+                    miHtml= miHtml +='  <div class="title-content">Desactivar</div>';
                 miHtml= miHtml +='      <div class="separator-content"></div>';
                 miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
-                
                 miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
-                
                 miHtml= miHtml +='      <div class="botones-content">';
                 miHtml= miHtml +='          <div class="aceptar-boton">Aceptar</div>';
                 miHtml= miHtml +='          <div class="cancelar-boton">Cancelar</div>';
@@ -141,6 +143,7 @@ class NCButtonColumn extends CButtonColumn
                                 },
                                 success: function(data)
                                 {
+                                    console.log(data);
                                     $.fn.yiiGridView.update(header);
                                     $('#cboxClose').click();
                                 },
@@ -148,9 +151,7 @@ class NCButtonColumn extends CButtonColumn
                                 {  }
                             });
                         });
-
-                       
-                      
+                        $.colorbox.resize();
                     }
                 });
             }
@@ -158,8 +159,6 @@ EOD;
             $this->buttons['reactivar']['click']=<<<EOD
             function(evt)
             {
-
-
                 evt.preventDefault();
                 var href = $(this).attr('href');
            
@@ -196,7 +195,6 @@ EOD;
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            console.log(href);
                             $.ajax(
                             {
                                 type: 'GET',

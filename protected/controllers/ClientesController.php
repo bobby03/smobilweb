@@ -22,66 +22,66 @@ class ClientesController extends Controller
      * @return array access control rules
      */
     public function accessRules()
-        {
-            $return = array();
-            if(Yii::app()->user->checkAccess('createClientes') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('create'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('create'),
-                    'users'     => array('*')
-                );
-            if(Yii::app()->user->checkAccess('readClientes') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('index','view'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('index','view'),
-                    'users'     => array('*')
-                );
-            if(Yii::app()->user->checkAccess('editClientes') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('update'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('update'),
-                    'users'     => array('*')
-                );
-            if(Yii::app()->user->checkAccess('deleteClientes') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('delete'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('delete'),
-                    'users'     => array('*')
-                );
-            return $return;
-    }
+    {
+        $return = array();
+        if(Yii::app()->user->checkAccess('createClientes') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('create'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('create'),
+                'users'     => array('*')
+            );
+        if(Yii::app()->user->checkAccess('readClientes') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('index','view'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('index','view'),
+                'users'     => array('*')
+            );
+        if(Yii::app()->user->checkAccess('editClientes') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('update'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('update'),
+                'users'     => array('*')
+            );
+        if(Yii::app()->user->checkAccess('deleteClientes') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('delete'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('delete'),
+                'users'     => array('*')
+            );
+        return $return;
+}
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
@@ -232,16 +232,20 @@ class ClientesController extends Controller
      */
     public function actionDelete($id)
     {
-            $model = $this->loadModel($id);
-            $model->activo = 0;
+        $model = $this->loadModel($id);
+        $model->activo = 0;
+        $update = Yii::app()->db->createCommand()
+                ->update('clientes',$model->attributes,"id = ".(int)$id."");
+        $usu = Usuarios::model()->findAll("tipo_usr = 1 and id_usr = $id");
+        if(isset($usu[0]->id))
+        {
+            $usu[0]->activo = 0;
             $update = Yii::app()->db->createCommand()
-                    ->update('clientes',$model->attributes,"id = ".(int)$id."");
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        //if(!isset($_GET['ajax']))
-        //  $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-                    echo json_encode('');
+                    ->update('usuarios',$usu[0]->attributes,"id = {$usu[0]->id}");
+        }
+        echo json_encode($usu[0]->attributes);
     }
-        public function actionReactivar($id)
+    public function actionReactivar($id)
     {
             $model = Clientes::model()->findByPk($id);
             $model->activo = 1;
