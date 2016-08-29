@@ -55,7 +55,7 @@ return array(
 				Al modificar este valor se cambian los Body Class afectando el Diseño del CSS
 				y las peticiones en AJAX que ya se adaptaron.
 			*/
-			'showScriptName'=>false,
+			'showScriptName'=>true,
      		'caseSensitive'=>true,  
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

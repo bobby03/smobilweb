@@ -60,7 +60,7 @@
     <div class="tab" data-tab="1">
     <div style="width: 100%;height: 45px;">
         <div class="botonesWrapper3">
-                <a class="gBoton" href="http://localhost/smobilweb/viajes">Cancelar</a>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
                 <div class="siguiente uno">Siguiente</div>
             </div>
     </div>
@@ -138,12 +138,12 @@
         </div>
     </div>
     <div class="tab hide" data-tab="2">
-       <div class="pedidosWraper"></div>   
         <div class="botonesWrapper2">
             <!--<a class="gBoton" href="<?php // echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>-->
             <div class="siguiente dos">Siguiente</div>
             <div class="bUno fBoton regresar">Regresar</div>
         </div>
+        <div class="pedidosWraper"></div>   
     </div>
     <div class="tab last hide" data-tab="3">
         <div class="inner-third-wrapper">

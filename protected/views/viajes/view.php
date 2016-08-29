@@ -65,7 +65,7 @@
                 )
             ),
         )); ?>
-        <div style="width: 100%;">
+        <div style="width: 100%; height:35px;">
             <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
         </div>
         <div class="todosPedidosVer">
@@ -114,7 +114,7 @@
             no hay pedidos
         <?php endif;?>
         </div>
-        <div style="width: 100%;">
+        <div style="width: 100%; height:35px;">
             <!--<a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>-->
         </div>
 
@@ -253,7 +253,7 @@
     </div>
     <?php endif;?>
     <!--  FINALIZADO -->
-    <?php if($model->status == 2):?>
+    <?php if($model->status == 3):?>
     <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); 
     ?>
     <div class="detallesViaje">
@@ -385,7 +385,4 @@
         </div>
     </div>
     <?php endif;?>
-    <div class="row">
-        <a class="gBoton" id="cBoton">Cancelar</a>
-    </div>
 </div>
