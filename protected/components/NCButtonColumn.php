@@ -29,7 +29,7 @@ class NCButtonColumn extends CButtonColumn
         if($this->updateButtonImageUrl===null)
             $this->updateButtonImageUrl=$baseUrl.'/images/editar.svg';
         if($this->deleteButtonImageUrl===null)
-            $this->deleteButtonImageUrl=$baseUrl.'/images/borrar.svg';
+            $this->deleteButtonImageUrl=$baseUrl.'/images/reactivar2.svg';
         if($this->deleteConfirmation===null){
             $this->deleteConfirmation=Yii::t('zii','¿Seguro que desea borrar esta entrada?');
         }
@@ -106,7 +106,10 @@ class NCButtonColumn extends CButtonColumn
                     mensaje = 'Si elimina este viaje, las solicitudes asginadas se pasaran a solicitudes sin asignar.¿Seguro que desea continuar?';
                 }
                 miHtml= miHtml +='<div class="sub-content">';
-                miHtml= miHtml +='  <div class="title-content">Desactivar</div>';
+                if(urlSplit[2]=='viajes' || urlSplit[2]=='solicitudes')
+                    miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
+                else
+                    miHtml= miHtml +='  <div class="title-content">Desactivar</div>';
                 miHtml= miHtml +='      <div class="separator-content"></div>';
                 miHtml= miHtml +='      <div class="mensaje-content">'+mensaje+'</div>';
                 miHtml= miHtml +='      <div class="value-content">'+nombre+'</div>';
@@ -140,6 +143,7 @@ class NCButtonColumn extends CButtonColumn
                                 },
                                 success: function(data)
                                 {
+                                    console.log(data);
                                     $.fn.yiiGridView.update(header);
                                     $('#cboxClose').click();
                                 },

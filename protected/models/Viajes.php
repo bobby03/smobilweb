@@ -269,7 +269,8 @@ class Viajes extends CActiveRecord
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                'deleteButtonImageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
             ),
         );
     }
