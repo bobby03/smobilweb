@@ -63,6 +63,10 @@ $this->breadcrumbs=array(
         <div class="bolaChica"></div>
     </div>
     <div class="tab" data-tab="1">
+     <div class="botonesWrapper">
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+                <div class="siguiente uno">Siguiente</div>
+            </div>
 	<div class="formContainer1">
             <div class="row">
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
@@ -131,18 +135,16 @@ $this->breadcrumbs=array(
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
                 <?php echo $form->error($model,'hora_salida'); ?>
             </div>
-            <div class="botonesWrapper">
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
-                <div class="siguiente uno">Siguiente</div>
-            </div>
+           
 	</div>
     </div>
     <div class="tab hide" data-tab="2">
-       <div class="pedidosWraper"></div>   
-            <div class="botonesWrapper2">
-                <div class="siguiente dos">Siguiente</div>
-                <div class="bUno fBoton regresar floatingbutton">Regresar</div>
+        
+        <div class="botonesWrapper2">
+            <div class="siguiente dos">Siguiente</div>
+            <div class="bUno fBoton regresar floatingbutton">Regresar</div>
         </div>
+        <div class="pedidosWraper"></div>   
     </div>
     <div class="tab hide last" data-tab="3">
        <div class="inner-third-wrapper">

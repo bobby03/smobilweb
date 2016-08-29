@@ -3,7 +3,7 @@
 /* @var $model Viajes */
     $baseUrl = Yii::app()->baseUrl;
 ?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
 <script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.js"></script>
 <?php
@@ -65,6 +65,9 @@
                 )
             ),
         )); ?>
+        <div style="width: 100%;">
+            <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
+        </div>
         <div class="todosPedidosVer">
         <?php $tot = 1;?>
         <?php if(isset($pedidos['pedido'])):?>
@@ -114,6 +117,7 @@
         <div style="width: 100%;">
             <!--<a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>-->
         </div>
+
     </div>
     <?php endif;?>
     <!--EN RUTA-->
@@ -275,7 +279,7 @@
         </div> 
         <div class="mapaWraper" >
             <div class="titulo">Mapa</div>
-            <div id="map" ></div>
+            <div id="map2" ></div>
         </div>
     </div>
     <div class="tanquesViajes">

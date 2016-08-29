@@ -43,7 +43,6 @@ $form=$this->beginWidget('CActiveForm', array(
 
 ?>
 <?php if(!$model->isNewRecord):?>
-    
 <?php endif;?>
 <div class="form">
 
@@ -61,6 +60,11 @@ $form=$this->beginWidget('CActiveForm', array(
         <div class="bolaChica"></div>
     </div>
     <div class="tab " data-tab="1">
+    		<div class="botonesWrapper">
+				<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
+	            <div class="siguiente uno">Siguiente</div>
+	           
+            </div>
 	     <div class="formContainer1">
 				<?php echo $form->hiddenField($model,'status', array('value' => '1')); ?>
 			<div class="row">
@@ -123,27 +127,22 @@ $form=$this->beginWidget('CActiveForm', array(
 				<?php echo $form->error($model,'hora_fin'); ?>
 			</div>
 
-			<div class="botonesWrapper">
-				<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
-	            <div class="siguiente uno">Siguiente</div>
-	           
-            </div>
-
 		</div>
 
 	</div>
 
     <div class="tab hide" data-tab="2">
+        <div class="botonesWrapper2">
+            <div class="siguiente dos">Siguiente</div>
+            <div class="gBoton regresar uno" >Regresar</div>
+        </div>
         <div class="pedidosWraper">
             <?php 
                 if($tanques != null)
                     echo $tanques;
             ?>
         </div>
-        <div class="botonesWrapper2">
-            <div class="siguiente dos">Siguiente</div>
-            <div class="gBoton regresar uno" >Regresar</div>
-        </div>
+        
     </div>
     <div class="tab hide last" data-tab="3">
 
