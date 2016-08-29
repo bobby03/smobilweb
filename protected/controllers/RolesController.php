@@ -114,21 +114,20 @@ class RolesController extends Controller
                     $model->activo = 1;
                     if($model->save())
                     {
-                        $i = 1;
                         $auth = Yii::app()->authManager;
 //                        print_r($_POST['RolesPermisos']['seccion']);
                         foreach($_POST['RolesPermisos']['seccion'] as $data)
                         {
                             $acciones2 = new RolesPermisos;
                             $acciones2->id_rol = $model->id;
-                            $acciones2->seccion = $i;
+                            $acciones2->seccion = $data['seccion'];
                             $acciones2->alta = $data['alta'];
                             $acciones2->baja = $data['baja'];
                             $acciones2->consulta = $data['consulta'];
                             $acciones2->edicion = $data['edicion'];
                             $acciones2->save();
                             $roles = new Roles();
-                            $nombreSeccion = $roles->getSeccion($i);
+                            $nombreSeccion = $roles->getSeccion($acciones2->seccion);
                             $seccion = '';
                             if($data['alta'] == 1)
                             {
@@ -150,7 +149,6 @@ class RolesController extends Controller
                                 $seccion = 'update'.$nombreSeccion;
                                 $auth->assign($seccion,$model->nombre_rol);
                             }
-                            $i++;
                         }
                         $this->redirect(array('index'));
                     }
