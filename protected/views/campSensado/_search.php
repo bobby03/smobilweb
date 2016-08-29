@@ -12,6 +12,7 @@
 )); ?>
 
  <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>1)); ?>
+	
 	<div class="row hide" data-id="1">
             <?php echo $form->dropDownList($model,'id', CampSensado::model()->getGranjasName(1), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>

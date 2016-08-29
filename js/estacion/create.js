@@ -85,7 +85,9 @@ $(document).ready(function()
      borrarTanque();
      $('.btncanc').click(function()
      {
-        window.location.href = "../../";
+        console.log('Back');
+        window.history.back();
+        // window.location.href = "../../";
     });
     function validator()
     {

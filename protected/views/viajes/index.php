@@ -38,14 +38,7 @@
                 'header'=>'',
             ),
         //    'filter'=>$model,
-            'columns'=>$model->adminSearch1(),
-            'afterAjaxUpdate' => "function(id,data)
-            {
-                $('.items tbody tr').each(function()
-                {
-                    $(this).find('a.delete').remove();
-                });
-            }"
+            'columns'=>$model->adminSearch1()
         )); 
         ?>
     </div>

@@ -16,7 +16,7 @@
 <h1>Siembra</h1>
 <?php $id=$fijas['id'];?>
 
-<div class="container">
+<div class="form">
     <div id="datosMon">
         <div class="divTit">
             <div id='titLeft'><h2>Datos de siembra</h2></div>
@@ -46,7 +46,7 @@
                 ?>
                 <p><?php echo $disp?></p>
 <!--                <p class="subtit">Actividad:</p> 
-                <p><?php// echo $act;?></p>-->
+                <p><?php // echo $act;?></p>-->
             </div>
             <div id="esp4">
                 <p class="subtit">Ubicación:</p>    
@@ -199,7 +199,8 @@
             </div>
         </div>
     <?php endif;?>
+        <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado">Cancelar</a>
+
     </div>
-    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado">Cancelar</a>
 </div>
 <?php  $cs->registerCssFile($baseUrl.'/css/monitoreo/monitoreo.css');?>

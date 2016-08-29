@@ -35,7 +35,7 @@
         'dataProvider'=>$model->search(1),
         'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
         'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-        'emptyText'=>"No hay resistros",
+        'emptyText'=>"No hay registros",
         'template' => "{items}{summary}{pager}",
         'columns'=>$model->adminSearch(),
         'pager' => array
@@ -61,7 +61,7 @@
             'dataProvider'=>$model->search(0),
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearchVacio(),
             'pager' => array

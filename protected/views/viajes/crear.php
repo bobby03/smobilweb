@@ -58,6 +58,12 @@
         <div class="bolaChica"></div>
     </div>
     <div class="tab" data-tab="1">
+    <div style="width: 100%;height: 45px;">
+        <div class="botonesWrapper3">
+                <a class="gBoton" href="http://localhost/smobilweb/viajes">Cancelar</a>
+                <div class="siguiente uno">Siguiente</div>
+            </div>
+    </div>
         <div class="formContainer1">
             <div class="row">
                 <?php echo $form->labelEx($model,'id_responsable'); ?>
@@ -128,10 +134,7 @@
                 <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm (24 horas)')); ?>
                 <?php echo $form->error($model,'hora_salida'); ?>
             </div>
-            <div class="botonesWrapper">
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
-                <div class="siguiente uno">Siguiente</div>
-            </div>
+            
         </div>
     </div>
     <div class="tab hide" data-tab="2">

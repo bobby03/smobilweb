@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
  $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
-    $cs->registerCssFile($baseUrl.'/css/clientes/cliente.css');
+    $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/clientes/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
@@ -41,7 +41,7 @@ $this->breadcrumbs=array(
                 'header'=>'',
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearch(),
             'afterAjaxUpdate' => "function(id,data)
@@ -66,7 +66,7 @@ $this->breadcrumbs=array(
                 'header'=>'',
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearchVacios()
     )); ?>

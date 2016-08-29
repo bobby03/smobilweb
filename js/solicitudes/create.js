@@ -2,15 +2,17 @@ $(document).ready(function()
 {
 
 
-         $('.ValidaNum').bind('keyup blur',function(){ 
-                var node = $(this);
-                node.val(node.val().replace(/[^[1-9]([0-9]{1,45}$)]/g,'') ); 
-             });
+    $('.ValidaNum').bind('keyup blur',function(){ 
+        var node = $(this);
+        node.val(node.val().replace(/[^[1-9]([0-9]{1,45}$)]/g,'') ); 
+    });
 
-    $('#Cepa_id').chosen();
-    $('#Solicitudes_id_clientes').chosen();
-    $('#Especie_id').chosen();
-    $('#ClientesDomicilio_domicilio').chosen();
+    // $(".chosen-select").chosen({no_results_text: "Oops, nothing found!"});
+
+    $('#Cepa_id').chosen({no_results_text: "Cepa no encontrada"});
+    $('#Solicitudes_id_clientes').chosen({no_results_text: "Cliente no encontrado"});
+    $('#Especie_id').chosen({no_results_text: "Especie no encontrada"});
+    $('#ClientesDomicilio_domicilio').chosen({no_results_text: "Domicilio no encontrado"});
     var flag = true;
     var loc = window.location.href;
     var index2 = loc.indexOf('update');

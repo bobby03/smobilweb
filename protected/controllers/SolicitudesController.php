@@ -294,9 +294,11 @@ eof;
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
-	{
+
+    public function actionDelete($id)
+    {
             $model = Solicitudes::model()->findByPk($id);
+            $idEstaciones=null;
             if($model->status == 0)
             {
                 $delete = Yii::app()->db->createCommand("DELETE FROM pedidos WHERE id_solicitud = $model->id")->execute();
@@ -304,22 +306,50 @@ eof;
             }
             elseif($model->status == 1)
             {
-                $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
                 $tanques = SolicitudTanques::model()->findAll("id_solicitud = $model->id");
                 foreach ($tanques as $data)
                 {
                     $tanque = Tanque::model()->findByPk($data['id_tanque']);
-                    // $tanque->status = 1;
+                    $idEstaciones = $tanque['id_estacion'];
                     if($tanque->save())
                         $delete2 = Yii::app()->db->createCommand("DELETE FROM solicitud_tanques WHERE id_solicitud = $model->id AND id_tanque = {$data['id_tanque']}")->execute();
                 }
-               $update = Yii::app()->db->createCommand("UPDATE solicitudes SET status=0 WHERE id = $model->id")->execute();
+                $viaje = Viajes::model()->findAll("id_solicitudes = $id");
+                if($viaje != null && $viaje != '')
+                {
+                    $solicitudes = SolicitudesViaje::model()->findAll("id_viaje = {$viaje[0]->id} AND id_personal = 0");
+                    if($solicitudes != null && $solicitudes != '')
+                    {
+                        $viaje[0]->id_solicitudes = $solicitudes[0]->id_solicitud;
+                        $update = Yii::app()->db->createCommand()
+                            ->update('viajes',$viaje[0]->attributes,"id = {$viaje[0]->id}");
+                        $solicitudes2 = SolicitudesViaje::model()->findAll("id_solicitud = $id");
+                        foreach ($solicitudes2 as $data)
+                        {
+                            $data->id_solicitud = $viaje[0]->id_solicitudes;
+                            $data->save();
+                        }
+                        $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id = {$solicitudes[0]->id}")->execute();
+                    }
+                    else
+                    {
+                        $solicitudes2 = SolicitudesViaje::model()->findAll("id_viaje = {$viaje[0]->id}");
+                        foreach ($solicitudes2 as $data)
+                        {
+                            $data->id_solicitud = $viaje[0]->id_solicitudes;
+                            $data->delete();
+                        }
+                        $update = Yii::app()->db->createCommand("UPDATE estacion SET disponible= 1 WHERE id = {$viaje[0]->id_estacion}")->execute();
+                        $viaje[0]->delete();
+                    }
+                }
+                else
+                    $delete = Yii::app()->db->createCommand("DELETE FROM solicitudes_viaje WHERE id_solicitud = $model->id")->execute();
+                $model->delete();
             }
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-	/*	if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
-            echo json_encode('');	
-	}
+            echo json_encode('');   
+    }
+
 
 	/**
 	 * Lists all models.
@@ -453,7 +483,11 @@ eof;
             $viaje= Yii::app()->db->createCommand('SELECT id_viaje FROM solicitudes_viaje 
             WHERE id_solicitud='.$_POST['nombre'])
                 ->queryRow();
-            echo json_encode($viaje);
+            $solicitud = Solicitudes::model()->findByPk($_POST['id']);
+            $return = array();
+            $return['idViaje'] = $viaje['id'];
+            $return['sol'] = (int)$solicitud->status;
+            echo json_encode($return);
             
         }
 	protected function performAjaxValidation($model)

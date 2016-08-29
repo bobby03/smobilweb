@@ -624,7 +624,7 @@ table.detail-view th {
 
 
 #cboxOverlay {
-    background-color: #5c5c5c;
+    background-color: #0077B0;
     opacity: .8 !important;
 }
 
@@ -643,11 +643,17 @@ table.detail-view th {
 .botones-content {
     height: auto;
     width: 100%;
-    display: inline-block;
-    bottom: 13px;
-    position: absolute;
+    /*display: inline-block;*/
+/*    bottom: 13px;
+    position: absolute;*/
+    padding: 13px 0;
 }
-
+.botones-content:after
+{
+    display: block;
+    content: '';
+    clear: both;
+}
 .sub-content .botones-content .aceptar-boton {
     background-color: #0077b0;
     float: right;

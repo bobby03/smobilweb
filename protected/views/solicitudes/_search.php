@@ -11,7 +11,7 @@
 	'method'=>'get',
 )); ?>
 
- 	<?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchSolicitud(),array('empty' =>'Selecciona campo a buscar')); ?>
+ 	<?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchSolicitudSinAsignar(),array('empty' =>'Selecciona campo a buscar')); ?>
 
 
 	<div class="row hide" data-id='1'>
@@ -30,14 +30,14 @@
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
-	<!--<div class="row hide" data-id='4'>
+	<div class="row hide" data-id='4'>
 		
 		<?php echo $form->textField($model,'hora_alta'); ?>
 	</div>
--->
+
 	<div class="row hide" data-id='5'>
 		
-		<?php echo $form->textField($model,'fecha_estimada'); ?>
+		<?php echo $form->textField($model,'fecha_alta'); ?>
 	</div>
 <!--
 	<div class="row hide" data-id='6'>

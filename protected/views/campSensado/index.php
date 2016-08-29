@@ -40,7 +40,7 @@
                 'header'=>'',
             ),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'afterAjaxUpdate' => "function(id,data)
             {
@@ -62,7 +62,7 @@
             'dataProvider'=>$model->search(2),
             'columns'=>$model->adminSearchBorrados(),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-            'emptyText'=>"No hay resistros",
+            'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'pager' => array
             (

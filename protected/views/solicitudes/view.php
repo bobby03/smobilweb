@@ -4,6 +4,7 @@
 
  $baseUrl = Yii::app()->baseUrl;
  $cs = Yii::app()->getClientScript();
+ $cs->registerScriptFile($baseUrl.'/js/js.cookie.js');
  $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
  $cs->registerCssFile($baseUrl.'/css/viajes/create.css');
  $cs->registerCssFile($baseUrl.'/css/solicitudes/view.css');
@@ -14,6 +15,7 @@ $this->breadcrumbs=array(
 );
 $pedidos = Pedidos::model()->findAll("id_solicitud = $model->id");
 $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
+
 ?>
 <style>
 .cLetreros 
@@ -30,9 +32,10 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
 }
 
 </style>
-<h1>Ver solicitud #<?php echo $model->id; ?></h1>
-<?php if($model->status == 1) : ?>
+<h1>Ver solicitud #<?php echo $model->id; echo $model->status; ?></h1>
 <div class="form">
+<?php if($model->status == 1) : ?>
+
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,
             'nullDisplay'=>'No se ha asignado a un viaje',
@@ -74,13 +77,26 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
     )); ?>   
     
     <?php endif?>
-    <?php if(count($pedidos)>0):?>
-        <div class="row">
+    <div class="row">
             <h3>
                 <label class="cLetreros">Pedidos</label>
             </h3>
             <h2 class="letrero-container"></h2>
         </div>
+    <div class="row">
+            <?php if($model->status == 1) : ?>
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+            <?php else :?>        
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+            <?php endif; ?>
+          <script type="text/javascript">                     
+//               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
+//               console.log(urlC);
+//               $('#cBoton').attr('href',urlC);
+        </script>
+    </div>
+    <?php if(count($pedidos)>0):?>
+        
         <div class="row">
             <?php $tot = 1; $tempTtl = 0;?>
             <?php foreach($pedidos as $data):?> 
@@ -103,6 +119,12 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 <?php endfor;?>
             <?php endforeach; ?>
         </div>
-        <div class="row"><a class="cancelarDireccion gBoton" style="margin-left: 10px;" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes">Regresar</a></div>
+
+        
     <?php endif;?>
 </div>
+
+
+
+          
+  
