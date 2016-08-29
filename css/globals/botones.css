@@ -5,10 +5,10 @@
     color: #FFFFFF;
     cursor: pointer;
     float: left;
-    font-size: 15px;
+    font-size: 18px;
     height: 35px;
     line-height: 35px;
-    margin-left: 63px;
+    /*margin-left: 63px;*/
     text-align: center;
     text-decoration: none;
     width: 135px;
@@ -23,7 +23,7 @@
     color: #FFFFFF;
     cursor: pointer;
     float: left;
-    font-size: 15px;
+    font-size: 18px;
     height: 35px;
     line-height: 35px;
     margin-left: 5px;
@@ -45,7 +45,9 @@ a.gBoton.bBoton:hover
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    margin-right: 30px;
 }
+
 .agregar.especie
 {
     background-image: url('./../../images/crear/boton_nueva_especie.svg');
@@ -118,13 +120,15 @@ body.granjas .gBoton {
     margin-left: 0px;
 }
 
-body.estacion .gBoton {
+body.estacion .gBoton 
+{
     width: 135px;
     display: inline-block;
     height: 35px;
     right: 0px;
     line-height: 35px;
-  }
+    margin-left: 0;
+}
 
 body.CampSensado .gBoton {
     height: 35px;
@@ -153,13 +157,4 @@ body.viajes .gBoton {
   font-size: 14px !important;
 }*/
 
-.agregar {
-    float: right;
-    width: 51px;
-    height: 29px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    margin-right: 30px;
-}
+

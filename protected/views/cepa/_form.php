@@ -55,7 +55,7 @@
 <!--separador-->		
 		<span class="containerBox rangosCepa">
 			
-				<label class="cLetreros">Rangos m&iacutenimos y m&aacuteximos</label>
+				<label class="cLetreros">Rangos m&iacute;nimos y m&aacute;ximos</label>
 				<hr class="letrero-container"></hr>
 			
 		</span>
@@ -183,8 +183,10 @@
 				</div>
                             </div>
 					<div class="row buttons">
-						<a class="gBoton regresarCepa" href="<?php echo Yii::app()->getBaseUrl(true)."/cepa?id=".$model->id_especie?>">Cancelar</a> 
-						<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+						<div class='btnsCepa'>
+							<a class="gBoton regresarCepa" href="<?php echo Yii::app()->getBaseUrl(true)."/cepa?id=".$model->id_especie?>">Cancelar</a> 
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+						</div>
 					</div>
 			</div>
   		</span>

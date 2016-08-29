@@ -939,7 +939,7 @@ EOF;
             ->select('esc.id, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->order('upT.id DESC')
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
             ->limit(1)
@@ -1305,7 +1305,7 @@ EOF;
         $datos = Yii::app()->db->createCommand()
             ->selectDistinct('esc.id, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_escalon_viaje_ubicacion = {$escalon['id']}")
             ->queryAll();
@@ -1324,7 +1324,7 @@ EOF;
                     'type' => 'bar',
                     'data'=>array
                     (
-                        'labels'    => $nombre,
+                        'labels'    => isset($nombre)?$nombre:"Not define",
                         'datasets'  => 
                         [
                             (object)
@@ -1539,7 +1539,7 @@ EOF;
                 ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
                 ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
                 ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
-                ->join('uploadTemp as upt','upt.id_escalon_viaje_ubicacion = evu.id')
+                ->join('uploadtemp as upt','upt.id_escalon_viaje_ubicacion = evu.id')
                 ->where("solV.id_viaje = $viaje")
                 ->andWhere("tan.id = $id")
                 ->andWhere("upt.alerta > 1")
@@ -1656,7 +1656,7 @@ eof;
                 ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
                 ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
                 ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
-                ->join('uploadTemp as upt','upt.id_tanque = tan.id')
+                ->join('uploadtemp as upt','upt.id_tanque = tan.id')
                 ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
                 ->where("solV.id_viaje = $viaje")
                 ->andWhere("upt.alerta > 1")
@@ -1721,7 +1721,7 @@ eof;
             ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->order('upT.id DESC')
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
             ->queryAll();
@@ -1747,7 +1747,7 @@ eof;
         $datos = Yii::app()->db->createCommand()
             ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
             ->limit(300,$rangos[0][0])
@@ -2080,7 +2080,7 @@ eof;
         $datos = Yii::app()->db->createCommand()
             ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
             ->limit(300,$rango)
@@ -2365,7 +2365,7 @@ eof;
         $datos = Yii::app()->db->createCommand()
             ->select("esc.hora, upT.$id, upT.id_tanque, upT.id")
             ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadTemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->limit(333,$limit)
             ->order("upT.id ASC")

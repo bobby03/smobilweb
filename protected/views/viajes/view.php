@@ -3,7 +3,7 @@
 /* @var $model Viajes */
     $baseUrl = Yii::app()->baseUrl;
 ?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
 <script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.js"></script>
 <?php
@@ -12,6 +12,7 @@
     $cs->registerScriptFile($baseUrl.'/js/viewTable.js');
     $cs->registerCssFile($baseUrl.'/css/viajes/view.css');
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
+    $cs->registerScriptFile($baseUrl.'/js/viajes/back.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
     
     $this->breadcrumbs=array(
@@ -19,7 +20,7 @@
             $model->id,
     );
 ?>
-<?php if($model->status == 1):?>
+<?php if($model->status == 1 ):?>
 <h1>Detalles de viaje #<?php echo $model->id; ?></h1>
 <?php elseif ($model->status == 2):?>
 <h1>Viaje en ruta</h1>
@@ -64,6 +65,9 @@
                 )
             ),
         )); ?>
+        <div style="width: 100%;">
+            <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
+        </div>
         <div class="todosPedidosVer">
         <?php $tot = 1;?>
         <?php if(isset($pedidos['pedido'])):?>
@@ -111,8 +115,9 @@
         <?php endif;?>
         </div>
         <div style="width: 100%;">
-            <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
+            <!--<a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>-->
         </div>
+
     </div>
     <?php endif;?>
     <!--EN RUTA-->
@@ -248,7 +253,7 @@
     </div>
     <?php endif;?>
     <!--  FINALIZADO -->
-    <?php if($model->status == 3):?>
+    <?php if($model->status == 2):?>
     <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); 
     ?>
     <div class="detallesViaje">
@@ -380,4 +385,7 @@
         </div>
     </div>
     <?php endif;?>
+    <div class="row">
+        <a class="gBoton" id="cBoton">Cancelar</a>
+    </div>
 </div>

@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
  $baseUrl = Yii::app()->baseUrl;
     $cs = Yii::app()->getClientScript();
-    $cs->registerCssFile($baseUrl.'/css/clientes/cliente.css');
+    $cs->registerCssFile($baseUrl.'/css/clientes/clientes.css');
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/clientes/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
