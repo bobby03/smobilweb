@@ -1324,7 +1324,7 @@ EOF;
                     'type' => 'bar',
                     'data'=>array
                     (
-                        'labels'    => $nombre,
+                        'labels'    => isset($nombre)?$nombre:"Not define",
                         'datasets'  => 
                         [
                             (object)

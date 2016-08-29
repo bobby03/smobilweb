@@ -13,19 +13,19 @@ a.cancelarDireccion {
     float: left;
     margin-left: 46px;
     width: 135px;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 div.form input[type="submit"]
 {
     margin-left: 46px;
     width: 135px !important;
-    font-size: 15px !important;
+    font-size: 18px !important;
 }
 div.addDireccion 
 {
     width: 135px;
-    font-size: 15px;
+    font-size: 18px;
     margin-left: 63px;
     float: left;
     background-color: #0077b0;
