@@ -45,7 +45,7 @@ $(document).ready(function()
 
         if (cantidad<tanques){
            $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#C00');
-            document.getElementById('errorCan').innerHTML='Cantidad menor a cantidad de tanques';
+            document.getElementById('errorCan').innerHTML='Cantidad menor a tanques';
             error=1;}
         else{
             $('#Cepa_nombre_cepa_1_cantidad').css('border-color', '#0077B0');
