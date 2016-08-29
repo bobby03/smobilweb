@@ -18,7 +18,7 @@ body.usuarios div.form input[type="submit"]{
     position: relative;
     width: 135px;
     margin-left: 20px;
-    font-size: 15px !Important;
+    font-size: 18px;
 }
 
 
@@ -48,6 +48,7 @@ label.letreros{
   width: 250px;
   float:left;
   padding-top: 1px;
+  margin-left:55px;
 }
 .form-cLeft{
 float:left;

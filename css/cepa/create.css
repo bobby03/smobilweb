@@ -73,7 +73,7 @@ input[type="submit"]
 {
     width: 150px !important;
     float: right;
-    margin-top: 31px;
+    margin-top: 30px;
 }
 .form-container12{
     float: left;
@@ -168,4 +168,12 @@ body.cepa-update #contentWrapper div.form.cepa{
 .agregar.cepa
 {
     background-image: url('./../images/crear/boton_nueva_sepa.svg');
+}
+/* Boton cepa create */
+.btnsCepa{
+    width: 344px;
+    margin: 0 auto;
+    float: right;
+    height: 40px;
+    padding-right: 50px;
 }

@@ -251,8 +251,8 @@ body.personal div.form input[type="submit"]{
     position: relative;
     width: 135px;
     margin-left: 20px;
-    /*font-size: 15px !Important;*/
+    font-size: 18px !important;
     height: 35px;
-    line-height: 35px;
+    line-height: 31px;
 }
 
