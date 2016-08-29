@@ -112,12 +112,16 @@
             $model = $this->loadModel($id);
             $model->activo = 0;
             $update = Yii::app()->db->createCommand()
-                    ->update('personal',$model->attributes,"id = ".(int)$id."");
-            /*if(!isset($_GET['ajax']))
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-                */
-            echo json_encode('');
+                ->update('personal',$model->attributes,"id = ".(int)$id."");
+            $usu = Usuarios::model()->findAll("tipo_usr = 2 and id_usr = $id");
+            if(isset($usu[0]->id))
+            {
+                $usu[0]->activo = 0;
+                $update = Yii::app()->db->createCommand()
+                        ->update('usuarios',$usu[0]->attributes,"id = {$usu[0]->id}");
             }
+            echo json_encode('');
+        }
 	public function actionReactivar($id)
 	{
             $model = $this->loadModel($id);

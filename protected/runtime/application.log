@@ -95,3 +95,21 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
 HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
 ---
+2016/08/29 12:29:31 [error] [php] Creating default object from empty value (C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php:242)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ClientesController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ClientesController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ClientesController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ClientesController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CWebApplication->run()
+REQUEST_URI=/SmobilWeb/clientes/delete/2?id=2
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\ClientesController.php (242)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)

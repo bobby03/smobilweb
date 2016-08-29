@@ -215,7 +215,8 @@ class Clientes extends CActiveRecord
                 }
             return $return;
         }
-		public function getSearchClientes(){
+        public function getSearchClientes()
+        {
 			return array('1'=>'Nombre Empresa',
 				         '2'=>'Nombre Contacto',
 				         '3'=>'Apellido Contacto',
@@ -224,7 +225,6 @@ class Clientes extends CActiveRecord
 				     //  '6'=>'Teléfono'
 				         );
 		}
-
         public function getClienteViajes($id)
         {
             $solicitudes = Solicitudes::model()->findByPk($id);
@@ -236,7 +236,8 @@ class Clientes extends CActiveRecord
             $cliente = Clientes::model()->findByPk($id);
             return $cliente->nombre_empresa;
         }
-        public function getUserName($id){
+        public function getUserName($id)
+        {
         	$usrName = Usuarios::model()->findAll("tipo_usr = 1 and id_usr = $id");
 
         	return isset($usrName[0]->usuario)?$usrName[0]->usuario:"--------";
@@ -247,21 +248,21 @@ class Clientes extends CActiveRecord
             return array
             (
                 'nombre_empresa',
-				'nombre_contacto',
-				'apellido_contacto',
-				array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
-				'correo',
-				'rfc',
-		        'tel',
-		        'ext',
-		        'cel',
-		        array
-		            (
-		                'class'=>'NCButtonColumn',
-		                'header'=>'Acciones',
-		                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
-					)
-		            );
+                'nombre_contacto',
+                'apellido_contacto',
+                array('name'=>'id', 'value'=>'Clientes::model()->getUserName($data->id)'),
+                'correo',
+                'rfc',
+                'tel',
+                'ext',
+                'cel',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                )
+            );
         }
         public function adminSearchVacios()
         {
