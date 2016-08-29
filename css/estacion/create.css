@@ -225,10 +225,10 @@ div.form-cLeftContainer:after {
 
 body.estacion div.form input[type="submit"] {
     position: relative;
-    width: 107px;
+    /*width: 107px;*/
     display: inline-block;
-    margin-left: 20px;
-    font-size: 14px !important;
+    /*margin-left: 20px;*/
+    /*font-size: 14px !important;*/
     margin-right: 0 !important;
 }
 

@@ -41,7 +41,12 @@
         'header'=>'',
     ),
     'dataProvider'=>$model->search(1),
-    'columns'=>$model->adminSearch()
+    'columns'=>$model->adminSearch(),
+    'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+    'afterAjaxUpdate' => "function(id,data)
+    {
+        $.fn.yiiGridView.update('personal-grid2');
+    }"
 )); 
 ?>
     </div>
@@ -57,6 +62,7 @@
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'emptyText'=>"No hay registros",
+            'ajaxUpdate'=>true,
             'template' => "{items}{summary}{pager}",
             'dataProvider'=> $model->search(0),
             'pager' => array
