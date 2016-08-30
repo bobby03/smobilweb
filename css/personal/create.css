@@ -9,7 +9,7 @@ div.form-containerWraper:after
     clear: both;
 }
 div.containerbutton{
-    margin-top: 20px;
+    margin-top: 8px;
     float: right;
     
 }
@@ -26,7 +26,7 @@ label.letreros{
 /*      ************          */
 
 
-.form-cSmall{
+/*.form-cSmall{
 	width:100px;
 }
 .form-cMedium{
@@ -34,13 +34,13 @@ label.letreros{
 }
 .form-cLarge{
 	width:250px;
-}
+}*/
 
 .form-cRight{
   width: 300px;
   float:left;
   padding-top: 1px;
-
+  margin-left: 30px;
 }
 .form-cLeft{
 float:left;

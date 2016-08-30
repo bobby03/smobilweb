@@ -145,15 +145,11 @@ $form=$this->beginWidget('CActiveForm', array(
         
     </div>
     <div class="tab hide last" data-tab="3">
-
-    <div class="inner-third-wrapper"></div>
-	<div class="row buttons">
-        <div class="row buttons floating">
-         	<div class="gBoton regresar dos" >Regresar</div>
-			<?php echo CHtml::submitButton('Finalizar'); ?>
-		</div>
-	</div>
-
+        <div class="botonesWrapper2">
+            <div class="gBoton regresar dos" >Regresar</div>
+            <?php echo CHtml::submitButton('Finalizar'); ?>
+        </div>
+        <div class="inner-third-wrapper"></div>
     </div>
 <?php $this->endWidget(); ?>
 
