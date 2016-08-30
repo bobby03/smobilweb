@@ -169,7 +169,15 @@ div.tab[data-tab="1"] div.formContainer1 {
 /*.siguiente.uno {}
 
 .siguiente.dos {}*/
-
+div.form div.tab div.row.buttons
+{
+    width: 100%;
+}
+.row.buttons.floating input,
+.row.buttons.floating div
+{
+    float: right;
+}
 div.form div.tab div.row input,
 div.form div.tab div.row .css-select {
     width: 100%;
@@ -184,13 +192,12 @@ div.form div.tab div.row {
 
 .floating {
     float: right;
-    margin-top: 50px;
+/*    margin-top: 50px;
     width: 100px;
     margin-right: 167px;
-    /* --- */
     position: fixed;
     top: 274px;
-    right: 26%;
+    right: 26%;*/
 }
 
 div.contenedorClientes {
@@ -284,7 +291,9 @@ a:hover {
 div.pedidosWraper:after,
 div.tab:after,
 div.menuTabs:after,
-div.tab:after {
+div.tab:after,
+.inner-third-wrapper:after
+{
     content: '';
     clear: both;
     display: block;
@@ -445,7 +454,7 @@ div.chosen-container.error > ul {
 
 .botonesWrapper2 {
     margin-top: 20px;
-    padding-right: 100px !important;
+    /*padding-right: 100px !important;*/
     display: block;
     padding-right: 0px;
     text-align: right;
@@ -458,21 +467,22 @@ div.chosen-container.error > ul {
 }
 
 
-div.form div.tab div.row.buttons {
+/*div.form div.tab div.row.buttons {
 
     display: block;
     width: 270px;
-}
+}*/
 div.form div.tab div.row.buttons input
 {
-    width: 125px;
+    width: 135px;
     height: 35px;
     line-height: 35px;
 }
 .fBoton
 {
     margin: 0 !important;
-    margin-right: 50px !important;
+    margin-right: 80px !important;
+    width: 135px !important;
     font-size: 18px !important;
     /*height: 40px !important;*/
 }
@@ -489,13 +499,10 @@ body.viajes-update form input[type="submit"] {
 div.tab.last div.row.buttons.floating input {
     padding: 0;
 }
-div.tab.last div.floating {
+/*div.tab.last div.floating {
     right : 120px;
     top   : 275px;
-}
-.bDos.fBoton.floatingbutton.regresar {
-    margin-right: 15px !important;
-}
+}*/
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
     float: right;
@@ -514,7 +521,7 @@ div.tab.last div.floating {
     text-decoration: none;
     width: 135px;
 }
-div.tab.last {
+/*div.tab.last {
     width: 1180px;
     position: relative;
-}
+}*/

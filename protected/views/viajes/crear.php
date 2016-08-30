@@ -143,15 +143,14 @@
             <div class="siguiente dos">Siguiente</div>
             <div class="bUno fBoton regresar">Regresar</div>
         </div>
-        <div class="pedidosWraper"></div>   
+        <div class="pedidosWrapper"></div>   
     </div>
     <div class="tab last hide" data-tab="3">
-        <div class="inner-third-wrapper">
-        </div>
         <div class='row buttons floating'>
             <?php echo CHtml::submitButton($model->isNewRecord ? 'Finalizar' : 'Finalizar'); ?>
             <div class="bDos fBoton floatingbutton regresar">Regresar</div>
         </div>
+        <div class="inner-third-wrapper"></div>
     </div>
 <?php
     $this->endWidget();

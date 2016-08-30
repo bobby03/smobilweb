@@ -15,14 +15,40 @@
     border: 2px solid #c00;
 }
 
+#CampSensado_id_estacion
+{
+    background-image: url('../../images/granjas/IconoPlantasProduccion.png'), url('../../images/form/bg.png');
+    background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.error #CampSensado_id_estacion
+{
+    background-image: url('../../images/granjas/IconoPlantasProduccion.png'), url('../../images/form/bg_error.png');
+}
+#CampSensado_nombre_camp
+{
+    background-image: url('../../images/granjas/iconoSiembraChico.png'), url('../../images/form/bg.png');
+    background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.error #CampSensado_nombre_camp
+{
+    background-image: url('../../images/granjas/iconoSiembraChico.png'), url('../../images/form/bg_error.png');
+}
+
+
 #Viajes_id_responsable.error {
     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
     border: 2px solid #c00;
 }
-select#Granjas_id
+#Granjas_id
 {
-    background-image: url('../../images/menu/siembra.svg'), url('../../images/form/bg.png');
-    background-position: 4px 0,left;
+    background-image: url('../../images/granjas/iconoGranja.png'), url('../../images/form/bg.png');
+    background-position: 8px 7px,left;
     background-repeat: no-repeat;
     padding-left: 35px;
     border-left: 0;
@@ -90,6 +116,34 @@ div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error {
     background-repeat: no-repeat;
 }
 
+#CampSensado_fecha_inicio, #CampSensado_hora_inicio, #CampSensado_fecha_fin,
+#CampSensado_hora_fin
+{
+    background-image: url('../../images/viajes/iconoSolicitudesFormulario.png'), url('../../images/form/bg.png');
+    background-position: 7px 7px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+.error #CampSensado_fecha_inicio,
+.error #CampSensado_hora_inicio,
+.error #CampSensado_fecha_fin,
+.error #CampSensado_hora_fin
+{
+     background-image: url('../../images/viajes/iconoSolicitudesFormulario.png'), url('../../images/form/bg_error.png');
+}
+#CampSensado_id_responsable
+{
+    background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+.error #CampSensado_id_responsable
+{
+     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
+}
 div.pedido {
     float: left;
     width: 250px;
@@ -276,12 +330,18 @@ div.lineaGandre {
 div.pedidosWraper:after,
 div.tab:after,
 div.menuTabs:after,
-div.tab:after {
+div.tab:after,
+.inner-third-wrapper:after
+{
     content: '';
     clear: both;
     display: block;
 }
-
+.last .botonesWrapper2 input
+{
+    width: 135px;
+    float: right;
+}
 div.chosen-container.error {
     border: 2px solid #c00 !important;
     /*border-left: 30px solid #c00 !important;*/
@@ -426,8 +486,6 @@ div.chosen-container.error > ul {
 .botonesWrapper{
     margin-top: 20px;
     margin-bottom: 10px;
-    display: block;
-    padding-right: 100px;
     text-align: right;
 }
 
@@ -435,13 +493,13 @@ div.chosen-container.error > ul {
 .botonesWrapper2{
     margin-top: 20px;
     display: block;
-    padding-right: 100px;
+    /*padding-right: 100px;*/
     text-align: right;
 }
 .gBoton.regresar.uno,
 .gBoton.regresar.dos{
     margin: 0;
-    margin-right: 15px;
+    margin-right: 80px;
     width: 135px;
     height: 35px;
     line-height: 35px;
@@ -450,18 +508,10 @@ div.chosen-container.error > ul {
 .botonesWrapper2 > * {
     float: right;
 }
-body.CampSensado .gBoton {
-    /*width: 120px !important;*/
-    margin-right: 10px !important;
-}
 div.tab.last div.row.buttons.floating input {
     padding: 0;
 }
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
     float: right;
-}
-div.tab.last {
-    width: 1180px;
-    position: relative;
 }

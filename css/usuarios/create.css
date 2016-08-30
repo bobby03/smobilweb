@@ -17,7 +17,7 @@ div.containerbutton{
 body.usuarios div.form input[type="submit"]{
     position: relative;
     width: 135px;
-    margin-left: 20px;
+    margin-left: 30px;
     font-size: 18px;
 }
 
@@ -35,25 +35,26 @@ label.letreros{
 
 
 .form-cSmall{
-	width:100px;
+	/*width:100px;*/
 }
 .form-cMedium{
-	width:170px;
+	/*width:170px;*/
 }
 .form-cLarge{
-	width:250px;
+	/*width:250px;*/
 }
 
 .form-cRight{
-  width: 250px;
+  /*width: 250px;*/
   float:left;
   padding-top: 1px;
   margin-left:55px;
 }
-.form-cLeft{
-float:left;
-width: 300px;
- margin-left: 35px;
+.form-cLeft
+{
+    float:left;
+    width: 325px;
+    margin-left: 35px;
 }
 .form-container1{
 width:135px;

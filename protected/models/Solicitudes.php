@@ -549,6 +549,7 @@ class Solicitudes extends CActiveRecord
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view}</div>',
+                'viewButtonImageUrl'=>Yii::app()->baseUrl . '/images/iconoVerCamion.png',
                 'buttons' => array
                     (
                        'view'=> array 
@@ -622,6 +623,7 @@ class Solicitudes extends CActiveRecord
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
                 'template'=>'<div class="buttonsWraper">{view}</div>',
+                'viewButtonImageUrl'=>Yii::app()->baseUrl . '/images/iconoVerCamion.png',
                 'buttons' => array
                     (
                        'view'=> array 
