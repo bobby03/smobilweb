@@ -259,7 +259,10 @@ class GranjasController extends Controller
 	{
             $model=new Granjas('search');
             $model->unsetAttributes();  // clear any default values
-            if(isset($_GET['Estacion']))
+
+
+
+            if(isset($_GET['Granjas']))
                     $model->attributes=$_GET['Granjas'];
             $this->render('index',array(
                     'model'=>$model,
@@ -307,4 +310,5 @@ class GranjasController extends Controller
 			Yii::app()->end();
 		}
 	}
+
 }

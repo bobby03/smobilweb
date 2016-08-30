@@ -179,14 +179,15 @@ class Granjas extends SMActiveRecord
 	public function search($flag)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
-
+fb($flag);
+		$criteria = new CDbCriteria;
+fb($criteria);
 		$criteria->compare('id',$this->id);
-		$criteria->compare('nombre',$this->nombre);
+		$criteria->compare('nombre',$this->nombre,true);
 		$criteria->compare('direccion',$this->direccion,true);
 		$criteria->compare('responsable',$this->responsable,true);
-		$criteria->compare('activo',$this->activo);
+	//	$criteria->compare('activo',$this->activo);
+        fb($criteria);
                 $criteria->addCondition("activo=$flag");
 		return new CActiveDataProvider($this, array(
                     'criteria'=>$criteria,
@@ -195,6 +196,8 @@ class Granjas extends SMActiveRecord
                         )
 		));
 	}
+
+
     public function search1($flag)
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
