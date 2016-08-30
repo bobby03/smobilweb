@@ -238,7 +238,9 @@ body.estacion div.form input[type="submit"] {
     padding-left: 35px;
     border-left: 0;
 }
-.error #Estacion_ubicacion
+.error #Estacion_ubicacion,
+#Estacion_ubicacion.error
+
 {
     background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg_error.png');
 }
@@ -250,7 +252,8 @@ body.estacion div.form input[type="submit"] {
     padding-left: 35px;
     border-left:0 !important;
 }
-.error #Estacion_identificador
+.error #Estacion_identificador,
+#Estacion_identificador.error
 {
     background-image: url('../../images/camion/iconoIdentificador.png'), url('../../images/form/bg_error.png');
 }
@@ -262,7 +265,8 @@ body.estacion div.form input[type="submit"] {
     padding-left: 35px;
     border-left:0 !important;
 }
-.error #Estacion_no_personal
+.error #Estacion_no_personal, 
+#Estacion_no_personal.error
 {
     background-image: url('../../images/camion/icononumeropasajeros.png'), url('../../images/form/bg_error.png');
 }
@@ -274,7 +278,8 @@ body.estacion div.form input[type="submit"] {
     padding-left: 35px;
     border-left:0 !important;
 }
-.error #Estacion_color
+.error #Estacion_color,
+#Estacion_color.error
 {
     background-image: url('../../images/camion/iconoColor.png'), url('../../images/form/bg_error.png');
 }
@@ -286,7 +291,8 @@ body.estacion div.form input[type="submit"] {
     padding-left: 35px;
     border-left:0 !important;
 }
-.error #Estacion_marca
+.error #Estacion_marca,
+#Estacion_marca.error
 {
     background-image: url('../../images/camion/iconoMarca.png'), url('../../images/form/bg_error.png');
 }
