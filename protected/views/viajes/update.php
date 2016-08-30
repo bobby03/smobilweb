@@ -64,9 +64,11 @@ $this->breadcrumbs=array(
     </div>
     <div class="tab" data-tab="1">
      <div class="botonesWrapper">
+        <div style="width:300px; float:right;">
                 <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
                 <div class="siguiente uno">Siguiente</div>
-            </div>
+        </div>
+    </div>
 	<div class="formContainer1">
             <div class="row">
 		<?php echo $form->labelEx($model,'id_responsable'); ?>

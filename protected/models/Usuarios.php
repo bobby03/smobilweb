@@ -29,8 +29,8 @@ class Usuarios extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('usuario, pwd, tipo_usr,id_usr', 'required','message'=>'Campo obligatorio'),
-                        array('usuario','unique','message'=>'Ya existe un usuario registrado con este nombre'),
-                        array('id_usr','unique','message'=>'Este usuario ya tiene una cuenta creada'),
+            array('usuario','unique','message'=>'Ya existe un usuario registrado con este nombre'),
+            // array('id_usr','unique','message'=>'Este usuario ya tiene una cuenta creada'),
 			array('id, tipo_usr, id_usr', 'numerical', 'integerOnly'=>true),
 			array('usuario', 'length', 'max'=>10),
 			array('pwd', 'length', 'max'=>35),

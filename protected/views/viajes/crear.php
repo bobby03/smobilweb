@@ -60,7 +60,7 @@
     <div class="tab" data-tab="1">
     <div style="width: 100%;height: 45px;">
         <div class="botonesWrapper3">
-                <a class="gBoton" href="http://localhost/smobilweb/viajes">Cancelar</a>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
                 <div class="siguiente uno">Siguiente</div>
             </div>
     </div>
