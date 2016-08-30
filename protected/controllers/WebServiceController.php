@@ -279,7 +279,7 @@ class WebServiceController extends Controller
         echo json_encode($result);
     }
 
-    public function actionSolicitudes(){
+    public function actionViajes(){
         //get idViaje, datos responsable, solicitudes.
         $idResp = isset($_GET['id'])?$_GET['id']:0; // id
         $typeResp = isset($_GET['type'])?$_GET['type']:0; // id
@@ -306,15 +306,17 @@ class WebServiceController extends Controller
                    'SCode'=>'OK',
                     );
             //----------------------- /USER DATA  RESP-----------------------
-                //----------------------- Plataforma Viaje ----------------------------
-                $today = date('Y-m-d');
+            
+            //----------------------- Plataforma Viaje ----------------------------
+            $today = date('Y-m-d');
             $PlataformasViaje = Yii::app()->db->createCommand()
                 ->select('v.id, id_solicitudes , id_clientes, v.status, fecha_salida, v.fecha_entrega,   codigo, e.tipo, e.identificador, e.no_personal, e.marca, e.color, e.disponible, e.id AS ID_EST')
                 ->from('viajes  v')
                 ->join('estacion e','id_estacion = e.id')
                 ->join('solicitudes s','s.id = v.id_solicitudes')
                 ->where('id_responsable = :id',array(':id'=>$idResp))
-                ->andWhere('fecha_salida = :today',array(':today'=>$today) )
+                ->andWhere('fecha_salida <= :today',array(':today'=>$today) )
+                ->andWhere('v.status = 1')
                 ->order('id_solicitudes asc')
                 ->queryAll();
 
@@ -459,6 +461,106 @@ class WebServiceController extends Controller
         
         
         echo json_encode($rx);
+    }
+
+    public function actionSiembras(){
+        //get idViaje, datos responsable, solicitudes.
+        $idResp = isset($_GET['id'])?$_GET['id']:0; // id
+        $typeResp = isset($_GET['type'])?$_GET['type']:0; // id
+        //--- Variables
+        $userData = null; $udArray = array();
+        $Siembras = null; $siArray = array(); 
+        $per=null; $tipoEstacion = array('1'=>"Camion",'2'=>"Igl&uacute;");
+        $clienteTemp = null; $sols = null; $solTemp = null; $tanksTemp = null; $tanks= null;
+        $rx = null;
+        //--------------------- USER DATA RESP------------------------
+        $userData = Yii::app()->db->createCommand()
+            ->select('id, nombre, apellido, rfc, correo, puesto')
+            ->from('personal p')
+            ->where('id = :id',array(':id'=>$idResp) )
+            ->queryRow();
+    
+        if($userData != false){
+            
+            $today = date('Y-m-d');
+            //------------------------- Campañas Sensado -------------------------
+            $Siembras = Yii::app()->db->createCommand()
+                ->select('id,id_estacion est, id_responsable resp, nombre_camp, fecha_inicio, fecha_fin, status')
+                ->from('camp_sensado cs')
+                ->where('id_responsable = :idR',array(':idR'=>$idResp))
+                ->andWhere('fecha_inicio <=:today',array(':today'=>$today))
+                ->andWhere('cs.status = 1')
+                ->queryAll();
+            //--------------END CAMPAñAS SENSADO-----------------------
+            if(count($Siembras)>0){
+                //------------ Estaciones ---------------------
+
+                foreach ($Siembras as $keySiembras => $valueSiembras) {
+                    # code...
+                    $est = Yii::app()->db->createCommand()
+                        ->select('e.id_granja, e.identificador,  e.no_personal, e.marca, e.ubicacion, g.nombre, g.direccion, g.responsable')
+                        ->from('estacion e')
+                        ->join('granjas g','e.id_granja = g.id')
+                        ->where('e.id = :idE',array(':idE'=>$valueSiembras['est']))
+                        ->andWhere('e.disponible = 1')
+                        ->andWhere('e.activo = 1')
+                        ->queryAll();
+
+                    //---------------- Cepa ---------------------
+                    $cepa = Yii::app()->db->createCommand()
+                        ->select('ct.id_tanque,t.nombre,c.*')
+                        ->from('camp_tanque ct')
+                        ->join('cepa c','ct.id_cepa = c.id')
+                        ->join('tanque t','t.id = ct.id_tanque')
+                        ->where('ct.id_camp_sensado = :idCS',array(':idCS'=>$valueSiembras['id']))
+                        ->queryAll();
+                    //-------------------- Granja --------------
+                    $siTemp[] = array('ID'=>$valueSiembras['id'],
+                                    'IDRESP'=>$valueSiembras['resp'],
+                                    'EST'=>$valueSiembras['est'],
+                                    'NOMBRE'=>$valueSiembras['nombre_camp'],
+                                    'FECHA'=>$valueSiembras['fecha_inicio'],
+                                    'TERMINO'=>$valueSiembras['fecha_fin'],
+                                    'ESTATUS'=>$valueSiembras['status'],
+                                    'GRANJA'=>$est,
+                                    'CEPA'=>$cepa,);
+                    //-------------------- Granja --------------
+
+                    
+                    $siArray =  $siTemp;
+                }
+
+            }else{
+                $siArray = 0; //('Name'=>'USER NO VALID','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
+            }
+            
+
+            //----- Construccion JSON 
+            $udArray = array(
+               'ID'=>$userData['id'],
+               'Name'=>$userData['nombre']." ".$userData['apellido'] ,
+               'RFC'=>$userData['rfc'],
+               'CORREO'=>$userData['correo'],
+               'PUESTO'=>$userData['puesto'],
+               'Status'=>'GRANTED',
+               'code'=>200,
+               'SCode'=>'OK',
+               'SIEMBRAS'=>$siArray,
+                );
+
+            //----- Construccion JSON 
+            
+
+
+            
+        }else{
+            $udArray = array('Name'=>'USER NO VALID','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
+        }
+
+          
+        
+        echo json_encode($udArray);
+        // echo json_encode($rx);
     }
 
     public function actionGetDataDriver(){
