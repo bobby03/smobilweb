@@ -3,7 +3,18 @@ div.form label {
     line-height: 30px;
     padding-right: 30px;
 }
-
+#Roles_nombre_rol
+{
+    background-image: url('../../images/roles/iconoRoles.png'), url('../../images/form/bg.png');
+    background-position: 9px 5px,left;
+    background-repeat: no-repeat;
+    border-left:0;
+    padding-left: 30px;
+}
+.error #Roles_nombre_rol
+{
+    background-image: url('../../images/roles/iconoRoles.png'), url('../../images/form/bg_error.png');
+}
 div.row.titulos > div {
     font-size: 15px;
     color: #FFFFFF;

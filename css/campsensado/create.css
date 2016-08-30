@@ -19,7 +19,14 @@
     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
     border: 2px solid #c00;
 }
-
+select#Granjas_id
+{
+    background-image: url('../../images/menu/siembra.svg'), url('../../images/form/bg.png');
+    background-position: 4px 0,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
 #SolicitudesViaje_id_personal_1_tecnico {
     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
     background-position: 8px 5px, left;

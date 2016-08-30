@@ -176,3 +176,146 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/images/delete.svg
 HTTP_REFERER=http://localhost/SmobilWeb/viajes
 ---
+2016/08/29 15:13:16 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/usuarios/iconoGranja.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/usuarios...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/usuarios/iconoGranja.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/granjas/create.css
+---
+2016/08/29 15:36:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/granjas/iconoGranja.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/granjas/...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/granjas/iconoGranja.svg
+HTTP_REFERER=http://localhost/SmobilWeb/granjas/create
+---
+2016/08/29 15:47:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/granjas/iconoGranja.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/granjas/...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/granjas/iconoGranja.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/granjas/create.css
+---
+2016/08/29 15:59:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/granjas/iconoGranja.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/granjas/...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/granjas/iconoGranja.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/granjas/create.css
+---
+2016/08/29 16:17:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/personal/icnonopuesto.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/personal...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/personal/icnonopuesto.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/personal/create.css?I=26154
+---
+2016/08/29 16:17:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/personal/icnonopuesto.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/personal...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/personal/icnonopuesto.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/personal/create.css?I=26154
+---
+2016/08/29 16:18:07 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/personal/icnonopuesto.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/personal...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/personal/icnonopuesto.png
+---
+2016/08/29 16:21:10 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/usuarios/iconoDescripcion.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/usuarios...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/usuarios/iconoDescripcion.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/clientes/create.css
+---
+2016/08/29 16:24:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/especie.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/esp...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/especie.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/especie/especie.css
+---
+2016/08/29 16:24:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/especie.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/esp...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/especie.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/especie/especie.css
+---
+2016/08/29 16:25:01 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/especie.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/esp...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/especie.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/especie/especie.css
+---
+2016/08/29 16:25:01 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/especie.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/esp...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/especie.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/especie/especie.css
+---
+2016/08/29 16:25:02 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/especie.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/esp...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/especie.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/especie/especie.css
+---
+2016/08/29 16:25:03 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/especie.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/esp...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/especie.svg
+HTTP_REFERER=http://localhost/SmobilWeb/css/especie/especie.css
+---
+2016/08/30 08:01:57 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/08/30 08:35:05 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/solicitudes/iconoNotas.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/solicitu...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/solicitudes/iconoNotas.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/solicitudes/create.css
+---

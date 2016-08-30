@@ -230,4 +230,63 @@ body.estacion div.form input[type="submit"] {
     font-size: 18px !important;
     margin-right: 0 !important;
 }
-
+#Estacion_ubicacion
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.error #Estacion_ubicacion
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
+#Estacion_identificador
+{
+    background-image: url('../../images/camion/iconoIdentificador.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0 !important;
+}
+.error #Estacion_identificador
+{
+    background-image: url('../../images/camion/iconoIdentificador.png'), url('../../images/form/bg_error.png');
+}
+#Estacion_no_personal
+{
+    background-image: url('../../images/camion/icononumeropasajeros.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0 !important;
+}
+.error #Estacion_no_personal
+{
+    background-image: url('../../images/camion/icononumeropasajeros.png'), url('../../images/form/bg_error.png');
+}
+#Estacion_color
+{
+    background-image: url('../../images/camion/iconoColor.png'), url('../../images/form/bg.png');
+    background-position: 6px 4px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0 !important;
+}
+.error #Estacion_color
+{
+    background-image: url('../../images/camion/iconoColor.png'), url('../../images/form/bg_error.png');
+}
+#Estacion_marca
+{
+    background-image: url('../../images/camion/iconoMarca.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0 !important;
+}
+.error #Estacion_marca
+{
+    background-image: url('../../images/camion/iconoMarca.png'), url('../../images/form/bg_error.png');
+}

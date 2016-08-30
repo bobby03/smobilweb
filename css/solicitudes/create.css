@@ -358,6 +358,23 @@ div.renglon:after
   padding-left: 30px;
 }
 
+#ClientesDomicilio_domicilio_chosen
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg.png');
+    background-position: 7px 5px,left;
+    background-repeat: no-repeat;
+    border-left:0;
+    padding-left: 30px;
+}
+#Solicitudes_notas
+{
+    background-image: url('../../images/solicitud/iconoNotas.png'), url('../../images/form/bg.png');
+    background-position: 7px 5px,left;
+    background-repeat: no-repeat;
+    border-left:0;
+    padding-left: 30px;
+}
+
 
 /**
 *   AGREGAR DIRECCION - BEGIN

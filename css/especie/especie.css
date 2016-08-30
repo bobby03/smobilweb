@@ -51,6 +51,11 @@ body.especie div.row.titulos{
     text-indent: 5px;
     box-sizing: border-box;
     display: block;
+    background-image: url('../../images/especie/iconoPececito.png'), url('../../images/form/bg.png');
+    background-position: 8px 10px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0 !important;
 }
 
 body.especie .botones-content .gBoton{

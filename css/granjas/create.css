@@ -18,9 +18,42 @@ label.letreros{
     font-size: 14px !important;
     color: #0077B0;
 }
-
-
-
+input#Granjas_direccion
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg.png');
+    background-position: 7px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.error input#Granjas_direccion
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg_error.png');
+}
+input#Granjas_nombre
+{
+    background-image: url('../../images/granjas/iconoGranja.png'), url('../../images/form/bg.png');
+    background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.error input#Granjas_nombre
+{
+    background-image: url('../../images/granjas/iconoGranja.png'), url('../../images/form/bg_error.png');
+}
+#Granjas_responsable 
+{
+    background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.error input#Granjas_responsable
+{
+    background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
+}
 .form-cLarge{
     width:200px;
 }

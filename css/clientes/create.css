@@ -347,6 +347,25 @@ margin-bottom:10px;
   background-image: url('../../images/clientes/iconoNombre.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+.allMapa .dom input
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0;
+}
+.allMapa .des input
+{
+    background-image: url('../../images/clientes/iconoDescripcion.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0;
+}
+
+
+
 div.form div.row.dom div.data
 {
     width: 100%;
