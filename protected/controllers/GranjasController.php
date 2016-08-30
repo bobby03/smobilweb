@@ -116,15 +116,18 @@ class GranjasController extends Controller
         public function actionNuevaPlanta($id)
         {
             $model = new Estacion();
-            $model->tipo = 2;
+            $model->tipo = (int)2;
 		// Uncomment the following line if AJAX validation is needed
-//            $this->performAjaxValidation($model);
+            $this->performAjaxValidation($model);
             if(isset($_POST['Estacion']))
             {
                 $model->attributes=$_POST['Estacion'];
-                $model->id_granja = $id;
+                $model->id_granja = (int)$id;
                 $model->activo = 1;
                 $model->disponible = 1;
+                $model->no_personal = 1;
+                $model->color = "na";
+                $model->tipo = (int)2;
                 $columnas = array
                 (
                     'id_granja' => $id,
@@ -137,11 +140,15 @@ class GranjasController extends Controller
                     'disponible' => 1,
                     'tipo' => 2,
                 );
-                $insert = YII::app()->db->createCommand()->insert('estacion',$columnas);
-                if($insert > 0)
+                fb($model->attributes);
+//                $insert = YII::app()->db->createCommand()->insert('estacion',$columnas);
+                if($model->save())
                 {
                     unset($_POST['Estacion']);
                     $this->redirect(array('granjas/plantaProduccion/'.$id));
+                }
+                else{
+                    fb($model->save());
                 }
             }
 
