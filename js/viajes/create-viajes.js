@@ -83,7 +83,7 @@ $(document).ready(function()
             },
             success: function(data)
             {
-                $('.pedidosWraper').append(data.html);
+                $('.pedidosWrapper').append(data.html);
                 validateChangesTanque();
             },
             error: function(a,b,c)

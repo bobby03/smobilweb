@@ -84,6 +84,7 @@ class Clientes extends CActiveRecord
 				'tel',
 				'length',
 				'min'=>13,
+				'tooShort'=>'Mínimo 10 números',
 				'message'=>'El telefono no es valido'),
 			array('ext','required','message'=>'Este campo es obligatorio'),
 			array(
