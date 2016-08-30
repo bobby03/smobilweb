@@ -623,10 +623,10 @@ table.detail-view th {
 }
 
 
-#cboxOverlay {
+/*#cboxOverlay {
     background-color: #0077B0;
     opacity: .8 !important;
-}
+}*/
 
 #cboxWrapper {
     border-radius: 5px 5px 5px 5px;

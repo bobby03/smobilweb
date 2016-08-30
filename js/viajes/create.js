@@ -114,6 +114,14 @@ $(document).ready(function()
         $('#Viajes_id_responsable').blur();
      //   $('#Viajes_id_estacion').blur();
 
+        if($('#Viajes_hora_salida').val()==''){
+             $('#Viajes_hora_salida').addClass("error");
+        }
+        if($('#Viajes_fecha_salida').val()==''){
+             $('#Viajes_fecha_salida').addClass("error");
+        }else{
+            $('#Viajes_fecha_salida').removeClass("error");
+        }
         $('[data-tab="1"] select[multiple="multiple"]').each(function() {
             if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
                 $(this).next('div.chosen-container').addClass("error");
@@ -277,6 +285,23 @@ function validaTabUno() {
             }
         });
     });
+    $('#Viajes_hora_salida').change(function() {
+        hora=$(this).val();
+        if(hora.length==2){
+            $(this).val(hora+':00');
+        }
+        hora=$(this).val();
+        if(hora.length!=5){
+                $(this).addClass("error");
+                $(this).find('.errorMessage').show().html('Debe Seleccionar una persona');
+                $(this).removeClass("success");   
+        }else{
+            $(this).removeClass("error");
+            $(this).find('.errorMessage').hide().html('');
+            $(this).addClass("success");
+        }
+        
+    });
     /*$('div.chosen-container').bind('DOMSubtreeModified', function(event) {
         $('[data-tab="1"] select[multiple="multiple"]').each(function() {
             if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
@@ -290,6 +315,7 @@ function validaTabUno() {
             }
         });
     });*/
+
 }
 
 function launcher() {

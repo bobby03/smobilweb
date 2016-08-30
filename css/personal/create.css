@@ -199,6 +199,19 @@ float:left;
   background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
+#Personal_puesto
+{
+    background-image: url('../../images/personal/iconopuesto.png'), url('../../images/form/bg.png');
+    background-position: 5px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left:0;
+}
+.error #Personal_puesto{
+background-image: url('../../images/personal/iconopuesto.png'), url('../../images/form/bg_error.png');
+  border: 2px solid #cc0403;
+}
+
 .error #Personal_correo{
   background-image: url('../../images/personal/iconoCorreo.png'), url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
@@ -220,23 +233,6 @@ float:left;
 }
 #Personal_id_rol.error{
   background-image: url('../../images/personal/iconoTipoUsuario.png'), url('../../images/form/bg_error.png');
-  border: 2px solid #cc0403;
-}
-
-
-#Personal_puesto{
- background-image: url('../../images/form/bg.png');
-  background-position: 0px -1px,left;
-  background-repeat: no-repeat;
-  padding-left: 35px;
-  border-left:0;
-}
-.error #Personal_puesto{
-  background-image: url('../../images/form/bg_error.png');
-  border: 2px solid #cc0403;
-}
-#Personal_puesto.error{
-  background-image: url('../../images/form/bg_error.png');
   border: 2px solid #cc0403;
 }
 

@@ -29,7 +29,7 @@ class NCButtonColumn extends CButtonColumn
         if($this->updateButtonImageUrl===null)
             $this->updateButtonImageUrl=$baseUrl.'/images/editar.svg';
         if($this->deleteButtonImageUrl===null)
-            $this->deleteButtonImageUrl=$baseUrl.'/images/borrar.svg';
+            $this->deleteButtonImageUrl=$baseUrl.'/images/reactivar2.svg';
         if($this->deleteConfirmation===null){
             $this->deleteConfirmation=Yii::t('zii','¿Seguro que desea borrar esta entrada?');
         }

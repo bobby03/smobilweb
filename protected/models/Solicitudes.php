@@ -383,7 +383,14 @@ class Solicitudes extends CActiveRecord
             (
                 'class'=>'NCButtonColumn',
                 'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>'
+                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                'buttons' => array
+                (
+                    'delete' => array
+                    (
+                        'imageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
+                    )
+                )
             )
         );
     }
@@ -453,7 +460,8 @@ class Solicitudes extends CActiveRecord
                     (
                        'delete'=> array 
                        (
-                        'url' => 'Yii::app()->createUrl("solicitudes/delete/$data->id")',
+                            'url' => 'Yii::app()->createUrl("solicitudes/delete/$data->id")',
+                            'imageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
                         ) 
                     )
             )
