@@ -1647,6 +1647,9 @@ eof;
         }
         echo json_encode($return);
     }
+
+   
+
     public function actionGetAlertasParametro($viaje, $id)
     {
         $nombre = " Name "  ;

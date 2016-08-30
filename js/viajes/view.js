@@ -59,7 +59,6 @@ $(document).ready(function()
             },
             success: function(data)
             {
-//                console.log(data);
                 $.colorbox(
                 {
                     html: data,
