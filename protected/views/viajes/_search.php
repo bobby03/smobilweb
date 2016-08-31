@@ -25,8 +25,10 @@
             <?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesOcupadas(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
 	<div class="row hide" data-id='5'>
-		
-		<?php echo $form->textField($model,'fecha_salida'); ?>
+            <?php echo $form->textField($model,'fecha_salida'); ?>
+	</div>
+	<div class="row hide" data-id="6">
+            <?php echo $form->textField($model,'hora_salida'); ?>
 	</div>
 <!--
 	<div class="row hide" data-id="3">
@@ -37,9 +39,6 @@
 		<?php echo $form->textField($model,'fecha_salida'); ?>
 	</div>
 
-	<div class="row" data-id="5">
-		<?php echo $form->textField($model,'hora_salida'); ?>
-	</div>
 
 	<div class="row" data-id="6">
 		<?php echo $form->textField($model,'fecha_entrega'); ?>

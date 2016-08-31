@@ -2,7 +2,64 @@
     width: 500px;
     height: 218px;
 }
-
+.table-view .dato:nth-child(1) .data
+{
+    background-image: url('../../images/clientes/iconoempresa.png'), url('../../images/form/bg.png');
+    background-position: 9px 6px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(2) .data
+{
+    background-image: url('../../images/clientes/iconoRFC.png'), url('../../images/form/bg.png');
+    background-position: 10px 6px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(4) .data
+{
+    background-image: url('../../images/clientes/iconoCorreo.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(7) .data
+{
+    background-image: url('../../images/menu/usuarios.svg'), url('../../images/form/bg.png');
+    background-position: 15px 9px, left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(6) .data,
+.table-view .dato:nth-child(8) .data,
+.table-view .dato:nth-child(9) .data
+{
+    background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.row.dom .data
+{
+    background-image: url('../../images/usuarios/iconoDomicilio.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.row.des .data
+{
+    background-image: url('../../images/clientes/iconoDescripcion.png'), url('../../images/form/bg.png');
+    background-position: 8px 5px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
 div.form .row.buttons
 {
     width: 100%;
@@ -38,7 +95,7 @@ div.addDireccion
 }
 div.addDireccion:hover
 {
-    background-color: #49dbd0;
+    background-color: #21B7C7;
 }
 
 

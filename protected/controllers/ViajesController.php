@@ -1647,9 +1647,6 @@ eof;
         }
         echo json_encode($return);
     }
-
-   
-
     public function actionGetAlertasParametro($viaje, $id)
     {
         $nombre = " Name "  ;
@@ -1727,9 +1724,11 @@ eof;
             ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
             ->andWhere("upT.id_tanque = $id")
+            ->order("esc.id ASC")
             ->queryAll();
         $count = count($total);
         $rangos = array();
+        $rangosTitulo = array();
         $index = 0;
         $x = 0;
         do
@@ -1738,12 +1737,14 @@ eof;
             if( $x < $count )
             {
                 $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
                 $index = $index + 1;
             }
             else
             {
                 $x = $x - 300;
                 $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
                 $x = null;
             }
         }while($x != null);
@@ -1766,20 +1767,22 @@ eof;
                         <div class="rangosHistorial" style="width: {$x}px">
 eof;
         $x = true;
-        foreach ($rangos as $data)
+        $conta = 1;
+        foreach ($rangosTitulo as $data)
         {
             if($x)
             {
                 $return['codigo'] = $return['codigo'].<<<eof
-                    <div class="selected">$data[0] - $data[1]</div>
+                    <div class="selected" data-range="{$rangos[0][0]}">$data[0] - $data[1]</div>
 eof;
                 $x = false;
             }
             else
             {
                 $return['codigo'] = $return['codigo'].<<<eof
-                    <div data-range="$data[0]">$data[0] - $data[1]</div>
+                    <div data-range="{$rangos[$conta][0]}">$data[0] - $data[1]</div>
 eof;
+                $conta++;
             }
         }
         $return['codigo'] = $return['codigo'].<<<eof
@@ -2352,12 +2355,30 @@ eof;
             ->from('escalon_viaje_ubicacion as esc')
             ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
+            ->order("upT.id ASC")
             ->queryAll();
         $count = count($total);
-        if($count > 333)
-            $limit = $count - 333;
-        else
-            $limit = 0;
+        $rangos = array();
+        $rangosTitulo = array();
+        $index = 0;
+        $x = 0;
+        do
+        {
+            $x = $x + 300;
+            if( $x < $count )
+            {
+                $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
+                $index = $index + 1;
+            }
+            else
+            {
+                $x = $x - 300;
+                $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
+                $x = null;
+            }
+        }while($x != null);
         $tanques = Yii::app()->db->createCommand()
             ->selectDistinct('solT.id_tanque, tan.nombre')
             ->from('solicitudes_viaje as solV')
@@ -2370,7 +2391,190 @@ eof;
             ->from('escalon_viaje_ubicacion as esc')
             ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
             ->where("esc.id_viaje = $viaje")
-            ->limit(333,$limit)
+            ->limit(300,$rangos[0][0])
+            ->order("upT.id ASC")
+            ->queryAll();
+        switch($id)
+        {
+            case 'ox':      $nombre='Oxígeno disuelto'; break;
+            case 'temp':    $nombre='Temperatura'; break;
+            case 'ph':      $nombre='PH'; break;
+            case 'cond':    $nombre='Conductividad'; break;
+            case 'orp':     $nombre='Potencial óxido reducción'; break;
+        }
+        $cont = 0;
+        $colors = ['#4363AE','#8DC63F','#7F3F98','#FF5BB2','#27AAE1','#ED1C24','#8B5E3C','#FF7236'];
+        $datasets = [];
+        $flag = true;
+        $menu = <<<eof
+            <div class="menuSeccion selected" data-tanque="-1">Todos</div>
+eof;
+        $i = 0;
+        foreach($tanques as $info)
+        {
+            $datas = [];
+            $labels = [];
+            foreach($datos as $data)
+            {
+                if($data['id_tanque'] == $info['id_tanque'])
+                {
+                    if($flag)
+                    {
+                        $cont++;
+                    }
+                    $labels[] = $data['hora'];
+                    $datas[] = $data[$id];
+                }
+            }
+            $datasets[] = 
+            [
+                'label'                 => $id,
+                'fill'                  => false,
+                'lineTension '          => 0,
+                'borderColor'           => $colors[$i],
+                'pointBorderColor'      => $colors[$i],
+                'pointBackgroundColor'  => $colors[$i],
+                'pointBorderWidth'      => 5,
+                'pointHoverRadius'      => 10,
+                'data'                  => $datas,
+            ];
+            $return['graf'.$i]=
+            array
+            (
+                'type' => 'line',
+                'data'=>array
+                (
+                    'labels'    => $labels,
+                    'datasets'  => [$datasets[$i]]
+                ),
+                'options' => array
+                (
+                    'animation'             => false,
+                    'responsive'            => false,
+                    'legend'                => array
+                    (
+                        'display' => false
+                    ),
+                    'scales'                => array
+                    (
+                        'yAxes' => 
+                        [array(
+                            'ticks' => array
+                            (
+                                'min'       => 0,
+                            )
+                        )]
+                    )
+                )
+            );
+            $flag = false;
+            $menu = $menu.<<<eof
+                <div class="menuSeccion" data-tanque="$i">{$info['nombre']}</div>
+eof;
+            $i++;
+        }
+        $return['total'] = $i;
+        $x = count($rangos) * 206.39;
+        $return['codigo'] = <<<eof
+            <div class="historial parametro">
+                <div class="titulo">Historial de parámetro ($nombre)</div>
+                <div class="subtitulo">$nombre</div>
+                <div class="historialGraficasWraper">
+                    <div>rango de datos</div>
+                    <div class="rangos-wraper">
+                        <div class="rangosHistorial" style="width: {$x}px">
+eof;
+        $x = true;
+        $conta = 1;
+        foreach ($rangosTitulo as $data)
+        {
+            if($x)
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div class="selected" data-range="{$rangos[0][0]}">$data[0] - $data[1]</div>
+eof;
+                $x = false;
+            }
+            else
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div data-range="{$rangos[$conta][0]}">$data[0] - $data[1]</div>
+eof;
+                $conta++;
+            }
+        }
+        $return['codigo'] = $return['codigo'].<<<eof
+                        </div>
+                    </div>
+                    <div class="menuHistorial">
+                        $menu
+                    </div>
+                    <div class="graficasWraper">
+eof;
+        $width = ($cont * 98)+40;
+        if($width < 1032)
+            $width = 1032;
+        $return['codigo'] =$return['codigo'].<<<eof
+            <div class="grafScroll" data-parame="-1">
+                <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
+            </div>
+eof;
+        for($j = 0; $j < $i; $j++)
+        {
+            $return['codigo'] =$return['codigo'].<<<eof
+                <div class="grafScroll hide" data-parame="$j">
+                    <canvas id="parametrosGrafica$j" width="$width" height="405"></canvas>
+                </div>
+eof;
+        }
+        $return['graficaTodos'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => $labels,
+                'datasets'  => $datasets
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+                        )
+                    )]
+                )
+            )
+        );
+        $return['codigo'] = $return['codigo'].'
+                </div>
+            </div>';
+            
+        echo json_encode($return);
+    }
+    public function actionGetGraficaParametroRango($viaje, $id, $rango)
+    {
+        $tanques = Yii::app()->db->createCommand()
+            ->selectDistinct('solT.id_tanque, tan.nombre')
+            ->from('solicitudes_viaje as solV')
+            ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
+            ->join('tanque as tan','tan.id = solT.id_tanque')
+            ->where("solV.id_viaje = $viaje")
+            ->queryAll();
+        $datos = Yii::app()->db->createCommand()
+            ->select("esc.hora, upT.$id, upT.id_tanque, upT.id")
+            ->from('escalon_viaje_ubicacion as esc')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->where("esc.id_viaje = $viaje")
+            ->limit(300,$rango)
             ->order("upT.id ASC")
             ->queryAll();
         switch($id)
@@ -2445,37 +2649,7 @@ eof;
                 )
             );
             $flag = false;
-            $menu = $menu.<<<eof
-                <div class="menuSeccion" data-tanque="$i">{$info['nombre']}</div>
-eof;
             $i++;
-        }
-        $return['total'] = $i;
-        $return['codigo'] = <<<eof
-            <div class="historial parametro">
-                <div class="titulo">Historial de parámetro ($nombre)</div>
-                <div class="subtitulo">$nombre</div>
-                <div class="historialGraficasWraper">
-                <div class="menuTanques">
-                    <div class="menuParametros">$menu</div>
-                </div>
-                    <div class="graficasWraper">
-eof;
-        $width = ($cont * 98)+40;
-        if($width < 1032)
-            $width = 1032;
-        $return['codigo'] =$return['codigo'].<<<eof
-            <div class="grafScroll" data-parame="-1">
-                <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
-            </div>
-eof;
-        for($j = 0; $j < $i; $j++)
-        {
-            $return['codigo'] =$return['codigo'].<<<eof
-                <div class="grafScroll hide" data-parame="$j">
-                    <canvas id="parametrosGrafica$j" width="$width" height="405"></canvas>
-                </div>
-eof;
         }
         $return['graficaTodos'] =
         array
@@ -2504,14 +2678,6 @@ eof;
                 )
             )
         );
-//                            <div class="menuArriba">
-//                                <div class="menuTitulo">Seleccionar tanques:</div>
-//                                <div class="menuTodos"><div></div>Ver todos</div>
-//                            </div>
-        $return['codigo'] = $return['codigo'].'
-                </div>
-            </div>';
-            
         echo json_encode($return);
     }
     protected function performAjaxValidation($model)

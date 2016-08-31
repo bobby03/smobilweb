@@ -108,11 +108,6 @@ div.pedido {
     border-radius: 5px;
     overflow: hidden;
 }
-
-div.form {
-    margin-top: 60px !important;
-}
-
 div.tituloEspecie {
     background-color: #0077B0;
     text-align: center;
