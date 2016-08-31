@@ -1,3 +1,25 @@
+div.form{
+	margin-top: 0 !important;
+}
+.table-view .dato:nth-child(3) .data,
+.table-view .dato:nth-child(4) .data,
+.table-view .dato:nth-child(5) .data,
+.table-view .dato:nth-child(6) .data
+{
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+    background-position: 7px 6px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(7) .data
+{
+    background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
+    background-position: 7px 7px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
 .detallesViaje
 {
     margin-top: 25px;
@@ -306,6 +328,21 @@ div.grafica > div
     background-repeat: no-repeat;
     background-position: center;
 }
+.tanquesColores:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
+.tanquesColores {
+    margin-top: 15px;
+}
+.tanqueItem {
+    width: 100px;
+    float: left;
+    cursor: default;
+}
+
 .tablaWraper span
 {
     width: 5px;
@@ -320,7 +357,7 @@ div.grafica > div
     border-radius: 5px;
     background-color: #FFFFFF;
     width: 1152px;
-    height: 706px;
+    height: 740px;
 }
 .historial .titulo
 {
@@ -524,7 +561,7 @@ div.mapaPopup .titulo
 }
 .rangosHistorial div
 {
-    width:20%; 
+    width: 206.38px;
     float:left;
     text-align: center;
     cursor: pointer;

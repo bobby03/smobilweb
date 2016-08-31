@@ -45,12 +45,12 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                 'codigo',
                 'fecha_alta',
                 'hora_alta',
-                 array('name'=>'id_viaje', 'value'=>Solicitudes::model()->getViaje($model->id)), 
                 'fecha_estimada',
                 'hora_estimada',
                 'fecha_entrega',
                 'hora_entrega',
                 'notas',
+                 array('name'=>'id_viaje', 'value'=>Solicitudes::model()->getViaje($model->id)), 
             ),
     )); ?>
     <?php else: ?>

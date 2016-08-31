@@ -1,3 +1,11 @@
+#Cepa_nombre_cepa
+{
+    background-image: url('../../images/especie/iconoPececito.png'), url('../../images/form/bg.png');
+    background-position: 8px 8px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
 div.form-containerWraper:after
 {
     content: '';
