@@ -120,16 +120,18 @@ class MonitoreoController extends Controller
     
     public function actionView($id)
     {
+        $campsensado = CampSensado::model()->findByPk((int)$id);
+        $id_estacion = $campsensado->id_estacion;
         $cantTanques= Yii::app()->db->createCommand('SELECT count(t.id) as cTan FROM tanque t
         JOIN estacion e ON t.id_estacion=e.id
         WHERE t.activo=1
-        AND t.id_estacion='.$id)
+        AND t.id_estacion='.$id_estacion)
         ->queryRow();
         $tanques = Yii::app()->db->createCommand('SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
         FROM estacion
         JOIN tanque ON estacion.id=tanque.id_estacion
-        JOIN registro_camp rc ON tanque.id=rc.id_tanque
-        WHERE estacion.id='.$id.'
+        JOIN registro_camp rc ON tanque.id=rc.id_tanque AND rc.id_camp_sensado='.(int)$id.'
+        WHERE estacion.id='.$id_estacion.'
         ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
         GROUP BY idtan')
                 ->queryAll();
