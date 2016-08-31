@@ -16,11 +16,42 @@
 
 <div class="principal">
     <div class="tabs">
-        <div class="tab select" data-id="1"><span>En proceso</span></div>
-        <div class="tab" data-id="2"><span>Finalizado</span></div>
+        <div class="tab select" data-id="1"><span>En espera</span></div>
+        <div class="tab" data-id="2"><span>En proceso</span></div>
+        <div class="tab" data-id="3"><span>Histórico</span></div>
     </div>
 
     <div class="tabContent" data-tan="1"> <!--Activos-->
+        <div class="search-form"><!-- search-form -->
+            <?php $this->renderPartial('_search',array('model'=>$model,)); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
+                <div class="agregar campsensado"></div>
+            </a>
+        </div>
+        <?php $this->widget('zii.widgets.grid.CGridView', array
+        (
+            'id'=>'campsensado-grid',
+            'summaryText'=>'',
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+            'dataProvider'=>$model->search(0),
+            'columns'=>$model->adminSearchEnEspera(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay registros",
+            'template' => "{items}{summary}{pager}",
+            'afterAjaxUpdate' => "function(id,data)
+            {
+                $.fn.yiiGridView.update('campsensado-grid2');
+            }"
+        )); 
+    ?>
+    </div>
+    <!-- - - - - - - - - - - -  - - - - - - -->
+    <div class="tabContent hide" data-tan="2"> <!--Activos-->
         <div class="search-form"><!-- search-form -->
             <?php $this->renderPartial('_search',array('model'=>$model,)); ?>
             <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
@@ -50,7 +81,7 @@
     ?>
     </div>
     <!-- - - - - - - - - - - -  - - - - - - -->
-    <div class="tabContent hide" id="asignadas" data-tan="2"> <!--Inactivos-->
+    <div class="tabContent hide" id="asignadas" data-tan="3"> <!--Inactivos-->
         <div class="search-form2"><!-- search-form -->
             <?php $this->renderPartial('_search2',array('model'=>$model,)); ?>
         </div>
