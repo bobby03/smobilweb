@@ -2409,9 +2409,13 @@ eof;
         $menu = <<<eof
             <div class="menuSeccion selected" data-tanque="-1">Todos</div>
 eof;
+        $menuTanques = '';
         $i = 0;
         foreach($tanques as $info)
         {
+            $menuTanques = $menuTanques.<<<eof
+                    <div class="tanqueItem" style="color:$colors[$i]">{$info['nombre']}</div>
+eof;
             $datas = [];
             $labels = [];
             foreach($datos as $data)
@@ -2527,6 +2531,11 @@ eof;
                 </div>
 eof;
         }
+            $return['codigo'] =$return['codigo'].<<<eof
+                <div class="tanquesColores">
+                    $menuTanques
+                </div>
+eof;
         $return['graficaTodos'] =
         array
         (

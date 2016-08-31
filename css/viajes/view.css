@@ -328,6 +328,21 @@ div.grafica > div
     background-repeat: no-repeat;
     background-position: center;
 }
+.tanquesColores:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
+.tanquesColores {
+    margin-top: 15px;
+}
+.tanqueItem {
+    width: 100px;
+    float: left;
+    cursor: default;
+}
+
 .tablaWraper span
 {
     width: 5px;
@@ -342,7 +357,7 @@ div.grafica > div
     border-radius: 5px;
     background-color: #FFFFFF;
     width: 1152px;
-    height: 706px;
+    height: 740px;
 }
 .historial .titulo
 {
