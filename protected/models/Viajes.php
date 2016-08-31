@@ -80,8 +80,8 @@ class Viajes extends CActiveRecord
             'status' => 'Status',
             'fecha_salida' => 'Fecha estimada de salida',
             'hora_salida' => 'Hora estimada de salida (24 horas)',
-            'fecha_entrega' => 'Fecha de entrega',
-            'hora_entrega' => 'Hora de entrega',
+            'fecha_entrega' => 'Fecha de finalización',
+            'hora_entrega' => 'Hora de finalización',
         );
     }
     /**
