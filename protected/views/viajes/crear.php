@@ -74,14 +74,14 @@
             </div>
             <?php if($model->isNewRecord):?>
                 <div class="row">
-                    <label>Técnico(s)</label>
+                    <label>Técnico(s) <span class="required">*</span></label>
                     <span class="css-select-moz">
                         <?php echo $form->dropDownList($personal,'id_personal[1][tecnico]', $personal->getpersonal(2), array('class'=>'css-select','multiple'=>'true')); ?>
                         <?php echo $form->error($model,'id_personal[1][tecnico]'); ?>
                     </span>
                 </div>
                 <div class="row">
-                    <label>Chofer(es)</label>
+                    <label>Chofer(es) <span class="required">*</span></label>
                     <span class="css-select-moz">
                         <?php echo $form->dropDownList($personal,'id_personal[1][chofer]', $personal->getpersonal(1), array('class'=>'css-select','multiple'=>'true')); ?>
                         <?php echo $form->error($model,'id_personal[1][chofer]'); ?>
@@ -97,7 +97,7 @@
         </div>
         <div class="formContainer1"> 
             <div class="row">
-                <label>Solicitudes sin asignar</label>
+                <label>Solicitudes sin asignar <span class="required">*</span></label>
                 <span class="css-select-moz">
                     <?php echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getClientesEnEspera(),
                                 array
@@ -143,7 +143,7 @@
             <div class="siguiente dos">Siguiente</div>
             <div class="bUno fBoton regresar">Regresar</div>
         </div>
-        <div class="pedidosWrapper"></div>   
+        <div class="pedidosWraper"></div>   
     </div>
     <div class="tab last hide" data-tab="3">
         <div class='row buttons floating'>

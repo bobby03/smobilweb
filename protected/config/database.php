@@ -6,7 +6,7 @@ return array(
 	// uncomment the following lines to use a MySQL database
 	
 	 'connectionString' => 'mysql:host=158.97.91.139;dbname=movsens',
-//	 'connectionString' => 'mysql:host=localhost;dbname=movsens',
+// 'connectionString' => 'mysql:host=localhost;dbname=movsens',
 
          'username' => 'smobile_user',
  	 'password' => 'm0b1l3',

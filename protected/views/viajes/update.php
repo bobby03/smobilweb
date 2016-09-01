@@ -39,6 +39,10 @@ $this->breadcrumbs=array(
         /* margin-right: 25px; */
         text-align: left;
     }
+    .gBoton
+    {
+        margin-right: 80px;
+    }
 </style>
 
 <div class="form">
@@ -64,7 +68,7 @@ $this->breadcrumbs=array(
     </div>
     <div class="tab" data-tab="1">
      <div class="botonesWrapper">
-        <div style="width:300px; float:right;">
+        <div style="float:right">
                 <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
                 <div class="siguiente uno">Siguiente</div>
         </div>

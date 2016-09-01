@@ -114,7 +114,7 @@ class CampSensadoController extends Controller
             {
 //                    print_r($_POST);
                 $model->attributes=$_POST['CampSensado'];
-                $model->status = 1;
+                $model->status = 0;
                 $model->activo = 1;
                 $model->fecha_fin = date('Y-m-d', strtotime($model->fecha_fin));
                 $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
@@ -487,6 +487,17 @@ eof;
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
+        
+        public function actionBorrar($id) 
+        {
+            $camptanques = CampTanque::model()->findAll('id_camp_sensado='.(int)$id);
+            if(count($camptanques) > 0)
+                foreach ($camptanques as $data)
+                    $data->delete();
+            $model = CampSensado::model()->findByPk((int)$id);
+            $model->delete();
+            echo json_encode("");
+        }
 	public function actionDelete($id)
 	{
 		//$this->loadModel($id)->delete();

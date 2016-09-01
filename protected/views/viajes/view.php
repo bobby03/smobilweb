@@ -24,8 +24,18 @@
 <h1>Detalles de viaje #<?php echo $model->id; ?></h1>
 <?php elseif ($model->status == 2):?>
 <h1>Viaje en ruta</h1>
+<style>
+    div.form {
+    margin-top: 60px !important;
+}
+</style>
 <?php else:?>
 <h1>Historico del viaje</h1>
+<style>
+    div.form {
+    margin-top: 60px !important;
+}
+</style>
 <?php endif;?>
 <div class="principal">
     <!--EN ESPERA-->

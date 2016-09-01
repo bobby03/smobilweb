@@ -180,7 +180,7 @@ class Personal extends CActiveRecord
     		return $chofer['nombre'].' '.$chofer['apellido'];
         }
         public function getBiologos(){
-            $personal  = Personal::model()->findAll('id_rol = 2 AND activo = 1');
+            $personal  = Personal::model()->findAll('id_rol = 3 AND activo = 1');
             $return = array();
             foreach($personal as $data) {
                 $return[$data->id] = $data->nombre.' '.$data->apellido;

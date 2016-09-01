@@ -74,13 +74,13 @@ class Solicitudes extends CActiveRecord
 			'codigo' => 'Código',
                         'fecha_alta' => 'Fecha de alta',
 			'hora_alta' => 'Hora de alta',
-			'fecha_estimada' => 'Fecha estimada de entrega',
-			'hora_estimada' => 'Hora estimada de entrega',
-			'fecha_entrega' => 'Fecha de entrega',
-			'hora_entrega' => 'Hora de entrega',
+			'fecha_estimada' => 'Fecha estimada entrega',
+			'hora_estimada' => 'Hora estimada entrega',
+			'fecha_entrega' => 'Fecha entrega',
+			'hora_entrega' => 'Hora entrega',
 			'notas' => 'Notas',
-			'id_viaje' => 'Viaje número',
-                        'no_tanques' => 'Número de tanques'
+			'id_viaje' => 'Viaje',
+                        'no_tanques' => '# Tanques'
 		);
 	}
         public function getSearchSolicitud(){

@@ -182,37 +182,38 @@ eof;
 
         <h2>Clientes</h2>
 	<div class="row">
+            <label>Cliente <span class="required">*</span></label>
             <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes', Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?></span>
             <p class="ierrorD" id="errorCli"></p>
 	</div>
         <div class="row pedido hide"><!--hide-->
             <h2>Pedido</h2>
             <div class="row">
-                <label>Especie</label>
+                <label>Especie <span class="required">*</span></label>
                 <span class="css-select-moz"><?php echo $form->dropDownList($especies,'id', $especies->getAllEspeciesSolicitud(), array('class'=>'css-select','empty'=>'Seleccionar')); ?></span>
                 <p class="ierrorD" id="errorEsp"></p>
             </div>
 
             <div class="row cepa hide">
-                <label>Cepa</label>
+                <label>Cepa <span class="required">*</span></label>
                <span class="css-select-moz"><?php echo $form->dropDownList($cepa,'id', array('1'=>'1'),array('empty'=>'Seleccionar','class'=>'css-select')); ?></span>
                 <p class="ierrorD" id="errorCepa"></p>
             </div>
             <div class="row cantidad hide"> <!--hide-->
                 <div class="requerida">
-                    <label>Cantidad requerida</label>
+                    <label>Cantidad requerida <span class="required">*</span></label>
                     <div id="inputC"><?php echo $form->numberField($cepa,'nombre_cepa[1][cantidad]',array('min'=>1,'class'=>'ValidaNum')); ?></div>
                     <p class="ierror" id="errorCan"></p>
                 </div>
                 <div class="noTanques">
-                    <label>Tanques requeridos</label>
+                    <label>Tanques requeridos <span class="required">*</span></label>
                     <div id="inputC"><input id="tanquesNO" type="number" name="noTanques" min="1" max="8" class="ValidaNum"></div>
                     <p class="ierror" id="errorTan"></p>
                 </div>
 
             </div>
             <div class="row direcciones hide">
-                <label>Dirección</label>
+                <label>Dirección <span class="required">*</span></label>
                 <div class="input boton">
                    <span class="css-select-moz"> <?php echo $form->dropDownList($direcciones,'domicilio',array(''),array('empty'=>'Seleccionar','class'=>'css-select'));?></span>
                     <?php echo $form->error($direcciones,'domicilio'); ?>

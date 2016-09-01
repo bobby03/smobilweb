@@ -1,3 +1,25 @@
+div.form{
+	margin-top: 0 !important;
+}
+.table-view .dato:nth-child(3) .data,
+.table-view .dato:nth-child(4) .data,
+.table-view .dato:nth-child(5) .data,
+.table-view .dato:nth-child(6) .data
+{
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+    background-position: 7px 6px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(7) .data
+{
+    background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
+    background-position: 7px 7px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
 .detallesViaje
 {
     margin-top: 25px;
@@ -119,6 +141,11 @@ div.allTanques
 {
     margin: 20px;
 }
+.tanquesViajes > h2
+{
+    height: 40px;
+    line-height: 40px;
+}
 h2 span
 {
     float: right;
@@ -126,7 +153,9 @@ h2 span
     text-align: center;
     cursor: pointer;
     text-indent: 0;
+    height: 40px;
 }
+h2 span:hover,
 h2 span.selected
 {
     background-color: #09B7C9;
@@ -306,6 +335,25 @@ div.grafica > div
     background-repeat: no-repeat;
     background-position: center;
 }
+.tanquesColores:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
+.tanquesColores 
+{
+    margin-top: 15px;
+}
+.tanqueItem 
+{
+    width: 100px;
+    float: left;
+    cursor: default;
+    font-size: 14px;
+    font-family: 'Roboto-Bold';
+}
+
 .tablaWraper span
 {
     width: 5px;
@@ -320,7 +368,7 @@ div.grafica > div
     border-radius: 5px;
     background-color: #FFFFFF;
     width: 1152px;
-    height: 706px;
+    height: 740px;
 }
 .historial .titulo
 {
@@ -341,7 +389,7 @@ div.grafica > div
 }
 .menuHistorial
 {
-    margin-bottom: 35px;
+    margin-bottom: 23px;
     background-color: #0077B0;
 }
 .menuHistorial div
@@ -349,36 +397,20 @@ div.grafica > div
     float: left;
     background-color: #0077B0;
     color: #FFFFFF;
-    font-size: 28px;
+    /*font-size: 28px;*/
     cursor: pointer;
     text-align: center;
-    line-height: 42px;
-    height: 42px;
+    /*line-height: 42px;*/
+    /*height: 42px;*/
     font-family: 'Roboto-Bold';
 }
 .menuHistorial div.selected
 {
     background-color: #09B7C9;
 }
-.menuHistorial div:nth-child(1)
+.menuHistorial div:hover
 {
-    width: 245px;
-}
-.menuHistorial div:nth-child(2)
-{
-    padding: 0 18px;
-}
-.menuHistorial div:nth-child(3)
-{
-    padding: 0 27px;
-}
-.menuHistorial div:nth-child(4)
-{
-    padding: 0 20px;
-}
-.menuHistorial div:nth-child(5)
-{
-    padding: 0 20px;
+    background-color: #09B7C9;
 }
 .graficasWraper
 {
@@ -522,9 +554,13 @@ div.mapaPopup .titulo
     overflow-x: auto;
     margin-bottom: 10px;
 }
+.rangosHistorial
+{
+    width: 100%;
+}
 .rangosHistorial div
 {
-    width:20%; 
+    width: 206.38px;
     float:left;
     text-align: center;
     cursor: pointer;

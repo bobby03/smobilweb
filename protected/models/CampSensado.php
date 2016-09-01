@@ -164,7 +164,7 @@ class CampSensado extends CActiveRecord
             $granja = Granjas::model()->findByPk($estacion->id_granja);
             return $granja->nombre;
         }
-	public function adminSearch()
+	public function adminSearchEnEspera()
         {
             return array
             (
@@ -195,9 +195,49 @@ class CampSensado extends CActiveRecord
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
                     'buttons' => array
                     (
+                       'delete'=> array 
+                       (
+                            'url' => 'Yii::app()->createUrl("campsensado/borrar/$data->id")',
+                       	) 
+                    ),
+                    'deleteButtonImageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
+		)
+            );
+        }
+        public function adminSearch()
+        {
+            return array
+            (
+                array
+                (
+                    'name' => 'Granja',
+                    'value' => 'CampSensado::model()->getGranja($data->id)',
+                ),
+                'nombre_camp',
+                array
+                (
+                   'name' => 'id_estacion',
+                    'value' => 'CampSensado::model()->getEstacion($data->id_estacion)',
+                ),
+                array
+                (
+                   'name' => 'id_responsable',
+                    'value' => 'CampSensado::model()->getResp($data->id_responsable)',
+                ),
+                'fecha_inicio',
+                'hora_inicio',
+                'fecha_fin',
+                'hora_fin',
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                    'buttons' => array
+                    (
                        'view'=> array 
                        (
-                       	'url' => 'Yii::app()->createUrl("monitoreo/$data->id_estacion")',
+                       	'url' => 'Yii::app()->createUrl("monitoreo/$data->id")',
                        	),
                        'delete'=> array 
                        (
@@ -211,7 +251,6 @@ class CampSensado extends CActiveRecord
         {
             return array
             (
-            	'id',
                 array
                 (
                     'name' => 'id',
@@ -243,7 +282,7 @@ class CampSensado extends CActiveRecord
                         (
 //                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
 //                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
-                            'url' => 'Yii::app()->createUrl("monitoreo/".$data->id_estacion)',
+                            'url' => 'Yii::app()->createUrl("monitoreo/".$data->id)',
                         )
                     )
                 )

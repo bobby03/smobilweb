@@ -80,8 +80,8 @@ class Viajes extends CActiveRecord
             'status' => 'Status',
             'fecha_salida' => 'Fecha estimada de salida',
             'hora_salida' => 'Hora estimada de salida (24 horas)',
-            'fecha_entrega' => 'Fecha Entrega',
-            'hora_entrega' => 'Hora Entrega',
+            'fecha_entrega' => 'Fecha de finalización',
+            'hora_entrega' => 'Hora de finalización',
         );
     }
     /**
@@ -186,11 +186,12 @@ class Viajes extends CActiveRecord
     {
         return array
         (
-            '1' => 'ID',
+            '1' => 'ID de viaje',
             '2' => 'Cliente',
             '3' => 'Responsable',
             '4' => 'Camión',
             '5'=>'Fecha',
+            '6'=>'Hora de salida',
         );
     }
     public function getAllStatus()
@@ -361,12 +362,12 @@ class Viajes extends CActiveRecord
             ),
             array
             (
-                'name'=>'fecha_salida',
+                'name'=>'fecha_entrega',
                 'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
             ),
             array
             (
-                'name'=>'hora_salida',
+                'name'=>'hora_entrega',
                 'value' => 'date("H:i", strtotime($data->hora_salida))'
             ),
 //            array

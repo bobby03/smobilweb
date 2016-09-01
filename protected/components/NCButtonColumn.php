@@ -25,7 +25,7 @@ class NCButtonColumn extends CButtonColumn
         if($this->deleteButtonLabel===null)
             $this->deleteButtonLabel=Yii::t('zii','Eliminar');
         if($this->viewButtonImageUrl===null)
-            $this->viewButtonImageUrl=$baseUrl.'/images/ver.svg';
+            $this->viewButtonImageUrl=$baseUrl.'/images/iconoVerAzul.svg';
         if($this->updateButtonImageUrl===null)
             $this->updateButtonImageUrl=$baseUrl.'/images/editar.svg';
         if($this->deleteButtonImageUrl===null)
@@ -93,7 +93,7 @@ class NCButtonColumn extends CButtonColumn
                             console.log(data);
 //                            document.getElementById("idviaje").value = data.idviaje;
                             if(data.sol == 1)
-                                mensaje = 'Si elimina esta solicitud y el viaje al que pertenece no tiene más solicitudes, ese viaje se borrará.¿Seguro que desea continuar?';
+                                mensaje = 'Esta solicitud est&aacute; asignada a un viaje, si la eliminas es posible que tambien sea eliminado el viaje. ¿Seguro que desea continuar?';
                         },
                         error: function(a,b,c)
                         {
@@ -105,8 +105,12 @@ class NCButtonColumn extends CButtonColumn
                 {
                     mensaje = 'Si elimina este viaje, las solicitudes asginadas se pasaran a solicitudes sin asignar.¿Seguro que desea continuar?';
                 }
+                if(urlSplit[2] == 'campsensado')
+                {
+                    mensaje = '¿Está seguro que desea eliminar este registro?';
+                }
                 miHtml= miHtml +='<div class="sub-content">';
-                if(urlSplit[2]=='viajes' || urlSplit[2]=='solicitudes')
+                if(urlSplit[2]=='viajes' || urlSplit[2]=='solicitudes' || urlSplit[2] == 'campsensado')
                     miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
                 else
                     miHtml= miHtml +='  <div class="title-content">Desactivar</div>';
