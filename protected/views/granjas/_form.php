@@ -26,7 +26,7 @@
 <div class="form-containerWraper">
 	<div class="form-cRight">
 	<div class="row">
-            <label class="letreros">Nombre</label>
+            <label class="letreros">Nombre <span class="required">*</span></label>
             <div class="form-cLarge">
                 <?php   echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); 
                         echo $form->error($model,'nombre');
@@ -34,7 +34,7 @@
             </div>
 	</div>
 	<div class="row">
-            <label class="letreros">Direcci&oacute;n</label>
+            <label class="letreros">Direcci&oacute;n <span class="required">*</span></label>
             <div class="form-cLarge">
                 <?php   echo $form->textField($model,'direccion',array('size'=>60,'maxlength'=>100)); 
                         echo $form->error($model,'direccion');
@@ -46,7 +46,7 @@
  
     <div class="form-cRight">
         <div class="row">
-                <label class="letreros">Responsable</label>
+                <label class="letreros">Responsable <span class="required">*</span></label>
                 <div class="form-cLarge">
                     <?php   echo $form->textField($model,'responsable',array('size'=>60,'maxlength'=>100));
                             echo $form->error($model,'responsable');

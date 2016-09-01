@@ -42,14 +42,14 @@
         <div class="form-cLeft">
                 <?php echo $form->hiddenField($model,'tipo');?>
                 <div class="row">
-                    <label class= "letreros">Identificador</label>
+                    <label class= "letreros">Identificador <span class="required">*</span></label>
                     <div class="form-cLarge">
                         <?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
                         <?php echo $form->error($model,'identificador'); ?>
                     </div>
                 </div>
                 <div class="row">
-                    <label class= "letreros">Descripcion</label>
+                    <label class= "letreros">Descripcion <span class="required">*</span></label>
                     <div class="form-cLarge">	
                     <?php echo $form->textField($model,'marca',array('size'=>150,'maxlength'=>150)); ?>
                     <?php echo $form->error($model,'marca'); ?>
@@ -58,7 +58,7 @@
         </div>
         <div class="form-cLeft">
             <div class="row">
-                <label class= "letreros">Ubicación</label>
+                <label class= "letreros">Ubicación <span class="required">*</span></label>
                 <div class="form-cLarge"><?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?></div>
                 <?php echo $form->error($model,'ubicacion'); ?>
             </div>

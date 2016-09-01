@@ -36,21 +36,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label class= "letreros">Identificador</label>
+                    <label class= "letreros">Identificador <span class="required">*</span></label>
                     <div class="form-cLarge">
                         <?php echo $form->textField($model,'identificador',array('size'=>50,'maxlength'=>50)); ?>
                         <?php echo $form->error($model,'identificador'); ?>
                     </div>
                 </div>
                 <div class="row">
-                    <label class= "letreros">Capacidad de pasajeros</label>
+                    <label class= "letreros">Capacidad de pasajeros <span class="required">*</span></label>
                     <div class="form-cLarge">
                         <?php echo $form->textField($model,'no_personal'); ?>
                         <?php echo $form->error($model,'no_personal'); ?>
                     </div>
                 </div>
                 <div class="row">
-                    <label class= "letreros">Marca</label>
+                    <label class= "letreros">Marca <span class="required">*</span></label>
                     <div class="form-cLarge">	
                     <?php echo $form->textField($model,'marca',array('size'=>50,'maxlength'=>50)); ?>
                     <?php echo $form->error($model,'marca'); ?>
@@ -59,13 +59,13 @@
         </div>
         <div class="form-cLeft">
             <div class="row">
-                <label class= "letreros">Color</label>
+                <label class= "letreros">Color <span class="required">*</span></label>
                 <div class="form-cLarge"><?php echo $form->textField($model,'color',array('size'=>50,'maxlength'=>50)); ?></div>
                 <?php echo $form->error($model,'color'); ?>
             </div>
 
             <div class="row">
-                <label class= "letreros">Ubicación</label>
+                <label class= "letreros">Ubicación <span class="required">*</span></label>
                 <div class="form-cLarge"><?php echo $form->textField($model,'ubicacion',array('size'=>50,'maxlength'=>50)); ?></div>
                 <?php echo $form->error($model,'ubicacion'); ?>
             </div>
