@@ -197,7 +197,7 @@ class CampSensado extends CActiveRecord
                     (
                        'delete'=> array 
                        (
-                            'url' => 'Yii::app()->createUrl("campsensado/borrar/")',
+                            'url' => 'Yii::app()->createUrl("campsensado/borrar/$data->id")',
                        	) 
                     ),
                     'deleteButtonImageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',

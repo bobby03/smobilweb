@@ -105,8 +105,12 @@ class NCButtonColumn extends CButtonColumn
                 {
                     mensaje = 'Si elimina este viaje, las solicitudes asginadas se pasaran a solicitudes sin asignar.¿Seguro que desea continuar?';
                 }
+                if(urlSplit[2] == 'campsensado')
+                {
+                    mensaje = '¿Está seguro que desea eliminar este registro?';
+                }
                 miHtml= miHtml +='<div class="sub-content">';
-                if(urlSplit[2]=='viajes' || urlSplit[2]=='solicitudes')
+                if(urlSplit[2]=='viajes' || urlSplit[2]=='solicitudes' || urlSplit[2] == 'campsensado')
                     miHtml= miHtml +='  <div class="title-content">Eliminar</div>';
                 else
                     miHtml= miHtml +='  <div class="title-content">Desactivar</div>';

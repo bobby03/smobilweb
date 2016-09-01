@@ -488,11 +488,14 @@ eof;
 	 * @param integer $id the ID of the model to be deleted
 	 */
         
-        public function actionBorrar($id) {
-            $camptanques = CampTanque::model()->deleteAll('id_camp_sensado='.(int)$id);
-            if($camptanques) {
-                $model = CampSensado::model()->deleteAll('id='.(int)$id);
-            }
+        public function actionBorrar($id) 
+        {
+            $camptanques = CampTanque::model()->findAll('id_camp_sensado='.(int)$id);
+            if(count($camptanques) > 0)
+                foreach ($camptanques as $data)
+                    $data->delete();
+            $model = CampSensado::model()->findByPk((int)$id);
+            $model->delete();
             echo json_encode("");
         }
 	public function actionDelete($id)
