@@ -70,8 +70,9 @@ $form=$this->beginWidget('CActiveForm', array(
 			<div class="row">
 				<?php 
                                         $granja = new Granjas;
-					echo $form->labelEx($model,'granja_nombre'); 
+					
 				?>
+				 <label class= "letreros">Granja <span class="required">*</span></label>
 		        <span class="css-select-moz">
 		            <?php echo $form->dropDownList($granja,'id', ($model->isNewRecord) ? $granja->getNombreGranjasConPlantas() : $granja->getGranjaFromPlanta($model->id_estacion) ,($model->isNewRecord) ? array('empty'=>'Seleccionar','class'=>'css-select') : array('disabled'=>'disabled', 'value'=>$granja->getGranjaId($model->id_estacion)));?>
 		            <?php echo $form->error($granja,'id'); ?>
