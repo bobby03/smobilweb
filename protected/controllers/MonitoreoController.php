@@ -92,6 +92,7 @@ class MonitoreoController extends Controller
     public function actionView($id)
     {
         $campsensado = CampSensado::model()->findByPk((int)$id);
+        fb($campsensado);
         $nombre = $campsensado->nombre_camp;
         $responsable = Granjas::model()->getGranjaResponsable($campsensado->id_responsable);
         $id_estacion = $campsensado->id_estacion;

@@ -210,7 +210,7 @@ class CampSensado extends CActiveRecord
             (
                 array
                 (
-                    'name' => 'id',
+                    'name' => 'Granja',
                     'value' => 'CampSensado::model()->getGranja($data->id)',
                 ),
                 'nombre_camp',
@@ -282,7 +282,7 @@ class CampSensado extends CActiveRecord
                         (
 //                            'imageUrl'=> Yii::app()->baseUrl . '/images/reactivar.svg',
 //                            'options'=>array('id'=>'_iglu','title'=>'', 'class' => 'iglu'),
-                            'url' => 'Yii::app()->createUrl("monitoreo/".$data->id_estacion)',
+                            'url' => 'Yii::app()->createUrl("monitoreo/".$data->id)',
                         )
                     )
                 )
