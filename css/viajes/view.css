@@ -397,11 +397,12 @@ div.grafica > div
     float: left;
     background-color: #0077B0;
     color: #FFFFFF;
-    /*font-size: 28px;*/
+    font-size: 28px;
     cursor: pointer;
     text-align: center;
-    /*line-height: 42px;*/
-    /*height: 42px;*/
+    line-height: 42px;
+    margin: 0 10px 0 10px ;
+    height: 42px;
     font-family: 'Roboto-Bold';
 }
 .menuHistorial div.selected
