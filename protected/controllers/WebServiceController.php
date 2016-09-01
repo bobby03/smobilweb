@@ -31,7 +31,7 @@ class WebServiceController extends Controller
     public function actionUpdateEstacionEscalon(){
         $lat        = isset($_GET['lat'])?$_GET['lat']:"0";
         $lng        = isset($_GET['lng'])?$_GET['lng']:"0";
-        $type       = isset($_GET['type'])?$_GET['type']:null;
+        $type       = isset($_GET['type'])?$_GET['type']:"2";
         $resp       = isset($_GET['resp'])?$_GET['resp']:null;
         $est       = isset($_GET['EST'])?$_GET['EST']:null;
         //Campaing data---------------------------------------------------------
@@ -39,6 +39,7 @@ class WebServiceController extends Controller
         $codeViaje  = isset($_GET['id_viaje'])?$_GET['id_viaje']:"0"; // id Viaje
         $time = date('H:i');
         $date = date('Y-m-d');
+        $Campaing = array();
 
         switch ($type) {
             case 1:
@@ -55,23 +56,99 @@ class WebServiceController extends Controller
             break;
                 //***********************************************************************************************
             case 2:
+            $Campaing = array('lastID'=>null,'id'=>$codeViaje,'status'=>'OK','msg'=>'On campaign sense GPS is not required');
+            
+            /*
             $table = 'camp_sensado';
                 $columns = array('id_responsable'=>$resp, 'id_viaje'=>$codeViaje, 'id_estacion'=>$est, 'fecha_inicio'=>$date, 'hora_inicio'=>$time);
                 $conditions = "id_viaje = :idViaje";
                 $params = array(":idViaje"=>$codeViaje);
-               
-                if(Yii::app()->db->createCommand()->insert($table,$columns) )
-                    $Campaing[] = array("lastID"=>Yii::app()->db->getLastInsertID(),"Code"=>200,'SCode'=>"OK");
-                else
-                    $Campaing[] = array('code'=>303);
+               print_r($columns);
+                // if(Yii::app()->db->createCommand()->insert($table,$columns) )
+                //     $Campaing = array("lastID"=>Yii::app()->db->getLastInsertID(),"Code"=>200,'SCode'=>"OK");
+                // else
+                //     $Campaing = array('code'=>303);
+                */
+            break;
+            case "null":
+                 $Campaing = array('lastID'=>null,'id'=>$codeViaje,'status'=>'OK','msg'=>'On campaign sense GPS is not required');
             break;
         }
         echo json_encode($Campaing);
 
     }
 
+    public function actionUpSiembra(){
+        // upSiembra?resp=2&id_viaje=9&idTank=4&CT=3&OX=0.20922083&PH=0.88572365&T2=0.99669045&EC=0.28961593&EST=9&WL=0
+        $Campaing = array();
+        $campaingTemp = array();
+        //Sense campaing data
+        $lat        = isset($_GET['lat'])?$_GET['lat']:"0";
+        $lng        = isset($_GET['lng'])?$_GET['lng']:"0";
+        $lastID       = isset($_GET['lastID'])?$_GET['lastID']:0;
+        $resp       = isset($_GET['resp'])?$_GET['resp']:null;
+        $est       = isset($_GET['EST'])?$_GET['EST']:null;
+        //Campaing data---------------------------------------------------------
+        $LatLng = "(".$lat.",".$lng.")";  // ( Lat,-Lng )
+        $codeViaje  = isset($_GET['id_viaje'])?$_GET['id_viaje']:"0"; // id Viaje
+        //Sense tank data---------------------------------------------------------
+        $codeIdTank  = isset($_GET['idTank'])?$_GET['idTank']:"0"; // id Tanque
+        $ct = isset($_GET['CT'])?$_GET['CT']:"0";
+        $codeCT = isset($_GET['CodeCT'])?$_GET['CodeCT']:"0";
+        $ox = isset($_GET['OX'])?$_GET['OX']:null;
+        $ph = isset($_GET['PH'])?$_GET['PH']:null;
+        $t2 = isset($_GET['T2'])?$_GET['T2']:null;
+        $ec = isset($_GET['EC'])?$_GET['EC']:null;
+        $orp = isset($_GET['ORP'])?$_GET['ORP']:null;
+        $wl = isset($_GET['WL'])?$_GET['WL']:"0";
+        $time = date('H:i');
+        $date = date('Y-m-d');
+        
+        $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
+
+        $table = 'registro_camp';
+        $columns = array('ct'=>$ct,
+                'id_tanque'=>$codeIdTank,
+                'id_camp_sensado'=>$codeViaje,
+                'id_estacion'=>$est,
+                'fecha'=>$date,
+                'hora'=>$time,
+                'alerta'=>$wl,
+                'ox'=>$ox,
+                'ph'=>$ph,
+                'temp'=>$t2,
+                'cond'=>$ec,
+                'orp'=>$orp);
+
+        // print_r($columns);
+        
+        $sql = Yii::app()->db->createCommand()->insert($table, $columns);
+        /*
+        $sql = Yii::app()->db->createCommand()->insert($table,array('ct'=>$ct,
+                'id_tanque'=>$codeIdTank,
+                'id_camp_sensado'=>$codeViaje,
+                'id_estacion'=>$est,
+                'fecha'=>$date,
+                'hora'=>$time,
+                'alerta'=>$wl,
+                'ox'=>$ox,
+                'ph'=>$ph,
+                'temp'=>$t2,
+                'cond'=>$ec,
+                'orp'=>$orp) );
+        */
+        if($sql)
+            $Campaing[] = array("Code"=>200,'SCode'=>"OK","Validation"=>$sql);
+        else
+            $Campaing[] = array('error'=>100);
+
+       
+        echo json_encode($Campaing);
+    }
+
+
     public function actionUpload(){
-        //upload?lat=31.8710559&lng=-116.6669508&id_viaje=30&idTank=28&CT=1&OX=n%2Fa&PH=4.215&T2=22.50&EC=n%2Fa&OD=115.01
+       // upload?lat=0.00&lng=0.00&lastID=5696&resp=2&id_viaje=17&idTank=15&CT=0&OX=0.7464571&PH=0.24479538&T2=0.3532735&EC=0.9636088&EST=17&WL=2
         $Campaing = array();
         $campaingTemp = array();
         //Sense campaing data
@@ -469,7 +546,7 @@ class WebServiceController extends Controller
         $typeResp = isset($_GET['type'])?$_GET['type']:0; // id
         //--- Variables
         $userData = null; $udArray = array();
-        $Siembras = null; $siArray = array(); 
+        $Siembras = null; $siArray = array(); $cepaTemp = array();
         $per=null; $tipoEstacion = array('1'=>"Camion",'2'=>"Igl&uacute;");
         $clienteTemp = null; $sols = null; $solTemp = null; $tanksTemp = null; $tanks= null;
         $rx = null;
@@ -489,7 +566,7 @@ class WebServiceController extends Controller
                 ->from('camp_sensado cs')
                 ->where('id_responsable = :idR',array(':idR'=>$idResp))
                 ->andWhere('fecha_inicio <=:today',array(':today'=>$today))
-                ->andWhere('cs.status = 1')
+                ->andWhere('cs.status = 0')
                 ->queryAll();
             //--------------END CAMPAñAS SENSADO-----------------------
             if(count($Siembras)>0){
@@ -508,12 +585,14 @@ class WebServiceController extends Controller
 
                     //---------------- Cepa ---------------------
                     $cepa = Yii::app()->db->createCommand()
-                        ->select('ct.id_tanque,t.nombre,c.*')
+                        ->select('a.id_granja, ct.id_tanque ,t.nombre,c.*')
                         ->from('camp_tanque ct')
                         ->join('cepa c','ct.id_cepa = c.id')
                         ->join('tanque t','t.id = ct.id_tanque')
+                        ->join('estacion a','a.id = :aID',array(':aID'=>$valueSiembras['est']) )
                         ->where('ct.id_camp_sensado = :idCS',array(':idCS'=>$valueSiembras['id']))
                         ->queryAll();
+
                     //-------------------- Granja --------------
                     $siTemp[] = array('ID'=>$valueSiembras['id'],
                                     'IDRESP'=>$valueSiembras['resp'],
@@ -527,9 +606,9 @@ class WebServiceController extends Controller
                     //-------------------- Granja --------------
 
                     
-                    $siArray =  $siTemp;
-                }
-
+                    
+                } //end foreach
+                $siArray =  $siTemp;
             }else{
                 $siArray = 0; //('Name'=>'USER NO VALID','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
             }
