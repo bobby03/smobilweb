@@ -195,12 +195,12 @@ class CampSensado extends CActiveRecord
                     'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
                     'buttons' => array
                     (
-                       
                        'delete'=> array 
                        (
-                       	'url' => 'Yii::app()->createUrl("campsensado/delete1/$data->id")',
+                            'url' => 'Yii::app()->createUrl("campsensado/borrar/")',
                        	) 
-                    )
+                    ),
+                    'deleteButtonImageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
 		)
             );
         }
@@ -251,7 +251,6 @@ class CampSensado extends CActiveRecord
         {
             return array
             (
-            	'id',
                 array
                 (
                     'name' => 'id',
