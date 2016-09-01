@@ -356,7 +356,7 @@ $(document).ready(function()
                                     dataType: 'JSON', 
                                     data:
                                     {
-                                        viaje: viaje,
+                                        estacion: estacion,
                                         id: id,
                                         rango: range
                                     },
