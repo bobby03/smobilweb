@@ -105,7 +105,7 @@ float:left;
 
 
 #Usuarios_usuario{
-  background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg.png');
+  background-image: url('../../images/usuarios/usuario.png'), url('../../images/usuarios/bg.png');
   background-position: 8px 5px,left;
   background-repeat: no-repeat;
   padding-left: 30px;

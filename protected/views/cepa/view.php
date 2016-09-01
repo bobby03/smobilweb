@@ -24,9 +24,17 @@ $this->breadcrumbs=array(
 
 ?>
 <style>
-.table-view .dato:nth-child(1) .data
+.table-view .dato:nth-child(2) .data
 {
     background-image: url('./../images/especie/iconoPececito.png'), url('./../images/form/bg.png');
+    background-position: 7px 9px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(1) .data
+{
+    background-image: url('./../images/especie/iconoCepas.png'), url('./../images/form/bg.png');
     background-position: 7px 9px,left;
     background-repeat: no-repeat;
     padding-left: 35px;

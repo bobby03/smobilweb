@@ -61,7 +61,7 @@
         </div>
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'campsensado-grid',
+            'id'=>'campsensado-grid2',
             'summaryText'=>'',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search(1),
@@ -88,7 +88,7 @@
         </div>
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'id'=>'campsensado-grid2',
+            'id'=>'campsensado-grid3',
             'summaryText'=>'',
             'ajaxUpdate'=>true,
             'dataProvider'=>$model->search(2),

@@ -1,4 +1,45 @@
 /* Datos de monitoreo*/
+.rangos-wraper
+{
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+.rangosHistorial div
+{
+    width: 206.38px;
+    float:left;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    background-color: #0077B0;
+    color: #FFFFFF;
+}
+.rangosHistorial div.selected
+{
+    background-color: #09B7C9;
+}
+.rangos-wraper::-webkit-scrollbar 
+{
+    height: 5px;
+}
+.rangos-wraper::-webkit-scrollbar-track 
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    background-color: #CEDCE4;
+    border-radius: 10px;
+}
+.rangos-wraper::-webkit-scrollbar-thumb 
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background-color: #939598;
+}
+.rangosHistorial:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
 #datosMon{
 	width:1200px;
 	height: 230px;
@@ -87,13 +128,13 @@ p{
 	width: 181px;
 	text-align: center;
 	font-size: 18px;
-	border-left:4px solid #49dbd0;
-	border-right:4px solid #49dbd0;
+/*	border-left:4px solid #49dbd0;
+	border-right:4px solid #49dbd0;*/
 }
 .enlace:hover{
 	color:white !important;
 	text-decoration: none;
-	background-color: #49dbd0;
+	background-color: #09B7C9;
 }
 #enLeft{
 	float:left;
@@ -130,7 +171,7 @@ p{
 .select{
 	color:white !important;
 	text-decoration: none;
-	background-color: #49dbd0;
+	background-color: #09B7C9;
 }
 .tanque{
 	float:left;
@@ -180,23 +221,26 @@ h3 {
     border-radius: 5px;
     background-color: #FFFFFF;
     width: 1152px;
-    height: 706px;
+    height: 740px;
 }
 .historial .titulo
 {
     height: 71px;
     text-indent: 34px;
     color: #FFFFFF;
+    font-size: 34px;
     line-height: 71px;
     border-bottom: 3px solid #09B7C9;
     background-color: #0077B0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.historialGraficasWraper
+.historialGraficasWraper 
 {
     margin: 65px 60px;
+    margin-top: 18px;
 }
+
 .menuHistorial
 {
     margin-bottom: 35px;
@@ -250,13 +294,13 @@ h3 {
 	width: 150px !important;
 	text-align: center;
 	font-size: 18px;
-	border-left:4px solid #49dbd0;
-	border-right:4px solid #49dbd0;
+	border-left:4px solid #09B7C9;
+	border-right:4px solid #09B7C9;
 }
 .enlaceC:hover{
 	color:white !important;
 	text-decoration: none;
-	background-color: #49dbd0;
+	background-color: #09B7C9;
 }
 div.menuTitulo
 {
@@ -291,34 +335,6 @@ div.menuTodos
 .menuSeccion.selected
 {
     background-color: #09B7C9;
-}
-.menuTanques
-{
-    width: 992px;
-    margin: 0 auto;
-}
-
-.historial
-{
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    width: 1152px;
-    height: 706px;
-}
-.historial .titulo
-{
-    height: 71px;
-    text-indent: 34px;
-    color: #FFFFFF;
-    line-height: 71px;
-    border-bottom: 3px solid #09B7C9;
-    background-color: #0077B0;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-.historialGraficasWraper
-{
-    margin: 65px 60px;
 }
 .menuHistorial
 {
@@ -360,6 +376,24 @@ div.menuTodos
 {
     padding: 0 20px;
 }
+.tanquesColores:after
+{
+    display: block;
+    clear: both;
+    content: '';
+}
+.tanquesColores 
+{
+    margin-top: 15px;
+}
+.tanqueItem 
+{
+    width: 100px;
+    float: left;
+    cursor: default;
+    font-size: 14px;
+    font-family: 'Roboto-Bold';
+}
 .graficasWraper
 {
     width: 1032px;
@@ -387,11 +421,6 @@ div.menuTodos
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
     background-color: #939598;
 }
-.menuTanques
-{
-    width: 992px;
-    margin: 0 auto;
-}
 div.menuTitulo
 {
     width: 50%;
@@ -406,35 +435,13 @@ div.menuTodos
     width: 50%;
     font-size: 18px;
 }
-.menuParametros
-{
-    background-color: #0077B0;
-    margin-bottom: 23px;
-    height: 40px;
-}
-.menuSeccion.selected
-{
-    background-color: #09B7C9;
-}
-.menuParametros
-{
-    background-color: #0077B0;
-    margin-bottom: 23px;
-    width: auto;
-
-}
 .enlaceP{
 	cursor: pointer;
 	color:white;
 	text-decoration: none;
 	font-size: 14px;
 	line-height: 40px;
-	border-right:4px solid #49dbd0;;
-}
-.enlaceP:hover{
-	color:white !important;
-	text-decoration: none;
-	background-color: #49dbd0;
+	/*border-right:4px solid #49dbd0;*/
 }
 .titulo{
 	font-size: 28px;

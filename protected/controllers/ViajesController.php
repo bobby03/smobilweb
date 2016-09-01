@@ -1731,24 +1731,32 @@ eof;
         $rangosTitulo = array();
         $index = 0;
         $x = 0;
-        do
+        if($count > 300)
         {
-            $x = $x + 300;
-            if( $x < $count )
+            do
             {
-                $rangos[$index] = array((300*$index)+1,(300*($index+1)));
-                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
-                $index = $index + 1;
-            }
-            else
-            {
-                $x = $x - 300;
-                $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
-                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
-                $x = null;
-            }
-        }while($x != null);
-        $datos = Yii::app()->db->createCommand()
+                $x = $x + 300;
+                if( $x < $count )
+                {
+                    $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
+                    $index = $index + 1;
+                }
+                else
+                {
+                    $x = $x - 300;
+                    $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
+                    $x = null;
+                }
+            }while($x != null);
+        }
+        else
+        {
+            $rangos[$index] = array(0, $count);
+            $rangosTitulo[$index] = array($total[0]['hora'], $total[$count-1]['hora']);
+        }
+            $datos = Yii::app()->db->createCommand()
             ->select('esc.hora, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
             ->from('escalon_viaje_ubicacion as esc')
             ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
@@ -2362,23 +2370,31 @@ eof;
         $rangosTitulo = array();
         $index = 0;
         $x = 0;
-        do
+        if($count > 300)
         {
-            $x = $x + 300;
-            if( $x < $count )
+            do
             {
-                $rangos[$index] = array((300*$index)+1,(300*($index+1)));
-                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
-                $index = $index + 1;
-            }
-            else
-            {
-                $x = $x - 300;
-                $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
-                $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
-                $x = null;
-            }
-        }while($x != null);
+                $x = $x + 300;
+                if( $x < $count )
+                {
+                    $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
+                    $index = $index + 1;
+                }
+                else
+                {
+                    $x = $x - 300;
+                    $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
+                    $x = null;
+                }
+            }while($x != null);
+        }
+        else
+        {
+            $rangos[$index] = array(0, $count);
+            $rangosTitulo[$index] = array($total[0]['hora'], $total[$count-1]['hora']);
+        }
         $tanques = Yii::app()->db->createCommand()
             ->selectDistinct('solT.id_tanque, tan.nombre')
             ->from('solicitudes_viaje as solV')
@@ -2482,7 +2498,6 @@ eof;
         $return['codigo'] = <<<eof
             <div class="historial parametro">
                 <div class="titulo">Historial de parámetro ($nombre)</div>
-                <div class="subtitulo">$nombre</div>
                 <div class="historialGraficasWraper">
                     <div>rango de datos</div>
                     <div class="rangos-wraper">
@@ -2531,10 +2546,10 @@ eof;
                 </div>
 eof;
         }
-            $return['codigo'] =$return['codigo'].<<<eof
-                <div class="tanquesColores">
-                    $menuTanques
-                </div>
+        $return['codigo'] =$return['codigo'].<<<eof
+            <div class="tanquesColores">
+                $menuTanques
+            </div>
 eof;
         $return['graficaTodos'] =
         array

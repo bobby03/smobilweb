@@ -38,7 +38,7 @@
          <span class="containerBox">
             <div class="form-cLeft">
                     <div class="row">
-                        <label class="letreros">Nombre de empresa</label>
+                        <label class="letreros">Nombre de empresa  <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'nombre_empresa',array('size'=>60,'maxlength'=>150)); ?>
                             <?php echo $form->error($model,'nombre_empresa'); ?>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros">Nombre(s) de contacto</label>
+                        <label class="letreros">Nombre(s) de contacto  <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'nombre_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'nombre_contacto'); ?>
@@ -54,14 +54,14 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros"> Apellido(s) de contacto </label>
+                        <label class="letreros"> Apellido(s) de contacto  <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50,'class'=>'ValidaAlpha')); ?>
                             <?php echo $form->error($model,'apellido_contacto'); ?>
                             </div>
                     </div>
                     <div class="row">
-                        <label class="letreros">E-mail</label>
+                        <label class="letreros">E-mail <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->emailField($model,'correo',array('size'=>60,'maxlength'=>100)); ?>
                             <?php echo $form->error($model,'correo'); ?>
@@ -72,7 +72,7 @@
             <div class="form-cRight">
                     
                     <div class="row">
-                        <label class="letreros">RFC</label>
+                        <label class="letreros">RFC <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'rfc',array('size'=>12,'maxlength'=>12)); ?>
                             <?php echo $form->error($model,'rfc'); ?>
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="row">
-                        <label class="letreros">Teléfono</label>
+                        <label class="letreros">Teléfono <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'tel',array('size'=>14,'minlength'=>14)); ?>
                             <?php echo $form->error($model,'tel'); ?>
@@ -88,7 +88,7 @@
                     </div>
                     <!-- Extensión -->
                     <div class="row">
-                        <label class="letreros">Extensi&oacute;n</label>
+                        <label class="letreros">Extensi&oacute;n <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'ext',array('size'=>3,'minlength'=>3)); ?>
                             <?php echo $form->error($model,'ext'); ?>
@@ -96,7 +96,7 @@
                     </div>
                     <!-- Celular -->
                     <div class="row">
-                        <label class="letreros">Teléfono celular</label>
+                        <label class="letreros">Teléfono celular <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'cel',array('size'=>14,'minlength'=>14)); ?>
                             <?php echo $form->error($model,'ext'); ?>

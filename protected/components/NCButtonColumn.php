@@ -25,7 +25,7 @@ class NCButtonColumn extends CButtonColumn
         if($this->deleteButtonLabel===null)
             $this->deleteButtonLabel=Yii::t('zii','Eliminar');
         if($this->viewButtonImageUrl===null)
-            $this->viewButtonImageUrl=$baseUrl.'/images/iconoVerAzul.png';
+            $this->viewButtonImageUrl=$baseUrl.'/images/iconoVerAzul.svg';
         if($this->updateButtonImageUrl===null)
             $this->updateButtonImageUrl=$baseUrl.'/images/editar.svg';
         if($this->deleteButtonImageUrl===null)

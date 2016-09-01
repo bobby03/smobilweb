@@ -141,6 +141,11 @@ div.allTanques
 {
     margin: 20px;
 }
+.tanquesViajes > h2
+{
+    height: 40px;
+    line-height: 40px;
+}
 h2 span
 {
     float: right;
@@ -148,7 +153,9 @@ h2 span
     text-align: center;
     cursor: pointer;
     text-indent: 0;
+    height: 40px;
 }
+h2 span:hover,
 h2 span.selected
 {
     background-color: #09B7C9;
@@ -334,13 +341,17 @@ div.grafica > div
     clear: both;
     content: '';
 }
-.tanquesColores {
+.tanquesColores 
+{
     margin-top: 15px;
 }
-.tanqueItem {
+.tanqueItem 
+{
     width: 100px;
     float: left;
     cursor: default;
+    font-size: 14px;
+    font-family: 'Roboto-Bold';
 }
 
 .tablaWraper span
@@ -378,7 +389,7 @@ div.grafica > div
 }
 .menuHistorial
 {
-    margin-bottom: 35px;
+    margin-bottom: 23px;
     background-color: #0077B0;
 }
 .menuHistorial div
@@ -386,36 +397,20 @@ div.grafica > div
     float: left;
     background-color: #0077B0;
     color: #FFFFFF;
-    font-size: 28px;
+    /*font-size: 28px;*/
     cursor: pointer;
     text-align: center;
-    line-height: 42px;
-    height: 42px;
+    /*line-height: 42px;*/
+    /*height: 42px;*/
     font-family: 'Roboto-Bold';
 }
 .menuHistorial div.selected
 {
     background-color: #09B7C9;
 }
-.menuHistorial div:nth-child(1)
+.menuHistorial div:hover
 {
-    width: 245px;
-}
-.menuHistorial div:nth-child(2)
-{
-    padding: 0 18px;
-}
-.menuHistorial div:nth-child(3)
-{
-    padding: 0 27px;
-}
-.menuHistorial div:nth-child(4)
-{
-    padding: 0 20px;
-}
-.menuHistorial div:nth-child(5)
-{
-    padding: 0 20px;
+    background-color: #09B7C9;
 }
 .graficasWraper
 {
@@ -558,6 +553,10 @@ div.mapaPopup .titulo
 {
     overflow-x: auto;
     margin-bottom: 10px;
+}
+.rangosHistorial
+{
+    width: 100%;
 }
 .rangosHistorial div
 {
