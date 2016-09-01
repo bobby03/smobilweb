@@ -487,6 +487,14 @@ eof;
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
+        
+        public function actionBorrar($id) {
+            $camptanques = CampTanque::model()->deleteAll('id_camp_sensado='.(int)$id);
+            if($camptanques) {
+                $model = CampSensado::model()->deleteAll('id='.(int)$id);
+            }
+            echo json_encode("");
+        }
 	public function actionDelete($id)
 	{
 		//$this->loadModel($id)->delete();

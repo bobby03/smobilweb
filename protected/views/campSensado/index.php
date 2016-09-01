@@ -7,6 +7,7 @@
     $cs->registerScriptFile($baseUrl.'/js/campsensado/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $cs->registerScriptFile($baseUrl.'/js/siembras/search.js');
+    $cs->registerScriptFile($baseUrl.'/js/siembras/index.js');
     $this->breadcrumbs=array(
 	'Siembra',
     );
@@ -17,8 +18,8 @@
 <div class="principal">
     <div class="tabs">
         <div class="tab select" data-id="1"><span>En espera</span></div>
-        <div class="tab" data-id="2"><span>En proceso</span></div>
-        <div class="tab" data-id="3"><span>Histórico</span></div>
+        <div id="proceso" class="tab" data-id="2"><span>En proceso</span></div>
+        <div id="historico" class="tab" data-id="3"><span>Histórico</span></div>
     </div>
 
     <div class="tabContent" data-tan="1"> <!--Activos-->
@@ -64,7 +65,7 @@
             'summaryText'=>'',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search(1),
-            'columns'=>$model->adminSearch(),
+            'columns'=>$model->adminSearchBorrados(),
             'pager' => array
             (
                 'class' => 'PagerSA',

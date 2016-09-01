@@ -10,47 +10,41 @@
     $cs->registerCssFile($baseUrl.'/js/plugins/chosen/assets2/css/chosen.min.css');
     $cs->registerScriptFile($baseUrl.'/js/plugins/ColorBox/jquery.colorbox.js');
     $cs->registerCssFile($baseUrl.'/js/plugins/ColorBox/colorbox.css');
-    $cs->registerScriptFile($baseUrl.'/js/monitoreo/monitoreo.js');
-   
+    $cs->registerScriptFile($baseUrl.'/js/monitoreo/monitoreo.js'); 
 ?>
-<h1>Siembra</h1>
+<h1>Siembra <?php echo $nombre; ?></h1>
 <?php $id=$fijas['id'];?>
 
 <div class="form">
     <div id="datosMon">
         <div class="divTit">
             <div id='titLeft'><h2>Datos de siembra</h2></div>
-            <div id='titRight'><p>Ultima actualización</p></div>
+            <div id='titRight'><p>Ultima actualizaci&oacute;n</p></div>
         </div>
-        <p class="tit">Id de granja</p>
         <div id="esp">
             <div id="esp1">
-                <p class="subtit">Estación fija:</p>      
+                <p class="subtit">Granja:</p>  
+                <p><?php echo Granjas::model()->getGranjaFromPlantaString($fijas['id']);?></p>
+                <br>
+                <p class="subtit">Planta de producci&oacute;n:</p>      
                 <p><?php echo $fijas['identificador']?></p>
                 <br>
-                <p class="subtit">Color:</p>  
-                <p><?php echo $fijas['color']?></p>
+                <p class="subtit">Rresponsable:</p>    
+                <p><?php echo $responsable?></p>
             </div>
             <div id="esp2">
                 <p class="subtit">Descripci&oacute;n:</p>  
                 <p><?php echo $fijas['marca']?></p>
-            </div>
-            <div id="esp3">
-                <p class="subtit">Número de personal:</p>    
-                <p><?php echo $fijas['no_personal']?></p>
                 <br>
-                <p class="subtit">Disponibilidad:</p>    
-                <?php 
-                    if($fijas['disponible']==1){$disp="Disponible";}else{$disp="No disponible";}
-//                    if($fijas['activo']==1){$act="Activo";}else{$act="Inactivo";}
-                ?>
-                <p><?php echo $disp?></p>
-<!--                <p class="subtit">Actividad:</p> 
-                <p><?php // echo $act;?></p>-->
+                <p class="subtit">Ubicaci&oacute;n:</p>    
+                <p><?php echo $fijas['ubicacion']?></p>
             </div>
             <div id="esp4">
-                <p class="subtit">Ubicación:</p>    
-                <p><?php echo $fijas['ubicacion']?></p>
+                <p class="subtit">Fecha de inicio:</p>  
+                <p><?php echo Viajes::model()->getFecha($siembra->fecha_inicio); ?></p>
+                <br>
+                <p class="subtit">Fecha de finalización:</p>    
+                <p><?php echo Viajes::model()->getFecha($siembra->fecha_fin); ?></p>
             </div>
         </div>
     </div>
@@ -199,8 +193,13 @@
             </div>
         </div>
     <?php endif;?>
-        <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado">Cancelar</a>
-
+        <?php if( $siembra->status ==1 ): ?>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado#proceso">Regresar</a>
+        <?php elseif( $siembra->status==2 ): ?>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado#historico">Regresar</a>
+        <?php else: ?>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado">Regresar</a>
+        <?php endif;?>
     </div>
 </div>
 <?php  $cs->registerCssFile($baseUrl.'/css/monitoreo/monitoreo.css');?>

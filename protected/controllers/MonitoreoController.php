@@ -92,6 +92,8 @@ class MonitoreoController extends Controller
     public function actionView($id)
     {
         $campsensado = CampSensado::model()->findByPk((int)$id);
+        $nombre = $campsensado->nombre_camp;
+        $responsable = Granjas::model()->getGranjaResponsable($campsensado->id_responsable);
         $id_estacion = $campsensado->id_estacion;
         fb($id_estacion);
         $cantTanques= Yii::app()->db->createCommand('SELECT count(t.id) as cTan FROM tanque t
@@ -120,7 +122,10 @@ class MonitoreoController extends Controller
             $this->render('monitoreo',array(
                 'fijas'=>$this->loadModel($estaciones),
                 'tanques'=>$tanques,
-                'cantTanques'=>$cantTanques
+                'cantTanques'=>$cantTanques,
+                'nombre' => $nombre,
+                'responsable' => $responsable,
+                'siembra'=>$campsensado
             ));
     }
     public function loadModel($estacion)

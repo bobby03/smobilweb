@@ -150,6 +150,17 @@ class Granjas extends SMActiveRecord
             $return[$estacion->id] = $estacion->nombre;
             return $return;
         }
+        public function getGranjaFromPlantaString($id_estacion) {
+            $granja = Estacion::model()->findByPk($id_estacion);
+            $estacion = $this->findByPk($granja->id_granja);
+            $return = $estacion->nombre;
+            return $return;
+        }
+        public function getGranjaResponsable($id_responsable) {
+            $personal = Personal::model()->findByPk($id_responsable);
+            $return = $personal->nombre." ".$personal->apellido ;
+            return $return;
+        }
         public function getPlantasofGranjaFromPlanta($id_estacion) {
             $granja = Estacion::model()->findByPk($id_estacion);
             $plantas = Estacion::model()->findAll("id_granja = '{$granja->id_granja}'");
