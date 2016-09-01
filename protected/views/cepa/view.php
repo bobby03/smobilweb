@@ -40,6 +40,23 @@ $this->breadcrumbs=array(
     padding-left: 35px;
     border-left: 0;
 }
+
+.table-view .dato:nth-child(2n+3) .data
+{
+    background-image: url('./../images/especie/iconoMin.png'), url('./../images/form/bg.png');
+    background-position: 7px 9px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+.table-view .dato:nth-child(2n+4) .data
+{
+    background-image: url('./../images/especie/iconoMax.png'), url('./../images/form/bg.png');
+    background-position: 7px 9px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
 </style>
 <h1>Ver Cepa <?php echo $model->nombre_cepa; ?></h1>
 <div class="form">
