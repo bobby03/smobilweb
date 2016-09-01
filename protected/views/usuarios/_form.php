@@ -38,7 +38,7 @@
 			<div class="row">
 					<label class= "letreros">Tipo de Usuario</label>
 					<div class="form-cMedium">
-			 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Seleecionar', 'class'=>'css-select')); ?></span></div>
+			 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Selecionar', 'class'=>'css-select')); ?></span></div>
 					<?php echo $form->error($model,'tipo_usr'); ?>
 			                <?php echo $form->hiddenField($model,'id_usr');?>
 				</div>

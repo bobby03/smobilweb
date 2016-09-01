@@ -2,122 +2,93 @@
 
 class MonitoreoController extends Controller
 {
-    /**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-        public function actionDelete($id)
-	{
-            Estacion::model()->findByPk($id)->delete();
-            echo json_encode('');
-        }
-	public $layout='//layouts/column2';
+    public function actionDelete($id)
+    {
+        Estacion::model()->findByPk($id)->delete();
+        echo json_encode('');
+    }
+    public $layout='//layouts/column2';
+    public function filters()
+    {
+            return array(
+                    'accessControl', // perform access control for CRUD operations
+                    //'postOnly + delete', // we only allow deletion via POST request
+            );
+    }
+    public function accessRules()
+    {
+        $return = array();
+        if(Yii::app()->user->checkAccess('createEstacion') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('create'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('create'),
+                'users'     => array('*')
+            );
+        if(Yii::app()->user->checkAccess('readEstacion') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('index','view'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('index','view'),
+                'users'     => array('*')
+            );
+        if(Yii::app()->user->checkAccess('editEstacion') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('update'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('update'),
+                'users'     => array('*')
+            );
+        if(Yii::app()->user->checkAccess('deleteEstacion') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('delete'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('delete'),
+                'users'     => array('*')
+            );
+        return $return;
+    }
+    public function actionIndex()
+    {
 
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			//'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-        public function accessRules()
-        {
-            $return = array();
-            if(Yii::app()->user->checkAccess('createEstacion') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('create'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('create'),
-                    'users'     => array('*')
-                );
-            if(Yii::app()->user->checkAccess('readEstacion') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('index','view'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('index','view'),
-                    'users'     => array('*')
-                );
-            if(Yii::app()->user->checkAccess('editEstacion') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('update'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('update'),
-                    'users'     => array('*')
-                );
-            if(Yii::app()->user->checkAccess('deleteEstacion') || Yii::app()->user->id == 'smobiladmin')
-                $return[] = array
-                (
-                    'allow',
-                    'actions'   => array('delete'),
-                    'users'     => array('*')
-                );
-            else
-                $return[] = array
-                (
-                    'deny',
-                    'actions'   => array('delete'),
-                    'users'     => array('*')
-                );
-            return $return;
-	}
-	public function actionIndex()
-	{
+            $model = new Monitoreo('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Monitoreo']))
+            $model->attributes=$_GET['Solicitudes'];
 
-		$model = new Monitoreo('search');
-            $model->unsetAttributes();  // clear any default values
-            if(isset($_GET['Monitoreo']))
-                $model->attributes=$_GET['Solicitudes'];
-            
-            
-            $this->render('index',array(
-                    'model'=>$model
-            ));
-	}
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}*/
 
-	/*
-		$datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,uploadTemp.id AS idUpl,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta FROM estacion 
-													JOIN tanque ON estacion.id=tanque.id_estacion 
-													JOIN uploadTemp ON tanque.id=uploadTemp.id_tanque 
-													WHERE estacion.id='.$estacion)->queryAll();
-	*/
-    
+        $this->render('index',array(
+                'model'=>$model
+        ));
+    }
     public function actionView($id)
     {
         $campsensado = CampSensado::model()->findByPk((int)$id);
@@ -160,322 +131,6 @@ class MonitoreoController extends Controller
         if(empty($tanques))
             throw new CHttpException(404,'The requested page does not exist.');
         return $estacion;
-    }
-    public function actionGetHistorialTanque($estacion, $id)
-    {
-        $total = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
-        JOIN tanque t ON r.id_tanque = t.id
-        JOIN estacion est ON est.id=t.id_estacion
-        WHERE t.id='.$id.'
-        AND est.id='.$estacion)
-            ->queryAll();
-        $count = count($total);
-        if($count > 333)
-            $limit = $count - 333;
-        else
-            $limit = 0;
-        $datos = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
-        JOIN tanque t ON r.id_tanque = t.id
-        JOIN estacion est ON est.id=t.id_estacion
-        WHERE t.id='.$id.'
-        AND est.id='.$estacion)
-            ->queryAll();
-        $return['codigo'] = <<<eof
-            <div class="historial">
-                <div class="titulo"></div>
-                <div class="historialGraficasWraper">
-                    <div class="menuHistorial">
-                        <div class="enlaceC selected" data-para="1">Oxígeno disuelto</div>
-                        <div class="enlaceC" data-para="2">Temperatura</div>
-                        <div class="enlaceC" data-para="3">PH</div>
-                        <div class="enlaceC" data-para="4">Conductividad</div>
-                        <div class="enlaceC" data-para="5">ORP</div>
-                    </div>
-                    <div class="graficasWraper">
-eof;
-        $cont = 0;
-        foreach($datos as $data)
-        {
-            $labels[] = $data['hora'];
-            $datasets[] = $data['ox'];
-            $cont++;
-        }
-        $width = ($cont * 98)+40;
-        if($width < 1032)
-            $width = 1032;
-        $return['codigo'] =$return['codigo'].<<<eof
-                        <div class="grafScroll" data-rece="1">
-                            <canvas id="historialTanque1" width="$width" height="405"></canvas>
-                        </div>
-eof;
-            $return['ox'] =
-            array
-            (
-                'type' => 'line',
-                'data'=>array
-                (
-                    'labels'    => $labels,
-                    'datasets'  => 
-                    [
-                        (object)
-                        [
-                            'label'                 => "Od",
-                            'fill'                  => false,
-                            'lineTension '          => 0,
-                            'borderColor'           => '#3E66AA',
-                            'pointBorderColor'      => "#3E66AA",
-                            'pointBackgroundColor'  => "#3E66AA",
-                            'pointBorderWidth'      => 5,
-                            'pointHoverRadius'      => 10,
-                            'data'                  => $datasets,
-                        ]
-                    ]
-                ),
-                'options' => array
-                (
-                    'animation'             => false,
-                    'responsive'            => false,
-//                        'maintainAspectRatio'   => true,
-                    'legend'                => array('display' => false),
-                    'scales'                => array
-                    (
-                        'yAxes' => 
-                        [array(
-                            'ticks' => array
-                            (
-                                'min'       => 0,
-//                                        'max'       => 30,
-//                                        'stepSize'  => 5
-                            )
-                        )]
-                    )
-                )
-            );
-        foreach($datos as $data)
-        {
-            $labels2[] = $data['hora'];
-            $datasets2[] = $data['temp'];
-            $cont++;
-        }
-        $return['codigo'] =$return['codigo'].<<<eof
-                        <div class="grafScroll hide" data-rece="2">
-                            <canvas id="historialTanque2" width="$width" height="405"></canvas>
-                        </div>
-eof;
-        $return['temp'] =
-        array
-        (
-            'type' => 'line',
-            'data'=>array
-            (
-                'labels'    => $labels2,
-                'datasets'  => 
-                [
-                    (object)
-                    [
-                        'label'                 => "Temp",
-                        'fill'                  => false,
-                        'lineTension '          => 0,
-                        'borderColor'           => '#3E66AA',
-                        'pointBorderColor'      => "#3E66AA",
-                        'pointBackgroundColor'  => "#3E66AA",
-                        'pointBorderWidth'      => 5,
-                        'pointHoverRadius'      => 10,
-                        'data'                  => $datasets2,
-                    ]
-                ]
-            ),
-            'options' => array
-            (
-                'animation'             => false,
-                'fontSize'              => 20,
-                'responsive'            => false,
-//                    'maintainAspectRatio'   => false,
-                'legend'                => array('display' => false),
-                'scales'                => array
-                (
-                    'yAxes' => 
-                    [array(
-                        'ticks' => array
-                        (
-                            'min'       => 0,
-//                                        'max'       => 30,
-//                                        'stepSize'  => 5
-                        )
-                    )]
-                )
-            )
-        );
-        foreach($datos as $data)
-        {
-            $labels3[] = $data['hora'];
-            $datasets3[] = $data['ph'];
-            $cont++;
-        }
-        $return['codigo'] =$return['codigo'].<<<eof
-                        <div class="grafScroll hide" data-rece="3">
-                            <canvas id="historialTanque3" width="$width" height="405"></canvas>
-                        </div>
-eof;
-        $return['ph'] =
-        array
-        (
-            'type' => 'line',
-            'data'=>array
-            (
-                'labels'    => $labels3,
-                'datasets'  => 
-                [
-                    (object)
-                    [
-                        'label'                 => "PH",
-                        'fill'                  => false,
-                        'lineTension '          => 0,
-                        'borderColor'           => '#3E66AA',
-                        'pointBorderColor'      => "#3E66AA",
-                        'pointBackgroundColor'  => "#3E66AA",
-                        'pointBorderWidth'      => 5,
-                        'pointHoverRadius'      => 10,
-                        'data'                  => $datasets3,
-                    ]
-                ]
-            ),
-            'options' => array
-            (
-                'animation'             => false,
-                'fontSize'              => 20,
-                'responsive'            => false,
-//                    'maintainAspectRatio'   => false,
-                'legend'                => array('display' => false),
-                'scales'                => array
-                (
-                    'yAxes' => 
-                    [array(
-                        'ticks' => array
-                        (
-                            'min'       => 0,
-//                                        'max'       => 30,
-//                                        'stepSize'  => 5
-                        )
-                    )]
-                )
-            )
-        );
-        foreach($datos as $data)
-        {
-            $labels4[] = $data['hora'];
-            $datasets4[] = $data['cond'];
-            $cont++;
-        }
-        $return['codigo'] =$return['codigo'].<<<eof
-                        <div class="grafScroll hide" data-rece="4">
-                            <canvas id="historialTanque4" width="$width"height="405"></canvas>
-                        </div>
-eof;
-        $return['cond'] =
-        array
-        (
-            'type' => 'line',
-            'data'=>array
-            (
-                'labels'    => $labels4,
-                'datasets'  => 
-                [
-                    (object)
-                    [
-                        'label'                 => "Cond",
-                        'fill'                  => false,
-                        'lineTension '          => 0,
-                        'borderColor'           => '#3E66AA',
-                        'pointBorderColor'      => "#3E66AA",
-                        'pointBackgroundColor'  => "#3E66AA",
-                        'pointBorderWidth'      => 5,
-                        'pointHoverRadius'      => 10,
-                        'data'                  => $datasets4,
-                    ]
-                ]
-            ),
-            'options' => array
-            (
-                'animation'             => false,
-                'fontSize'              => 20,
-                'responsive'            => false,
-//                    'maintainAspectRatio'   => false,
-                'legend'                => array('display' => false),
-                'scales'                => array
-                (
-                    'yAxes' => 
-                    [array(
-                        'ticks' => array
-                        (
-                            'min'       => 0,
-//                                        'max'       => 30,
-//                                        'stepSize'  => 5
-                        )
-                    )]
-                )
-            )
-        );
-        foreach($datos as $data)
-        {
-            $labels5[] = $data['hora'];
-            $datasets5[] = $data['orp'];
-            $cont++;
-        }
-        $return['codigo'] =$return['codigo'].<<<eof
-                        <div class="grafScroll hide" data-rece="5">
-                            <canvas id="historialTanque5" width="$width" height="405"></canvas>
-                        </div>
-eof;
-        $return['orp'] =
-        array
-        (
-            'type' => 'line',
-            'data'=>array
-            (
-                'labels'    => $labels5,
-                'datasets'  => 
-                [
-                    (object)
-                    [
-                        'label'                 => "ORP",
-                        'fill'                  => false,
-                        'lineTension '          => 0,
-                        'borderColor'           => '#3E66AA',
-                        'pointBorderColor'      => "#3E66AA",
-                        'pointBackgroundColor'  => "#3E66AA",
-                        'pointBorderWidth'      => 5,
-                        'pointHoverRadius'      => 10,
-                        'data'                  => $datasets5,
-                    ]
-                ]
-            ),
-            'options' => array
-            (
-                'animation'             => false,
-                'fontSize'              => 20,
-                'responsive'            => false,
-//                    'maintainAspectRatio'   => false,
-                'legend'                => array('display' => false),
-                'scales'                => array
-                (
-                    'yAxes' => 
-                    [array(
-                        'ticks' => array
-                        (
-                            'min'       => 0,
-//                                        'max'       => 30,
-//                                        'stepSize'  => 5
-                        )
-                    )]
-                )
-            )
-        );
-        $return['codigo'] =$return['codigo'].
-                '   </div>
-                </div>
-            </div>';
-        echo json_encode($return);
     }
     public function actionGetTanqueGrafica($estacion,$id, $flag, $flag2)
     {
@@ -838,29 +493,895 @@ eof;
                 </div>';
         }
         echo json_encode($return);
+    } 
+    public function actionGetHistorialTanque($estacion, $id)
+    {
+        $total = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id='.$id.'
+        AND est.id='.$estacion.' ORDER BY r.id ASC')
+            ->queryAll();
+        $count = count($total);
+        $rangos = array();
+        $rangosTitulo = array();
+        $index = 0;
+        $x = 0;
+        if($count > 300)
+        {
+            do
+            {
+                $x = $x + 300;
+                if( $x < $count )
+                {
+                    $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
+                    $index = $index + 1;
+                }
+                else
+                {
+                    $x = $x - 300;
+                    $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
+                    $x = null;
+                }
+            }while($x != null);
+        }
+        else
+        {
+            $rangos[$index] = array(0, $count);
+            $rangosTitulo[$index] = array($total[0]['hora'], $total[$count-1]['hora']);
+        }
+        $datos = Yii::app()->db->createCommand()
+            ->select('r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo')
+            ->from('registro_camp r')
+            ->join('tanque t','r.id_tanque = t.id')
+            ->join('estacion est','est.id=t.id_estacion')
+            ->where("t.id = $id")
+            ->andWhere("est.id = $estacion")
+            ->limit(300,$rangos[0][0])
+            ->order('r.id ASC')
+            ->queryAll();
+//        $datos = Yii::app()->db->createCommand('SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+//        JOIN tanque t ON r.id_tanque = t.id
+//        JOIN estacion est ON est.id=t.id_estacion
+//        WHERE t.id='.$id.'
+//        AND est.id='.$estacion)
+//            ->queryAll();
+        $x = count($rangos) * 206.39;
+        $return['codigo'] = <<<eof
+            <div class="historial">
+                <div class="titulo"></div>
+                <div class="historialGraficasWraper">
+                    <div>rango de datos</div>
+                    <div class="rangos-wraper">
+                        <div class="rangosHistorial" style="width: {$x}px">
+eof;
+        $x = true;
+        $conta = 1;
+        foreach ($rangosTitulo as $data)
+        {
+            if($x)
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div class="selected" data-range="{$rangos[0][0]}">$data[0] - $data[1]</div>
+eof;
+                $x = false;
+            }
+            else
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div data-range="{$rangos[$conta][0]}">$data[0] - $data[1]</div>
+eof;
+                $conta++;
+            }
+        }
+        $return['codigo'] = $return['codigo'].<<<eof
+                        </div>
+                    </div>
+                    <div class="menuHistorial">
+                        <div class="enlaceC selected" data-para="1">Oxígeno disuelto</div>
+                        <div class="enlaceC" data-para="2">Temperatura</div>
+                        <div class="enlaceC" data-para="3">PH</div>
+                        <div class="enlaceC" data-para="4">Conductividad</div>
+                        <div class="enlaceC" data-para="5">ORP</div>
+                    </div>
+                    <div class="graficasWraper">
+eof;
+        $cont = 0;
+        foreach($datos as $data)
+        {
+            $labels[] = $data['hora'];
+            $datasets[] = $data['ox'];
+            $cont++;
+        }
+        $width = ($cont * 98)+40;
+        if($width < 1032)
+            $width = 1032;
+        $return['codigo'] =$return['codigo'].<<<eof
+                        <div class="grafScroll" data-rece="1">
+                            <canvas id="historialTanque1" width="$width" height="405"></canvas>
+                        </div>
+eof;
+            $return['ox'] =
+            array
+            (
+                'type' => 'line',
+                'data'=>array
+                (
+                    'labels'    => $labels,
+                    'datasets'  => 
+                    [
+                        (object)
+                        [
+                            'label'                 => "Od",
+                            'fill'                  => false,
+                            'lineTension '          => 0,
+                            'borderColor'           => '#3E66AA',
+                            'pointBorderColor'      => "#3E66AA",
+                            'pointBackgroundColor'  => "#3E66AA",
+                            'pointBorderWidth'      => 5,
+                            'pointHoverRadius'      => 10,
+                            'data'                  => $datasets,
+                        ]
+                    ]
+                ),
+                'options' => array
+                (
+                    'animation'             => false,
+                    'responsive'            => false,
+//                        'maintainAspectRatio'   => true,
+                    'legend'                => array('display' => false),
+                    'scales'                => array
+                    (
+                        'yAxes' => 
+                        [array(
+                            'ticks' => array
+                            (
+                                'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                            )
+                        )]
+                    )
+                )
+            );
+        foreach($datos as $data)
+        {
+            $labels2[] = $data['hora'];
+            $datasets2[] = $data['temp'];
+            $cont++;
+        }
+        $return['codigo'] =$return['codigo'].<<<eof
+                        <div class="grafScroll hide" data-rece="2">
+                            <canvas id="historialTanque2" width="$width" height="405"></canvas>
+                        </div>
+eof;
+        $return['temp'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => $labels2,
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "Temp",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => $datasets2,
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels3[] = $data['hora'];
+            $datasets3[] = $data['ph'];
+            $cont++;
+        }
+        $return['codigo'] =$return['codigo'].<<<eof
+                        <div class="grafScroll hide" data-rece="3">
+                            <canvas id="historialTanque3" width="$width" height="405"></canvas>
+                        </div>
+eof;
+        $return['ph'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => $labels3,
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "PH",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => $datasets3,
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels4[] = $data['hora'];
+            $datasets4[] = $data['cond'];
+            $cont++;
+        }
+        $return['codigo'] =$return['codigo'].<<<eof
+                        <div class="grafScroll hide" data-rece="4">
+                            <canvas id="historialTanque4" width="$width"height="405"></canvas>
+                        </div>
+eof;
+        $return['cond'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => $labels4,
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "Cond",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => $datasets4,
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels5[] = $data['hora'];
+            $datasets5[] = $data['orp'];
+            $cont++;
+        }
+        $return['codigo'] =$return['codigo'].<<<eof
+                        <div class="grafScroll hide" data-rece="5">
+                            <canvas id="historialTanque5" width="$width" height="405"></canvas>
+                        </div>
+eof;
+        $return['orp'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => $labels5,
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "ORP",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => $datasets5,
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        $return['codigo'] =$return['codigo'].
+                '   </div>
+                </div>
+            </div>';
+        echo json_encode($return);
+    }
+    public function actionGetGraficaTanqueRango($estacion, $id, $rango)
+    {
+        $datos = Yii::app()->db->createCommand()
+            ->select('r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo')
+            ->from('registro_camp r')
+            ->join('tanque t','r.id_tanque = t.id')
+            ->join('estacion est','est.id=t.id_estacion')
+            ->where("t.id = $id")
+            ->andWhere("est.id = $estacion")
+            ->limit(300,$rango)
+            ->order('r.id ASC')
+            ->queryAll();
+        $cont = 0;
+        foreach($datos as $data)
+        {
+            $labels[] = $data['hora'];
+            $datasets[] = $data['ox'];
+            $cont++;
+        }
+        $width = ($cont * 98)+40;
+        if($width < 1032)
+            $width = 1032;
+        $return['ox'] =
+            array
+            (
+                'type' => 'line',
+                'data'=>array
+                (
+                    'labels'    => isset($labels)?$labels:"empty",
+                    'datasets'  => 
+                    [
+                        (object)
+                        [
+                            'label'                 => "Od",
+                            'fill'                  => false,
+                            'lineTension '          => 0,
+                            'borderColor'           => '#3E66AA',
+                            'pointBorderColor'      => "#3E66AA",
+                            'pointBackgroundColor'  => "#3E66AA",
+                            'pointBorderWidth'      => 5,
+                            'pointHoverRadius'      => 10,
+                            'data'                  => isset($datasets)?$datasets:"empty",
+                        ]
+                    ]
+                ),
+                'options' => array
+                (
+                    'animation'             => false,
+                    'responsive'            => false,
+//                        'maintainAspectRatio'   => true,
+                    'legend'                => array('display' => false),
+                    'scales'                => array
+                    (
+                        'yAxes' => 
+                        [array(
+                            'ticks' => array
+                            (
+                                'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                            )
+                        )]
+                    )
+                )
+            );
+        foreach($datos as $data)
+        {
+            $labels2[] = $data['hora'];
+            $datasets2[] = $data['temp'];
+            $cont++;
+        }
+        $return['temp'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => isset($labels2)?$labels2:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "Temp",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets2)?$datasets2:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels3[] = $data['hora'];
+            $datasets3[] = $data['ph'];
+            $cont++;
+        }
+        $return['ph'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    =>isset($labels3)?$labels3:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "PH",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets3)?$datasets3:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels4[] = $data['hora'];
+            $datasets4[] = $data['cond'];
+            $cont++;
+        }
+        $return['cond'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => isset($labels4)?$labels4:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "Cond",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets4)?$datasets4:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        foreach($datos as $data)
+        {
+            $labels5[] = $data['hora'];
+            $datasets5[] = $data['orp'];
+            $cont++;
+        }
+        $return['orp'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => isset($labels5)?$labels5:"empty",
+                'datasets'  => 
+                [
+                    (object)
+                    [
+                        'label'                 => "ORP",
+                        'fill'                  => false,
+                        'lineTension '          => 0,
+                        'borderColor'           => '#3E66AA',
+                        'pointBorderColor'      => "#3E66AA",
+                        'pointBackgroundColor'  => "#3E66AA",
+                        'pointBorderWidth'      => 5,
+                        'pointHoverRadius'      => 10,
+                        'data'                  => isset($datasets5)?$datasets5:"empty",
+                    ]
+                ]
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+//                    'maintainAspectRatio'   => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+//                                        'max'       => 30,
+//                                        'stepSize'  => 5
+                        )
+                    )]
+                )
+            )
+        );
+        echo json_encode($return);
     }
     public function actionGetHistorialParametro($estacion, $id)
     {// Total de tanques
         $total = Yii::app()->db->createCommand('SELECT r.hora, r.'.$id.', r.id_tanque, r.id               
             FROM registro_camp r
             WHERE r.id_estacion='.$estacion.'
-            ORDER BY r.id DESC')
+            ORDER BY r.id ASC')
             ->queryAll();
-        $count = count($total);
-        if($count > 333)
-            $limit = $count - 333;
-        else
-            $limit = 0;
         //Tanques
+        $count = count($total);
+        $rangos = array();
+        $rangosTitulo = array();
+        $index = 0;
+        $x = 0;
+        if($count > 300)
+        {
+            do
+            {
+                $x = $x + 300;
+                if( $x < $count )
+                {
+                    $rangos[$index] = array((300*$index)+1,(300*($index+1)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[300*($index+1)]['hora']);
+                    $index = $index + 1;
+                }
+                else
+                {
+                    $x = $x - 300;
+                    $rangos[$index] = array((300*$index)+1,((300*$index)+($count-$x)));
+                    $rangosTitulo[$index] = array($total[(300*$index)+1]['hora'], $total[(300*$index)+($count-$x)-1]['hora']);
+                    $x = null;
+                }
+            }while($x != null);
+        }
+        else
+        {
+            $rangos[$index] = array(0, $count);
+            $rangosTitulo[$index] = array($total[0]['hora'], $total[$count-1]['hora']);
+        }
         $tanques = Yii::app()->db->createCommand('SELECT * FROM tanque t
         JOIN registro_camp r ON t.id=r.id_tanque
         WHERE t.id_estacion='.$estacion.'
         GROUP BY t.id')
             ->queryAll();
-        $datos = Yii::app()->db->createCommand('SELECT r.hora, r.'.$id.', r.id_tanque, r.id               
-            FROM registro_camp r
-            WHERE r.id_estacion='.$estacion.'
-            ORDER BY r.id ASC')
+        $datos = Yii::app()->db->createCommand()
+            ->select('r.hora, r.'.$id.', r.id_tanque, r.id')
+            ->from('registro_camp r')
+            ->where("r.id_estacion = $estacion")
+            ->limit(300,$rangos[0][0])
+            ->order('r.id ASC')
+            ->queryAll();
+//        $datos = Yii::app()->db->createCommand('SELECT r.hora, r.'.$id.', r.id_tanque, r.id               
+//            FROM registro_camp r
+//            WHERE r.id_estacion='.$estacion.'
+//            ORDER BY r.id ASC')
+//            ->queryAll();
+        switch($id)
+        {
+            case 'ox':      $nombre='Oxígeno disuelto'; break;
+            case 'temp':    $nombre='Temperatura'; break;
+            case 'ph':      $nombre='PH'; break;
+            case 'cond':    $nombre='Conductividad'; break;
+            case 'orp':     $nombre='Potencial óxido reducción'; break;
+        }
+        $cont = 0;
+        $colors = ['#4363AE','#8DC63F','#7F3F98','#FF5BB2','#27AAE1','#ED1C24','#8B5E3C','#FF7236'];
+        $datasets = [];
+        $flag = true;
+        $menu = <<<eof
+            <div class="menuSeccion selected" data-tanque="-1">Todos</div>
+eof;
+        $i = 0;
+        $menuTanques = '';
+        foreach($tanques as $info)
+        {
+            $menuTanques = $menuTanques.<<<eof
+                    <div class="tanqueItem" style="color:$colors[$i]">{$info['nombre']}</div>
+eof;
+            $datas = [];
+            $labels = [];
+            foreach($datos as $data)
+            {
+                if($data['id_tanque'] == $info['id_tanque'])
+                {
+                    if($flag)
+                    {
+                        $cont++;
+                    }
+                    $labels[] = $data['hora'];
+                    $datas[] = $data[$id];
+                }
+            }
+            $datasets[] = 
+            [
+                'label'                 => $id,
+                'fill'                  => false,
+                'lineTension '          => 0,
+                'borderColor'           => $colors[$i],
+                'pointBorderColor'      => $colors[$i],
+                'pointBackgroundColor'  => $colors[$i],
+                'pointBorderWidth'      => 5,
+                'pointHoverRadius'      => 10,
+                'data'                  => $datas,
+            ];
+            $return['graf'.$i]=
+            array
+            (
+                'type' => 'line',
+                'data'=>array
+                (
+                    'labels'    => $labels,
+                    'datasets'  => [$datasets[$i]]
+                ),
+                'options' => array
+                (
+                    'animation'             => false,
+                    'fontSize'              => 20,
+                    'responsive'            => false,
+                    'legend'                => array('display' => false),
+                    'scales'                => array
+                    (
+                        'yAxes' => 
+                        [array(
+                            'ticks' => array
+                            (
+                                'min'       => 0,
+                            )
+                        )]
+                    )
+                )
+            );
+            $flag = false;
+            $menu = $menu.<<<eof
+                <div class="menuSeccion" data-tanque="$i">{$info['nombre']}</div>
+eof;
+            $i++;
+        }
+        $return['total'] = $i;
+        $x = count($rangos) * 206.39;
+        $return['codigo'] = <<<eof
+            <div class="historial parametro">
+                <div class="titulo">Historial de parámetro ($nombre)</div>
+                <div class="historialGraficasWraper">
+                    <div>rango de datos</div>
+                    <div class="rangos-wraper">
+                        <div class="rangosHistorial" style="width: {$x}px">
+eof;
+        $x = true;
+        $conta = 1;
+        foreach ($rangosTitulo as $data)
+        {
+            if($x)
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div class="selected" data-range="{$rangos[0][0]}">$data[0] - $data[1]</div>
+eof;
+                $x = false;
+            }
+            else
+            {
+                $return['codigo'] = $return['codigo'].<<<eof
+                    <div data-range="{$rangos[$conta][0]}">$data[0] - $data[1]</div>
+eof;
+                $conta++;
+            }
+        }
+        $return['codigo'] = $return['codigo'].<<<eof
+                        </div>
+                    </div>
+                <div class="menuTanques">
+                    <div class="menuParametros">$menu</div>
+                </div>
+                    <div class="graficasWraper">
+eof;
+        $width = ($cont * 98)+40;
+        if($width < 1032)
+            $width = 1032;
+        $return['codigo'] =$return['codigo'].<<<eof
+            <div class="grafScroll" data-parame="-1">
+                <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
+            </div>
+eof;
+        for($j = 0; $j < $i; $j++)
+        {
+            $return['codigo'] =$return['codigo'].<<<eof
+                <div class="grafScroll hide" data-parame="$j">
+                    <canvas id="parametrosGrafica$j" width="$width" height="405"></canvas>
+                </div>
+eof;
+        }
+        $return['codigo'] =$return['codigo'].<<<eof
+                <div class="tanquesColores">
+                    $menuTanques
+                </div>
+eof;
+        $return['graficaTodos'] =
+        array
+        (
+            'type' => 'line',
+            'data'=>array
+            (
+                'labels'    => $labels,
+                'datasets'  => $datasets
+            ),
+            'options' => array
+            (
+                'animation'             => false,
+                'fontSize'              => 20,
+                'responsive'            => false,
+                'legend'                => array('display' => false),
+                'scales'                => array
+                (
+                    'yAxes' => 
+                    [array(
+                        'ticks' => array
+                        (
+                            'min'       => 0,
+                        )
+                    )]
+                )
+            )
+        );
+//                            <div class="menuArriba">
+//                                <div class="menuTitulo">Seleccionar tanques:</div>
+//                                <div class="menuTodos"><div></div>Ver todos</div>
+//                            </div>
+        $return['codigo'] = $return['codigo'].'
+                </div>
+            </div>';
+        echo json_encode($return);
+    }
+    public function actionGetGraficaParametroRango($estacion, $id, $rango)
+    {
+        $tanques = Yii::app()->db->createCommand('SELECT * FROM tanque t
+        JOIN registro_camp r ON t.id=r.id_tanque
+        WHERE t.id_estacion='.$estacion.'
+        GROUP BY t.id')
+            ->queryAll();
+        $datos = Yii::app()->db->createCommand()
+            ->select('r.hora, r.'.$id.', r.id_tanque, r.id')
+            ->from('registro_camp r')
+            ->where("r.id_estacion = $estacion")
+            ->limit(300,$rango)
+            ->order('r.id ASC')
             ->queryAll();
         switch($id)
         {
@@ -875,7 +1396,7 @@ eof;
         $datasets = [];
         $flag = true;
         $menu = <<<eof
-            <div class="menuSeccion enlaceP" data-tanque="-1">Todos</div>
+            <div class="menuSeccion" data-tanque="-1">Todos</div>
 eof;
         $i = 0;
         foreach($tanques as $info)
@@ -934,37 +1455,7 @@ eof;
                 )
             );
             $flag = false;
-            $menu = $menu.<<<eof
-                <div class="menuSeccion enlaceP" data-tanque="$i">{$info['nombre']}</div>
-eof;
             $i++;
-        }
-        $return['total'] = $i;
-        $return['codigo'] = <<<eof
-            <div class="historial parametro">
-                <div class="titulo">Historial de parámetro</div>
-                <div class="subtitulo tit">$nombre</div>
-                <div class="historialGraficasWraper">
-                <div class="menuTanques">
-                    <div class="menuParametros">$menu</div>
-                </div>
-                    <div class="graficasWraper">
-eof;
-        $width = ($cont * 98)+40;
-        if($width < 1032)
-            $width = 1032;
-        $return['codigo'] =$return['codigo'].<<<eof
-            <div class="grafScroll" data-parame="-1">
-                <canvas id="parametrosGrafica" width="$width" height="405"></canvas>
-            </div>
-eof;
-        for($j = 0; $j < $i; $j++)
-        {
-            $return['codigo'] =$return['codigo'].<<<eof
-                <div class="grafScroll hide" data-parame="$j">
-                    <canvas id="parametrosGrafica$j" width="$width" height="405"></canvas>
-                </div>
-eof;
         }
         $return['graficaTodos'] =
         array
@@ -993,13 +1484,6 @@ eof;
                 )
             )
         );
-//                            <div class="menuArriba">
-//                                <div class="menuTitulo">Seleccionar tanques:</div>
-//                                <div class="menuTodos"><div></div>Ver todos</div>
-//                            </div>
-        $return['codigo'] = $return['codigo'].'
-                </div>
-            </div>';
         echo json_encode($return);
     }
     public function actionGetParametroGrafica($estacion, $flag)
@@ -1232,6 +1716,5 @@ eof;
         }
         echo json_encode($return);
     }
-
-	
+    
 }

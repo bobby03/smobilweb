@@ -243,3 +243,1690 @@ Stack trace:
 #17 {main}
 REQUEST_URI=/SmobilWeb/viajes/GetHistorialParametro?viaje=12&id=t
 ---
+2016/09/01 07:55:07 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
+#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
+#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(29): CWebUser->checkAccess('createEstacion')
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): MonitoreoController->accessRules()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/view')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#18 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/11
+HTTP_REFERER=http://localhost/SmobilWeb/campsensado
+---
+2016/09/01 09:10:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/iconoVerAzul.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/iconoVer...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/iconoVerAzul.png
+HTTP_REFERER=http://localhost/SmobilWeb/viajes
+---
+2016/09/01 09:11:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/iconoVerAzul.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/iconoVer...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/iconoVerAzul.png
+HTTP_REFERER=http://localhost/SmobilWeb/viajes
+---
+2016/09/01 09:11:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/iconoVerAzul.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/iconoVer...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/iconoVerAzul.png
+HTTP_REFERER=http://localhost/SmobilWeb/viajes
+---
+2016/09/01 09:20:47 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4. The SQL statement executed was: SELECT count(t.id) as cTan FROM tanque t
+        JOIN estacion e ON t.id_estacion=e.id
+        WHERE t.activo=1
+        AND t.id_estacion=.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (130)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 09:20:47 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4. The SQL statement executed was: SELECT count(t.id) as cTan FROM tanque t
+        JOIN estacion e ON t.id_estacion=e.id
+        WHERE t.activo=1
+        AND t.id_estacion= in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(130): CDbCommand->queryRow()
+#2 [internal function]: MonitoreoController->actionView('5')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/5
+HTTP_REFERER=http://localhost/SmobilWeb/campsensado
+---
+2016/09/01 09:27:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/editar.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/editar.s...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/editar.svg
+HTTP_REFERER=http://localhost/SmobilWeb/viajes
+---
+2016/09/01 09:27:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/editar.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/editar.s...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/editar.svg
+HTTP_REFERER=http://localhost/SmobilWeb/viajes
+---
+2016/09/01 10:21:32 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:32 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:21:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:35 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:21:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:37 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:21:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:37 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:21:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:37 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:21:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:38 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:21:40 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:21:40 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:27 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:27 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:27 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:27 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:28 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:28 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:28 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:28 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:28 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:29 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:29 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:22:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (561)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:22:34 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '300,1' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14LIMIT 300,1 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(561): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+---
+2016/09/01 10:30:56 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/especie/iconoCepas.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/especie/...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/especie/iconoCepas.png
+HTTP_REFERER=http://localhost/SmobilWeb/cepa/1
+---
+2016/09/01 10:30:58 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/especie/iconoCepas.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/especie/...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/especie/iconoCepas.png
+HTTP_REFERER=http://localhost/SmobilWeb/cepa/1
+---
+2016/09/01 10:40:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14ORDER r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (534)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:40:47 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14ORDER r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(534): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 10:40:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14ORDER r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (534)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:40:51 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14ORDER r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(534): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+---
+2016/09/01 10:41:11 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14 ORDER r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (534)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:41:11 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14 ORDER r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(534): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+---
+2016/09/01 10:41:12 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14 ORDER r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (534)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 10:41:12 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.id ASC' at line 5. The SQL statement executed was: SELECT r.id as idreg, r.fecha, r.hora, temp,ph,ox,cond,orp,t.id AS idtan, t.capacidad,t.nombre,t.activo,est.id as idest,est.tipo,est.identificador,est.no_personal,est.marca,est.color,est.ubicacion,est.disponible,est.activo FROM registro_camp r
+        JOIN tanque t ON r.id_tanque = t.id
+        JOIN estacion est ON est.id=t.id_estacion
+        WHERE t.id=32
+        AND est.id=14 ORDER r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(534): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialTanque('14', '32')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialTan...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialTanque?estacion=14&id=32
+---
+2016/09/01 11:09:22 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:22 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:23 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:23 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:23 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:23 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:24 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:24 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:24 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:24 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:24 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:25 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:25 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:25 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:25 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:09:31 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1220)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:09:31 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY r.id ASC' at line 5. The SQL statement executed was: SELECT r.hora, r.temp, r.id_tanque, r.id               
+            FROM registro_camp r
+            WHERE r.id_estacion=14
+            LIMIT 300, 0
+            ORDER BY r.id ASC in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1220): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+---
+2016/09/01 11:14:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`horas`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`horas`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1221)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:14:14 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`horas`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`horas`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1221): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+---
+2016/09/01 11:15:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1221)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:15:00 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1221): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:15:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1221)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:15:03 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1221): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:38:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1221)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:38:08 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1221): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/11
+---
+2016/09/01 11:38:18 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (1221)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/01 11:38:18 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.' at line 1. The SQL statement executed was: SELECT `SELECT` AS `r`.`hora`, `r`.`temp`, `r`.`id_tanque`, `r`.`id`
+FROM `registro_camp` `r`
+WHERE r.id_estacion = 14
+ORDER BY `r`.`id` ASC LIMIT 300 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(1221): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionGetHistorialParametro('14', 'temp')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('GetHistorialPar...')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/GetHi...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/GetHistorialParametro?estacion=14&id=temp
+---
