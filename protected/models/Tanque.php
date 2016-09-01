@@ -36,7 +36,7 @@ class Tanque extends SMActiveRecord
 		// will receive user inputs.
 		return array(
 //			array('id_estacion, capacidad, nombre, status', 'required'),
-			array('id_estacion, capacidad, nombre', 'required'),
+			array('id_estacion, capacidad, nombre,activo', 'required'),
 //			array('id_estacion, capacidad, status, activo', 'numerical', 'integerOnly'=>true),
 			array('id_estacion, capacidad, activo', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>50),
