@@ -236,14 +236,17 @@ class ClientesController extends Controller
         $model->activo = 0;
         $update = Yii::app()->db->createCommand()
                 ->update('clientes',$model->attributes,"id = ".(int)$id."");
+        // print_r($update);
         $usu = Usuarios::model()->findAll("tipo_usr = 1 and id_usr = $id");
+        // print_r($usu);
         if(isset($usu[0]->id))
         {
             $usu[0]->activo = 0;
             $update = Yii::app()->db->createCommand()
                     ->update('usuarios',$usu[0]->attributes,"id = {$usu[0]->id}");
         }
-        echo json_encode($usu[0]->attributes);
+
+        echo json_encode('');
     }
     public function actionReactivar($id)
     {
