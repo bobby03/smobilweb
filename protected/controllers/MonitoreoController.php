@@ -133,8 +133,7 @@ class MonitoreoController extends Controller
         ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
         GROUP BY idtan')
                 ->queryAll();
-        print_r($tanques);
-        /*
+        // print_r($tanques);
         // fb($tanques);
         $estaciones = Yii::app()->db->createCommand()
                 ->select('*')
@@ -143,6 +142,8 @@ class MonitoreoController extends Controller
                 ->andWhere("tipo=2")
                 ->limit(1)
                 ->queryRow();
+        // print_r($estaciones);
+        
         fb($estaciones);
             $this->render('monitoreo',array(
                 'fijas'=>$this->loadModel($estaciones),
