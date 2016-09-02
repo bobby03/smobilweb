@@ -55,8 +55,8 @@
             </div>
         <div class="containerbutton">
 	<div class="row buttons">
-                    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas">Cancelar</a> 
-                    <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/granjas">Cancelar</a> 
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
 	</div>
         </div>
     </div>
