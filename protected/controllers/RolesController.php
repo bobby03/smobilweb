@@ -82,7 +82,8 @@ class RolesController extends Controller
         $model = new Roles;
         $acciones = new RolesPermisos;
         // Uncomment the following line if AJAX validation is needed
-        $this->performAjaxValidation($model);
+         $this->performAjaxValidation($model);
+
         if(isset($_POST['Roles']))
         {
             $model->attributes = $_POST['Roles'];
@@ -102,35 +103,33 @@ class RolesController extends Controller
                     $acciones2->edicion = $data['edicion'];
                     $acciones2->save();
                     $roles = new Roles();
+                    $nombreSeccion = $roles->getSeccion($acciones2->seccion);
 //                    $seccion = '';
                     if($data['alta'] == 1)
                     {
-                        $nombreSeccion = $roles->getSeccion($acciones2->seccion,'create');
-//                        $seccion = 'create'.$nombreSeccion;
-                        $auth->assign($nombreSeccion,$model->nombre_rol);
+                        $seccion = 'create'.$nombreSeccion;
+                        $auth->assign($seccion,$model->nombre_rol);
                     }
                     if($data['baja'] == 1)
                     {
-                        $nombreSeccion = $roles->getSeccion($acciones2->seccion,'delete');
-//                        $seccion = 'delete'.$nombreSeccion;
-                        $auth->assign($nombreSeccion,$model->nombre_rol);
+                        $seccion = 'delete'.$nombreSeccion;
+                        $auth->assign($seccion,$model->nombre_rol);
                     }
                     if($data['consulta'] == 1)
                     {
-                        $nombreSeccion = $roles->getSeccion($acciones2->seccion,'read');
-//                        $seccion = 'read'.$nombreSeccion;
-                        $auth->assign($nombreSeccion,$model->nombre_rol);
+                        $seccion = 'read'.$nombreSeccion;
+                        $auth->assign($seccion,$model->nombre_rol);
                     }
                     if($data['edicion'] == 1)
                     {
-                        $nombreSeccion = $roles->getSeccion($acciones2->seccion,'update');
-//                        $seccion = 'update'.$nombreSeccion;
-                        $auth->assign($nombreSeccion,$model->nombre_rol);
+                        $seccion = 'update'.$nombreSeccion;
+                        $auth->assign($seccion,$model->nombre_rol);
                     }
                 }
                 $this->redirect(array('index'));
             }
         }
+
         $this->render('create',array(
             'model'     => $model,
             'acciones'  => $acciones

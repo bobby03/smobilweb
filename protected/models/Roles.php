@@ -137,31 +137,21 @@ class Roles extends SMActiveRecord
             else
         	return 'sin rol';
         }
-        public function getSeccion($id, $nombre)
+        public function getSeccion($id)
         {
             switch($id)
             {
-                case 1: return AuthItem::model()->findByPk($nombre.'Solicitudes')->name; break;
-                case 2: return AuthItem::model()->findByPk($nombre.'Viajes')->name; break;
-                case 3: return AuthItem::model()->findByPk($nombre.'Estacion')->name; break;
-                case 4: return AuthItem::model()->findByPk($nombre.'Siembra')->name; break;
-                case 5: return AuthItem::model()->findByPk($nombre.'Granja')->name; break;
-                case 6: return AuthItem::model()->findByPk($nombre.'Clientes')->name; break;
-                case 7: return AuthItem::model()->findByPk($nombre.'Usuarios')->name; break;
-                case 8: return AuthItem::model()->findByPk($nombre.'Personal')->name; break;
-                case 9: return AuthItem::model()->findByPk($nombre.'Roles')->name; break;
-                case 10: return AuthItem::model()->findByPk($nombre.'Especie')->name; break;
-                case 11: return AuthItem::model()->findByPk($nombre.'Cepa')->name; break;
-//                case 12: return $nombre.'Viajes'; break;
-//                case 3: return $nombre.'Estacion'; break;
-//                case 4: return $nombre.'Siembra'; break;
-//                case 5: return $nombre.'Granja'; break;
-//                case 6: return $nombre.'Clientes'; break;
-//                case 7: return $nombre.'Usuarios'; break;
-//                case 8: return $nombre.'Personal'; break;
-//                case 9: return $nombre.'Roles'; break;
-//                case 10: return $nombre.'Especie'; break;
-//                case 11: return $nombre.'Cepa'; break;
+                case 1: return 'Solicitudes'; break;
+                case 2: return 'Viajes'; break;
+                case 3: return 'Estacion'; break;
+                case 4: return 'Siembra'; break;
+                case 5: return 'Granja'; break;
+                case 6: return 'Clientes'; break;
+                case 7: return 'Usuarios'; break;
+                case 8: return 'Personal'; break;
+                case 9: return 'Roles'; break;
+                case 10: return 'Especie'; break;
+                case 11: return 'Cepa'; break;
             }
         }
         
