@@ -91,18 +91,40 @@ class MonitoreoController extends Controller
     }
     public function actionView($id)
     {
-        $campsensado = CampSensado::model()->findByPk((int)$id);
-        fb($campsensado);
+        $campsensado = CampSensado::model()->findByAttributes(array('id_estacion'=>$id) );
+        // $campsensado = CampSensado::model()->findByPk((int)$id);
+        
+        // fb($campsensado);
+
         $nombre = $campsensado->nombre_camp;
         $responsable = Granjas::model()->getGranjaResponsable($campsensado->id_responsable);
+        
         $id_estacion = $campsensado->id_estacion;
-        fb($id_estacion);
-        $cantTanques= Yii::app()->db->createCommand('SELECT count(t.id) as cTan FROM tanque t
-        JOIN estacion e ON t.id_estacion=e.id
-        WHERE t.activo=1
-        AND t.id_estacion='.$id_estacion)
-        ->queryRow();
-        fb($cantTanques);
+        // fb($id_estacion);
+        $cantTanques =count( Yii::app()->db->createCommand()
+            ->select('t.id')
+            ->from('tanque t')
+            ->join('estacion e','e.id = t.id_estacion')
+            ->where('t.activo = 1')
+            ->andWhere('t.id_estacion = :tID',array(':tID'=>$id_estacion))
+            ->queryRow() );
+
+        // $cantTanques= Yii::app()->db->createCommand('SELECT count(t.id) as cTan FROM tanque t
+        // JOIN estacion e ON t.id_estacion=e.id
+        // WHERE t.activo=1
+        // AND t.id_estacion='.$id_estacion)
+        // ->queryRow();
+        // fb($cantTanques);
+        $sql = "SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
+        FROM estacion
+        JOIN tanque ON estacion.id=tanque.id_estacion
+        JOIN registro_camp rc ON tanque.id=rc.id_tanque AND rc.id_camp_sensado='.(int)$id.'
+        WHERE estacion.id='.$id_estacion.'
+        ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
+        GROUP BY idtan";
+
+        echo $sql;
+
         $tanques = Yii::app()->db->createCommand('SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
         FROM estacion
         JOIN tanque ON estacion.id=tanque.id_estacion
@@ -111,7 +133,9 @@ class MonitoreoController extends Controller
         ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
         GROUP BY idtan')
                 ->queryAll();
-        fb($tanques);
+        print_r($tanques);
+        /*
+        // fb($tanques);
         $estaciones = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('estacion')
@@ -128,6 +152,7 @@ class MonitoreoController extends Controller
                 'responsable' => $responsable,
                 'siembra'=>$campsensado
             ));
+            // */
     }
     public function loadModel($estacion)
     {

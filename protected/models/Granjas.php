@@ -158,7 +158,7 @@ class Granjas extends SMActiveRecord
         }
         public function getGranjaResponsable($id_responsable) {
             $personal = Personal::model()->findByPk($id_responsable);
-            $return = $personal->nombre." ".$personal->apellido ;
+            $return = isset($personal)?$personal->nombre." ".$personal->apellido:"no name" ;
             return $return;
         }
         public function getPlantasofGranjaFromPlanta($id_estacion) {
