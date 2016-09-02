@@ -91,8 +91,8 @@ class MonitoreoController extends Controller
     }
     public function actionView($id)
     {
-        $campsensado = CampSensado::model()->findByAttributes(array('id_estacion'=>$id) );
-        // $campsensado = CampSensado::model()->findByPk((int)$id);
+        // $campsensado = CampSensado::model()->findByAttributes(array('id_estacion'=>$id) );
+        $campsensado = CampSensado::model()->findByPk((int)$id);
         
         // fb($campsensado);
 
@@ -115,15 +115,15 @@ class MonitoreoController extends Controller
         // AND t.id_estacion='.$id_estacion)
         // ->queryRow();
         // fb($cantTanques);
-        $sql = "SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
-        FROM estacion
-        JOIN tanque ON estacion.id=tanque.id_estacion
-        JOIN registro_camp rc ON tanque.id=rc.id_tanque AND rc.id_camp_sensado='.(int)$id.'
-        WHERE estacion.id='.$id_estacion.'
-        ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
-        GROUP BY idtan";
+        // $sql = "SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
+       // FROM estacion
+       // JOIN tanque ON estacion.id=tanque.id_estacion
+       // JOIN registro_camp rc ON tanque.id=rc.id_tanque AND rc.id_camp_sensado='.(int)$id.'
+       // WHERE estacion.id='.$id_estacion.'
+       // ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
+       // GROUP BY idtan";
 
-        echo $sql;
+        // echo $sql;
 
         $tanques = Yii::app()->db->createCommand('SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
         FROM estacion
