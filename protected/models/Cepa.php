@@ -187,6 +187,11 @@ eof;
             $cepa = Cepa::model()->findByPk($id);
             return $cepa;
         }
+        public function getEspecie($id)
+        {
+            $cepa = Cepa::model()->findByPk($id);
+            return Especie::model()->findByPk($cepa->id_especie)->nombre;
+        }
     public function adminSearch()
     {
         return array
