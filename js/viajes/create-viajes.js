@@ -84,7 +84,7 @@ $(document).ready(function()
             success: function(data)
             {
                 // console.log("Data: "+data.html);
-                $('.pedidosWraper').append(data.html);
+                $('.pedidosWrapper').append(data.html);
                 validateChangesTanque();
             },
             error: function(a,b,c)

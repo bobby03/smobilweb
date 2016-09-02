@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label class= "letreros">Descripcion <span class="required">*</span></label>
+                    <label class= "letreros">Descripci&oacuten <span class="required">*</span></label>
                     <div class="form-cLarge">	
                     <?php echo $form->textField($model,'marca',array('size'=>150,'maxlength'=>150)); ?>
                     <?php echo $form->error($model,'marca'); ?>
