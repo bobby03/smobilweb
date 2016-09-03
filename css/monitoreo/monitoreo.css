@@ -555,6 +555,11 @@ div.menuTodos
 .gBoton{
         margin-left: 19px;
 }
+.backMonitoreo{
+    width: 100%;
+    height: 45px;
+    margin-top: 35px;
+}
 #esp:after {
     content: "";
     display: block;
