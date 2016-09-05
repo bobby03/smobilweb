@@ -643,10 +643,7 @@ table.detail-view th {
 .botones-content {
     height: auto;
     width: 100%;
-    /*display: inline-block;*/
-/*    bottom: 13px;
-    position: absolute;*/
-    padding: 13px 0;
+    padding: 19px 0;
 }
 .botones-content:after
 {
