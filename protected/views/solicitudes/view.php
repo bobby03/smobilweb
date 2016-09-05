@@ -80,9 +80,9 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
         </div>
     <div class="row">
             <?php if($model->status == 1) : ?>
-                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Regresar</a>                
             <?php else :?>        
-                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Regresar</a>
             <?php endif; ?>
           <script type="text/javascript">                     
 //               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
