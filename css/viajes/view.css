@@ -1,6 +1,10 @@
 div.form{
 	margin-top: 0 !important;
 }
+.dato .data
+{
+    padding-left:40px;
+}
 .table-view .dato:nth-child(3) .data,
 .table-view .dato:nth-child(4) .data,
 .table-view .dato:nth-child(5) .data,
@@ -9,7 +13,6 @@ div.form{
     background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
     background-position: 7px 6px, left;
     background-repeat: no-repeat;
-    padding-left: 30px;
     border-left: 0;
 }
 .table-view .dato:nth-child(7) .data
@@ -17,7 +20,6 @@ div.form{
     background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg.png');
     background-position: 7px 7px, left;
     background-repeat: no-repeat;
-    padding-left: 30px;
     border-left: 0;
 }
 .detallesViaje
@@ -262,8 +264,9 @@ div.grafica > div
 }
 .tablaTitulos span
 {
-    width: 175px;
-    text-indent: 18px;
+    width: 218.75px;
+    /*text-indent: 18px;*/
+    text-align: center;
     display: block;
     float: left;
     padding-bottom: 15px;
@@ -293,7 +296,7 @@ div.grafica > div
 .tablaWraper > div > div
 {
     float: left;
-    width: 175px;
+    width: 218.75px;
     text-align: center;
     /*line-height: 50px;*/
     /*height: 50px;*/
@@ -397,12 +400,13 @@ div.grafica > div
     float: left;
     background-color: #0077B0;
     color: #FFFFFF;
-    /*font-size: 28px;*/
+    font-size: 28px;
     cursor: pointer;
     text-align: center;
-    /*line-height: 42px;*/
-    /*height: 42px;*/
+    line-height: 42px;
+    height: 42px;
     font-family: 'Roboto-Bold';
+    width: 20%;
 }
 .menuHistorial div.selected
 {

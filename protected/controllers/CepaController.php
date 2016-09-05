@@ -127,7 +127,7 @@ class CepaController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function getNombres($id_especie){
+	public  static function getNombres($id_especie){
 		$lista= array();
 		 $nombres= Yii::app()->db->createCommand('SELECT nombre_cepa 
 		 	FROM cepa WHERE id_especie='.$id_especie)

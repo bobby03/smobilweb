@@ -205,15 +205,14 @@ class GranjasController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
+
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Granjas']))
 		{
-//			$model->attributes=$_POST['Granjas'];
-			if($model->save()){
+			$model->attributes=$_POST['Granjas'];
+			if($model->save(false))
 				$this->redirect(array('index'));
-//                            $this->render('index',array('model'=>$model));
-                        }
                                 
 		}
 

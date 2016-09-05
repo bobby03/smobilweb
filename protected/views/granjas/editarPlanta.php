@@ -62,7 +62,8 @@
             </div>
             <div class="containerbutton">
                 <div class="row buttons">
-                        <?php echo CHtml::submitButton('Guardar'); ?>
+                    <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true).'/granjas/plantaProduccion/'.$model->id_granja; ?>">Cancelar</a> 
+                    <?php echo CHtml::submitButton('Guardar'); ?>
                 </div>
             </div>
         </div>

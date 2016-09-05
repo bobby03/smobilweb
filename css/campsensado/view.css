@@ -1,0 +1,96 @@
+.dato .data{
+      padding-left: 40px;
+}
+.dato:nth-child(1) .data
+{
+    background-image: url('../../images/granjas/iconoGranja.png'), url('../../images/form/bg.png');
+    background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+    border-left: 0;
+    /*padding-left: 30px;*/
+}
+.dato:nth-child(3) .data
+{
+    background-image: url('../../images/granjas/iconoPlantas.png'), url('../../images/form/bg.png');
+    background-position: 7px 6px, left;
+    background-repeat: no-repeat;
+   /* padding-left: 30px;*/
+    border-left: 0;
+}
+.dato:nth-child(4) .data
+{
+    background-image: url('../../images/granjas/iconoSiembraChico.png'), url('../../images/form/bg.png');
+    background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+   /* padding-left: 35px;*/
+    border-left: 0;
+}
+.dato:nth-child(5) .data,
+.dato:nth-child(6) .data,
+.dato:nth-child(7) .data,
+.dato:nth-child(8) .data
+{
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+    background-position: 7px 6px, left;
+    background-repeat: no-repeat;
+    /*padding-left: 30px;*/
+    border-left: 0;
+}
+/*.dato:nth-child(9) .data
+{
+    background-image: url('../../images/solicitud/iconoNotas.png'), url('../../images/form/bg.png');
+    background-position: 7px 5px,left;
+    background-repeat: no-repeat;
+    border-left: 0;
+    padding-left: 30px;
+}
+.dato:nth-child(10) .data
+{
+    background-image: url('../../images/camion/iconoIdentificador.png'), url('../../images/form/bg.png');
+    background-position: 8px 8px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}*/
+.letrero-container 
+{
+    background-color: #E4E7EB;
+    height: 4px;
+    /* width: 80%; */
+}
+div.pedido
+{
+    float: left;
+    width: 250px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid #0077B0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+div.tituloEspecie 
+{
+    background-color: #0077B0;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+div.pedidoWraper {
+    padding: 10px;
+}
+
+div.pedidoWraper.gris {
+    background-color: #E6E7E8;
+    height: auto;
+}
+
+div.pedidoWraper > div {
+    padding-bottom: 10px;
+    color: #0077B0;
+    font-family: 'Roboto-Bold';
+}
+
+div.pedidoWraper div span {
+    color: #000000;
+    font-family: 'Roboto-Regular';
+}

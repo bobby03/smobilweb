@@ -491,10 +491,11 @@ div.chosen-container.error > ul {
 
 
 .botonesWrapper2{
-    margin-top: 20px;
+    margin: 20px 0;
     display: block;
     /*padding-right: 100px;*/
     text-align: right;
+   height:45px;
 }
 .gBoton.regresar.uno,
 .gBoton.regresar.dos{
@@ -503,6 +504,13 @@ div.chosen-container.error > ul {
     width: 135px;
     height: 35px;
     line-height: 35px;
+    float: right;
+}
+div.form input[type="submit"] {
+    float: right;
+}
+.gBoton.regresar.dos.new {
+        margin-right: 76px;
 }
 .gBoton.regresar.uno,
 .botonesWrapper2 > * {
@@ -514,4 +522,19 @@ div.tab.last div.row.buttons.floating input {
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
     float: right;
+}
+
+.siguiente {
+    float: right;
+}
+
+a.gBoton.nboton {
+    float: right;
+    margin-right: 76px;
+}
+
+.botonesWrapper:after {
+    content: "";
+    clear: both;
+    display: block;
 }

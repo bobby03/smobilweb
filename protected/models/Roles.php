@@ -133,8 +133,8 @@ class Roles extends SMActiveRecord
         {
             $rol = $this->findByPk($id);
             if(isset($rol->nombre_rol))
-            return $rol->nombre_rol;
-        else
+                return $rol->nombre_rol;
+            else
         	return 'sin rol';
         }
         public function getSeccion($id)

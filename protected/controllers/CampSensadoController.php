@@ -114,7 +114,7 @@ class CampSensadoController extends Controller
             {
 //                    print_r($_POST);
                 $model->attributes=$_POST['CampSensado'];
-                $model->status = 0;
+                $model->status = 0; //////
                 $model->activo = 1;
                 $model->fecha_fin = date('Y-m-d', strtotime($model->fecha_fin));
                 $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));

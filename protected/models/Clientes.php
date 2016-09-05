@@ -99,20 +99,11 @@ class Clientes extends CActiveRecord
 				'min'=>10,
 				'tooShort'=>'Minimo 10 números',
 				'message'=>'El telefono celular no es valido'),
-
-		/*	array('domicilio','required','message'=>'Este campo es obligatorio'),
-			array(
-				'domicilio',
-				'length',
-				'max'=>250,
-				'message'=>'Maximo 250 Caracteres'),*/
-
+                    
 			array('id, ext', 'numerical', 'integerOnly'=>true, 'message'=> 'Solo se aceptan números'),
-			
-		
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre_empresa, nombre_contacto, apellido_contacto, correo, rfc, tel', 'safe', 'on'=>'search'),
+			array('id, nombre_empresa, nombre_contacto, apellido_contacto, correo, rfc, tel, cel', 'safe', 'on'=>'search'),
 		);
 	}
 

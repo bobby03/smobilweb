@@ -401,41 +401,44 @@ div.cancelarDireccion
     width: 100px;
 }
 
-div.aceptarDireccion{
-    background-color: #0077b0;
+div.aceptarDireccion
+{
+    background-color: #0077B0;
     border-radius: 5px;
-    color:white;
+    color: #FFFFFF;
+    font-size: 18px;
     cursor: pointer;
-    display: inline-block;
     float:right;
-    margin-right: 10px !important;
     margin:0 auto;
-    padding: 6px;
     position: relative;
     text-align: center;
     width: 135px;
     height: 35px;
     line-height: 35px;
+<<<<<<< HEAD
     font-size: 18px;
+=======
+>>>>>>> de3779490b64a1797ac4d61078ee67494188e69e
 }
 
 div.cancelarDireccion
 {
     background-color: #0077b0;
     border-radius: 5px;
-    color: white;
+    color: #FFFFFF;
+    font-size: 18px;
     cursor: pointer;
-    display: inline-block;
     float:left;
-    margin-left: 10px;
     margin:0 auto;
-    padding: 6px;
     position: relative;
     text-align: center;
     width: 135px;
     height: 35px;
     line-height: 35px;
+<<<<<<< HEAD
     font-size: 18px;
+=======
+>>>>>>> de3779490b64a1797ac4d61078ee67494188e69e
 }
 
 

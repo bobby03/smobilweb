@@ -8,6 +8,10 @@ class WebServiceController extends Controller
 	 *	receiveData ( receive data from device to update tables on server )
 	 * 	
 	*/
+
+    public function actionOk(){
+        echo json_encode(array('OK'=>200));
+    }
 	public function actionIndex()
 	{
 		/*
@@ -773,6 +777,24 @@ class WebServiceController extends Controller
         
         echo json_encode($aResult);
 
+    }
+
+    public function actionUpdatestatusSiembra(){
+        $idViaje = isset($_GET['id'])?$_GET['id']:0;
+        $status = isset($_GET['status'])?$_GET['status']:0;
+        $table = 'camp_sensado';
+        $column = array('status'=>$status,); //'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:i:s'));
+        $conditions = "id = :idViaje";
+        $params = array(":idViaje"=>$idViaje);
+
+        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+        $aResult = null;
+        if($update > 0)
+            $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+        else
+            $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+        
+        echo json_encode($aResult);
     }
 
 }

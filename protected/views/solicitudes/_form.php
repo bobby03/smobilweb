@@ -168,10 +168,9 @@ eof;
                 <?php echo $form->labelEx($direccion,'descripcion'); ?>
                 <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom')); ?>
             </div>
-            <div class="row buttons">
-
+            <div class="row buttons mapaB">
                 <div class="aceptarDireccion">Aceptar</div>
-                <div class="cancelarDireccion">Cancelar</div>
+                <div class="cancelarDireccion">Regresar</div>
             </div>
             </div>
         </div>
@@ -290,12 +289,12 @@ eof;
 
             <?php if($update == true) : ?>
                 <?php if($model->status == 1) : ?>
-                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Cancelar</a>                
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes/#asignadas" >Regresar</a>                
                 <?php else :?>        
-                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+                    <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Regresar</a>
                 <?php endif; ?>
             <?php else :?>        
-                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>
+                <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Regresar</a>
             <?php endif; ?>
             <!--<a class="gBoton" id="cBoton" href="" enla="<?php // echo Yii::app()->getBaseUrl(true); ?>/solicitudes" >Cancelar</a>-->
             <script type="text/javascript">//                     
