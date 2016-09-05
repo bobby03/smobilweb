@@ -413,7 +413,10 @@ div.aceptarDireccion{
     padding: 6px;
     position: relative;
     text-align: center;
-    width: 100px;
+    width: 135px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
 }
 
 div.cancelarDireccion
@@ -429,15 +432,18 @@ div.cancelarDireccion
     padding: 6px;
     position: relative;
     text-align: center;
-    width: 100px;
+    width: 135px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
 }
 
 
 .OtroDom{
-    background-image: url('../../images/form/bg.png');
-    /*background-position: 8px 5px,left;*/
+    background-image: url('../../images/clientes/iconoDescripcion.png'), url('../../images/form/bg.png');
+    background-position: 6px 5px,left;
     background-repeat: no-repeat;
-    padding-left: 30px;
+    padding-left: 35px;
     border-left: 0;
 }
 .OtroDom.inputDom{

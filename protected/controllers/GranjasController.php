@@ -185,8 +185,9 @@ class GranjasController extends Controller
 		if(isset($_POST['Granjas']))
 		{
 			$model->attributes=$_POST['Granjas'];
-			if($model->save())
-				$this->redirect('index');
+			if($model->save(true)){
+                            $this->redirect('index');
+                        }
 		}
 
 		$this->render('create',array(
@@ -204,13 +205,16 @@ class GranjasController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Granjas']))
 		{
-			$model->attributes=$_POST['Granjas'];
-			if($model->save())
+//			$model->attributes=$_POST['Granjas'];
+			if($model->save()){
 				$this->redirect(array('index'));
+//                            $this->render('index',array('model'=>$model));
+                        }
+                                
 		}
 
 		$this->render('update',array(
