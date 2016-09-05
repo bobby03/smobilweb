@@ -28,54 +28,59 @@ class SiteController extends Controller
   {
     // renders the view file 'protected/views/site/index.php'
     // using the default layout 'protected/views/layouts/main.php'
-    $criteria = new CDbCriteria();
-    
-    $model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
-      FROM viajes as t
-      JOIN estacion est ON est.id = t.id_estacion
-      JOIN personal as p ON p.id = t.id_responsable
-      JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
-      JOIN solicitudes as s ON s.id=sv.id_solicitud
+        $criteria = new CDbCriteria();
+        $model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
+            FROM viajes as t
+            JOIN estacion est ON est.id = t.id_estacion
+            JOIN personal as p ON p.id = t.id_responsable
+            JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
+            JOIN solicitudes as s ON s.id=sv.id_solicitud
             JOIN clientes as c ON c.id=s.id_clientes
-      WHERE t.status = 2')
-        ->queryAll();
-    if(Yii::app()->user->getTipoUsuario()==1){    
-      $model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
-        FROM viajes as t
-        JOIN estacion est ON est.id = t.id_estacion
-        JOIN personal as p ON p.id = t.id_responsable
-        JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
-        JOIN solicitudes as s ON s.id=sv.id_solicitud
-              JOIN clientes as c ON c.id=s.id_clientes
-        WHERE t.status = 2
-        AND c.id='.Yii::app()->user->getIDc())
-        ->queryAll();
-      }
+            WHERE t.status = 2')
+            ->queryAll();
+        if(Yii::app()->user->getTipoUsuario()==1)
+        {    
+            $model = Yii::app()->db->createCommand('SELECT DISTINCT t.*, est.identificador, p.nombre, p.apellido
+              FROM viajes as t
+              JOIN estacion est ON est.id = t.id_estacion
+              JOIN personal as p ON p.id = t.id_responsable
+              JOIN solicitudes_viaje as sv ON sv.id_viaje = t.id
+              JOIN solicitudes as s ON s.id=sv.id_solicitud
+                    JOIN clientes as c ON c.id=s.id_clientes
+              WHERE t.status = 2
+              AND c.id='.Yii::app()->user->getIDc())
+              ->queryAll();
+        }
         
-    $viajes_disponibles =  Yii::app()->db->createCommand(
-        'SELECT v.id as "id_viaje", est.identificador as "nombre", 
-          (SELECT count(t.id) 
-            FROM tanque as t 
-            WHERE t.id_estacion = v.id_estacion 
-            AND t.activo = 1) as "disponibles", 
-          (SELECT DISTINCT cd.domicilio 
-            FROM solicitudes_viaje as sv 
-            JOIN solicitud_tanques as st ON st.id_solicitud = sv.id_solicitud 
-            JOIN clientes_domicilio as cd ON cd.id = st.id_domicilio 
-            WHERE sv.id_viaje = v.id ORDER BY cd.id DESC LIMIT 1) as "ultimo"
-        FROM viajes as v 
-        JOIN estacion as est ON est.id=v.id_estacion 
-        WHERE v.status = 1')
-      ->queryAll();
-    $estaciones= Yii::app()->db->createCommand(
-        'SELECT *,e.id as idest FROM estacion e 
-        JOIN camp_sensado cs ON cs.id_estacion=e.id
-        JOIN personal p ON cs.id_responsable=p.id
-        WHERE e.activo=1 
-        AND e.tipo=2
-        AND cs.activo=1')
-      ->queryAll();
-    $this->render('index', array('enruta'=>$model, 'enespera'=> $viajes_disponibles,'estaciones'=>$estaciones));
+        $viajes_disponibles =  Yii::app()->db->createCommand(
+            'SELECT v.id as "id_viaje", est.identificador as "nombre", 
+                (SELECT count(t.id) 
+                    FROM tanque as t 
+                    WHERE t.id_estacion = v.id_estacion 
+                    AND t.activo = 1) as "disponibles", 
+                (SELECT DISTINCT cd.domicilio 
+                    FROM solicitudes_viaje as sv 
+                    JOIN solicitud_tanques as st ON st.id_solicitud = sv.id_solicitud 
+                    JOIN clientes_domicilio as cd ON cd.id = st.id_domicilio 
+                    WHERE sv.id_viaje = v.id ORDER BY cd.id DESC LIMIT 1) as "ultimo"
+            FROM viajes as v 
+            JOIN estacion as est ON est.id=v.id_estacion 
+            WHERE v.status = 1')
+                ->queryAll();
+        $estaciones= Yii::app()->db->createCommand(
+            'SELECT *,e.id as idest FROM estacion e 
+            JOIN camp_sensado cs ON cs.id_estacion=e.id
+            JOIN personal p ON cs.id_responsable=p.id
+            WHERE e.activo=1 
+            AND e.tipo=2
+            AND cs.activo=1')
+            ->queryAll();
+        $this->render('index', array
+        (
+            'enruta'=>$model, 
+            'enespera'=> $viajes_disponibles,
+            'estaciones'=>$estaciones
+        ));
   }
   /**
    * This is the action to handle external exceptions.
@@ -175,53 +180,57 @@ class SiteController extends Controller
     // display the login form
     $this->render('login',array('model'=>$model));
   }
-  public function actionDashboardTanques($id) 
+    public function actionDashboardTanques($id) 
+    {
+        if(Yii::app()->user->getTipoUsuario()==2)
         {
-          if(Yii::app()->user->getTipoUsuario()==2){
-          $last=Yii::app()->db->createCommand("SELECT ut.*, id_viaje FROM uploadtemp as ut 
-      INNER JOIN (
-          SELECT MAX(id) as id, id_viaje 
-          FROM escalon_viaje_ubicacion 
-          where id_viaje = ".$id.") 
-          evu ON evu.id = ut.id_escalon_viaje_ubicacion")
-        ->queryAll();
-      }
-          if(Yii::app()->user->getTipoUsuario()==1){//Cuando es cliente
-            $solicitudes= Yii::app()->db->createCommand("SELECT * FROM solicitud_tanques st
-        JOIN solicitudes s ON s.id=st.id_solicitud
-        JOIN clientes c ON c.id=s.id_clientes
-        JOIN solicitudes_viaje sv ON sv.id_solicitud=s.id
-        WHERE c.id=".Yii::app()->user->getIDc()."
-        AND sv.id_viaje=".$id."
-        GROUP BY s.id")
-        ->queryAll();
-        $las = Yii::app()->db->createCommand("SELECT ut.* 
-      FROM uploadtemp as ut 
-      INNER JOIN (
-        SELECT MAX(id) as id, id_viaje 
-        FROM escalon_viaje_ubicacion 
-        WHERE id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion
-        JOIN solicitud_tanques st ON st.id_tanque=ut.id_tanque")
-    ->queryAll();
-    foreach($solicitudes as $soli){
-    
-    if(isset($las)){
-      $last[]=$las;
-    }
-    fb($last);
-    }
-          }
-        
-    $return['result'] = 0 ;
-    $return['html'] = "";
-    
-    $flag = true;
-    $u=0;
-            if(count($last) > 0)
+            $last=Yii::app()->db->createCommand("
+                SELECT ut.*, id_viaje FROM uploadtemp as ut 
+                INNER JOIN 
+                (
+                    SELECT MAX(id) as id, id_viaje 
+                    FROM escalon_viaje_ubicacion 
+                    where id_viaje = ".$id."
+                ) 
+                evu ON evu.id = ut.id_escalon_viaje_ubicacion")->queryAll();
+        }
+        //Cuando es cliente
+        if(Yii::app()->user->getTipoUsuario() == 1)
+        {
+            $solicitudes= Yii::app()->db->createCommand("
+                SELECT * FROM solicitud_tanques st
+                JOIN solicitudes s ON s.id=st.id_solicitud
+                JOIN clientes c ON c.id=s.id_clientes
+                JOIN solicitudes_viaje sv ON sv.id_solicitud=s.id
+                WHERE c.id=".Yii::app()->user->getIDc()."
+                AND sv.id_viaje=".$id."
+                GROUP BY s.id")->queryAll();
+            $las = Yii::app()->db->createCommand("
+                SELECT ut.* 
+                FROM uploadtemp as ut 
+                INNER JOIN 
+                (
+                    SELECT MAX(id) as id, id_viaje 
+                    FROM escalon_viaje_ubicacion 
+                    WHERE id_viaje = {$id}
+                ) 
+                evu ON evu.id = ut.id_escalon_viaje_ubicacion
+                JOIN solicitud_tanques st ON st.id_tanque=ut.id_tanque")->queryAll();
+            foreach($solicitudes as $soli)
             {
-              
-              if(Yii::app()->user->getTipoUsuario()==1){
-                
+                if(isset($las))
+                    $last[] = $las;
+                fb($last);
+            }
+        }
+        $return['result'] = 0 ;
+        $return['html'] = "";
+        $flag = true;
+        $u=0;
+        if(count($last) > 0)
+        {
+            if(Yii::app()->user->getTipoUsuario()==1)
+            {
                 foreach($last as $data)
                 {
                    $return["html"] .= "
@@ -229,60 +238,63 @@ class SiteController extends Controller
                         <div class='tanque-container-titulo'>
                         <span class='titulotanque'> Tanque ".($u+1)."</span></div>
                         <div class='variables-wrapper'> 
-                          <div class='var-oz'>
-                            <div class='icon-oz'></div>
-                            <div class='txt'>{$data[$u]["ox"]}</div>
-                          </div>
-                          <div class='var-ph'>
-                            <div class='icon-ph'></div>
-                            <div class='txt'>{$data[$u]["ph"]}</div>
-                          </div>
-                          <div class='var-tm'>
-                            <div class='icon-tm'></div>
-                            <div class='txt'>{$data[$u]["temp"]}</div>
-                          </div>
+                            <div class='var-oz'>
+                                <div class='icon-oz'></div>
+                                <div class='txt'>{$data[$u]["ox"]}</div>
+                            </div>
+                            <div class='var-ph'>
+                                <div class='icon-ph'></div>
+                                <div class='txt'>{$data[$u]["ph"]}</div>
+                            </div>
+                            <div class='var-tm'>
+                                <div class='icon-tm'></div>
+                                <div class='txt'>{$data[$u]["temp"]} °C</div>
+                            </div>
                         </div>
-                      </div>";
-                      $u++;
-                   }
-              }else{
-                foreach($last as $data)
-                {
-                   $return["html"] .= "
-                    <div class='tanque'>
-                        <div class='tanque-container-titulo'>
-                        <span class='titulotanque'> Tanque ".($u+1)."</span></div>
-                        <div class='variables-wrapper'> 
-                          <div class='var-oz'>
-                            <div class='icon-oz'></div>
-                            <div class='txt'>{$data["ox"]}</div>
-                          </div>
-                          <div class='var-ph'>
-                            <div class='icon-ph'></div>
-                            <div class='txt'>{$data["ph"]}</div>
-                          </div>
-                          <div class='var-tm'>
-                            <div class='icon-tm'></div>
-                            <div class='txt'>{$data["temp"]}</div>
-                          </div>
-                        </div>
-                      </div>";
-                      $u++;
-                   }
-               }
-                 $return['result'] = 1;
-               }
+                    </div>";
+                    $u++;
+                }
+            }
             else
             {
-                  $return['result'] = 0;
-                $return["html"] .="<div class='letreroError'>Este viaje no tiene registros de viaje en ruta, porfavor, p&oacute;ngase en contacto con el administrador.</div>"; 
-        $flag = false;
+                foreach($last as $data)
+                {
+                   $return["html"] .= "
+                        <div class='tanque'>
+                            <div class='tanque-container-titulo'>
+                                <span class='titulotanque'> Tanque ".($u+1)."</span>
+                            </div>
+                            <div class='variables-wrapper'> 
+                                <div class='var-oz'>
+                                    <div class='icon-oz'></div>
+                                    <div class='txt'>{$data["ox"]}</div>
+                                </div>
+                            <div class='var-ph'>
+                                <div class='icon-ph'></div>
+                                <div class='txt'>{$data["ph"]}</div>
+                            </div>
+                            <div class='var-tm'>
+                                <div class='icon-tm'></div>
+                                <div class='txt'>{$data["temp"]} °C</div>
+                            </div>
+                        </div>
+                    </div>";
+                    $u++;
+                }
             }
-         $return['linea'] = $this->GetDistancia($id, $flag);
-          echo json_encode($return);
-    }
-        public function actionPrueba($id) 
+            $return['result'] = 1;
+        }
+        else
         {
+            $return['result'] = 0;
+            $return["html"] .="<div class='letreroError'>Este viaje no tiene registros de viaje en ruta, porfavor, p&oacute;ngase en contacto con el administrador.</div>"; 
+            $flag = false;
+        }
+        $return['linea'] = $this->GetDistancia($id, $flag);
+        echo json_encode($return);
+    }
+    public function actionPrueba($id) 
+    {
       $return['result'] = 0 ;
         $return['html'] = "";
             $last =  Yii::app()->db->createCommand("SELECT v.id,est.identificador FROM viajes as v JOIN estacion as est ON est.id = v.id_estacion where v.id = {$id}")

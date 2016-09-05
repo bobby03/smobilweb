@@ -115,22 +115,22 @@ $(document).ready(function()
                     onComplete: function()
                     {
                         $.colorbox.resize();
-                        $('.tableRow > div:nth-child(5n)').each(function()
-                        {
-                            if(total <= 5)
-                            {
-                                var texto = $(this).text();
-                                var div = $(this);
-//                                setTimeout(reverseGeocoding, delay, texto, 2, div);
-                                reverseGeocoding(texto, 2, div);
-                                delay = delay + 250;
-                            }
-                            else
-                            {
-                                $(this).parent().addClass('hide');
-                            }
-                            total ++;
-                        });
+//                        $('.tableRow > div:nth-child(5n)').each(function()
+//                        {
+//                            if(total <= 5)
+//                            {
+//                                var texto = $(this).text();
+//                                var div = $(this);
+////                                setTimeout(reverseGeocoding, delay, texto, 2, div);
+//                                reverseGeocoding(texto, 2, div);
+//                                delay = delay + 250;
+//                            }
+//                            else
+//                            {
+//                                $(this).parent().addClass('hide');
+//                            }
+////                            total ++;
+//                        });
                         $('.tableRow > div').each(function()
                         {
                             var h = $(this).height();
@@ -414,20 +414,90 @@ $(document).ready(function()
             }
         });
     });
+    function getInfo(id)
+    {
+        var flag3;
+        if(typeof mapDiv == 'undefined')
+            flag3 = true;
+        else
+            flag3 = false;
+        $.ajax(
+        {
+            type: 'GET',
+            url: 'GetDatosViajeRuta',
+            dataType: 'JSON', 
+            data:
+            {
+                viaje: viaje,
+                id: id,
+                flag: flag3
+            },
+            success: function(data2)
+            {
+                if(flag3)
+                {
+                    var flightPlanCoordinates = [];
+                    var total = Object.keys(data2.puntosMapa).length;
+                    for(var j = 0; j < total; j++ )
+                    {
+                        var puntos = {};
+                        puntos.lat = data2.puntosMapa[j]['lat'];
+                        puntos.lng = data2.puntosMapa[j]['lng'];
+                        flightPlanCoordinates.push(puntos);
+                    }
+                    var flightPath = new google.maps.Polyline(
+                    {
+                        path: flightPlanCoordinates ,
+                        geodesic: true,
+                        strokeColor: '#0077B0',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+                    flightPath.setMap(map);
+                    var ubi = flightPlanCoordinates[total/2];
+                    map.setCenter(ubi);
+                }
+                var tiempo = data2.tiempo;
+                var datos = data2.viaje;
+                ubi = datos.ubicacion;
+                var index = ubi.indexOf(',');
+                var lat = parseFloat(ubi.substring(1,index));
+                var index2 = ubi.length;
+                var lng = parseFloat(ubi.substring(index-1,index2-1));
+                if(flag3 == false)
+                {
+                    ubi = {lat:lat, lng:lng};
+                    var marker = new google.maps.Marker(
+                    {        
+                        position: ubi,
+                        map: map
+                    });
+                    markers.push(marker);
+                    map.setCenter(ubi);
+                }
+                $('.txtA.ultimo span').text(data2.ultimo);
+                $('.datosWraper span.tiempo').text(tiempo);
+                $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
+                if(firstTime) reverseGeocoding(datos.ubicacion, 1, false);
+                $('.datosWraper span.distancia').text(data2.distancia);
+            },
+            error: function(a, b, c)
+            {
+                console.log(a, b, c)
+            }
+        });
+    }
     function graficarPorTanque()
     {
         $('.allTanques[data-id="1"] .tanque').each(function()
         {
             var id = $(this).find('.grafica').attr('data-tanque');
+            if(flag2)
+                getInfo(id);
             var i = 1;
             $(this).find('.grafica div').each(function()
             {
                 var flag = $(this).attr('data-num');
-                var flag3;
-                if(typeof mapDiv == 'undefined')
-                    flag3 = true;
-                else
-                    flag3 = false;
                 $.ajax(
                 {
                     type: 'GET',
@@ -437,9 +507,7 @@ $(document).ready(function()
                     {
                         viaje: viaje,
                         id: id,
-                        flag: flag,
-                        flag2: flag2,
-                        flag3: flag3
+                        flag: flag
                     },
                     success: function(data2)
                     {
@@ -447,56 +515,6 @@ $(document).ready(function()
                         if(data2 != '' && data2 != null)
                             var myChart = new Chart(ctx, data2.grafica);
                         i ++;
-                        if(flag2)
-                        {
-                            if(flag3)
-                            {
-                                var flightPlanCoordinates = [];
-                                var total = Object.keys(data2.puntosMapa).length;
-                                for(var j = 0; j < total; j++ )
-                                {
-                                    var puntos = {};
-                                    puntos.lat = data2.puntosMapa[j]['lat'];
-                                    puntos.lng = data2.puntosMapa[j]['lng'];
-                                    flightPlanCoordinates.push(puntos);
-                                }
-                                var flightPath = new google.maps.Polyline(
-                                {
-                                    path: flightPlanCoordinates ,
-                                    geodesic: true,
-                                    strokeColor: '#0077B0',
-                                    strokeOpacity: 1.0,
-                                    strokeWeight: 2
-                                });
-                                flightPath.setMap(map);
-                                var ubi = flightPlanCoordinates[total/2];
-                                map.setCenter(ubi);
-                            }
-                            var tiempo = data2.tiempo;
-                            var datos = data2.viaje;
-                            ubi = datos.ubicacion;
-                            var index = ubi.indexOf(',');
-                            var lat = parseFloat(ubi.substring(1,index));
-                            var index2 = ubi.length;
-                            var lng = parseFloat(ubi.substring(index-1,index2-1));
-                            if(flag3 == false)
-                            {
-                                ubi = {lat:lat, lng:lng};
-                                var marker = new google.maps.Marker(
-                                {        
-                                    position: ubi,
-                                    map: map
-                                });
-                                markers.push(marker);
-                                map.setCenter(ubi);
-                            }
-                            $('.txtA.ultimo span').text(data2.ultimo);
-                            $('.datosWraper span.tiempo').text(tiempo);
-                            $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
-                            if(firstTime) reverseGeocoding(datos.ubicacion, 1, false);
-                            $('.datosWraper span.distancia').text(data2.distancia);
-                            flag2 = false;
-                        }
                     },
                     error: function(a,b,c)
                     {
@@ -577,11 +595,11 @@ $(document).ready(function()
                     window.alert('No results found');
               
             } 
-//             else
-//             {
-//                 // reverseGeocoding(direccion, flag, div);
-// //                window.alert('Geocoder failed due to: ' + status);
-//             }
+             else
+             {
+                  reverseGeocoding(direccion, flag, div);
+ //                window.alert('Geocoder failed due to: ' + status);
+             }
         });
         firstTime = false;
 

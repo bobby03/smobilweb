@@ -168,8 +168,7 @@ eof;
                 <?php echo $form->labelEx($direccion,'descripcion'); ?>
                 <?php echo $form->textField($direccion,"domicilio[1][descripcion]",array('size'=>60,'maxlength'=>250,'class'=>'OtroDom')); ?>
             </div>
-            <div class="row buttons">
-
+            <div class="row buttons mapaB">
                 <div class="aceptarDireccion">Aceptar</div>
                 <div class="cancelarDireccion">Cancelar</div>
             </div>
