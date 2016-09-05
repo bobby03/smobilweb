@@ -99,7 +99,7 @@
                         <label class="letreros">Teléfono celular <span class="required">*</span></label>
                             <div class="form-cLarge">
                             <?php echo $form->textField($model,'cel',array('size'=>14,'minlength'=>14)); ?>
-                            <?php echo $form->error($model,'ext'); ?>
+                            <?php echo $form->error($model,'cel'); ?>
                            </div>
                     </div>
                 </div>

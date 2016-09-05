@@ -32,7 +32,7 @@ class ClientesDomicilio extends SMActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('domicilio, ubicacion_mapa, descripcion', 'required'),
+			array('domicilio, ubicacion_mapa', 'required'),
 			array('id_cliente', 'numerical', 'integerOnly'=>true),
 			array('domicilio, ubicacion_mapa, descripcion', 'length', 'max'=>250),
 			// The following rule is used by search().

@@ -367,7 +367,7 @@ margin-bottom:10px;
 #Clientes_cel.error{
  background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
-.error .#Clientes_cel{
+.error #Clientes_cel{
   background-image: url('../../images/clientes/iconoTelefono.png'), url('../../images/form/bg_error.png');
 }
 

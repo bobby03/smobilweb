@@ -42,7 +42,7 @@ class Cepa extends CActiveRecord
 		return array(
 			array('id_especie, nombre_cepa, temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'required','message'=>'Campo obligatorio'),
 			array('id_especie', 'numerical', 'integerOnly'=>true),
-			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical'),
+			array('temp_min, temp_max, ph_min, ph_max, ox_min, ox_max, cond_min, cond_max, orp_min, orp_max', 'numerical','message'=>'Número entero'),
 			array('nombre_cepa', 'length', 'max'=>50),
             array('nombre_cepa','compNombre','id_especie'),
                     
@@ -186,6 +186,11 @@ eof;
         {
             $cepa = Cepa::model()->findByPk($id);
             return $cepa;
+        }
+        public function getEspecie($id)
+        {
+            $cepa = Cepa::model()->findByPk($id);
+            return Especie::model()->findByPk($cepa->id_especie)->nombre;
         }
     public function adminSearch()
     {

@@ -1,7 +1,7 @@
 <?php
     $baseUrl = Yii::app()->baseUrl;
 ?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDaG6uwH8h6edDH6rPh0PfGgq6yEqSedgg"></script>
 <script type="text/javascript" src="<?php echo $baseUrl;?>/js/plugins/google-maps/jquery.ui.map.full.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.js"></script>
 <?php
@@ -48,7 +48,10 @@
             </div>
         </div>
     </div>
+
+
 <?php
+
         $emsg=0;
         if($cantTanques['cTan']==0)
             $emsg=1;
@@ -76,9 +79,18 @@
             <div id='enLeft'><h2>Estación sin datos</h2></div>
         </div>
 
-        <!-- Gráficas por parametro -->
-        
 
+
+        <!-- Gráficas por parametro -->
+        <div class ='backMonitoreo'>
+            <?php if( $siembra->status ==1 ): ?>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado#proceso">Regresar</a>
+            <?php elseif( $siembra->status==2 ): ?>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado#historico">Regresar</a>
+            <?php else: ?>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado">Regresar</a>
+            <?php endif;?>
+        </div>
         <div class="tab" data-tab='1'>
             <?php
             $l=true;
@@ -193,13 +205,8 @@
             </div>
         </div>
     <?php endif;?>
-        <?php if( $siembra->status ==1 ): ?>
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado#proceso">Regresar</a>
-        <?php elseif( $siembra->status==2 ): ?>
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado#historico">Regresar</a>
-        <?php else: ?>
-            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campsensado">Regresar</a>
-        <?php endif;?>
+        
     </div>
+      
 </div>
 <?php  $cs->registerCssFile($baseUrl.'/css/monitoreo/monitoreo.css');?>
