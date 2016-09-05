@@ -2,108 +2,135 @@
 /* @var $this SiteController */
 
 
-$baseUrl = Yii::app()->baseUrl;
-$cs = Yii::app()->getClientScript();
-$cs->registerCssFile($baseUrl.'/css/inicio/inicio.css');
-$cs->registerCssFile($baseUrl.'/css/inicio/estilo.css');
-$cs->registerScriptFile($baseUrl.'/js/inicio/inicio.js');
-$cs->registerScriptFile($baseUrl.'/js/inicio/estaciones.js');
-$this->pageTitle=Yii::app()->name;
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerCssFile($baseUrl.'/css/inicio/inicio.css');
+    $cs->registerCssFile($baseUrl.'/css/inicio/estilo.css');
+    $cs->registerScriptFile($baseUrl.'/js/inicio/inicio.js');
+    $cs->registerScriptFile($baseUrl.'/js/inicio/estaciones.js');
+    $this->pageTitle=Yii::app()->name;
 
 // IF NOT LOGGED IN, GO TO LOGIN SCREEN
-if(Yii::app()->user->isGuest){ $this->redirect(Yii::app()->homeUrl); }
-
+    if(Yii::app()->user->isGuest)
+        $this->redirect(Yii::app()->homeUrl)
 ?>
 <div class="principal index">
-				<h1 class="barraViajeGranja">
-				    <div class="tabs">
-			        	<div id="viaje" class="selected">Viajes</div>
-			       		<?php 
-			       		  if(Yii::app()->user->getTipoUsuario()!=1):?>   
-			       			<div id="granja" >Siembras</div>
-			       		<?php endif;?>
+    <h1 class="barraViajeGranja">
+        <div class="tabs">
+            <div id="viaje" class="selected">Viajes</div>
+            <?php if(Yii::app()->user->getTipoUsuario()!=1):?>   
+                <div id="granja" >Siembras</div>
+            <?php endif;?>
+        </div>
+    </h1>
+    <?php if($enruta != null): ?>
+        <div class="container-viaje">
+            <div class="container-box">
+                <div class="divBox1">
+                    <div class="divTitulo1">
+                        <label class="tituloV1">1. Selecciona un viaje:</label>
+                    </div>	
+                    <div class="containerTable">
+                        <div class ="divTable">
+                            <div class="divThead">	
+                                <label class="tituloV2">Viajes en ruta</label>
+                            </div>
+                            <div class= "divTbody">	
+                                <?php foreach($enruta as $data ):?>
+                                    <div class='divTr' data-id="<?php echo $data['id'];?>">
+                                        <div class='divTd'>
+                                            <div class='iconCamion'></div>
+                                            <div class='estiloV1'><?php echo $data['identificador'];?></div>
+                                        </div>
+                                        <div class='divTd'>
+                                            <div class='iconChofer'></div>
+                                            <div class='estiloV1'><?php echo Personal::model()->getChofer($data['id']);?></div>
+                                        </div>
+                                        <div class='divTd'>
+                                            <div class='iconPersonal'></div>
+                                            <div class='estiloV1'><?php echo $data['nombre'].' '.$data['apellido'];?></div>
+                                        </div>
+                                    </div>	
+                                <?php endforeach;?>
+                            </div>
+                        </div>
                     </div>
-                </h1>
-                <?php if($enruta != null) { ?>
-			    <div class="container-viaje">
-			    	<div class="container-box">
-			    			<div class="divBox1">
- 			    				<div class="divTitulo1">
-			    					<label class="tituloV1">1. Selecciona un viaje:</label>
-			    				</div>	
-								<div class="containerTable">
-										<div class ="divTable">
-											<div class="divThead">	
-												<label class="tituloV2">Viajes en ruta</label>
-											</div>
-											<div class= "divTbody">	
-												  	<?php foreach($enruta as $data ) {
-												  	echo "<div class='divTr' data-id= '{$data['id']}'>";
-												    			echo "<div class='divTd'><div class='iconCamion'></div><label class='estiloV1'>".$data['identificador']."</label></div>";
-												    			echo "<div class='divTd'><div class='iconChofer'></div><label class='estiloV1'>".Personal::model()->getChofer($data['id'])."</label></div>";
-												    			echo "<div class='divTd'><div class='iconPersonal'></div><label class='estiloV1'>".$data['nombre']." ".$data['apellido']."</label></div>";
-												    	echo"</div>";
-												    		}
-										    			?>
-										  </div>	
-								    	</div>
-  					    	
-  					    		</div>
-  
-  					    		<div class="container-line">
-									<h3 class="container-line2"></h3><h3 class="container-line1"></h3>
-  								</div>
-  							</div>
-						<div class="divBox2">
-								<div class="divTitulo1">
-  									<label class = "tituloV1">2. Contenido:</label>
-  								</div>
-  								<div class="contenedor-tanques"></div>
-								<div class="container-lineBox"><h3 class="container-line2"></h3></div> 							</div>
-  
-  					</div>
-  					<div class="container-box">
-						<div class="separador1"></div>
- 						<div class="containerRuta"><div class="containerR1"></div></div>
- 						<div class="separador2"></div>		
-					</div>
-					<div class="container-box">
-						<div class="container-table viaje">
-								<div class = "divTable2">
- 								<div class="divThead2">
- 									<label class="tituloV2">Viajes disponibles</label>
- 								</div>
- 								<div class="divTbody2">	
-								  	<?php foreach($enespera as $data ) {
-										  	if((int)$data["disponibles"] > 0){	
-										  		echo "<div class='divTr2'>";
- 										    			echo "<div class='divCamion1'><div class='divIcon2'><div class='iconCamion1'></div></div><div class='divText2'><label class='titulo3'>Camión</label><br><label class='estilov2'>".$data['nombre']."</lablel></div></div>";
- 										    			echo "<div class='divTanque1'><div class='divIcon2'><div class='iconTanque1'></div></div><div class='divText3'><label class='titulo3'>Tanques disponibles</label><br><label class='estilov2'>".$data['disponibles']."</lablel></div></div>";
- 										    			echo "<div class='divUbicacion1'><div class='divIcon2'><div class='iconGPS1'></div></div><div class='divText2'><label class='titulo3'>Último destino</label><br><label class='estilov2'>".$data['ultimo']."</lablel></div></div>";
- 										    			echo "<div class='divTdBoton'><a href='".$baseUrl."/index.php/viajes/".$data['id_viaje']."'><div class='botonIr'><label class='titulo2'>Ir</label></div></a></div>";
-  										    			echo '<br>';
-										    	echo "</div>";
-								    		}
-								    	}
-							    			?>
-							   	    </div>	
- 					    	</div>
-  			    		</div>
- 			  
-  					</div>
-  				</div>
-  			  
-  				<?php } 
-  					else 
-  					{ 
-  						echo " <div id='no-viajes'>
-  									<div class='container-viaje center'>
-									</div>
-							   </div>"
-									; 
-					} ?>
-  			  
-  			  <?php if($estaciones != null) { ?>
+                    <div class="container-line">
+                        <h3 class="container-line2"></h3>
+                        <h3 class="container-line1"></h3>
+                    </div>
+                </div>
+                <div class="divBox2">
+                    <div class="divTitulo1">
+                        <label class = "tituloV1">2. Contenido:</label>
+                    </div>
+                    <div class="contenedor-tanques"></div>
+                    <div class="container-lineBox">
+                        <h3 class="container-line2"></h3>
+                    </div> 							
+                </div>
+            </div>
+            <div class="container-box">
+                <div class="separador1"></div>
+                <div class="containerRuta"><div class="containerR1"></div></div>
+                <div class="separador2"></div>		
+            </div>
+            <div class="container-box">
+                <div class="container-table viaje">
+                    <div class = "divTable2">
+                        <div class="divThead2">
+                            <label class="tituloV2">Viajes disponibles</label>
+                        </div>
+                        <div class="divTbody2">	
+                            <?php foreach($enespera as $data ):?>
+                                <?php if((int)$data["disponibles"] > 0):?>	
+                                    <div class='divTr2'>
+                                        <div class='divCamion1'>
+                                            <div class='divIcon2'>
+                                                <div class='iconCamion1'></div>
+                                            </div>
+                                            <div class='divText2'>
+                                                <div class='titulo3'>Camión</div>
+                                                <div class='estilov2'><?php echo $data['nombre'];?></div>
+                                            </div>
+                                        </div>
+                                        <div class='divTanque1'>
+                                            <div class='divIcon2'>
+                                                <div class='iconTanque1'></div>
+                                            </div>
+                                            <div class='divText3'>
+                                                <div class='titulo3'>Tanques disponibles</div>
+                                                <div class='estilov2'><?php echo $data['disponibles'];?></div>
+                                            </div>
+                                        </div>
+                                        <div class='divUbicacion1'>
+                                            <div class='divIcon2'>
+                                                <div class='iconGPS1'></div>
+                                            </div>
+                                            <div class='divText2'>
+                                                <div class='titulo3'>Último destino</div>
+                                                <div class='estilov2'><?php echo $data['ultimo'];?></div>
+                                            </div>
+                                        </div>
+                                        <div class='divTdBoton'>
+                                            <a href="<?php echo $baseUrl.'/index.php/viajes/'.$data['id_viaje'];?>">
+                                                <div class='botonIr'><label class='titulo2'>Ir</label></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+                            <?php endforeach;?>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php else :?>
+            <div id='no-viajes'>
+                <div class='container-viaje center'></div>
+            </div>
+        <?php endif;?>  
+        <?php if($estaciones != null) { ?>
   			  <?php   if(Yii::app()->user->getTipoUsuario()!=1):?>
 
   			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->

@@ -264,8 +264,9 @@ div.grafica > div
 }
 .tablaTitulos span
 {
-    width: 175px;
-    text-indent: 18px;
+    width: 218.75px;
+    /*text-indent: 18px;*/
+    text-align: center;
     display: block;
     float: left;
     padding-bottom: 15px;
@@ -295,7 +296,7 @@ div.grafica > div
 .tablaWraper > div > div
 {
     float: left;
-    width: 175px;
+    width: 218.75px;
     text-align: center;
     /*line-height: 50px;*/
     /*height: 50px;*/
@@ -403,9 +404,9 @@ div.grafica > div
     cursor: pointer;
     text-align: center;
     line-height: 42px;
-    margin: 0 10px 0 10px ;
     height: 42px;
     font-family: 'Roboto-Bold';
+    width: 20%;
 }
 .menuHistorial div.selected
 {

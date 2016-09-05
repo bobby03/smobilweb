@@ -12,8 +12,6 @@ $(document).ready(function()
         $.colorbox(
         {
             html: html,
-            width:'600px', 
-            height:'525px',
             onComplete: function()
             {
                 googleMap();
@@ -50,7 +48,7 @@ $(document).ready(function()
                                 {
                                     $('#ClientesDomicilio_domicilio').append('<option value="'+data.id+'" selected>'+domicilio+'</option>');
                                     $('#ClientesDomicilio_domicilio').trigger("chosen:updated");
-                                    $('.row.buttons').removeClass('hide');
+                                    $('#ClientesDomicilio_domicilio').trigger("change");
                                     $.colorbox.close();
                                 }
                                 else
@@ -68,6 +66,7 @@ $(document).ready(function()
                 {
                     $.colorbox.close();
                 });
+                $.colorbox.resize();
             }
         });
     });
