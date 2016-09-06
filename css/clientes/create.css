@@ -26,13 +26,13 @@
     padding-left: 35px;
     border-left: 0;
 }
-.table-view .dato:nth-child(7) .data
-{
+.table-view .dato:nth-child(7) .data {
     background-image: url('../../images/menu/usuarios.svg'), url('../../images/form/bg.png');
-    background-position: 15px 9px, left;
+    background-position: 6px 3px, left;
     background-repeat: no-repeat;
     padding-left: 35px;
     border-left: 0;
+    background-size: 20px 19px , 14%;
 }
 .table-view .dato:nth-child(6) .data,
 .table-view .dato:nth-child(8) .data,

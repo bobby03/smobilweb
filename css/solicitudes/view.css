@@ -1,6 +1,9 @@
 div.form{
 	margin-top: 0 !important;
 }
+.dato .data{
+      padding-left: 40px;
+}
 .dato:nth-child(1) .data
 {
     background-image: url('../../images/solicitud/IconoClientesSolicitud.png'), 
@@ -8,7 +11,7 @@ div.form{
     background-position: 6px 3px,left;
     background-repeat: no-repeat;
     border-left: 0;
-    padding-left: 30px;
+
 }
 .dato:nth-child(2) .data
 {
@@ -24,7 +27,7 @@ div.form{
     background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
     background-position: 7px 6px, left;
     background-repeat: no-repeat;
-    padding-left: 30px;
+  
     border-left: 0;
 }
 .dato:nth-child(9) .data
@@ -33,13 +36,13 @@ div.form{
     background-position: 7px 5px,left;
     background-repeat: no-repeat;
     border-left: 0;
-    padding-left: 30px;
+  
 }
 .dato:nth-child(10) .data
 {
     background-image: url('../../images/camion/iconoIdentificador.png'), url('../../images/form/bg.png');
     background-position: 8px 8px,left;
     background-repeat: no-repeat;
-    padding-left: 35px;
+    
     border-left: 0;
 }

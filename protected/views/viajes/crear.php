@@ -143,7 +143,7 @@
             <div class="siguiente dos">Siguiente</div>
             <div class="bUno fBoton regresar">Regresar</div>
         </div>
-        <div class="pedidosWraper"></div>   
+        <div class="pedidosWrapper"></div>   
     </div>
     <div class="tab last hide" data-tab="3">
         <div class='row buttons floating'>

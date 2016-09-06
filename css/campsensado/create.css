@@ -504,6 +504,13 @@ div.chosen-container.error > ul {
     width: 135px;
     height: 35px;
     line-height: 35px;
+    float: right;
+}
+div.form input[type="submit"] {
+    float: right;
+}
+.gBoton.regresar.dos.new {
+        margin-right: 76px;
 }
 .gBoton.regresar.uno,
 .botonesWrapper2 > * {
@@ -515,4 +522,19 @@ div.tab.last div.row.buttons.floating input {
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
     float: right;
+}
+
+.siguiente {
+    float: right;
+}
+
+a.gBoton.nboton {
+    float: right;
+    margin-right: 76px;
+}
+
+.botonesWrapper:after {
+    content: "";
+    clear: both;
+    display: block;
 }
