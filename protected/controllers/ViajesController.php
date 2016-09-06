@@ -875,7 +875,28 @@ eof;
             ->join('clientes as cli', 'cli.id = cliD.id_cliente')
             ->where("solV.id_viaje = $viaje")
             ->queryAll();
-        $return =<<<EOF
+        $return = array();
+        $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
+//        print_r($recorrido);
+        $arregloPosicion = new ArrayObject();
+        $i = 0;
+        $hay = strlen($recorrido[0]->ubicacion);
+        $coord = substr($recorrido[0]->ubicacion, 1, $hay-2);
+        $p2 = explode(",", $coord);
+        $arregloPosicion->append(array('lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]));
+        foreach($recorrido as $data)
+        {
+            if($i % 15 == 0)
+            {
+                $hay = strlen($data->ubicacion);
+                $coord = substr($data->ubicacion, 1, $hay-2);
+                $p2 = explode(",", $coord);
+                $arregloPosicion->append((array)['lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]]);
+            }
+            $i++;
+        }
+        $return['puntosMapa'] = $arregloPosicion;
+        $return['html'] = <<<EOF
             <div class="mapaPopup">
                 <div class="titulo">Mapa</div>
                 <div id="mapa2"></div>
@@ -885,7 +906,7 @@ eof;
 EOF;
         foreach($direcciones as $data)
         {
-            $return =$return.<<<EOF
+            $return['html'] = $return['html'].<<<EOF
                         <div class="entregaPopup">
                             {$data['nombre_empresa']}
                                 <br>
@@ -893,7 +914,7 @@ EOF;
                         </div>
 EOF;
         }
-        $return =$return.<<<EOF
+        $return['html'] = $return['html'].<<<EOF
                     </div>
                 </div>
            </div>
@@ -912,7 +933,7 @@ EOF;
         $arregloPosicion->append(array('lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]));
         foreach($recorrido as $data)
         {
-            if($i % 30 == 0)
+            if($i % 15 == 0)
             {
                 $hay = strlen($data->ubicacion);
                 $coord = substr($data->ubicacion, 1, $hay-2);
@@ -924,7 +945,7 @@ EOF;
         $return['puntosMapa'] = $arregloPosicion;
         $return['html'] ='
             <div class="mapaPopup" style="height: auto !important;">
-                <div class="titulo">Ruta completa(escalones de 30 minutos)</div>
+                <div class="titulo">Ruta completa (escalones de 30 minutos)</div>
                 <div id="mapa2"></div>
            </div>';
         echo json_encode($return);
@@ -1136,16 +1157,13 @@ EOF;
         }
         echo json_encode($return);
     }
-    public function actionGetDatosViajeRuta($viaje, $id, $flag)
+    public function actionGetDatosViajeRuta($viaje, $flag)
     {
         $datos = Yii::app()->db->createCommand()
-            ->select('esc.id as id_escalon, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
-            ->order('upT.id DESC')
-            ->from('escalon_viaje_ubicacion as esc')
-            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
-            ->where("esc.id_viaje = $viaje")
-            ->andWhere("upT.id_tanque = $id")
+            ->from('escalon_viaje_ubicacion')
+            ->where("id_viaje = $viaje")
             ->limit(1)
+            ->order('id DESC')
             ->queryRow();
         $return = array();
         $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");

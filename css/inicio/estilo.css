@@ -67,49 +67,48 @@
 .liest{
 	margin:0px;
 	width: auto;
-	height: 42px;
+	/*height: 42px;*/
 	border-bottom: 1.5px dashed #aaa;
 
+}
+.liest:last-child
+{
+    border-bottom: 0;
+}
+.liest:after
+{
+    display: block;
+    clear: both;
+    content: '';
 }
 .liest.selected{
 	background-color: #21B7C7;
 }
-.resp{
-	line-height: 40px;
-	float:left;
-	margin: 0px;
-	margin-left:10px;
-	width: 30%;
-	font-family: 'Roboto-Regular';
-	font-weight: bold;
-
+div[data-estacion] > div
+{
+    float: left;
+    width: 33%;
 }
-.est{
-	line-height: 40px;
-	float:left;
-	margin: 0px;
-	margin-left:10px;
-	width: 20%;
-	font-family: 'Roboto-Regular';
-	font-weight: bold;
+.est
+{
+    float:left;
+    margin-left:37px;
+    width: 148px;
+    font-family: 'Roboto-Bold';
 }
-.estIco{
-	margin-top:8px;
-	line-height: 40px;
-	margin-left:10px;
-	float:left;
-	width: 17px;
-	height: 19px;
-	background-image: url("../../images/dashboard/iconoClientes.png");
+div[data-estacion] > div:nth-child(1)
+{
+    background-image: url("../../images/dashboard/iconoClientes.png");
+    background-size: 17px 19px;
+    background-position: left 10px center;
+    background-repeat: no-repeat;
 }
-.respIco{
-	margin-top:10px;
-	line-height: 40px;
-	margin-left:10px;
-	float:left;
-	width: 12px;
-	height: 15px;
+div[data-estacion] > div:nth-child(2)
+{
 	background-image: url("../../images/dashboard/iconoPersonal.png");
+        background-size: 12px 15px;
+        background-position: left 10px center;
+        background-repeat: no-repeat;
 }
 .lcontenido{
 	width: 569px;
