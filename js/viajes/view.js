@@ -13,9 +13,10 @@ $(document).ready(function()
     var total = 1;
     var delay = 250;
     Chart.defaults.global.defaultFontSize = 14;
+    var map;
     if(typeof mapDiv != 'undefined')
     {
-        var map = new google.maps.Map(mapDiv, 
+        map = new google.maps.Map(mapDiv, 
         {
             center: myDir,
             zoom: 11,
@@ -29,7 +30,7 @@ $(document).ready(function()
     }
     else
     {
-        var map = new google.maps.Map(mapDiv2, 
+        map = new google.maps.Map(mapDiv2, 
         {
             center: myDir,
             zoom: 8,
@@ -434,6 +435,7 @@ $(document).ready(function()
             },
             success: function(data2)
             {
+                var datos = data2.viaje;
                 if(flag3)
                 {
                     var flightPlanCoordinates = [];
@@ -454,28 +456,29 @@ $(document).ready(function()
                         strokeWeight: 2
                     });
                     flightPath.setMap(map);
-                    var ubi = flightPlanCoordinates[total/2];
-                    map.setCenter(ubi);
+                    var ubi2 = flightPlanCoordinates[total/2];
+                    map.setCenter(ubi2);
                 }
-                var tiempo = data2.tiempo;
-                var datos = data2.viaje;
-                ubi = datos.ubicacion;
-                var index = ubi.indexOf(',');
-                var lat = parseFloat(ubi.substring(1,index));
-                var index2 = ubi.length;
-                var lng = parseFloat(ubi.substring(index-1,index2-1));
-                if(flag3 == false)
+                else
                 {
-                    ubi = {lat:lat, lng:lng};
+                    ubi = datos.ubicacion;
+                    var str = ubi.split(",");
+                    console.log(str);
+                    var lat = parseFloat(str[0].substring(1));
+                    var index2 = str[1].length;
+                    var lng = parseFloat(str[1].substring(1,index2));
+                    var ubi2 = {lat:lat, lng:lng};
+                    console.log(ubi2);
                     var marker = new google.maps.Marker(
                     {        
-                        position: ubi,
+                        position: ubi2,
                         map: map
                     });
                     markers.push(marker);
-                    map.setCenter(ubi);
+                    map.setCenter(ubi2);
                 }
                 $('.txtA.ultimo span').text(data2.ultimo);
+                var tiempo = data2.tiempo;
                 $('.datosWraper span.tiempo').text(tiempo);
                 $('.datosViaje .titulo span').text('Ultima actualización: '+datos.fecha+' '+datos.hora);
                 if(firstTime) reverseGeocoding(datos.ubicacion, 1, false);
@@ -483,7 +486,7 @@ $(document).ready(function()
             },
             error: function(a, b, c)
             {
-                console.log(a, b, c)
+                console.log(a, b, c);
             }
         });
     }
@@ -493,7 +496,10 @@ $(document).ready(function()
         {
             var id = $(this).find('.grafica').attr('data-tanque');
             if(flag2)
-                getInfo(id);
+            {
+                getInfo();
+                flag2 = false;
+            }
             var i = 1;
             $(this).find('.grafica div').each(function()
             {
@@ -503,6 +509,7 @@ $(document).ready(function()
                     type: 'GET',
                     url: 'GetTanqueGrafica',
                     dataType: 'JSON', 
+                    async: false,
                     data:
                     {
                         viaje: viaje,
@@ -602,9 +609,6 @@ $(document).ready(function()
              }
         });
         firstTime = false;
-
-        
-        
     }
     $('#map').click(function()
     {
@@ -617,29 +621,46 @@ $(document).ready(function()
             {
                 viaje: viaje
             },
-            success: function(data)
+            success: function(data2)
             {
                 $.colorbox(
                 {
-                    html:data,
+                    html:data2.html,
                     onComplete: function()
                     {
-                        var mapDiv2 = $('#mapa')[0];
+                        var mapDiv2 = $('#mapa2')[0];
                         var map2 = new google.maps.Map(mapDiv2, 
                         {
                             center: ubi,
-                            zoom: 15,
-                            disableDefaultUI: true,
-                            draggable: false,
-                            zoomControl: false,
-                            scrollwheel: false,
-                            disableDoubleClickZoom: true
+                            zoom: 15
                         });
-                        var marker = new google.maps.Marker(
-                        {        
-                            position: ubi,
-                            map: map2
+                        var flightPlanCoordinates = [];
+                        var total = Object.keys(data2.puntosMapa).length;
+                        console.log(data2.puntosMapa);
+                        for(var j = 0; j < total; j++ )
+                        {
+                            var puntos = {};
+                            puntos.lat = data2.puntosMapa[j]['lat'];
+                            puntos.lng = data2.puntosMapa[j]['lng'];
+                            flightPlanCoordinates.push(puntos);
+                            var marker = new google.maps.Marker(
+                            {        
+                                position: puntos,
+                                map: map2
+                            });
+                            markers.push(marker);
+                        }
+                        var flightPath = new google.maps.Polyline(
+                        {
+                            path: flightPlanCoordinates ,
+                            geodesic: true,
+                            strokeColor: '#0077B0',
+                            strokeOpacity: 1.0,
+                            strokeWeight: 2
                         });
+                        flightPath.setMap(map2);
+                        var ubi = flightPlanCoordinates[0];
+                        map2.setCenter(ubi);
                     }
                 });
                 
