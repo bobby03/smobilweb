@@ -105,11 +105,12 @@ float:left;
 
 
 #Usuarios_usuario{
-  background-image: url('../../images/usuarios/usuario.png'), url('../../images/usuarios/bg.png');
-  background-position: 8px 5px,left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  border-left:0;
+    background-image: url('../../images/usuarios/usuariosMasChico.svg'), url('../../images/usuarios/bg.png');
+    background-position: 5px 4px,left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+    background-size: 21px 19px, 30px 100px;
 }
 
 #Usuarios_tipo_usr{
@@ -129,11 +130,12 @@ float:left;
 }
 
 #clienteList{
-  background-image: url('../../images/usuarios/cliente.png'), url('../../images/usuarios/bg.png');
-  background-position: 8px 5px,left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  border-left:0;
+    background-image: url('../../images/usuarios/iconoClientesSmall.svg'), url('../../images/usuarios/bg.png');
+    background-position: 7px 1px,left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+    background-size: 17px 25px, 30px 28px;
 }
 
 
