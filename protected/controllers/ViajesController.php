@@ -933,7 +933,7 @@ EOF;
     {
         return $x * pi() / 180;
     }
-    public function actionGetTanqueGrafica($viaje, $id, $flag, $flag2, $flag3)
+    public function actionGetTanqueGrafica($viaje, $id, $flag)
     {
         $datos = Yii::app()->db->createCommand()
             ->select('esc.id, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
@@ -945,76 +945,6 @@ EOF;
             ->limit(1)
             ->queryRow();
         $return = array();
-        if($flag2)
-        {
-            $d = 0;
-            $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
-            if($flag3)
-            {
-                $arregloPosicion = new ArrayObject();
-                $i = 1;
-                $hay = strlen($recorrido[0]->ubicacion);
-                $coord = substr($recorrido[0]->ubicacion, 1, $hay-2);
-                $p2 = explode(",", $coord);
-                $arregloPosicion->append(array('lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]));
-                foreach($recorrido as $data)
-                {
-                    if($i % 30 == 0)
-                    {
-                        $hay = strlen($data->ubicacion);
-                        $coord = substr($data->ubicacion, 1, $hay-2);
-                        $p2 = explode(",", $coord);
-                        $arregloPosicion->append((array)['lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]]);
-                    }
-                    $i++;
-                }
-                $return['puntosMapa'] = $arregloPosicion;
-            }
-            $p1 = $p2 = array();
-            foreach($recorrido as $data)
-            {
-                if($d == 0)
-                {
-                    $p1[0] = Yii::app()->params['locationLat'];
-                    $p1[1] = Yii::app()->params['locationLon'];
-                }
-                $hay = strlen($data->ubicacion);
-                $coord = substr($data->ubicacion, 1, $hay-1);
-                $p2 = explode(",", $coord);
-//                  $p2[0] = ();
-                $R = 6378137; // Earth’s mean radius in meter
-                $dLat = $this->rad($p2[0] - $p1[0]);
-                $dLong = $this->rad($p2[1] - $p1[1]);
-                $a = sin($dLat / 2) * sin($dLat / 2) +
-                  cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
-                  sin($dLong / 2) * sin($dLong / 2);
-                $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-                $d = $d + ($R * $c);
-                $p1[0] = $p2[0];
-                $p1[1] = $p2[1];
-            }
-            $d = $d/1000;
-            $return['distancia'] = round($d, 2).' Km';
-            $viajes = Viajes::model()->findByPk($viaje);
-            $empieza = new DateTime($viajes->fecha_salida.' '.$viajes->hora_salida);
-            $termina = new DateTime($datos['fecha'].' '.$datos['hora']);
-            $interval = $termina->diff($empieza);
-            if($interval->y > 0)                        
-                $return['tiempo'] = $interval->format('%y Años %m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos');
-            elseif($interval->m > 0)
-                $return['tiempo'] = $interval->format('%m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos');
-            elseif($interval->d > 0)
-                $return['tiempo'] = $interval->format('%d D&iacute;as %h Horas %i Minutos %s Segundos');
-            elseif($interval->h >= 2 )
-                $return['tiempo'] = $interval->format('%h Horas %i Minutos %s Segundos');
-            elseif($interval->h == 1 )
-                $return['tiempo'] = $interval->format('%h Hora %i Minutos %s Segundos');
-            elseif ($interval->m > 0) 
-                $return['tiempo'] = $interval->format('%i Minutos %s Segundos');
-            // $return['tiempo'] = $diferencia->format('%d dias %h horas, %I minutos y %S segundos');
-            $return['ultimo'] = $this->GetDistancia($viaje);
-        }
-        $return['viaje'] = $datos;
         switch ($flag)
         {
             case 1: 
@@ -1045,7 +975,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1085,7 +1015,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1121,7 +1051,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1158,7 +1088,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1194,7 +1124,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1204,6 +1134,87 @@ EOF;
                 );
             break;
         }
+        echo json_encode($return);
+    }
+    public function actionGetDatosViajeRuta($viaje, $id, $flag)
+    {
+        $datos = Yii::app()->db->createCommand()
+            ->select('esc.id as id_escalon, esc.fecha, esc.hora, esc.ubicacion, upT.ox, upT.id_tanque, upT.ph, upT.temp, upT.cond, upT.orp, upT.id')
+            ->order('upT.id DESC')
+            ->from('escalon_viaje_ubicacion as esc')
+            ->join('uploadtemp as upT','upT.id_escalon_viaje_ubicacion = esc.id')
+            ->where("esc.id_viaje = $viaje")
+            ->andWhere("upT.id_tanque = $id")
+            ->limit(1)
+            ->queryRow();
+        $return = array();
+        $recorrido = EscalonViajeUbicacion::model()->findAll("id_viaje = $viaje");
+        if($flag)
+        {
+            $arregloPosicion = new ArrayObject();
+            $i = 1;
+            $hay = strlen($recorrido[0]->ubicacion);
+            $coord = substr($recorrido[0]->ubicacion, 1, $hay-2);
+            $p2 = explode(",", $coord);
+            $arregloPosicion->append(array('lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]));
+            foreach($recorrido as $data)
+            {
+                if($i % 30 == 0)
+                {
+                    $hay = strlen($data->ubicacion);
+                    $coord = substr($data->ubicacion, 1, $hay-2);
+                    $p2 = explode(",", $coord);
+                    $arregloPosicion->append((array)['lat'=>(float)$p2[0], 'lng'=>(float)$p2[1]]);
+                }
+                $i++;
+            }
+            $return['puntosMapa'] = $arregloPosicion;
+        }
+        $p1 = $p2 = array();
+        $d = 0;
+        foreach($recorrido as $data)
+        {
+            if($d == 0)
+            {
+                $p1[0] = Yii::app()->params['locationLat'];
+                $p1[1] = Yii::app()->params['locationLon'];
+            }
+            $hay = strlen($data->ubicacion);
+            $coord = substr($data->ubicacion, 1, $hay-1);
+            $p2 = explode(",", $coord);
+//                  $p2[0] = ();
+            $R = 6378137; // Earth’s mean radius in meter
+            $dLat = $this->rad($p2[0] - $p1[0]);
+            $dLong = $this->rad($p2[1] - $p1[1]);
+            $a = sin($dLat / 2) * sin($dLat / 2) +
+              cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
+              sin($dLong / 2) * sin($dLong / 2);
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $d = $d + ($R * $c);
+            $p1[0] = $p2[0];
+            $p1[1] = $p2[1];
+        }
+        $d = $d/1000;
+        $return['distancia'] = round($d, 2).' Km';
+        $viajes = Viajes::model()->findByPk($viaje);
+        $empieza = new DateTime($viajes->fecha_salida.' '.$viajes->hora_salida);
+        $termina = new DateTime($datos['fecha'].' '.$datos['hora']);
+        $interval = $termina->diff($empieza);
+        if($interval->y > 0)                        
+            $return['tiempo'] = $interval->format('%y Años %m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos');
+        elseif($interval->m > 0)
+            $return['tiempo'] = $interval->format('%m Meses %d D&iacute;as %h Horas %i Minutos %s Segundos');
+        elseif($interval->d > 0)
+            $return['tiempo'] = $interval->format('%d D&iacute;as %h Horas %i Minutos %s Segundos');
+        elseif($interval->h >= 2 )
+            $return['tiempo'] = $interval->format('%h Horas %i Minutos %s Segundos');
+        elseif($interval->h == 1 )
+            $return['tiempo'] = $interval->format('%h Hora %i Minutos %s Segundos');
+        elseif ($interval->m > 0) 
+            $return['tiempo'] = $interval->format('%i Minutos %s Segundos');
+        // $return['tiempo'] = $diferencia->format('%d dias %h horas, %I minutos y %S segundos');
+        $return['ultimo'] = $this->GetDistancia($viaje);
+        $return['viaje'] = $datos;
         echo json_encode($return);
     }
     public function getDistanciaKm($viaje)
@@ -1346,7 +1357,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1392,7 +1403,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1434,7 +1445,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1476,7 +1487,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1518,7 +1529,7 @@ EOF;
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
+//                                    'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
@@ -1532,19 +1543,21 @@ EOF;
     }
     public function actionGetAlertasTanque($viaje, $id)
     {
+        $cepa = Yii::app()->db->createCommand()
+                ->select('cep.*')
+                ->from('solicitudes_viaje as SV')
+                ->join('solicitud_tanques as ST','ST.id_solicitud = SV.id_solicitud')
+                ->join('cepa as cep', 'cep.id = ST.id_cepas')
+                ->where("SV.id_viaje = $viaje")
+                ->andWhere("ST.id_tanque = $id")
+                ->queryRow();
         $uploads = Yii::app()->db->createCommand()
-                ->selectDistinct('evu.id as idTabla, cep.*, tan.id as idTanque, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, evu.hora, evu.fecha, evu.ubicacion')
-                ->from('solicitudes_viaje as solV')
-                ->join('solicitud_tanques as solT','solT.id_solicitud = solV.id_solicitud')
-                ->leftJoin('tanque as tan', 'tan.id = solT.id_tanque')
-                ->rightJoin('cepa as cep', 'cep.id = solT.id_cepas')
-                ->join('escalon_viaje_ubicacion as evu',"evu.id_viaje = $viaje")
+                ->selectDistinct('evu.id as idTabla, upt.temp, upt.ox, upt.ph, upt.cond, upt.orp, upt.id as idUploads, evu.hora, evu.fecha, evu.ubicacion')
+                ->from('escalon_viaje_ubicacion as evu')
                 ->join('uploadtemp as upt','upt.id_escalon_viaje_ubicacion = evu.id')
-                ->where("solV.id_viaje = $viaje")
-                ->andWhere("tan.id = $id")
+                ->where("evu.id_viaje = $viaje")
+                ->andWhere("upt.id_tanque = $id")
                 ->andWhere("upt.alerta > 1")
-                ->andWhere('upt.id_escalon_viaje_ubicacion = evu.id')
-                ->order("idTabla ASC")
                 ->queryAll();
         if(count($uploads) > 0)
         {
@@ -1553,85 +1566,100 @@ EOF;
                     <div class="tituloAlerta">Alertas: </div>
                     <div class="tablaAlertas">
                         <div class="tablaTitulos">
-                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
+                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span>
                         </div>
                         <div class="tablaWraper">';
             foreach($uploads as $data)
             {
                 if(isset($data['temp']))
                 {
-                    if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                    $dif = ($cepa['temp_max'] - $cepa['temp_min']) * 0.2;
+                    $max = $cepa['temp_max'] - $dif;
+                    $min = $cepa['temp_min'] + $dif;
+                    if($data['temp'] >= $max || $data['temp'] <= $min)
                     {
                         $return = $return.'<div class="tableRow">';
-                        if($data['temp'] > $data['temp_max'])
+                        if($data['temp'] >= $max)
                             $imagen = 'flechaUp';
                         else
                             $imagen = 'flechaDown';
                         $return = $return.<<<eof
-                            <div>Temperatura</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                            <div>Temperatura<br>Min:{$cepa['temp_min']}º/Max:{$cepa['temp_max']}º</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                     }
                 }
                 if(isset($data['ox']))
                 {
-                    if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                    $dif = ($cepa['ox_max'] - $cepa['ox_min']) * 0.2;
+                    $max = $cepa['ox_max'] - $dif;
+                    $min = $cepa['ox_min'] + $dif;
+                    if($data['ox'] >= $max || $data['ox'] <= $min)
                     {
                         $return = $return.'<div class="tableRow">';
-                        if($data['ox'] > $data['ox_max'])
+                        if($data['ox'] >= $max)
                             $imagen = 'flechaUp';
                         else
                             $imagen = 'flechaDown';
                         $return = $return.<<<eof
-                            <div>Oxígeno</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                            <div>Oxígeno<br>Min:{$cepa['ox_min']}/Max:{$cepa['ox_max']}</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                     }
                 }
                 if(isset($data['ph']))
                 {
-                    if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                    $dif = ($cepa['ph_max'] - $cepa['ph_min']) * 0.2;
+                    $max = $cepa['ph_max'] - $dif;
+                    $min = $cepa['ph_min'] + $dif;
+                    if($data['ph'] >= $max || $data['ph'] <= $min)
                     {
                         $return = $return.'<div class="tableRow">';
-                        if($data['ph'] > $data['ph_max'])
+                        if($data['ph'] >= $max)
                             $imagen = 'flechaUp';
                         else
                             $imagen = 'flechaDown';
                         $return = $return.<<<eof
-                            <div>PH</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                            <div>PH<br>Min:{$cepa['ph_min']}/Max:{$cepa['ph_max']}</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                     }
                 }
                 if(isset($data['cond']))
                 {
-                    if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                    $dif = ($cepa['cond_max'] - $cepa['cond_min']) * 0.2;
+                    $max = $cepa['cond_max'] - $dif;
+                    $min = $cepa['cond_min'] + $dif;
+                    if($data['cond'] >= $max || $data['cond'] <= $min)
                     {
                         $return = $return.'<div class="tableRow">';
-                        if($data['cond'] > $data['cond_max'])
+                        if($data['cond'] >= $max)
                             $imagen = 'flechaUp';
                         else
                             $imagen = 'flechaDown';
                         $return = $return.<<<eof
-                            <div>Conductividad</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                            <div>Conductividad<br>Min:{$cepa['cond_min']}/Max:{$cepa['cond_max']}</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                     }
                 }
                 if(isset($data['orp']))
                 {
-                    if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                    $dif = ($cepa['orp_max'] - $cepa['orp_min']) * 0.2;
+                    $max = $cepa['orp_max'] - $dif;
+                    $min = $cepa['orp_min'] + $dif;
+                    if($data['orp'] >= $max || $data['orp'] <= $min )
                     {
                         $return = $return.'<div class="tableRow">';
-                        if($data['orp'] > $data['orp_max'])
+                        if($data['orp'] > $max)
                             $imagen = 'flechaUp';
                         else
                             $imagen = 'flechaDown';
                         $return = $return.<<<eof
-                            <div>Potencial óxido reducción</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                            <div>Potencial óxido reducción<br>Min:{$cepa['orp_min']}/Max:{$cepa['orp_max']}</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                     }
                 }
             }
             $return = $return.'</div>
                     </div>
-                    </div>';
+                </div>';
         }
         else
         {
@@ -1679,21 +1707,24 @@ eof;
                     <div class="tituloAlerta">Alertas: '.$nombre.'</div>
                     <div class="tablaAlertas">
                         <div class="tablaTitulos">
-                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span><span>Ubicación</span>
+                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span>
                         </div>
                         <div class="tablaWraper">';
 
             foreach($uploads as $data)
             {
-                if($data[$id] > $data[$id.'_max'] || $data[$id] < $data[$id.'_max'])
+                $dif = ($data[$id.'_max'] - $data[$id.'_min']) * 0.2;
+                $max = $data[$id.'_max'] - $dif;
+                $min = $data[$id.'_min'] + $dif;
+                if($data[$id] >= $max || $data[$id] < $min)
                 {
                     $return = $return.'<div class="tableRow">';
-                    if($data[$id] > $data[$id.'_max'])
+                    if($data[$id] >= $max)
                         $imagen = 'flechaUp';
                     else
                         $imagen = 'flechaDown';
                     $return = $return.<<<eof
-                            <div>{$data['nombre']}</div><div>{$data[$id]}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div><div>{$data['ubicacion']}</div></div>
+                            <div>{$data['nombre']}<br>Min:{$data[$id.'_min']}/Max:{$data[$id.'_max']}</div><div>{$data[$id]}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                 }
             }
@@ -1855,7 +1886,7 @@ eof;
                         [array(
                             'ticks' => array
                             (
-                                'min'       => 0,
+//                                'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                             )
@@ -1910,7 +1941,7 @@ eof;
                     [array(
                         'ticks' => array
                         (
-                            'min'       => 0,
+//                            'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                         )
@@ -1965,7 +1996,7 @@ eof;
                     [array(
                         'ticks' => array
                         (
-                            'min'       => 0,
+//                            'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                         )
@@ -2020,7 +2051,7 @@ eof;
                     [array(
                         'ticks' => array
                         (
-                            'min'       => 0,
+//                            'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                         )
@@ -2075,7 +2106,7 @@ eof;
                     [array(
                         'ticks' => array
                         (
-                            'min'       => 0,
+//                            'min'       => 0,
 //                                        'max'       => 30,
 //                                        'stepSize'  => 5
                         )
@@ -2481,7 +2512,7 @@ eof;
                         [array(
                             'ticks' => array
                             (
-                                'min'       => 0,
+//                                'min'       => 0,
                             )
                         )]
                     )
@@ -2572,7 +2603,7 @@ eof;
                     [array(
                         'ticks' => array
                         (
-                            'min'       => 0,
+//                            'min'       => 0,
                         )
                     )]
                 )

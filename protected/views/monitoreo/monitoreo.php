@@ -57,11 +57,34 @@
             $emsg=1;
         if(empty($tanques)):?>
             <div id="detallesMon">
-                <?php 
-                if($emsg==1){
-                    echo '<h3>Estación sin tanques</h3>';
-            }else{
+            <?php 
+            if($emsg==1){
+                echo '<h3>Estación sin tanques</h3>';
+                echo "<div class ='backMonitoreo'>";
+                if( $siembra->status ==1 ) { 
+                    echo '<a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado#proceso">Regresar</a>';
+                } 
+                elseif( $siembra->status==2 ) {
+                    echo '<a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado#historico">Regresar</a>' ;
+                }
+                else{
+                    echo ' <a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado">Regresar</a>';
+                }
+                echo " </div>";
+            }
+            else {
                 echo '<h3>Estación sin monitoreo</h3>';
+                echo "<div class ='backMonitoreo'>";
+                if( $siembra->status ==1 ) { 
+                    echo '<a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado#proceso">Regresar</a>';
+                } 
+                elseif( $siembra->status==2 ) {
+                    echo '<a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado#historico">Regresar</a>' ;
+                }
+                else{
+                    echo ' <a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado">Regresar</a>';
+                }
+                echo " </div>";
             }
             ?>
                 

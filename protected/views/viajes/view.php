@@ -395,4 +395,7 @@
         </div>
     </div>
     <?php endif;?>
+    <div class="row">
+        <a class="gBoton" id="cBoton">Cancelar</a>
+    </div>
 </div>

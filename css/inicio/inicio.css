@@ -6,14 +6,14 @@ div.principal.index{
     background-color: #0077B0;
     height: 40px;
     width: 100%;
-    max-width: 1190px;
+    /*max-width: 1190px;*/
     border: 0;
     margin-bottom: 0;
     position: initial;
 }
 .tabs {
     height: 40px;
-    margin-top: 90px;
+    margin-top: 92px !important;
 }
 .tabs > div {
     float: left;
@@ -100,7 +100,7 @@ div.principal.index{
   
  label.tituloV1{
      
-     font-size: 19px;
+     font-size: 18px;
      color:#0077b0; 
      margin-left: 12px;   
 }
@@ -123,20 +123,22 @@ label.estiloV1{
      
      font-size: 14px;
 }
-.txt{
- font-size: 12px;
-     font-weight: bold;
-     float: left;
-     height: 100%;
-     line-height: 52px;
+.txt
+{
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+    height: 28px;
+    line-height: 28px
 }
 .titulo3{
     font-size:16px;
     color:#2C87B7; 
+    padding-bottom: 8px;
 }
 .estilov2{
     
-    font-size: 16px;
+    font-size: 14px;
     color:#414042;
 }
 /* iconos */
@@ -174,12 +176,13 @@ div.iconPersonal{
 .divTable .divTbody .divTr.selected .divTd div.iconPersonal  {
       background-image: url("../../images/dashboard/iconoPersonalBlanco.png");
 }
-.icon-oz{
+.icon-oz
+{
     background-image: url("../../images/dashboard/IconoOxigeno.png");
     background-repeat: no-repeat;
     background-position: center;
     width: 20px;
-    height: 100%;
+    height: 28px;
     float: left;
     margin-left: 7px;
  
@@ -189,7 +192,7 @@ div.iconPersonal{
      background-repeat: no-repeat;
      background-position: center;
      width: 24px;
-     height: 100%;
+     height: 28px;
      background-size: 100%;
      float: left;
  }
@@ -199,7 +202,7 @@ div.iconPersonal{
      background-position: center;
      background-size: 100%;
      width: 11px;
-     height: 100%;
+     height: 28px;
      float: left;
   }
 div.iconCamion1{
@@ -240,15 +243,15 @@ div.iconGPS1{
       clear: both;
 }  
 
-.contenedor-tanques .tanque {
+.contenedor-tanques .tanque 
+{
     width: 182px;
     margin: 11px 10px -6px -2px;
     float: left;
     border-radius: 9px;
     text-align: center;
-    border: 0.1em solid #1178AF;
-    background-color: #1178AF;
-    height: 81px;
+    border: 1px solid #0077B0;
+    /*height: 81px;*/
 }
 .contenedor-tanques .tanque .tanque-container-titulo{
     height: 27px;
@@ -263,38 +266,26 @@ div.iconGPS1{
 .titulotanque{
     color:#FFFFFF;
     margin: 0;
-    background-color:  #1178AF;
+    background-color:  #0077B0;
 }
 .tanque > div{
     background-color: #ffffff;
     text-align: right;
     border-radius: 0 0 9px 9px;
     float: left;
-    height: 54px;
+    /*height: 54px;*/
     width: 100%;
 }
-.tanque > div > .var-oz{
-    background-color: #ffffff;
+.tanque > div > .var-oz,
+.tanque > div > .var-ph,
+.tanque > div > .var-tm
+{
+    background-color: transparent;
     border-radius: 0 0 0 9px;
-    height: 52px;
-    width: 32%;
+    height: 28px;
+    padding: 10px 0;
+    width: 33.333333333%;
     float: left;
-    margin-right: 1%;
-}
-.tanque > div > .var-ph{
-    background-color: #ffffff;
-    height: 52px;
-    width: 32%;
-    float: left;
-    margin-right: 1%;
-}
-.tanque > div > .var-tm{
-    background-color: #ffffff;
-    border-radius: 0 0 9px 0;
-    height: 52px;
-    width: 32%;
-    float: left;
-    margin-right: 1%;
 }
 .container-lineBox{
     width: 4px;
@@ -318,37 +309,66 @@ h2{
     height:271px;
     border: 2px solid #0077B0;
 }
-.divTable  .divTr:hover, 
+.divTable .divTr:hover, 
 .divTable .divTr.selected{
     background-color: #21B7C7;
     color:#ffffff; 
 } 
-.divThead{
+.divThead
+{
     height: 30px;
-    background-color: #1178AF;
+    background-color: #0077B0;
     /*border-bottom: 14px solid #21B7C7;*/
     line-height: 33px;
     text-align: left;
-    padding-left: 13px;
+    text-indent: 13px;
 }
-.divTbody{
-    width:100%;
-    height:227px;
-    overflow-y: auto;
+.divTbody
+{
+    width: 100%;
+    height: 241px;
+    overflow-y: scroll;
+}
+.divTbody::-webkit-scrollbar,
+.divTbody2::-webkit-scrollbar, 
+.lestacion::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+.divTbody::-webkit-scrollbar-track, 
+.divTbody2::-webkit-scrollbar-track,
+.lestacion::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #CEDCE4;
+    border-radius: 10px;
+}
+
+.divTbody::-webkit-scrollbar-thumb,
+.divTbody2::-webkit-scrollbar-thumb,
+.lestacion::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    background-color: #939598;
 }
 .divTr{
     
     /*height: 23px;*/
     border-bottom: 1.5px dashed #aaa;
-    padding-top: 14px;
-    display: inline-block;
-    margin-top: -3px;
+    /*padding-top: 14px;*/
     width: 100%;
+}
+.divTr:last-child,
+.divTr2:last-child
+{
+    border-bottom: 0;
 }
 .divTd{
     width: 33%;
-    max-width: 174.33px;
-    height: 37px;
+    /*max-width: 174.33px;*/
+    /*height: 37px;*/
     float: left;
 }
 
@@ -364,33 +384,33 @@ h2{
 }
 .divThead2{
     height: 33px;
-    background-color: #1178AF;
+    background-color: #0077B0;
     /*border-bottom: 16px solid #21B7C7;*/
     line-height: 35px;
     text-align: left;
     padding-left: 13px;
 }
-.divTbody2{
+.divTbody2
+{
     width:735px;
-    height:271px;
-    overflow-y: auto;
+    height:288px;
+    overflow-y: scroll;
 }
 .divTr2{
   
-    height: 45px;
+    /*height: 45px;*/
     border-bottom: 3px dashed #EAEAEA;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 10px 0;
 }
 .divTd2{
     width: 31%;
     max-width: 211.33px;
-    height: 37px;
+    /*height: 37px;*/
     float: left;
 }
 .divTdBoton{
     width: 84px;
-    height: 37px;
+    /*height: 37px;*/
     float: left;
 }
 .botonIrViaje{
@@ -402,7 +422,12 @@ h2{
     text-align: center;
     
 }
-.botonIr{
+.divTanque1 .divText3
+{
+    text-align: center;
+}
+.botonIr
+{
     width: 57px;
     height: 31px;
     background: #0077b0;
@@ -412,6 +437,7 @@ h2{
     line-height: 34px;
     color: #ffffff;
     text-decoration: none;
+    font-size: 18px;
 } 
 .divIcon{
       width: 20px;
@@ -448,18 +474,18 @@ h2{
  }
  .divCamion1{
      width: 177px;
-     height: 37px;
+     /*height: 37px;*/
      float: left;
      padding-left: 34px;
  }
  .divTanque1{
      width: 206px;
-     height: 37px;
+     /*height: 37px;*/
      float: left;
  }
  .divUbicacion1{
      width: 205px;
-     height: 37px;
+     /*height: 37px;*/
      float: left;
  }
   /*  Logo */
@@ -478,7 +504,7 @@ h2{
      text-align: center;
      width: 480px;
      font-size: 20px;
-     color: #1178AF;
+     color: #0077B0;
      margin: 70px auto 0;
  }
  /* Separadores */
@@ -619,7 +645,10 @@ float:left;
     height:130px;
 }
 .containerBoxR > div:last-child:after, 
-.containerLinea:after{
+.containerLinea:after,
+.divTr:after,
+.divTr2:after
+{
     display: block;
     clear: both;
     content: '';
@@ -760,7 +789,7 @@ float:left;
 .estv{
   text-align: center;
   font-size: 22px;
-  color:#1178AF;
+  color:#0077B0;
   height: 200px;
   line-height: 200px;
 }

@@ -33,7 +33,7 @@
 	<br />
 	<b><?php echo CHtml::encode($data->getAttributeLabel('fecha_estimada')); ?>:</b>
 	<?php echo CHtml::encode($data->fecha_estimada); ?>
-	<br />
+	<br />-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hora_estimada')); ?>:</b>
 	<?php echo CHtml::encode($data->hora_estimada); ?>
