@@ -40,7 +40,7 @@ $form=$this->beginWidget('CActiveForm', array(
             'style'=>'display:none;'
         )
     ));
-
+ 
 ?>
 <?php if(!$model->isNewRecord):?>
 <?php endif;?>
@@ -60,10 +60,9 @@ $form=$this->beginWidget('CActiveForm', array(
         <div class="bolaChica"></div>
     </div>
     <div class="tab " data-tab="1">
-    		<div class="botonesWrapper">
-				<a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
-	            <div class="siguiente uno">Siguiente</div>
-	           
+    		<div class="botonesWrapper"> 
+    			<div class="siguiente uno">Siguiente</div>
+				<a class="gBoton nboton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>
             </div>
 	     <div class="formContainer1">
 				<?php echo $form->hiddenField($model,'status', array('value' => '1')); ?>
@@ -146,9 +145,9 @@ $form=$this->beginWidget('CActiveForm', array(
         
     </div>
     <div class="tab hide last" data-tab="3">
-        <div class="botonesWrapper2">
-            <div class="gBoton regresar dos" >Regresar</div>
-            <?php echo CHtml::submitButton('Finalizar'); ?>
+        <div class="botonesWrapper2"> 
+        	<?php echo CHtml::submitButton('Finalizar'); ?>
+            <div class="gBoton regresar dos new" >Regresar</div>   
         </div>
         <div class="inner-third-wrapper"></div>
     </div>
