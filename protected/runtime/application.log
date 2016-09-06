@@ -945,3 +945,236 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/SmobilWeb/campsensado/borrar/12?id=12
 ---
+2016/09/06 10:34:58 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
+        GROUP BY idtan' at line 6. The SQL statement executed was: SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
+        FROM estacion
+        JOIN tanque ON estacion.id=tanque.id_estacion
+        JOIN registro_camp rc ON tanque.id=rc.id_tanque AND rc.id_camp_sensado=1
+        WHERE estacion.id=
+        ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
+        GROUP BY idtan.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php (135)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 10:34:58 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
+        GROUP BY idtan' at line 6. The SQL statement executed was: SELECT * FROM (SELECT rc.id AS idUpl,tanque.id AS idTan,estacion.id AS idEst,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ct,ox,ph,temp,cond,orp,alerta
+        FROM estacion
+        JOIN tanque ON estacion.id=tanque.id_estacion
+        JOIN registro_camp rc ON tanque.id=rc.id_tanque AND rc.id_camp_sensado=1
+        WHERE estacion.id=
+        ORDER BY tanque.id,rc.id DESC LIMIT 2000) consulta
+        GROUP BY idtan in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\MonitoreoController.php(135): CDbCommand->queryAll()
+#2 [internal function]: MonitoreoController->actionView('1')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MonitoreoController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MonitoreoController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('monitoreo/view')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#17 {main}
+REQUEST_URI=/SmobilWeb/monitoreo/1
+HTTP_REFERER=http://localhost/SmobilWeb/
+---
+2016/09/06 12:12:31 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sv.id_solicituds' in 'field list'. The SQL statement executed was: SELECT DISTINCT `sv`.`id_solicituds`, `cd`.`ubicacion_mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `clientes_domicilio` `cd`
+JOIN `solicitud_tanques` `st` ON st.id_domicilio = cd.id
+JOIN `solicitudes_viaje` `sv` ON sv.id_solicitud = st.id_solicitud
+JOIN `solicitudes` `s` ON s.id = sv.id_solicitud
+JOIN `viajes` `v` ON v.id = sv.id_viaje
+WHERE sv.id_viaje = 4.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (336)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (297)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 12:12:31 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sv.id_solicituds' in 'field list'. The SQL statement executed was: SELECT DISTINCT `sv`.`id_solicituds`, `cd`.`ubicacion_mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `clientes_domicilio` `cd`
+JOIN `solicitud_tanques` `st` ON st.id_domicilio = cd.id
+JOIN `solicitudes_viaje` `sv` ON sv.id_solicitud = st.id_solicitud
+JOIN `solicitudes` `s` ON s.id = sv.id_solicitud
+JOIN `viajes` `v` ON v.id = sv.id_viaje
+WHERE sv.id_viaje = 4 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(336): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(297): SiteController->GetDistancia('4', true)
+#3 [internal function]: SiteController->actionDashboardTanques('4')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('DashboardTanque...')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/DashboardT...')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/SmobilWeb/index.php/site/DashboardTanques?id=4
+HTTP_REFERER=http://localhost/SmobilWeb/
+---
+2016/09/06 12:12:39 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sv.id_solicituds' in 'field list'. The SQL statement executed was: SELECT DISTINCT `sv`.`id_solicituds`, `cd`.`ubicacion_mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `clientes_domicilio` `cd`
+JOIN `solicitud_tanques` `st` ON st.id_domicilio = cd.id
+JOIN `solicitudes_viaje` `sv` ON sv.id_solicitud = st.id_solicitud
+JOIN `solicitudes` `s` ON s.id = sv.id_solicitud
+JOIN `viajes` `v` ON v.id = sv.id_viaje
+WHERE sv.id_viaje = 4.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (336)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (297)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 12:12:39 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sv.id_solicituds' in 'field list'. The SQL statement executed was: SELECT DISTINCT `sv`.`id_solicituds`, `cd`.`ubicacion_mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `clientes_domicilio` `cd`
+JOIN `solicitud_tanques` `st` ON st.id_domicilio = cd.id
+JOIN `solicitudes_viaje` `sv` ON sv.id_solicitud = st.id_solicitud
+JOIN `solicitudes` `s` ON s.id = sv.id_solicitud
+JOIN `viajes` `v` ON v.id = sv.id_viaje
+WHERE sv.id_viaje = 4 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(336): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(297): SiteController->GetDistancia('4', true)
+#3 [internal function]: SiteController->actionDashboardTanques('4')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('DashboardTanque...')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/DashboardT...')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/SmobilWeb/index.php/site/DashboardTanques?id=4
+---
+2016/09/06 12:19:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cd.ubicacion' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion` AS `mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+WHERE sv.id_viajes = 23.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (343)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (297)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 12:19:14 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cd.ubicacion' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion` AS `mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+WHERE sv.id_viajes = 23 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(343): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(297): SiteController->GetDistancia('23', true)
+#3 [internal function]: SiteController->actionDashboardTanques('23')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('DashboardTanque...')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/DashboardT...')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/SmobilWeb/index.php/site/DashboardTanques?id=23
+HTTP_REFERER=http://localhost/SmobilWeb/
+---
+2016/09/06 12:19:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cd.ubicacion' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion` AS `mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+WHERE sv.id_viajes = 4.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (343)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (297)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 12:19:15 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cd.ubicacion' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion` AS `mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+WHERE sv.id_viajes = 4 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(343): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(297): SiteController->GetDistancia('4', true)
+#3 [internal function]: SiteController->actionDashboardTanques('4')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('DashboardTanque...')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/DashboardT...')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/SmobilWeb/index.php/site/DashboardTanques?id=4
+HTTP_REFERER=http://localhost/SmobilWeb/
+---
+2016/09/06 12:19:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cd.ubicacion' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion` AS `mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+WHERE sv.id_viajes = 4.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (343)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (297)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 12:19:17 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cd.ubicacion' in 'field list'. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion` AS `mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+WHERE sv.id_viajes = 4 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(343): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(297): SiteController->GetDistancia('4', true)
+#3 [internal function]: SiteController->actionDashboardTanques('4')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('DashboardTanque...')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/DashboardT...')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/SmobilWeb/index.php/site/DashboardTanques?id=4
+---
+2016/09/06 12:20:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.viajess' doesn't exist. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion_mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+JOIN `viajess` `v` ON v.id = 4
+WHERE sv.id_viaje = 4.
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (344)
+in C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php (297)
+in C:\xampp\htdocs\SmobilWeb\index.php (18)
+2016/09/06 12:20:55 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'movsens.viajess' doesn't exist. The SQL statement executed was: SELECT DISTINCT `cd`.`ubicacion_mapa`, `cd`.`domicilio`, `v`.`fecha_salida`, `s`.`fecha_entrega`
+FROM `solicitudes_viaje` `sv`
+JOIN `pedidos` `p` ON p.id_solicitud = sv.id_solicitud
+JOIN `clientes_domicilio` `cd` ON cd.id = p.id_direccion
+JOIN `viajess` `v` ON v.id = 4
+WHERE sv.id_viaje = 4 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(344): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\SmobilWeb\protected\controllers\SiteController.php(297): SiteController->GetDistancia('4', true)
+#3 [internal function]: SiteController->actionDashboardTanques('4')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('DashboardTanque...')
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/DashboardT...')
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/SmobilWeb/index.php/site/DashboardTanques?id=4
+---

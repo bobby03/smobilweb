@@ -109,12 +109,17 @@ label.tituloV2{
      font-size: 14px;
      color:#FFFFFF; 
 }
-label.titulov{
+.titulov
+{
   font-family: 'Roboto-Regular' !important;
   font-size: 18px;
   color:#fff;
   text-align: center;
   line-height: 10px;
+}
+div.titulov
+{
+    line-height: 35px;
 }
 label.titulov:hover{
   cursor: pointer;
@@ -413,12 +418,15 @@ h2{
     /*height: 37px;*/
     float: left;
 }
-.botonIrViaje{
+.botonIrViaje
+{
     width: 135px;
     height: 35px;
+    line-height: 35px;
     background-color: #0077B0;
-    border-radius: 6px 6px 6px 6px;
-    margin-top: 3px;
+    border-radius: 6px;
+    font-size: 18px;
+    color: #FFFFFF;
     text-align: center;
     
 }
@@ -632,8 +640,7 @@ float:left;
 }
 .containerBoxR:last-child .circle
 {
-    
-     left:94%;
+     left:96%;
 }
 .containerBoxR:last-child .containerLinea
 {
