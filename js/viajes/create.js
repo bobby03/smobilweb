@@ -35,7 +35,26 @@ $(document).ready(function()
     $('#SolicitudesViaje_id_personal_1_chofer').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#SolicitudesViaje_id_personal_1_tecnico').chosen({placeholder_text_multiple: 'Seleccionar'});
     $('#Viajes_id_solicitudes').chosen({placeholder_text_multiple: 'Seleccionar'});
-    $('#Viajes_id_estacion').on('change', function()
+    
+    
+    $("#Viajes_id_responsable").on('change', function(){
+        if($(this).val() == '' || $(this).val()=='Seleccionar'){
+            $(this).addClass('error');
+        }
+        else {
+            $(this).removeClass('error');
+        }
+    });
+    
+//    $("#Viajes_id_estacion").on('change', function(){
+//        if($(this).val() == '' || $(this).val()=='Seleccionar'){
+//            $(this).addClass('error');
+//        }
+//        else {
+//            $(this).removeClass('error');
+//        }
+//    });
+    $('#Viajes_id_estacion').on('click', function()
     {
         var id = $(this).val();
         if(id != '' && id != null)
@@ -121,6 +140,18 @@ $(document).ready(function()
              $('#Viajes_fecha_salida').addClass("error");
         }else{
             $('#Viajes_fecha_salida').removeClass("error");
+        }
+        if($('#Viajes_id_responsable').val() == '') {
+            $('#Viajes_id_responsable').addClass("error");
+        }
+        else {
+            $('#Viajes_id_responsable').removeClass("error");
+        }
+        if($('#Viajes_id_estacion').val() == '') {
+            $('#Viajes_id_estacion').addClass("error");
+        }
+        else {
+            $('#Viajes_id_estacion').removeClass("error");
         }
         $('[data-tab="1"] select[multiple="multiple"]').each(function() {
             if ($("option:selected", this).text() === "" || $("option:selected", this).text() === "Seleccionar") {
