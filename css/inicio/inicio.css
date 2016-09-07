@@ -194,8 +194,9 @@ div.iconPersonal{
     background-image: url("../../images/dashboard/IconoOxigeno.png");
     background-repeat: no-repeat;
     background-position: center;
-    width: 20px;
-    height: 28px;
+    background-size: 100% 100%;
+    width: 15px;
+    height: 23px;
     float: left;
     margin-left: 7px;
  
@@ -204,8 +205,9 @@ div.iconPersonal{
      background-image: url("../../images/dashboard/iconoPH.png");
      background-repeat: no-repeat;
      background-position: center;
-     width: 24px;
-     height: 28px;
+     background-size: 100% 100%;
+     width: 19px;
+     height: 23px;
      background-size: 100%;
      float: left;
  }
@@ -213,9 +215,9 @@ div.iconPersonal{
      background-image: url("../../images/dashboard/iconoTemp.png");
      background-repeat: no-repeat;
      background-position: center;
-     background-size: 100%;
+     background-size: 100% 100%;
      width: 11px;
-     height: 28px;
+     height: 23px;
      float: left;
   }
 div.iconCamion1{
@@ -306,8 +308,20 @@ div.iconGPS1{
     border-radius: 0 0 0 9px;
     height: 28px;
     padding: 10px 0;
-    width: 33.333333333%;
+    /*width: 33.333333333%;*/
     float: left;
+}
+.tanque > div > .var-oz
+{
+    width: 40%;
+}
+.tanque > div > .var-ph
+{
+    width: 30%;
+}
+.tanque > div > .var-tm
+{
+    width: 30%;
 }
 .container-lineBox{
     width: 4px;
@@ -526,12 +540,13 @@ h2{
  }
  .divTable .divTbody .divTr:first-child{
  }
- .letreroError{
+ .letreroError
+ {
      text-align: center;
      width: 480px;
      font-size: 20px;
      color: #0077B0;
-     margin: 70px auto 0;
+     margin: 20px auto;
  }
  /* Separadores */
  .separador1{
@@ -600,7 +615,8 @@ width: 25px;
 float:left;
 
 }
-.circle.no_entregado{
+.circle.no_entregado
+{
     width: 25px;
     height: 25px;
     background: #09b7c9;
@@ -626,7 +642,7 @@ float:left;
     left: -1px;
     z-index: 10;
 }
-.textCircle.siHover .circle:hover
+.circle.no_entregado:hover
 {
     width: 50px;
     height: 50px;
@@ -638,17 +654,17 @@ float:left;
 }
 .containerRuta{
     width: 1174px;
-    height:170px;
+    /*height:170px;*/
     display: block;
 
 }
-.containerR1{
+.containerR1
+{
     width: 100%;
-    height:50%;
-    text-align: center;
+    /*height: 170px;*/
 }
 .containerBoxR{
-    height: 130px;
+    /*height: 130px;*/
     float: left;
 }
 .textCircle
@@ -666,14 +682,44 @@ float:left;
     padding-left: 0;
     padding-right: 2px;
 }
-.containerBoxR > div:last-child{
+.containerBoxR > div:last-child
+{
     position:relative;
-    height:130px;
+    /*height:130px;*/
+}
+.containerOfBoxesTop 
+{
+    margin-top: 45px;
+}
+.containerOfBoxesBottom
+{
+    height: 25px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    position: relative;
+}
+.circle.last
+{
+    right: -3px;
+    left: auto;
+    bottom: auto;
+}
+.containerLinea .circle.last
+{
+    bottom: 7px;
+    top: 0;
+}
+.hidden
+{
+    visibility: hidden;
 }
 .containerBoxR > div:last-child:after, 
 .containerLinea:after,
 .divTr:after,
-.divTr2:after
+.divTr2:after,
+.containerR1:after,
+.containerOfBoxesTop:after,
+.containerOfBoxesBottom:after
 {
     display: block;
     clear: both;
@@ -682,44 +728,38 @@ float:left;
 .containerLinea
 {    
     height: 17px;
-    width: 100%;
     padding-top: 7px;
-    padding-left: 2px;
-    box-sizing:border-box;
-    position: absolute;
-    bottom: 0;
+    /*padding-left: 2px;*/
+    box-sizing: border-box;
+    position: relative;
+    /*bottom: 0;*/
     z-index: 9;
+    float: left;
 }
-.ctxtr{
-    width: 100%;
+.ctxtr
+{
+/*    width: 100%;
     height: 100px;
     visibility: hidden;
-    position:absolute;
-    margin-top: 33px;
-    margin-left:18px;
+    position:absolute;*/
+/*    margin-top: 33px;
+    margin-left:18px;*/
 }
-.containerBoxR:first-child .ctxtr{
-    visibility: visible;
-    margin-top: 45px;
-    margin-left: 0px;
+.containerBoxR:last-child .ctxtr
+{
+    text-align: right;
 }
-.containerBoxR:last-child .ctxtr{
- visibility: visible;
- margin-top: 45px;
-}
-.bubbleC{
+.bubbleC
+{
     position: relative;
     width: 200px;
-    height: 38px;
     text-align: center;
-    line-height: 100px;
     background-color: #09b7c9;
     border: 8px solid #09b7c9;
-    border-radius: 30px 30px 30px 0px; 
-    line-height: 36px;
-    right: -7px;
+    border-radius: 30px;
 }
- .bubbleC:after{
+/* .bubbleC:after
+ {
     content: '';
     position: absolute;
     width: 0;
@@ -728,7 +768,7 @@ float:left;
     top: 34px;
     border: 12px solid;
     border-color: #09b7c9 transparent transparent #09b7c9;
-}
+}*/
 .bubbleD{
     position: relative;
     bottom: 10px;
@@ -763,9 +803,14 @@ float:left;
 }
 .txtR2{
   
-    font-size:17px;
+    font-size:14px;
     color:#000000;
 
+}
+.negritas
+{
+    font-size: 14px;
+    font-family: 'Roboto-Bold';
 }
 .txtR3{
     font-family: 'Roboto-Regular';

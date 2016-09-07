@@ -68,8 +68,18 @@ $(document).ready(function()
                 $('.containerR1').empty();
                 $('.containerR1').append(data.linea);
                 var container  = $(".containerR1");
-                container.children('.containerBoxR').last().find('.bubbleC').removeClass('bubbleC');
-                container.children('.containerBoxR').last().find('.txtRuta').removeClass('txtRuta').addClass('txtR2');
+                $('.circle.no_entregado.hover').hover(function()
+                {
+                    var id = $(this).attr('data-map');
+                    $('.bubbleC[data-map="'+id+'"]').removeClass('hidden');
+                },
+                function()
+                {
+                    var id = $(this).attr('data-map');
+                    $('.bubbleC[data-map="'+id+'"]').addClass('hidden');
+                });
+//                container.children('.containerBoxR').last().find('.bubbleC').removeClass('bubbleC');
+//                container.children('.containerBoxR').last().find('.txtRuta').removeClass('txtRuta').addClass('txtR2');
             },
             error: function( a, b, c)
             {

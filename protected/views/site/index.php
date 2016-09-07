@@ -67,13 +67,15 @@
                     <div class="contenedor-tanques"></div>
                     <div class="container-lineBox">
                         <h3 class="container-line2"></h3>
-                    </div> 							
+                    </div>					
                 </div>
             </div>
             <div class="container-box">
                 <div class="separador1"></div>
-                <div class="containerRuta"><div class="containerR1"></div></div>
-                <div class="separador2"></div>		
+                <div class="containerRuta">
+                    <div class="containerR1"></div>
+                </div>
+                <div class="separador2"></div>	
             </div>
             <div class="container-box">
                 <div class="container-table viaje">
@@ -180,6 +182,7 @@
                                         $id = $est['id_estacion'];
                                         $datos = $this->actionGetTanques($id);
                                     ?>
+                                    <?php if(count($datos) > 0):?>
                                     <?php foreach($datos as $dato):?>
                                         <div class="tanque">
                                             <div class="tanque-container-titulo">
@@ -188,7 +191,7 @@
                                             <div class="variables-wrapper">
                                                 <div class="var-oz">
                                                     <div class="icon-oz"></div>
-                                                    <div class="txt"><?php echo intval($dato['ox']); ?> mg/L</div>
+                                                    <div class="txt"><?php echo intval($dato['ox']); ?><span> mg/L</span></div>
                                                 </div>
                                                 <div class="var-ph">
                                                     <div class="icon-ph"></div>
@@ -196,11 +199,14 @@
                                                 </div>
                                                 <div class="var-tm">
                                                     <div class="icon-tm"></div>
-                                                    <div class="txt"><?php echo intval($dato['temp']); ?>°C</div>
+                                                    <div class="txt"><?php echo intval($dato['temp']); ?><span>°C</span></div>
                                                 </div>
                                             </div>
                                         </div>
                                     <?php endforeach;?>
+                                    <?php else:?>
+                                        <div class="letreroError">Esta siembra no tiene registros, porfavor, p&oacute;ngase en contacto con el administrador.</div>
+                                    <?php endif;?>
                                 </div>
                             <?php $o++; endforeach;?>
                         </div> <!-- Fin de div contenido-->

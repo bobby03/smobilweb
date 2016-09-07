@@ -1,9 +1,7 @@
 $(document).ready(function()
 {
-
     $('div.agregar.especie').click(function(e)
     {
-        
         var href = window.location.href;
         var miHtml= '\
             <div class="sub-content">\n\
@@ -25,48 +23,44 @@ $(document).ready(function()
             height:'200px',
             onComplete: function()
             {
-
                 $('.btnadd').click(function(e)
                 {
-               
-                var nombre=$('#ingesp').val();
-                r=validField(nombre, mCallback);
-
-
-                    if(r == 1){  }else{
-                       
-                    var especie = $('#ingesp').val();
-                    $.ajax(
+                    var nombre=$('#ingesp').val();
+                    r=validField(nombre, mCallback);
+                    if(r == 1)
                     {
-                        type: 'POST',
-                        url: href+'/Create1',
-                        dataType: 'JSON', 
-                        data:
+                        
+                    }
+                    else
+                    {
+                       
+                        var especie = $('#ingesp').val();
+                        $.ajax(
                         {
-                            especie: especie
-                        },
-                        success: function(data)
-                        {
-                            $('#cboxClose').click();
-                             window.location = "especie";
-                        },
-                        error: function(a, b, c)
-                        {
-                            
-                        }
-                    });
-                }
-                e.preventDefault();
+                            type: 'POST',
+                            url: href+'/Create1',
+                            dataType: 'JSON', 
+                            data:
+                            {
+                                especie: especie
+                            },
+                            success: function(data)
+                            {
+                                $('#cboxClose').click();
+                                 window.location = "especie";
+                            },
+                            error: function(a, b, c)
+                            {
+
+                            }
+                        });
+                    }
+                    e.preventDefault();
                 });
             }
         });
         e.preventDefault();
     });
-
-
-
-
-
     $('a.update img').click(function(evt)
     {
         evt.preventDefault();
@@ -99,43 +93,40 @@ $(document).ready(function()
             height:'200px',
             onComplete: function()
             {        
-            
-
                 $('.btnUpdate').click(function()
                 {
-                var nombre=$('#ingesp').val();
-                r=validField(nombre, mCallback);
-
-
-                    if(r == 1){  }else{
-                    var val = $('#ingesp').val();
-                    $('#ingesp').val(val);
-                    var especie = $('#ingesp').val();
-                    $.ajax(
+                    var nombre=$('#ingesp').val();
+                    r = validField(nombre, mCallback);
+                    if(r == 1)
                     {
-                        type: 'POST',
-                        url: href+'/Update1',
-                        dataType: 'JSON', 
-                        data:
+                        $.colorbox.resize();
+                    }
+                    else
+                    {
+                        var val = $('#ingesp').val();
+                        $('#ingesp').val(val);
+                        var especie = $('#ingesp').val();
+                        $.ajax(
                         {
-                            id:id,
-                            especie: especie
-                        },
-                        success: function(dataR)
-                        {
-                           parent.$.colorbox.close();
-                           window.location = "especie";
-                        },
-                        error: function(a, b, c)
-                        {
-                            
-                        }
-                    });
-}
-                   
+                            type: 'POST',
+                            url: href+'/Update1',
+                            dataType: 'JSON', 
+                            data:
+                            {
+                                id:id,
+                                especie: especie
+                            },
+                            success: function(dataR)
+                            {
+                               $.colorbox.close();
+                               window.location = "especie";
+                            },
+                            error: function(a, b, c)
+                            {
 
-
-
+                            }
+                        });
+                    }
                 });
             }
         });
@@ -144,69 +135,64 @@ $(document).ready(function()
     {       
         $(this).find('a.view').remove();
     });
-
 });
-
-function UpperCaseInput(){
-
+function UpperCaseInput()
+{
       $('#ingesp').bind('keyup',function(){ 
         var node = $(this);
         node.val(node.val().replace(/^\s+[a-zA-záéíóúñÁÉÍÓÚÑ ]/g,'') ); 
         node.val(capitalizeFirstLetter(node.val()));
     });
-
 }
-
-
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter(string) 
+{
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-
-
-function mCallback(res){
+function mCallback(res)
+{
    // console.log('funcion mCallback:' +res);
      return res;
 }
-
-function validField(nombre,mCallback){
-    
-     var resp =false;
-    if($('#ingesp').val()==''){
+function validField(nombre,mCallback)
+{    
+    var resp =false;
+    if($('#ingesp').val()=='')
+    {
         $('#ierror').html('Campo requerido');
+        $.colorbox.resize();
         e.preventDefault();
         return false;
-       
-    }else{
-
-
-   
-    resp = $.ajax(
-            {
-                type: 'POST',
-                url: window.location.href+'/Rep',
-                dataType: 'JSON', 
-                data:
-                        {
-                            nombre:nombre
-                        },
-                success: function(result) {
-                    if(result == true){
-                                 $('#ierror').html('Especie ya existe');
-                                 e = true;
-                            }else{
-                                $('#ierror').html('');
-                                e = false;
-                            }
-                         ajax_result =  mCallback(result); 
-                      //  console.log(ajax_result);
-                 },
-                 error: function(result) {},
-                 async: false }).responseText;
-
-  
     }
-
-  return resp;
-
+    else
+    {
+        resp = $.ajax(
+        {
+            type: 'POST',
+            url: window.location.href+'/Rep',
+            dataType: 'JSON', 
+            data:
+            {
+                nombre:nombre
+            },
+            success: function(result) 
+            {
+                if(result == true)
+                {
+                    $('#ierror').html('Especie ya existe');
+                    $.colorbox.resize();
+                    e = true;
+                }
+                else
+                {
+                    $('#ierror').html('');
+                    e = false;
+                }
+                ajax_result =  mCallback(result); 
+                  //  console.log(ajax_result);
+             },
+             error: function(result) {},
+             async: false 
+        }).responseText;
+    }
+    return resp;
 }

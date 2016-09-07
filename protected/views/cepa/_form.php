@@ -69,9 +69,9 @@
 					<div class="row">
 						<label class= "letreros">Temperatura</label>
 							<div class="form-cSmall">
-                                                            <span>min</span>
+                                <span>min</span>
 								<?php 
-								echo $form->numberField($model,'temp_min');
+								echo $form->numberField($model,'temp_min', array('step'=>'any'));
 								echo $form->error($model,'temp_min');
 								 ?>
 							</div>
@@ -80,9 +80,9 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-                                                <span>max</span>
+                            <span>max</span>
 					    	<?php 
-					    	echo $form->numberField($model,'temp_max');
+					    	echo $form->numberField($model,'temp_max', array('step'=>'any'));
 					    	echo $form->error($model,'temp_max');
 					    	 ?>
 						</div>
@@ -96,8 +96,8 @@
 					<div class="row">
 						<label class= "letreros">pH</label>
 							<div class="form-cSmall">
-                                                            <span>min</span>
-								<?php echo $form->numberField($model,'ph_min');
+                                <span>min</span>
+								<?php echo $form->numberField($model,'ph_min', array('step'=>'any'));
 								echo $form->error($model,'ph_min'); ?>
 							</div>
 					</div>
@@ -105,8 +105,8 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall">
-                                                    <span>max</span>
-							<?php echo $form->numberField($model,'ph_max');
+                            <span>max</span>
+							<?php echo $form->numberField($model,'ph_max', array('step'=>'any'));
 							echo $form->error($model,'ph_max'); ?>
 						</div>
 					</div>
@@ -118,7 +118,7 @@
 					<div class="row">
 						<label class= "letreros">Ox&iacute;geno</label>
 							<div class="form-cSmall"><span>min</span>
-								<?php echo $form->numberField($model,'ox_min');
+								<?php echo $form->numberField($model,'ox_min', array('step'=>'any'));
 								echo $form->error($model,'ox_min'); ?>
 							</div>
 					</div>
@@ -126,7 +126,7 @@
 				<div class="form-container12">
 					<div class="row">
 						<div class="form-cSmall"><span>max</span>
-							<?php echo $form->numberField($model,'ox_max');
+							<?php echo $form->numberField($model,'ox_max', array('step'=>'any'));
 							echo $form->error($model,'ox_max'); ?>
 						</div>
 					</div>
@@ -143,7 +143,7 @@
 							<label class= "letreros">Conductividad</label>
 								<div class="form-cSmall">	
                                      <span>min</span>
-									<?php echo $form->numberField($model,'cond_min');
+									<?php echo $form->numberField($model,'cond_min', array('step'=>'any'));
 									echo $form->error($model,'cond_min'); ?>
 								</div>
 						</div>
@@ -152,7 +152,7 @@
 						<div class="row">
 							<div class="form-cSmall">
                                 <span>max</span>
-								<?php echo $form->numberField($model,'cond_max');
+								<?php echo $form->numberField($model,'cond_max', array('step'=>'any'));
 								echo $form->error($model,'cond_max'); ?>
 							</div>
 						</div>
@@ -166,7 +166,7 @@
 						<label class= "letreros">ORP</label>
 							<div class="form-cSmall">
                                 <span>min</span>
-								<?php echo $form->numberField($model,'orp_min');
+								<?php echo $form->numberField($model,'orp_min', array('step'=>'any'));
 								echo $form->error($model,'orp_min'); ?>
 
 							</div>	
@@ -176,7 +176,7 @@
 					<div class="row">
 						<div class="form-cSmall">
                                  <span>max</span>
-								<?php echo $form->numberField($model,'orp_max');
+								<?php echo $form->numberField($model,'orp_max', array('step'=>'any'));
 								echo $form->error($model,'orp_max'); ?>
 						</div>
 					</div>
