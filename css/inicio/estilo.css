@@ -4,15 +4,20 @@
   background-repeat: no-repeat;
 
 }
-.dash1{
-	margin-top:30px;
-	width: auto;
-	height: 300px;
+.dash1
+{
+    margin-top:42px;
+    width: auto;
+    height: 300px;
 }
-.estacion{
-	float: left;
-	width: 48%;
-	height: 300px;
+.estacion
+{
+    width: 100%;
+    max-width: 538px;
+    float: left;
+    height: 100%;
+    max-height: 271px;
+    margin-left: 9px;
 }
 .reg{
 	
@@ -53,74 +58,88 @@
 	color:#0077b0;
 	margin:10px;
 }
-.lestacion{
-	overflow-y:scroll;
-	width: 573px;
-	height: 213px;
-	border-left: 1px solid #21B7C7;
-	border-bottom: 1px solid #21B7C7;
-	border-right: 1px solid #21B7C7;
+.lestacion
+{
+    width: 100%;
+    height: 241px;
+    overflow-y: scroll;
 }
 .lestacion p{
 	font-size: 13px;
 }
-.liest{
-	margin:0px;
-	width: auto;
-	height: 42px;
-	border-bottom: 1.5px dashed #aaa;
-
+.liest
+{
+    width: 100%;
+    border-bottom: 1.5px dashed #aaa;
 }
-.liest.selected{
-	background-color: #21B7C7;
+.liest:last-child
+{
+    border-bottom: 0;
 }
-.resp{
-	line-height: 40px;
-	float:left;
-	margin: 0px;
-	margin-left:10px;
-	width: 30%;
-	font-family: 'Roboto-Regular';
-	font-weight: bold;
-
+.liest:after
+{
+    display: block;
+    clear: both;
+    content: '';
 }
-.est{
-	line-height: 40px;
-	float:left;
-	margin: 0px;
-	margin-left:10px;
-	width: 20%;
-	font-family: 'Roboto-Regular';
-	font-weight: bold;
+.liest.selected,
+.liest:hover
+{
+    background-color: #21B7C7;
 }
-.estIco{
-	margin-top:8px;
-	line-height: 40px;
-	margin-left:10px;
-	float:left;
-	width: 17px;
-	height: 19px;
-	background-image: url("../../images/dashboard/iconoClientes.png");
+.liest.selected > div
+{
+    color: #FFFFFF;
 }
-.respIco{
-	margin-top:10px;
-	line-height: 40px;
-	margin-left:10px;
-	float:left;
-	width: 12px;
-	height: 15px;
+.liest.selected > div:nth-child(1),
+.liest:hover > div:nth-child(1)
+{
+    background-image: url('../../images/usuarios/iconoClientesSmall.svg');
+}
+.liest.selected > div:nth-child(2),
+.liest:hover > div:nth-child(2)
+{
+    background-image: url("../../images/dashboard/iconoPersonalBlanco.png");
+}
+div[data-estacion] > div
+{
+    float: left;
+    width: 33%;
+}
+.est
+{
+    float:left;
+    margin-left:37px;
+    /*width: 148px;*/
+}
+div[data-estacion] > div:nth-child(1)
+{
+    background-image: url("../../images/dashboard/iconoClientes.png");
+    background-size: 17px 19px;
+    background-position: left 10px center;
+    background-repeat: no-repeat;
+}
+div[data-estacion] > div:nth-child(2)
+{
 	background-image: url("../../images/dashboard/iconoPersonal.png");
+        background-size: 12px 15px;
+        background-position: left 10px center;
+        background-repeat: no-repeat;
 }
-.lcontenido{
-	width: 569px;
-	height: auto;
+.lcontenido
+{
+    width: 618px;
+    float: left;
+    /*margin-left: 20px;*/
+    /*height: 270px;*/
+    /*margin-right: 3px;*/
 }
-.cont{
-
-	margin-left:4px;
-	top:5px;
-	width: 569px;
-	height: 257px;
+.cont
+{
+    margin-left:4px;
+    /*top:5px;*/
+    width: 100%;
+    /*height: 257px;*/
 }
 .litan{
 	border:1px solid #000;
@@ -193,15 +212,13 @@ font-size: 14px;
 	color:#1178AF;
 }
 
-.infocliente, .infocontacto {
-	float: left;
-	
-	width: 300px;
-	height: 100px;
-	margin-top:80px;
-	margin-left: 20px;
-	
-	
+.infocliente, .infocontacto
+{
+    float: left;	
+    width: 300px;
+    height: 100px;
+    /*margin-top:80px;*/
+    margin-left: 20px;
 }
 .tit{
 	margin:0px;
@@ -218,11 +235,16 @@ font-size: 14px;
 	font-size: 15px;	
 	display:block;
 }
-.info{
-	height: 120px;
+.info
+{
+    margin-bottom: 50px;
+	/*height: 120px;*/
 }
-.container-granja{
-	height: 300px;
+.container-granja:after
+{
+    display: block;
+    clear: both;
+    content: '';
 }
 
 div.bolaChica

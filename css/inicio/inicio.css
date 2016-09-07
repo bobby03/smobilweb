@@ -1,3 +1,7 @@
+#content
+{
+    margin-bottom: 50px;
+}
 div.principal.index{
     width: 1200px;
     margin: 0 auto;
@@ -29,10 +33,12 @@ div.principal.index{
 .tabs > div.selected {
 	background-color: #09b7c9;
 }
-.tabs:after{
-	content: "";
-	display: block;
-	clear: both;
+.tabs:after,
+.container-box.info > div:after
+{
+    content: "";
+    display: block;
+    clear: both;
 }
 .none{
 	display: none !important;
@@ -43,29 +49,31 @@ div.principal.index{
 
 .container-box{
       width: 100%;
-      max-width: 1190px;
+      /*max-width: 1190px;*/
       float: left;
       height:100%;
+      margin-top: 42px;
       max-height: 372px;
 }
-.divBox1{
+.divBox1
+{
      width: 100%;
      max-width: 574px;
      float: left;
-     margin-top: 42px;
+     /*margin-top: 42px;*/
      margin-bottom: 37px;
-     height: 293px;
+     /*height: 293px;*/
 }
 .divBox2{
      width: 100%;
-     max-width:612px;
+     max-width:626px;
      float: left;
-     margin-top: 42px;
+     /*margin-top: 42px;*/
      height: 295px;
 }
 .divTitulo1{
-     width:656px;
-     margin-bottom: 6px;
+     /*width:656px;*/
+    margin: 10px;
 }
 
 .containerTable{
@@ -98,23 +106,28 @@ div.principal.index{
 }
 /* Tipo de titulos */
   
- label.tituloV1{
-     
-     font-size: 18px;
-     color:#0077b0; 
-     margin-left: 12px;   
+.tituloV1
+{    
+    font-size: 18px;
+    color: #0077b0;
+    margin-bottom: 0;
 }
 label.tituloV2{
      
      font-size: 14px;
      color:#FFFFFF; 
 }
-label.titulov{
+.titulov
+{
   font-family: 'Roboto-Regular' !important;
   font-size: 18px;
   color:#fff;
   text-align: center;
   line-height: 10px;
+}
+div.titulov
+{
+    line-height: 35px;
 }
 label.titulov:hover{
   cursor: pointer;
@@ -229,23 +242,27 @@ div.iconGPS1{
     background-size: 11px;
 }
 /*     Tanques     */
-.contenedor-tanques{
-    width: 570px;
+.contenedor-tanques
+{
+    width: 614px;
     float: left;
-    margin-left: 20px;
-    height: 270px;
-    margin-right: 3px;   
+    margin-left: 4px;
+    /*height: 270px;*/
+    /*margin-right: 3px;*/   
 }
 .contenedor-tanques:after,
-.contenedor-tanques *:after{
+.contenedor-tanques *:after,
+.cont:after
+{
       content:"";
       display: block;
       clear: both;
 }  
 
-.contenedor-tanques .tanque 
+.contenedor-tanques .tanque,
+.cont .tanque
 {
-    width: 182px;
+    width: 198px;
     margin: 11px 10px -6px -2px;
     float: left;
     border-radius: 9px;
@@ -253,14 +270,19 @@ div.iconGPS1{
     border: 1px solid #0077B0;
     /*height: 81px;*/
 }
-.contenedor-tanques .tanque .tanque-container-titulo{
+.contenedor-tanques .tanque .tanque-container-titulo,
+.cont .tanque .tanque-container-titulo
+{
     height: 27px;
     border-radius: 9px 9px 0 0;
     text-align: center;
     line-height: 26px;
     background-color: #0077b0;
+    font-size: 14px;
  }
-.contenedor-tanques .tanque:nth-child(3n) {
+.contenedor-tanques .tanque:nth-child(3n),
+.cont .tanque:nth-child(3n) 
+{
     margin-right: 0;
 }
 .titulotanque{
@@ -291,7 +313,7 @@ div.iconGPS1{
     width: 4px;
     float: left;
     display: block;
-    margin-left: 11px;
+    margin-left: 4px;
 }
 .container-table.viaje{
     width: 100%;
@@ -322,6 +344,7 @@ h2{
     line-height: 33px;
     text-align: left;
     text-indent: 13px;
+    font-size: 16px;
 }
 .divTbody
 {
@@ -380,6 +403,7 @@ h2{
     height:321px;
     border: 2px solid #0077B0;
     margin-top: 8px;
+    background: #FFF;
 }
 .divThead2{
     height: 33px;
@@ -412,12 +436,15 @@ h2{
     /*height: 37px;*/
     float: left;
 }
-.botonIrViaje{
+.botonIrViaje
+{
     width: 135px;
     height: 35px;
+    line-height: 35px;
     background-color: #0077B0;
-    border-radius: 6px 6px 6px 6px;
-    margin-top: 3px;
+    border-radius: 6px;
+    font-size: 18px;
+    color: #FFFFFF;
     text-align: center;
     
 }
@@ -631,8 +658,7 @@ float:left;
 }
 .containerBoxR:last-child .circle
 {
-    
-     left:94%;
+     left:96%;
 }
 .containerBoxR:last-child .containerLinea
 {

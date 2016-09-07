@@ -553,7 +553,8 @@ class WebServiceController extends Controller
         $Siembras = null; $siArray = array(); $cepaTemp = array();
         $per=null; $tipoEstacion = array('1'=>"Camion",'2'=>"Igl&uacute;");
         $clienteTemp = null; $sols = null; $solTemp = null; $tanksTemp = null; $tanks= null;
-        $rx = null;
+        $rx = null; $EstTemp = array();
+        $siTemp = array(); $CTTemp = array();
         //--------------------- USER DATA RESP------------------------
         $userData = Yii::app()->db->createCommand()
             ->select('id, nombre, apellido, rfc, correo, puesto')
@@ -566,7 +567,7 @@ class WebServiceController extends Controller
             $today = date('Y-m-d');
             //------------------------- Campañas Sensado -------------------------
             $Siembras = Yii::app()->db->createCommand()
-                ->select('id,id_estacion est, id_responsable resp, nombre_camp, fecha_inicio, fecha_fin, status')
+                ->select('id ID_SIEMBRA, id,id_estacion est, id_responsable resp, nombre_camp, fecha_inicio, fecha_fin, status')
                 ->from('camp_sensado cs')
                 ->where('id_responsable = :idR',array(':idR'=>$idResp))
                 ->andWhere('fecha_inicio <=:today',array(':today'=>$today))
@@ -574,8 +575,71 @@ class WebServiceController extends Controller
                 ->queryAll();
             //--------------END CAMPAñAS SENSADO-----------------------
             if(count($Siembras)>0){
-                //------------ Estaciones ---------------------
+                foreach ($Siembras as $keyS => $Siembrasvalue) {
+                    
+                    // echo $Siembrasvalue['est']."<br>";
 
+                    //datos Estacion;
+                    $est = Yii::app()->db->createCommand()
+                        ->select('e.id_granja, e.identificador,  e.no_personal, e.marca, e.ubicacion, gj.responsable, gj.nombre ')
+                        ->from('estacion e')
+                        ->join('granjas gj','e.id_granja = gj.id')
+                        ->where('e.id = :idE',array(':idE'=>$Siembrasvalue['est']))
+                        ->andWhere('e.disponible = 1')
+                        ->andWhere('e.activo = 1')
+                        ->queryAll();
+
+                    // print_r($est);
+
+                    //-- Cepas ( camp_tanque)
+                    $camp_tanque = Yii::app()->db->createCommand()
+                        ->select('id_tanque, id_cepa')
+                        ->from('camp_tanque')
+                        ->where('id_camp_sensado = :idCS',array(':idCS'=>$Siembrasvalue['id']))
+                        ->queryAll();
+
+                    // echo "<br><b>";
+                    // print_r($camp_tanque);
+                    // echo "</b></br>";
+
+                    foreach ($camp_tanque as $key => $CTvalue) {
+                        $CepaTanque = Yii::app()->db->createCommand()
+                            ->select(' t.id Tanque, t.nombre, c.*')
+                            ->from('cepa c')
+                            ->join('tanque t','t.id = :idTank',array(':idTank'=>$camp_tanque[$key]['id_tanque']))
+                            ->where('c.id = :idCepa',array(':idCepa'=>$camp_tanque[$key]['id_cepa']))
+                            ->queryRow();
+
+                        // echo "<br><b>";
+                        // print_r($CepaTanque);
+                        // echo "</b><br>";
+                        $CepaTanque +=  array('CAMPSENSADO'=>$Siembrasvalue['id'] )  ;
+                        $CepaTanque +=  array('ID_ESTACION'=>$Siembrasvalue['est']);
+                        $CTTemp[] = $CepaTanque;
+                    }
+                    $EstTemp[] = array(
+                        'ID_SIEMBRA'=>$Siembrasvalue['ID_SIEMBRA'],
+                        'EST'=>$Siembrasvalue['est'],
+                        'IDRESP'=>$Siembrasvalue['resp'],
+                        'NOMBRE'=>$Siembrasvalue['nombre_camp'],
+                        'FECHA'=>$Siembrasvalue['fecha_inicio'],
+                        'ENTREGA'=>$Siembrasvalue['fecha_fin'],
+                        'ID_GRANJA'=>$est[0]['id_granja'],
+                        'IDENTIFICADOR'=>$est[0]['identificador'],
+                        'PERSONAL'=>$est[0]['no_personal'],
+                        'MARCA'=>$est[0]['marca'],
+                        'UBICACION'=>$est[0]['ubicacion'],
+                        'RESPONSABLE'=>$est[0]['responsable'],
+                        'GRANJA'=>$est[0]['nombre'],
+                        'CEPAS'=>$CTTemp);
+                    $siTemp[] = array('ESTACION'=>$est, 'CEPAS'=>$CTTemp);
+                    $CTTemp = null;
+                    // echo "<hr>";
+                    //------ Camp_Tanque
+                }
+                // print_r($siArray);
+                //------------ Estaciones ---------------------
+                /*
                 foreach ($Siembras as $keySiembras => $valueSiembras) {
                     # code...
                     $est = Yii::app()->db->createCommand()
@@ -609,13 +673,13 @@ class WebServiceController extends Controller
                                     'CEPA'=>$cepa,);
                     //-------------------- Granja --------------
 
-                    
-                    
                 } //end foreach
-                $siArray =  $siTemp;
+                //  */
+                $siArray =  $EstTemp;
             }else{
                 $siArray = 0; //('Name'=>'USER NO VALID','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
             }
+            // */
             
 
             //----- Construccion JSON 
@@ -640,10 +704,9 @@ class WebServiceController extends Controller
             $udArray = array('Name'=>'USER NO VALID','Status'=>'4BD','SCode'=>"-1",'ak'=>"-1");
         }
 
+        // echo json_encode($EstTemp);
           
-        
         echo json_encode($udArray);
-        // echo json_encode($rx);
     }
 
     public function actionGetDataDriver(){
@@ -707,32 +770,57 @@ class WebServiceController extends Controller
     public function actionUpdatestatus(){
         $idViaje = isset($_GET['id'])?$_GET['id']:0;
         $status = isset($_GET['status'])?$_GET['status']:0;
-        $table = 'viajes';
-        $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:i:s'));
-        $conditions = "id = :idViaje";
-        $params = array(":idViaje"=>$idViaje);
+        $tipo = isset($_GET['tipo'])?$_GET['tipo']:0;
 
-        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
-        $aResult = null;
-        if($update > 0){
-            $updateSols = Yii::app()->db->createCommand()
-                ->selectDistinct('id_solicitud')
-                ->from('solicitudes_viaje')
-                ->where('id_viaje = :idV',array(':idV'=>$idViaje))
-                ->queryAll();
-            foreach ($updateSols as $key => $value) {
+        switch ($tipo) {
+            case '1':
                 # code...
-                $table = 'solicitudes';
-                $column = array('status'=>$status);
-                $conditions = "id = :idS";
-                $params = array(":idS"=>$value['id_solicitud']);
-                $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
-            }
-            $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+                $table = 'viajes';
+                $column = array('status'=>$status,'fecha_entrega'=>date('Y-m-d'), 'hora_entrega'=>date('H:i:s'));
+                $conditions = "id = :idViaje";
+                $params = array(":idViaje"=>$idViaje);
 
+                $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+                $aResult = null;
+                if($update > 0){
+                    $updateSols = Yii::app()->db->createCommand()
+                        ->selectDistinct('id_solicitud')
+                        ->from('solicitudes_viaje')
+                        ->where('id_viaje = :idV',array(':idV'=>$idViaje))
+                        ->queryAll();
+                    foreach ($updateSols as $key => $value) {
+                        # code...
+                        $table = 'solicitudes';
+                        $column = array('status'=>$status);
+                        $conditions = "id = :idS";
+                        $params = array(":idS"=>$value['id_solicitud']);
+                        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+                    }
+                    $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+
+                }
+                else
+                    $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+
+                break;
+            case '2':
+                # code...
+                $table = 'camp_sensado';
+                $column = array('status'=>$status,);
+                $conditions = "id = :idViaje";
+                $params = array(":idViaje"=>$idViaje);
+                if(Yii::app()->db->createCommand()->update($table, $column,$conditions, $params )){
+                    $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+                }else{
+                    $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);   
+                }
+                break;
+            
+            default:
+                # code...
+                break;
         }
-        else
-            $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+        
         
         echo json_encode($aResult);
     }
@@ -755,25 +843,46 @@ class WebServiceController extends Controller
 
     public function actionUpdateEstacion(){
         $code = isset($_GET['id'])?$_GET['id']:0;
-        $table = 'viajes';
-        $column = 'id_estacion';
-        $conditions = "id = :id";
-        $params = array(':id'=>$code);
-        $idEstacion = Yii::app()->db->createCommand()
-            ->select('id_estacion')
-            ->from('viajes')
-            ->where($conditions,$params)
-            ->queryRow();
+        $tipo = isset($_GET['tipo'])?$_GET['tipo']:0;
+        switch ($tipo) {
+            case '1':
+                # code...
+                $table = 'viajes';
+                $column = 'id_estacion';
+                $conditions = "id = :id";
+                $params = array(':id'=>$code);
+                $idEstacion = Yii::app()->db->createCommand()
+                    ->select('id_estacion')
+                    ->from('viajes')
+                    ->where($conditions,$params)
+                    ->queryRow();
 
-        $table = 'estacion';
-        $column = array('disponible'=>"1");
-        $conditions = "id = :code";
-        $params = array(":code"=>$idEstacion['id_estacion']);
-        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
-        if($update > 0)
-            $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
-        else
-            $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+                $table = 'estacion';
+                $column = array('disponible'=>"1");
+                $conditions = "id = :code";
+                $params = array(":code"=>$idEstacion['id_estacion']);
+                $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+                if($update > 0)
+                    $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+                else
+                    $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+                break;
+            case '2':
+                # code...
+                $table = 'camp_sensado';
+                $column = array('status' => 2);
+                $conditions = "id = :id";
+                $params = array(':id'=>$code);
+                if($update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params )) $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+                else
+                    $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+        
         
         echo json_encode($aResult);
 

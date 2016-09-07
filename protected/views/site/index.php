@@ -28,7 +28,7 @@
             <div class="container-box">
                 <div class="divBox1">
                     <div class="divTitulo1">
-                        <label class="tituloV1">1. Selecciona un viaje:</label>
+                        <p class="tituloV1">1. Selecciona un viaje:</p>
                     </div>	
                     <div class="containerTable">
                         <div class ="divTable">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="divBox2">
                     <div class="divTitulo1">
-                        <label class = "tituloV1">2. Contenido:</label>
+                        <label class="tituloV1">2. Contenido:</label>
                     </div>
                     <div class="contenedor-tanques"></div>
                     <div class="container-lineBox">
@@ -125,128 +125,136 @@
                 </div>
             </div>
         </div>
-        <?php else :?>
-            <div id='no-viajes'>
-                <div class='container-viaje center'></div>
+    <?php else :?>
+        <div id='no-viajes'>
+            <div class='container-viaje center'></div>
+        </div>
+    <?php endif;?>  
+    <?php if($estaciones != null):?>
+        <?php if(Yii::app()->user->getTipoUsuario()!=1):?>
+            <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
+                <div class="container-box">
+                    <div class="divBox1">
+                        <div class="divTitulo1">
+                            <p class="tituloV1">1. Selecciona una estación:</p>
+                        </div>
+                        <div class="estacion">
+                            <div class="divTable">
+                                <p class="divThead">Estaciones</p>
+                                <div class="lestacion">
+                                    <?php $i=1;?>
+                                    <?php foreach($estaciones as $est):?>
+                                        <div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
+                                            <div>
+                                                <div class="est"><?php echo $est['identificador'];?></div>
+                                            </div>
+                                            <div>
+                                                <div class="est"><?php echo $est['nombre']." ".$est['apellido'];?></div>
+                                            </div>
+                                            <div>
+                                                <div class='est'> 
+                                                    <a href="monitoreo/<?php echo $est['idest'];?>">
+                                                        <div class='botonIrViaje'>Ver Historial</div>
+                                                    </a> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php $i++; endforeach;?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-line">
+                            <h3 class="container-line2"></h3>
+                            <h3 class="container-line1"></h3>
+                        </div>
+                    </div>
+                    <div class="divBox2">
+                        <p class="topcont">2. Contenido:</p>
+                        <div class="lcontenido">
+                            <div>
+                                <p class="estv" >Seleccione una estación</p>
+                            </div>
+                            <?php $o=1; foreach($estaciones as $est):?>
+                                <div data-id="est<?php echo $o;?>" class="cont hide">
+                                    <?php 
+                                        $id = $est['id_estacion'];
+                                        $datos = $this->actionGetTanques($id);
+                                    ?>
+                                    <?php foreach($datos as $dato):?>
+                                        <div class="tanque">
+                                            <div class="tanque-container-titulo">
+                                                <span class="titulotanque"><?php echo $dato['tnombre']; ?></span>
+                                            </div>
+                                            <div class="variables-wrapper">
+                                                <div class="var-oz">
+                                                    <div class="icon-oz"></div>
+                                                    <div class="txt"><?php echo intval($dato['ox']); ?> mg/L</div>
+                                                </div>
+                                                <div class="var-ph">
+                                                    <div class="icon-ph"></div>
+                                                    <div class="txt"><?php echo intval($dato['ph']); ?></div>
+                                                </div>
+                                                <div class="var-tm">
+                                                    <div class="icon-tm"></div>
+                                                    <div class="txt"><?php echo intval($dato['temp']); ?>°C</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach;?>
+                                </div>
+                            <?php $o++; endforeach;?>
+                        </div> <!-- Fin de div contenido-->
+                        <div class="container-lineBox">
+                            <h3 class="container-line2"></h3>
+                        </div>
+                    </div>
+                </div>
+            <?php 
+                if(isset($est['id_estacion']))
+                    $id = $est['id_estacion'];
+                else 
+                    $id = 0;
+                $datos = $this->actionGetTanques2($id);
+                $us = 1;
+            ?>
+            <div class="container-box">
+                <?php foreach($estaciones as $est):?>
+                    <div class="ubicacion hide" data-id="est<?php echo $us;?>">
+                        <span>3. Ubicación: <?php echo $est['ubicacion'];?> .</span>
+                    </div>
+                <?php $us++; endforeach;?>
             </div>
-        <?php endif;?>  
-        <?php if($estaciones != null) { ?>
-  			  <?php   if(Yii::app()->user->getTipoUsuario()!=1):?>
-
-  			    <div class="container-granja none"> <!--Aquí empieza el tab de estaciones-->
-  			    	<div class="dash1">
-	  			    	<div class="estacion">
-	  			    		<p class="topcont">1. Selecciona una estación</p>
-	  			    		<p class="divThead">Estaciones</p>
-	  			    		<div class="lestacion">
-	  			    			<?php 
-	  			    			$i=1;
-	  			    			foreach($estaciones as $est):?>
-	  			    				<div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
-	  			    					<div class="estIco"></div><label class="est"><?php echo $est['identificador'];?></label><div class="respIco"></div>
-	  			    					<label class="resp"><?php echo $est['nombre']." ".$est['apellido'];?></label>
-	  			    					<label class='resp'> <a href="monitoreo/<?php echo $est['idest'];?>"><div class='botonIrViaje'><label class = 'titulov'>Ver Historial</label></div></a> </label>
-	  			    				</div>
-	  			    			<?php
-	  			    			$i++;
-	  			    			endforeach;
-	  			    			?>
-	  			    		</div>
-	  			    	</div>
-	  			    	<div class="reg"></div>
-	  			    	<div class="reg2"></div>
-
-
-	  			    	<div class="contenido">
-	  			    		<p class="topcont">2. Contenido:</p>
-	  			    		
-	  			    		<div class="lcontenido">
-	  			    			<div>
-	  			    				<p class="estv" >Seleccione una estación</p>
-	  			    			</div>
-	  			    			<?php 
-	  			    			$o=1;
-	  			    			foreach($estaciones as $est):?>
-	  			    			<div data-id="est<?php echo $o;?>" class="cont hide">
-	  			    				<?php 
-	  			    				$id=$est['id_estacion'];
-	  			    				$datos=$this->actionGetTanques($id);
-	  			    				?>
-	  			    			<?php
-
-	  			    			foreach($datos as $dato):?>
-	  			    				<div class="litan">
-	  			    					<div class="tanT"><p class="pTan"><?php echo $dato['tnombre']; ?></p></div>
-
-		  			    					<div class="oxico"></div><label class="clab"><?php echo intval($dato['ox']); ?> mg/L</label>
-		  			    					<div class="phico"></div><label class="clab"><?php echo intval($dato['ph']); ?></label>
-		  			    					<div class="tempico"></div><label class="clab"><?php echo intval($dato['temp']); ?>°C</label>
-	  			    				</div>
-	  			    			<?php
-	  			    			endforeach;?>
-	  			    			</div>
-	  			    		</div> <!-- Fin de div contenido-->
-	  			    	<?php 
-	  			    	$o++;
-	  			    	endforeach;?>
-	  			    	<!-- div class="reg3"></div -->
-	  			    	</div>
-
-
-  			    	</div>
-  			    	<?php 
-  			    	$id=isset($est['id_estacion'])?$est['id_estacion']:0;
-	  			   	$datos=$this->actionGetTanques2($id);
-  			    	$us=1;
-  			    	foreach($estaciones as $est):?>
-  			    	<div data-id="est<?php echo $us;?>"class="ubicacion hide">
-  			    		<span>3. Ubicación: <?php echo $est['ubicacion'];?> .</span>
-  			    	</div>
-  			    	<?php 
-	  			    $us++;
-	  			    endforeach;?>
-	  			    <!--
-	  			    Barra de 'timeline' de siembras de sensado...
-  			    	<div class="progressbar">
-
-  			    		<div class="container-est">
-						<div class="sepest"></div>
- 						<div class="containerEst"><div class="containerE1"></div></div>
- 						<div class="sepest2"></div>		
-						</div>						
-  			    	</div>
--->
-  			    	<div class="info">
-  			    		<?php 
-  			    		$id=isset($est['id_estacion'])?$est['id_estacion']:0;
-	  			    	$datos=$this->actionGetTanques2($id);
-  			    		$u=1;
-  			    		foreach($estaciones as $est):?>
-	  			    		<div data-id="est<?php echo $u;?>" class="infocliente hide">
-  			    			<p id="titc" class="tit"><?php echo $est['identificador'];?></p>
-  			    			<p class="infocont">
-  			    				<span><?php echo $est['ubicacion']?></span>
-  			    			</p>
-  			    		</div>
-
-  			    		<div data-id="est<?php echo $u;?>" class="infocontacto hide">
-  			    			<p class="tit">Contacto:</p>
-  			    			<p class="infocont">
-  			    				<span><?php echo $est['nombre']." ".$est['apellido'];?></span>
-  			    				<span>Tel. <?php echo $est['tel'];?></span>
-  			    				<span>E-mail: <?php echo $est['correo'];?></span>
-  			    			</p>
-  			    		</div>	
-	  			    	<?php 
-	  			    	$u++;
-	  			    	endforeach;?>
-  			    		
-  			    	</div>
-  			    </div>
-  			<?php endif;?>
-  			    <?php }
-					else { echo "<div class='container-granja none'>
-					"; 
-				} ?>
-  			    
-			</div>
+            <div class="container-box info">
+                <?php 
+                    if(isset($est['id_estacion']))
+                        $id = $est['id_estacion'];
+                    else 
+                        $id = 0;
+                    $datos = $this->actionGetTanques2($id);
+                    $us = 1;
+                ?>
+                <?php foreach($estaciones as $est):?>
+                    <div>
+                        <div data-id="est<?php echo $u;?>" class="infocliente hide">
+                            <p id="titc" class="tit"><?php echo $est['identificador'];?></p>
+                            <p class="infocont">
+                                <span><?php echo $est['ubicacion']?></span>
+                            </p>
+                        </div>
+                        <div data-id="est<?php echo $u;?>" class="infocontacto hide">
+                            <p class="tit">Contacto:</p>
+                            <p class="infocont">
+                                <span><?php echo $est['nombre']." ".$est['apellido'];?></span>
+                                <span>Tel. <?php echo $est['tel'];?></span>
+                                <span>E-mail: <?php echo $est['correo'];?></span>
+                            </p>
+                        </div>	
+                    </div>
+                <?php $u++; endforeach;?>
+            </div>
+        </div>
+        <?php endif;?>
+    <?php else:?> 
+        <div class='container-granja none'></div>
+    <?php endif;?>
+</div>

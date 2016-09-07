@@ -260,7 +260,7 @@ body.estacion div.form input[type="submit"] {
 #Estacion_no_personal
 {
     background-image: url('../../images/camion/icononumeropasajeros.png'), url('../../images/form/bg.png');
-    background-position: 8px 5px,left;
+    background-position: 6px 5px,left;
     background-repeat: no-repeat;
     padding-left: 35px;
     border-left:0 !important;
