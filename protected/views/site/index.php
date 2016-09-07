@@ -231,7 +231,7 @@
                     else 
                         $id = 0;
                     $datos = $this->actionGetTanques2($id);
-                    $us = 1;
+                    $u = 1;
                 ?>
                 <?php foreach($estaciones as $est):?>
                     <div>
