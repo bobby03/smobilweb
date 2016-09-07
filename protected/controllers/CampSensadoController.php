@@ -247,6 +247,7 @@ eof;
                 $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
                 $model->hora_fin = date('h:i', strtotime($model->hora_fin));
                 $model->hora_inicio = date('h:i', strtotime($model->hora_inicio));
+                $model->status = 0;
                 if($model->save())
                 {
                     $delete = Yii::app()->db->createCommand("DELETE FROM camp_tanque WHERE id_camp_sensado = $model->id")->execute();
