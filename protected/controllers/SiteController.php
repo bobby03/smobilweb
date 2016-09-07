@@ -244,7 +244,7 @@ class SiteController extends Controller
                         <div class='variables-wrapper'> 
                             <div class='var-oz'>
                                 <div class='icon-oz'></div>
-                                <div class='txt'>{$data[$u]["ox"]}</div>
+                                <div class='txt'>{$data[$u]["ox"]} <span>mg/L</span></div>
                             </div>
                             <div class='var-ph'>
                                 <div class='icon-ph'></div>
@@ -252,7 +252,7 @@ class SiteController extends Controller
                             </div>
                             <div class='var-tm'>
                                 <div class='icon-tm'></div>
-                                <div class='txt'>{$data[$u]["temp"]} °C</div>
+                                <div class='txt'>{$data[$u]["temp"]} <span>°C</span></div>
                             </div>
                         </div>
                     </div>";
@@ -271,7 +271,7 @@ class SiteController extends Controller
                             <div class='variables-wrapper'> 
                                 <div class='var-oz'>
                                     <div class='icon-oz'></div>
-                                    <div class='txt'>{$data["ox"]}</div>
+                                    <div class='txt'>{$data["ox"]} <span>mg/L</span></div>
                                 </div>
                             <div class='var-ph'>
                                 <div class='icon-ph'></div>
@@ -279,7 +279,7 @@ class SiteController extends Controller
                             </div>
                             <div class='var-tm'>
                                 <div class='icon-tm'></div>
-                                <div class='txt'>{$data["temp"]} °C</div>
+                                <div class='txt'>{$data["temp"]} <span>°C</span></div>
                             </div>
                         </div>
                     </div>";
@@ -381,62 +381,157 @@ class SiteController extends Controller
                 }
             }
         }
+        fb($arreglo);
 //            $viaje = Viajes::model()->findByPk($id);
         $html = '';
         $total++;
         if($bandera == true)
         {
             if($total >= 1)
-                $width = 'style="width: ' . (100)/$total.'%"';
+                $width = 'style="width: ' . (100)/($total).'%"';
             else
                 $width = 'style="width: 50%"';
-            $html = $html. '
-                <div class="containerBoxR" '.$width.'>
-                    <div>  
-                        <div class="textCircle">
-                            <div class="circle entregado"></div>
-                            <div  class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
-                        </div>
-                        <div class="containerLinea">
-                            <div class="drawLine2 entregado"></div>
-                        </div>
-                    </div>
-                </div>';
-            /*crear la parte del cajon*/
-            $mar = 0;
-            foreach ($arreglo as $data) 
-            {
-                $html = $html.'
-                    <div class="containerBoxR" '.$width.'>
-                        <div>';
-                if($mar == $total-2)
-                    $html = $html.'  
-                            <div class="textCircle">';
-                else
-                    $html = $html.'  
-                            <div class="textCircle siHover">';
-                $html = $html.<<<EOF
-                                <div class="circle {$data['entregado']}"></div>
-                                    <div class="ctxtr"> 
-                                        <div class="bubbleC">
-                                            <label class="txtRuta">{$data["idLocacion"]}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="containerLinea">
-                                    <div class="drawLine2 {$data['entregado']}"></div>
-                                </div>
-                            </div>
+            $inicio = Yii::app()->params["location"];
+            $html = $html.'<div class="containerOfBoxesTop">';
+            $html = $html.<<<EOF
+                    <div class="containerBoxR" $width>
+                        <div class="ctxtr">
+                            <div class="negritas">Salida</div><br>
+                            <div class="txtR2">$inicio<br>{$data['fecha_salida']}</div>
                         </div>
                     </div>
 EOF;
-                    $mar = $mar + 1 ;
+            $mar = 0;
+            foreach ($arreglo as $data) 
+            {
+                if($mar == $total-2)
+                {
+                    $html = $html.<<<EOF
+                        <div class="containerBoxR" $width>
+                            <div class="ctxtr">
+                                <div class="negritas">Último destino</div><br>
+                                <div class="txtR2">{$data['idLocacion']}</div>
+                            </div>
+                        </div>
+EOF;
+                }
+                else
+                {
+                    $html = $html.<<<EOF
+                        <div class="containerBoxR" $width>
+                            <div class="ctxtr">
+                                <div class="bubbleC hidden" data-map="$mar">
+                                    <div class="txtRuta">{$data['idLocacion']}</div>
+                                </div>
+                            </div>
+                        </div>
+EOF;
+                }
+                $mar++;
             }
+            if($total > 2)
+                $width = 'style="width: ' . (100)/($total-1).'%"';
+            else
+                $width = 'style="width: 50%"';
+            $html = $html.'</div>';
+            $html = $html.<<<EOF
+                    <div class="containerOfBoxesBottom">
+                        <div class="containerLinea" $width>
+                            <div class="circle entregado"></div>
+                            <div class="drawLine2 entregado"></div>
+                        </div>
+EOF;
+            $mar = 0;
+            foreach ($arreglo as $data) 
+            {
+                if($mar == $total-2)
+                {
+                    if($total == 2)
+                    {
+                        $html = $html.<<<EOF
+                        <div class="containerLinea" $width>
+                            <div class="circle no_entregado last"></div>
+                            <div class="drawLine2 no_entregado"></div>
+                        </div>
+EOF;
+                    }
+                    else
+                    {
+                        $html = $html.<<<EOF
+                            <div class="circle no_entregado last"></div>
+EOF;
+                    }
+                }
+                else
+                {
+                    $html = $html.<<<EOF
+                        <div class="containerLinea" $width>
+                            <div class="circle {$data['entregado']} hover" data-map="$mar"></div>
+                            <div class="drawLine2 {$data['entregado']}"></div>
+                        </div>
+EOF;
+                }
+                $mar++;
+            }
+            $html = $html.'</div>';
+//            $html = $html. '
+//                <div class="containerBoxR" '.$width.'>
+//                    <div>  
+//                        <div class="textCircle">
+//                            <div class="circle entregado"></div>
+//                            <div class="ctxtr"><label class="txtR2">'.Yii::app()->params["location"].'<br>'.$data['fecha_salida'].'</label></div>
+//                        </div>
+//                        <div class="containerLinea">
+//                            <div class="drawLine2 entregado"></div>
+//                        </div>
+//                    </div>
+//                </div>';
+//            /*crear la parte del cajon*/
+//            $mar = 0;
+//            foreach ($arreglo as $data) 
+//            {
+//                if($mar == $total-2)
+//                {
+//                    $html = $html.<<<EOF
+//                            <div class="textCircle">
+//                                <div class="circle {$data['entregado']}"></div>
+//                                    <div class="ctxtr"> 
+//                                        <div class="bubbleC">
+//                                            <label class="txtRuta">{$data["idLocacion"]}</label>
+//                                        </div>
+//                                    </div>
+//                                </div>
+//                            </div>
+//EOF;
+//                }
+//                else
+//                {
+//                    $html = $html.<<<EOF
+//                        <div class="containerBoxR" $width>
+//                            <div>
+//                                <div class="textCircle siHover">
+//                                    <div class="circle {$data['entregado']}"></div>
+//                                        <div class="ctxtr"> 
+//                                            <div class="bubbleC">
+//                                                <label class="txtRuta">{$data["idLocacion"]}</label>
+//                                            </div>
+//                                        </div>
+//                                    </div>
+//                                    <div class="containerLinea">
+//                                        <div class="drawLine2 {$data['entregado']}"></div>
+//                                    </div>
+//                                </div>
+//                            </div>
+//                        </div>
+//EOF;
+//                }
+//                    $mar = $mar + 1 ;
+//            }
         }
         else
         {
             $html=$html.'
-                <div class="containerBoxR">
+                <div class="containerBoxR" style="width: 100%">
                     <div class="letreroError">Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>
                 </div>'; 
         }  
@@ -445,62 +540,65 @@ EOF;
   /**
    * Logs out the current user and redirect to homepage.
    */
-  public function actionLogout()
-  {
-    Yii::app()->user->logout();
-    $this->redirect(Yii::app()->homeUrl);
-  }
-  public function actionGetTanques($id){
-    $tanques= Yii::app()->db->createCommand(
-        'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp FROM estacion e 
-        JOIN camp_sensado cs ON cs.id_estacion=e.id
-        JOIN personal p ON cs.id_responsable=p.id
-        JOIN tanque t ON t.id_estacion=e.id
-        JOIN registro_camp r ON t.id=r.id_tanque
-        WHERE e.activo=1 
-        AND e.tipo=2
-        AND cs.activo=1
-        AND t.activo=1
-        ORDER BY r.id DESC
-        LIMIT 3000
-        ) consulta
-                WHERE idest ='.$id.'
-        GROUP BY idtan
-        ORDER BY idest
-        ')
-    ->queryAll();
-    return $tanques;
-  }
-  public function actionGetTanques2($id){
-    $tanques= Yii::app()->db->createCommand(
-        'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
-        JOIN camp_sensado cs ON cs.id_estacion=e.id
-        JOIN personal p ON cs.id_responsable=p.id
-        JOIN tanque t ON t.id_estacion=e.id
-        JOIN registro_camp r ON t.id=r.id_tanque
-        WHERE e.activo=1 
-        AND e.tipo=2
-        AND cs.activo=1
-        AND t.activo=1
-        ORDER BY r.id DESC
-        LIMIT 3000
-        ) consulta
-                WHERE idest ='.$id.'
-        GROUP BY idtan
-        ORDER BY idest
-        ')
-    ->queryRow();
-    return $tanques;
-  }
-  public function actionDbpb($id) {
-    $return['result'] = 0 ;
-    $return['html'] = "";
-    $last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
-    ->queryAll();
-    $flag = true;
-         $return['linea'] = $this->GetPB($id, $flag);
-          echo json_encode($return);
+    public function actionLogout()
+    {
+      Yii::app()->user->logout();
+      $this->redirect(Yii::app()->homeUrl);
     }
+    public function actionGetTanques($id)
+    {
+$tanques= Yii::app()->db->createCommand(
+  'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp FROM estacion e 
+  JOIN camp_sensado cs ON cs.id_estacion=e.id
+  JOIN personal p ON cs.id_responsable=p.id
+  JOIN tanque t ON t.id_estacion=e.id
+  JOIN registro_camp r ON t.id=r.id_tanque
+  WHERE e.activo=1 
+  AND e.tipo=2
+  AND cs.activo=1
+  AND t.activo=1
+  ORDER BY r.id DESC
+  LIMIT 3000
+  ) consulta
+          WHERE idest ='.$id.'
+  GROUP BY idtan
+  ORDER BY idest
+  ')
+->queryAll();
+return $tanques;
+}
+    public function actionGetTanques2($id)
+    {
+      $tanques= Yii::app()->db->createCommand(
+          'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
+          JOIN camp_sensado cs ON cs.id_estacion=e.id
+          JOIN personal p ON cs.id_responsable=p.id
+          JOIN tanque t ON t.id_estacion=e.id
+          JOIN registro_camp r ON t.id=r.id_tanque
+          WHERE e.activo=1 
+          AND e.tipo=2
+          AND cs.activo=1
+          AND t.activo=1
+          ORDER BY r.id DESC
+          LIMIT 3000
+          ) consulta
+                  WHERE idest ='.$id.'
+          GROUP BY idtan
+          ORDER BY idest
+          ')
+      ->queryRow();
+      return $tanques;
+    }
+    public function actionDbpb($id)
+    {
+      $return['result'] = 0 ;
+      $return['html'] = "";
+      $last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+      ->queryAll();
+      $flag = true;
+           $return['linea'] = $this->GetPB($id, $flag);
+            echo json_encode($return);
+      }
     public function GetPB($id, $bandera)
     { 
         $recorrido = Yii::app()->db->createCommand('SELECT *, curdate() as hoy FROM camp_sensado cs 
@@ -538,22 +636,22 @@ EOF;
         }
         else
           $ss=2;
-        
-  }
-  /*$fi='2008-1-15';
-  $ff='2009-10-15';
-  if($fi<$ff){
+
+    }
+    /*$fi='2008-1-15';
+    $ff='2009-10-15';
+    if($fi<$ff){
     echo 'hola';
-  }else{
+    }else{
     echo 'deshola';
-  }*/
-  
-  $fi=substr($fecha_i,-2).'/'.substr($fecha_i, 5,2).'/'.substr($fecha_i, 0,4);
+    }*/
+
+    $fi=substr($fecha_i,-2).'/'.substr($fecha_i, 5,2).'/'.substr($fecha_i, 0,4);
     if($bandera == true){
         $width = 'style="width: ' . (100)/($conteo+1).'%"';
         $html = $html. '
           <div class="containerBoxR" '.$width.'>
-          
+
             <div> 
                   <div class="textCircle">
                   <div class="circle entregado"></div>
@@ -599,10 +697,10 @@ EOF;
               $txt='';
               $hov='siHover';
             }
-            
+
           $html = $html.'
           <div class="containerBoxR" '.$width.'>
-               
+
                 <div> 
                   ';
                   if($mar == $conteo)
@@ -620,17 +718,17 @@ EOF;
               </div>
               </div>';
               $mar = $mar + 1 ;
-         
-          
+
+
         }
       }
-        
+
       else{
             $html=$html .'<div class="containerBoxR">
                     <div class="letreroError">Este viaje no tiene rutas, porfavor, p&oacute;ngase en contacto con el administrador.</div>'; 
-          
+
         } 
-    
-  return $html;
- } 
+
+    return $html;
+    } 
 }

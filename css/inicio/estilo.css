@@ -88,6 +88,10 @@
     background-color: #21B7C7;
     color: #FFFFFF;
 }
+.txt span
+{
+    font-size: 10px;
+}
 .liest.selected > div:nth-child(1),
 .liest:hover > div:nth-child(1)
 {
