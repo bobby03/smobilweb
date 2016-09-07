@@ -335,11 +335,12 @@ class SiteController extends Controller
 //            ->where("sv.id_viaje = $id")
 //            ->queryAll();
         $recorrido = Yii::app()->db->createCommand()
-            ->selectDistinct('cd.ubicacion_mapa, cd.domicilio, v.fecha_salida')
+            ->selectDistinct('cd.ubicacion_mapa, cd.domicilio, v.fecha_salida, s.fecha_entrega')
             ->from('solicitudes_viaje as sv')
             ->join('pedidos as p', 'p.id_solicitud = sv.id_solicitud')
             ->join('clientes_domicilio as cd', 'cd.id = p.id_direccion')
             ->join('viajes as v', "v.id = $id")
+            ->join('solicitudes as s', 's.id = sv.id_solicitud')
             ->where("sv.id_viaje = $id")
             ->queryAll();
         $arreglo = array();
