@@ -6,7 +6,7 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/campsensado/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
-    $cs->registerScriptFile($baseUrl.'/js/siembras/search.js');
+//    $cs->registerScriptFile($baseUrl.'/js/siembras/search.js');
     $cs->registerScriptFile($baseUrl.'/js/siembras/index.js');
     $this->breadcrumbs=array(
 	'Siembra',
@@ -53,8 +53,8 @@
     </div>
     <!-- - - - - - - - - - - -  - - - - - - -->
     <div class="tabContent hide" data-tan="2"> <!--Activos-->
-        <div class="search-form"><!-- search-form -->
-            <?php $this->renderPartial('_search',array('model'=>$model,)); ?>
+        <div class="search-form2"><!-- search-form -->
+            <?php $this->renderPartial('_search2',array('model'=>$model,)); ?>
             <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado/create">
                 <div class="agregar campsensado"></div>
             </a>
@@ -83,8 +83,8 @@
     </div>
     <!-- - - - - - - - - - - -  - - - - - - -->
     <div class="tabContent hide" id="asignadas" data-tan="3"> <!--Inactivos-->
-        <div class="search-form2"><!-- search-form -->
-            <?php $this->renderPartial('_search2',array('model'=>$model,)); ?>
+        <div class="search-form3"><!-- search-form -->
+            <?php $this->renderPartial('_search3',array('model'=>$model,)); ?>
         </div>
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
