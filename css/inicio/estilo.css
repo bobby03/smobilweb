@@ -86,9 +86,6 @@
 .liest:hover
 {
     background-color: #21B7C7;
-}
-.liest.selected > div
-{
     color: #FFFFFF;
 }
 .liest.selected > div:nth-child(1),
