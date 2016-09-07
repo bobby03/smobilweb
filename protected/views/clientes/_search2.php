@@ -28,6 +28,10 @@
 		
 		<?php echo $form->textField($model,'apellido_contacto',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
+	<div class="row hide" data-id='4'>
+		
+		<?php echo $form->textField($model,'rfc',array('size'=>15,'maxlength'=>15)); ?>
+	</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->
