@@ -674,7 +674,8 @@ float:left;
 }
 .containerBoxR:last-child .circle
 {
-     left:96%;
+    right: 0;
+    left: auto;
 }
 .containerBoxR:last-child .containerLinea
 {
