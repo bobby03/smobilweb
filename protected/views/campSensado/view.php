@@ -37,7 +37,7 @@
         <h2 class="letrero-container"></h2>
     </div>
     <div class="row">
-        <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Cancelar</a>                
+        <a class="gBoton" id="cBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/CampSensado">Regresar</a>                
         <script type="text/javascript">                     
 //               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');
 //               console.log(urlC);
