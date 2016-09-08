@@ -340,6 +340,11 @@ class Estacion extends CActiveRecord
             }
             return $return;
         }
+        public function getNombreEstacion($id) {
+            $estacion = Estacion::model()->findByPk($id);
+            $return = $estacion->identificador;
+            return $return;
+        }
         public function adminSearch()
         {
             return array

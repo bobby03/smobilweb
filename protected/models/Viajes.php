@@ -212,6 +212,20 @@ class Viajes extends CActiveRecord
             case 3: return 'Terminado'; break;
         }
     }
+    
+    public function getEstaciones($id_estacion) {
+        $cr = new CDbCriteria();
+        $cr->select = "DISTINCT id_estacion";
+        $cr->condition = "status = 1";
+        $model = $this->model()->findAll($cr);
+        $return = array();
+        $estacion = new Estacion;
+        foreach($model as $data) {
+            $return[$data->id] = $estacion::model()->getNombreEstacion($id_stacion);
+        }
+        return $return;
+    }
+    
     public function getAllClientesViajes($idViaje,$id)
     {
         $cliente = Clientes::model()->getClienteViajes($id);
