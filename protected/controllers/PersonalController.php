@@ -96,6 +96,7 @@
 	public function actionUpdate($id)
 	{
             $model=$this->loadModel($id);
+            $this->performAjaxValidation($model);
             if(isset($_POST['Personal']))
             {
                 $model->attributes=$_POST['Personal'];

@@ -29,3 +29,9 @@ function ValidaRfc(rfcStr) {
     }
 
 }
+
+
+$('form#personal-form').on('submit',function()
+{
+    console.log('submit');
+});

@@ -15,9 +15,9 @@
 	<div class="row hide" data-id="1">
             <?php echo $form->textField($model,'id'); ?>
 	</div>
-	<div class="row hide" data-id="2">
+<!--	<div class="row hide" data-id="2">
             <?php echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getSolicitudes(2), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
-	</div>
+	</div>-->
 	<div class="row hide" data-id="3">
             <?php echo $form->dropDownList($model,'id_responsable', SolicitudesViaje::model()->getpersonal(3), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>

@@ -187,7 +187,7 @@ class Viajes extends CActiveRecord
         return array
         (
             '1' => 'ID de viaje',
-            '2' => 'Cliente',
+//            '2' => 'Cliente',
             '3' => 'Responsable',
             '4' => 'Camión',
             '5'=>'Fecha',
@@ -251,13 +251,13 @@ class Viajes extends CActiveRecord
                 'name' => 'id',
                 'value' => '$data->id',
             ),
-            array
-            (
-                'name' => 'id_solicitudes',
-                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
-                'filter' => Clientes::model()->getAllClientesViajes(),
-                'type' => 'raw'
-            ),
+//            array
+//            (
+//                'name' => 'id_solicitudes',
+//                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+//                'filter' => Clientes::model()->getAllClientesViajes(),
+//                'type' => 'raw'
+//            ),
             array
             (
                 'name' => 'id_responsable',
@@ -298,13 +298,13 @@ class Viajes extends CActiveRecord
                 'name' => 'id',
                 'value' => '$data->id',
             ),
-            array
-            (
-                'name' => 'id_solicitudes',
-                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
-                'filter' => Clientes::model()->getAllClientesViajes(),
-                'type' => 'raw'
-            ),
+//            array
+//            (
+//                'name' => 'id_solicitudes',
+//                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+//                'filter' => Clientes::model()->getAllClientesViajes(),
+//                'type' => 'raw'
+//            ),
             array
             (
                 'name' => 'id_responsable',
@@ -355,13 +355,13 @@ class Viajes extends CActiveRecord
                 'name' => 'id',
                 'value' => '$data->id',
             ),
-            array
-            (
-                'name' => 'id_solicitudes',
-                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
-                'filter' => Clientes::model()->getAllClientesViajes(),
-                'type' => 'raw'
-            ),
+//            array
+//            (
+//                'name' => 'id_solicitudes',
+//                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+//                'filter' => Clientes::model()->getAllClientesViajes(),
+//                'type' => 'raw'
+//            ),
             array
             (
                 'name' => 'id_responsable',
