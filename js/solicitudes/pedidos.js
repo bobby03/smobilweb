@@ -3,6 +3,10 @@ $(document).ready(function()
     var tot = 1;
     var loc = window.location.href;
     var index2 = loc.indexOf('update');
+    var u = "";
+    if(index2 > -1) {
+        u = "../"
+    }
     var direccion = loc.substring(0,index2);
     if(!$('.pedidos').hasClass('hide'))
     {
@@ -295,12 +299,12 @@ $(document).ready(function()
                 //If the "Please Select" option is selected display error.
                 $('#Solicitudes_id_clientes_chosen').css('border-color', '#C00');
                 document.getElementById('errorCli').innerHTML='Selecciona una opción';
-                $('#Solicitudes_id_clientes_chosen').css({'background-image': "url('../images/solicitud/IconoClientesSolicitud.png'),url('../images/usuarios/bg_error.png')"});
+                $('#Solicitudes_id_clientes_chosen').css({'background-image': "url('"+u+"../images/solicitud/IconoClientesSolicitud.png'),url('"+u+"../images/usuarios/bg_error.png')"});
                 $('#Solicitudes_id_clientes_chosen').css('background-position','6px 3px,left');
             }else{
                 $('#Solicitudes_id_clientes_chosen').css('border-color', '#0077B0');
                 document.getElementById('errorCli').innerHTML='';
-                 $('#Solicitudes_id_clientes_chosen').css({'background-image': "url('../images/solicitud/IconoClientesSolicitud.png'),url('../images/usuarios/bg.png')"});
+                 $('#Solicitudes_id_clientes_chosen').css({'background-image': "url('"+u+"../images/solicitud/IconoClientesSolicitud.png'),url('"+u+"../images/usuarios/bg.png')"});
                 $('#Solicitudes_id_clientes_chosen').css('background-position','6px 3px,left')
             }
         }
@@ -313,12 +317,12 @@ $(document).ready(function()
                 //If the "Please Select" option is selected display error.
                 $('#Especie_id_chosen').css('border-color', '#C00');
                 document.getElementById('errorEsp').innerHTML='Selecciona una opción';
-                 $('#Especie_id_chosen').css({'background-image': "url('../images/solicitud/iconoPezSolicitud.png'),url('../images/usuarios/bg_error.png')"});
+                 $('#Especie_id_chosen').css({'background-image': "url('"+u+"../images/solicitud/iconoPezSolicitud.png'),url('"+u+"../images/usuarios/bg_error.png')"});
                 $('#Especie_id_chosen').css('background-position','5px 5px,left');
             }else{
                 $('#Especie_id_chosen').css('border-color', '#0077B0');
                 document.getElementById('errorEsp').innerHTML='';
-                $('#Especie_id_chosen').css({'background-image': "url('../images/solicitud/iconoPezSolicitud.png'),url('../images/usuarios/bg.png')"});
+                $('#Especie_id_chosen').css({'background-image': "url('"+u+"../images/solicitud/iconoPezSolicitud.png'),url('"+u+"../images/usuarios/bg.png')"});
                  $('#Especie_id_chosen').css('background-position','5px 5px,left')
             }
         }
@@ -331,12 +335,12 @@ $(document).ready(function()
                 //If the "Please Select" option is selected display error.
                 $('#Cepa_id_chosen').css('border-color', '#C00');
                 document.getElementById('errorCepa').innerHTML='Selecciona una opción';
-                $('#Cepa_id_chosen').css({'background-image': "url('../images/solicitud/iconoCepasSolicitud.png'),url('../images/usuarios/bg_error.png')"});
+                $('#Cepa_id_chosen').css({'background-image': "url('"+u+"../images/solicitud/iconoCepasSolicitud.png'),url('"+u+"../images/usuarios/bg_error.png')"});
                $('#Cepa_id_chosen').css('background-position','6px 8px,left');
             }else{
                 $('#Cepa_id_chosen').css('border-color', '#0077B0');
                 document.getElementById('errorCepa').innerHTML='';
-                $('#Cepa_id_chosen').css({'background-image': "url('../images/solicitud/iconoCepasSolicitud.png'),url('../images/usuarios/bg.png')"});
+                $('#Cepa_id_chosen').css({'background-image': "url('"+u+"../images/solicitud/iconoCepasSolicitud.png'),url('"+u+"../images/usuarios/bg.png')"});
                 $('#Cepa_id_chosen').css('background-position','6px 8px,left')
             }
         }
