@@ -32,7 +32,6 @@
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid',
-            'summaryText'=>'',
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search(0),
             'columns'=>$model->adminSearchEnEspera(),
@@ -62,7 +61,7 @@
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid2',
-            'summaryText'=>'',
+            'ajaxUpdate'=>true,
             'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
             'dataProvider'=>$model->search(1),
             'columns'=>$model->adminSearchBorrados(),
@@ -74,10 +73,6 @@
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
-            'afterAjaxUpdate' => "function(id,data)
-            {
-                $.fn.yiiGridView.update('campsensado-grid2');
-            }"
         )); 
     ?>
     </div>
@@ -89,7 +84,6 @@
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (
             'id'=>'campsensado-grid3',
-            'summaryText'=>'',
             'ajaxUpdate'=>true,
             'dataProvider'=>$model->search(2),
             'columns'=>$model->adminSearchBorrados(),
