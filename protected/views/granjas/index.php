@@ -54,7 +54,11 @@
                 (
                     'class' => 'PagerSA',
                     'header'=>'',
-                )
+                ),
+                'afterAjaxUpdate' => "function(id,data)
+                {
+                    $.fn.yiiGridView.update('granjas-grid2');
+                }"
         )); ?>
     </div>
     <div class="tabContent hide" data-tan="2">
