@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Solicitudes'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'update',
 );
  $update = true;
 ?>
