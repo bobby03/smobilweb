@@ -63,7 +63,7 @@
 
                 // Construye el Menu en Base a los Roles Asignados en la sesion.
                 $menu = array();
-                array_push($menu,array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)));
+                array_push($menu,array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'site','active'=>$this->id=="site"?true:false)));
                 //Movil
                 if(Yii::app()->user->checkAccess('readViajes')){array_push($menu,array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)));}
                 // - Camiones
@@ -99,7 +99,7 @@
 
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='site'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes')),
 									),));
 
@@ -109,7 +109,7 @@
 							if(Yii::app()->user->name =='smobiladmin'){ //Si el usuario es smobiladmin muestra todas las secciones
 								$this->widget('zii.widgets.CMenu',array(
 									'items'=>array(
-									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+									 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='site'?true:false)),
 									 array('label'=>'','itemOptions'=>array('class'=>"menu-vacio")),
 									 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
 									 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),
@@ -135,7 +135,7 @@
 				default:
 						$this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-							 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='/'?true:false)),
+							 array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'inicio','active'=>$this->id=='site'?true:false)),
 							 array('label'=>'','itemOptions'=>array('class'=>"menu-vacio")),
 							 array('label'=>'Solicitudes', 'url'=>array('/solicitudes'),'itemOptions'=>array('id' => 'solicitudes','active'=>$this->id=='solicitudes'?true:false)),
 							 array('label'=>'Viajes', 'url'=>array('/viajes'),'itemOptions'=>array('id' => 'viajes','active'=>$this->id=='viajes'?true:false)),

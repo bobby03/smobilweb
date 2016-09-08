@@ -84,7 +84,6 @@ class NCButtonColumn extends CButtonColumn
                         async: false,
                         data:
                         {
-                            nombre: nombre,
                             id: id
                         },
 
@@ -94,6 +93,8 @@ class NCButtonColumn extends CButtonColumn
 //                            document.getElementById("idviaje").value = data.idviaje;
                             if(data.sol == 1)
                                 mensaje = 'Esta solicitud est&aacute; asignada a un viaje, si la eliminas es posible que tambien sea eliminado el viaje. ¿Seguro que desea continuar?';
+                            else
+                                mensaje = '¿Está seguro que desea eliminar este registro?';
                         },
                         error: function(a,b,c)
                         {

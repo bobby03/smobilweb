@@ -480,12 +480,8 @@ eof;
         }
          public function actionGetViajeId()
         {
-            $viaje= Yii::app()->db->createCommand('SELECT id_viaje FROM solicitudes_viaje 
-            WHERE id_solicitud='.$_POST['nombre'])
-                ->queryRow();
             $solicitud = Solicitudes::model()->findByPk($_POST['id']);
             $return = array();
-            $return['idViaje'] = $viaje['id'];
             $return['sol'] = (int)$solicitud->status;
             echo json_encode($return);
             
