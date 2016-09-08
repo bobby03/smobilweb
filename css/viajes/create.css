@@ -107,7 +107,6 @@ div.pedido {
     border: 1px solid #0077B0;
     border-radius: 5px;
     overflow: hidden;
-    height: 181px;
 }
 div.tituloEspecie {
     background-color: #0077B0;
@@ -143,7 +142,7 @@ div.pedidoWraper {
 
 div.pedidoWraper.gris {
     background-color: #E6E7E8;
-    height: 134px;
+        height: 153px;
 }
 
 div.pedidoWraper > div {
