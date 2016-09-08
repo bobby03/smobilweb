@@ -18,9 +18,9 @@
 	<div class="row hide" data-id="2">
             <?php echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getSolicitudes(1), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
-	<div class="row hide" data-id="3">
+<!--	<div class="row hide" data-id="3">
             <?php echo $form->dropDownList($model,'id_responsable', SolicitudesViaje::model()->getpersonal(3), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
-	</div>
+	</div>-->
 	<div class="row hide" data-id="4">
             <?php echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesOcupadas(), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
 	</div>
