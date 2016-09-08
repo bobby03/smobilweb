@@ -17,14 +17,15 @@
    /* padding-left: 30px;*/
     border-left: 0;
 }
-.dato:nth-child(4) .data
+/*.dato:nth-child(4) .data
 {
     background-image: url('../../images/granjas/iconoSiembraChico.png'), url('../../images/form/bg.png');
     background-position: 8px 7px,left;
     background-repeat: no-repeat;
    /* padding-left: 35px;*/
-    border-left: 0;
-}
+   /* border-left: 0;
+}*/
+.dato:nth-child(4) .data,
 .dato:nth-child(5) .data,
 .dato:nth-child(6) .data,
 .dato:nth-child(7) .data,
