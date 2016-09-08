@@ -29,27 +29,28 @@
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
+	<div class="row hide" data-id='4'>
+		
+		<?php echo $form->textField($model,'fecha_alta'); ?>
+	</div>
+	
 	<div class="row hide" data-id='5'>
 		
-		<?php echo $form->textField($model,'fecha_estimada'); ?>
+		<?php echo $form->textField($model,'hora_alta'); ?>
 	</div>
 
-<div class="row hide" data-id='7'>
+	<div class="row hide" data-id='6'>
 		
 		<?php echo $form->textField($model,'fecha_entrega'); ?>
 	</div>
 
-	<div class="row hide" data-id='8'>
+	<div class="row hide" data-id='7'>
 		
 		<?php echo $form->textField($model,'hora_entrega'); ?>
 	</div>
  
 <!--
-	<div class="row hide" data-id='4'>
-		
-		<?php echo $form->textField($model,'hora_alta'); ?>
-	</div>
-
+	
 	
 
 	<div class="row hide" data-id='6'>
