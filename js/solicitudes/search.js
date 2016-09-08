@@ -101,9 +101,8 @@ $(document).ready(function()
         var id = $(this).val();
         $('.search-form4 div.row[data-id]').addClass('hide');
         $('.search-form4 div.row[data-id="'+id+'"]').removeClass('hide');
-
     });
-
+    
     $('.search-form4 select').on('change',function(){
          $('.search-form4 form').submit();
          $('.search-form4 form div.hide input[type=text]').val('');
