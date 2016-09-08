@@ -6,6 +6,10 @@
     padding-left: 35px;
     border-left: 0;
 }
+#Cepa_nombre_cepa.error
+{
+    background-image: url('../../images/especie/iconoPececito.png'), url('../../images/form/bg_error.png');
+}
 div.form-containerWraper:after
 {
     content: '';
