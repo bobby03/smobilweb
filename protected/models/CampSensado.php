@@ -292,7 +292,7 @@ class CampSensado extends CActiveRecord
     {
         return array
         (
-            '1' => 'Granja',
+//            '1' => 'Granja',
             '2' => 'Siembra',
             '3' => 'Planta producción',
             '4' => 'Responsable',
@@ -300,35 +300,32 @@ class CampSensado extends CActiveRecord
         );
     }
 
-    public function getGranjasName( $status){
+    public function getGranjasName($status)
+    {
     	$camp = CampSensado::model()->findAll("activo = 1 and status = $status");
     	$Granja = new Granjas();
     	$returnData = array();
-            foreach ($camp as $data){
-                $returnData[$data->id] =  "{$Granja->getNombreGranjas($data->id_estacion)}"; 
-                //isset($data['nombre'] )?$data['nombre']:'no name';
-            }
+        foreach ($camp as $data)
+            $returnData[$data->id] = $Granja->getNombreGranjas($data->id_estacion); 
         return $returnData;
     }
     
-    public function getProduccionName( $status){
+    public function getProduccionName($status)
+    {
     	$camp = CampSensado::model()->findAll("activo = 1 and status = $status");
-    	$estacion = new Estacion();
     	$returnData = array();
-            foreach ($camp as $data){
-                $returnData[$data->id] =  "{$estacion->getNombreProduccion($data->id_estacion)}"; 
-                //isset($data['nombre'] )?$data['nombre']:'no name';
-            }
-            return $returnData;
+        foreach ($camp as $data)
+            $returnData[$data->id_estacion] = Estacion::model()->getNombreProduccion($data->id_estacion);
+        return $returnData;
     }
-    public function getResponsableName( $status){
+    public function getResponsableName($status)
+    {
     	$camp = CampSensado::model()->findAll("activo = 1 and status = $status");
     	$personal = new Personal();
     	$returnData = array();
-            foreach ($camp as $data){
-                $returnData[$data->id] =  "{$personal->getPersonal($data->id_responsable)}"; 
-            }
-            return $returnData;
+        foreach ($camp as $data)
+            $returnData[$data->id_responsable] =  $personal->getPersonal($data->id_responsable); 
+        return $returnData;
     }
     // getNombreProduccion
 }
