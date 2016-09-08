@@ -18,12 +18,13 @@
 <div class="form">
     <?php $this->widget('zii.widgets.CDetailView', array(
         'data'=>$model,
-        'attributes'=>array
-        (
-            'id',
-            'id_responsable',
-            'id_estacion',
-            'nombre_camp',
+        'attributes'=>array(
+            array('name' => 'id',
+                  'value'=> Granjas::model()->getGranjaFromEstacion($model->id_estacion)),
+            array('name' => 'id_responsable',
+                  'value'=> Personal::model()->getPersonal($model->id_responsable)),
+            array('name' => 'id_estacion',
+                  'value'=> Estacion::model()->getEstacion($model->id_estacion)),
             'fecha_inicio',
             'hora_inicio',
             'fecha_fin',
