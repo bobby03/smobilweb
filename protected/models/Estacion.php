@@ -136,9 +136,10 @@ class Estacion extends CActiveRecord
                 '2'=>'Ubicación',
             );
         }
-     public function getNombreProduccion($id){
+    public function getNombreProduccion($id)
+    {
         $Estacion = Estacion::model()->findByPk($id);
-        return $Estacion['identificador']; 
+        return $Estacion->identificador; 
     }
 
 	/**
@@ -338,6 +339,11 @@ class Estacion extends CActiveRecord
             {
                 $return[$data->id] = $data->identificador;
             }
+            return $return;
+        }
+        public function getNombreEstacion($id) {
+            $estacion = Estacion::model()->findByPk($id);
+            $return = $estacion->identificador;
             return $return;
         }
         public function adminSearch()

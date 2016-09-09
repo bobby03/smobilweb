@@ -3,7 +3,7 @@ $(function() {
 
 $('#Clientes_tel').mask('(000) 000-0000', {placeholder: "(000) 000-0000"});
 $('#Clientes_cel').mask('(000) 000-0000', {placeholder: "(000) 000-0000"});
-$('#Clientes_ext').mask('000', {placeholder: "000"});
+
 
     /* Validacion de RFC para empresas */
 
@@ -18,5 +18,3 @@ $('#Clientes_ext').mask('000', {placeholder: "000"});
   );
 
   });
-
-

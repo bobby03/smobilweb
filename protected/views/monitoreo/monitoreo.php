@@ -82,7 +82,6 @@
                     echo '<a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado#historico">Regresar</a>' ;
                 }
                 else{
-                    echo ' <a class="gBoton" href="'.Yii::app()->getBaseUrl(true).'/campSensado">Regresar</a>';
                 }
                 echo " </div>";
             }

@@ -212,14 +212,14 @@ class CampSensadoController extends Controller
                         <div class="tituloEspecie">Tanque: {$data->nombre}</div>
                         <div class="pedidoWraper">
                             <div>
-                                <label>Seleccionar especie:</label>
+                                <label>Especie:</label>
                                 <select class="css-select especie ttan$i" data-esp="$i" name="especies[$i][id_especie]" id="CampSensado_id_especie_$i">
                                     $especieTexto
                                 </select>
                                 <div class="errorMessage" id="CampSensado_{$i}_id_especie_em_" style="display:none"></div>
                             </div>
                             <div>
-                                <label>Seleccionar cepa:</label>
+                                <label>Cepa:</label>
                                 <span>
                                     <select class="css-select cepa ttan$i" data-esp="$i" name="camp_tanques[$i][id_cepa]" id="CampSensado_id_cepa_$i" $cepaFlag>
                                         $cepaTexto
@@ -228,7 +228,7 @@ class CampSensadoController extends Controller
                                 <div class="errorMessage" id="CampSensado_{$i}_id_cepa_em_" style="display:none"></div>
                             </div>
                             <div>
-                                <label>Seleccionar :</label>
+                                <label>Cantidad :</label>
                                 <span>
                                     <input class="cant-peces ValidaNum cantt$i " name="camp_tanques[$i][cantidad]" id="CampSensado_{$i}_cantidad" type="text" value="$cantidad" autocomplete="off">
                                 </span>
@@ -247,6 +247,7 @@ eof;
                 $model->fecha_inicio = date('Y-m-d', strtotime($model->fecha_inicio));
                 $model->hora_fin = date('h:i', strtotime($model->hora_fin));
                 $model->hora_inicio = date('h:i', strtotime($model->hora_inicio));
+                $model->status = 0;
                 if($model->save())
                 {
                     $delete = Yii::app()->db->createCommand("DELETE FROM camp_tanque WHERE id_camp_sensado = $model->id")->execute();

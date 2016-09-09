@@ -415,10 +415,8 @@ div.aceptarDireccion
     width: 135px;
     height: 35px;
     line-height: 35px;
-<<<<<<< HEAD
     font-size: 18px;
-=======
->>>>>>> de3779490b64a1797ac4d61078ee67494188e69e
+
 }
 
 div.cancelarDireccion
@@ -435,10 +433,7 @@ div.cancelarDireccion
     width: 135px;
     height: 35px;
     line-height: 35px;
-<<<<<<< HEAD
     font-size: 18px;
-=======
->>>>>>> de3779490b64a1797ac4d61078ee67494188e69e
 }
 
 
@@ -544,12 +539,15 @@ input.OtroDom{
 }
 .msgError{
     font-family: 'Roboto-Regular';
-    font-size: 13pt;
-    color: #0077b0;
+    font-size: 18px;
     font-weight: lighter;
-    width: 80%;
+    /*width: 80%;*/
     margin-left: 33px;
     margin-top: 10px;
+}
+.btndel.gBoton
+{
+    margin-left: 62px;
 }
 .ierrorD{
     color:#C00;
@@ -581,4 +579,10 @@ input.OtroDom{
 }
 .cBoton:hover {
     background-color: #49dbd0;
+}
+.botonOtra:hover {
+    background-color: #21B7C7;
+}
+div.form .agregar:hover {
+    background-color: #21B7C7;
 }

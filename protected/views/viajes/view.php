@@ -76,7 +76,7 @@
             ),
         )); ?>
         <div style="width: 100%; height:35px;">
-            <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
+        <!--    <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>-->
         </div>
         <div class="todosPedidosVer">
         <?php $tot = 1;?>
@@ -404,5 +404,9 @@
         </div>
     </div>
     <?php endif;?>
-    
+
+    <div class="row">
+        <a class="gBoton" id="cBoton">Regresar</a>
+    </div>
+
 </div>

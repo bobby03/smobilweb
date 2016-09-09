@@ -24,7 +24,6 @@
 		<?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-
   	<div class="row hide" data-id='3'>
 		
 		<?php echo $form->textField($model,'id'); ?>

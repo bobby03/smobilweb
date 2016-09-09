@@ -142,7 +142,7 @@ div.pedidoWraper {
 
 div.pedidoWraper.gris {
     background-color: #E6E7E8;
-    height: auto;
+        height: 153px;
 }
 
 div.pedidoWraper > div {

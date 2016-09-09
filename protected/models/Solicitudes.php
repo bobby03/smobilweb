@@ -88,9 +88,10 @@ class Solicitudes extends CActiveRecord
                 '1'=>'Cliente',
                 '2'=>'Código',
                 '3'=>'Solicitud',
-                '5'=>'Fecha de alta',
-                '7'=>'Fecha de entrega',
-                '8'=>'Hora de entrega',
+                '4'=>'Fecha de alta',
+                '5'=>'Hora de alta',
+                '6'=>'Fecha de entrega',
+                '7'=>'Hora de entrega',
                 /*
                 '4'=>'Hora Alta',
 
@@ -533,6 +534,9 @@ class Solicitudes extends CActiveRecord
                 'name'=>'hora_estimada',
                 'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
             ),
+
+
+
 //            array
 //            (
 //                'name'=>'fecha_entrega',

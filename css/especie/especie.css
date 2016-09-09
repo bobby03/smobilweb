@@ -56,11 +56,12 @@ body.especie div.row.titulos{
     background-repeat: no-repeat;
     padding-left: 35px;
     border-left:0 !important;
+    font-size: 14px;
 }
 
 body.especie .botones-content .gBoton{
         width: 135px;
-        padding: 2px;
+        padding: 0px;
         height: 35px;
         margin-left: 33px;
         display: inline-block;
