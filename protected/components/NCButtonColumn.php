@@ -137,7 +137,8 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            console.log(href);
+                            var index = href.lastIndexOf('/');
+                            href = href.substring(0, index);
                             $.ajax(
                             {
                                 type: 'GET',
