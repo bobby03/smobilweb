@@ -183,7 +183,7 @@ body {
 }
 
 #mainmenu ul li#viajes a {
-    background-image: url('./../images/menu/iconoViajes.svg');
+    background-image: url("./../images/dashboard/iconoMenuViajes.svg");
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 15px 11px;

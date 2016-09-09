@@ -138,24 +138,24 @@
                 <div class="container-box">
                     <div class="divBox1">
                         <div class="divTitulo1">
-                            <p class="tituloV1">1. Selecciona una estación:</p>
+                            <p class="tituloV1">1. Seleccione una siembra:</p>
                         </div>
                         <div class="estacion">
                             <div class="divTable">
-                                <p class="divThead">Estaciones</p>
+                                <p class="divThead">Siembras</p>
                                 <div class="lestacion">
                                     <?php $i=1;?>
                                     <?php foreach($estaciones as $est):?>
-                                        <div data-estacion="<?php echo $est['idest'];?>" data-id="est<?php echo $i;?>" class="liest">
+                                        <div data-estacion="<?php echo $est['id'];?>" data-id="est<?php echo $i;?>" class="liest">
                                             <div>
-                                                <div class="est"><?php echo $est['identificador'];?></div>
+                                                <div class="est"><?php echo $est['nombre_camp'];?></div>
                                             </div>
                                             <div>
-                                                <div class="est"><?php echo $est['nombre']." ".$est['apellido'];?></div>
+                                                <div class="est"><?php echo Personal::model()->getPersonal($est['id_responsable']);?></div>
                                             </div>
                                             <div>
                                                 <div class='est'> 
-                                                    <a href="monitoreo/<?php echo $est['idest'];?>">
+                                                    <a href="monitoreo/<?php echo $est['id'];?>">
                                                         <div class='botonIrViaje'>Ver Historial</div>
                                                     </a> 
                                                 </div>
@@ -225,8 +225,9 @@
             ?>
             <div class="container-box">
                 <?php foreach($estaciones as $est):?>
+                    <?php $granja = CampSensado::model()->getGranjaDatos($est['id']);?>
                     <div class="ubicacion hide" data-id="est<?php echo $us;?>">
-                        <span>3. Ubicación: <?php echo $est['ubicacion'];?> .</span>
+                        <span>3. Ubicación: <?php echo $granja->direccion;?> .</span>
                     </div>
                 <?php $us++; endforeach;?>
             </div>
@@ -240,19 +241,22 @@
                     $u = 1;
                 ?>
                 <?php foreach($estaciones as $est):?>
+                    <?php $granja = CampSensado::model()->getGranjaDatos($est['id']);?>
+                    <?php $estacion = Estacion::model()->findByPk($est['id_estacion'])?>
+                    <?php $personal =  Personal::model()->findByPk($est['id_responsable']);?>
                     <div>
                         <div data-id="est<?php echo $u;?>" class="infocliente hide">
-                            <p id="titc" class="tit"><?php echo $est['identificador'];?></p>
+                            <p id="titc" class="tit"><?php echo $granja->nombre;?></p>
                             <p class="infocont">
-                                <span><?php echo $est['ubicacion']?></span>
+                                <span><?php echo $estacion->identificador;?></span>
                             </p>
                         </div>
                         <div data-id="est<?php echo $u;?>" class="infocontacto hide">
                             <p class="tit">Contacto:</p>
                             <p class="infocont">
-                                <span><?php echo $est['nombre']." ".$est['apellido'];?></span>
-                                <span>Tel. <?php echo $est['tel'];?></span>
-                                <span>E-mail: <?php echo $est['correo'];?></span>
+                                <span><?php echo $personal->nombre." ".$personal->apellido;?></span>
+                                <span>Tel. <?php echo $personal->tel;?></span>
+                                <span>E-mail: <?php echo $personal->correo;?></span>
                             </p>
                         </div>	
                     </div>

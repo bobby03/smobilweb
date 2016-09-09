@@ -69,14 +69,16 @@ class SiteController extends Controller
             JOIN estacion as est ON est.id=v.id_estacion 
             WHERE v.status = 1')
                 ->queryAll();
-        $estaciones= Yii::app()->db->createCommand(
-            'SELECT *,e.id as idest FROM estacion e 
-            JOIN camp_sensado cs ON cs.id_estacion=e.id
-            JOIN personal p ON cs.id_responsable=p.id
-            WHERE e.activo=1 
-            AND e.tipo=2
-            AND cs.activo=1')
-            ->queryAll();
+//        $estaciones= Yii::app()->db->createCommand('
+//            SELECT *,e.id as idest 
+//            FROM estacion e 
+//            JOIN camp_sensado cs ON cs.id_estacion=e.id
+//            JOIN personal p ON cs.id_responsable=p.id
+//            WHERE e.activo = 1 
+//            AND e.tipo = 2
+//            AND cs.activo = 1')
+//            ->queryAll();
+        $estaciones = CampSensado::model()->findAll('status = 1');
         $this->render('index', array
         (
             'enruta'=>$model, 
