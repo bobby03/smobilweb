@@ -95,7 +95,7 @@
 .liest.selected > div:nth-child(1),
 .liest:hover > div:nth-child(1)
 {
-    background-image: url('../../images/usuarios/iconoClientesSmall.svg');
+    background-image: url('../../images/granjas/iconoSiembraChico.png');
 }
 .liest.selected > div:nth-child(2),
 .liest:hover > div:nth-child(2)
@@ -115,17 +115,17 @@ div[data-estacion] > div
 }
 div[data-estacion] > div:nth-child(1)
 {
-    background-image: url("../../images/dashboard/iconoClientes.png");
-    background-size: 17px 19px;
+    background-image: url("../../images/viajes/siembraAzul.png");
+    background-position: 8px 7px,left;
     background-position: left 10px center;
     background-repeat: no-repeat;
 }
 div[data-estacion] > div:nth-child(2)
 {
-	background-image: url("../../images/dashboard/iconoPersonal.png");
-        background-size: 12px 15px;
-        background-position: left 10px center;
-        background-repeat: no-repeat;
+    background-image: url("../../images/dashboard/iconoPersonal.png");
+    background-size: 12px 15px;
+    background-position: left 10px center;
+    background-repeat: no-repeat;
 }
 .lcontenido
 {

@@ -162,7 +162,7 @@ body {
 }
 
 #mainmenu ul li#estacion a {
-    background-image: url('./../images/menu/estaciones.svg');
+    background-image: url('./../images/menu/iconoViajes.svg');
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 15px 11px;
@@ -183,7 +183,7 @@ body {
 }
 
 #mainmenu ul li#viajes a {
-    background-image: url('./../images/menu/iconoViajes.svg');
+    background-image: url("./../images/dashboard/iconoMenuViajes.svg");
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 15px 11px;
@@ -554,7 +554,7 @@ table.detail-view th {
 #headerSmobil {
     background-color: #F2F2F2;
     height: 50px;
-    background-image: url('./../images/header-logo.png');
+    background-image: url('./../images/logoSmobil_azul.svg');
     background-position: right 199px top 8px;
     background-repeat: no-repeat;
     background-size: 87px;

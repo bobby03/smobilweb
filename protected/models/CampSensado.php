@@ -164,6 +164,13 @@ class CampSensado extends CActiveRecord
             $granja = Granjas::model()->findByPk($estacion->id_granja);
             return $granja->nombre;
         }
+        public function getGranjaDatos($id)
+        {
+            $camp = CampSensado::model()->findByPk($id);
+            $estacion = Estacion::model()->findByPk($camp->id_estacion);
+            $granja = Granjas::model()->findByPk($estacion->id_granja);
+            return $granja;
+        }
 	public function adminSearchEnEspera()
         {
             return array

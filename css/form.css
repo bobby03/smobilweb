@@ -78,6 +78,7 @@ div.form .chosen-container {
     text-indent: 5px;
     width: 100%;
     font-size: 14px;
+    font-family: 'Roboto-regular';
 }
 
 div.form input[type="submit"] {
