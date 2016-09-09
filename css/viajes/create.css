@@ -118,6 +118,7 @@ div.tituloEspecie {
 div.menuTabs {
     margin-bottom: 70px;
     position: relative;
+    padding-top: 30px;
 }
 
 div.nombreTabs {
@@ -131,7 +132,8 @@ div.nombreTabs.dos {}
 
 div.nombreTabs.tres {}
 
-div.tab {
+div.tab 
+{
     width: 1080px;
     margin: 0 auto;
 }
@@ -181,12 +183,14 @@ div.form div.tab div.row .css-select {
 div.form div.tab div.row {
     width: 60%;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 
 .floating {
-    float: right;
+    /*float: right;*/
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
 /*    margin-top: 50px;
     width: 100px;
     margin-right: 167px;
@@ -194,7 +198,10 @@ div.form div.tab div.row {
     top: 274px;
     right: 26%;*/
 }
-
+.inner-third-wrapper {
+    width: 910px;
+    margin: 0 auto;
+}
 div.contenedorClientes {
     float: left;
     width: 880px;
@@ -432,32 +439,37 @@ div.chosen-container.error > ul {
 
 /* Wrapper para Botones */
 
-.botonesWrapper {
+.botonesWrapper 
+{
     margin-top: 20px;
-    margin-bottom:  10px;
+    margin-bottom: 25px;
     display: block;
-    padding-right: 100px;
     text-align: right;
-    height: 45px;
+    height: 35px;
     width: 100%;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
 }
 
 .botonesWrapper.update {
     padding-right:0px;
 }
 
-.botonesWrapper2 {
-    margin-top: 20px;
-    /*padding-right: 100px !important;*/
-    display: block;
-    padding-right: 0px;
-    text-align: right;
-    height: 45px;
+.botonesWrapper2 
+{
+    height: 35px;
+    /*float: right;*/
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
 }
 .botonesWrapper3{
-    width: 350px;
+    /*width: 350px;*/
     height: 35px;
-    float: right;
+    /*float: right;*/
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
 }
 
 
@@ -479,6 +491,7 @@ div.form div.tab div.row.buttons input
     width: 135px !important;
     font-size: 18px !important;
     /*height: 40px !important;*/
+    float: left !important;
 }
 
 body.viajes-update form input[type="submit"] {
@@ -487,7 +500,6 @@ body.viajes-update form input[type="submit"] {
     margin-left: 0px;
     height: 40px;
     font-size: 18px;
-    width:120px !important;
 }
 
 div.tab.last div.row.buttons.floating input {
