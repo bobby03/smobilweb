@@ -29,7 +29,7 @@
         text-align: left;
     }
 </style>
-
+<h1>Datos del viajes</h1>
 <div class="form">
 <?php
     $cs->registerScriptFile($baseUrl.'/js/viajes/create-viajes.js');
@@ -58,12 +58,10 @@
         <div class="bolaChica"></div>
     </div>
     <div class="tab" data-tab="1">
-    <div style="width: 100%;height: 45px;">
         <div class="botonesWrapper3">
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
-                <div class="siguiente uno">Siguiente</div>
-            </div>
-    </div>
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+            <div class="siguiente uno">Siguiente</div>
+        </div>
         <div class="formContainer1">
             <div class="row">
                 <?php echo $form->labelEx($model,'id_responsable'); ?>
