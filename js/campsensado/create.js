@@ -137,10 +137,10 @@ $(document).ready(function()
 
 
 function validaGranjas(e) {
-    if ($("#Granjas_id option:selected").text() === "" || $("#Granjas_id option:selected").text() === "Seleccionar") {
+    if ($("#Granjas_id option:selected").text() == "" || $("#Granjas_id option:selected").text() === "Seleccionar") {
          $("#Granjas_id").parents('.row').addClass('error');
     } else {
-          $("#Granjas_id").parents('.row').removeClass('error');
+          //$("#Granjas_id").parents('.row').removeClass('error');
     }
 }
 

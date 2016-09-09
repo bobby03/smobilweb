@@ -53,6 +53,15 @@
     padding-left: 35px;
     border-left: 0;
 }
+.error #Granjas_id 
+{
+    background-image: url('../../images/granjas/iconoGranja.png'), url('../../images/form/bg_error.png');
+      background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+
+}
 #SolicitudesViaje_id_personal_1_tecnico {
     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
     background-position: 8px 5px, left;
@@ -144,6 +153,7 @@ div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error {
 {
      background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
 }
+
 div.pedido {
     float: left;
     width: 250px;
