@@ -495,17 +495,21 @@ div.chosen-container.error > ul {
 
 .botonesWrapper{
     margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: right;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
 }
 
 
-.botonesWrapper2{
-    margin: 20px 0;
-    display: block;
-    /*padding-right: 100px;*/
-    text-align: right;
-   height:45px;
+.botonesWrapper2
+{
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
+}
+.inner-third-wrapper {
+    width: 910px;
+    margin: 0 auto;
 }
 .gBoton.regresar.uno,
 .gBoton.regresar.dos{

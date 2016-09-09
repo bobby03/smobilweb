@@ -39,10 +39,6 @@ $this->breadcrumbs=array(
         /* margin-right: 25px; */
         text-align: left;
     }
-    .gBoton
-    {
-        margin-right: 80px;
-    }
 </style>
 
 <div class="form">
@@ -67,12 +63,10 @@ $this->breadcrumbs=array(
         <div class="bolaChica"></div>
     </div>
     <div class="tab" data-tab="1">
-     <div class="botonesWrapper">
-        <div style="float:right">
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
-                <div class="siguiente uno">Siguiente</div>
+        <div class="botonesWrapper">
+            <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
+            <div class="siguiente uno">Siguiente</div>
         </div>
-    </div>
 	<div class="formContainer1">
             <div class="row">
 		<?php echo $form->labelEx($model,'id_responsable'); ?>
@@ -153,12 +147,12 @@ $this->breadcrumbs=array(
         <div class="pedidosWraper"></div>   
     </div>
     <div class="tab hide last" data-tab="3">
+        <div class='row buttons floating'>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Finalizar' : 'Finalizar'); ?>
+            <div class="bDos fBoton  regresar floatingbutton">Regresar</div>
+            <!--<div class="fBoton floatingbutton" >Cancelar</div>-->
+        </div>
        <div class="inner-third-wrapper">
-            <div class='row buttons floating'>
-                <?php echo CHtml::submitButton($model->isNewRecord ? 'Finalizar' : 'Finalizar'); ?>
-                <div class="bDos fBoton  regresar floatingbutton">Regresar</div>
-                <!--<div class="fBoton floatingbutton" >Cancelar</div>-->
-            </div>
        </div>
     </div>
 

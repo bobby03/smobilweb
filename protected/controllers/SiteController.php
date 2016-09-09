@@ -8,6 +8,11 @@ class SiteController extends Controller
   public function actions()
   {
     return array(
+        'components'=>array(
+        'errorHandler'=>array(
+            'errorAction'=>'site/error',
+        ),
+    ),
       // captcha action renders the CAPTCHA image displayed on the contact page
       'captcha'=>array(
         'class'=>'CCaptchaAction',
@@ -20,6 +25,10 @@ class SiteController extends Controller
       ),
     );
   } 
+public function init() {
+    parent::init();
+    Yii::app()->errorHandler->errorAction= $this->actionError();
+}
   /**
    * This is the default 'index' action that is invoked
    * when an action is not explicitly requested by users.
@@ -69,14 +78,16 @@ class SiteController extends Controller
             JOIN estacion as est ON est.id=v.id_estacion 
             WHERE v.status = 1')
                 ->queryAll();
-        $estaciones= Yii::app()->db->createCommand(
-            'SELECT *,e.id as idest FROM estacion e 
-            JOIN camp_sensado cs ON cs.id_estacion=e.id
-            JOIN personal p ON cs.id_responsable=p.id
-            WHERE e.activo=1 
-            AND e.tipo=2
-            AND cs.activo=1')
-            ->queryAll();
+//        $estaciones= Yii::app()->db->createCommand('
+//            SELECT *,e.id as idest 
+//            FROM estacion e 
+//            JOIN camp_sensado cs ON cs.id_estacion=e.id
+//            JOIN personal p ON cs.id_responsable=p.id
+//            WHERE e.activo = 1 
+//            AND e.tipo = 2
+//            AND cs.activo = 1')
+//            ->queryAll();
+        $estaciones = CampSensado::model()->findAll('status = 1');
         $this->render('index', array
         (
             'enruta'=>$model, 
@@ -94,14 +105,14 @@ class SiteController extends Controller
       if(Yii::app()->request->isAjaxRequest){
         echo $error['message'];
       }else{
-                      switch($error['code'])
-                {
-                        case 403:
-                                $this->render('error403', array('error' => $error));
-                                break;
-                        default:
-                            $this->render('error', $error);
-                }
+          switch($error['code'])
+            {
+            case 403:
+                    $this->render('error403', array('error' => $error));
+                    break;
+            default:
+                $this->render('error', $error);
+            }
         
       }
     }

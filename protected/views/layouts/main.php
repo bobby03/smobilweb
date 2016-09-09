@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="es-MX">
   <head>
+      <?php 
+		$baseUrl = Yii::app()->baseUrl;?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Language" content="es-mx" />
     <meta name="language" content="es">
@@ -9,11 +11,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script> 
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
-
+    <link rel="shortcut icon" type="image/x-ico" href="<?php echo $baseUrl;?>/images/faviconpng.ico">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-    <?php 
-		$baseUrl = Yii::app()->baseUrl;
+    <?php
 		$cs = Yii::app()->getClientScript();
     	$cs->registerScriptFile($baseUrl.'/js/main.js');
 		$cs->registerCssFile($baseUrl.'/css/main.css');
