@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Ver <?php echo $model->nombre; ?></h1>
+<h1>Ver <?php echo $model->nombre;?></h1>
 <div class="form">
     <?php $this->widget('zii.widgets.CDetailView', array(
             'data'=>$model,

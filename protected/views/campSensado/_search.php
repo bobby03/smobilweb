@@ -22,7 +22,7 @@
                 <?php echo $form->dropDownList($model,'id_responsable', CampSensado::model()->getResponsableName(0), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
             </div>
             <div class="row hide" data-id="5">
-                <?php echo $form->textField($model,'fecha_inicio'); ?>
+                <?php echo $form->textField($model,'fecha_inicio',array('placeholder'=>'aaaa-mm-dd'); ?>
             </div>
     <?php $this->endWidget(); ?>
 </div>
