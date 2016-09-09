@@ -120,8 +120,7 @@
                 <?php $tot++; ?>
             <?php endfor;?>
         <?php endforeach; ?>
-        <?php else: ?>
-            no hay pedidos
+
         <?php endif;?>
         </div>
         <div style="width: 100%; height:35px;">
@@ -159,6 +158,9 @@
             <div id="map"></div>
         </div>
     </div>
+    <div class="row" style="height: 55px;" >
+        <a class="gBoton" id="cBoton">Cancelar</a>
+    </div>
     <div class="tanquesViajes">
         <h2>Detalles de viaje ( <?php echo count($tanques); ?> tanques ) <span data-id="2">Por parametro</span><span class="selected" data-id="1">Por tanque</span></h2>
         <div class="allTanques" data-id="1">
@@ -188,6 +190,7 @@
                 </div>
             <?php endforeach;?>
         </div>
+
         <div class="allTanques hide" data-id="2">
             <div class="tanque" data-para="1">
                 <div class="titulosWraper">
@@ -263,6 +266,7 @@
     </div>
     <?php endif;?>
     <!--  FINALIZADO -->
+
     <?php if($model->status == 3):?>
     <?php $cs->registerScriptFile($baseUrl.'/js/viajes/view.js'); 
     ?>
@@ -292,6 +296,11 @@
             <div id="map2" ></div>
         </div>
     </div>
+    
+    <div class="row" style="height: 55px;" >
+        <a class="gBoton" id="cBoton">Cancelar</a>
+    </div>
+
     <div class="tanquesViajes">
         <h2>Detalles de viaje ( <?php echo count($tanques); ?> tanques ) <span data-id="2">Por parametro</span><span class="selected" data-id="1">Por tanque</span></h2>
         <div class="allTanques" data-id="1">
@@ -395,7 +404,5 @@
         </div>
     </div>
     <?php endif;?>
-    <div class="row">
-        <a class="gBoton" id="cBoton">Cancelar</a>
-    </div>
+    
 </div>

@@ -360,7 +360,7 @@ class SiteController extends Controller
                 cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
                 sin($dLong / 2) * sin($dLong / 2);
                    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $fecha = strtotime($data['fecha_entrega']);
+            $fecha = isset($data['fecha_entrega'])?strtotime($data['fecha_entrega']):null;
             if($fecha == null)
                 $entregado = 'no_entregado';   
             else
@@ -494,7 +494,7 @@ EOF;
   public function actionDbpb($id) {
     $return['result'] = 0 ;
     $return['html'] = "";
-    $last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+    $last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadtemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
     ->queryAll();
     $flag = true;
          $return['linea'] = $this->GetPB($id, $flag);

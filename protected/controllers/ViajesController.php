@@ -1396,7 +1396,7 @@ EOF;
                     'type' => 'bar',
                     'data'=>array
                     (
-                        'labels'    => $nombre,
+                        'labels'    => isset($nombre)?$nombre:"nombre",
                         'datasets'  => 
                         [
                             (object)
@@ -1442,7 +1442,7 @@ EOF;
                     'type' => 'bar',
                     'data'=>array
                     (
-                        'labels'    => $nombre,
+                        'labels'    => isset($nombre)?$nombre:"nombre",
                         'datasets'  => 
                         [
                             (object)
@@ -1484,7 +1484,7 @@ EOF;
                     'type' => 'bar',
                     'data'=>array
                     (
-                        'labels'    => $nombre,
+                        'labels'    => isset($nombre)?$nombre:"nombre",
                         'datasets'  => 
                         [
                             (object)
@@ -1526,7 +1526,7 @@ EOF;
                     'type' => 'bar',
                     'data'=>array
                     (
-                        'labels'    => $nombre,
+                        'labels'    => isset($nombre)?$nombre:"nombre",
                         'datasets'  => 
                         [
                             (object)

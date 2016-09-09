@@ -90,6 +90,15 @@
                 
             </div>
             <?php else:?>
+                <div class ='backMonitoreo'>
+            <?php if( $siembra->status ==1 ): ?>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado#proceso">Regresar</a>
+            <?php elseif( $siembra->status==2 ): ?>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado#historico">Regresar</a>
+            <?php else: ?>
+                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado">Regresar</a>
+            <?php endif;?>
+        </div>
     <div id="detallesMon">
         <div class="divTit">
             <div id='enLeft'><h2>Detalles del monitoreo</h2></div>
@@ -105,15 +114,7 @@
 
 
         <!-- Gráficas por parametro -->
-        <div class ='backMonitoreo'>
-            <?php if( $siembra->status ==1 ): ?>
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado#proceso">Regresar</a>
-            <?php elseif( $siembra->status==2 ): ?>
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado#historico">Regresar</a>
-            <?php else: ?>
-                <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/campSensado">Regresar</a>
-            <?php endif;?>
-        </div>
+        
         <div class="tab" data-tab='1'>
             <?php
             $l=true;
