@@ -38,6 +38,7 @@ return array(
 	'homeUrl'=>array('site/login'),
 	// application components
 	'components'=>array(
+		'errorHandler'=>array('errorAction'=>'site/error'),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,

@@ -8,6 +8,11 @@ class SiteController extends Controller
   public function actions()
   {
     return array(
+        'components'=>array(
+        'errorHandler'=>array(
+            'errorAction'=>'site/error',
+        ),
+    ),
       // captcha action renders the CAPTCHA image displayed on the contact page
       'captcha'=>array(
         'class'=>'CCaptchaAction',
@@ -20,6 +25,10 @@ class SiteController extends Controller
       ),
     );
   } 
+public function init() {
+    parent::init();
+    Yii::app()->errorHandler->errorAction= $this->actionError();
+}
   /**
    * This is the default 'index' action that is invoked
    * when an action is not explicitly requested by users.
@@ -96,14 +105,14 @@ class SiteController extends Controller
       if(Yii::app()->request->isAjaxRequest){
         echo $error['message'];
       }else{
-                      switch($error['code'])
-                {
-                        case 403:
-                                $this->render('error403', array('error' => $error));
-                                break;
-                        default:
-                            $this->render('error', $error);
-                }
+          switch($error['code'])
+            {
+            case 403:
+                    $this->render('error403', array('error' => $error));
+                    break;
+            default:
+                $this->render('error', $error);
+            }
         
       }
     }
