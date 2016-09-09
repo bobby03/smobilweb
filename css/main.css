@@ -127,7 +127,7 @@ body {
 }
 
 #mainmenu ul li#inicio a {
-    background-image: url('./../images/menu/inicio.svg');
+    background-image: url('./../images/menu/iconoMenuInicio.png');
     background-size: 17px;
     background-repeat: no-repeat;
     background-position: 15px 10px;

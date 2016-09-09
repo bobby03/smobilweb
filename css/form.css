@@ -89,7 +89,12 @@ div.form .chosen-container {
     font-size: 14px;
     font-family: 'Roboto-regular';
 }
-
+div.form select
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 div.form input[type="submit"] {
     background-color: #0077b0;
     text-indent: 0;
@@ -114,7 +119,10 @@ div.form input[type="submit"]:hover
     width: 100%;
     background: #FFFFFF;
 }
-
+div.wide.form .css-select-moz
+{
+    width: 250px;
+}
 .css-select-moz select,
 .css-select select {
     background: transparent;
@@ -131,7 +139,6 @@ div.form input[type="submit"]:hover
     -moz-appearance: none;
     appearance: none;
 }
-
 .css-select-moz:after {
     content: "";
     position: absolute;

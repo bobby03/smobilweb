@@ -1759,3 +1759,47 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
 HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
 ---
+2016/09/09 15:52:32 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/iconos/nuevos/flechaDropdown.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/iconos/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/iconos/nuevos/flechaDropdown.png
+---
+2016/09/09 15:56:02 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/09 16:06:37 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/menu/inicio.svg". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/menu/ini...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/menu/inicio.svg
+HTTP_REFERER=http://localhost/SmobilWeb/clientes
+---
+2016/09/09 16:09:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/09 16:31:11 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---

@@ -8,7 +8,10 @@
             'action'=>Yii::app()->createUrl($this->route),
             'method'=>'get',
     )); ?>
-     <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>1)); ?>
+    <span class="css-select-moz">
+        <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchViajes(),array('empty' =>'Selecciona campo a buscar','data-s'=>1)); ?>
+        
+    </span>
 <!--            <div class="row hide" data-id="1">
                 <?php echo $form->dropDownList($model,'id', CampSensado::model()->getGranjasName(0), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
             </div>-->

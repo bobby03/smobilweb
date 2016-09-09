@@ -508,7 +508,7 @@ div.chosen-container.error > ul {
     width: 135px;
     height: 35px;
     line-height: 35px;
-    float: right;
+    /*float: right;*/
 }
 div.form input[type="submit"] {
     float: right;
@@ -518,14 +518,14 @@ div.form input[type="submit"] {
 }
 .gBoton.regresar.uno,
 .botonesWrapper2 > * {
-    float: right;
+    /*float: right;*/
 }
 div.tab.last div.row.buttons.floating input {
     padding: 0;
 }
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
-    float: right;
+    /*float: right;*/
 }
 
 .siguiente {
@@ -533,11 +533,12 @@ div.tab.last div.row.buttons.floating input {
 }
 
 a.gBoton.nboton {
-    float: right;
+    /*float: right;*/
     margin-right: 76px;
 }
 
-.botonesWrapper:after {
+.botonesWrapper:after,
+.botonesWrapper2:after{
     content: "";
     clear: both;
     display: block;
