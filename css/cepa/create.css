@@ -1,4 +1,4 @@
-#Cepa_nombre_cepa
+#Cepa_id_especie
 {
     background-image: url('../../images/especie/iconoPececito.png'), url('../../images/form/bg.png');
     background-position: 8px 8px,left;
@@ -6,9 +6,21 @@
     padding-left: 35px;
     border-left: 0;
 }
-#Cepa_nombre_cepa.error
+#Cepa_id_especie.error
 {
     background-image: url('../../images/especie/iconoPececito.png'), url('../../images/form/bg_error.png');
+}
+#Cepa_nombre_cepa
+{
+    background-image: url('../../images/especie/iconoCepas.png'), url('../../images/form/bg.png');
+    background-position: 8px 6px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+}
+#Cepa_nombre_cepa.error
+{
+    background-image: url('../../images/especie/iconoCepas.png'), url('../../images/form/bg_error.png');
 }
 div.form-containerWraper:after
 {

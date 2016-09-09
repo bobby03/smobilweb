@@ -75,11 +75,12 @@ class NCButtonColumn extends CButtonColumn
                 var mensaje = '¿Está seguro que desea desactivar este registro?';
                 if(urlSplit[2]=='solicitudes')
                 {
+                    
                     var a = '';
                     $.ajax(
                     {
                         type: 'POST',
-                        url: 'solicitudes/GetViajeId',
+                        url: '$baseUrl/solicitudes/GetViajeId',
                         dataType: 'JSON', 
                         async: false,
                         data:
@@ -136,7 +137,8 @@ class NCButtonColumn extends CButtonColumn
                         });
                         $('.aceptar-boton').click(function()
                         {
-                            console.log(href);
+                            var index = href.lastIndexOf('/');
+                            href = href.substring(0, index);
                             $.ajax(
                             {
                                 type: 'GET',

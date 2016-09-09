@@ -771,7 +771,6 @@ class WebServiceController extends Controller
         $idViaje = isset($_GET['id'])?$_GET['id']:0;
         $status = isset($_GET['status'])?$_GET['status']:0;
         $tipo = isset($_GET['tipo'])?$_GET['tipo']:0;
-
         switch ($tipo) {
             case '1':
                 # code...

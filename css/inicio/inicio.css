@@ -551,18 +551,15 @@ h2{
  /* Separadores */
  .separador1{
      background-color: #eaeaea;
-     width: 1174px;
      height: 38px;
      text-align:center;
      line-height: 2;
  }
  .contenedor-rutas-entregas{
-     width: 1174px;
      height: 180px;
  }
  .separador2{
       background-color: #eaeaea;
-     width: 1174px;
      margin-bottom: 10px;
      height: 19px;
 }
@@ -653,7 +650,7 @@ float:left;
     visibility: visible;
 }
 .containerRuta{
-    width: 1174px;
+    /*width: 1174px;*/
     /*height:170px;*/
     display: block;
 
