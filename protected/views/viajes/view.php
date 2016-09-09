@@ -159,7 +159,7 @@
         </div>
     </div>
     <div class="row" style="height: 55px;" >
-        <a class="gBoton" id="cBoton">Cancelar</a>
+        <a class="gBoton" id="cBoton">Regresar</a>
     </div>
     <div class="tanquesViajes">
         <h2>Detalles de viaje ( <?php echo count($tanques); ?> tanques ) <span data-id="2">Por parametro</span><span class="selected" data-id="1">Por tanque</span></h2>
@@ -298,7 +298,7 @@
     </div>
     
     <div class="row" style="height: 55px;" >
-        <a class="gBoton" id="cBoton">Cancelar</a>
+        <a class="gBoton" id="cBoton">Regresar</a>
     </div>
 
     <div class="tanquesViajes">
@@ -405,8 +405,6 @@
     </div>
     <?php endif;?>
 
-    <div class="row">
-        <a class="gBoton" id="cBoton">Regresar</a>
-    </div>
+
 
 </div>

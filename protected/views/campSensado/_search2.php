@@ -28,7 +28,7 @@
         </div>
 	
 	<div class="row hide" data-id="5">
-            <?php echo $form->textField($model,'fecha_inicio',array('placeholder'=>'aaaa-mm-dd'); ?>
+            <?php echo $form->textField($model,'fecha_inicio',array('placeholder'=>'aaaa-mm-dd')); ?>
 	</div>
 	
 <?php $this->endWidget(); ?>
