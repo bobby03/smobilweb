@@ -26,7 +26,16 @@ div.search-form div.row {
     margin-right: 25px;
     float: left;
 }
-
+.wide.form select,
+.wide.form input
+{
+    background-image:   url('./../images/iconoBusqueda.png'), 
+                        url('./../images/usuarios/bg.png');
+    background-position: 8px 6px,left;
+    background-repeat: no-repeat;
+    border-left: 0;
+    padding-left: 30px;
+}
 .chosen-container-multi .chosen-choices {
     border: 0;
     box-sizing: border-box;
