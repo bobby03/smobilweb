@@ -361,7 +361,7 @@ class SiteController extends Controller
                 cos($this->rad($p1[0])) * cos($this->rad($p2[0])) *
                 sin($dLong / 2) * sin($dLong / 2);
                    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $fecha = strtotime($data['fecha_entrega']);
+            $fecha = isset($data['fecha_entrega'])?strtotime($data['fecha_entrega']):null;
             if($fecha == null)
                 $entregado = 'no_entregado';   
             else
@@ -540,65 +540,63 @@ EOF;
   /**
    * Logs out the current user and redirect to homepage.
    */
-    public function actionLogout()
-    {
-      Yii::app()->user->logout();
-      $this->redirect(Yii::app()->homeUrl);
+  public function actionLogout()
+  {
+    Yii::app()->user->logout();
+    $this->redirect(Yii::app()->homeUrl);
+  }
+  public function actionGetTanques($id){
+    $tanques= Yii::app()->db->createCommand(
+        'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp FROM estacion e 
+        JOIN camp_sensado cs ON cs.id_estacion=e.id
+        JOIN personal p ON cs.id_responsable=p.id
+        JOIN tanque t ON t.id_estacion=e.id
+        JOIN registro_camp r ON t.id=r.id_tanque
+        WHERE e.activo=1 
+        AND e.tipo=2
+        AND cs.activo=1
+        AND t.activo=1
+        ORDER BY r.id DESC
+        LIMIT 3000
+        ) consulta
+                WHERE idest ='.$id.'
+        GROUP BY idtan
+        ORDER BY idest
+        ')
+    ->queryAll();
+    return $tanques;
+  }
+  public function actionGetTanques2($id){
+    $tanques= Yii::app()->db->createCommand(
+        'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
+        JOIN camp_sensado cs ON cs.id_estacion=e.id
+        JOIN personal p ON cs.id_responsable=p.id
+        JOIN tanque t ON t.id_estacion=e.id
+        JOIN registro_camp r ON t.id=r.id_tanque
+        WHERE e.activo=1 
+        AND e.tipo=2
+        AND cs.activo=1
+        AND t.activo=1
+        ORDER BY r.id DESC
+        LIMIT 3000
+        ) consulta
+                WHERE idest ='.$id.'
+        GROUP BY idtan
+        ORDER BY idest
+        ')
+    ->queryRow();
+    return $tanques;
+  }
+  public function actionDbpb($id) {
+    $return['result'] = 0 ;
+    $return['html'] = "";
+    $last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadtemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
+    ->queryAll();
+    $flag = true;
+         $return['linea'] = $this->GetPB($id, $flag);
+          echo json_encode($return);
+
     }
-    public function actionGetTanques($id)
-    {
-$tanques= Yii::app()->db->createCommand(
-  'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp FROM estacion e 
-  JOIN camp_sensado cs ON cs.id_estacion=e.id
-  JOIN personal p ON cs.id_responsable=p.id
-  JOIN tanque t ON t.id_estacion=e.id
-  JOIN registro_camp r ON t.id=r.id_tanque
-  WHERE e.activo=1 
-  AND e.tipo=2
-  AND cs.activo=1
-  AND t.activo=1
-  ORDER BY r.id DESC
-  LIMIT 3000
-  ) consulta
-          WHERE idest ='.$id.'
-  GROUP BY idtan
-  ORDER BY idest
-  ')
-->queryAll();
-return $tanques;
-}
-    public function actionGetTanques2($id)
-    {
-      $tanques= Yii::app()->db->createCommand(
-          'SELECT * FROM (SELECT r.id as idrc, e.id AS idest, e.tipo,e.identificador,e.ubicacion,p.nombre,p.apellido,t.id as idtan,t.nombre as tnombre,r.fecha,r.hora,r.temp,r.ph,r.ox,r.cond,r.orp,p.correo,p.tel FROM estacion e 
-          JOIN camp_sensado cs ON cs.id_estacion=e.id
-          JOIN personal p ON cs.id_responsable=p.id
-          JOIN tanque t ON t.id_estacion=e.id
-          JOIN registro_camp r ON t.id=r.id_tanque
-          WHERE e.activo=1 
-          AND e.tipo=2
-          AND cs.activo=1
-          AND t.activo=1
-          ORDER BY r.id DESC
-          LIMIT 3000
-          ) consulta
-                  WHERE idest ='.$id.'
-          GROUP BY idtan
-          ORDER BY idest
-          ')
-      ->queryRow();
-      return $tanques;
-    }
-    public function actionDbpb($id)
-    {
-      $return['result'] = 0 ;
-      $return['html'] = "";
-      $last = Yii::app()->db->createCommand("SELECT ut.* FROM uploadTemp as ut INNER JOIN (SELECT MAX(id) as id, id_viaje FROM escalon_viaje_ubicacion where id_viaje = {$id}) evu ON evu.id = ut.id_escalon_viaje_ubicacion")
-      ->queryAll();
-      $flag = true;
-           $return['linea'] = $this->GetPB($id, $flag);
-            echo json_encode($return);
-      }
     public function GetPB($id, $bandera)
     { 
         $recorrido = Yii::app()->db->createCommand('SELECT *, curdate() as hoy FROM camp_sensado cs 
