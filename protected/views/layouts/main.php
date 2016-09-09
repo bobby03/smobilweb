@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="es-MX">
   <head>
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Language" content="es-mx" />
     <meta name="language" content="es">
