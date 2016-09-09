@@ -31,7 +31,7 @@
 
 	<div class="row hide" data-id='4'>
 		
-		<?php echo $form->textField($model,'fecha_alta'); ?>
+		<?php echo $form->textField($model,'fecha_alta',array('placeholder'=>'aaaa-mm-dd')); ?>
 	</div>
 	
 	<div class="row hide" data-id='5'>
@@ -41,7 +41,7 @@
 
 	<div class="row hide" data-id='6'>
 		
-		<?php echo $form->textField($model,'fecha_entrega'); ?>
+		<?php echo $form->textField($model,'fecha_entrega',array('placeholder'=>'aaaa-mm-dd')); ?>
 	</div>
 
 	<div class="row hide" data-id='7'>

@@ -36,7 +36,7 @@
 
 	<div class="row hide" data-id='5'>
 		
-		<?php echo $form->textField($model,'fecha_alta'); ?>
+		<?php echo $form->textField($model,'fecha_alta',array('placeholder'=>'aaaa-mm-dd')); ?>
 	</div>
 <!--
 	<div class="row hide" data-id='6'>
