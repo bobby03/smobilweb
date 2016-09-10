@@ -20,11 +20,11 @@
 	</div>
 
 	<div class="row hide" data-id="3">
-	 <?php echo $form->dropDownList($model,'id_estacion', CampSensado::model()->getProduccionName(2), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+	 <?php echo $form->dropDownList($model,'id_estacion', CampSensado::model()->getProduccionName(2), array('empty'=>'Seleccionar', 'class'=>'css-select','style'=>'height:30px')); ?>
 	</div>
 	
 	<div class="row hide" data-id="4">
-	<?php echo $form->dropDownList($model,'id_responsable', CampSensado::model()->getResponsableName(2), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+	<?php echo $form->dropDownList($model,'id_responsable', CampSensado::model()->getResponsableName(2), array('empty'=>'Seleccionar', 'class'=>'css-select','style'=>'height:30px')); ?>
            
 	</div>
 	

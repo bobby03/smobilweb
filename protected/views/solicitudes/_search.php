@@ -16,7 +16,7 @@
 
 	<div class="row hide" data-id='1'>
 		
-		<?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select')); ?>
+		<?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select', 'style'=>'height:30px')); ?>
 	</div>
 
 	<div class="row hide" data-id='2'>

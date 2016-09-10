@@ -84,7 +84,7 @@ div.form .chosen-container {
     border: 2px solid #0077b0;
     border-radius: 5px;
     border-left: 30px solid #0077b0;
-    text-indent: 5px;
+    text-indent: 25px;
     width: 100%;
     font-size: 14px;
     font-family: 'Roboto-regular';
@@ -106,6 +106,9 @@ div.form input[type="submit"] {
 div.form input[type="submit"]:hover
 {
     background-color: #21B7C7;
+}
+.css-select{
+    min-height: 30px !important;
 }
 .css-select-moz {
     position: relative;
@@ -154,7 +157,7 @@ div.search-form input {
     border: 2px solid #0077b0;
     border-radius: 5px;
     border-left: 30px solid #0077b0;
-    text-indent: 5px;
+    text-indent: 25px;
     width: 100%;
 }
 div.search-form2 input {
@@ -163,7 +166,7 @@ div.search-form2 input {
     border: 2px solid #0077b0;
     border-radius: 5px;
     border-left: 30px solid #0077b0;
-    text-indent: 5px;
+    text-indent: 25px;
     width: 100%;
 }
 

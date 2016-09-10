@@ -16,10 +16,10 @@
                 <?php echo $form->textField($model,'nombre_camp'); ?>
             </div>
             <div class="row hide" data-id="3">
-                <?php echo $form->dropDownList($model,'id_estacion', CampSensado::model()->getProduccionName(0), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                <?php echo $form->dropDownList($model,'id_estacion', CampSensado::model()->getProduccionName(0), array('empty'=>'Seleccionar', 'class'=>'css-select','style'=>'height:30px')); ?>
             </div>
             <div class="row hide" data-id="4">
-                <?php echo $form->dropDownList($model,'id_responsable', CampSensado::model()->getResponsableName(0), array('empty'=>'Seleccionar', 'class'=>'css-select')); ?>
+                <?php echo $form->dropDownList($model,'id_responsable', CampSensado::model()->getResponsableName(0), array('empty'=>'Seleccionar', 'class'=>'css-select','style'=>'height:30px')); ?>
             </div>
             <div class="row hide" data-id="5">
                 <?php echo $form->textField($model,'fecha_inicio',array('placeholder'=>'aaaa-mm-dd')); ?>
