@@ -112,6 +112,9 @@ float:left;
     border-left: 0;
     background-size: 21px 19px, 30px 100px;
 }
+#Usuarios_usuario.error{
+    background-image: url('../../images/usuarios/usuariosMasChico.svg'), url('../../images/usuarios/bg_error.png');
+}
 
 #Usuarios_tipo_usr{
   background-image: url('../../images/usuarios/iconoTipoUsuario.png'), url('../../images/usuarios/bg.png');
@@ -119,6 +122,9 @@ float:left;
   background-repeat: no-repeat;
   padding-left: 35px;
   border-left:0;
+}
+#Usuarios_tipo_usr.error{
+    background-image: url('../../images/usuarios/iconoTipoUsuario.png'), url('../../images/usuarios/bg_error.png');
 }
 
 #Usuarios_pwd{
@@ -129,6 +135,9 @@ float:left;
   border-left:0;
 }
 
+#Usuarios_pwd.error{
+    background-image: url('../../images/usuarios/iconoContrasena.png'), url('../../images/usuarios/bg_error.png');
+}
 #clienteList{
     background-image: url('../../images/usuarios/iconoClientesSmall.svg'), url('../../images/usuarios/bg.png');
     background-position: 7px 1px,left;
@@ -136,6 +145,9 @@ float:left;
     padding-left: 30px;
     border-left: 0;
     background-size: 17px 25px, 30px 28px;
+}
+#clienteList.error{
+    background-image: url('../../images/usuarios/iconoClientesSmall.svg'), url('../../images/usuarios/bg_error.png');
 }
 
 
@@ -145,4 +157,7 @@ float:left;
   background-repeat: no-repeat;
   padding-left: 30px;
   border-left:0;
+}
+#personalList.error{
+    background-image: url('../../images/usuarios/iconoNombre.png'), url('../../images/usuarios/bg_error.png');
 }

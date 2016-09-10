@@ -74,8 +74,8 @@ $form=$this->beginWidget('CActiveForm', array(
 				 <label class= "letreros">Granja <span class="required">*</span></label>
 		        <span class="css-select-moz">
 		            <?php echo $form->dropDownList($granja,'id', ($model->isNewRecord) ? $granja->getNombreGranjasConPlantas() : $granja->getGranjaFromPlanta($model->id_estacion) ,($model->isNewRecord) ? array('empty'=>'Seleccionar','class'=>'css-select') : array('disabled'=>'disabled', 'value'=>$granja->getGranjaId($model->id_estacion)));?>
-		            <?php echo $form->error($granja,'id'); ?>
 		        </span>
+		            <?php echo $form->error($granja,'id'); ?>
 			</div>
 			<div class="row">
 				<?php
@@ -85,16 +85,16 @@ $form=$this->beginWidget('CActiveForm', array(
 					<?php echo $form->labelEx($model,'id_estacion'); ?>
 				<span class="css-select-moz">
 		            <?php echo $form->dropDownList($model,'id_estacion', ($model->isNewRecord) ? array() : $granjas->getPlantasofGranjaFromPlanta($model->id_estacion) , ($model->isNewRecord) ? array('empty'=>'Seleccionar', 'disabled'=>'disabled') : array('empty'=>'Seleccionar', 'disabled'=>'disabled'));?>
-		            <?php echo $form->error($model,'id_estacion'); ?>
 		        </span>
+		            <?php echo $form->error($model,'id_estacion'); ?>
 			</div>
 			<div class="row">
 				<?php $prs = new Personal;  echo $form->labelEx($model,'id_responsable'); ?>
 		        <span class="css-select-moz">
 		            <?php echo $form->dropDownList($model,'id_responsable', $prs->getBiologos(), array('empty'=>'Seleccionar','class'=>'css-select','value'=>$model->id_responsable));?>
+		        </span>
 
 		            <?php echo $form->error($model,'id_responsable'); ?>
-		        </span>
 			</div>
 			<div class="row">
 				<?php echo $form->labelEx($model,'nombre_camp'); ?>

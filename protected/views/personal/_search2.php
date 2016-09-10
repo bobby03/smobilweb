@@ -10,7 +10,9 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
+    <span class="css-select-moz">
  	<?php echo CHtml::dropDownList('searchDropDown2', 'id', $model->getSearchPersonal(),array('empty' =>'Selecciona campo a buscar')); ?>
+    </span>
 
 	<div class="row hide" data-id='1'>
 	     

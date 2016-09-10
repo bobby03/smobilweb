@@ -53,6 +53,15 @@
     padding-left: 35px;
     border-left: 0;
 }
+.error #Granjas_id 
+{
+    background-image: url('../../images/granjas/iconoGranja.png'), url('../../images/form/bg_error.png');
+      background-position: 8px 7px,left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    border-left: 0;
+
+}
 #SolicitudesViaje_id_personal_1_tecnico {
     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
     background-position: 8px 5px, left;
@@ -144,6 +153,7 @@ div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error {
 {
      background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg_error.png');
 }
+
 div.pedido {
     float: left;
     width: 250px;
@@ -485,17 +495,21 @@ div.chosen-container.error > ul {
 
 .botonesWrapper{
     margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: right;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
 }
 
 
-.botonesWrapper2{
-    margin: 20px 0;
-    display: block;
-    /*padding-right: 100px;*/
-    text-align: right;
-   height:45px;
+.botonesWrapper2
+{
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 7px solid #F2F2F2;
+}
+.inner-third-wrapper {
+    width: 910px;
+    margin: 0 auto;
 }
 .gBoton.regresar.uno,
 .gBoton.regresar.dos{
@@ -504,7 +518,7 @@ div.chosen-container.error > ul {
     width: 135px;
     height: 35px;
     line-height: 35px;
-    float: right;
+    /*float: right;*/
 }
 div.form input[type="submit"] {
     float: right;
@@ -514,14 +528,14 @@ div.form input[type="submit"] {
 }
 .gBoton.regresar.uno,
 .botonesWrapper2 > * {
-    float: right;
+    /*float: right;*/
 }
 div.tab.last div.row.buttons.floating input {
     padding: 0;
 }
 .gBoton.regresar.uno,
 .bUno.fBoton.regresar {
-    float: right;
+    /*float: right;*/
 }
 
 .siguiente {
@@ -529,11 +543,12 @@ div.tab.last div.row.buttons.floating input {
 }
 
 a.gBoton.nboton {
-    float: right;
+    /*float: right;*/
     margin-right: 76px;
 }
 
-.botonesWrapper:after {
+.botonesWrapper:after,
+.botonesWrapper2:after{
     content: "";
     clear: both;
     display: block;
