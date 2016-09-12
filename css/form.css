@@ -25,7 +25,7 @@ div.search-form div.row {
     height: 30px;
     margin-right: 25px;
     float: left;
-    text-indent: 5px;
+    text-indent: 25px;
 }
 .wide.form select,
 .wide.form input
@@ -116,6 +116,7 @@ div.form input[type="submit"]:hover
     width: 250px;
     float: left;
     margin-right: 15px;
+    text-indent: 15px;
     background: #FFFFFF;
 }
 

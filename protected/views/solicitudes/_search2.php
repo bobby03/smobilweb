@@ -11,36 +11,38 @@
 	'method'=>'get',
 )); ?>
 
- 	 <span class="css-select-moz"> <?php echo CHtml::dropDownList('searchDropDown2', 'id', $model->getSearchSolicitud(),array('empty' =>'Selecciona campo a buscar')); ?></span>
+ 	<?php echo CHtml::dropDownList('searchDropDown2', 'id', $model->getSearchSolicitud(),array('empty' =>'Selecciona campo a buscar')); ?>
 
 
 	<div class="row hide" data-id='1'>
-		 <span class="css-select-moz"> <?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select','style'=>'height:30px')); ?></span>
+		
+		<?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select','style'=>'height:30px')); ?>
 	</div>
 
 	<div class="row hide" data-id='2'>
 		
-		  <?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'codigo',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row hide" data-id='3'>
 		
-		<?php echo $form->textField($model,'id'); ?></span>
+		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
  	<div class="row hide" data-id='4'>
 		
 		<?php echo $form->textField($model,'fecha_alta', array('placeholder'=>'aaaa-mm-dd')); ?>
+	</div>
 	
 	<div class="row hide" data-id='5'>
 		
-		  <?php echo $form->textField($model,'hora_alta'); ?></span>
+		<?php echo $form->textField($model,'hora_alta'); ?>
 	</div>
 
 
 	<div class="row hide" data-id='6'>
 		
-		  <?php echo $form->textField($model,'fecha_estimada',array('placeholder'=>'aaaa-mm-dd')); ?>
+		<?php echo $form->textField($model,'fecha_estimada',array('placeholder'=>'aaaa-mm-dd')); ?>
 	</div>
 
 	<div class="row hide" data-id='7'>

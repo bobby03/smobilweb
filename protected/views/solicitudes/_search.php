@@ -11,13 +11,12 @@
 	'method'=>'get',
 )); ?>
 
- 	 <span class="css-select-moz"> <?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchSolicitudSinAsignar(),array('empty' =>'Selecciona campo a buscar')); ?></span>
+ 	<?php echo CHtml::dropDownList('searchDropDown', 'id', $model->getSearchSolicitudSinAsignar(),array('empty' =>'Selecciona campo a buscar')); ?>
 
 
 	<div class="row hide" data-id='1'>
-	
-	<?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select', 'style'=>'height:30px')); ?>
-
+		
+		<?php echo $form->dropDownList($model,'id_clientes',Clientes::model()->getAllClientes(),array('empty'=>'Seleccionar','class'=>'css-select-moz','style'=>'height:30px')); ?>
 	</div>
 
 	<div class="row hide" data-id='2'>
