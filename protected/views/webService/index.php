@@ -1,7 +1,5 @@
 <?php
 /* @var $this WebServiceController */
 
-$this->breadcrumbs=array(
-	'Web Service',
-);
+$this->breadcrumbs=array('Web Service',);
 ?>

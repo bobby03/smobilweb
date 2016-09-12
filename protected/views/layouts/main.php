@@ -60,7 +60,6 @@
 
             if(!Yii::app()->user->isGuest){
 
-
                 // Construye el Menu en Base a los Roles Asignados en la sesion.
                 $menu = array();
                 array_push($menu,array('label'=>'Inicio','url'=>Yii::app()->getBaseUrl(true),'itemOptions'=>array('id' => 'site','active'=>$this->id=="site"?true:false)));
