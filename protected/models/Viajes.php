@@ -272,11 +272,7 @@ class Viajes extends CActiveRecord
                     'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                     'filter' => Estacion::model()->getAllEstacionMovil()
                 ),
-                array
-                (
-                    'name'=>'fecha_salida',
-                    'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
-                ),
+                'fecha_salida',
                 array
                 (
                     'name'=>'hora_salida',
@@ -318,11 +314,7 @@ class Viajes extends CActiveRecord
                     'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                     'filter' => Estacion::model()->getAllEstacionMovil()
                 ),
-                array
-                (
-                    'name'=>'fecha_salida',
-                    'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
-                ),
+                'fecha_salida',
                 array
                 (
                     'name'=>'hora_salida',
@@ -366,11 +358,7 @@ class Viajes extends CActiveRecord
                 'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                 'filter' => Estacion::model()->getAllEstacionMovil()
             ),
-            array
-            (
-                'name'=>'fecha_salida',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
-            ),
+            'fecha_salida',
             array
             (
                 'name'=>'hora_salida',
@@ -423,11 +411,7 @@ class Viajes extends CActiveRecord
                 'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
                 'filter' => Estacion::model()->getAllEstacionMovil()
             ),
-            array
-            (
-                'name'=>'fecha_entrega',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
-            ),
+            'fecha_entrega',
             array
             (
                 'name'=>'hora_entrega',
