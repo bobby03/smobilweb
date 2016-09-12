@@ -2597,11 +2597,6 @@ eof;
                 </div>
 eof;
         }
-        $return['codigo'] =$return['codigo'].<<<eof
-            <div class="tanquesColores">
-                $menuTanques
-            </div>
-eof;
         $return['graficaTodos'] =
         array
         (
@@ -2629,10 +2624,13 @@ eof;
                 )
             )
         );
-        $return['codigo'] = $return['codigo'].'
+        $return['codigo'] =$return['codigo'].<<<eof
+            </div>
+                <div class="tanquesColores">
+                    $menuTanques
                 </div>
-            </div>';
-            
+            </div>
+eof;
         echo json_encode($return);
     }
     public function actionGetGraficaParametroRango($viaje, $id, $rango)

@@ -300,7 +300,7 @@ class CampSensado extends CActiveRecord
         return array
         (
 //            '1' => 'Granja',
-            '2' => 'Siembra',
+            '2' => 'Nombre de la siembra',
             '3' => 'Planta producción',
             '4' => 'Responsable',
             '5' => 'Fecha inicio',
