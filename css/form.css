@@ -25,7 +25,7 @@ div.search-form div.row {
     height: 30px;
     margin-right: 25px;
     float: left;
-    text-indent: 25px;
+    /*text-indent: 25px;*/
 }
 .wide.form select,
 .wide.form input
@@ -89,7 +89,7 @@ div.form .chosen-container {
     width: 100%;
     font-size: 14px;
     font-family: 'Roboto-regular';
-    text-indent: 25px;
+    /*text-indent: 25px;*/
 }
 
 div.form input[type="submit"] {
@@ -113,15 +113,20 @@ div.form input[type="submit"]:hover
     position: relative;
     display: inline-block;
     /*overflow: hidden;*/
-    width: 250px;
-    float: left;
-    margin-right: 15px;
-    text-indent: 15px;
+    width: 100%;
+    /*float: left;*/
+    /*margin-right: 15px;*/
+    /*text-indent: 15px;*/
     background: #FFFFFF;
 }
-
+.wide.form .css-select-moz
+{
+    width: 250px;
+    float: left;
+}
 .css-select-moz select,
-.css-select select {
+.css-select select,
+select.css-select{
     background: transparent;
     border: 2px solid #0077b0;
     border-radius: 5px;
@@ -136,7 +141,14 @@ div.form input[type="submit"]:hover
     -moz-appearance: none;
     appearance: none;
 }
-
+.wide.form form > span:first-child
+{
+    margin-right: 30px;
+}
+.wide.form .row .css-select-moz
+{
+    width: 470px;
+}
 .css-select-moz:after {
     content: "";
     position: absolute;
