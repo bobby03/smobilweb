@@ -349,37 +349,12 @@ class Solicitudes extends CActiveRecord
                 'name'=>'no_tanques',
                 'value' => 'Solicitudes::model()->getTanques($data->id)'
             ),
-            array
-            (
-                'name'=>'fecha_alta',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
-            ),
+            'fecha_alta',
             array
             (
                 'name'=>'hora_alta',
                 'value' => 'date("H:i", strtotime($data->hora_alta))'
             ),
-//            array
-//            (
-//                'name'=>'fecha_estimada',
-//                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
-//            ),
-//            array
-//            (
-//                'name'=>'hora_estimada',
-//                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
-//            ),
-//            array
-//            (
-//                'name'=>'fecha_entrega',
-//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
-//            ),
-//            array
-//            (
-//                'name'=>'hora_entrega',
-//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
-//            ),
-//            'notas',
             array
             (
                 'class'=>'NCButtonColumn',
@@ -421,37 +396,18 @@ class Solicitudes extends CActiveRecord
                 'name'=>'Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
-            array
-            (
-                'name'=>'fecha_alta',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
-            ),
+            'fecha_alta',
             array
             (
                 'name'=>'hora_alta',
                 'value' => 'date("H:i", strtotime($data->hora_alta))'
             ),
-            array
-            (
-                'name'=>'fecha_estimada',
-                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
-            ),
+            'fecha_estimada',
             array
             (
                 'name'=>'hora_estimada',
                 'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
             ),
-//            array
-//            (
-//                'name'=>'fecha_entrega',
-//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
-//            ),
-//            array
-//            (
-//                'name'=>'hora_entrega',
-//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
-//            ),
-//            'notas',
             array
             (
                 'class'=>'NCButtonColumn',
@@ -514,40 +470,18 @@ class Solicitudes extends CActiveRecord
                 'name'=>'Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
-            array
-            (
-                'name'=>'fecha_alta',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
-            ),
+            'fecha_alta',
             array
             (
                 'name'=>'hora_alta',
                 'value' => 'date("H:i", strtotime($data->hora_alta))'
             ),
-            array
-            (
-                'name'=>'fecha_estimada',
-                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
-            ),
+            'fecha_estimada',
             array
             (
                 'name'=>'hora_estimada',
                 'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
             ),
-
-
-
-//            array
-//            (
-//                'name'=>'fecha_entrega',
-//                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
-//            ),
-//            array
-//            (
-//                'name'=>'hora_entrega',
-//                'value' => 'date("H:i", strtotime($data->hora_entrega))'
-//            ),
-//            'notas',
             array
             (
                 'class'=>'NCButtonColumn',
@@ -591,31 +525,13 @@ class Solicitudes extends CActiveRecord
                 'name'=>' Viaje',
                 'value' => 'Solicitudes::model()->getViaje($data->id)',
             ),
-            array
-            (
-                'name'=>'fecha_alta',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_alta))'
-            ),
+            'fecha_alta',
             array
             (
                 'name'=>'hora_alta',
                 'value' => 'date("H:i", strtotime($data->hora_alta))'
             ),
-//            array
-//            (
-//                'name'=>'fecha_estimada',
-//                'value' => 'Solicitudes::model()->getFechaTabla($data->fecha_estimada)'
-//            ),
-//            array
-//            (
-//                'name'=>'hora_estimada',
-//                'value' => 'Solicitudes::model()->getHoraTabla($data->hora_estimada)'
-//            ),
-            array
-            (
-                'name'=>'fecha_entrega',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_entrega))'
-            ),
+            'fecha_entrega',
             array
             (
                 'name'=>'hora_entrega',
