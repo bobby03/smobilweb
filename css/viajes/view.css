@@ -5,6 +5,14 @@ div.form{
 {
     padding-left:40px;
 }
+.table-view .dato:nth-child(1) .data
+{
+    background-image: url('../../images/viajes/iconoStatus.svg'), url('../../images/form/bg.png');
+    background-size: 21px 21px, 29px 100%;
+    background-position: 5px 3px, left;
+    background-repeat: no-repeat;
+    border-left: 0;
+}
 .table-view .dato:nth-child(3) .data,
 .table-view .dato:nth-child(4) .data,
 .table-view .dato:nth-child(5) .data,

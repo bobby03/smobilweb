@@ -142,10 +142,12 @@ EOF;
                     <input type="hidden" name="Solicitudes[codigo][{$tot}][id_tanque]" value="$data->id">
                     <div class="tituloEspecie">$data->nombre</div>
                     <div class="pedidoWraper">
-                        <select class="css-select ttan ttan{$tot}" data-tan="{$tot}" name="Solicitudes[codigo][{$tot}][tanque]" id="Solicitudes_codigo_{$tot}_tanque">
-                            <option value="">Seleccionar</option>
-                            $select
-                        </select>                            
+                        <span class="css-select-moz">
+                            <select class="css-select ttan ttan{$tot}" data-tan="{$tot}" name="Solicitudes[codigo][{$tot}][tanque]" id="Solicitudes_codigo_{$tot}_tanque">
+                                <option value="">Seleccionar</option>
+                                $select
+                            </select>                       
+                        <span>
                         <div class="errorMessage" id="Viajes_codigo_{$tot}_tanque_em_" style="display:none"></div>                        
                     </div>                     
                 </div>
@@ -2594,11 +2596,6 @@ eof;
                 </div>
 eof;
         }
-        $return['codigo'] =$return['codigo'].<<<eof
-            <div class="tanquesColores">
-                $menuTanques
-            </div>
-eof;
         $return['graficaTodos'] =
         array
         (
@@ -2626,10 +2623,13 @@ eof;
                 )
             )
         );
-        $return['codigo'] = $return['codigo'].'
+        $return['codigo'] =$return['codigo'].<<<eof
+            </div>
+                <div class="tanquesColores">
+                    $menuTanques
                 </div>
-            </div>';
-            
+            </div>
+eof;
         echo json_encode($return);
     }
     public function actionGetGraficaParametroRango($viaje, $id, $rango)

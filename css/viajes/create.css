@@ -27,7 +27,6 @@
     padding-left: 30px;
     border-left: 0;
 }
-
 #Viajes_fecha_salida,
 #Viajes_hora_salida {
     background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
@@ -66,12 +65,14 @@ div.form .chosen-container#Viajes_id_solicitudes_chosen.error
     border-left: 0;
 }
 div.form .chosen-container#Viajes_id_solicitudes_chosen,
-#Viajes_id_solicitudes {
+#Viajes_id_solicitudes, 
+div.pedidoWraper select
+{
     background-image: url('../../images/viajes/iconoSolicitudesFormulario.png'), url('../../images/form/bg.png');
     background-position: 7px 7px, left;
     background-repeat: no-repeat;
     padding-left: 30px;
-    border-left: 0;
+    border-left: 0!important;
 }
 .error #Viajes_id_estacion {
     background-image: url('../../images/viajes/nv_iconoCamion.png'), url('../../images/form/bg_error.png');

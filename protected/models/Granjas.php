@@ -93,7 +93,7 @@ class Granjas extends SMActiveRecord
             return array
             (
                 '1'=>'Nombre',
-                '2'=>'Direccion',
+                '2'=>'Dirección',
                 '3'=>'Responsable'
             );
         }
