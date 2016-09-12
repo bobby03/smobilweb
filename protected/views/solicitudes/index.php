@@ -9,9 +9,6 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
 
     $this->breadcrumbs=array('Solicitudes',);
-
-
-
 ?>
 <script>
 
