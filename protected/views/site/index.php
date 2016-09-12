@@ -77,55 +77,64 @@
                 </div>
                 <div class="separador2"></div>	
             </div>
-            <div class="container-box">
-                <div class="container-table viaje">
-                    <div class = "divTable2">
-                        <div class="divThead2">
-                            <label class="tituloV2">Viajes disponibles</label>
+            <?php if(Yii::app()->user->getTipoUsuario()!=1):?>
+                <div class="container-box">
+                    <div class="container-table viaje">
+                        <div class = "divTable2">
+                            <div class="divThead2">
+                                <label class="tituloV2">Viajes disponibles</label>
+                            </div>
+                            <div class="divTbody2">	
+                                <?php foreach($enespera as $data ):?>
+                                    <?php if((int)$data["disponibles"] > 0):?>	
+                                        <div class='divTr2'>
+                                            <div class='divCamion1'>
+                                                <div class='divIcon2'>
+                                                    <div class='iconCamion1'></div>
+                                                </div>
+                                                <div class='divText2'>
+                                                    <div class='titulo3'>Camión</div>
+                                                    <div class='estilov2'><?php echo $data['nombre'];?></div>
+                                                </div>
+                                            </div>
+                                            <div class='divTanque1'>
+                                                <div class='divIcon2'>
+                                                    <div class='iconTanque1'></div>
+                                                </div>
+                                                <div class='divText3'>
+                                                    <div class='titulo3'>Tanques disponibles</div>
+                                                    <div class='estilov2'><?php echo $data['disponibles'];?></div>
+                                                </div>
+                                            </div>
+                                            <div class='divUbicacion1'>
+                                                <div class='divIcon2'>
+                                                    <div class='iconGPS1'></div>
+                                                </div>
+                                                <div class='divText2'>
+                                                    <div class='titulo3'>Último destino</div>
+                                                    <div class='estilov2'><?php echo $data['ultimo'];?></div>
+                                                </div>
+                                            </div>
+                                            <div class='divTdBoton'>
+                                                <a href="<?php echo $baseUrl.'/index.php/viajes/'.$data['id_viaje'];?>">
+                                                    <div class='botonIr'><label class='titulo2'>Ir</label></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endif;?>
+                                <?php endforeach;?>
+                            </div>	
                         </div>
-                        <div class="divTbody2">	
-                            <?php foreach($enespera as $data ):?>
-                                <?php if((int)$data["disponibles"] > 0):?>	
-                                    <div class='divTr2'>
-                                        <div class='divCamion1'>
-                                            <div class='divIcon2'>
-                                                <div class='iconCamion1'></div>
-                                            </div>
-                                            <div class='divText2'>
-                                                <div class='titulo3'>Camión</div>
-                                                <div class='estilov2'><?php echo $data['nombre'];?></div>
-                                            </div>
-                                        </div>
-                                        <div class='divTanque1'>
-                                            <div class='divIcon2'>
-                                                <div class='iconTanque1'></div>
-                                            </div>
-                                            <div class='divText3'>
-                                                <div class='titulo3'>Tanques disponibles</div>
-                                                <div class='estilov2'><?php echo $data['disponibles'];?></div>
-                                            </div>
-                                        </div>
-                                        <div class='divUbicacion1'>
-                                            <div class='divIcon2'>
-                                                <div class='iconGPS1'></div>
-                                            </div>
-                                            <div class='divText2'>
-                                                <div class='titulo3'>Último destino</div>
-                                                <div class='estilov2'><?php echo $data['ultimo'];?></div>
-                                            </div>
-                                        </div>
-                                        <div class='divTdBoton'>
-                                            <a href="<?php echo $baseUrl.'/index.php/viajes/'.$data['id_viaje'];?>">
-                                                <div class='botonIr'><label class='titulo2'>Ir</label></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endif;?>
-                            <?php endforeach;?>
-                        </div>	
                     </div>
                 </div>
-            </div>
+            <?php else :?>
+                <style>
+                    div.principal.index
+                    {
+                        padding-bottom: 210px;
+                    }
+                </style>
+            <?php endif;?>  
         </div>
     <?php else :?>
         <div id='no-viajes'>

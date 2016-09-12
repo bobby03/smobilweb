@@ -5,13 +5,95 @@
     $cs->registerScriptFile($baseUrl.'/js/search.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
     $cs->registerScriptFile($baseUrl.'/js/especie/search.js');
-    $cs->registerScriptFile($baseUrl.'/js/especie/especie.js?C='.rand());
+    $cs->registerScriptFile($baseUrl.'/js/especie/especie.js');
     $cs->registerScriptFile($baseUrl.'/js/changeTab.js');
 
 
     $this->breadcrumbs=array(
 	'Especies',
     )
+?>
+<?php 
+    $function = <<<EOF
+        function(id,data)
+        {
+            function UpperCaseInput()
+            {
+                  $('#ingesp').bind('keyup',function(){ 
+                    var node = $(this);
+                    node.val(node.val().replace(/^\s+[a-zA-záéíóúñÁÉÍÓÚÑ ]/g,'') ); 
+                    node.val(capitalizeFirstLetter(node.val()));
+                });
+            }
+            $.fn.yiiGridView.update('especies-grid2');
+            $('a.update img').click(function(evt)
+            {
+                evt.preventDefault();
+                var href = window.location.href;
+                var hrefId = $(this).parent().attr('href');
+                var urlSplit = hrefId.split( '/' );
+                var id = urlSplit[ urlSplit.length - 1 ]; 
+                var miHtml = '';
+                var nombre = $(this).parents('tr').eq(0).find('td').html();
+                miHtml = miHtml+'<div class="sub-content">';
+                miHtml = miHtml+'<div class="title-content">Editar especie '+'</div>';
+                miHtml = miHtml+'<div class="esp">Especie</div>';
+                miHtml = miHtml+'<div class="separator-content"></div>';
+                miHtml = miHtml+'<input name="ingesp" id="ingesp" value="'+nombre+'" class="ingesp" type="text">';
+                miHtml = miHtml+'<p id="ierror"></p>';
+                miHtml = miHtml+'<div class="botones-content">';
+                miHtml = miHtml+'<a class="gBoton" href="">Cancelar</a>';
+                miHtml = miHtml+'<div class="btnadd btnUpdate">Aceptar</div>';
+                miHtml = miHtml+'</div>';
+                miHtml = miHtml+'</div>';
+                $.colorbox(
+                {
+                    html: miHtml,
+                    width:'400px', 
+                    height:'200px',
+                    onComplete: function()
+                    {        
+                        UpperCaseInput();
+                        $('.btnUpdate').click(function()
+                        {
+                            var nombre=$('#ingesp').val();
+                            r = validField(nombre, mCallback);
+                            if(r == 1)
+                            {
+                                $.colorbox.resize();
+                            }
+                            else
+                            {
+                                var val = $('#ingesp').val();
+                                $('#ingesp').val(val);
+                                var especie = $('#ingesp').val();
+                                $.ajax(
+                                {
+                                    type: 'POST',
+                                    url: href+'/Update1',
+                                    dataType: 'JSON', 
+                                    data:
+                                    {
+                                        id:id,
+                                        especie: especie
+                                    },
+                                    success: function(dataR)
+                                    {
+                                       $.colorbox.close();
+                                       window.location = "especie";
+                                    },
+                                    error: function(a, b, c)
+                                    {
+
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        }
+EOF;
 ?>
 
 <h1>Especies</h1>
@@ -42,10 +124,7 @@
             'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",
             'columns'=>$model->adminSearch(),
-            'afterAjaxUpdate' => "function(id,data)
-            {
-                $.fn.yiiGridView.update('especies-grid2');
-            }"
+            'afterAjaxUpdate' => $function
         )); ?>
     </div>
 

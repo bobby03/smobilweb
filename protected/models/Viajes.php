@@ -244,50 +244,99 @@ class Viajes extends CActiveRecord
     }
     public function adminSearch1()
     {
-        return array
-        (
-            array
+        if(Yii::app()->user->getTipoUsuario()==1)
+        {
+            return array
             (
-                'name' => 'id',
-                'value' => '$data->id',
-            ),
-//            array
-//            (
-//                'name' => 'id_solicitudes',
-//                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
-//                'filter' => Clientes::model()->getAllClientesViajes(),
-//                'type' => 'raw'
-//            ),
-            array
+                array
+                (
+                    'name' => 'id',
+                    'value' => '$data->id',
+                ),
+    //            array
+    //            (
+    //                'name' => 'id_solicitudes',
+    //                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+    //                'filter' => Clientes::model()->getAllClientesViajes(),
+    //                'type' => 'raw'
+    //            ),
+                array
+                (
+                    'name' => 'id_responsable',
+                    'value' => 'Personal::model()->getPersonal($data->id_responsable)',
+                    'filter' => Personal::model()->getAllPersonal()
+                ),
+                array
+                (
+                    'name' => 'id_estacion',
+                    'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                    'filter' => Estacion::model()->getAllEstacionMovil()
+                ),
+                array
+                (
+                    'name'=>'fecha_salida',
+                    'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
+                ),
+                array
+                (
+                    'name'=>'hora_salida',
+                    'value' => 'date("H:i", strtotime($data->hora_salida))'
+                ),
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view}</div>'
+                ),
+            );
+        }
+        else
+        {
+            return array
             (
-                'name' => 'id_responsable',
-                'value' => 'Personal::model()->getPersonal($data->id_responsable)',
-                'filter' => Personal::model()->getAllPersonal()
-            ),
-            array
-            (
-                'name' => 'id_estacion',
-                'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
-                'filter' => Estacion::model()->getAllEstacionMovil()
-            ),
-            array
-            (
-                'name'=>'fecha_salida',
-                'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
-            ),
-            array
-            (
-                'name'=>'hora_salida',
-                'value' => 'date("H:i", strtotime($data->hora_salida))'
-            ),
-            array
-            (
-                'class'=>'NCButtonColumn',
-                'header'=>'Acciones',
-                'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
-                'deleteButtonImageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
-            ),
-        );
+                array
+                (
+                    'name' => 'id',
+                    'value' => '$data->id',
+                ),
+    //            array
+    //            (
+    //                'name' => 'id_solicitudes',
+    //                'value' => 'Clientes::model()->getClienteViajes($data->id_solicitudes)',
+    //                'filter' => Clientes::model()->getAllClientesViajes(),
+    //                'type' => 'raw'
+    //            ),
+                array
+                (
+                    'name' => 'id_responsable',
+                    'value' => 'Personal::model()->getPersonal($data->id_responsable)',
+                    'filter' => Personal::model()->getAllPersonal()
+                ),
+                array
+                (
+                    'name' => 'id_estacion',
+                    'value' => 'Estacion::model()->getEstacion($data->id_estacion)',
+                    'filter' => Estacion::model()->getAllEstacionMovil()
+                ),
+                array
+                (
+                    'name'=>'fecha_salida',
+                    'value' => 'date("d-m-Y", strtotime($data->fecha_salida))'
+                ),
+                array
+                (
+                    'name'=>'hora_salida',
+                    'value' => 'date("H:i", strtotime($data->hora_salida))'
+                ),
+                array
+                (
+                    'class'=>'NCButtonColumn',
+                    'header'=>'Acciones',
+                    'template'=>'<div class="buttonsWraper">{view} {update} {delete}</div>',
+                    'deleteButtonImageUrl'=> Yii::app()->baseUrl . '/images/borrar.svg',
+                ),
+            );
+        }
     }
     public function adminSearch2()
     {
