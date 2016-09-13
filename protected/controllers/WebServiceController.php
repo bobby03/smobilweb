@@ -105,7 +105,7 @@ class WebServiceController extends Controller
         $ec = isset($_GET['EC'])?$_GET['EC']:null;
         $orp = isset($_GET['ORP'])?$_GET['ORP']:null;
         $wl = isset($_GET['WL'])?$_GET['WL']:"0";
-        $time = date('H:i');
+        $time = date('H:i:s');
         $date = date('Y-m-d');
         
         $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
@@ -174,7 +174,7 @@ class WebServiceController extends Controller
         $ec = isset($_GET['EC'])?$_GET['EC']:null;
         $orp = isset($_GET['ORP'])?$_GET['ORP']:null;
         $wl = isset($_GET['WL'])?$_GET['WL']:"0";
-        $time = date('H:i');
+        $time = date('H:i:s');
         $date = date('Y-m-d');
         
         $campaingTemp[] = array('Viaje'=> "OK", 'code'=>200);
@@ -843,6 +843,27 @@ class WebServiceController extends Controller
     public function actionUpdateEstacion(){
         $code = isset($_GET['id'])?$_GET['id']:0;
         $tipo = isset($_GET['tipo'])?$_GET['tipo']:0;
+
+        $table = 'viajes';
+        $column = 'id_estacion';
+        $conditions = "id = :id";
+        $params = array(':id'=>$code);
+        $idEstacion = Yii::app()->db->createCommand()
+            ->select('id_estacion')
+            ->from('viajes')
+            ->where($conditions,$params)
+            ->queryRow();
+
+        $table = 'estacion';
+        $column = array('disponible'=>"1");
+        $conditions = "id = :code";
+        $params = array(":code"=>$idEstacion['id_estacion']);
+        $update = Yii::app()->db->createCommand()->update($table, $column,$conditions, $params );
+        if($update > 0)
+            $aResult = array('sCode'=>"OK",'updated'=>$update,'code'=>200);
+        else
+            $aResult = array('sCode'=>"NO",'updated'=>$update,'code'=>300);
+        /*        
         switch ($tipo) {
             case '1':
                 # code...
@@ -882,7 +903,7 @@ class WebServiceController extends Controller
                 break;
         }
         
-        
+        */
         echo json_encode($aResult);
 
     }
