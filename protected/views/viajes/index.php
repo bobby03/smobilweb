@@ -20,9 +20,11 @@
             <?php $this->renderPartial('_search',array(
                     'model'=>$model,
             )); ?>
-            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes/crear">
-                <div class="agregar viaje"></div>
-            </a>
+            <?php if(Yii::app()->user->getTipoUsuario()!=1):?>
+                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/index.php/viajes/crear">
+                    <div class="agregar viaje"></div>
+                </a>
+            <?php endif;?>
         </div><!-- search-form -->
         <?php $this->widget('zii.widgets.grid.CGridView', array
         (

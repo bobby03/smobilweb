@@ -29,7 +29,7 @@
                 <p class="subtit">Planta de producci&oacute;n:</p>      
                 <p><?php echo $fijas['identificador']?></p>
                 <br>
-                <p class="subtit">Rresponsable:</p>    
+                <p class="subtit">Responsable:</p>    
                 <p><?php echo $responsable?></p>
             </div>
             <div id="esp2">
@@ -132,7 +132,7 @@
                 </div>
                 <div class="datDer">
                     <div class="boton graf" datos="<?php echo $id;?>" data-graf="<?php echo $data['idTan'];?>"></div>
-                    <div class="boton adve" datos="<?php echo $id;?>" data-ale="<?php echo $data['idTan'];?>"></div>
+                    <div class="boton adve" datos="<?php echo $siembra->id;?>" data-ale="<?php echo $data['idTan'];?>"></div>
                 </div>
                 </div>
                 <h3>Variables de monitoreo</h3>

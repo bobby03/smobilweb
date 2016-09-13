@@ -96,7 +96,7 @@ $(document).ready(function()
             dataType: 'JSON', 
             data:
             {
-                estacion:estacion,
+                camp_sen:estacion,
                 id: id
             },
             success: function(data)
@@ -108,11 +108,6 @@ $(document).ready(function()
                     {
                         $.colorbox.resize();
                         $('.tituloAlerta').text('Alertas: '+nombre);
-                        $('.tableRow > div:nth-child(5n)').each(function()
-                        {
-                            var texto = $(this).text();
-                            var div = $(this);
-                        });
                         $('.tableRow > div').each(function()
                         {
                             var h = $(this).height();
@@ -153,21 +148,6 @@ $(document).ready(function()
                     onComplete: function()
                     {
                         $.colorbox.resize();
-                        $('.tableRow > div:nth-child(5n)').each(function()
-                        {
-                            if(total <= 5)
-                            {
-                                var texto = $(this).text();
-                                var div = $(this);
-                                
-                                delay = delay + 250;
-                            }
-                            else
-                            {
-                                $(this).parent().addClass('hide');
-                            }
-                            total ++;
-                        });
                         $('.tableRow > div').each(function()
                         {
                             var h = $(this).height();

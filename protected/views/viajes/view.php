@@ -81,50 +81,49 @@
         <div class="todosPedidosVer">
         <?php $tot = 1;?>
         <?php if(isset($pedidos['pedido'])):?>
-        <?php foreach($pedidos['pedido'] as $data):?>
-            <?php for($i = 1; $i <= $data['tanques']; $i++):?>
-                <div class="pedido">
-                    <!--<div class="tituloEspecie">Pedido <?php echo $tot;?></div>-->
-                    <div class="tituloEspecie"><?php echo Tanque::model()->getTanque($data['id_tanque']);?></div>
-                    <?php if(isset($data['id_tanque'])):?>
-                    <div class="pedidoWraper gris">
-                        <div>Cliente: <span><?php echo Solicitudes::model()->getCliente($data['id_solicitud']);?></span></div>
-                        <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
-                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
-                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-<!--                        <div class="selectTanque">
-                            <label>Tanque</label>
-                            <div style="color: #000000">
-                                <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
-                            </div>
-                        </div>-->
-                    </div>
-                    <?php else:?>
-                    <div class="pedidoWraper">
-                        <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
-                        <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
-                        <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
-                        <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
-                        <div class="selectTanque hide">
-                            <label>Seleccionar Tanque</label>
-                            <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
-                            <?php 
-                            $t = "codigo[".$tot."][tanque]";
-
-                            echo $form->error($model,$t); ?>
+            <?php foreach($pedidos['pedido'] as $data):?>
+                <?php for($i = 1; $i <= $data['tanques']; $i++):?>
+                    <div class="pedido">
+                        <!--<div class="tituloEspecie">Pedido <?php echo $tot;?></div>-->
+                        <div class="tituloEspecie"><?php echo Tanque::model()->getTanque($data['id_tanque']);?></div>
+                        <?php if(isset($data['id_tanque'])):?>
+                        <div class="pedidoWraper gris">
+                            <div>Cliente: <span><?php echo Solicitudes::model()->getCliente($data['id_solicitud']);?></span></div>
+                            <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                            <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                            <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
+                            <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+    <!--                        <div class="selectTanque">
+                                <label>Tanque</label>
+                                <div style="color: #000000">
+                                    <?php echo Tanque::model()->getTanque($data['id_tanque']);?>
+                                </div>
+                            </div>-->
                         </div>
-                    </div>
-                    <?php endif;?>
-                </div>
-                <?php $tot++; ?>
-            <?php endfor;?>
-        <?php endforeach; ?>
+                        <?php else:?>
+                        <div class="pedidoWraper">
+                            <div>Especie: <span><?php echo Especie::model()->getEspecie($data['especie']);?></span></div>
+                            <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['cepa']);?></span></div>
+                            <div>Cantidad: <span><?php echo $data['cantidad']/$data['tanques'];?></span></div>
+                            <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['destino']);?></span></div>
+                            <div class="selectTanque hide">
+                                <label>Seleccionar Tanque</label>
+                                <?php echo $form->dropDownList($solicitudes, "codigo[$tot][tanque]",array(''=>''),array('empty'=>'Seleccionar', 'class'=>'css-select', 'data-tan'=>$tot));?>
+                                <?php 
+                                $t = "codigo[".$tot."][tanque]";
 
+                                echo $form->error($model,$t); ?>
+                            </div>
+                        </div>
+                        <?php endif;?>
+                    </div>
+                    <?php $tot++; ?>
+                <?php endfor;?>
+            <?php endforeach;?>
         <?php endif;?>
         </div>
         <div style="width: 100%; height:35px;">
-            <!--<a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>-->
+            <a style="margin-left: 10px !important;" class="gBoton" href="<?php echo $baseUrl.'/viajes'?>">Regresar</a>
         </div>
 
     </div>
