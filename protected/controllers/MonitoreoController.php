@@ -164,7 +164,7 @@ class MonitoreoController extends Controller
             throw new CHttpException(404,'The requested page does not exist.');
         return $estacion;
     }
-    public function actionGetTanqueGrafica($estacion,$id, $flag, $flag2)
+    public function actionGetTanqueGrafica($estacion,$id, $flag)
     {
         $datos = Yii::app()->db->createCommand('SELECT estacion.id AS idEst,tanque.id AS idTan,r.id AS idr,identificador,no_personal,marca,color,ubicacion,capacidad,nombre,ox,ph,temp,cond,orp
           FROM estacion                
@@ -175,7 +175,6 @@ class MonitoreoController extends Controller
             ->limit(1)
             ->queryRow();
         $return = array();
-        $return['estacion'] = $datos;
         switch ($flag)
         {
             case 1: 
@@ -206,8 +205,8 @@ class MonitoreoController extends Controller
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
-                                    'max'       => 150,
+//                                    'min'       => 0,
+//                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
                             )]
@@ -246,8 +245,8 @@ class MonitoreoController extends Controller
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
-                                    'max'       => 300,
+//                                    'min'       => 0,
+//                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
                             )]
@@ -282,8 +281,8 @@ class MonitoreoController extends Controller
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
-                                    'max'       => 14,
+//                                    'min'       => 0,
+//                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
                             )]
@@ -319,8 +318,8 @@ class MonitoreoController extends Controller
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
-                                    'max'       => 10,
+//                                    'min'       => 0,
+//                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
                             )]
@@ -355,8 +354,8 @@ class MonitoreoController extends Controller
                             [array(
                                 'ticks' => array
                                 (
-                                    'min'       => 0,
-                                   'max'       => 40,
+//                                    'min'       => 0,
+//                                        'max'       => 30,
 //                                        'stepSize'  => 5
                                 )
                             )]
@@ -433,8 +432,16 @@ eof;
     }
     public function actionGetAlertasTanque($estacion, $id)
     {
+        $cepa = Yii::app()->db->createCommand()
+                ->select('cep.*')
+                ->from('solicitudes_viaje as SV')
+                ->join('solicitud_tanques as ST','ST.id_solicitud = SV.id_solicitud')
+                ->join('cepa as cep', 'cep.id = ST.id_cepas')
+                ->where("SV.id_viaje = $viaje")
+                ->andWhere("ST.id_tanque = $id")
+                ->queryRow();
         $uploads = Yii::app()->db->createCommand('SELECT rc.id,cs.id as idcs,t.id as idt, cepa.*, t.nombre as nombre, rc.fecha,rc.hora,rc.temp,rc.ph,rc.ox,rc.cond,rc.orp,rc.alerta,rc.ct
-        FROM registro_camp rc
+        FROM registrso_camp rc
         JOIN camp_sensado cs ON rc.id_camp_sensado=cs.id
         JOIN camp_tanque ct ON ct.id_camp_sensado=cs.id 
         JOIN cepa ON ct.id_cepa=cepa.id 
@@ -449,78 +456,110 @@ eof;
                     <div class="tituloAlerta">Alertas: </div>
                     <div class="tablaAlertas">
                         <div class="tablaTitulos">
-                            <span>Origen</span><span>Mínimo</span><span>Máximo</span><span>Acción</span><span>Hora</span><span>Fecha</span>
+                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span>
                         </div>
-                        <div id="tablaScroll">
                         <div class="tablaWraper">';
-
             foreach($uploads as $data)
             {
-                if($data['temp'] > $data['temp_max'] || $data['temp'] < $data['temp_min'])
+                if(isset($data['temp']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['temp'] > $data['temp_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Temperatura</div><div>{$data['temp_min']}º</div><div>{$data['temp_max']}º</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                    $dif = ($cepa['temp_max'] - $cepa['temp_min']) * 0.2;
+                    $max = $cepa['temp_max'] - $dif;
+                    $min = $cepa['temp_min'] + $dif;
+                    if($data['temp'] >= $max || $data['temp'] <= $min)
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['temp'] >= $max)
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Temperatura<br>Min:{$cepa['temp_min']}º/Max:{$cepa['temp_max']}º</div><div>{$data['temp']}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['ox'] > $data['ox_max'] || $data['ox'] < $data['ox_min'])
+                if(isset($data['ox']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['ox'] > $data['ox_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Oxígeno</div><div>{$data['ox_min']}</div><div>{$data['ox_max']}</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                    $dif = ($cepa['ox_max'] - $cepa['ox_min']) * 0.2;
+                    $max = $cepa['ox_max'] - $dif;
+                    $min = $cepa['ox_min'] + $dif;
+                    if($data['ox'] >= $max || $data['ox'] <= $min)
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ox'] >= $max)
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Oxígeno<br>Min:{$cepa['ox_min']}/Max:{$cepa['ox_max']}</div><div>{$data['ox']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['ph'] > $data['ph_max'] || $data['ph'] < $data['ph_min'])
+                if(isset($data['ph']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['ph'] > $data['ph_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>PH</div><div>{$data['ph_min']}</div><div>{$data['ph_max']}</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                    $dif = ($cepa['ph_max'] - $cepa['ph_min']) * 0.2;
+                    $max = $cepa['ph_max'] - $dif;
+                    $min = $cepa['ph_min'] + $dif;
+                    if($data['ph'] >= $max || $data['ph'] <= $min)
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['ph'] >= $max)
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>PH<br>Min:{$cepa['ph_min']}/Max:{$cepa['ph_max']}</div><div>{$data['ph']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['cond'] > $data['cond_max'] || $data['cond'] < $data['cond_min'])
+                if(isset($data['cond']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['cond'] > $data['cond_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Conductividad</div><div>{$data['cond_min']}</div><div>{$data['cond_max']}</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                    $dif = ($cepa['cond_max'] - $cepa['cond_min']) * 0.2;
+                    $max = $cepa['cond_max'] - $dif;
+                    $min = $cepa['cond_min'] + $dif;
+                    if($data['cond'] >= $max || $data['cond'] <= $min)
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['cond'] >= $max)
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Conductividad<br>Min:{$cepa['cond_min']}/Max:{$cepa['cond_max']}</div><div>{$data['cond']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
-                if($data['orp'] > $data['orp_max'] || $data['orp'] < $data['orp_min'])
+                if(isset($data['orp']))
                 {
-                    $return = $return.'<div class="tableRow">';
-                    if($data['orp'] > $data['orp_max'])
-                        $imagen = 'flechaUp';
-                    else
-                        $imagen = 'flechaDown';
-                    $return = $return.<<<eof
-                            <div>Óxido reducción</div><div>{$data['orp_min']}</div><div>{$data['orp_max']}</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                    $dif = ($cepa['orp_max'] - $cepa['orp_min']) * 0.2;
+                    $max = $cepa['orp_max'] - $dif;
+                    $min = $cepa['orp_min'] + $dif;
+                    if($data['orp'] >= $max || $data['orp'] <= $min )
+                    {
+                        $return = $return.'<div class="tableRow">';
+                        if($data['orp'] > $max)
+                            $imagen = 'flechaUp';
+                        else
+                            $imagen = 'flechaDown';
+                        $return = $return.<<<eof
+                            <div>Potencial óxido reducción<br>Min:{$cepa['orp_min']}/Max:{$cepa['orp_max']}</div><div>{$data['orp']}<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
+                    }
                 }
             }
-            $return = $return.'</div></div>
+            $return = $return.'</div>
                     </div>
-                    </div>';
+                </div>';
         }
         else
         {
             $return = '
-                <div class="alertas">
-                    <div class="tituloAlerta2">Tanque sin alertas</div>
+                <div class="alertas" style="width: 500px; height: 300px;">
+                    <div class="tituloAlerta" style="background-color:#0077B0">Sin alertas en </div>
+                    <div class="tablaTitulos" style="font-size: 28px;">
+                        <div class="tablaAlertas">
+                            <span style="padding:15px;text-indent:0; width: 100%; border-bottom:0;">Este tanque no presenta alertas hasta el momento.</span>
+                        </div>
                     </div>
                 </div>';
         }
