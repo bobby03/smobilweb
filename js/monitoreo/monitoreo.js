@@ -96,7 +96,7 @@ $(document).ready(function()
             dataType: 'JSON', 
             data:
             {
-                estacion:estacion,
+                camp_sen:estacion,
                 id: id
             },
             success: function(data)

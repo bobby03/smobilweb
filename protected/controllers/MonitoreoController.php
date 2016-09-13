@@ -395,23 +395,24 @@ class MonitoreoController extends Controller
                     <div class="tituloAlerta">Alertas: '.$nombre.'</div>
                     <div class="tablaAlertas">
                         <div class="tablaTitulos">
-                            <span>Origen</span><span>Mínimo</span><span>Máximo</span><span>Acción</span><span>Hora</span><span>Fecha</span>
+                            <span>Origen</span><span>Acción</span><span>Hora</span><span>Fecha</span>
                         </div>
                         <div class="tablaWraper">';
 
             foreach($uploads as $data)
             {
-                if($data[$id] > $data[$id.'_max'] || $data[$id] < $data[$id.'_max'])
+                $dif = ($data[$id.'_max'] - $data[$id.'_min']) * 0.2;
+                $max = $data[$id.'_max'] - $dif;
+                $min = $data[$id.'_min'] + $dif;
+                if($data[$id] >= $max || $data[$id] < $min)
                 {
                     $return = $return.'<div class="tableRow">';
-                    if($data[$id] > $data[$id.'_max'])
+                    if($data[$id] >= $max)
                         $imagen = 'flechaUp';
                     else
                         $imagen = 'flechaDown';
-                    $min=$id."_min";
-                    $max=$id."_max";
                     $return = $return.<<<eof
-                            <div>{$data['nombre']}</div><div>{$data[$min]}</div><div>{$data[$max]}</div><div>{$data[$id]}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
+                            <div>{$data['nombre']}<br>Min:{$data[$id.'_min']}/Max:{$data[$id.'_max']}</div><div>{$data[$id]}º<span class="$imagen">X</span></div><div>{$data['hora']}</div><div>{$data['fecha']}</div></div>
 eof;
                 }
             }
@@ -422,33 +423,36 @@ eof;
         else
         {
             $return = '
-                <div class="alertas">
-                    <div class="tituloAlerta2">Parámetro sin alertas</div>
-                    <div class="tablaAlertas">
+                <div class="alertas" style="width: 500px; height: 300px;">
+                    <div class="tituloAlerta" style="background-color:#0077B0">Sin alertas en </div>
+                    <div class="tablaTitulos" style="font-size: 28px;">
+                        <div class="tablaAlertas">
+                            <span style="padding:15px;text-indent:0; width: 100%; border-bottom:0;">No existen alertas de este parametro hasta el momento.</span>
+                        </div>
                     </div>
                 </div>';
         }
         echo json_encode($return);
     }
-    public function actionGetAlertasTanque($estacion, $id)
+    public function actionGetAlertasTanque($camp_sen, $id)
     {
         $cepa = Yii::app()->db->createCommand()
                 ->select('cep.*')
-                ->from('solicitudes_viaje as SV')
-                ->join('solicitud_tanques as ST','ST.id_solicitud = SV.id_solicitud')
-                ->join('cepa as cep', 'cep.id = ST.id_cepas')
-                ->where("SV.id_viaje = $viaje")
-                ->andWhere("ST.id_tanque = $id")
+                ->from('camp_tanque as CT')
+                ->join('cepa as cep', 'cep.id = CT.id_cepa')
+                ->where("CT.id_camp_sensado = $camp_sen")
+                ->andWhere("CT.id_tanque = $id")
                 ->queryRow();
-        $uploads = Yii::app()->db->createCommand('SELECT rc.id,cs.id as idcs,t.id as idt, cepa.*, t.nombre as nombre, rc.fecha,rc.hora,rc.temp,rc.ph,rc.ox,rc.cond,rc.orp,rc.alerta,rc.ct
-        FROM registrso_camp rc
-        JOIN camp_sensado cs ON rc.id_camp_sensado=cs.id
-        JOIN camp_tanque ct ON ct.id_camp_sensado=cs.id 
-        JOIN cepa ON ct.id_cepa=cepa.id 
-        JOIN tanque t ON rc.id_tanque=t.id
-        WHERE rc.id_tanque='.$id.'
-        AND rc.alerta>0')
-                ->queryAll();
+        $uploads = RegistroCamp::model()->findAll("id_camp_sensado = $camp_sen AND id_tanque = $id AND alerta > 1");
+//        $uploads = Yii::app()->db->createCommand('SELECT rc.id,cs.id as idcs,t.id as idt, cepa.*, t.nombre as nombre, rc.fecha,rc.hora,rc.temp,rc.ph,rc.ox,rc.cond,rc.orp,rc.alerta,rc.ct
+//        FROM registrso_camp rc
+//        JOIN camp_sensado cs ON rc.id_camp_sensado=cs.id
+//        JOIN camp_tanque ct ON ct.id_camp_sensado=cs.id 
+//        JOIN cepa ON ct.id_cepa=cepa.id 
+//        JOIN tanque t ON rc.id_tanque=t.id
+//        WHERE rc.id_tanque='.$id.'
+//        AND rc.alerta>0')
+//                ->queryAll();
         if(count($uploads) > 0)
         {
             $return = '
