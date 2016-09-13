@@ -39,7 +39,7 @@
     </div>
     <div class="row">
        <div class="row">
-        <a class="gBoton" id="cBoton">Regresar</a>
+          <a class="gBoton" id="cBoton">Regresar</a>
     </div>               
         <script type="text/javascript">                     
 //               urlC = $('#cBoton').attr('enla')+'#'+Cookies.get('tabse');

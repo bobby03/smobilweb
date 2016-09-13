@@ -29,7 +29,7 @@
                 <p class="subtit">Planta de producci&oacute;n:</p>      
                 <p><?php echo $fijas['identificador']?></p>
                 <br>
-                <p class="subtit">Rresponsable:</p>    
+                <p class="subtit">Responsable:</p>    
                 <p><?php echo $responsable?></p>
             </div>
             <div id="esp2">
