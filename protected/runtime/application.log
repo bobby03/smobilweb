@@ -2930,3 +2930,178 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/monitoreo/GetAlertasTanque?camp_sen=2&id=5
 HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/2
 ---
+2016/09/14 07:58:22 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
+#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
+#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\ViajesController.php(228): CWebUser->checkAccess('createViajes')
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): ViajesController->accessRules()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('viajes')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#18 {main}
+REQUEST_URI=/SmobilWeb/viajes
+HTTP_REFERER=http://localhost/SmobilWeb/solicitudes
+---
+2016/09/15 07:57:52 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(589): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(59): CDbAuthManager->getDbConnection()
+#5 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbAuthManager->init()
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(185): CModule->getComponent('authManager')
+#7 C:\xampp\htdocs\yii\framework\web\auth\CWebUser.php(815): CWebApplication->getAuthManager()
+#8 C:\xampp\htdocs\SmobilWeb\protected\controllers\SolicitudesController.php(30): CWebUser->checkAccess('createSolicitud...')
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1144): SolicitudesController->accessRules()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitudes')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#18 {main}
+REQUEST_URI=/SmobilWeb/solicitudes
+HTTP_REFERER=http://localhost/SmobilWeb/monitoreo/1
+---
+2016/09/15 09:33:34 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 09:41:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/viajes/nv_iconoCalendario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/viajes/nv_iconoCalendario.png
+---
+2016/09/15 11:54:25 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 11:54:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 11:55:17 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 11:55:40 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 11:56:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 11:57:34 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 12:00:17 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 12:01:01 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 12:02:05 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 12:31:39 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 12:32:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/15 12:35:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/iconoHora.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/iconoHor...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/images/iconoHora.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/campsensado/view.css
+---

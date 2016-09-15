@@ -124,22 +124,33 @@ div.form .chosen-container#SolicitudesViaje_id_personal_1_chofer_chosen.error {
     background-position: 8px 5px, left;
     background-repeat: no-repeat;
 }
-
-#CampSensado_fecha_inicio, #CampSensado_hora_inicio, #CampSensado_fecha_fin,
+#CampSensado_hora_inicio, 
 #CampSensado_hora_fin
 {
-    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
-    background-position: 7px 5px, left;
+    background-image: url('../../images/iconoHoras.png'), url('../../images/form/bg.png');
+    background-position: 7px 4px, left;
     background-repeat: no-repeat;
     padding-left: 30px;
     border-left: 0;
 }
-.error #CampSensado_fecha_inicio,
+#CampSensado_fecha_inicio, 
+#CampSensado_fecha_fin
+{
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
+    background-position: 6px 2px, left;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-left: 0;
+}
 .error #CampSensado_hora_inicio,
-.error #CampSensado_fecha_fin,
 .error #CampSensado_hora_fin
 {
-     background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
+    background-image: url('../../images/iconoHoras.png'), url('../../images/form/bg_error.png');
+}
+.error #CampSensado_fecha_inicio,
+.error #CampSensado_fecha_fin
+{
+    background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg_error.png');
 }
 #CampSensado_id_responsable
 {

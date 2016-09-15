@@ -318,7 +318,9 @@ eof;
                         <div class='tituloEspecie'>Tanque: $data->nombre</div>
                         <div class='pedidoWraper' style='height: 178px;'>
                             <div><label>Seleccionar especie: </label>
-                            <select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+                            <span class='css-select-moz'>
+                                <select class='css-select especie ttan{$tot}' data-esp='{$tot}' name='especies[{$tot}][id_especie]' id='CampSensado_id_especie_{$tot}'>
+                            </span>
                             <option>Seleccionar</option>";
                             foreach($especies as $dt) {
                                 $return['libres'] .= "<option value='{$dt->id}'>{$dt->nombre}</option>";
@@ -326,8 +328,13 @@ eof;
                             $return['libres'].="</select>
                                 <div class='errorMessage' id='CampSensado_{$tot}_id_especie_em_' style='display:none'></div> 
                             </div>
-                            <div><label>Seleccionar cepa:</label> <span> <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled><option>Seleccionar</option></select></span>
-                                <div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
+                            <div><label>Seleccionar cepa:</label> <span> 
+                            <span class='css-select-moz'>
+                                <select class='css-select cepa ttan{$tot}' name ='camp_tanques[{$tot}][id_cepa]' id='CampSensado_id_cepa_{$tot}' disabled>
+                                    <option>Seleccionar</option>
+                                </select></span>
+                            </span>
+                            <div class='errorMessage' id='CampSensado_{$tot}_id_cepa_em_' style='display:none'></div> 
                             </div>              
                             <div>Cantidad: <span> <input class='cant-peces ValidaNum cantt{$tot} 'name='camp_tanques[{$tot}][cantidad]' id='CampSensado_{$tot}_cantidad' type='text' autocomplete='off'></span></div>";
                         $return['libres'] .="<div class='errorMessage' id='CampSensado_{$tot}_tanque_em_' style='display:none'></div>                        

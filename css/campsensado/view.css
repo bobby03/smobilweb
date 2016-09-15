@@ -25,14 +25,20 @@
    /* padding-left: 35px;*/
    /* border-left: 0;
 }*/
-.dato:nth-child(4) .data,
 .dato:nth-child(5) .data,
-.dato:nth-child(6) .data,
-.dato:nth-child(7) .data,
-.dato:nth-child(8) .data
+.dato:nth-child(7) .data
+{
+    background-image: url('../../images/iconoHoras.png'), url('../../images/form/bg.png');
+    background-position: 7px 4px, left;
+    background-repeat: no-repeat;
+    /*padding-left: 30px;*/
+    border-left: 0;
+}
+.dato:nth-child(4) .data,
+.dato:nth-child(6) .data
 {
     background-image: url('../../images/viajes/nv_iconoCalendario.png'), url('../../images/form/bg.png');
-    background-position: 7px 6px, left;
+    background-position: 6px 2px, left;
     background-repeat: no-repeat;
     /*padding-left: 30px;*/
     border-left: 0;
