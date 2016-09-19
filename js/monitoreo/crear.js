@@ -156,10 +156,10 @@ $(document).ready(function()
 						                                '<th class="pc">Temperatura </th><th>'+data.temp_min+' °C</th><th>'+data.temp_max+' °C</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">PH </th><th>'+data.ph_min+'</th><th>'+data.ph_min+'</th>'+
+						                                '<th class="pc">PH </th><th>'+data.ph_min+'</th><th>'+data.ph_max+'</th>'+
 						                            '</tr>'+
 						                            '<tr>'+
-						                                '<th class="pc">Oxígeno </th><th> '+data.ox_min+' mg/l</th><th>'+data.ox_min+' mg/l </th>'+
+						                                '<th class="pc">Oxígeno </th><th> '+data.ox_min+' mg/l</th><th>'+data.ox_max+' mg/l </th>'+
 						                            '</tr>'+
 						                        '</tbody></table>'+
 						                    '</div>'+
