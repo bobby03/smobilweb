@@ -22,7 +22,7 @@ $(document).ready(function()
                             Nombre\n\
                             <span class="required">*</span>\n\
                         </label>\n\
-                        <input size="50" maxlength="50" name="Tanque[activo]['+total+'][nombre]" id="Tanque_status_'+total+'_nombre" type="text" autocomplete="off">\n\
+                        <input size="50"  maxlength="50" name="Tanque[activo]['+total+'][nombre]" id="Tanque_status_'+total+'_nombre" type="text" autocomplete="off">\n\
                         <div class="errorMessage" id="Tanque_nombre_em_" style="display:none"></div>\n\
                     </div>\n\
                     <div class="row cap">\n\
@@ -30,8 +30,8 @@ $(document).ready(function()
                             Capacidad (Litros)\n\
                             <span class="required">*</span>\n\
                     </label>\n\
-                    <input size="50" maxlength="50" name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'capacidad" type="text" autocomplete="off">\n\
-                    <div class="errorMessage" id="Tanque_capacidad_em_" style="display:none"></div>\n\
+                    <input size="50" maxlength="50" placeholder="500" class="fcapacidad" name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'_capacidad" type="text" autocomplete="off">\n\
+                    <div class="errorMessage" id="Tanque_capacidad_em_" ></div>\n\
                     </div>\n\
                 </div>';
         $('.allTanques').prepend(campo);
@@ -51,6 +51,26 @@ $(document).ready(function()
 //        $('.allTanques').children().last().children('.row.act').remove();
         borrarTanque();
         validator();
+    });
+$('#btnguardar').click(function()
+    {
+        var a=0;
+        $('.fcapacidad').each(function(){
+            var campo=$(this);
+            if(campo.val()==''){
+                $(this).siblings('.errorMessage').text('Valor requerido');
+                a=a+1;
+            }else{
+                $(this).siblings('.errorMessage').text('');
+                a=a+0;
+            }
+        });
+        if(a>0){
+        return false;
+        }
+        else{
+        return true;
+        }
     });
     $('.tab').click(function()
     {
@@ -89,6 +109,7 @@ $(document).ready(function()
         window.history.back();
         // window.location.href = "../../";
     });
+
     function validator()
     {
         $('.row.nom input').keyup(function()
