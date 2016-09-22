@@ -106,7 +106,7 @@ class SolicitudesViaje extends SMActiveRecord
 	}
     public function getpersonal($rol)
         {
-            $personal = Personal::model()->findAll("id_rol = $rol");
+            $personal = Personal::model()->findAll("id_rol = $rol AND activo=1");
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;
