@@ -259,7 +259,7 @@ div.bolaGrande {
 
 div.lineaGandre {
     float: left;
-    width: 365px;
+    width: 220px;
     height: 5px;
     margin-top: 21px;
     background-color: #09B7C9;
@@ -533,6 +533,10 @@ div.tab.last div.row.buttons.floating input {
     text-align: center;
     text-decoration: none;
     width: 135px;
+}
+input.default{
+    color:#000 !important;
+    text-indent: 0px !important;
 }
 /*div.tab.last {
     width: 1180px;

@@ -51,9 +51,11 @@
         <div class="lineaChica selected"></div>
         <div class="bolaGrande selected">1<div class="infoBolas">Datos del viaje</div></div>
         <div class="lineaGandre"></div>
-        <div class="bolaGrande">2<div class="infoBolas">Asignar tanques</div></div>
+        <div class="bolaGrande">2<div class="infoBolas">Asignar solicitudes</div></div>
         <div class="lineaGandre"></div>
-        <div class="bolaGrande">3<div class="infoBolas">Finalizar</div></div>
+        <div class="bolaGrande">3<div class="infoBolas">Asignar tanques</div></div>
+        <div class="lineaGandre"></div>
+        <div class="bolaGrande">4<div class="infoBolas">Finalizar</div></div>
         <div class="lineaChica"></div>
         <div class="bolaChica"></div>
     </div>
