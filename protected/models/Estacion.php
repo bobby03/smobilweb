@@ -376,7 +376,7 @@ class Estacion extends CActiveRecord
         }
         
         public function getNumOfTanques($id){
-            $plantas = Tanque::model()->findAll("id_estacion = '{$id}'");
+            $plantas = Tanque::model()->findAll("id_estacion = '{$id}' AND activo=1");
             return count($plantas);
         }
         public function adminSearchPlanta()

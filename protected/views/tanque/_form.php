@@ -32,7 +32,7 @@
 
 	<?php //echo $form->errorSummary($model); ?>
 	<div class="row buttons">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar'); ?>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar',array('id'=>'btnguardar')); ?>
             <a class="gBoton bBoton" >Cancelar</a>
             <div class="addTanque">Nuevo tanque</div>
 	</div>
@@ -49,8 +49,9 @@
                     </div>
                     <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"activo[$i][capacidad]",array('class'=>'ttan','placeholder'=>'500')); ?>
+                            <?php echo $form->textField($model,"activo[$i][capacidad]",array('class'=>'ttan fcapacidad','placeholder'=>'500')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
+                            <div class="errorMessage" id="Tanque_capacidad_em_" ></div>
                     </div>
                     <div class="row act">
                             <?php echo $form->labelEx($model,'activo'); ?>

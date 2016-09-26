@@ -534,6 +534,10 @@ div.tab.last div.row.buttons.floating input {
     text-decoration: none;
     width: 135px;
 }
+input.default{
+    color:#000 !important;
+    text-indent: 0px !important;
+}
 /*div.tab.last {
     width: 1180px;
     position: relative;

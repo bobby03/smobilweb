@@ -125,7 +125,7 @@ EOF;
 
                     $total = ceil($data2['cantidad']/$data2['tanques']) - $tempTtl;  //$data2['cantidad']/$data2['tanques'];
                     $select = $select.<<<EOF
-                        <option value="{$data2['id']}:$i">{$cepa->getCepa($data2['id_cepa'])}($total)</option>
+                        <option value="{$data2['id']}:$i">{$cepa->getCepa($data2['id_cepa'])}($total organismos)</option>
 EOF;
                 }
             }

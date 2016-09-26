@@ -93,20 +93,23 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
     <?php if(count($pedidos)>0):?>
         
         <div class="row">
-            <?php $tot = 1; $tempTtl = 0;?>
+            <?php $tot = 1; $tempTtl = 0; $cntTanques = 0;?>
             <?php foreach($pedidos as $data):?> 
                 <?php for($i = 1; $i <= $data['tanques']; $i++):?>
-                    <?php 
-                        if ( $i == $data['tanques'] ) {
-                            $tempTtl = ceil($data['cantidad'] / $data['tanques']) - floor($data['cantidad'] / $data['tanques']) ;
-                        }
-                    ?>
+                   <?php 
+                        if($i == $data['tanques'])
+                            $tempTtl = $data['cantidad'] - $cntTanques;
+                        else
+                        $tempTtl = floor($data['cantidad']/$data['tanques']); 
+                        $cntTanques = $cntTanques + $tempTtl;
+                        
+                   ?>
                     <div class="pedido">
                         <div class="tituloEspecie">Tanque <?php echo $tot;?></div>
                         <div class="pedidoWraper gris">
                             <div>Especie: <span><?php echo Especie::model()->getEspecie($data['id_especie']);?></span></div>
                             <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['id_cepa']);?></span></div>
-                            <div>Cantidad: <span><?php echo ceil($data['cantidad']/$data['tanques']) - $tempTtl; ?></span></div>
+                            <div>Cantidad: <span><?php echo $tempTtl; ?></span></div>
                             <div>Destino: <span style="display: block"><?php echo ClientesDomicilio::model()->getDomicilio($data['id_direccion']);?></span></div>
                         </div>
                     </div>

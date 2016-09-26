@@ -246,15 +246,15 @@ fb($criteria);
 	}
         
         public function getNumofPlantas($id){
-            $plantas = Estacion::model()->findAll("id_granja = '{$id}'");
+            $plantas = Estacion::model()->findAll("id_granja = '{$id}' AND activo=1");
             return count($plantas);
         }
         public function getTotalTanques($id){
-            $plantas = Estacion::model()->findAll("id_granja = '{$id}'");
+            $plantas = Estacion::model()->findAll("id_granja = '{$id}' AND activo=1");
             $tot = 0;
             foreach($plantas as $data)
             {
-                $tanques = Tanque::model()->findAll('id_estacion = '.$data->id);
+                $tanques = Tanque::model()->findAll('id_estacion = '.$data->id.' AND activo=1');
                 $tot += count($tanques);
             }
             return $tot;
