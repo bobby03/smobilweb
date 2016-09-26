@@ -55,7 +55,7 @@ class CampSensadoController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editSiembra') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateSiembra') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (                                                                                                                                                                                                                                                                                                                                           
                     'allow',

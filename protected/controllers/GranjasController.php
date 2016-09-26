@@ -55,7 +55,7 @@ class GranjasController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editGranja') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateGranja') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',

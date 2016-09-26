@@ -41,7 +41,7 @@ class RolesController extends Controller
                 'actions'   => array('index','view'),
                 'users'     => array('*')
             );
-        if(Yii::app()->user->checkAccess('editRoles') || Yii::app()->user->id == 'smobiladmin')
+        if(Yii::app()->user->checkAccess('updateRoles') || Yii::app()->user->id == 'smobiladmin')
             $return[] = array
             (
                 'allow',
@@ -165,7 +165,7 @@ class RolesController extends Controller
                     $i = 1;
                     foreach($_POST['RolesPermisos']['seccion'] as $data)
                     {
-                        $update = RolesPermisos::model()->findBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND seccion = {$i}");
+                        $update = RolesPermisos::model()->findBySql("SELECT * FROM roles_permisos WHERE id_rol = {$id} AND seccion = {$data['seccion']}");
                         if($update != '' && $update != null)
                         {
                             $update->attributes = $data;

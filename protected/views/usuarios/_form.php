@@ -21,43 +21,45 @@
         // ),
 )); ?>
 
-	
-
-	<?php //echo $form->errorSummary($model); ?>
-
-	<div class="form-containerWraper">
+    <div class="form-containerWraper">
 	<span class="containerBox">
-		<div class= "form-cLeft">
-			<div class="row">
-			<label class= "letreros">Usuario <span class="required">*</span></label>
-				<div class="form-cLarge">
-					<?php echo $form->textField($model,'usuario',array('size'=>10,'maxlength'=>10)); ?>
-				</div>
-				<?php echo $form->error($model,'usuario'); ?>
-			</div>
-			<div class="row">
-					<label class= "letreros">Tipo de Usuario <span class="required">*</span></label>
-					<div class="form-cMedium">
-			 <span class="css-select-moz"><?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Selecionar', 'class'=>'css-select')); ?></span></div>
-					<?php echo $form->error($model,'tipo_usr'); ?>
-			                <?php echo $form->hiddenField($model,'id_usr');?>
-				</div>
-
-
-
-						<div class="row hide" data-tipo="1">
-											<label class= "letreros">Cliente  <span class="required">*</span></label>
-											<div class="form-cMedium">
-									 <span class="css-select-moz"><?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientes(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?></span></div>
-											<?php echo $form->error($model,'id_usr'); ?>
-										</div>
-										<div class="row hide" data-tipo="2">
-											<label class= "letreros">Personal  <span class="required">*</span></label>
-									<div class="form-cLarge">
-										 <span class="css-select-moz"><?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonal(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?></span></div>
-											<?php echo $form->error($model,'id_usr'); ?>
-										</div>
-		</div>
+            <div class= "form-cLeft">
+                <div class="row">
+                    <label class= "letreros">Usuario <span class="required">*</span></label>
+                    <div class="form-cLarge">
+                            <?php echo $form->textField($model,'usuario',array('size'=>10,'maxlength'=>10)); ?>
+                    </div>
+                    <?php echo $form->error($model,'usuario'); ?>
+                </div>
+                <div class="row">
+                    <label class= "letreros">Tipo de Usuario <span class="required">*</span></label>
+                    <div class="form-cMedium">
+                        <span class="css-select-moz">
+                            <?php echo $form->dropDownList($model,'tipo_usr', $model->getAllTipoUsuario(), array('empty'=>'Selecionar', 'class'=>'css-select')); ?>
+                        </span>
+                    </div>
+                    <?php echo $form->error($model,'tipo_usr'); ?>
+                    <?php echo $form->hiddenField($model,'id_usr');?>
+                </div>
+                <div class="row hide" data-tipo="1">
+                    <label class= "letreros">Cliente  <span class="required">*</span></label>
+                    <div class="form-cMedium">
+                        <span class="css-select-moz">
+                            <?php echo CHtml::dropDownList('clienteId', Clientes::model(), Clientes::model()->getAllClientesNoUser(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'clienteList')); ?>
+                        </span>
+                    </div>
+                    <?php echo $form->error($model,'id_usr'); ?>
+                </div>
+                <div class="row hide" data-tipo="2">
+                    <label class= "letreros">Personal  <span class="required">*</span></label>
+                    <div class="form-cLarge">
+                        <span class="css-select-moz">
+                            <?php echo CHtml::dropDownList('personalId', Personal::model(), Personal::model()->getAllPersonalNoUsr(), array('empty'=>'Seleccionar','class'=>'css-select', 'id'=>'personalList')); ?>
+                        </span>
+                    </div>
+                    <?php echo $form->error($model,'id_usr'); ?>
+                </div>
+            </div>
 <!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'pwd'); ?>

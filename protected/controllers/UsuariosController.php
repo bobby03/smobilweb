@@ -55,7 +55,7 @@ class UsuariosController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editUsuarios') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateUsuarios') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',

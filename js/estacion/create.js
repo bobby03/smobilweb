@@ -13,7 +13,6 @@ $(document).ready(function()
 
     $('.addTanque').click(function()
     {
-        total = total + 1;
         var campo = '\
                 <div class="tanque" data-id="'+total+'">\n\
                     <div class="tacha">X</div>\n\
@@ -30,11 +29,12 @@ $(document).ready(function()
                             Capacidad (Litros)\n\
                             <span class="required">*</span>\n\
                     </label>\n\
-                    <input size="50" maxlength="50" name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'capacidad" type="text" autocomplete="off">\n\
+                    <input class="ttan" placeholder="500"  name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'_capacidad" type="text" autocomplete="off">\n\
                     <div class="errorMessage" id="Tanque_capacidad_em_" style="display:none"></div>\n\
                     </div>\n\
                 </div>';
         $('.allTanques').prepend(campo);
+        total = total + 1;
 //        $('.allTanques').children().last().attr('data-id', total);
 //        $('.allTanques').children().last().children('input[type="hidden"]').remove();
 //        $('.allTanques').children().last().children('.row.cap').children('input')

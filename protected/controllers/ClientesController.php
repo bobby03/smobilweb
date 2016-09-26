@@ -52,7 +52,7 @@ class ClientesController extends Controller
                 'actions'   => array('index','view'),
                 'users'     => array('*')
             );
-        if(Yii::app()->user->checkAccess('editClientes') || Yii::app()->user->id == 'smobiladmin')
+        if(Yii::app()->user->checkAccess('updateClientes') || Yii::app()->user->id == 'smobiladmin')
             $return[] = array
             (
                 'allow',

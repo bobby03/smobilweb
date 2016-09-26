@@ -39,20 +39,24 @@ class Personal extends CActiveRecord
 			array('nombre, apellido, tel, id_rol, correo, puesto', 'required','message'=>'Campo obligatorio'),
 			array('id, id_rol', 'numerical', 'integerOnly'=>true),
 			array('correo','email','message'=>'No tiene formato de email'),
-            array('rfc', 'unique', 'message'=>'Ya existe un empleado con ese RFC'),
-            array('correo', 'unique', 'message'=>'Ya existe un empleado con ese correo'),
+                        array('rfc', 'unique', 'message'=>'Ya existe un empleado con ese RFC'),
+                        array('correo', 'unique', 'message'=>'Ya existe un empleado con ese correo'),
 			array('nombre, apellido', 'length', 'max'=>50),
 			
 			
 			
 		/*	array('domicilio', 'length', 'max'=>150),*/
 			array('correo, puesto', 'length', 'max'=>100),
-
+                        array(
+				'correo',
+			  	'match',
+                'pattern'=>"/^[A-z0-9_.\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{1,3}$/",
+				'message'=>'El correo no es valido'),
 			array('rfc','required','message'=>'RFC No Valido'),
 			array('rfc',
-				  	'match',
+                                'match',
 			    	'pattern'=>"/^(([A-Za-z]){4})([0-9]{6})(([A-Z]|[a-z]|[0-9]){3})$/",
-					'message'=>'RFC No Valido'),
+                                'message'=>'RFC No Valido'),
 
 
 			array('tel','required','message'=>'Teléfono no Valido'),
@@ -161,6 +165,24 @@ class Personal extends CActiveRecord
             $return = array();
             foreach($personal as $data)
                 $return[$data->id] = $data->nombre.' '.$data->apellido;
+            return $return;
+        }
+        public function getAllPersonalNoUsr()
+        {
+            $personal = Personal::model()->findAll('activo = 1');
+            $usuarios = Usuarios::model()->findAll('tipo_usr = 2');
+            $return = array();
+            foreach($personal as $data)
+            {
+                $flag = true;
+                foreach ($usuarios as $data2)
+                {
+                    if($data['id'] == $data2['id_usr'])
+                        $flag = false;
+                }
+                if($flag)
+                   $return[$data->id] = $data->nombre.' '.$data->apellido;
+            }
             return $return;
         }
         public function getPersonal($id)

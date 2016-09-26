@@ -55,7 +55,7 @@ class EstacionController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editEstacion') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateEstacion') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',

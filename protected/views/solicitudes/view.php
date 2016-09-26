@@ -74,7 +74,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
     <?php endif?>
     <div class="row">
             <h3>
-                <label class="cLetreros">Pedidos</label>
+                <label class="cLetreros">Tanques</label>
             </h3>
             <h2 class="letrero-container"></h2>
         </div>
@@ -102,7 +102,7 @@ $model->id_clientes = Clientes::model()->getCliente($model->id_clientes);
                         }
                     ?>
                     <div class="pedido">
-                        <div class="tituloEspecie">Pedido <?php echo $tot;?></div>
+                        <div class="tituloEspecie">Tanque <?php echo $tot;?></div>
                         <div class="pedidoWraper gris">
                             <div>Especie: <span><?php echo Especie::model()->getEspecie($data['id_especie']);?></span></div>
                             <div>Cepa: <span><?php echo Cepa::model()->getCepa($data['id_cepa']);?></span></div>

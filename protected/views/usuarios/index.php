@@ -19,39 +19,38 @@
         <div class="tab" data-id="2"><span>Inactivos</span></div>
     </div>
     <div class="tabContent" data-tan="1">
+        <div class="search-form">
+            <?php $this->renderPartial('_search',array(
+                    'model'=>$model,
+            )); ?>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/usuarios/create">
+                <div class="agregar usuarios"></div>
+            </a>
+        </div>
 
-    <div class="search-form" >
-        <?php $this->renderPartial('_search',array(
-                'model'=>$model,
-        )); ?>
-        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/usuarios/create">
-            <div class="agregar usuarios"></div>
-        </a>
-    </div>
-
-    <?php $this->widget('zii.widgets.grid.CGridView', array
-    (
-        'id'=>'usuario-grid',
-        'dataProvider'=>$model->search(1),
-        'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
-        'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
-        'emptyText'=>"No hay registros",
-        'template' => "{items}{summary}{pager}",
-        'columns'=>$model->adminSearch(),
-        'pager' => array
+        <?php $this->widget('zii.widgets.grid.CGridView', array
         (
-            'class' => 'PagerSA',
-            'header'=>'',
-        ),
-        'afterAjaxUpdate' => "function(id,data)
+            'id'=>'usuario-grid',
+            'dataProvider'=>$model->search(1),
+            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+            'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
+            'emptyText'=>"No hay registros",
+            'template' => "{items}{summary}{pager}",
+            'columns'=>$model->adminSearch(),
+            'pager' => array
+            (
+                'class' => 'PagerSA',
+                'header'=>'',
+            ),
+            'afterAjaxUpdate' => "function(id,data)
             {
                 $.fn.yiiGridView.update('usuario-grid2');
             }"
-    )); ?>
+        )); ?>
     </div>
     <div class="tabContent hide" data-tan="2">
         <div class="search-form2" >
-        <?php $this->renderPartial('_search',array(
+        <?php $this->renderPartial('_search2',array(
                 'model'=>$model,
         )); ?>
     </div>
@@ -59,7 +58,7 @@
         (
             'id'=>'usuario-grid2',
             'dataProvider'=>$model->search(0),
-            'htmlOptions'=>array('class'=>'si-busqueda grid-view'),
+            'htmlOptions'=>array('class'=>'grid-view'),
             'summaryText'=> 'Mostrando registros del {start} al {end} de un total de {count} registros.',
             'emptyText'=>"No hay registros",
             'template' => "{items}{summary}{pager}",

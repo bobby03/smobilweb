@@ -40,6 +40,7 @@ div.form input[type="checkbox"] {
     min-height: 19px !important;
     width: 19px;
     margin-left: 89px;
+    margin-top: 9px;
 }
 
 .submitb {
@@ -64,4 +65,8 @@ body.roles div.form input[type="submit"] {
     /*font-size: 15px !Important;*/
     height: 35px;
     line-height: 30px;
+}
+.consultaBox.conMargen
+{
+    margin-left: 689px !important;
 }

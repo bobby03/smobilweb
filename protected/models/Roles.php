@@ -152,6 +152,7 @@ class Roles extends SMActiveRecord
                 case 9: return 'Roles'; break;
                 case 10: return 'Especie'; break;
                 case 11: return 'Cepa'; break;
+                case 11: return 'Dashboard'; break;
             }
         }
         

@@ -40,7 +40,7 @@
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editPersonal') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updatePersonal') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',

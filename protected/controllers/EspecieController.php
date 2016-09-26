@@ -27,7 +27,7 @@ class EspecieController extends Controller
 	public function accessRules()
         {
             $return = array();
-            if(Yii::app()->user->checkAccess('createEspacion') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('createEspecie') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
@@ -41,7 +41,7 @@ class EspecieController extends Controller
                     'actions'   => array('create'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('readEspacion') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('readEspecie') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
@@ -55,7 +55,7 @@ class EspecieController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editEspacion') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateEspecie') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',
@@ -69,7 +69,7 @@ class EspecieController extends Controller
                     'actions'   => array('update'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('deleteEspacion') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('deleteEspecie') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',

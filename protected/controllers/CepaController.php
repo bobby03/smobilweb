@@ -55,7 +55,7 @@ class CepaController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editCepa') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateCepa') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (                                                                                                                                                                                                                                                                                                                                           
                     'allow',

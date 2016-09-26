@@ -254,7 +254,7 @@ EOF;
                 'actions'   => array('index','view'),
                 'users'     => array('*')
             );
-        if(Yii::app()->user->checkAccess('editViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
+        if(Yii::app()->user->checkAccess('updateViajes') || Yii::app()->user->id == 'smobiladmin'||Yii::app()->user->getTipoUsuario()==1)
             $return[] = array
             (
                 'allow',

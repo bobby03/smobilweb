@@ -194,6 +194,24 @@ class Clientes extends CActiveRecord
                 $return[$data->id] = $data->nombre_empresa;
             return $return;
         }
+        public function getAllClientesNoUser()
+        {
+            $clientes = Clientes::model()->findAll('activo = 1');
+            $usuarios = Usuarios::model()->findAll('tipo_usr = 1');
+            $return = array();
+            foreach($clientes as $data)
+            {
+                $flag = true;
+                foreach ($usuarios as $data2)
+                {
+                    if($data['id'] == $data2['id_usr'])
+                        $flag = false;
+                }
+                if($flag)
+                   $return[$data->id] = $data->nombre_empresa; 
+            }
+            return $return;
+        }
         public function getAllClientesViajes()
         {
             $clientes = Clientes::model()->findAll();
@@ -247,7 +265,6 @@ class Clientes extends CActiveRecord
                 'rfc',
                 'tel',
                 'ext',
-                'cel',
                 array
                 (
                     'class'=>'NCButtonColumn',
@@ -267,7 +284,6 @@ class Clientes extends CActiveRecord
 				'rfc',
                 'tel',
                 'ext',
-                'cel',
                 array
                 (
                     'class'=>'NCButtonColumn',

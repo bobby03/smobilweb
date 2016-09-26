@@ -1,11 +1,5 @@
 $(document).ready(function()
 {
-    $('.search-button').click(function()
-    {
-        $('.search-form2').toggle();
-        return false;
-    });
-
     $('.search-form2 form').submit(function()
     {
         $('#usuario-grid2').yiiGridView('update', 

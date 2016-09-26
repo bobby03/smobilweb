@@ -55,7 +55,7 @@ class SolicitudesController extends Controller
                     'actions'   => array('index','view'),
                     'users'     => array('*')
                 );
-            if(Yii::app()->user->checkAccess('editSolicitudes') || Yii::app()->user->id == 'smobiladmin')
+            if(Yii::app()->user->checkAccess('updateSolicitudes') || Yii::app()->user->id == 'smobiladmin')
                 $return[] = array
                 (
                     'allow',

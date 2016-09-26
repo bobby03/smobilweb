@@ -33,6 +33,25 @@ public function init() {
    * This is the default 'index' action that is invoked
    * when an action is not explicitly requested by users.
    */
+    public function accessRules()
+    {
+        $return = array();
+        if(Yii::app()->user->checkAccess('readDashboard') || Yii::app()->user->id == 'smobiladmin')
+            $return[] = array
+            (
+                'allow',
+                'actions'   => array('index','view'),
+                'users'     => array('*')
+            );
+        else
+            $return[] = array
+            (
+                'deny',
+                'actions'   => array('index','view'),
+                'users'     => array('*')
+            );
+        return $return;
+    }
   public function actionIndex()
   {
     // renders the view file 'protected/views/site/index.php'

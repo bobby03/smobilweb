@@ -70,7 +70,7 @@
                     </div>
                     <div class="row cap">
                             <?php echo $form->labelEx($model,'capacidad'); ?>
-                            <?php echo $form->textField($model,"activo[$i][capacidad]",array('placeholder'=>'500')); ?>
+                            <?php echo $form->textField($model,"activo[$i][capacidad]",array('class'=>'ttan','placeholder'=>'500')); ?>
                             <?php echo $form->error($model,'capacidad'); ?>
                     </div>
                 </div>
