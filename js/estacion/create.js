@@ -14,14 +14,14 @@ $(document).ready(function()
     $('.addTanque').click(function()
     {
         var campo = '\
-                <div class="tanque" data-id="'+total+'">\n\
+                <div class="tanque nuevo" data-id="'+total+'">\n\
                     <div class="tacha">X</div>\n\
                     <div class="row nom">\n\
                         <label for="Tanque_nombre" class="required">\n\
                             Nombre\n\
                             <span class="required">*</span>\n\
                         </label>\n\
-                        <input size="50"  maxlength="50" name="Tanque[activo]['+total+'][nombre]" id="Tanque_status_'+total+'_nombre" type="text" autocomplete="off">\n\
+                        <input size="50" class="fnombre" maxlength="50" name="Tanque[activo]['+total+'][nombre]" id="Tanque_status_'+total+'_nombre" type="text" autocomplete="off">\n\
                         <div class="errorMessage" id="Tanque_nombre_em_" style="display:none"></div>\n\
                     </div>\n\
                     <div class="row cap">\n\
@@ -29,7 +29,7 @@ $(document).ready(function()
                             Capacidad (Litros)\n\
                             <span class="required">*</span>\n\
                     </label>\n\
-                    <input class="ttan" placeholder="500"  name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'_capacidad" type="text" autocomplete="off">\n\
+                    <input class="ttan fcapacidad" placeholder="500"  name="Tanque[activo]['+total+'][capacidad]" id="Tanque_status_'+total+'_capacidad" type="text" autocomplete="off">\n\
                     <div class="errorMessage" id="Tanque_capacidad_em_" style="display:none"></div>\n\
                     </div>\n\
                 </div>';
@@ -54,23 +54,33 @@ $(document).ready(function()
     });
 $('#btnguardar').click(function()
     {
-        var a=0;
-        $('.fcapacidad').each(function(){
-            var campo=$(this);
-            if(campo.val()==''){
-                $(this).siblings('.errorMessage').text('Valor requerido');
-                a=a+1;
-            }else{
-                $(this).siblings('.errorMessage').text('');
-                a=a+0;
+        var a = 0;
+        $('.tanque').each(function()
+        {
+            var capacidad = $(this).find('.fcapacidad');
+            var nombre = $(this).find('.fnombre');
+            var valor = capacidad.val();
+            if(valor == '')
+            {
+                capacidad.siblings('.errorMessage').text('Valor requerido').show();
+                a++;
             }
+            else
+                capacidad.siblings('.errorMessage').text('').hide();
+            var valor2 = nombre.val();
+            if(valor2 == '')
+            {
+                nombre.siblings('.errorMessage').text('Nombre requerido').show();
+                a++;
+            }
+            else
+                nombre.siblings('.errorMessage').text('').hide();
         });
-        if(a>0){
-        return false;
-        }
-        else{
-        return true;
-        }
+        if(a>0)
+            return false;
+        else
+            return true;
+        
     });
     $('.tab').click(function()
     {

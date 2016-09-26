@@ -3581,3 +3581,91 @@ Stack trace:
 REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
 HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
 ---
+2016/09/26 09:27:47 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/26 09:32:04 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:04 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:04 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:04 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:04 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:04 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:16 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:16 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:16 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:16 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:16 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:32:16 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 09:48:36 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/26 09:51:32 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/26 09:52:01 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/26 10:15:29 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "plantkhgv". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('plantkhgv')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('plantkhgv')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('granjas/plantkh...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/SmobilWeb/granjas/plantkhgv
+---
+2016/09/26 10:16:45 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:16:45 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:23 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:23 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:28 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:28 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:50 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:50 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:55 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 10:18:55 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 11:23:06 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/26 11:28:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "imaegs/viajes/nv_iconoUsuario.png". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('imaegs/viajes/n...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\SmobilWeb\index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/SmobilWeb/imaegs/viajes/nv_iconoUsuario.png
+HTTP_REFERER=http://localhost/SmobilWeb/css/viajes/create.css
+---
+2016/09/26 12:05:53 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".
+2016/09/26 12:05:53 [warning] [application] Failed to set unsafe attribute "id" of "Tanque".

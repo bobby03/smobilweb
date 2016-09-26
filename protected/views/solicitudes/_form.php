@@ -86,6 +86,7 @@
                     height: 200,
                     onComplete: function()
                     {
+                        $.colorbox.resize();
                         $('.save').click(function()
                         {
                             var baseUrl = window.location.href;

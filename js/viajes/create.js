@@ -2,6 +2,8 @@
 $(document).ready(function()
 {
     var valores = [];
+    $('#Viajes_id_responsable').chosen();
+    $('#Viajes_id_estacion').chosen();
     $('.bBoton').click(function(){ window.history.back();  });
     $('.fBoton.bUno').click(function(){
         console.log('Tab2 hide');

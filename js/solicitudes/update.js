@@ -124,21 +124,21 @@ $(document).ready(function()
             $.colorbox(
             {
                 html: miHtml,
-                width:'400px', 
-                height:'150px',
+                width: 400,
                 onComplete: function()
                 {
-                  $('.btndel').click(function(e)
+                    $.colorbox.resize();
+                    $('.btndel').click(function(e)
                     {
-                    elemento.closest('.pedidoViaje').remove(); //Eliminar
-                    countPedidos();
-                    $.colorbox.close();
-                    e.preventDefault();
+                        elemento.closest('.pedidoViaje').remove(); //Eliminar
+                        countPedidos();
+                        $.colorbox.close();
+                        e.preventDefault();
                     });  
-                  $('#cancelar').click(function(e)
+                    $('#cancelar').click(function(e)
                     {
-                    $.colorbox.close();
-                    e.preventDefault();
+                        $.colorbox.close();
+                        e.preventDefault();
                     }); 
                 }
             });

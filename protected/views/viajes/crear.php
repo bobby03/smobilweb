@@ -27,6 +27,15 @@
         width: 150px;
         /* margin-right: 25px; */
         text-align: left;
+        position: absolute;
+    }
+    div.bolaGrande:nth-child(3) div.infoBolas
+    {
+        left: -18px;
+    }
+    div.bolaGrande:nth-child(5) div.infoBolas
+    {
+        left: -18px;
     }
 </style>
 <h1>Datos del viajes</h1>

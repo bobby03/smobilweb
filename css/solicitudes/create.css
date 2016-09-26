@@ -578,11 +578,15 @@ input.OtroDom{
     color: #FFF;
 }
 .cBoton:hover {
-    background-color: #49dbd0;
+    background-color: #21B7C7;
 }
 .botonOtra:hover {
     background-color: #21B7C7;
 }
 div.form .agregar:hover {
+    background-color: #21B7C7;
+}
+#colorbox .sub-content .btndel
+{
     background-color: #21B7C7;
 }

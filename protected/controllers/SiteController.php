@@ -267,14 +267,15 @@ public function init() {
             {
                 foreach($last as $data)
                 {
-                   $return["html"] .= "
+                    $ox = number_format($data[$u]["ox"], 2, '.', '');
+                    $return["html"] .= "
                     <div class='tanque'>
                         <div class='tanque-container-titulo'>
                         <span class='titulotanque'> {$data['nombre']}</span></div>
                         <div class='variables-wrapper'> 
                             <div class='var-oz'>
                                 <div class='icon-oz'></div>
-                                <div class='txt'>{$data[$u]["ox"]} <span>mg/L</span></div>
+                                <div class='txt'>$ox <span>mg/L</span></div>
                             </div>
                             <div class='var-ph'>
                                 <div class='icon-ph'></div>
@@ -293,7 +294,10 @@ public function init() {
             {
                 foreach($last as $data)
                 {
-                   $return["html"] .= "
+                    $ox = number_format($data["ox"], 2, '.', '');
+                    $ph = number_format($data["ph"], 2, '.', '');
+                    $temp = number_format($data["temp"], 2, '.', '');
+                    $return["html"] .= "
                         <div class='tanque'>
                             <div class='tanque-container-titulo'>
                                 <span class='titulotanque'> {$data['nombre']}</span>
@@ -301,15 +305,15 @@ public function init() {
                             <div class='variables-wrapper'> 
                                 <div class='var-oz'>
                                     <div class='icon-oz'></div>
-                                    <div class='txt'>{$data["ox"]} <span>mg/L</span></div>
+                                    <div class='txt'>$ox <span>mg/L</span></div>
                                 </div>
                             <div class='var-ph'>
                                 <div class='icon-ph'></div>
-                                <div class='txt'>{$data["ph"]}</div>
+                                <div class='txt'>$ph</div>
                             </div>
                             <div class='var-tm'>
                                 <div class='icon-tm'></div>
-                                <div class='txt'>{$data["temp"]} <span>°C</span></div>
+                                <div class='txt'>$temp <span>°C</span></div>
                             </div>
                         </div>
                     </div>";

@@ -55,6 +55,7 @@ $(document).ready(function()
                 {
                     $('#Viajes_id_estacion').empty();
                     $('#Viajes_id_estacion').append(data);
+                    $('#Viajes_id_estacion').trigger("chosen:updated");
                 },
                 error: function(a,b,c)
                 {

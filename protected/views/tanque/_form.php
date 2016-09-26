@@ -62,7 +62,7 @@
                 </div>
             <?php endforeach;?>
             <?php else:?>
-                <div class="tanque" data-id="<?php echo $i;?>">
+                <div class="tanque nuevo" data-id="<?php echo $i;?>">
                     <div class="tacha">X</div>
                     <div class="row nom">
                             <?php echo $form->labelEx($model,'nombre'); ?>
