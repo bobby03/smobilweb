@@ -2,6 +2,19 @@
  * FORM ICONS
  */
 
+
+.rowform{
+    display: inline-block;
+    width: 100%;
+}
+
+
+.linegray{
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 7px solid #F2F2F2;
+}
+
 #Viajes_id_responsable {
     background-image: url('../../images/viajes/nv_iconoUsuario.png'), url('../../images/form/bg.png');
     background-position: 8px 5px, left;
