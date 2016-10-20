@@ -67,76 +67,85 @@ $this->breadcrumbs=array(
             <a class="gBoton" href="<?php echo Yii::app()->getBaseUrl(true); ?>/viajes">Cancelar</a>
             <div class="siguiente uno">Siguiente</div>
         </div>
-	<div class="formContainer1">
-            <div class="row">
-		<?php echo $form->labelEx($model,'id_responsable'); ?>
-                <span class="css-select-moz">
-                    <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select'));?>
-                    <?php echo $form->error($model,'id_responsable'); ?>
-                </span>
+    <div class="rowform">    
+    	<div class="formContainer1">
+                <div class="row">
+    		<?php echo $form->labelEx($model,'id_responsable'); ?>
+                    <span class="css-select-moz">
+                        <?php echo $form->dropDownList($model,'id_responsable', $personal->getpersonal(3), array('empty'=>'Seleccionar','class'=>'css-select'));?>
+                        <?php echo $form->error($model,'id_responsable'); ?>
+                    </span>
+                </div>
+                <div class="row">
+                    <label>Técnico(s)</label>
+                    <span class="css-select-moz">
+                        <?php echo $form->dropDownList($personal,'id_personal[1][tecnico]', $personal->getpersonal(2), array('class'=>'css-select','multiple'=>'true','options'=>$roles['tecnico'])); ?>
+                        <?php echo $form->error($model,'id_personal[1][tecnico]'); ?>
+                    </span>
+                </div>
+                <div class="row">
+                    <label>Chofer(es)</label>
+                    <span class="css-select-moz">
+                        <?php echo $form->dropDownList($personal,'id_personal[1][chofer]', $personal->getpersonal(1), array('class'=>'css-select','multiple'=>'true','options'=>$roles['chofer'])); ?>
+                        <?php echo $form->error($model,'id_personal[1][chofer]'); ?>
+                    </span>
+                    </span>
+                </div>
+               
             </div>
+            <div class="formContainer1">
+                 <div class="row">
+                    <?php echo $form->labelEx($model,'fecha_salida'); ?>
+                    <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
+                     <?php echo $form->error($model,'fecha_salida'); ?>
+                </div>
+                <div class="row">
+                    <?php echo $form->labelEx($model,'hora_salida'); ?>
+                    <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
+                    <?php echo $form->error($model,'hora_salida'); ?>
+                </div>
+               
+    	</div>
+    </div>
+    <div class="rowform linegray">
+        <div class="formContainer1"> 
             <div class="row">
-                <label>Técnico(s)</label>
+                <label>Solicitudes sin asignar <span class="required">*</span></label>
                 <span class="css-select-moz">
-                    <?php echo $form->dropDownList($personal,'id_personal[1][tecnico]', $personal->getpersonal(2), array('class'=>'css-select','multiple'=>'true','options'=>$roles['tecnico'])); ?>
-                    <?php echo $form->error($model,'id_personal[1][tecnico]'); ?>
-                </span>
-            </div>
-            <div class="row">
-                <label>Chofer(es)</label>
-                <span class="css-select-moz">
-                    <?php echo $form->dropDownList($personal,'id_personal[1][chofer]', $personal->getpersonal(1), array('class'=>'css-select','multiple'=>'true','options'=>$roles['chofer'])); ?>
-                    <?php echo $form->error($model,'id_personal[1][chofer]'); ?>
-                </span>
-                </span>
-            </div>
-            <div class="row">
-                <?php echo $form->labelEx($model,'fecha_salida'); ?>
-                <?php echo $form->textField($model,'fecha_salida', array('class'=>'calendario', 'readonly'=>'readonly')); ?>
-                 <?php echo $form->error($model,'fecha_salida'); ?>
-            </div>
-        </div>
-        <div class="formContainer1">
-            <div class="row">
-                <label>Solicitudes sin asignar</label>
-                <span class="css-select-moz">
-                    <?php echo $form->dropDownList($model,'id_solicitudes', $solicitudes = Solicitudes::model()->getClientesEnEsperaId($model->id),
-                                array
-                                (
-                                    'class'=>'css-select',
-                                    'multiple'=>'true',
-                                    'options'=>$roles['solicitudes']
-                                ));
+                    <?php echo $form->dropDownList($model,'id_solicitudes', Solicitudes::model()->getClientesEnEspera(),
+                        array
+                        (
+                            'class'=>'css-select',
+                            'multiple'=>'true'
+                        ));
                      ?>
                     <?php echo $form->error($model,'id_solicitudes[1]'); ?>
                 </span>
             </div>
-            <div class="row">
+          
+        </div>
+       <div class="formContainer1">
+           <div class="row">           
                 <?php echo $form->labelEx($model,'id_estacion'); ?>
                 <span class="css-select-moz">
-                    <?php 
-                        if($model->isNewRecord){
-                            echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesDisponibles(), array('empty'=>'Seleccionar','class'=>'css-select'));
-                        }else{
-                               echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), 
-                                    array
-                                    (
-                                        'class'=>'css-select',
-                                        'value'=>$model->id_estacion
-                                    ));
-                        }
-                         
-                          echo $form->error($model,'id_estacion');
-                    ?>
+                <?php 
+                    if($model->isNewRecord){
+                        echo $form->dropDownList($model,'id_estacion', Estacion::model()->getEstacionesDisponibles(), array('empty'=>'Seleccionar','class'=>'css-select'));
+                    }else{
+                        echo $form->dropDownList($model,'id_estacion', Estacion::model()->getAllEstacion(), 
+                        array
+                        (
+    //                      'disabled'=>'disabled',
+                            'class'=>'css-select',
+                            'value'=>$model->id_estacion
+                        ));
+                    }
+                       echo $form->error($model,'id_estacion');
+                ?>
                 </span>
             </div>
-            <div class="row">
-                <?php echo $form->labelEx($model,'hora_salida'); ?>
-                <?php echo $form->textField($model,'hora_salida', array('placeholder'=>'hh:mm')); ?>
-                <?php echo $form->error($model,'hora_salida'); ?>
-            </div>
-           
-	</div>
+        </div>
+    </div>
     </div>
     <div class="tab hide" data-tab="2">
         
