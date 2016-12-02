@@ -116,7 +116,7 @@ class Viajes extends CActiveRecord
                             ),
           ));
     }
-        public function searchStatus1($flag)
+    public function searchStatus1($flag)
     {
         // @todo Please modify the following code to remove attributes that should not be searched.
         $criteria=new CDbCriteria;
@@ -129,34 +129,49 @@ class Viajes extends CActiveRecord
         $criteria->compare('hora_salida',$this->hora_salida,true);
         $criteria->compare('fecha_entrega',$this->fecha_entrega,true);
         $criteria->compare('hora_entrega',$this->hora_entrega,true);
-            $criteria->addCondition("status = $flag");
-        if(Yii::app()->user->getTipoUsuario()==1){
+        $criteria->addCondition("status = $flag");
+        if(Yii::app()->user->getTipoUsuario()==1)
+        {
             $c = new CDbCriteria();
-            $viajes=Viajes::model()->tablename();
             $solicitudes_viajes=SolicitudesViaje::model()->tablename();
             $clientes=Clientes::model()->tablename();
             $solicitudes=Solicitudes::model()->tablename();
+            $viajes=Viajes::model()->tablename();
+            $cliente = Yii::app()->user->name;
+            $clienteid = Yii::app()->db->createCommand()
+                    ->select('id_usr')
+                    ->from('usuarios')
+                    ->where("usuario = '$cliente'")
+                    ->queryRow();
             $c->join=
             'join '.$solicitudes_viajes.' sv on sv.id_viaje = t.id '.
             'join '.$solicitudes.' s on s.id = sv.id_solicitud '.
             'join '.$clientes.' c on c.id = s.id_clientes '.
             'where t.status='.$flag.
-            ' and c.id=1 '.
-            'group by t.id'
+//            ' and c.id=1 '.
+            " and c.id = {$clienteid['id_usr']}".
+            ' group by t.id'
             ;
-             return new CActiveDataProvider($this, array(
-           'criteria'=>$c,
-                                'pagination'=>array(
-                                    'pageSize'=>15,
-                            ),
-          ));
+            return new CActiveDataProvider($this, array
+            (
+                'criteria'=>$c,
+                'pagination'=>array
+                (
+                    'pageSize'=>15,
+                ),
+            ));
         }
-        return new CActiveDataProvider($this, array(
-           'criteria'=>$criteria,
-                                'pagination'=>array(
-                                    'pageSize'=>15,
-                            ),
-          ));
+        else
+        {
+            return new CActiveDataProvider($this, array
+            (
+                'criteria'=>$criteria,
+                    'pagination'=>array
+                    (
+                        'pageSize'=>15,
+                    ),
+            ));
+        }
     }
     /**
      * Returns the static model of the specified AR class.

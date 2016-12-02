@@ -290,7 +290,6 @@ EOF;
         $prueba = SolicitudesViaje::model()->findAll("id_viaje = $model->id AND id_personal = 0");
         $guardar = array();
         $pedidos = array();
-        $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
         if(Yii::app()->user->getTipoUsuario()==1)
         {
             $prueba=Yii::app()->db->createCommand('SELECT sv.*, c.id as idc FROM solicitudes_viaje sv
@@ -307,6 +306,8 @@ EOF;
             AND c.id='.Yii::app()->user->getIDc())
             ->queryAll();
         }
+        else
+            $solicitudTanque = SolicitudTanques::model()->findAll("id_solicitud = $model->id_solicitudes");
         foreach($solicitudTanque as $data)
         {
             $cepa = Cepa::model()->findByPk($data->id_cepas);
